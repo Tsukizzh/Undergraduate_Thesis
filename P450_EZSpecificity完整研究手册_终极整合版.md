@@ -1403,52 +1403,116 @@ H─C─C─O─H
 
 ### 4.2 步骤0：确认数据位置并创建工作目录
 
-**你已有的数据应该在**：
+#### 4.2.1 已有数据位置
+
+数据已复制到共享资源目录，原始位置仅作参考：
 ```
-EZSpecificity_Project/
-└── 提取P450过程日志/
-    └── 2026-01-04_01-00_P450_PDB实验结构_ML数据集构建/
-        └── 任务3_ML数据集筛选/
-            └── 数据文件/
-                └── 修复后最终版/
-                    └── ML训练数据集_186个.csv   ← 这是你的起点
+原始位置（参考）：
+EZSpecificity_Project/提取P450过程日志/2026-01-04_01-00_.../任务3_.../修复后最终版/
+
+复制后位置（使用）：
+P450_EZSpecificity_研究项目/PathA_2026-01-08_模型评估测试集构建/source_data/01_核心数据/ML训练数据集_186个.csv
 ```
 
-**25个需要排除的UniProt ID**（与ESIBank训练集重叠）：
+#### 4.2.2 需要排除的25个UniProt ID
+
+与ESIBank训练集重叠，必须排除以保证测试集独立性：
 ```
 A2TEF2, C4B644, E3VWI3, O24782, P00189, P00191, P05093, P08684,
 P11511, P19099, P22680, P23295, P33261, Q06069, Q09128, Q16850,
 Q6TBX7, Q6VVX0, Q6WG30, Q83WG3, Q8VQF6, Q9UNU6, Q9Y6A2, Q9ZAU3, S4UX02
 ```
 
-**创建工作目录**：
+#### 4.2.3 创建工作目录
+
 ```bash
-mkdir -p P450_Phase1_Dataset
-mkdir -p P450_Phase1_Dataset/pdb_files
-mkdir -p P450_Phase1_Dataset/Structure/complex
-mkdir -p P450_Phase1_Dataset/Structure/str_tmp_data/pocket
-mkdir -p P450_Phase1_Dataset/Structure/str_tmp_data/ligand
+# 创建总目录
+mkdir -p "P450_EZSpecificity_研究项目"
+
+# 创建共享资源
+mkdir -p "P450_EZSpecificity_研究项目/共享资源/source_data"
+mkdir -p "P450_EZSpecificity_研究项目/共享资源/literature"
+mkdir -p "P450_EZSpecificity_研究项目/共享资源/configs"
+
+# 创建Path A目录
+mkdir -p "P450_EZSpecificity_研究项目/PathA_2026-01-08_模型评估测试集构建/scripts/utils"
+mkdir -p "P450_EZSpecificity_研究项目/PathA_2026-01-08_模型评估测试集构建/configs"
+mkdir -p "P450_EZSpecificity_研究项目/PathA_2026-01-08_模型评估测试集构建/logs/errors"
+mkdir -p "P450_EZSpecificity_研究项目/PathA_2026-01-08_模型评估测试集构建/source_data"
+mkdir -p "P450_EZSpecificity_研究项目/PathA_2026-01-08_模型评估测试集构建/data/00_raw/pdb_files"
+mkdir -p "P450_EZSpecificity_研究项目/PathA_2026-01-08_模型评估测试集构建/data/01_processed"
+mkdir -p "P450_EZSpecificity_研究项目/PathA_2026-01-08_模型评估测试集构建/data/02_features"
+mkdir -p "P450_EZSpecificity_研究项目/PathA_2026-01-08_模型评估测试集构建/data/03_structure/complex"
+mkdir -p "P450_EZSpecificity_研究项目/PathA_2026-01-08_模型评估测试集构建/data/03_structure/str_tmp_data/pocket"
+mkdir -p "P450_EZSpecificity_研究项目/PathA_2026-01-08_模型评估测试集构建/data/03_structure/str_tmp_data/ligand"
+mkdir -p "P450_EZSpecificity_研究项目/PathA_2026-01-08_模型评估测试集构建/results"
+mkdir -p "P450_EZSpecificity_研究项目/PathA_2026-01-08_模型评估测试集构建/reports/figures"
+mkdir -p "P450_EZSpecificity_研究项目/PathA_2026-01-08_模型评估测试集构建/reports/tables"
+mkdir -p "P450_EZSpecificity_研究项目/PathA_2026-01-08_模型评估测试集构建/checkpoints"
+mkdir -p "P450_EZSpecificity_研究项目/PathA_2026-01-08_模型评估测试集构建/sessions"
+
+# 创建Path B/C/D预留目录
+mkdir -p "P450_EZSpecificity_研究项目/PathB_待定_P450专属数据集构建"
+mkdir -p "P450_EZSpecificity_研究项目/PathC_待定_P450专属模型训练"
+mkdir -p "P450_EZSpecificity_研究项目/PathD_待定_区域选择性预测"
 ```
 
-**目录结构说明**：
+#### 4.2.4 目录结构说明
+
 ```
-P450_Phase1_Dataset/           ← 路径A所有数据都放这里
-├── pdb_files/                 ← 下载的161个PDB文件
-├── Enzymes.csv                ← 酶序列（步骤2产出）
-├── Substrates.csv             ← 底物SMILES（步骤3产出）
-├── data.csv                   ← 索引表（步骤4产出）
-├── enzyme_features.lmdb       ← 酶特征（步骤6产出）
-├── reaction_features.lmdb     ← 底物图特征（步骤7产出）
-├── morgan_fingerprint.npy     ← Morgan指纹（步骤7产出）
-├── grover_fingerprint.lmdb    ← GROVER嵌入（步骤7产出）
-├── structure_features.lmdb    ← 结构特征（步骤8产出）
-├── str_features.lmdb          ← 配体序列特征（步骤8产出）
-├── high_quality_id.txt        ← 有效结构ID列表（步骤8产出）
-└── Structure/
-    ├── complex/               ← 转换格式后的对接PDB（步骤5产出）
-    └── str_tmp_data/
-        ├── pocket/            ← 口袋结构（步骤8产出）
-        └── ligand/            ← 配体SDF（步骤8产出）
+PathA_2026-01-08_模型评估测试集构建/
+│
+├── scripts/                    ← 执行代码
+│   ├── step1_download_pdb.py
+│   ├── step2_extract_sequence.py
+│   ├── step3_extract_ligand.py
+│   ├── step4_build_index.py
+│   ├── step5_convert_pdb.py
+│   ├── step6_generate_esm.py
+│   ├── step7_generate_substrate_features.py
+│   ├── step8_process_structure.py
+│   ├── step9_run_prediction.py
+│   ├── step10_analyze_results.py
+│   └── utils/
+│
+├── configs/                    ← 配置文件
+│   ├── paths.yaml
+│   ├── exclude_list.txt
+│   └── ligand_blacklist.txt
+│
+├── logs/                       ← 执行日志
+│   └── errors/
+│
+├── source_data/                ← 依赖数据（从提取P450过程日志复制）
+│   ├── 01_核心数据/            ← 最重要，Path A必需
+│   │   ├── ML训练数据集_186个.csv
+│   │   ├── P450酶列表_最终版389个.csv
+│   │   └── ...
+│   ├── 02_底物数据/
+│   ├── 03_物种分类/
+│   ├── 04_PDB映射/
+│   └── 05_验证数据/
+│
+├── data/                       ← 数据文件
+│   ├── 00_raw/pdb_files/       ← 下载的161个PDB文件
+│   ├── 01_processed/           ← Enzymes.csv, Substrates.csv, data.csv
+│   ├── 02_features/            ← enzyme_features.lmdb, grover_fingerprint.lmdb等
+│   └── 03_structure/           ← complex/, str_tmp_data/
+│
+├── results/                    ← 输出结果
+│   ├── predictions.csv
+│   └── high_quality_id.txt
+│
+├── reports/                    ← 分析报告
+│
+├── checkpoints/                ← 中间检查点
+│
+├── sessions/                   ← 时间线记录
+│   └── YYYY-MM-DD_HH-MM_StepX_任务描述/
+│       ├── session_log.md
+│       └── file_index.md
+│
+└── 进度日志.md
 ```
 
 ---
@@ -1575,6 +1639,76 @@ ATOM（配体）            ← 配体在后
 | 高分案例验证可靠（抽查Top-N >80%正确） | 考虑路径D：区域选择性预测（更有创新性） |
 | 效果一般（50-80%） | 分析失败案例，考虑路径B：扩展数据集 |
 | 效果差（<50%） | 可能需要针对P450专门优化模型 |
+
+---
+
+### 4.9 三方辩论关键发现
+
+#### 4.9.1 最关键发现：HEM处理问题
+
+| 发现者 | 问题 | 后果 |
+|--------|------|------|
+| **Codex** | `PDBProtein`只读取`ATOM`，忽略`HETATM` | HEM不会被包含在蛋白图中 |
+| **Gemini** | P450活性中心变成空洞，Fe原子消失 | 模型无法预测基于金属催化的特异性 |
+
+**必须执行的修复**：
+```bash
+# 将HEM的HETATM改为ATOM
+sed 's/^HETATM\(.*HEM\)/ATOM  \1/' input.pdb > output.pdb
+```
+
+#### 4.9.2 文件策略共识
+
+| 阶段 | 格式 | 说明 |
+|------|------|------|
+| 输入 | 单文件+COMPND | 原始PDB或合并后的复合物 |
+| 中间 | 双文件 | pocket.pdb + ligand.sdf |
+| 特征 | LMDB | structure_features.lmdb |
+
+#### 4.9.3 Bond Order Loss修复
+
+```python
+from rdkit.Chem import AllChem
+# 使用已知SMILES作为模板修复键级
+fixed_mol = AllChem.AssignBondOrdersFromTemplate(template_mol, pdb_mol)
+```
+
+#### 4.9.4 SDF处理要求
+
+```python
+# 必须先Sanitize再保存
+mol = Chem.MolFromPDBFile(ligand_pdb)
+Chem.SanitizeMol(mol)  # 关键！
+writer = Chem.SDWriter(output_sdf)
+writer.write(mol)
+```
+
+---
+
+### 4.10 修正后的执行标准
+
+#### 4.10.1 PDB处理流程（修正版）
+
+```
+原始PDB
+    │
+    ├─→ 提取蛋白质(ATOM) + HEM(HETATM→ATOM)
+    │       │
+    │       └─→ pocket.pdb
+    │
+    └─→ 提取配体(HETATM，排除HEM/水/缓冲盐)
+            │
+            ├─→ 用RDKit/OpenBabel修复键级
+            ├─→ Sanitize
+            └─→ ligand.sdf
+```
+
+#### 4.10.2 验证检查清单
+
+- [ ] HEM原子在pocket.pdb中（检查是否有ATOM行包含HEM）
+- [ ] ligand.sdf可被RDKit正确解析
+- [ ] SMILES与SDF结构一致
+- [ ] 索引对齐正确（Dock Index ↔ Enzyme Index ↔ Substrate Index）
 
 ---
 
