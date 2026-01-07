@@ -1,7 +1,7 @@
-# 大文件目录（不上传）
-data/
-saved_model/
-src/
+# 大文件目录（不上传）- 只匹配根目录
+/data/
+/saved_model/
+/src/
 
 # 其他不需要上传的文件
 *.pdf
