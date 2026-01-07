@@ -1,4 +1,4 @@
-# P450-EZSpecificity 研究项目
+# P450-EZSpecificity 研究项目（初步探索阶段仓库）
 
 基于 EZSpecificity 模型的 P450 酶特异性预测研究。
 
