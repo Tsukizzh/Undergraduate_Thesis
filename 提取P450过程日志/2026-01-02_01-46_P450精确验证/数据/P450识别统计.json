@@ -1,0 +1,10 @@
+{
+  "total_enzymes": 25225,
+  "p450_by_family": 403,
+  "p450_by_interpro": 389,
+  "p450_with_heme": 364,
+  "not_found_in_uniprot": 0,
+  "total_p450": 410,
+  "total_non_p450": 24815,
+  "identification_date": "2026-01-01T19:07:44+00:00"
+}

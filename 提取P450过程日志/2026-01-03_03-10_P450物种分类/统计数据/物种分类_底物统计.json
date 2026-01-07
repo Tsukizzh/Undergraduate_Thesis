@@ -1,0 +1,79 @@
+{
+  "total_enzymes": 389,
+  "with_substrate_data": 367,
+  "without_substrate_data": 22,
+  "total_positive_pairs": 884,
+  "total_negative_pairs": 11445,
+  "categories": [
+    {
+      "category": "Plants_Other",
+      "category_cn": "其他植物",
+      "enzyme_count": 217,
+      "with_substrate_data": 212,
+      "without_substrate_data": 5,
+      "total_positive_pairs": 477,
+      "total_negative_pairs": 5753,
+      "total_pairs": 6230
+    },
+    {
+      "category": "Other_Animals",
+      "category_cn": "其他动物",
+      "enzyme_count": 25,
+      "with_substrate_data": 20,
+      "without_substrate_data": 5,
+      "total_positive_pairs": 32,
+      "total_negative_pairs": 458,
+      "total_pairs": 490
+    },
+    {
+      "category": "Mammals",
+      "category_cn": "哺乳动物",
+      "enzyme_count": 87,
+      "with_substrate_data": 83,
+      "without_substrate_data": 4,
+      "total_positive_pairs": 261,
+      "total_negative_pairs": 3776,
+      "total_pairs": 4037
+    },
+    {
+      "category": "Plants_BIA",
+      "category_cn": "BIA生产植物",
+      "enzyme_count": 25,
+      "with_substrate_data": 25,
+      "without_substrate_data": 0,
+      "total_positive_pairs": 42,
+      "total_negative_pairs": 548,
+      "total_pairs": 590
+    },
+    {
+      "category": "Bacteria",
+      "category_cn": "细菌",
+      "enzyme_count": 18,
+      "with_substrate_data": 12,
+      "without_substrate_data": 6,
+      "total_positive_pairs": 30,
+      "total_negative_pairs": 423,
+      "total_pairs": 453
+    },
+    {
+      "category": "Fungi",
+      "category_cn": "真菌",
+      "enzyme_count": 15,
+      "with_substrate_data": 13,
+      "without_substrate_data": 2,
+      "total_positive_pairs": 37,
+      "total_negative_pairs": 436,
+      "total_pairs": 473
+    },
+    {
+      "category": "Unknown",
+      "category_cn": "未知",
+      "enzyme_count": 2,
+      "with_substrate_data": 2,
+      "without_substrate_data": 0,
+      "total_positive_pairs": 5,
+      "total_negative_pairs": 51,
+      "total_pairs": 56
+    }
+  ]
+}

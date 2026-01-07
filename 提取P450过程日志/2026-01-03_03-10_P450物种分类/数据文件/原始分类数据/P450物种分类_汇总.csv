@@ -1,0 +1,8 @@
+category,count,percentage,sample_organisms
+Plants_Other,217,55.8%,"Cynara cardunculus var. altilis, Prunus mume (Japanese apricot) (Armeniaca mume), Medicago truncatula (Barrel medic) (Medicago tribuloides)"
+Mammals,87,22.4%,"Rattus norvegicus (Rat), Rattus norvegicus (Rat), Callithrix jacchus (White-tufted-ear marmoset) (Simia Jacchus)"
+Other_Animals,25,6.4%,"Danio rerio (Zebrafish) (Brachydanio rerio), Chamberlinius hualienensis, Melipona scutellaris"
+Plants_BIA,25,6.4%,"Sinopodophyllum hexandrum (Himalayan may apple) (Podophyllum hexandrum), Sinopodophyllum hexandrum (Himalayan may apple) (Podophyllum hexandrum), Delphinium semibarbatum"
+Bacteria,18,4.6%,"Mycobacterium tuberculosis, Mycolicibacterium smegmatis (Mycobacterium smegmatis), Mycobacterium tuberculosis"
+Fungi,15,3.9%,"Absidia caerulea, Candida albicans (Yeast), Taiwanofungus camphoratus (Poroid brown-rot fungus) (Antrodia camphorata)"
+Unknown,2,0.5%,"Leishmania infantum, Trypanosoma cruzi"

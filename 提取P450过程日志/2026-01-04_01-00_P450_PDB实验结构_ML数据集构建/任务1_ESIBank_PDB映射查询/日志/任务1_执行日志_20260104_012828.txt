@@ -1,0 +1,3282 @@
+[2026-01-04 01:28:28] ============================================================
+[2026-01-04 01:28:28] P450 PDB Structure Query and Filtering Pipeline
+[2026-01-04 01:28:28] Started at: 2026-01-04 01:28:28
+[2026-01-04 01:28:28] ============================================================
+[2026-01-04 01:28:28] 
+Loaded 389 verified P450 enzymes
+[2026-01-04 01:28:28] ============================================================
+[2026-01-04 01:28:28] TASK 1: Querying PDB structures for our 389 P450 enzymes
+[2026-01-04 01:28:28] ============================================================
+[2026-01-04 01:28:28] Progress: 0/389 (0.0%)
+[2026-01-04 01:28:31] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/A0A059WMF6): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:28:31] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/A0A068Q609): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:28:31] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/A0A072UPL5): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:28:32] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/A0A097HUX0): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:28:32] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/A0A0A0K2U8): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:28:33] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/A0A0A7DLM4): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:28:33] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/A0A0B4KZX8): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:28:34] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/A0A0C5QRZ2): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:28:34] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/A0A0E4B3I0): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:28:35] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/A0A0G2JXU4): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:28:35] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/A0A0G2K9N5): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:28:36] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/A0A0G2RKY1): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:28:36] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/A0A0N7F297): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:28:37] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/A0A0N7H9X2): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:28:37] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/A0A0N9HTU1): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:28:37] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/A0A0P0YJU0): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:28:38] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/A0A0S1TP26): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:28:38] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/A0A0S2LLA9): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:28:39] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/A0A0T9WNE5): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:28:39] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/A0A0Y0GRS3): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:28:40] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/A0A125QZE2): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:28:41] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/A0A140IL92): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:28:41] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/A0A161ABB0): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:28:42] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/A0A173GQ95): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:28:42] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/A0A1B1IHZ1): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:28:43] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/A0A1D6F9Y9): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:28:43] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/A0A1D6GQ67): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:28:44] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/A0A1D6HSP4): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:28:44] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/A0A1I9Q5Z0): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:28:45] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/A0A1J1DVP9): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:28:45] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/A0A1J6JQE7): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:28:45] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/A0A1L7NT18): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:28:46] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/A0A1L7NXK5): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:28:46] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/A0A1P8NQJ7): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:28:47] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/A0A1P8W705): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:28:47] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/A0A1S5T865): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:28:48] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/A0A1U7Q8W9): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:28:48] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/A0A1U7Q986): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:28:49] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/A0A1U7Z269): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:28:49] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/A0A1V1FHP8): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:28:50] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/A0A1W6S9Y7): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:28:50] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/A0A1Z2R7G8): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:28:50] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/A0A1Z2R7G9): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:28:51] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/A0A218NGS0): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:28:51] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/A0A240FWB3): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:28:52] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/A0A240FWB4): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:28:52] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/A0A286LD89): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:28:53] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/A0A2C9DK12): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:28:53] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/A0A2H4DGV8): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:28:54] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/A0A2Z4I2V7): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:28:54] Progress: 50/389 (12.9%)
+[2026-01-04 01:28:54] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/A0A396GRS7): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:28:55] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/A0A396JLC3): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:28:55] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/A0A3Q1MTF6): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:28:56] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/A0A3Q7HBJ5): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:28:56] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/A0A3Q7HS74): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:28:56] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/A0A3Q8QEF5): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:28:57] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/A0A3Q8QEF7): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:28:57] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/A0A3Q9R4N5): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:28:58] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/A0A4X1UJZ0): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:28:58] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/A0A653FHY2): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:28:59] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/A0A655A8T0): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:28:59] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/A0A6C0G9L7): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:29:00] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/A0A6M3TXH1): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:29:01] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/A0A7D3QT71): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:29:01] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/A0A8C1NRV4): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:29:02] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/A0A8C4ECQ9): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:29:02] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/A1L3S6): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:29:03] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/A1XBC6): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:29:03] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/A1YJE3): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:29:04] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/A2RRT9): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:29:04] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/A2TEF2): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:29:05] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/A3KLR7): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:29:05] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/A5LGW8): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:29:06] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/A6P663): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:29:06] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/A6YIH8): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:29:07] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/A7KMF3): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:29:07] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/A7XY79): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:29:08] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/A8CBS0): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:29:08] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/A8CDR5): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:29:09] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/A8DBU6): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:29:09] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/A9QNE6): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:29:10] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/A9SNA2): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:29:10] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/B1NF18): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:29:11] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/B1NF19): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:29:11] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/B2BF50): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:29:12] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/B3LF83): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:29:12] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/B4DDJ0): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:29:13] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/B4FVP3): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:29:13] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/B4XY99): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:29:14] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/B5BSX1): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:29:14] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/B5UAQ8): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:29:14] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/B8QHP5): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:29:15] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/B8RBV1): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:29:15] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/C0SJS2): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:29:16] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/C0SJS3): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:29:16] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/C0SJS4): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:29:17] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/C0SPF7): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:29:17] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/C1J0N9): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:29:18] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/C4B644): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:29:18] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/C5IGQ5): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:29:18] Progress: 100/389 (25.7%)
+[2026-01-04 01:29:19] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/C5IWL6): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:29:19] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/C5X6I4): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:29:20] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/C5XWH8): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:29:20] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/C7B608): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:29:21] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/C7T4H2): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:29:21] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/C7T4H3): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:29:21] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/C7T4H4): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:29:22] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/C9K1X6): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:29:22] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/C9K1X7): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:29:23] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/D1MI46): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:29:23] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/D3IWE6): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:29:24] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/D3K2N2): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:29:24] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/D3TJH0): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:29:25] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/D5J9U8): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:29:25] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/D5JBW9): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:29:26] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/D5JBX0): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:29:26] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/D5JBX1): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:29:27] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/D6CJJ9): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:29:27] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/D6WFY6): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:29:27] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/D8QZ31): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:29:28] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/D8S724): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:29:28] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/E0D4W1): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:29:29] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/E0D4W2): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:29:29] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/E3T9X1): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:29:30] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/E3TB05): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:29:30] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/E3VWI3): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:29:31] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/E3VWJ9): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:29:31] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/E3W9C4): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:29:32] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/E9KBR8): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:29:32] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/F1T0M7): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:29:33] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/F2Z9C1): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:29:33] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/F2ZAE0): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:29:34] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/F4YRL2): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:29:34] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/F6H9N6): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:29:35] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/F6KZD5): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:29:35] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/F7EN52): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:29:36] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/F8S1H3): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:29:36] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/F8S1H8): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:29:37] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/F8S1I0): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:29:38] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/G4VV60): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:29:38] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/G8XQN2): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:29:39] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/H1A988): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:29:39] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/H2DH16): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:29:40] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/H9LJF9): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:29:40] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/H9MFM9): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:29:41] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/I1TEM1): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:29:41] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/I3PLR0): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:29:42] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/I3PLR1): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:29:42] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/I3QBP4): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:29:42] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/I3V6B7): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:29:43] Progress: 150/389 (38.6%)
+[2026-01-04 01:29:43] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/I7C6E8): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:29:43] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/I7CT85): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:29:44] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/J7M8Q0): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:29:45] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/J7MB22): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:29:45] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/K4CI52): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:29:46] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/K4K542): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:29:46] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/K7NBR2): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:29:47] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/K7ZPJ9): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:29:47] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/K7ZR99): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:29:48] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/L7T720): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:29:48] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/L7T8H2): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:29:49] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/L7TF20): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:29:49] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/L7X0L7): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:29:49] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/M1KK91): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:29:50] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/M4WFN0): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:29:51] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/O02766): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:29:51] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/O09158): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:29:52] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/O15528): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:29:52] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/O23051): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:29:53] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/O23066): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:29:53] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/O24782): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:29:54] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/O35084): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:29:54] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/O35132): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:29:55] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/O46658): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:29:55] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/O48958): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:29:55] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/O49394): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:29:56] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/O64698): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:29:56] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/O64900): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:29:57] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/O65782): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:29:57] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/O75881): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:29:58] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/O88962): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:29:58] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/P00189): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:29:59] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/P00191): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:29:59] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/P05093): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:30:00] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/P05185): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:30:00] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/P08683): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:30:01] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/P08684): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:30:01] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/P0CT93): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:30:02] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/P0DKI7): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:30:02] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/P0DPA7): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:30:03] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/P11371): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:30:03] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/P11511): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:30:03] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/P11715): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:30:04] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/P14263): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:30:04] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/P15150): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:30:05] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/P15540): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:30:05] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/P17549): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:30:06] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/P18125): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:30:06] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/P19099): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:30:07] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/P19100): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:30:07] Progress: 200/389 (51.4%)
+[2026-01-04 01:30:07] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/P22680): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:30:08] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/P23295): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:30:08] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/P24557): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:30:09] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/P27786): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:30:09] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/P30437): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:30:09] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/P33261): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:30:10] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/P37114): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:30:10] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/P37120): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:30:11] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/P46634): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:30:11] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/P47195): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:30:12] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/P47787): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:30:12] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/P48417): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:30:13] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/P48421): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:30:13] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/P48422): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:30:14] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/P48522): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:30:14] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/P49430): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:30:14] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/P51542): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:30:15] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/P51589): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:30:15] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/P51663): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:30:16] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/P51869): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:30:16] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/P70687): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:30:17] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/P78329): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:30:17] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/P93147): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:30:18] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/P93149): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:30:18] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/P93846): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:30:19] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/P98183): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:30:19] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/P98187): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:30:20] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/Q00G65): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:30:20] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/Q02928): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:30:20] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/Q04468): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:30:21] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/Q04552): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:30:21] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/Q06069): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:30:22] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/Q06IS2): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:30:22] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/Q07973): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:30:23] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/Q08477): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:30:23] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/Q09128): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:30:24] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/Q0H7R9): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:30:24] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/Q0Q5Z4): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:30:25] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/Q0QLB3): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:30:25] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/Q12599): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:30:26] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/Q12664): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:30:26] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/Q16850): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:30:26] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/Q17UC0): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:30:27] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/Q1JPY5): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:30:27] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/Q1T7C2): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:30:28] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/Q29497): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:30:28] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/Q2EMR3): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:30:29] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/Q2ENF7): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:30:29] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/Q2EPZ0): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:30:30] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/Q2KIG5): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:30:30] Progress: 250/389 (64.3%)
+[2026-01-04 01:30:31] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/Q2LAL0): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:30:31] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/Q2MJ20): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:30:32] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/Q2UYU7): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:30:32] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/Q2WE96): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:30:33] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/Q2XVA1): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:30:33] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/Q304Q4): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:30:33] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/Q304Q5): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:30:34] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/Q304R0): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:30:34] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/Q33DX9): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:30:35] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/Q33DY0): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:30:36] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/Q38Q84): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:30:36] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/Q39443): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:30:37] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/Q3C211): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:30:37] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/Q3LFR2): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:30:38] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/Q42600): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:30:38] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/Q42798): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:30:39] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/Q43033): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:30:39] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/Q43067): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:30:40] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/Q43135): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:30:40] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/Q43250): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:30:40] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/Q43255): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:30:41] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/Q43257): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:30:41] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/Q4PJW3): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:30:42] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/Q50EK6): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:30:42] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/Q50LH4): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:30:43] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/Q52TE7): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:30:43] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/Q52YL8): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:30:44] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/Q59723): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:30:44] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/Q59I68): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:30:45] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/Q5EWY2): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:30:45] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/Q5ILH2): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:30:46] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/Q60991): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:30:46] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/Q62969): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:30:47] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/Q63688): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:30:47] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/Q64148): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:30:47] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/Q64410): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:30:48] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/Q64429): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:30:48] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/Q64441): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:30:49] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/Q64459): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:30:49] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/Q64562): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:30:50] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/Q64654): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:30:50] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/Q673E9): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:30:51] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/Q6IV13): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:30:51] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/Q6LEN2): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:30:52] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/Q6QHJ9): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:30:52] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/Q6QNI4): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:30:53] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/Q6R7M4): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:30:53] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/Q6TBX7): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:30:54] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/Q6TH81): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:30:54] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/Q6VVW9): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:30:54] Progress: 300/389 (77.1%)
+[2026-01-04 01:30:54] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/Q6VVX0): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:30:55] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/Q6WG30): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:30:55] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/Q6WNQ9): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:30:56] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/Q6WNR0): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:30:56] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/Q6XAF4): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:30:57] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/Q6XQ14): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:30:57] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/Q6YLS3): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:30:58] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/Q6ZWL3): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:30:58] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/Q767R1): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:30:59] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/Q76LL4): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:30:59] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/Q7XAU5): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:30:59] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/Q7YRB2): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:31:00] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/Q83WG3): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:31:00] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/Q84KI1): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:31:01] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/Q84NG3): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:31:01] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/Q84QI4): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:31:02] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/Q8HYN1): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:31:02] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/Q8K0C4): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:31:03] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/Q8NKB4): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:31:03] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/Q8S9C6): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:31:04] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/Q8VQF6): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:31:04] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/Q8VWZ7): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:31:05] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/Q8W2N5): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:31:05] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/Q8W3Y5): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:31:05] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/Q8W4T9): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:31:06] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/Q8WND8): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:31:06] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/Q93XR3): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:31:07] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/Q93ZB2): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:31:07] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/Q94FM7): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:31:08] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/Q94IA6): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:31:08] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/Q95328): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:31:09] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/Q96WS9): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:31:09] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/Q9AR74): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:31:10] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/Q9AVQ1): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:31:10] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/Q9AXH9): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:31:11] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/Q9AXM6): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:31:11] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/Q9DBX6): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:31:11] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/Q9EP75): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:31:12] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/Q9FH76): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:31:12] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/Q9FMV7): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:31:13] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/Q9FPM6): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:31:13] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/Q9FPN2): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:31:14] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/Q9FPN4): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:31:14] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/Q9FPN5): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:31:15] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/Q9FS35): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:31:15] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/Q9GJX5): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:31:16] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/Q9GMC7): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:31:16] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/Q9GMC8): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:31:17] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/Q9JKJ9): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:31:17] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/Q9LLB0): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:31:17] Progress: 350/389 (90.0%)
+[2026-01-04 01:31:18] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/Q9LNJ4): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:31:18] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/Q9LSF8): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:31:18] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/Q9LW27): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:31:19] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/Q9M7B8): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:31:19] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/Q9N0U7): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:31:20] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/Q9SB21): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:31:20] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/Q9SC11): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:31:21] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/Q9SD85): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:31:21] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/Q9SP06): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:31:22] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/Q9SSX5): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:31:22] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/Q9SWJ4): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:31:23] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/Q9SWR5): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:31:23] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/Q9SXS3): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:31:24] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/Q9SZ46): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:31:24] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/Q9UNU6): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:31:24] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/Q9URR6): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:31:25] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/Q9VUF8): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:31:25] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/Q9WVK8): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:31:26] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/Q9XHC6): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:31:26] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/Q9XHE8): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:31:27] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/Q9XS57): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:31:27] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/Q9Y6A2): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:31:28] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/Q9Y7C8): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:31:28] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/Q9ZAU3): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:31:29] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/Q9ZUX1): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:31:29] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/R4X4I5): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:31:30] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/S4UX02): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:31:30] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/T1NXM5): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:31:30] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/U3LXJ8): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:31:31] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/U5NDT8): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:31:31] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/U5NE19): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:31:32] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/U5YM12): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:31:32] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/U6NHS3): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:31:33] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/V5K5L7): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:31:33] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/W0FKI0): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:31:34] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/W6RGX9): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:31:34] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/W8JIS5): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:31:35] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/W9SPF5): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:31:35] HTTP 404 (GET https://www.ebi.ac.uk/pdbe/api/mappings/uniprot/X2JE85): 
+    <!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0//EN">
+    <html>
+        <head>
+            <title>Error: 404 Not Found</title>
+            <style type="text/css">
+              html {background-color: #eee; font-family: sans-serif;}
+              body {background-color: #fff; border: 1px solid #d
+[2026-01-04 01:31:35] 
+Task 1 Results:
+[2026-01-04 01:31:35]   - P450s with PDB structure: 0
+[2026-01-04 01:31:35]   - P450s without PDB structure: 389
+[2026-01-04 01:31:35]   - Total unique PDB entries: 0
+[2026-01-04 01:31:35] 
+============================================================
+[2026-01-04 01:31:35] TASK 2: Searching RCSB for ALL P450 structures
+[2026-01-04 01:31:35] ============================================================
+[2026-01-04 01:31:35] Searching by PFAM PF00067...
+[2026-01-04 01:31:36]   Found 1423 polymer entities
+[2026-01-04 01:31:36] Searching by InterPro IPR001128...
+[2026-01-04 01:31:37]   Found 1492 polymer entities
+[2026-01-04 01:31:37] Searching by InterPro IPR036396...
+[2026-01-04 01:31:37]   Found 1492 polymer entities
+[2026-01-04 01:31:37] Searching by InterPro IPR002401...
+[2026-01-04 01:31:37]   Found 222 polymer entities
+[2026-01-04 01:31:37] Searching by text (cytochrome P450, CYP)...
+[2026-01-04 01:31:39]   Found 92739 polymer entities
+[2026-01-04 01:31:39] 
+Total unique P450 polymer entities found: 92739
+[2026-01-04 01:31:39] Total unique PDB entries found: 47775
+[2026-01-04 01:31:39] 
+Fetching metadata for all entries...
+[2026-01-04 01:31:39] Progress: 0/47775 (0.0%)
+[2026-01-04 01:31:56] Request error (POST https://data.rcsb.org/graphql): HTTPSConnectionPool(host='data.rcsb.org', port=443): Max retries exceeded with url: /graphql (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response'))); retry in 1.0s
+[2026-01-04 01:32:21] Progress: 100/47775 (0.2%)
+[2026-01-04 01:33:00] Progress: 200/47775 (0.4%)
+[2026-01-04 01:33:40] Progress: 300/47775 (0.6%)
+[2026-01-04 01:34:20] Progress: 400/47775 (0.8%)
+[2026-01-04 01:34:59] Progress: 500/47775 (1.0%)
+[2026-01-04 01:35:27] Request error (POST https://data.rcsb.org/graphql): HTTPSConnectionPool(host='data.rcsb.org', port=443): Max retries exceeded with url: /graphql (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response'))); retry in 1.0s
+[2026-01-04 01:35:39] Progress: 600/47775 (1.3%)
+[2026-01-04 01:35:42] Request error (POST https://data.rcsb.org/graphql): HTTPSConnectionPool(host='data.rcsb.org', port=443): Max retries exceeded with url: /graphql (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response'))); retry in 1.0s
+[2026-01-04 01:36:21] Progress: 700/47775 (1.5%)
+[2026-01-04 01:36:22] Request error (POST https://data.rcsb.org/graphql): HTTPSConnectionPool(host='data.rcsb.org', port=443): Max retries exceeded with url: /graphql (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response'))); retry in 1.0s
+[2026-01-04 01:36:43] Request error (POST https://data.rcsb.org/graphql): HTTPSConnectionPool(host='data.rcsb.org', port=443): Max retries exceeded with url: /graphql (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response'))); retry in 1.0s
+[2026-01-04 01:37:03] Progress: 800/47775 (1.7%)
+[2026-01-04 01:37:45] Progress: 900/47775 (1.9%)
+[2026-01-04 01:38:25] Progress: 1000/47775 (2.1%)
+[2026-01-04 01:39:06] Progress: 1100/47775 (2.3%)
+[2026-01-04 01:39:19] Request error (POST https://data.rcsb.org/graphql): HTTPSConnectionPool(host='data.rcsb.org', port=443): Max retries exceeded with url: /graphql (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response'))); retry in 1.0s
+[2026-01-04 01:39:46] Progress: 1200/47775 (2.5%)
+[2026-01-04 01:40:25] Progress: 1300/47775 (2.7%)
+[2026-01-04 01:40:39] Request error (POST https://data.rcsb.org/graphql): HTTPSConnectionPool(host='data.rcsb.org', port=443): Max retries exceeded with url: /graphql (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response'))); retry in 1.0s
+[2026-01-04 01:41:06] Progress: 1400/47775 (2.9%)
+[2026-01-04 01:41:44] Progress: 1500/47775 (3.1%)
+[2026-01-04 01:42:23] Progress: 1600/47775 (3.3%)
+[2026-01-04 01:43:02] Progress: 1700/47775 (3.6%)
+[2026-01-04 01:43:35] Request error (POST https://data.rcsb.org/graphql): HTTPSConnectionPool(host='data.rcsb.org', port=443): Max retries exceeded with url: /graphql (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response'))); retry in 1.0s
+[2026-01-04 01:43:43] Progress: 1800/47775 (3.8%)
+[2026-01-04 01:44:23] Progress: 1900/47775 (4.0%)
+[2026-01-04 01:45:02] Progress: 2000/47775 (4.2%)
+[2026-01-04 01:45:42] Progress: 2100/47775 (4.4%)
+[2026-01-04 01:46:21] Progress: 2200/47775 (4.6%)
+[2026-01-04 01:47:00] Progress: 2300/47775 (4.8%)
+[2026-01-04 01:47:40] Progress: 2400/47775 (5.0%)
+[2026-01-04 01:48:18] Progress: 2500/47775 (5.2%)
+[2026-01-04 01:48:57] Progress: 2600/47775 (5.4%)
+[2026-01-04 01:49:36] Progress: 2700/47775 (5.7%)
+[2026-01-04 01:50:14] Progress: 2800/47775 (5.9%)
+[2026-01-04 01:50:53] Progress: 2900/47775 (6.1%)
+[2026-01-04 01:51:31] Progress: 3000/47775 (6.3%)
+[2026-01-04 01:51:47] Request error (POST https://data.rcsb.org/graphql): HTTPSConnectionPool(host='data.rcsb.org', port=443): Max retries exceeded with url: /graphql (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response'))); retry in 1.0s
+[2026-01-04 01:52:11] Progress: 3100/47775 (6.5%)
+[2026-01-04 01:52:51] Progress: 3200/47775 (6.7%)
+[2026-01-04 01:53:30] Progress: 3300/47775 (6.9%)
+[2026-01-04 01:53:43] Request error (POST https://data.rcsb.org/graphql): HTTPSConnectionPool(host='data.rcsb.org', port=443): Max retries exceeded with url: /graphql (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response'))); retry in 1.0s
+[2026-01-04 01:53:48] Request error (POST https://data.rcsb.org/graphql): HTTPSConnectionPool(host='data.rcsb.org', port=443): Max retries exceeded with url: /graphql (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response'))); retry in 1.0s
+[2026-01-04 01:54:00] Request error (POST https://data.rcsb.org/graphql): HTTPSConnectionPool(host='data.rcsb.org', port=443): Max retries exceeded with url: /graphql (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response'))); retry in 1.0s
+[2026-01-04 01:54:14] Progress: 3400/47775 (7.1%)
+[2026-01-04 01:54:36] Request error (POST https://data.rcsb.org/graphql): HTTPSConnectionPool(host='data.rcsb.org', port=443): Max retries exceeded with url: /graphql (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response'))); retry in 1.0s
+[2026-01-04 01:54:54] Progress: 3500/47775 (7.3%)
+[2026-01-04 01:55:04] Request error (POST https://data.rcsb.org/graphql): HTTPSConnectionPool(host='data.rcsb.org', port=443): Max retries exceeded with url: /graphql (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response'))); retry in 1.0s
+[2026-01-04 01:55:34] Progress: 3600/47775 (7.5%)
+[2026-01-04 01:56:13] Progress: 3700/47775 (7.7%)
+[2026-01-04 01:56:45] Request error (POST https://data.rcsb.org/graphql): HTTPSConnectionPool(host='data.rcsb.org', port=443): Max retries exceeded with url: /graphql (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response'))); retry in 1.0s
+[2026-01-04 01:56:52] Progress: 3800/47775 (8.0%)
+[2026-01-04 01:57:00] Request error (POST https://data.rcsb.org/graphql): HTTPSConnectionPool(host='data.rcsb.org', port=443): Max retries exceeded with url: /graphql (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response'))); retry in 1.0s
+[2026-01-04 01:57:16] Request error (POST https://data.rcsb.org/graphql): HTTPSConnectionPool(host='data.rcsb.org', port=443): Max retries exceeded with url: /graphql (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response'))); retry in 1.0s
+[2026-01-04 01:57:34] Progress: 3900/47775 (8.2%)
+[2026-01-04 01:58:06] Request error (POST https://data.rcsb.org/graphql): HTTPSConnectionPool(host='data.rcsb.org', port=443): Max retries exceeded with url: /graphql (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response'))); retry in 1.0s
+[2026-01-04 01:58:14] Progress: 4000/47775 (8.4%)
+[2026-01-04 01:58:52] Progress: 4100/47775 (8.6%)
+[2026-01-04 01:59:07] Request error (POST https://data.rcsb.org/graphql): HTTPSConnectionPool(host='data.rcsb.org', port=443): Max retries exceeded with url: /graphql (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response'))); retry in 1.0s
+[2026-01-04 01:59:33] Progress: 4200/47775 (8.8%)
+[2026-01-04 02:00:11] Progress: 4300/47775 (9.0%)
+[2026-01-04 02:00:51] Progress: 4400/47775 (9.2%)
+[2026-01-04 02:00:53] Request error (POST https://data.rcsb.org/graphql): HTTPSConnectionPool(host='data.rcsb.org', port=443): Max retries exceeded with url: /graphql (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response'))); retry in 1.0s
+[2026-01-04 02:01:31] Progress: 4500/47775 (9.4%)
+[2026-01-04 02:02:10] Progress: 4600/47775 (9.6%)
+[2026-01-04 02:02:49] Progress: 4700/47775 (9.8%)
+[2026-01-04 02:03:28] Progress: 4800/47775 (10.0%)
+[2026-01-04 02:04:07] Progress: 4900/47775 (10.3%)
+[2026-01-04 02:04:45] Progress: 5000/47775 (10.5%)
+[2026-01-04 02:05:25] Progress: 5100/47775 (10.7%)
+[2026-01-04 02:06:04] Progress: 5200/47775 (10.9%)
+[2026-01-04 02:06:43] Progress: 5300/47775 (11.1%)
+[2026-01-04 02:07:21] Progress: 5400/47775 (11.3%)
+[2026-01-04 02:08:00] Progress: 5500/47775 (11.5%)
+[2026-01-04 02:08:14] Request error (POST https://data.rcsb.org/graphql): HTTPSConnectionPool(host='data.rcsb.org', port=443): Max retries exceeded with url: /graphql (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response'))); retry in 1.0s
+[2026-01-04 02:08:40] Progress: 5600/47775 (11.7%)
+[2026-01-04 02:09:18] Progress: 5700/47775 (11.9%)
+[2026-01-04 02:09:58] Progress: 5800/47775 (12.1%)
+[2026-01-04 02:10:36] Progress: 5900/47775 (12.3%)
+[2026-01-04 02:11:15] Progress: 6000/47775 (12.6%)
+[2026-01-04 02:11:55] Progress: 6100/47775 (12.8%)
+[2026-01-04 02:12:35] Progress: 6200/47775 (13.0%)
+[2026-01-04 02:12:36] Request error (POST https://data.rcsb.org/graphql): HTTPSConnectionPool(host='data.rcsb.org', port=443): Max retries exceeded with url: /graphql (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response'))); retry in 1.0s
+[2026-01-04 02:12:51] Request error (POST https://data.rcsb.org/graphql): HTTPSConnectionPool(host='data.rcsb.org', port=443): Max retries exceeded with url: /graphql (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response'))); retry in 1.0s
+[2026-01-04 02:13:19] Progress: 6300/47775 (13.2%)
+[2026-01-04 02:13:36] Request error (POST https://data.rcsb.org/graphql): HTTPSConnectionPool(host='data.rcsb.org', port=443): Max retries exceeded with url: /graphql (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response'))); retry in 1.0s
+[2026-01-04 02:14:04] Progress: 6400/47775 (13.4%)
+[2026-01-04 02:14:45] Progress: 6500/47775 (13.6%)
+[2026-01-04 02:15:25] Progress: 6600/47775 (13.8%)
+[2026-01-04 02:16:05] Progress: 6700/47775 (14.0%)
+[2026-01-04 02:16:46] Progress: 6800/47775 (14.2%)
+[2026-01-04 02:16:47] Request error (POST https://data.rcsb.org/graphql): HTTPSConnectionPool(host='data.rcsb.org', port=443): Max retries exceeded with url: /graphql (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response'))); retry in 1.0s
+[2026-01-04 02:17:28] Progress: 6900/47775 (14.4%)
+[2026-01-04 02:17:48] Request error (POST https://data.rcsb.org/graphql): HTTPSConnectionPool(host='data.rcsb.org', port=443): Max retries exceeded with url: /graphql (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response'))); retry in 1.0s
+[2026-01-04 02:18:09] Progress: 7000/47775 (14.7%)
+[2026-01-04 02:18:49] Progress: 7100/47775 (14.9%)
+[2026-01-04 02:19:31] Progress: 7200/47775 (15.1%)
+[2026-01-04 02:20:12] Progress: 7300/47775 (15.3%)
+[2026-01-04 02:20:53] Progress: 7400/47775 (15.5%)
+[2026-01-04 02:21:34] Progress: 7500/47775 (15.7%)
+[2026-01-04 02:22:16] Progress: 7600/47775 (15.9%)
+[2026-01-04 02:22:57] Progress: 7700/47775 (16.1%)
+[2026-01-04 02:23:39] Progress: 7800/47775 (16.3%)
+[2026-01-04 02:23:47] Request error (POST https://data.rcsb.org/graphql): HTTPSConnectionPool(host='data.rcsb.org', port=443): Max retries exceeded with url: /graphql (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response'))); retry in 1.0s
+[2026-01-04 02:24:22] Progress: 7900/47775 (16.5%)
+[2026-01-04 02:24:33] Request error (POST https://data.rcsb.org/graphql): HTTPSConnectionPool(host='data.rcsb.org', port=443): Max retries exceeded with url: /graphql (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response'))); retry in 1.0s
+[2026-01-04 02:25:07] Progress: 8000/47775 (16.7%)
+[2026-01-04 02:25:29] Request error (POST https://data.rcsb.org/graphql): HTTPSConnectionPool(host='data.rcsb.org', port=443): Max retries exceeded with url: /graphql (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response'))); retry in 1.0s
+[2026-01-04 02:25:51] Progress: 8100/47775 (17.0%)
+[2026-01-04 02:26:32] Progress: 8200/47775 (17.2%)
+[2026-01-04 02:27:15] Progress: 8300/47775 (17.4%)
+[2026-01-04 02:27:55] Progress: 8400/47775 (17.6%)
+[2026-01-04 02:28:35] Progress: 8500/47775 (17.8%)
+[2026-01-04 02:29:18] Progress: 8600/47775 (18.0%)
+[2026-01-04 02:30:00] Progress: 8700/47775 (18.2%)
+[2026-01-04 02:30:41] Progress: 8800/47775 (18.4%)
+[2026-01-04 02:31:22] Progress: 8900/47775 (18.6%)
+[2026-01-04 02:32:03] Progress: 9000/47775 (18.8%)
+[2026-01-04 02:32:44] Progress: 9100/47775 (19.0%)
+[2026-01-04 02:33:25] Progress: 9200/47775 (19.3%)
+[2026-01-04 02:34:08] Progress: 9300/47775 (19.5%)
+[2026-01-04 02:34:49] Progress: 9400/47775 (19.7%)
+[2026-01-04 02:35:06] Request error (POST https://data.rcsb.org/graphql): HTTPSConnectionPool(host='data.rcsb.org', port=443): Max retries exceeded with url: /graphql (Caused by ProxyError('Unable to connect to proxy', RemoteDisconnected('Remote end closed connection without response'))); retry in 1.0s
+[2026-01-04 02:35:32] Progress: 9500/47775 (19.9%)
+[2026-01-04 02:36:13] Progress: 9600/47775 (20.1%)
+[2026-01-04 02:36:53] Progress: 9700/47775 (20.3%)
+[2026-01-04 02:37:34] Progress: 9800/47775 (20.5%)

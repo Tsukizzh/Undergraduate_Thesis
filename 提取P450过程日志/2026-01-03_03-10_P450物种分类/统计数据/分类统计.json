@@ -1,0 +1,27 @@
+{
+  "total_enzymes": 389,
+  "missing_taxonomy": 0,
+  "category_counts": {
+    "Plants_Other": 217,
+    "Mammals": 87,
+    "Other_Animals": 25,
+    "Plants_BIA": 25,
+    "Bacteria": 18,
+    "Fungi": 15,
+    "Unknown": 2
+  },
+  "subcategory_counts": {
+    "Other plants": 217,
+    "Other mammals": 65,
+    "Ranunculales/BIA-producing": 25,
+    "Human": 22,
+    "Bacteria": 18,
+    "Fungi": 15,
+    "Insects": 15,
+    "Fish": 7,
+    "Other animals": 3,
+    "Unknown": 2
+  },
+  "bia_related_count": 25,
+  "missing_ids": []
+}

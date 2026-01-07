@@ -1,0 +1,3 @@
+uniprot_id,organism_name,organism_id,lineage,category,subcategory,is_bia_related
+A2TEF2,Leishmania infantum,5671,"cellular organisms (no rank), Eukaryota (domain), Discoba (clade), Euglenozoa (phylum), Kinetoplastea (class), Metakinetoplastina (subclass), Trypanosomatida (order), Trypanosomatidae (family), Leishmaniinae (subfamily), Leishmania (genus), Leishmania (subgenus), Leishmania donovani species complex (no rank)",Unknown,Unknown,False
+M1KK91,Trypanosoma cruzi,5693,"cellular organisms (no rank), Eukaryota (domain), Discoba (clade), Euglenozoa (phylum), Kinetoplastea (class), Metakinetoplastina (subclass), Trypanosomatida (order), Trypanosomatidae (family), Trypanosoma (genus), Schizotrypanum (subgenus)",Unknown,Unknown,False

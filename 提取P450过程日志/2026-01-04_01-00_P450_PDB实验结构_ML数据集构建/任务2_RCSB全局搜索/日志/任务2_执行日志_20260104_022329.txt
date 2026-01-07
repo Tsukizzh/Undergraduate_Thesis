@@ -1,0 +1,111 @@
+[2026-01-04 02:23:29] ============================================================
+[2026-01-04 02:23:29] P450 Global Search Pipeline v2
+[2026-01-04 02:23:29] Started at: 2026-01-04 02:23:29.272778
+[2026-01-04 02:23:29] Strategy: PFAM + InterPro only (no text search)
+[2026-01-04 02:23:29] ============================================================
+[2026-01-04 02:23:29] 
+============================================================
+[2026-01-04 02:23:29] STEP 1: Searching for P450 polymer entities
+[2026-01-04 02:23:29] ============================================================
+[2026-01-04 02:23:29]   PFAM PF00067: Found 1423 polymer entities
+[2026-01-04 02:23:30]   InterPro IPR001128: Found 1492 polymer entities
+[2026-01-04 02:23:31]   InterPro IPR036396: Found 1492 polymer entities
+[2026-01-04 02:23:32]   InterPro IPR002401: Found 222 polymer entities
+[2026-01-04 02:23:32] 
+Total unique polymer entities: 1492
+[2026-01-04 02:23:32] Saved 1492 entities to database
+[2026-01-04 02:23:32] Total unique PDB entries: 1489
+[2026-01-04 02:23:32] 
+============================================================
+[2026-01-04 02:23:32] STEP 2: Fetching metadata via GraphQL
+[2026-01-04 02:23:32] ============================================================
+[2026-01-04 02:23:32] Already fetched: 0, Pending: 1489
+[2026-01-04 02:23:32] Processing batch 1/30 (50 entries)
+[2026-01-04 02:23:33]   Progress: 50/1489 (3.4%)
+[2026-01-04 02:23:33] Processing batch 2/30 (50 entries)
+[2026-01-04 02:23:34]   Progress: 100/1489 (6.7%)
+[2026-01-04 02:23:34] Processing batch 3/30 (50 entries)
+[2026-01-04 02:23:35]   Progress: 150/1489 (10.1%)
+[2026-01-04 02:23:35] Processing batch 4/30 (50 entries)
+[2026-01-04 02:23:35]   Progress: 200/1489 (13.4%)
+[2026-01-04 02:23:36] Processing batch 5/30 (50 entries)
+[2026-01-04 02:23:36]   Progress: 250/1489 (16.8%)
+[2026-01-04 02:23:37] Processing batch 6/30 (50 entries)
+[2026-01-04 02:23:37]   Progress: 300/1489 (20.1%)
+[2026-01-04 02:23:37] Processing batch 7/30 (50 entries)
+[2026-01-04 02:23:38]   Progress: 350/1489 (23.5%)
+[2026-01-04 02:23:38] Processing batch 8/30 (50 entries)
+[2026-01-04 02:23:39]   Progress: 400/1489 (26.9%)
+[2026-01-04 02:23:39] Processing batch 9/30 (50 entries)
+[2026-01-04 02:23:40]   Progress: 450/1489 (30.2%)
+[2026-01-04 02:23:40] Processing batch 10/30 (50 entries)
+[2026-01-04 02:23:40]   Progress: 500/1489 (33.6%)
+[2026-01-04 02:23:41] Processing batch 11/30 (50 entries)
+[2026-01-04 02:23:41]   Progress: 550/1489 (36.9%)
+[2026-01-04 02:23:42] Processing batch 12/30 (50 entries)
+[2026-01-04 02:23:42]   Progress: 600/1489 (40.3%)
+[2026-01-04 02:23:42] Processing batch 13/30 (50 entries)
+[2026-01-04 02:23:43]   Progress: 650/1489 (43.7%)
+[2026-01-04 02:23:43] Processing batch 14/30 (50 entries)
+[2026-01-04 02:23:44]   Progress: 700/1489 (47.0%)
+[2026-01-04 02:23:44] Processing batch 15/30 (50 entries)
+[2026-01-04 02:23:44]   Progress: 750/1489 (50.4%)
+[2026-01-04 02:23:45] Processing batch 16/30 (50 entries)
+[2026-01-04 02:23:45]   Progress: 800/1489 (53.7%)
+[2026-01-04 02:23:46] Processing batch 17/30 (50 entries)
+[2026-01-04 02:23:46]   Progress: 850/1489 (57.1%)
+[2026-01-04 02:23:46] Processing batch 18/30 (50 entries)
+[2026-01-04 02:23:47]   Progress: 900/1489 (60.4%)
+[2026-01-04 02:23:47] Processing batch 19/30 (50 entries)
+[2026-01-04 02:23:48]   Progress: 950/1489 (63.8%)
+[2026-01-04 02:23:48] Processing batch 20/30 (50 entries)
+[2026-01-04 02:23:49]   Progress: 1000/1489 (67.2%)
+[2026-01-04 02:23:49] Processing batch 21/30 (50 entries)
+[2026-01-04 02:23:50]   Progress: 1050/1489 (70.5%)
+[2026-01-04 02:23:50] Processing batch 22/30 (50 entries)
+[2026-01-04 02:23:51]   Progress: 1100/1489 (73.9%)
+[2026-01-04 02:23:51] Processing batch 23/30 (50 entries)
+[2026-01-04 02:23:52]   Progress: 1150/1489 (77.2%)
+[2026-01-04 02:23:52] Processing batch 24/30 (50 entries)
+[2026-01-04 02:23:53]   Progress: 1200/1489 (80.6%)
+[2026-01-04 02:23:53] Processing batch 25/30 (50 entries)
+[2026-01-04 02:23:54]   Progress: 1250/1489 (83.9%)
+[2026-01-04 02:23:54] Processing batch 26/30 (50 entries)
+[2026-01-04 02:23:54]   Progress: 1300/1489 (87.3%)
+[2026-01-04 02:23:55] Processing batch 27/30 (50 entries)
+[2026-01-04 02:23:55]   Progress: 1350/1489 (90.7%)
+[2026-01-04 02:23:56] Processing batch 28/30 (50 entries)
+[2026-01-04 02:23:56]   Progress: 1400/1489 (94.0%)
+[2026-01-04 02:23:57] Processing batch 29/30 (50 entries)
+[2026-01-04 02:23:57]   Progress: 1450/1489 (97.4%)
+[2026-01-04 02:23:57] Processing batch 30/30 (39 entries)
+[2026-01-04 02:23:58]   Progress: 1489/1489 (100.0%)
+[2026-01-04 02:23:58] 
+============================================================
+[2026-01-04 02:23:58] STEP 3: Summary Statistics
+[2026-01-04 02:23:58] ============================================================
+[2026-01-04 02:23:58] Total P450 entities: 1591
+[2026-01-04 02:23:58] Species distribution:
+[2026-01-04 02:23:58]   - bacteria: 923
+[2026-01-04 02:23:58]   - mammals: 341
+[2026-01-04 02:23:58]   - other: 239
+[2026-01-04 02:23:58]   - fungi: 70
+[2026-01-04 02:23:58]   - plants: 16
+[2026-01-04 02:23:58]   - unknown: 2
+[2026-01-04 02:23:58] High quality (resolution <= 3.0A): 1485
+[2026-01-04 02:23:58] With ligands/substrates: 1583
+[2026-01-04 02:23:58] 
+============================================================
+[2026-01-04 02:23:58] STEP 4: Exporting to CSV
+[2026-01-04 02:23:58] ============================================================
+[2026-01-04 02:23:58] Exported to: C:\Users\Administrator\Desktop\EZSpecificity_Project\提取P450过程日志\2026-01-04_PDB结构查询与筛选\01_全局搜索\all_p450_structures.csv
+[2026-01-04 02:23:58]   Exported bacteria: C:\Users\Administrator\Desktop\EZSpecificity_Project\提取P450过程日志\2026-01-04_PDB结构查询与筛选\01_全局搜索\p450_bacteria.csv
+[2026-01-04 02:23:58]   Exported fungi: C:\Users\Administrator\Desktop\EZSpecificity_Project\提取P450过程日志\2026-01-04_PDB结构查询与筛选\01_全局搜索\p450_fungi.csv
+[2026-01-04 02:23:58]   Exported mammals: C:\Users\Administrator\Desktop\EZSpecificity_Project\提取P450过程日志\2026-01-04_PDB结构查询与筛选\01_全局搜索\p450_mammals.csv
+[2026-01-04 02:23:58]   Exported other: C:\Users\Administrator\Desktop\EZSpecificity_Project\提取P450过程日志\2026-01-04_PDB结构查询与筛选\01_全局搜索\p450_other.csv
+[2026-01-04 02:23:58]   Exported plants: C:\Users\Administrator\Desktop\EZSpecificity_Project\提取P450过程日志\2026-01-04_PDB结构查询与筛选\01_全局搜索\p450_plants.csv
+[2026-01-04 02:23:58]   Exported unknown: C:\Users\Administrator\Desktop\EZSpecificity_Project\提取P450过程日志\2026-01-04_PDB结构查询与筛选\01_全局搜索\p450_unknown.csv
+[2026-01-04 02:23:58] 
+============================================================
+[2026-01-04 02:23:58] Pipeline completed at: 2026-01-04 02:23:58.599813
+[2026-01-04 02:23:58] ============================================================

@@ -1,0 +1,8 @@
+﻿category,category_cn,enzyme_count,with_substrate_data,without_substrate_data,total_positive_pairs,total_negative_pairs,total_pairs
+Plants_Other,其他植物,217,212,5,477,5753,6230
+Mammals,哺乳动物,87,83,4,261,3776,4037
+Other_Animals,其他动物,25,20,5,32,458,490
+Plants_BIA,BIA生产植物,25,25,0,42,548,590
+Bacteria,细菌,18,12,6,30,423,453
+Fungi,真菌,15,13,2,37,436,473
+Unknown,未知,2,2,0,5,51,56

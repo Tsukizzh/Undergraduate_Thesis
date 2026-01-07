@@ -1,0 +1,17 @@
+# 大文件目录（不上传）
+data/
+saved_model/
+src/
+
+# 其他不需要上传的文件
+*.pdf
+.claude/
+.serena/
+草稿/
+路径选择与核心概念FAQ.md
+
+# 系统文件
+.DS_Store
+Thumbs.db
+*.pyc
+__pycache__/
