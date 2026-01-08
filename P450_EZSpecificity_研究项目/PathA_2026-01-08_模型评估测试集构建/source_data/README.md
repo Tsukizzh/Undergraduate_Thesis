@@ -23,13 +23,21 @@ source_data/
 
 | 文件名 | 说明 | 来源 |
 |--------|------|------|
-| `ML训练数据集_186个.csv` | **186个去冗余P450**（用于独立测试） | 任务3筛选结果 |
+| `ML训练数据集_186个.csv` | **184个去冗余P450**（已清洗，移除6ZZX） | 任务3筛选结果 |
 | `P450酶列表_最终版389个.csv` | **389个ESIBank P450**（UniProt验证） | P450精确验证 |
 | `高质量P450全集_1426个.csv` | 1426个高质量P450（质量筛选后） | 任务3中间结果 |
 | `全部P450结构_1591个_物种修复后.csv` | 1591个RCSB P450实体（物种修复后） | 任务2搜索结果 |
 
 **关键数字**:
-- 186个 - 25个交集 = **161个** 可用于独立测试
+- 184个 - 26个PDB交集 = **158个** 可用于独立测试
+- 26个PDB对应25个P450的UniProt ID（7M8I是P450-Adrenodoxin复合物）
+- 已移除6ZZX（Photosystem I，RCSB注释错误）
+
+**重要：sequence列用途**:
+- `ML训练数据集_186个.csv`中的`sequence`列是RCSB API返回的deposited sequence
+- Step 2直接使用此列生成`Enzymes.csv`，而非从PDB文件提取
+- 原因：PDB文件中的observed sequence可能缺少未解析的N/C端残基
+- 对应关系：见`reports/tables/step2_pdb_sequence_mapping.csv`
 
 ---
 
@@ -98,4 +106,4 @@ C:\Users\Administrator\Desktop\EZSpecificity_Project\提取P450过程日志\
 
 ---
 
-**文档版本**: v1.0 | **日期**: 2026-01-08
+**文档版本**: v1.2 | **日期**: 2026-01-09
