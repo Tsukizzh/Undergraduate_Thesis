@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>P450-EZSpecificity研究</title>
+<style>
+body { font-family: "Microsoft YaHei", sans-serif; max-width: 900px; margin: 0 auto; padding: 20px; line-height: 1.8; }
+h1 { color: #1a365d; border-bottom: 2px solid #1a365d; padding-bottom: 10px; }
+h2 { color: #2c5282; margin-top: 30px; border-bottom: 1px solid #e2e8f0; padding-bottom: 8px; }
+h3 { color: #2b6cb0; }
+h4 { color: #3182ce; }
+table { border-collapse: collapse; width: 100%; margin: 15px 0; }
+th, td { border: 1px solid #cbd5e0; padding: 10px 12px; text-align: left; }
+th { background-color: #1a365d; color: white; font-weight: bold; }
+tr:nth-child(even) { background-color: #f7fafc; }
+tr:hover { background-color: #edf2f7; }
+code { background-color: #edf2f7; padding: 2px 6px; border-radius: 3px; font-family: Consolas, monospace; }
+pre { background-color: #1a202c; color: #e2e8f0; padding: 15px; border-radius: 5px; overflow-x: auto; white-space: pre-wrap; }
+pre code { background-color: transparent; color: inherit; padding: 0; }
+blockquote { border-left: 4px solid #1a365d; margin: 15px 0; padding: 10px 15px; background-color: #f7fafc; }
+hr { border: none; border-top: 2px solid #e2e8f0; margin: 30px 0; }
+strong { color: #1a365d; }
+ul, ol { margin: 10px 0; padding-left: 25px; }
+li { margin: 5px 0; }
+</style>
+</head>
+<body>
+<h1>P450-EZSpecificity研究：构建高质量独立测试集</h1>
+<h2>从数据清洗到模型评估的完整流程</h2>
+<blockquote>
+<p><strong>项目地址</strong>：https://github.com/Tsukizzh/Undergraduate_Thesis</p>
+</blockquote>
+<hr />
+<h2>一、研究背景</h2>
+<h3>1.1 关键数据库介绍</h3>
+<h4>BRENDA数据库</h4>
+<p><strong>BRENDA</strong>（Braunschweig Enzyme Database）是全球最大的<strong>酶功能数据库</strong>。</p>
+<table>
+<thead>
+<tr>
+<th>特点</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>数据来源</strong></td>
+<td>必须来自发表的科学论文</td>
+</tr>
+<tr>
+<td><strong>数据类型</strong></td>
+<td>酶-底物关系、动力学参数、物种来源</td>
+</tr>
+<tr>
+<td><strong>质量保证</strong></td>
+<td>专业团队人工整理，不收录预测数据</td>
+</tr>
+</tbody>
+</table>
+<p><strong>通俗理解</strong>：BRENDA就像一本&quot;酶的百科全书&quot;，记录了哪个酶能催化什么底物。</p>
+<h4>UniProt数据库</h4>
+<p><strong>UniProt</strong>（Universal Protein Resource）是全球最大的<strong>蛋白质序列和功能数据库</strong>。</p>
+<table>
+<thead>
+<tr>
+<th>特点</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>核心功能</strong></td>
+<td>提供蛋白质序列、功能注释、结构域信息</td>
+</tr>
+<tr>
+<td><strong>关键字段</strong></td>
+<td>UniProt ID（唯一标识）、InterPro域、蛋白质家族</td>
+</tr>
+<tr>
+<td><strong>数据规模</strong></td>
+<td>Swiss-Prot（人工审核）~57万条 + TrEMBL（自动注释）~2.5亿条</td>
+</tr>
+</tbody>
+</table>
+<p><strong>通俗理解</strong>：UniProt就像&quot;蛋白质的身份证大全&quot;，每个蛋白质都有唯一的ID和详细档案。</p>
+<hr />
+<h3>1.2 ESIBank数据集构建流程</h3>
+<p>ESIBank是EZSpecificity的训练数据集，核心思路是**&quot;关系优先，结构其次&quot;**：</p>
+<p><strong>阶段一：数据收集与匹配</strong></p>
+<table>
+<thead>
+<tr>
+<th>步骤</th>
+<th>具体操作</th>
+<th>产出</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Step 1</strong></td>
+<td>从BRENDA收集酶-底物催化关系（文献验证的正样本）</td>
+<td>酶-底物关系表</td>
+</tr>
+<tr>
+<td><strong>Step 2</strong></td>
+<td>用UniProt ID匹配每个酶的完整氨基酸序列</td>
+<td>25,225个酶序列</td>
+</tr>
+<tr>
+<td><strong>Step 3</strong></td>
+<td>将底物名称转换为标准化SMILES格式</td>
+<td>机器可读的分子结构</td>
+</tr>
+</tbody>
+</table>
+<p><strong>阶段二：样本构建</strong></p>
+<table>
+<thead>
+<tr>
+<th>步骤</th>
+<th>具体操作</th>
+<th>产出</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Step 4</strong></td>
+<td>确认正样本（BRENDA记录的酶-底物对，label=1）</td>
+<td>56,597个正样本</td>
+</tr>
+<tr>
+<td><strong>Step 5</strong></td>
+<td>生成负样本：固定底物，随机配对不催化该底物的酶（文献中是双向，实际代码是单向）</td>
+<td>529,918个负样本</td>
+</tr>
+</tbody>
+</table>
+<p><strong>阶段三：特征生成</strong></p>
+<table>
+<thead>
+<tr>
+<th>步骤</th>
+<th>具体操作</th>
+<th>产出</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Step 6</strong></td>
+<td>用ESM-2模型将酶序列转换为嵌入向量</td>
+<td>酶特征（1280维）</td>
+</tr>
+<tr>
+<td><strong>Step 7</strong></td>
+<td>用AlphaFold预测每个酶的3D结构</td>
+<td>蛋白质结构文件</td>
+</tr>
+<tr>
+<td><strong>Step 8</strong></td>
+<td>用AutoDock-GPU将底物对接到酶结构上</td>
+<td>酶-底物复合物</td>
+</tr>
+</tbody>
+</table>
+<p><strong>关键点：负样本生成机制</strong></p>
+<ul>
+<li>方法：单向随机采样（固定底物X，随机配对负酶B、C...）</li>
+<li>原因：避免采样到真实的正样本（某个底物可能被多个酶催化）</li>
+<li>比例：正负样本比 = 1:9.36</li>
+</ul>
+<p><strong>最终产出</strong>（EZSpecificity输入格式）：</p>
+<ul>
+<li><code>Enzymes.csv</code>：酶序列（Protein sequence列）</li>
+<li><code>Substrates.csv</code>：底物SMILES（Substrate_SMILES列）</li>
+<li><code>data.csv</code>：酶-底物配对索引（Enzyme Index, Substrate Index, Dock Index, Label）</li>
+<li><code>Structure/complex/</code>：对接复合物PDB文件</li>
+</ul>
+<hr />
+<h3>1.3 P450研究四路径规划</h3>
+<table>
+<thead>
+<tr>
+<th>路径</th>
+<th>目标</th>
+<th>前置条件</th>
+<th>状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>A</strong></td>
+<td>用158个PDB评估EZSpecificity模型（初步尝试）</td>
+<td>无</td>
+<td>🔄 当前执行</td>
+</tr>
+<tr>
+<td><strong>B</strong></td>
+<td>构建P450专属训练数据集（以路径A为基础扩大样本量）</td>
+<td>路径A完成</td>
+<td>⏳ 待定</td>
+</tr>
+<tr>
+<td><strong>C</strong></td>
+<td>训练或微调P450专属模型</td>
+<td>路径B完成</td>
+<td>⏳ 待定</td>
+</tr>
+<tr>
+<td><strong>D</strong></td>
+<td>区域选择性预测</td>
+<td>路径A效果好</td>
+<td>⏳ 待定</td>
+</tr>
+</tbody>
+</table>
+<p><strong>决策逻辑</strong>：</p>
+<ul>
+<li>路径A结果<strong>优秀</strong>（&gt;80%）→ 直接进入路径D（区域选择性预测）</li>
+<li>路径A结果<strong>良好</strong>（60-80%）→ 分析失败案例，考虑微调</li>
+<li>路径A结果<strong>较差</strong>（&lt;60%）→ 执行路径B+C（构建数据集+训练专属模型）</li>
+</ul>
+<p><strong>路径A执行步骤</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>阶段</th>
+<th>步骤</th>
+<th>任务</th>
+<th>产出</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>数据清洗</strong></td>
+<td>Step 1</td>
+<td>下载158个PDB文件</td>
+<td>pdb_files/</td>
+</tr>
+<tr>
+<td></td>
+<td>Step 2</td>
+<td>提取酶序列</td>
+<td>Enzymes.csv</td>
+</tr>
+<tr>
+<td></td>
+<td>Step 3</td>
+<td>提取配体信息</td>
+<td>Substrates.csv</td>
+</tr>
+<tr>
+<td></td>
+<td>Step 4</td>
+<td>构建索引表</td>
+<td>data.csv</td>
+</tr>
+<tr>
+<td></td>
+<td>Step 5</td>
+<td>PDB格式转换（HEM处理）</td>
+<td>Structure/complex/</td>
+</tr>
+<tr>
+<td><strong>特征生成</strong></td>
+<td>Step 6</td>
+<td>生成酶特征（ESM-2）</td>
+<td>enzyme_features.lmdb</td>
+</tr>
+<tr>
+<td></td>
+<td>Step 7</td>
+<td>生成底物特征（GROVER+Morgan）</td>
+<td>多个特征文件</td>
+</tr>
+<tr>
+<td></td>
+<td>Step 8</td>
+<td>处理结构特征</td>
+<td>structure_features.lmdb</td>
+</tr>
+<tr>
+<td><strong>预测分析</strong></td>
+<td>Step 9</td>
+<td>运行EZSpecificity预测</td>
+<td>predictions.csv</td>
+</tr>
+<tr>
+<td></td>
+<td>Step 10</td>
+<td>分析预测结果</td>
+<td>评估报告</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3>1.4 实验总体进度</h3>
+<pre><code>┌─────────────────────────────────────────────────────────────┐
+│                    研究进度总览                              │
+├─────────────────────────────────────────────────────────────┤
+│                                                             │
+│   ✅ 已完成                                                 │
+│   ├── P450精确识别（EC号→InterPro域验证）                     │
+│   ├── PDB结构数据集构建（1,591→186→158）                      │
+│   ├── 数据泄露排除（25个交集已剔除）                           │
+│   ├── 数据清洗（移除6ZZX非P450）                              │
+│   ├── Step 1：下载158个PDB文件                               │
+│   ├── Step 2：提取158条酶序列 → Enzymes.csv                  │
+│                                                             │
+│                                                             │
+│   🔄 进行中                                                 │
+│   └── 路径A：模型评估测试集构建（正在Step3）                               │
+│                                                             │
+│   ⏳ 待执行                                                 │
+│   └── Step 4-10：索引表构建、特征提取与模型预测                │
+│                                                             │
+└─────────────────────────────────────────────────────────────┘
+</code></pre>
+<hr />
+<h2>二、实验一：ESIBank中P450酶的精确识别</h2>
+<h3>2.1 问题发现：EC号筛选的陷阱</h3>
+<p><strong>初始方法</strong>：用EC号（1.14.14.*）筛选P450</p>
+<p><strong>初始结果</strong>：找到4,121个&quot;P450&quot;</p>
+<p><strong>抽样验证发现严重问题</strong>：</p>
+<pre><code>验证案例：P07327
+├── data.csv中标记为：EC 1.14.14.126（P450相关EC号）
+├── UniProt查询结果：
+│   ├── 蛋白名：Alcohol dehydrogenase 1A（醇脱氢酶）
+│   ├── 真实EC：1.1.1.1（不是1.14.14.126）
+│   └── 辅因子：Zn²⁺（锌离子，不是P450特征的Heme血红素）
+└── 结论：这根本不是P450酶
+</code></pre>
+<p><strong>根本原因分析</strong>：</p>
+<ul>
+<li>EC号分类的是<strong>反应类型</strong>，不是<strong>酶的身份</strong></li>
+<li>同一个酶可以催化多种EC类别的反应</li>
+<li>FAD单加氧酶、黄素蛋白单加氧酶等都可能有EC 1.14.14.*编号</li>
+</ul>
+<h3>2.2 实验方法：UniProt批量验证</h3>
+<p><strong>验证标准设计</strong>：</p>
+<ol>
+<li><strong>主标准</strong>：UniProt <code>protein_families</code>字段包含&quot;Cytochrome P450&quot;</li>
+<li><strong>备用标准</strong>：InterPro域包含IPR001128（P450核心域）、IPR036396（P450超家族）
+<ul>
+<li><em>InterPro是蛋白质功能域数据库，通过序列特征识别蛋白质家族，比EC号更精确</em></li>
+</ul>
+</li>
+<li><strong>排除条件</strong>：排除&quot;P450 Reductase&quot;（电子传递伙伴，不是P450本身）</li>
+</ol>
+<p><strong>实现过程</strong>：</p>
+<pre><code>实验步骤：
+1. 编写脚本调用UniProt REST API
+2. 对25,225个酶进行批量查询（分批处理，每批150个）
+3. 使用SQLite缓存避免重复查询
+4. 解析返回的JSON数据，提取protein_families和InterPro域信息
+
+遇到的问题：
+├── 问题1：POST请求返回HTTP 400错误
+│   └── 解决：改用GET请求，将参数编码到URL中
+├── 问题2：批量查询URL过长
+│   └── 解决：将批量大小从100减少到150
+└── 问题3：网络不稳定导致查询中断
+    └── 解决：使用SQLite缓存已查询结果，支持断点续传
+</code></pre>
+<p><strong>产出文件</strong>：</p>
+<ul>
+<li><code>P450识别脚本.py</code>：最终版识别脚本</li>
+<li><code>UniProt查询缓存.db</code>：SQLite缓存（避免重复查询）</li>
+<li><code>P450酶列表_最终版389个.csv</code>：经过验证的P450酶列表</li>
+</ul>
+<h3>2.3 实验结果与验证</h3>
+<p><strong>初步筛选结果</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>类别</th>
+<th>数量</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P450相关（protein_families含&quot;P450&quot;）</td>
+<td>410</td>
+</tr>
+<tr>
+<td>其中P450 Reductase（需排除）*</td>
+<td>21</td>
+</tr>
+<tr>
+<td><strong>真正的P450酶</strong></td>
+<td><strong>389</strong></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>*P450 Reductase（细胞色素P450还原酶）是P450的电子传递伙伴，负责向P450提供电子。它名字里有&quot;P450&quot;是因为与P450协同工作，但它本身不是P450酶——P450含血红素（Heme），而Reductase含FAD/FMN辅因子，结构和功能完全不同。</p>
+</blockquote>
+<p><strong>补充验证实验</strong>：</p>
+<ol>
+<li><strong>抽样检查</strong>：随机抽样100个被排除酶 → 0个含P450域</li>
+<li><strong>额外InterPro检查</strong>：检查IPR002397/002403等 → 0个遗漏</li>
+<li><strong>Pfam交叉验证</strong>：用PF00067验证 → 已识别P450中99.7%含PF00067</li>
+</ol>
+<h3>2.4 实验结论</h3>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>识别数量</th>
+<th>假阳性率</th>
+<th>可靠性</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>EC号筛选</td>
+<td>4,121</td>
+<td><strong>~90%</strong></td>
+<td>❌ 不可用</td>
+</tr>
+<tr>
+<td>InterPro验证</td>
+<td><strong>389</strong></td>
+<td><strong>~0%</strong></td>
+<td>✅ 可靠</td>
+</tr>
+</tbody>
+</table>
+<p><strong>关键结论</strong>：ESIBank中真正的P450只有<strong>389个</strong>（占25,225个酶的1.5%）</p>
+<p><strong>产出文件</strong>：</p>
+<ul>
+<li><code>P450酶列表_最终版389个.csv</code>：389个真正P450酶的UniProt ID列表</li>
+<li><code>P450精确验证报告.md</code>：完整验证报告</li>
+<li><code>P450筛选方法详解.md</code>：筛选逻辑详细文档</li>
+</ul>
+<hr />
+<h2>三、实验二：RCSB PDB独立测试集构建</h2>
+<h3>3.1 实验目的</h3>
+<p>从RCSB PDB数据库获取有实验结构的P450酶，构建模型从未见过的独立测试集。</p>
+<h3>3.2 RCSB搜索与数据获取</h3>
+<p><strong>搜索条件</strong>：</p>
+<ul>
+<li>Pfam: PF00067（P450家族）</li>
+<li>InterPro域验证</li>
+</ul>
+<p><strong>搜索结果</strong>：1,591个P450聚合物实体</p>
+<p><strong>数据获取过程</strong>：</p>
+<pre><code>1. 使用RCSB Search API进行结构化查询
+2. 获取每个实体的详细元数据：
+   ├── 分辨率
+   ├── 序列长度
+   ├── 物种来源
+   ├── UniProt ID
+   └── 配体信息
+3. 结果存入SQLite数据库便于后续筛选
+</code></pre>
+<p><strong>筛选漏斗</strong>：</p>
+<pre><code>1,591个P450实体（RCSB搜索结果）
+    │
+    ├── 第一轮：质量筛选
+    │   ├── 分辨率 ≤ 3.0Å
+    │   └── 序列长度 300-1200aa
+    ▼
+1,426个高质量结构
+    │
+    ├── 第二轮：配体筛选
+    │   └── 排除仅有HEM/水/缓冲盐的结构
+    ▼
+1,146个有配体结构
+    │
+    ├── 第三轮：去冗余
+    │   └── 每个UniProt ID保留最佳分辨率
+    ▼
+186个独特P450
+</code></pre>
+<p><strong>筛选过程中发现的问题与修复</strong>（v2→v3→v4迭代）：</p>
+<table>
+<thead>
+<tr>
+<th>版本</th>
+<th>发现的问题</th>
+<th>修复内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>v2</td>
+<td>物种分类错误（Trypanosoma被分为bacteria）</td>
+<td>建立静态TAXONOMY_CATEGORY_MAP</td>
+</tr>
+<tr>
+<td>v3</td>
+<td>序列长度上限600aa排除了P450 BM3</td>
+<td>提高上限至1200aa</td>
+</tr>
+<tr>
+<td>v3</td>
+<td>IPA（异丙醇）被当作底物</td>
+<td>扩展辅因子排除列表</td>
+</tr>
+<tr>
+<td>v4</td>
+<td>PEG（聚乙二醇）被当作底物</td>
+<td>继续扩展排除列表（+50种化合物）</td>
+</tr>
+</tbody>
+</table>
+<h3>3.4 数据泄露排除</h3>
+<p><strong>问题</strong>：如果测试集中的P450已经在ESIBank训练集中出现过，模型评估就不公平。</p>
+<p><strong>排除过程</strong>：</p>
+<pre><code>1. 提取186个PDB P450的UniProt ID
+2. 与ESIBank 389个P450的UniProt ID进行比对
+3. 发现25个重叠的UniProt ID（对应26条记录，因P19099有2个PDB）
+4. 从测试集中排除这26条记录
+5. 最终得到159个独立测试P450结构
+</code></pre>
+<pre><code>┌─────────────────────────────────────────────────────────────┐
+│     ESIBank P450              PDB P450                      │
+│    ┌───────────┐            ┌───────────┐                   │
+│    │           │            │           │                   │
+│    │   364     │     25     │    159    │                   │
+│    │ (无PDB)   │  (交集)     │ (独立)    │                   │
+│    │           │            │           │                   │
+│    └───────────┘            └───────────┘                   │
+│    总计：389个               总计：186个→159个               │
+└─────────────────────────────────────────────────────────────┘
+</code></pre>
+<h3>3.5 最终测试集物种分布</h3>
+<table>
+<thead>
+<tr>
+<th>物种类别</th>
+<th>数量</th>
+<th>占比</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>bacteria（细菌）</td>
+<td>100</td>
+<td>53.8%</td>
+</tr>
+<tr>
+<td>other（其他）</td>
+<td>41</td>
+<td>22.0%</td>
+</tr>
+<tr>
+<td>mammals（哺乳动物）</td>
+<td>33</td>
+<td>17.7%</td>
+</tr>
+<tr>
+<td>plants（植物）</td>
+<td>7</td>
+<td>3.8%</td>
+</tr>
+<tr>
+<td>fungi（真菌）</td>
+<td>5</td>
+<td>2.7%</td>
+</tr>
+</tbody>
+</table>
+<p><strong>说明</strong>：细菌P450占主导是因为细菌P450通常是可溶性蛋白，容易结晶；植物/哺乳动物P450多是膜蛋白，结晶困难。</p>
+<h3>3.6 实验产出文件</h3>
+<table>
+<thead>
+<tr>
+<th>文件</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>全部P450结构_1591个.csv</code></td>
+<td>RCSB搜索原始结果</td>
+</tr>
+<tr>
+<td><code>高质量P450全集_1426个.csv</code></td>
+<td>质量筛选后</td>
+</tr>
+<tr>
+<td><code>ML训练数据集_186个.csv</code></td>
+<td>去冗余后</td>
+</tr>
+<tr>
+<td><code>ML训练数据集_159个.csv</code></td>
+<td>排除交集后（最终版）</td>
+</tr>
+<tr>
+<td><code>数据质量修复脚本.py</code></td>
+<td>v2→v4迭代修复脚本</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>四、实验三：PDB结构文件下载与验证</h2>
+<h3>4.1 下载过程</h3>
+<p><strong>执行内容</strong>：</p>
+<pre><code>1. 读取ML训练数据集_186个.csv
+2. 排除25个与ESIBank重叠的UniProt ID（对应26条记录）
+3. 对剩余159个PDB ID调用RCSB下载API
+4. 自动处理格式差异（部分结构仅提供mmCIF格式）
+</code></pre>
+<h3>4.2 数据验证</h3>
+<p><strong>下载结果统计</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>格式</th>
+<th>数量</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>.pdb</td>
+<td>154个</td>
+<td>传统PDB格式</td>
+</tr>
+<tr>
+<td>.cif</td>
+<td>5个</td>
+<td>mmCIF格式（较新结构）</td>
+</tr>
+<tr>
+<td><strong>总计</strong></td>
+<td><strong>159个</strong></td>
+<td>全部下载成功</td>
+</tr>
+</tbody>
+</table>
+<p><strong>文件存放位置</strong>：<code>P450_EZSpecificity_研究项目/PathA_.../data/01_pdb_files/</code></p>
+<h3>4.3 Step 2-3 已完成内容</h3>
+<p><strong>Step 2：提取酶序列</strong></p>
+<ul>
+<li>从源数据sequence列提取158条完整序列（RCSB deposited sequence）</li>
+<li>产出：<code>Enzymes.csv</code>（158行）</li>
+<li>技术修正：原计划从PDB文件提取，发现150/158个长度不一致，改用源数据</li>
+</ul>
+<p><strong>Step 3：提取配体信息</strong></p>
+<ul>
+<li>使用API获取134个配体的SMILES</li>
+<li>配体分类：substrate(48), inhibitor(24), unknown(88), exclude(16)</li>
+<li>产出：<code>Substrates.csv</code>（排除配体为缓冲液、洗涤剂等，并且去重后，还有125个唯一SMILES）</li>
+</ul>
+<p><strong>重要发现：多配体问题</strong></p>
+<p>158个PDB → 160个有效酶-配体对（有些PDB有多个配体）</p>
+<p>例如：某个PDB结构中同时包含底物和产物，或者同时包含底物和抑制剂，这些都会被提取为独立的酶-配体对。</p>
+<p><strong>问题根源：ESIBank vs 我们的流程差异</strong></p>
+<table>
+<thead>
+<tr>
+<th>方面</th>
+<th>ESIBank</th>
+<th>我们</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>数据流</strong></td>
+<td>关系优先→结构其次</td>
+<td>结构优先→关系推断</td>
+</tr>
+<tr>
+<td><strong>起点</strong></td>
+<td>BRENDA酶-底物关系（文献验证）</td>
+<td>PDB实验结构</td>
+</tr>
+<tr>
+<td><strong>对接</strong></td>
+<td>AutoDock一次一个底物</td>
+<td>直接使用PDB配体</td>
+</tr>
+<tr>
+<td><strong>配体来源</strong></td>
+<td>已知是底物</td>
+<td>可能是底物/产物/抑制剂</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>ESIBank从BRENDA获取&quot;酶A催化底物X&quot;的关系，然后为每个关系单独做AutoDock对接，每个复合物天然只有一个目标配体</li>
+<li>我们直接从PDB拿实验结构，PDB是晶体学实验的记录，配体是实验条件的产物，可能同时有底物+产物+抑制剂
+<ul>
+<li>例如：P450cam（CYP101A1）的晶体结构中可能同时包含樟脑（底物）和5-羧基樟脑（产物），这两个都会被提取为独立的酶-配体对</li>
+</ul>
+</li>
+</ul>
+<p><strong>三种解决方案</strong></p>
+<p><strong>方案A：严格筛选（只用共晶底物）</strong></p>
+<ul>
+<li><strong>做法</strong>：查阅文献，逐一确认每个PDB配体是否为该酶的真正底物，只保留确认是底物的酶-配体对</li>
+<li><strong>优点</strong>：数据质量最高，标签可靠，预测结果可信度高</li>
+<li><strong>缺点</strong>：需要大量人工查阅文献，耗时较长，数据量会减少约40%</li>
+</ul>
+<p><strong>方案B：多配体展开（直接使用）</strong></p>
+<ul>
+<li><strong>做法</strong>：不区分底物/产物/抑制剂，把所有提取到的每个配体都当作单独的&quot;酶-配体对&quot;输入模型</li>
+<li><strong>优点</strong>：最快速，不需要额外工作，可以立即开始后续流程</li>
+<li><strong>缺点</strong>：标签可能不准确（产物/抑制剂被当作底物），但可以观察模型对不同类型配体的预测差异</li>
+</ul>
+<p><strong>方案C：虚拟对接（ESIBank风格）</strong></p>
+<ul>
+<li><strong>做法</strong>：去掉PDB中的配体，查阅文献或其他数据库找到该酶的真正底物，然后用AutoDock将真正底物对接到我们的PDB实验结构（酶）上</li>
+<li><strong>优点</strong>：酶结构是实验解析的高质量结构，底物标签可靠（文献验证），与ESIBank训练数据生成方式一致</li>
+<li><strong>缺点</strong>：需要查阅文献确认底物、额外的对接工作，计算耗时最长</li>
+</ul>
+<p><strong>执行计划</strong>：B → A → C</p>
+<h3>4.4 后续待执行步骤</h3>
+<table>
+<thead>
+<tr>
+<th>步骤</th>
+<th>任务</th>
+<th>状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Step 2</td>
+<td>提取酶序列 → Enzymes.csv</td>
+<td>✅ 已完成</td>
+</tr>
+<tr>
+<td>Step 3</td>
+<td>提取配体信息 → Substrates.csv</td>
+<td>正在进行</td>
+</tr>
+<tr>
+<td>Step 4</td>
+<td>构建索引表 → data.csv</td>
+<td>⏳ 待开始</td>
+</tr>
+<tr>
+<td>Step 5</td>
+<td>转换PDB格式（HEM处理）</td>
+<td>⏳ 待开始</td>
+</tr>
+<tr>
+<td>Step 6</td>
+<td>生成酶特征（ESM-2）</td>
+<td>⏳ 待开始</td>
+</tr>
+<tr>
+<td>Step 7</td>
+<td>生成底物特征（GROVER+Morgan）</td>
+<td>⏳ 待开始</td>
+</tr>
+<tr>
+<td>Step 8</td>
+<td>处理结构特征</td>
+<td>⏳ 待开始</td>
+</tr>
+<tr>
+<td>Step 9</td>
+<td>运行EZSpecificity预测</td>
+<td>⏳ 待开始</td>
+</tr>
+<tr>
+<td>Step 10</td>
+<td>分析预测结果</td>
+<td>⏳ 待开始</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>附录：项目文件索引</strong></p>
+<table>
+<thead>
+<tr>
+<th>类别</th>
+<th>文件位置</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>389个P450列表</td>
+<td><code>提取P450过程日志/2026-01-02_01-46_P450精确验证/</code></td>
+</tr>
+<tr>
+<td>159个测试集</td>
+<td><code>提取P450过程日志/2026-01-04_01-00_.../任务3_.../修复后最终版/</code></td>
+</tr>
+<tr>
+<td>PDB文件</td>
+<td><code>P450_EZSpecificity_研究项目/PathA_.../data/01_pdb_files/</code></td>
+</tr>
+<tr>
+<td>项目进度日志</td>
+<td><code>提取P450过程日志/项目进度日志.md</code></td>
+</tr>
+</tbody>
+</table>
+
+</body>
+</html>
