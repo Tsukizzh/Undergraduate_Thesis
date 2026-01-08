@@ -3,6 +3,10 @@
 /saved_model/
 /src/
 
+# P450研究项目的大文件目录
+**/PathA_*/data/
+**/PathA_*/logs/
+
 # 其他不需要上传的文件
 *.pdf
 .claude/
