@@ -770,15 +770,14 @@ li { margin: 5px 0; }
 </tbody>
 </table>
 <hr />
-<h2>四、实验三：PDB结构文件下载与验证</h2>
-<h3>4.1 下载过程</h3>
+<h2>四、路径A执行进度：模型评估测试集构建</h2>
+<h3>4.1 Step 1：PDB文件下载</h3>
 <p><strong>执行内容</strong>：</p>
 <pre><code>1. 读取ML训练数据集_186个.csv
 2. 排除25个与ESIBank重叠的UniProt ID（对应26条记录）
 3. 对剩余159个PDB ID调用RCSB下载API
 4. 自动处理格式差异（部分结构仅提供mmCIF格式）
 </code></pre>
-<h3>4.2 数据验证</h3>
 <p><strong>下载结果统计</strong>：</p>
 <table>
 <thead>
@@ -807,7 +806,7 @@ li { margin: 5px 0; }
 </tbody>
 </table>
 <p><strong>文件存放位置</strong>：<code>P450_EZSpecificity_研究项目/PathA_.../data/01_pdb_files/</code></p>
-<h3>4.3 Step 2-3 已完成内容</h3>
+<h3>4.2 Step 2-3：序列与配体提取</h3>
 <p><strong>Step 2：提取酶序列</strong></p>
 <ul>
 <li>从源数据sequence列提取158条完整序列（RCSB deposited sequence）</li>
@@ -883,7 +882,7 @@ li { margin: 5px 0; }
 <li><strong>缺点</strong>：需要查阅文献确认底物、额外的对接工作，计算耗时最长</li>
 </ul>
 <p><strong>执行计划</strong>：B → A → C</p>
-<h3>4.4 后续待执行步骤</h3>
+<h3>4.3 后续待执行步骤</h3>
 <table>
 <thead>
 <tr>
