@@ -1,0 +1,57 @@
+record_id,chunk_id,uniprot_id,enzyme_name,ligand_name,pdb_id,original_class,verified_class,confidence,evidence_level,is_correct,is_mutant,trap_detected,needs_human_review,review_reason,reasoning
+REC_0627,12,Q7Z1V1,CYP51 (T. cruzi),Posaconazole analog POZ,3K1O,INHIBITOR,INHIBITOR,HIGH,A,True,False,none,False,,POZ is CYP51 inhibitor for Chagas disease. High confidence.
+REC_0628,12,Q7Z1V1,CYP51 (T. cruzi),UDO,3ZG2,INHIBITOR,INHIBITOR,HIGH,A,True,False,none,False,,UDO is CYP51 inhibitor for Chagas disease. High confidence.
+REC_0629,12,Q7Z1V1,CYP51 (T. cruzi),UDD,3ZG3,INHIBITOR,INHIBITOR,HIGH,A,True,False,none,False,,UDD is CYP51 inhibitor for Chagas disease. High confidence.
+REC_0630,12,Q7Z1V1,CYP51 (T. cruzi),TU1,4BMM,INHIBITOR,INHIBITOR,HIGH,A,True,False,none,False,,TU1 is CYP51 inhibitor for Chagas disease. High confidence.
+REC_0631,12,Q7Z1V1,CYP51 (T. cruzi),WVH,4C0C,INHIBITOR,INHIBITOR,HIGH,A,True,False,none,False,,WVH is CYP51 inhibitor for Chagas disease. High confidence.
+REC_0632,12,Q7Z1V1,CYP51 (T. cruzi),26N,4C27,INHIBITOR,INHIBITOR,HIGH,A,True,False,none,False,,26N is CYP51 inhibitor for Chagas disease. High confidence.
+REC_0633,12,Q7Z1V1,CYP51 (T. cruzi),TW5,4C28,INHIBITOR,INHIBITOR,HIGH,A,True,False,none,False,,TW5 is CYP51 inhibitor for Chagas disease. High confidence.
+REC_0634,12,Q7Z1V1,CYP51 (T. cruzi),LFD,4CK8,INHIBITOR,INHIBITOR,HIGH,A,True,False,none,False,,LFD is CYP51 inhibitor for Chagas disease. High confidence.
+REC_0635,12,Q7Z1V1,CYP51 (T. cruzi),LFT,4CK9,INHIBITOR,INHIBITOR,HIGH,A,True,False,none,False,,LFT is CYP51 inhibitor for Chagas disease. High confidence.
+REC_0636,12,Q7Z1V1,CYP51 (T. cruzi),LFS,4CKA,INHIBITOR,INHIBITOR,HIGH,A,True,False,none,False,,LFS is CYP51 inhibitor for Chagas disease. High confidence.
+REC_0637,12,Q7Z1V1,CYP51 (T. cruzi),T9H,4COH,INHIBITOR,INHIBITOR,HIGH,A,True,False,none,False,,T9H is CYP51 inhibitor for Chagas disease. High confidence.
+REC_0638,12,Q7Z1V1,CYP51 (T. cruzi),NEE,4H6O,INHIBITOR,INHIBITOR,HIGH,A,True,False,none,False,,NEE is CYP51 inhibitor for Chagas disease. High confidence.
+REC_0639,12,Q7Z1V1,CYP51 (T. cruzi),25S,4UQH,INHIBITOR,INHIBITOR,HIGH,A,True,False,none,False,,25S is CYP51 inhibitor for Chagas disease. High confidence.
+REC_0640,12,Q7Z1V1,CYP51 (T. cruzi),J5Y,4UVR,INHIBITOR,INHIBITOR,HIGH,A,True,False,none,False,,J5Y is CYP51 inhibitor for Chagas disease. High confidence.
+REC_0641,12,Q7Z1V1,CYP51 (T. cruzi),VT1,5AJR,INHIBITOR,INHIBITOR,HIGH,A,True,False,none,False,,VT1 is CYP51 inhibitor for Chagas disease. High confidence.
+REC_0642,12,Q81BF4,P450_Q81BF4,PALMITIC ACID,8HKJ,SUBSTRATE,SUBSTRATE,HIGH,A,True,False,none,False,,Palmitic acid is fatty acid substrate for bacterial P450. High confidence.
+REC_0643,12,Q825I8,P450_Q825I8,Diclofenac,4UBS,SUBSTRATE,SUBSTRATE,HIGH,A,True,False,none,False,,Diclofenac is documented substrate. High confidence.
+REC_0644,12,Q82D73,P450_Q82D73,OLEIC ACID,7WZM,SUBSTRATE,SUBSTRATE,HIGH,A,True,False,none,False,,Oleic acid is fatty acid substrate. High confidence.
+REC_0645,12,Q82GL5,CYP154C2 (steroid hydroxylase),TESTOSTERONE,7CL8,SUBSTRATE,SUBSTRATE,HIGH,A,True,False,none,False,,CYP154C2 is steroid hydroxylase. Testosterone is steroid substrate. High confidence.
+REC_0646,12,Q82GL5,CYP154C2 (steroid hydroxylase),4-ANDROSTENE-3-17-DIONE,7CL9,SUBSTRATE,SUBSTRATE,HIGH,A,True,False,none,False,,Androstenedione is steroid substrate for CYP154C2. High confidence.
+REC_0647,12,Q82LM3,P450_Q82LM3,LAURIC ACID,5CWE,SUBSTRATE,SUBSTRATE,HIGH,A,True,False,none,False,,Lauric acid is medium-chain fatty acid substrate. High confidence.
+REC_0648,12,Q83WF5,MycCI (mycinamicin biosynthesis),Mycinamicin VIII,5FOI,SUBSTRATE,SUBSTRATE,HIGH,A,True,False,none,False,,Mycinamicin VIII is substrate in mycinamicin biosynthetic pathway. High confidence.
+REC_0649,12,Q83WF5,MycCI (mycinamicin biosynthesis),SPERMIDINE,5FOI,EXCLUDE,EXCLUDE,HIGH,A,True,False,none,False,,Spermidine is crystallization additive/polyamine buffer. High confidence exclusion.
+REC_0650,12,Q8GGM6,P450_Q8GGM6,PEG,4Z5Q,EXCLUDE,EXCLUDE,HIGH,A,True,False,none,False,,Polyethylene glycol (PEG) is crystallization additive. High confidence exclusion.
+REC_0651,12,Q8NSW2,CYP_CREJ (C. glutamicum),4-methylphenyl phosphate,5GWE,SUBSTRATE,SUBSTRATE,MEDIUM,B,True,False,none,False,,4-methylphenyl phosphate is substrate analog for binding studies. Medium confidence due to phosphate group (may be substrate analog rather than native substrate).
+REC_0652,12,Q8NSW2,CYP_CREJ (C. glutamicum),4-ethylphenyl phosphate,5XJN,SUBSTRATE,SUBSTRATE,MEDIUM,B,True,False,none,False,,4-ethylphenyl phosphate is substrate analog for binding studies. Medium confidence.
+REC_0653,12,Q8NSW2,CYP_CREJ (C. glutamicum),3-ethylphenyl phosphate,7CCF,SUBSTRATE,SUBSTRATE,MEDIUM,B,True,False,none,False,,3-ethylphenyl phosphate is substrate analog for binding studies. Medium confidence.
+REC_0654,12,Q8VS75,TxtC (thaxtomin biosynthesis),Nitroindole DKP isomer,6F0B,SUBSTRATE,SUBSTRATE,HIGH,A,True,False,none,False,,Nitroindole-containing diketopiperazine (DKP) substrate in thaxtomin biosynthesis. High confidence.
+REC_0655,12,Q8VS75,TxtC (thaxtomin biosynthesis),Nitroindole DKP substrate,6F0C,SUBSTRATE,SUBSTRATE,HIGH,A,True,False,none,False,,Nitroindole DKP substrate in thaxtomin pathway. High confidence.
+REC_0656,12,Q8VS75,TxtC (thaxtomin biosynthesis),OXYGEN MOLECULE,6F0C,EXCLUDE,EXCLUDE,HIGH,A,True,False,none,False,,"Molecular oxygen is P450 cosubstrate, not organic ligand. High confidence exclusion."
+REC_0657,12,Q93H81,CYP105P1/PimD (filipin pathway),Filipin product,3ABA,PRODUCT,PRODUCT,HIGH,A,True,False,none,False,,Filipin III is hydroxylated product in filipin biosynthesis. High confidence.
+REC_0658,12,Q93H81,CYP105P1/PimD (filipin pathway),4-PHENYL-1H-IMIDAZOLE,3E5K,INHIBITOR,INHIBITOR,HIGH,A,True,False,none,False,,"4-phenylimidazole with Fe-N=1.91A coordination. Type II inhibitor, high confidence."
+REC_0659,12,Q93HJ0,P450_Q93HJ0,Oligomycin A,4WQ0,SUBSTRATE,SUBSTRATE,HIGH,A,True,False,none,False,,Oligomycin A is macrolide substrate. High confidence.
+REC_0660,12,Q93NX6,P450_Q93NX6,Amphotericin B,7SHI,SUBSTRATE,SUBSTRATE,HIGH,A,True,False,none,False,,Amphotericin B is polyene macrolide substrate. High confidence.
+REC_0661,12,Q93VK5,P450_Q93VK5,RETINAL,6J95,SUBSTRATE,SUBSTRATE,HIGH,A,True,False,none,False,,Retinal is vitamin A aldehyde substrate. High confidence.
+REC_0662,12,Q96242,Allene Oxide Synthase (CYP74A),13-hydroxy fatty acid substrate analog,3DSI,SUBSTRATE,SUBSTRATE,MEDIUM,B,True,False,none,False,,13-hydroxyoctadecatrienoic acid is substrate analog for CYP74A allene oxide synthase. Medium confidence for analog.
+REC_0663,12,Q96242,Allene Oxide Synthase (CYP74A),13-hydroxy fatty acid substrate,3DSJ,SUBSTRATE,SUBSTRATE,MEDIUM,B,True,False,none,False,,13-hydroxyoctadecadienoic acid is substrate for CYP74A. Medium confidence.
+REC_0664,12,Q96242,Allene Oxide Synthase (CYP74A),Epoxy fatty acid product,3DSK,PRODUCT,PRODUCT,MEDIUM,B,True,False,none,False,,Epoxy fatty acid is product/intermediate in allene oxide synthase pathway. Medium confidence.
+REC_0665,12,Q9EW92,P450_Q9EW92,"4,5-de-epoxypimaricin",2XBK,SUBSTRATE,SUBSTRATE,HIGH,A,True,False,none,False,,"4,5-de-epoxypimaricin is substrate in pimaricin biosynthesis. High confidence."
+REC_0666,12,Q9FCA6,CYP158A2 (biflaviolin synthase),MERCURY (II) ION,1S1F,EXCLUDE,EXCLUDE,HIGH,A,True,False,none,False,,Mercury ion used in crystallography. High confidence exclusion.
+REC_0667,12,Q9FCA6,CYP158A2 (biflaviolin synthase),MALONIC ACID,1S1F,EXCLUDE,EXCLUDE,HIGH,A,True,False,none,False,,Malonic acid is crystallization artifact. High confidence exclusion.
+REC_0668,12,Q9FCA6,CYP158A2 (biflaviolin synthase),4-PHENYL-1H-IMIDAZOLE,1S1F,INHIBITOR,INHIBITOR,HIGH,A,True,False,none,False,,"4-phenylimidazole with Fe-N=2.25A coordination. Type II inhibitor, high confidence."
+REC_0669,12,Q9FCA6,CYP158A2 (biflaviolin synthase),SPERMINE,1SE6,EXCLUDE,EXCLUDE,HIGH,A,True,False,none,False,,Spermine is crystallization additive. High confidence exclusion.
+REC_0670,12,Q9FCA6,CYP158A2 (biflaviolin synthase),FLAVIOLIN,1T93,SUBSTRATE,SUBSTRATE,HIGH,A,True,False,none,False,,Flaviolin is THE natural substrate for CYP158A2 biflaviolin synthase. High confidence.
+REC_0671,12,Q9FCA6,CYP158A2 (biflaviolin synthase),OXYGEN MOLECULE,2D09,EXCLUDE,EXCLUDE,HIGH,A,True,False,none,False,,Molecular oxygen is P450 cofactor. High confidence exclusion.
+REC_0672,12,Q9FCA6,CYP158A2 (biflaviolin synthase),2-HYDROXYNAPHTHOQUINONE,2D0E,SUBSTRATE,SUBSTRATE,MEDIUM,B,True,False,none,False,,2-hydroxynaphthoquinone is substrate analog. Medium confidence.
+REC_0673,12,Q9FCA6,CYP158A2 (biflaviolin synthase),SPERMINE,5DE9,EXCLUDE,EXCLUDE,HIGH,A,True,False,none,False,,Spermine crystallization additive. High confidence exclusion.
+REC_0674,12,Q9KIZ4,EpoK (epothilone biosynthesis),Epothilone D,1PKF,SUBSTRATE,SUBSTRATE,HIGH,A,True,False,none,False,,Epothilone D is substrate in epothilone biosynthesis pathway. High confidence.
+REC_0675,12,Q9KIZ4,EpoK (epothilone biosynthesis),Epothilone B,1Q5D,PRODUCT,PRODUCT,HIGH,A,True,False,none,False,,Epothilone B is hydroxylated product in epothilone pathway. High confidence.
+REC_0676,12,Q9KZF5,P450_Q9KZF5,Naphthalene pentol,2NZ5,SUBSTRATE,SUBSTRATE,HIGH,A,True,False,none,False,,"Naphthalene-1,2,4,5,7-pentol is polyphenolic substrate. High confidence."
+REC_0677,12,Q9KZR7,P450_Q9KZR7,4-PHENYL-1H-IMIDAZOLE,1ODO,INHIBITOR,INHIBITOR,HIGH,A,True,False,none,False,,"4-phenylimidazole with Fe-N=2.29A coordination. Type II inhibitor, high confidence."
+REC_0678,12,Q9L4X0,P450_Q9L4X0,Nystatin,9CV8,SUBSTRATE,SUBSTRATE,HIGH,A,True,False,none,False,,Nystatin is polyene macrolide substrate. High confidence.
+REC_0679,12,Q9ZHQ1,P450_Q9ZHQ1,Forazoline intermediate,6B11,SUBSTRATE,SUBSTRATE,HIGH,A,True,False,none,False,,Forazoline intermediate in forazoline biosynthesis. High confidence.
+REC_0680,12,S6BVH1,P450_S6BVH1,Hydroxy-farnesene product,3WEC,PRODUCT,PRODUCT,HIGH,A,True,False,none,False,,9-hydroxy-farnesene derivative is hydroxylated product. High confidence.
+REC_0681,12,W5R4Y8,P450_W5R4Y8,Oleandolide derivative,8K1X,SUBSTRATE,SUBSTRATE,HIGH,A,True,False,none,False,,Indolocarbazole substrate in macrolide biosynthesis. High confidence.
+REC_0682,12,W5VH56,P450_W5VH56,Compactin/Mevastatin,4OQR,INHIBITOR,INHIBITOR,HIGH,A,True,False,none,False,,Compactin/mevastatin is statin inhibitor. High confidence.

@@ -1,0 +1,12 @@
+﻿uniprot_id,enzyme_name,organism,pdb_id,ligand_ccd,ligand_name,original_class,final_class,confidence,audit_date,audit_method,notes
+O87605,PikC (CYP107L1),Streptomyces venezuelae,3ZPI,TLA,L(+)-TARTARIC ACID,unknown,EXCLUDE,high,2026-01-25,Codex PDB analysis,
+O87605,PikC (CYP107L1),Streptomyces venezuelae,2CD8,PXI,"4-{[4-(DIMETHYLAMINO)-3-HYDROXY-6-METHYLTETRAHYDRO-2H-PYRAN-2-YL]OXY}-12-ETHYL-3,5,7,11-TETRAMETHYLOXACYCLODODEC-9-ENE-2,8-DIONE",product,SUBSTRATE,high,2026-01-25,Codex PDB analysis,PXI corrected from product to substrate (YC-17)
+O87605,PikC (CYP107L1),Streptomyces venezuelae,2C7X,NRB,NARBOMYCIN,unknown,SUBSTRATE,high,2026-01-25,Codex PDB analysis,
+O87605,PikC (CYP107L1),Streptomyces venezuelae,4B7S,QLE,"[(3R,4S,5S,7R,9E,11R,12R)-12-ethyl-3,5,7,11-tetramethyl-2,8-bis(oxidanylidene)-1-oxacyclododec-9-en-4-yl] 3-(dimethylamino)propanoate",unknown,INHIBITOR,med-high,2026-01-25,Codex PDB analysis,
+O87605,PikC (CYP107L1),Streptomyces venezuelae,3ZK5,Z18,"(3R,4S,5S,7R,9E,11R,12R)-12-ethyl-3,5,7,11-tetramethyl-2,8-dioxooxacyclododec-9-en-4-yl N,N-dimethylglycinate",unknown,SUBSTRATE,medium,2026-01-25,Codex PDB analysis,
+O87605,PikC (CYP107L1),Streptomyces venezuelae,2WI9,1D2,"CYCLODODECYL 3,4,6-TRIDEOXY-3-(DIMETHYLAMINO)-BETA-D-XYLO-HEXOPYRANOSIDE",unknown,SUBSTRATE,medium,2026-01-25,Codex PDB analysis,
+O87605,PikC (CYP107L1),Streptomyces venezuelae,7XBO,E4H,"(3R,4S,5S,7R,9E,11R,12R)-12-ETHYL-4-HYDROXY-3,5,7,11-TETRAMETHYLOXACYCLODODEC-9-ENE-2,8-DIONE",product,PRODUCT,med-high,2026-01-25,Codex PDB analysis,
+O87605,PikC (CYP107L1),Streptomyces venezuelae,2WHW,1D4,"CYCLOTRIDECYL 3,4,6-TRIDEOXY-3-(DIMETHYLAMINO)-BETA-D-XYLO-HEXOPYRANOSIDE",unknown,SUBSTRATE,medium,2026-01-25,Codex PDB analysis,
+O87605,PikC (CYP107L1),Streptomyces venezuelae,4UMZ,XJO,"(3R,4S,5S,7R,9E,11R,12R)-12-ethyl-3,5,7,11-tetramethyl-2,8-dioxooxacyclododec-9-en-4-yl 2-[(dimethylamino)methyl]benzoate",substrate,SUBSTRATE,medium,2026-01-25,Codex DROP fix,Macrolide substrate
+O87605,PikC (CYP107L1),Streptomyces venezuelae,7XBM,CAC,CACODYLATE ION,unknown,EXCLUDE,high,2026-01-25,Codex PDB analysis,
+O87605,PikC (CYP107L1),Streptomyces venezuelae,4BF4,17Q,"1.7.6 5-cyclododecyloxy-N,N-dimethyl-pentan-1-amine",substrate,SUBSTRATE,medium,2026-01-25,Codex DROP fix,Cyclododecyloxy substrate

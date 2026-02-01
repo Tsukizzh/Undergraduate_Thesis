@@ -1,0 +1,32 @@
+======================================================================
+EZSpecificity Model Evaluation Report - Run03_best-checkpoint-v2
+======================================================================
+
+1. GLOBAL PERFORMANCE METRICS
+----------------------------------------
+  AUC-ROC: 0.6674
+  AUC-PR (AUPR): 0.6336
+  Accuracy: 0.5145
+  Precision: 0.6667
+  Recall (Sensitivity): 0.0766
+  Specificity: 0.9609
+  F1 Score: 0.1375
+  MCC: 0.0803
+  Brier Score: 0.3971
+  Logit Mean: -4.0610
+  Logit Std: 3.3335
+  Logit Median: -3.5386
+  Prob Mean: 0.1257
+  Prob Std: 0.1992
+
+2. THRESHOLD ANALYSIS
+----------------------------------------
+  Optimal threshold (Youden's J): 0.0165
+  Youden's J statistic: 0.2714
+
+3. ERROR ANALYSIS (threshold=0.5)
+----------------------------------------
+  False Positives: 10
+  False Negatives: 241
+
+======================================================================

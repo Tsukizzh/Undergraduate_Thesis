@@ -4,8 +4,19 @@
 /src/
 
 # P450研究项目的大文件目录
-**/PathA_*/data/
 **/PathA_*/logs/
+
+# PathA data目录：排除特定子目录
+**/PathA_*/data/01_Step1_PDB文件/
+**/PathA_*/data/03_Step3_*/02_配体分类并行验证/
+**/PathA_*/data/03_Step3_*/03a_高风险记录深度复审/
+**/PathA_*/data/03_Step3_*/03b_MEDIUM置信度抽检/
+
+# 大文件类型（全局排除）
+*.lmdb
+*.lmdb-lock
+*.npz
+*.npy
 
 # 其他不需要上传的文件
 *.pdf
@@ -15,8 +26,10 @@
 路径选择与核心概念FAQ.md
 Git撤销操作指南.md
 P450研究项目_PPT大纲.md
+
 # 系统文件
 .DS_Store
 Thumbs.db
 *.pyc
 __pycache__/
+nul

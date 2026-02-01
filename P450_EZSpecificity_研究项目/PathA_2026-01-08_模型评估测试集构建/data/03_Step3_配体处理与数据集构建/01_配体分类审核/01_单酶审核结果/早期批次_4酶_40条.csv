@@ -1,0 +1,41 @@
+﻿uniprot_id,enzyme_name,organism,pdb_id,ligand_ccd,ligand_name,original_class,final_class,confidence,audit_date,audit_method,notes
+P20813,CYP2B6,Homo sapiens,5UFG,85D,"(1S,5R)-2-(bromomethyl)-6,6-dimethylbicyclo[3.1.1]hept-2-ene",unknown,SUBSTRATE,medium,2026-01-25,Codex PDB + Gemini web,Myrtenyl bromide
+P20813,CYP2B6,Homo sapiens,5UFG,CM5,5-CYCLOHEXYL-1-PENTYL-BETA-D-MALTOSIDE,unknown,EXCLUDE,high,2026-01-25,Codex PDB + Gemini web,Detergent (Cymal-5)
+P20813,CYP2B6,Homo sapiens,5UDA,CAE,CAMPHANE,unknown,SUBSTRATE,medium,2026-01-25,Codex PDB + Gemini web,Camphane (bornane)
+P20813,CYP2B6,Homo sapiens,3IBD,CPZ,4-(4-CHLOROPHENYL)IMIDAZOLE,inhibitor,INHIBITOR,high,2026-01-25,Codex PDB + Gemini web,Type-II Fe-N=2.37Å
+P20813,CYP2B6,Homo sapiens,4I91,FRU,beta-D-fructofuranose,unknown,EXCLUDE,high,2026-01-25,Codex PDB + Gemini web,Crystallization additive
+P20813,CYP2B6,Homo sapiens,4I91,TMH,(+)-alpha-Pinene,unknown,SUBSTRATE,medium,2026-01-25,Codex PDB + Gemini web,α-Pinene
+P20813,CYP2B6,Homo sapiens,5UAP,82S,"(1R,2R,4R)-2-bromo-1,7,7-trimethylbicyclo[2.2.1]heptane",unknown,SUBSTRATE,medium,2026-01-25,Codex PDB + Gemini web,Bornyl bromide
+P20813,CYP2B6,Homo sapiens,3QOA,3QO,4-benzylpyridine,inhibitor,INHIBITOR,high,2026-01-25,Codex PDB + Gemini web,Type-II Fe-N=2.36Å
+P20813,CYP2B6,Homo sapiens,4RQL,SNE,Sabinene,unknown,SUBSTRATE,medium,2026-01-25,Codex PDB + Gemini web,Sabinene
+P20813,CYP2B6,Homo sapiens,4RRT,3V4,(+)-3-carene,unknown,SUBSTRATE,medium,2026-01-25,Codex PDB + Gemini web,(+)-3-carene
+P20813,CYP2B6,Homo sapiens,3QU8,3QU,4-(4-nitrobenzyl)pyridine,inhibitor,INHIBITOR,high,2026-01-25,Codex PDB + Gemini web,Type-II Fe-N=2.25-2.37Å
+P20813,CYP2B6,Homo sapiens,3UA5,06X,Amlodipine,unknown,SUBSTRATE,medium,2026-01-25,Codex PDB + Gemini web,Amlodipine (also inhibits)
+P20813,CYP2B6,Homo sapiens,5WBG,9ZJ,"(2R,4S)-6-chloro-4-(cyclopropylethynyl)-2-methyl-4-(trifluoromethyl)-1,4-dihydro-2H-3,1-benzoxazine",unknown,SUBSTRATE,high,2026-01-25,Codex PDB + Gemini web,Efavirenz analog
+P20813,CYP2B6,Homo sapiens,5WBG,ZAZ,5-cyclohexylpentan-1-ol,product,EXCLUDE,high,2026-01-25,Codex PDB + Gemini web,Detergent artifact
+A0A2H4A2U9,CYP51 (N. fowleri),Naegleria fowleri,5TL8,X2N,POSACONAZOLE,inhibitor,INHIBITOR,high,2026-01-25,Codex PDB + Gemini web,Type-II azole: Posaconazole
+A0A2H4A2U9,CYP51 (N. fowleri),Naegleria fowleri,7RKR,L49,(1S)-1-(4-fluorophenyl)-2-(1H-imidazol-1-yl)ethyl 3-(trifluoromethyl)benzoate,unknown,INHIBITOR,high,2026-01-25,Codex PDB + Gemini web,Type-II azole: Imidazole deriv
+A0A2H4A2U9,CYP51 (N. fowleri),Naegleria fowleri,7RKW,5TV,"(1S)-1-(4-fluorophenyl)-2-(1H-imidazol-1-yl)ethyl 3,5-dichlorobenzoate",unknown,INHIBITOR,high,2026-01-25,Codex PDB + Gemini web,Type-II azole: Imidazole deriv
+A0A2H4A2U9,CYP51 (N. fowleri),Naegleria fowleri,6AYB,KKK,"1-acetyl-4-(4-{[(2R,4S)-2-(2,4-dichlorophenyl)-2-(1H-imidazol-1-ylmethyl)-1,3-dioxolan-4-yl]methoxy}phenyl)piperazine",inhibitor,INHIBITOR,high,2026-01-25,Codex PDB + Gemini web,Type-II azole: Ketoconazole
+A0A2H4A2U9,CYP51 (N. fowleri),Naegleria fowleri,7RKT,5UR,"(1S)-1-(2,4-dichlorophenyl)-2-(1H-imidazol-1-yl)ethyl 3-(trifluoromethyl)benzoate",unknown,INHIBITOR,high,2026-01-25,Codex PDB + Gemini web,Type-II azole: Imidazole deriv
+A0A2H4A2U9,CYP51 (N. fowleri),Naegleria fowleri,7RTQ,7PW,"N-[(1R)-2-(1H-imidazol-1-yl)-1-(3,4',5-trifluoro[1,1'-biphenyl]-4-yl)ethyl]-4-(5-phenyl-1,3,4-oxadiazol-2-yl)benzamide",inhibitor,INHIBITOR,high,2026-01-25,Codex PDB + Gemini web,Type-II azole: Imidazole deriv
+A0A2H4A2U9,CYP51 (N. fowleri),Naegleria fowleri,6AY6,VOR,Voriconazole,inhibitor,INHIBITOR,high,2026-01-25,Codex PDB + Gemini web,Type-II azole: Voriconazole
+A0A2H4A2U9,CYP51 (N. fowleri),Naegleria fowleri,6AYC,1YN,"2-[(2R)-butan-2-yl]-4-{4-[4-(4-{[(2R,4S)-2-(2,4-dichlorophenyl)-2-(1H-1,2,4-triazol-1-ylmethyl)-1,3-dioxolan-4-yl]methoxy}phenyl)piperazin-1-yl]phenyl}-2,4-dihydro-3H-1,2,4-triazol-3-one",inhibitor,INHIBITOR,high,2026-01-25,Codex PDB + Gemini web,Type-II azole: Itraconazole
+A0A2H4A2U9,CYP51 (N. fowleri),Naegleria fowleri,6AY4,TPF,"2-(2,4-DIFLUOROPHENYL)-1,3-DI(1H-1,2,4-TRIAZOL-1-YL)PROPAN-2-OL",inhibitor,INHIBITOR,high,2026-01-25,Codex PDB + Gemini web,Type-II azole: Fluconazole
+P11712,CYP2C9,Homo sapiens,5X23,LSN,"[2-butyl-5-chloranyl-3-[[4-[2-(2H-1,2,3,4-tetrazol-5-yl)phenyl]phenyl]methyl]imidazol-4-yl]methanol",unknown,SUBSTRATE,high,2026-01-25,Codex PDB + Gemini web,Losartan
+P11712,CYP2C9,Homo sapiens,5A5I,XI1,"N-[4-(3-chloranyl-4-cyano-phenoxy)cyclohexyl]-1,1,1-tris(fluoranyl)methanesulfonamide",inhibitor,INHIBITOR,medium,2026-01-25,Codex PDB + Gemini web,No Fe-N
+P11712,CYP2C9,Homo sapiens,1R9O,FLP,FLURBIPROFEN,unknown,SUBSTRATE,high,2026-01-25,Codex PDB + Gemini web,Flurbiprofen
+P11712,CYP2C9,Homo sapiens,5W0C,9W6,"ethyl {2-[([1,3]thiazolo[4,5-c]pyridine-2-carbonyl)amino]thiophene-3-carbonyl}carbamate",inhibitor,INHIBITOR,medium,2026-01-25,Codex PDB + Gemini web,No Fe-N
+P11712,CYP2C9,Homo sapiens,5K7K,6RJ,"4-[4-chloranyl-2-(1~{H}-pyrazol-4-yl)phenoxy]-3-cyano-~{N}-(1,3-thiazol-2-yl)benzenesulfonamide",inhibitor,INHIBITOR,high,2026-01-25,Codex PDB + Gemini web,Type-II Fe-N=2.21Å
+P11712,CYP2C9,Homo sapiens,4NZ2,2QJ,"(2R)-N-{4-[(3-bromophenyl)sulfonyl]-2-chlorophenyl}-3,3,3-trifluoro-2-hydroxy-2-methylpropanamide",inhibitor,INHIBITOR,medium,2026-01-25,Codex PDB + Gemini web,No Fe-N
+P11712,CYP2C9,Homo sapiens,8VZ7,FRU,beta-D-fructofuranose,unknown,EXCLUDE,high,2026-01-25,Codex PDB + Gemini web,Crystallization additive
+P11712,CYP2C9,Homo sapiens,1OG5,SWF,S-WARFARIN,unknown,SUBSTRATE,high,2026-01-25,Codex PDB + Gemini web,S-Warfarin (classic)
+P11712,CYP2C9,Homo sapiens,5A5J,6YF,"N-[4-(3-chloranyl-4-cyano-phenoxy)-3,5-dimethoxy-phenyl]-1,1,1-tris(fluoranyl)methanesulfonamide",inhibitor,INHIBITOR,medium,2026-01-25,Codex PDB + Gemini web,No Fe-N
+Q385E8,CYP51 (T. brucei),Trypanosoma brucei,4G3J,VNT,"N-[(1R)-1-(2,4-dichlorophenyl)-2-(1H-1,2,4-triazol-1-yl)ethyl]-4-(5-phenyl-1,3,4-oxadiazol-2-yl)benzamide",inhibitor,INHIBITOR,high,2026-01-25,Codex PDB,Type-II azole: VNT
+Q385E8,CYP51 (T. brucei),Trypanosoma brucei,3GW9,VNI,"N-[(1R)-1-(2,4-dichlorophenyl)-2-(1H-imidazol-1-yl)ethyl]-4-(5-phenyl-1,3,4-oxadiazol-2-yl)benzamide",inhibitor,INHIBITOR,high,2026-01-25,Codex PDB,Type-II azole: VNI
+Q385E8,CYP51 (T. brucei),Trypanosoma brucei,3TIK,JKF,"6-[(R)-(4-chlorophenyl)(methoxy)(1-methyl-1H-imidazol-5-yl)methyl]-4-(2,6-difluorophenyl)-1-methylquinolin-2(1H)-one",unknown,INHIBITOR,high,2026-01-25,Codex PDB,Type-II azole: JKF
+Q385E8,CYP51 (T. brucei),Trypanosoma brucei,4G7G,VFV,"N-[(1R)-1-(3,4'-difluorobiphenyl-4-yl)-2-(1H-imidazol-1-yl)ethyl]-4-(5-phenyl-1,3,4-oxadiazol-2-yl)benzamide",unknown,INHIBITOR,high,2026-01-25,Codex PDB,Type-II azole: VFV
+Q385E8,CYP51 (T. brucei),Trypanosoma brucei,2X2N,X2N,POSACONAZOLE,inhibitor,INHIBITOR,high,2026-01-25,Codex PDB,Type-II azole: Posaconazole
+Q385E8,CYP51 (T. brucei),Trypanosoma brucei,4BJK,18I,"3,3'-difluoro-N-[(2S)-3-(1H-indol-3-yl)-1-oxo-1-(pyridin-4-ylamino)propan-2-yl]biphenyl-4-carboxamide",unknown,INHIBITOR,high,2026-01-25,Codex PDB,Type-II azole: 18I
+Q385E8,CYP51 (T. brucei),Trypanosoma brucei,2WV2,TPF,"2-(2,4-DIFLUOROPHENYL)-1,3-DI(1H-1,2,4-TRIAZOL-1-YL)PROPAN-2-OL",inhibitor,INHIBITOR,high,2026-01-25,Codex PDB,Type-II azole: Fluconazole
+Q385E8,CYP51 (T. brucei),Trypanosoma brucei,3P99,LNP,"(3alpha,9beta,10alpha,13alpha)-30-cyclopropylidenelanost-7-en-3-ol",product,SUBSTRATE,medium,2026-01-25,Codex PDB,Lanosterol analog

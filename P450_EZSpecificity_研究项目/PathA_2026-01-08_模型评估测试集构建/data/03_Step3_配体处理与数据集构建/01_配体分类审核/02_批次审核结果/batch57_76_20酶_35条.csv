@@ -1,0 +1,36 @@
+﻿uniprot_id,enzyme_name,organism,pdb_id,ligand_ccd,ligand_name,original_class,final_class,confidence,audit_date,audit_method,notes
+A0A076MY51,GcoA (lignin O-demethylase),Amycolatopsis sp. ATCC 39116,5NCB,JZ3,Guaiacol,unknown,SUBSTRATE,high,2026-01-25,Codex PDB deep analysis,Guaiacol
+A0A076MY51,GcoA (lignin O-demethylase),Amycolatopsis sp. ATCC 39116,5OMU,3DM,"2,6-dimethoxyphenol",unknown,SUBSTRATE,high,2026-01-25,Codex PDB deep analysis,Syringol
+A0A368UNN3,CYP153A (fatty acid hydroxylase),Marinobacter nauticus,8HGE,12H,12-HYDROXYDODECANOIC ACID,unknown,PRODUCT,high,2026-01-25,Codex PDB deep analysis,12-hydroxydodecanoic acid
+A0A368UNN3,CYP153A (fatty acid hydroxylase),Marinobacter nauticus,9IXL,DAO,LAURIC ACID,substrate,SUBSTRATE,high,2026-01-25,Codex PDB deep analysis,Lauric acid
+P24462,CYP3A7 (human steroid metabolism),Homo sapiens,7MK8,DTV,"(2S,3S)-1,4-DIMERCAPTOBUTANE-2,3-DIOL",unknown,EXCLUDE,high,2026-01-25,Codex PDB deep analysis,Dithiothreitol (artifact)
+P24462,CYP3A7 (human steroid metabolism),Homo sapiens,8GK3,ZWY,17-oxoandrost-5-en-3beta-yl hydrogen sulfate,unknown,SUBSTRATE,high,2026-01-25,Codex PDB deep analysis,DHEA sulfate
+C0XPZ5,OleT-like (fatty acid decarboxylase),Corynebacterium lipophiloflavum,8W1K,OLA,OLEIC ACID,substrate,SUBSTRATE,high,2026-01-25,Codex PDB deep analysis,Oleic acid
+C0XPZ5,OleT-like (fatty acid decarboxylase),Corynebacterium lipophiloflavum,8W1J,PLM,PALMITIC ACID,substrate,SUBSTRATE,high,2026-01-25,Codex PDB deep analysis,Palmitic acid
+Q82GL5,CYP154C2 (steroid hydroxylase),Streptomyces avermitilis MA-4680 = NBRC 14893,7CL8,TES,TESTOSTERONE,substrate,SUBSTRATE,high,2026-01-25,Codex PDB deep analysis,Testosterone
+Q82GL5,CYP154C2 (steroid hydroxylase),Streptomyces avermitilis MA-4680 = NBRC 14893,7CL9,ASD,4-ANDROSTENE-3-17-DIONE,unknown,SUBSTRATE,high,2026-01-25,Codex PDB deep analysis,Androstenedione
+A0R4Q6,CYP142 (M. smegmatis sterol metabolism),Mycolicibacterium smegmatis MC2 155,2YOO,K2B,"(8ALPHA,9BETA)-CHOLEST-4-EN-3-ONE",unknown,SUBSTRATE,high,2026-01-25,Codex PDB deep analysis,Cholestenone
+A0R4Q6,CYP142 (M. smegmatis sterol metabolism),Mycolicibacterium smegmatis MC2 155,4TRI,C3S,CHOLEST-5-EN-3-YL HYDROGEN SULFATE,substrate,SUBSTRATE,high,2026-01-25,Codex PDB deep analysis,Cholesteryl sulfate
+A0AA82WPC6,CYP134A1-like (Staphylococcus),Staphylococcus,8ABO,231,4-PHENYL-1H-IMIDAZOLE,inhibitor,INHIBITOR,high,2026-01-25,Codex PDB deep analysis,"4-phenylimidazole, Fe-N=2.04A"
+A0AA82WPC6,CYP134A1-like (Staphylococcus),Staphylococcus,8ABO,NO3,NITRATE ION,unknown,EXCLUDE,high,2026-01-25,Codex PDB deep analysis,Nitrate ion
+Q83WF5,MycCI (mycinamicin biosynthesis),Micromonospora griseorubida,5FOI,SPD,SPERMIDINE,unknown,EXCLUDE,high,2026-01-25,Codex PDB deep analysis,Spermidine (crystallization additive)
+Q83WF5,MycCI (mycinamicin biosynthesis),Micromonospora griseorubida,5FOI,MY8,Mycinamicin VIII,unknown,SUBSTRATE,high,2026-01-25,Codex PDB deep analysis,Mycinamicin VIII
+Q93H81,CYP105P1/PimD (filipin pathway),Streptomyces avermitilis,3ABA,FLI,"(3R,4S,6S,8S,10R,12R,14R,16S,17E,19E,21E,23E,25E,28R)-3-hexyl-4,6,8,10,12,14,16-heptahydroxy-17,28-dimethyloxacyclooctacosa-17,19,21,23,25-pentaen-2-one",product,PRODUCT,high,2026-01-25,Codex PDB deep analysis,Filipin product
+Q93H81,CYP105P1/PimD (filipin pathway),Streptomyces avermitilis,3E5K,PIM,4-PHENYL-1H-IMIDAZOLE,inhibitor,INHIBITOR,high,2026-01-25,Codex PDB deep analysis,"4-phenylimidazole, Fe-N=1.91A"
+A0A3B6UEE9,GcoA (Amycolatopsis),Amycolatopsis sp. ATCC 39116,5OMR,V55,4-hydroxy-3-methoxybenzaldehyde,product,SUBSTRATE,high,2026-01-25,Codex PDB deep analysis,Vanillin (separate substrate)
+A0A3B6UEE9,GcoA (Amycolatopsis),Amycolatopsis sp. ATCC 39116,5OMS,261,2-ethoxyphenol,unknown,SUBSTRATE,high,2026-01-25,Codex PDB deep analysis,2-ethoxyphenol
+A0R5U2,CYP164A2 (M. smegmatis),Mycolicibacterium smegmatis MC2 155,3R9B,D12,DODECANE,unknown,EXCLUDE,high,2026-01-25,Codex PDB deep analysis,Dodecane (adventitious)
+A0R5U2,CYP164A2 (M. smegmatis),Mycolicibacterium smegmatis MC2 155,3R9C,ECL,"1-[(2R)-2-[(4-chlorobenzyl)oxy]-2-(2,4-dichlorophenyl)ethyl]-1H-imidazole",inhibitor,INHIBITOR,high,2026-01-25,Codex PDB deep analysis,"Econazole, Fe-N=2.11A"
+O31440,P450BSbeta (B. subtilis fatty acid),Bacillus subtilis,7WYG,PAM,PALMITOLEIC ACID,substrate,SUBSTRATE,high,2026-01-25,Codex PDB deep analysis,Palmitoleic acid
+O31440,P450BSbeta (B. subtilis fatty acid),Bacillus subtilis subsp. subtilis str. 168,9IY1,PLM,PALMITIC ACID,substrate,SUBSTRATE,high,2026-01-25,Codex PDB deep analysis,Palmitic acid
+Q9KIZ4,EpoK (epothilone biosynthesis),Sorangium cellulosum,1Q5D,EPB,"7,11-DIHYDROXY-8,8,10,12,16-PENTAMETHYL-3-[1-METHYL-2-(2-METHYL-THIAZOL-4-YL)VINYL]-4,17-DIOXABICYCLO[14.1.0]HEPTADECANE-5,9-DIONE",product,PRODUCT,high,2026-01-25,Codex PDB deep analysis,Epothilone B (product)
+Q9KIZ4,EpoK (epothilone biosynthesis),Sorangium cellulosum,1PKF,EPD,EPOTHILONE D,unknown,SUBSTRATE,high,2026-01-25,Codex PDB deep analysis,Epothilone D (substrate)
+A0A1M4Y7D5,Hind (indole alkaloid biosynthesis),Streptoalloteichus hindustanus,6J87,B9L,N-[(2S)-1-hydroxy-3-(1H-indol-3-yl)propan-2-yl]-Nalpha-methyl-L-phenylalaninamide,product,PRODUCT,high,2026-01-25,Codex PDB deep analysis,Hydroxylated indole product
+A0A1M4Y7D5,Hind (indole alkaloid biosynthesis),Streptoalloteichus hindustanus,6J88,B9O,N-[(2S)-1-(1-benzothiophen-3-yl)-3-hydroxypropan-2-yl]-N~2~-methyl-L-valinamide,unknown,SUBSTRATE,high,2026-01-25,Codex PDB deep analysis,Benzothiophene substrate analog
+A0A0F4JF04,CYP121 (S. katrae),Streptomyces katrae,8Q6Y,YTT,"(3S,6S)-3,6-bis(4-hydroxybenzyl)piperazine-2,5-dione",unknown,SUBSTRATE,high,2026-01-25,Codex PDB deep analysis,Cyclo-Tyr-Tyr DKP
+A0A0F4JF04,CYP121 (S. katrae),Streptomyces katrae,8Q6Y,HPA,HYPOXANTHINE,unknown,EXCLUDE,high,2026-01-25,Codex PDB deep analysis,Hypoxanthine (artifact)
+Q16647,CYP8A1 (prostacyclin synthase),Homo sapiens,3B6H,MXD,"6-PIPERIDIN-1-YLPYRIMIDINE-2,4-DIAMINE 3-OXIDE",inhibitor,INHIBITOR,high,2026-01-25,Codex PDB deep analysis,"Minoxidil, Fe-O=2.17A"
+Q6N8N2,CYP199A2-like (aromatic acid hydroxylase),Rhodopseudomonas palustris CGA009,4DNJ,ANN,4-METHOXYBENZOIC ACID,unknown,SUBSTRATE,high,2026-01-25,Codex PDB deep analysis,4-methoxybenzoic acid
+Q59990,CYP120A1 (retinoic acid hydroxylase),Synechocystis sp. PCC 6803,2VE3,REA,RETINOIC ACID,unknown,SUBSTRATE,high,2026-01-25,Codex PDB deep analysis,Retinoic acid
+Q47KL3,CYP154E1 (Thermobifida),Thermobifida fusca YX,8RTV,231,4-PHENYL-1H-IMIDAZOLE,inhibitor,INHIBITOR,high,2026-01-25,Codex PDB deep analysis,"4-phenylimidazole, Fe-N=2.03A"
+Q40778,CYP74 Allene Oxide Synthase (plant),Parthenium argentatum,3DBM,HO2,"(9E,11E,13S)-13-hydroxyoctadeca-9,11-dienoic acid",unknown,SUBSTRATE,high,2026-01-25,Codex PDB deep analysis,13-hydroxy fatty acid (substrate analog)

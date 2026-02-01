@@ -1,0 +1,102 @@
+{
+  "total_records": 682,
+  "num_chunks": 12,
+  "chunks": [
+    {
+      "chunk_id": "01",
+      "file": "chunk_01.csv",
+      "record_range": "REC_REC_0001_to_REC_REC_0057",
+      "start_index": 0,
+      "end_index": 57,
+      "num_records": 57
+    },
+    {
+      "chunk_id": "02",
+      "file": "chunk_02.csv",
+      "record_range": "REC_REC_0058_to_REC_REC_0114",
+      "start_index": 57,
+      "end_index": 114,
+      "num_records": 57
+    },
+    {
+      "chunk_id": "03",
+      "file": "chunk_03.csv",
+      "record_range": "REC_REC_0115_to_REC_REC_0171",
+      "start_index": 114,
+      "end_index": 171,
+      "num_records": 57
+    },
+    {
+      "chunk_id": "04",
+      "file": "chunk_04.csv",
+      "record_range": "REC_REC_0172_to_REC_REC_0228",
+      "start_index": 171,
+      "end_index": 228,
+      "num_records": 57
+    },
+    {
+      "chunk_id": "05",
+      "file": "chunk_05.csv",
+      "record_range": "REC_REC_0229_to_REC_REC_0285",
+      "start_index": 228,
+      "end_index": 285,
+      "num_records": 57
+    },
+    {
+      "chunk_id": "06",
+      "file": "chunk_06.csv",
+      "record_range": "REC_REC_0286_to_REC_REC_0342",
+      "start_index": 285,
+      "end_index": 342,
+      "num_records": 57
+    },
+    {
+      "chunk_id": "07",
+      "file": "chunk_07.csv",
+      "record_range": "REC_REC_0343_to_REC_REC_0399",
+      "start_index": 342,
+      "end_index": 399,
+      "num_records": 57
+    },
+    {
+      "chunk_id": "08",
+      "file": "chunk_08.csv",
+      "record_range": "REC_REC_0400_to_REC_REC_0456",
+      "start_index": 399,
+      "end_index": 456,
+      "num_records": 57
+    },
+    {
+      "chunk_id": "09",
+      "file": "chunk_09.csv",
+      "record_range": "REC_REC_0457_to_REC_REC_0513",
+      "start_index": 456,
+      "end_index": 513,
+      "num_records": 57
+    },
+    {
+      "chunk_id": "10",
+      "file": "chunk_10.csv",
+      "record_range": "REC_REC_0514_to_REC_REC_0570",
+      "start_index": 513,
+      "end_index": 570,
+      "num_records": 57
+    },
+    {
+      "chunk_id": "11",
+      "file": "chunk_11.csv",
+      "record_range": "REC_REC_0571_to_REC_REC_0626",
+      "start_index": 570,
+      "end_index": 626,
+      "num_records": 56
+    },
+    {
+      "chunk_id": "12",
+      "file": "chunk_12.csv",
+      "record_range": "REC_REC_0627_to_REC_REC_0682",
+      "start_index": 626,
+      "end_index": 682,
+      "num_records": 56
+    }
+  ]
+}

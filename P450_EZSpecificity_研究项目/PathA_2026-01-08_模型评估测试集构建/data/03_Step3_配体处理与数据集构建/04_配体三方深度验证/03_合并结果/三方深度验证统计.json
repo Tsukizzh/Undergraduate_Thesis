@@ -1,0 +1,21 @@
+{
+  "total_records": 682,
+  "needs_human_review": 0,
+  "class_distribution": {
+    "SUBSTRATE": 272,
+    "PRODUCT": 23,
+    "EXCLUDE": 143,
+    "INHIBITOR": 244
+  },
+  "confidence_distribution": {
+    "HIGH": 566,
+    "MEDIUM": 115,
+    "LOW": 1
+  },
+  "evidence_distribution": {
+    "A": 460,
+    "B": 162,
+    "C": 31,
+    "D": 29
+  }
+}

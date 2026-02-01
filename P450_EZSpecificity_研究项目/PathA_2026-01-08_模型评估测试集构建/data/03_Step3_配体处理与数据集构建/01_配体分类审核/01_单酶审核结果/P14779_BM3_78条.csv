@@ -1,0 +1,79 @@
+﻿uniprot_id,enzyme_name,organism,pdb_id,ligand_ccd,ligand_name,original_class,final_class,confidence,audit_date,audit_method,notes
+P14779,CYP102A1 (P450 BM3),Priestia megaterium,1JPZ,140,N-PALMITOYLGLYCINE,unknown,SUBSTRATE,high,2026-01-25,Codex PDB analysis,
+P14779,CYP102A1 (P450 BM3),Priestia megaterium,1ZO9,EPM,N-PALMITOYL-L-METHIONINE,unknown,SUBSTRATE,high,2026-01-25,Codex PDB analysis,
+P14779,CYP102A1 (P450 BM3),Priestia megaterium,2UWH,PLM,PALMITIC ACID,substrate,SUBSTRATE,high,2026-01-25,Codex PDB analysis,
+P14779,CYP102A1 (P450 BM3),Priestia megaterium,3BEN,LEH,N-[12-(1H-imidazol-1-yl)dodecanoyl]-L-leucine,inhibitor,INHIBITOR,high,2026-01-25,Codex PDB analysis,
+P14779,CYP102A1 (P450 BM3),Priestia megaterium,3EKD,PAM,PALMITOLEIC ACID,unknown,SUBSTRATE,high,2026-01-25,Codex PDB analysis,
+P14779,CYP102A1 (P450 BM3),Priestia megaterium,3WSP,W09,"N-(2,2,3,3,4,4,5,5,6,6,7,7,8,8,9,9,9-heptadecafluorononanoyl)-L-tryptophan",unknown,SUBSTRATE,med-high,2026-01-25,Codex DROP fix,Fluorinated tryptophan
+P14779,CYP102A1 (P450 BM3),Priestia megaterium,4DTZ,LDP,L-DOPAMINE,unknown,INHIBITOR,med-high,2026-01-25,Codex PDB analysis,
+P14779,CYP102A1 (P450 BM3),Priestia megaterium,4DUE,SRO,SEROTONIN,unknown,INHIBITOR,med-high,2026-01-25,Codex PDB analysis,
+P14779,CYP102A1 (P450 BM3),Priestia megaterium,4HGH,SYN,ethenylbenzene,unknown,SUBSTRATE,medium,2026-01-25,Codex PDB analysis,
+P14779,CYP102A1 (P450 BM3),Priestia megaterium,4O4P,1C6,"6-methoxy-2-{[(4-methoxy-3,5-dimethylpyridin-2-yl)methyl]sulfanyl}-1H-benzimidazole",inhibitor,SUBSTRATE,medium,2026-01-25,Codex DROP fix,Methoxypyridyl compound
+P14779,CYP102A1 (P450 BM3),Priestia megaterium,4ZF8,MYT,METYRAPONE,unknown,INHIBITOR,high,2026-01-25,Codex PDB deep analysis (补录),"Fe-N=2.62Å, Type-II inhibitor. PDB TITLE: ""CYTOCHROME P450 PENTAMUTANT FROM BM3 WITH BOUND METYRAPONE"". Metyrapone is a known P450 inhibitor."
+P14779,CYP102A1 (P450 BM3),Priestia megaterium,5B2U,W06,"(2~{S})-3-(1~{H}-indol-3-yl)-2-[2,2,3,3,4,4,5,5,6,6,6-undecakis(fluoranyl)hexanoylamino]propanoic acid",unknown,SUBSTRATE,med-high,2026-01-25,Codex DROP fix,Fluorinated tryptophan
+P14779,CYP102A1 (P450 BM3),Priestia megaterium,5B2W,W1Z,"(2~{S})-3-(1~{H}-indol-3-yl)-2-[2,2,3,3,4,4,5,5,6,6,7,7,8,8,9,9,10,10,11,11,12,12,12-tricosakis(fluoranyl)dodecanoylamino]propanoic acid",unknown,SUBSTRATE,med-high,2026-01-25,Codex DROP fix,Fluorinated tryptophan
+P14779,CYP102A1 (P450 BM3),Priestia megaterium,5B2X,W0T,"(2~{S})-3-(1~{H}-indol-3-yl)-2-[2,2,3,3,4,4,5,5,6,6,7,7,7-tridecakis(fluoranyl)heptanoylamino]propanoic acid",unknown,SUBSTRATE,med-high,2026-01-25,Codex DROP fix,Fluorinated tryptophan
+P14779,CYP102A1 (P450 BM3),Priestia megaterium,5B2Y,W10,"(2~{S})-3-(1~{H}-indol-3-yl)-2-[2,2,3,3,4,4,5,5,6,6,7,7,8,8,9,9,10,10,10-nonadecakis(fluoranyl)decanoylamino]propanoic acid",unknown,SUBSTRATE,med-high,2026-01-25,Codex DROP fix,Fluorinated tryptophan
+P14779,CYP102A1 (P450 BM3),Priestia megaterium,5E78,5KK,"1,3,6,8,10,13,16,19-octaazabicyclo[6.6.6]icosane",unknown,EXCLUDE,high,2026-01-25,Codex PDB analysis,
+P14779,CYP102A1 (P450 BM3),Priestia megaterium,5E9Z,FE2,FE (II) ION,unknown,EXCLUDE,high,2026-01-25,Codex PDB analysis,
+P14779,CYP102A1 (P450 BM3),Priestia megaterium,5E9Z,PP9,PROTOPORPHYRIN IX,unknown,EXCLUDE,high,2026-01-25,Codex PDB analysis,
+P14779,CYP102A1 (P450 BM3),Priestia megaterium,5JQU,FDE,FE(III) DEUTEROPORPHYRIN IX,unknown,EXCLUDE,high,2026-01-25,Codex PDB analysis,
+P14779,CYP102A1 (P450 BM3),Priestia megaterium,5JTD,RU8,"bis(2,2'-bipyridine-kappa~2~N~1~,N~1'~)[2-iodo-N-(1,10-phenanthrolin-5-yl-kappa~2~N~1~,N~10~)acetamide]ruthenium(2+)",unknown,EXCLUDE,high,2026-01-25,Codex PDB analysis,
+P14779,CYP102A1 (P450 BM3),Priestia megaterium,5XA3,PHQ,benzyl chlorocarbonate,unknown,EXCLUDE,high,2026-01-25,Codex PDB analysis,
+P14779,CYP102A1 (P450 BM3),Priestia megaterium,5XA3,PRO,PROLINE,unknown,EXCLUDE,high,2026-01-25,Codex PDB analysis,
+P14779,CYP102A1 (P450 BM3),Priestia megaterium,5XHJ,87X,5-cyclohexylpentanoic acid,unknown,SUBSTRATE,med-high,2026-01-25,Codex PDB analysis,
+P14779,CYP102A1 (P450 BM3),Priestia megaterium,5XHJ,TRP,TRYPTOPHAN,unknown,SUBSTRATE,med-high,2026-01-25,Codex DROP fix,Tryptophan
+P14779,CYP102A1 (P450 BM3),Priestia megaterium,6H1O,VOR,Voriconazole,inhibitor,INHIBITOR,high,2026-01-25,Codex PDB analysis,
+P14779,CYP102A1 (P450 BM3),Priestia megaterium,6H1S,TPF,"2-(2,4-DIFLUOROPHENYL)-1,3-DI(1H-1,2,4-TRIAZOL-1-YL)PROPAN-2-OL",inhibitor,INHIBITOR,high,2026-01-25,Codex PDB analysis,
+P14779,CYP102A1 (P450 BM3),Priestia megaterium,6HN8,TDZ,"(5R)-5-(4-{[(2R)-6-HYDROXY-2,5,7,8-TETRAMETHYL-3,4-DIHYDRO-2H-CHROMEN-2-YL]METHOXY}BENZYL)-1,3-THIAZOLIDINE-2,4-DIONE",product,SUBSTRATE,medium,2026-01-25,Codex PDB analysis,
+P14779,CYP102A1 (P450 BM3),Priestia megaterium,6JLV,WAA,"(2S)-2-[[(1R,4aR,4bR,10aR)-1,4a-dimethyl-7-propan-2-yl-2,3,4,4b,5,6,10,10a-octahydrophenanthren-1-yl]carbonylamino]-3-( 1H-indol-3-yl)propanoic acid",unknown,SUBSTRATE,medium,2026-01-25,Codex PDB analysis,
+P14779,CYP102A1 (P450 BM3),Priestia megaterium,6JMW,BW9,Chromium Protoporphyrin IX,unknown,EXCLUDE,high,2026-01-25,Codex PDB analysis,
+P14779,CYP102A1 (P450 BM3),Priestia megaterium,6JO1,BWX,(2S)-2-[[(2S)-2-[4-(2-methylpropyl)phenyl]propanoyl]amino]-3-phenyl-propanoic acid,unknown,SUBSTRATE,medium,2026-01-25,Codex PDB analysis,
+P14779,CYP102A1 (P450 BM3),Priestia megaterium,6JS8,C5R,"(2S)-2-[[(1R,4aS,10aR)-1,4a-dimethyl-7-propan-2-yl-2,3,4,9,10,10a-hexahydrophenanthren-1-yl]carbonylamino]-3-(1H-indol-3-yl)propanoic acid",unknown,SUBSTRATE,medium,2026-01-25,Codex PDB analysis,
+P14779,CYP102A1 (P450 BM3),Priestia megaterium,6JVC,COH,PROTOPORPHYRIN IX CONTAINING CO,unknown,EXCLUDE,high,2026-01-25,Codex PDB analysis,
+P14779,CYP102A1 (P450 BM3),Priestia megaterium,6JZS,0PY,pyridine,unknown,EXCLUDE,high,2026-01-25,Codex PDB analysis,
+P14779,CYP102A1 (P450 BM3),Priestia megaterium,6JZS,MNH,MANGANESE PROTOPORPHYRIN IX,unknown,EXCLUDE,high,2026-01-25,Codex PDB analysis,
+P14779,CYP102A1 (P450 BM3),Priestia megaterium,6K24,CV0,MESOPORPHYRIN IX CONTAINING Rh,unknown,EXCLUDE,high,2026-01-25,Codex PDB analysis,
+P14779,CYP102A1 (P450 BM3),Priestia megaterium,6K3Q,D0F,(2S)-2-[[(2S)-1-(3-cyclohexylpropanoyl)pyrrolidin-2-yl]carbonylamino]-3-phenyl-propanoic acid,unknown,SUBSTRATE,medium,2026-01-25,Codex PDB analysis,
+P14779,CYP102A1 (P450 BM3),Priestia megaterium,6K58,D0L,(2S)-2-[[(2S)-1-heptylpyrrolidin-2-yl]carbonylamino]-3-phenyl-propanoic acid,unknown,SUBSTRATE,medium,2026-01-25,Codex PDB analysis,
+P14779,CYP102A1 (P450 BM3),Priestia megaterium,6K9S,RUR,"[3,3'-(7,12-diethyl-3,8,13,17-tetramethylporphyrin-2,18-diyl-kappa~4~N~21~,N~22~,N~23~,N~24~)dipropanoato(2-)]ruthenium",unknown,EXCLUDE,high,2026-01-25,Codex PDB analysis,
+P14779,CYP102A1 (P450 BM3),Priestia megaterium,6L1A,OPF,(2S)-2-[[(2S)-1-heptanoylpyrrolidin-2-yl]carbonylamino]-3-phenyl-propanoic acid,unknown,SUBSTRATE,medium,2026-01-25,Codex PDB analysis,
+P14779,CYP102A1 (P450 BM3),Priestia megaterium,6L1B,YIC,(2S)-2-[[(2S)-1-(3-cyclopentylpropanoyl)piperidin-2-yl]carbonylamino]-3-phenyl-propanoic acid,unknown,SUBSTRATE,medium,2026-01-25,Codex PDB analysis,
+P14779,CYP102A1 (P450 BM3),Priestia megaterium,6LY4,TES,TESTOSTERONE,substrate,SUBSTRATE,medium,2026-01-25,Codex PDB analysis,
+P14779,CYP102A1 (P450 BM3),Priestia megaterium,7CKN,G4O,propan-2-amine,unknown,INHIBITOR,med-high,2026-01-25,Codex PDB analysis,
+P14779,CYP102A1 (P450 BM3),Priestia megaterium,7CON,3CN,3-AMINOPROPANE,unknown,INHIBITOR,med-high,2026-01-25,Codex PDB analysis,
+P14779,CYP102A1 (P450 BM3),Priestia megaterium,7CON,G56,(2S)-3-phenyl-2-[2-[4-(trifluoromethyloxy)phenoxy]ethanoylamino]propanoic acid,unknown,SUBSTRATE,medium,2026-01-25,Codex PDB analysis,
+P14779,CYP102A1 (P450 BM3),Priestia megaterium,7COO,HAI,CYCLOHEXYLAMMONIUM ION,unknown,INHIBITOR,med-high,2026-01-25,Codex PDB analysis,
+P14779,CYP102A1 (P450 BM3),Priestia megaterium,7COO,ZP6,(2S)-3-phenyl-2-[[(2S)-1-phenylmethoxycarbonylpyrrolidin-2-yl]carbonylamino]propanoic acid,unknown,SUBSTRATE,medium,2026-01-25,Codex PDB analysis,
+P14779,CYP102A1 (P450 BM3),Priestia megaterium,7CP8,RM1,N-METHYL-1(R)-AMINOINDAN,unknown,INHIBITOR,med-high,2026-01-25,Codex PDB analysis,
+P14779,CYP102A1 (P450 BM3),Priestia megaterium,7CVR,STQ,"(1~{S})-1,2,3,4-tetrahydronaphthalen-1-amine",unknown,INHIBITOR,med-high,2026-01-25,Codex PDB analysis,
+P14779,CYP102A1 (P450 BM3),Priestia megaterium,7CX6,QSC,(1R)-1-phenylethanamine,unknown,INHIBITOR,med-high,2026-01-25,Codex PDB analysis,
+P14779,CYP102A1 (P450 BM3),Priestia megaterium,7CX8,1Y5,"(1R)-1,2,3,4-tetrahydronaphthalen-1-amine",unknown,INHIBITOR,med-high,2026-01-25,Codex PDB analysis,
+P14779,CYP102A1 (P450 BM3),Priestia megaterium,7D0T,GQR,"(1~{S})-2,3-dihydro-1~{H}-inden-1-amine",unknown,INHIBITOR,med-high,2026-01-25,Codex PDB analysis,
+P14779,CYP102A1 (P450 BM3),Priestia megaterium,7D0U,NEH,ETHANAMINE,unknown,INHIBITOR,med-high,2026-01-25,Codex PDB analysis,
+P14779,CYP102A1 (P450 BM3),Priestia megaterium,7D1F,NME,METHYLAMINE,unknown,INHIBITOR,med-high,2026-01-25,Codex PDB analysis,
+P14779,CYP102A1 (P450 BM3),Priestia megaterium,7E46,98B,(1S)-1-phenylethanamine,unknown,INHIBITOR,med-high,2026-01-25,Codex PDB analysis,
+P14779,CYP102A1 (P450 BM3),Priestia megaterium,7W97,8PD,(2~{S})-2-(hexadecanoylamino)-4-oxidanyl-butanoic acid,unknown,SUBSTRATE,med-high,2026-01-25,Codex PDB analysis,
+P14779,CYP102A1 (P450 BM3),Priestia megaterium,7W9J,EWM,N-[(3S)-2-oxooxolan-3-yl]dodecanamide,unknown,SUBSTRATE,medium,2026-01-25,Codex PDB analysis,
+P14779,CYP102A1 (P450 BM3),Priestia megaterium,7WG0,XPZ,(2~{S})-2-(hexadecanoylamino)-3-phenyl-propanoic acid,unknown,SUBSTRATE,medium,2026-01-25,Codex PDB analysis,
+P14779,CYP102A1 (P450 BM3),Priestia megaterium,7WY1,SOR,sorbitol,unknown,EXCLUDE,high,2026-01-25,Codex PDB analysis,
+P14779,CYP102A1 (P450 BM3),Priestia megaterium,7WY2,MI9,Oxomolybdenum Mesoporphyrin IX,unknown,EXCLUDE,high,2026-01-25,Codex PDB analysis,
+P14779,CYP102A1 (P450 BM3),Priestia megaterium,7WY3,GKX,(2~{S})-2-(5-cyclohexylpentanoylamino)-3-phenyl-propanoic acid,unknown,SUBSTRATE,medium,2026-01-25,Codex PDB analysis,
+P14779,CYP102A1 (P450 BM3),Priestia megaterium,7XZK,I8F,(2~{S})-2-[[(2~{S})-1-(3-cyclohexylpropanoyl)piperidin-2-yl]carbonylamino]-3-phenyl-propanoic acid,unknown,SUBSTRATE,medium,2026-01-25,Codex PDB analysis,
+P14779,CYP102A1 (P450 BM3),Priestia megaterium,7Y0P,PCR,P-CRESOL,unknown,SUBSTRATE,medium,2026-01-25,Codex DROP fix,p-Cresol
+P14779,CYP102A1 (P450 BM3),Priestia megaterium,7Y0R,4MN,4-METHYLANILINE,unknown,SUBSTRATE,low-med,2026-01-25,Codex PDB analysis,
+P14779,CYP102A1 (P450 BM3),Priestia megaterium,7Y9J,H5J,"5-nitro-1,2-benzoxazole",inhibitor,SUBSTRATE,high,2026-01-25,Codex DROP fix,Nitrobenzoxazole
+P14779,CYP102A1 (P450 BM3),Priestia megaterium,7Y9L,6VP,5-nitro-2-oxidanyl-benzenecarbonitrile,product,INHIBITOR,high,2026-01-25,Codex PDB analysis,
+P14779,CYP102A1 (P450 BM3),Priestia megaterium,7YD9,MBN,TOLUENE,unknown,SUBSTRATE,medium,2026-01-25,Codex PDB analysis,
+P14779,CYP102A1 (P450 BM3),Priestia megaterium,7YDB,HOA,HYDROXYAMINE,unknown,INHIBITOR,medium,2026-01-25,Codex PDB analysis,
+P14779,CYP102A1 (P450 BM3),Priestia megaterium,7YDB,IRV,(2~{S})-2-(5-imidazol-1-ylpentanoylamino)-3-phenyl-propanoic acid,unknown,SUBSTRATE,medium,2026-01-25,Codex DROP fix,Imidazolyl substrate
+P14779,CYP102A1 (P450 BM3),Priestia megaterium,7YDB,PYJ,PHENYLETHANE,unknown,SUBSTRATE,medium,2026-01-25,Codex PDB analysis,
+P14779,CYP102A1 (P450 BM3),Priestia megaterium,7YDD,3H0,propylbenzene,unknown,SUBSTRATE,medium,2026-01-25,Codex PDB analysis,
+P14779,CYP102A1 (P450 BM3),Priestia megaterium,7YDL,IC6,(2S)-2-(6-imidazol-1-ylhexanoylamino)-3-phenyl-propanoic acid,unknown,INHIBITOR,medium,2026-01-25,Codex DROP fix,"Imidazolyl inhibitor, Fe-N=2.39A"
+P14779,CYP102A1 (P450 BM3),Priestia megaterium,7YFT,16N,"2,3-dihydro-1H-indene",unknown,SUBSTRATE,medium,2026-01-25,Codex PDB analysis,
+P14779,CYP102A1 (P450 BM3),Priestia megaterium,8DSG,BTB,"2-[BIS-(2-HYDROXY-ETHYL)-AMINO]-2-HYDROXYMETHYL-PROPANE-1,3-DIOL",product,EXCLUDE,high,2026-01-25,Codex PDB analysis,
+P14779,CYP102A1 (P450 BM3),Priestia megaterium,8JC3,LXO,4-(pyridin-4-ylamino)butanoic acid,unknown,SUBSTRATE,medium,2026-01-25,Codex DROP fix,Pyridinyl butanoic acid
+P14779,CYP102A1 (P450 BM3),Priestia megaterium,8JC3,PHE,PHENYLALANINE,unknown,EXCLUDE,high,2026-01-25,Codex PDB analysis,
+P14779,CYP102A1 (P450 BM3),Priestia megaterium,8JC4,UCH,1-pyridin-4-ylpiperidine-4-carboxylic acid,unknown,SUBSTRATE,medium,2026-01-25,Codex DROP fix,Pyridinyl piperidine
+P14779,CYP102A1 (P450 BM3),Priestia megaterium,8YB2,OXY,OXYGEN MOLECULE,unknown,EXCLUDE,high,2026-01-25,Codex PDB analysis,
+P14779,CYP102A1 (P450 BM3),Priestia megaterium,9ISU,HL0,N-[(3S)-2-oxotetrahydrofuran-3-yl]decanamide,unknown,SUBSTRATE,med-high,2026-01-25,Codex PDB analysis,

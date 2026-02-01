@@ -1,0 +1,44 @@
+﻿uniprot_id,enzyme_name,organism,pdb_id,ligand_ccd,ligand_name,original_class,final_class,confidence,audit_date,audit_method,notes
+P00183,CYP101A1 (P450cam),Pseudomonas putida,4L4E,CYN,CYANIDE ION,substrate,EXCLUDE,high,2026-01-25,Codex PDB analysis,
+P00183,CYP101A1 (P450cam),Pseudomonas putida,4L4E,CAM,CAMPHOR,substrate,SUBSTRATE,high,2026-01-25,Codex PDB analysis,Canonical camphor substrate
+P00183,CYP101A1 (P450cam),Pseudomonas putida,1RE9,DSO,ADAMANTANE-1-CARBOXYLIC ACID-5-DIMETHYLAMINO-NAPHTHALENE-1-SULFONYLAMINO-OCTYL-AMIDE,unknown,EXCLUDE,medium,2026-01-25,Codex DROP fix,Fluorescent probe
+P00183,CYP101A1 (P450cam),Pseudomonas putida,2FE6,MNR,PROTOPORPHYRIN IX CONTAINING MN,unknown,EXCLUDE,high,2026-01-25,Codex PDB analysis,
+P00183,CYP101A1 (P450cam),Pseudomonas putida,2A1O,OXY,OXYGEN MOLECULE,unknown,EXCLUDE,high,2026-01-25,Codex PDB analysis,
+P00183,CYP101A1 (P450cam),Pseudomonas putida,1QMQ,DRB,"DELTA-BIS(2,2'-BIPYRIDINE)-(5-METHYL-2-2'-BIPYRIDINE)-C9-ADAMANTANE RUTHENIUM (II)",substrate,EXCLUDE,medium,2026-01-25,Codex DROP fix,Ruthenium sensitizer complex
+P00183,CYP101A1 (P450cam),Pseudomonas putida,2ZAW,6HE,6-METHY-6-DEPROPIONATEHEMIN,unknown,EXCLUDE,high,2026-01-25,Codex PDB analysis,
+P00183,CYP101A1 (P450cam),Pseudomonas putida,6WFL,CAH,5-EXO-HYDROXYCAMPHOR,substrate,PRODUCT,high,2026-01-25,Codex PDB analysis,"Product of camphor hydroxylation, not substrate"
+P00183,CYP101A1 (P450cam),Pseudomonas putida,1PHB,PFZ,"1-(N-IMIDAZOLYL)-2-HYDROXY-2-(2,3-DICHLOROPHENYL)OCTANE",inhibitor,INHIBITOR,high,2026-01-25,Codex PDB analysis,
+P00183,CYP101A1 (P450cam),Pseudomonas putida,1PHG,MYT,METYRAPONE,inhibitor,INHIBITOR,high,2026-01-25,Codex PDB analysis,
+P00183,CYP101A1 (P450cam),Pseudomonas putida,1PHF,PIM,4-PHENYL-1H-IMIDAZOLE,inhibitor,INHIBITOR,high,2026-01-25,Codex PDB analysis,
+P00183,CYP101A1 (P450cam),Pseudomonas putida,1PHE,PIY,2-phenyl-1H-imidazole,inhibitor,INHIBITOR,high,2026-01-25,Codex PDB analysis,
+P00183,CYP101A1 (P450cam),Pseudomonas putida,1PHD,PIW,1-phenyl-1H-imidazole,inhibitor,INHIBITOR,high,2026-01-25,Codex PDB analysis,
+P00183,CYP101A1 (P450cam),Pseudomonas putida,1K2O,CAC,CACODYLATE ION,unknown,EXCLUDE,high,2026-01-25,Codex PDB analysis,
+P00183,CYP101A1 (P450cam),Pseudomonas putida,3OIA,A31,"N-{15-oxo-19-[(3aS,4S,6aR)-2-oxohexahydro-1H-thieno[3,4-d]imidazol-4-yl]-4,7,10-trioxa-14-azanonadec-1-yl}-N'-(8-{[(3S,5S,7S)-tricyclo[3.3.1.1~3,7~]dec-1-ylcarbonyl]amino}octyl)pentanediamide",substrate,EXCLUDE,med-high,2026-01-25,Codex DROP fix,Tethered probe
+P00183,CYP101A1 (P450cam),Pseudomonas putida,1K2O,RFA,"DELTA-BIS(2,2'-BIPYRIDINE)-(5-METHYL-2-2'-BIPYRIDINE)-C2-ADAMANTANE RUTHENIUM (II)",unknown,EXCLUDE,high,2026-01-25,Codex PDB analysis,
+P00183,CYP101A1 (P450cam),Pseudomonas putida,1K2O,RFB,"LAMBDA-BIS(2,2'-BIPYRIDINE)-(5-METHYL-2-2'-BIPYRIDINE)-C2-ADAMANTANE RUTHENIUM (II)",unknown,EXCLUDE,high,2026-01-25,Codex PDB analysis,
+P00183,CYP101A1 (P450cam),Pseudomonas putida,3P6X,C3Q,"N-[8-({[5-(dimethylamino)naphthalen-1-yl]sulfonyl}amino)octyl]-3-[(3S,5S,7S)-tricyclo[3.3.1.1~3,7~]dec-1-yl]propanamide",substrate,EXCLUDE,med-high,2026-01-25,Codex DROP fix,Dansyl probe
+P00183,CYP101A1 (P450cam),Pseudomonas putida,1GEK,NBN,N-BUTYL ISOCYANIDE,unknown,INHIBITOR,high,2026-01-25,Codex PDB analysis,
+P00183,CYP101A1 (P450cam),Pseudomonas putida,5GXG,FES,FE2/S2 (INORGANIC) CLUSTER,unknown,EXCLUDE,high,2026-01-25,Codex PDB analysis,
+P00183,CYP101A1 (P450cam),Pseudomonas putida,3OL5,SAW,"(1R,3S,5R,7S)-N-[8-({[5-(dimethylamino)naphthalen-1-yl]sulfonyl}amino)octyl]-3-hydroxytricyclo[3.3.1.1~3,7~]decane-1-carboxamide",substrate,EXCLUDE,med-high,2026-01-25,Codex DROP fix,Dansyl probe
+P00183,CYP101A1 (P450cam),Pseudomonas putida,2Z97,7HE,7-METHYL-7-DEPROPIONATEHEMIN,unknown,EXCLUDE,high,2026-01-25,Codex PDB analysis,
+P00183,CYP101A1 (P450cam),Pseudomonas putida,1RF9,DBR,ADAMANTANE-1-CARBOXYLIC ACID-5-DIMETHYLAMINO-NAPHTHALENE-1-SULFONYLAMINO-BUTYL-AMIDE,unknown,EXCLUDE,medium,2026-01-25,Codex DROP fix,Fluorescent probe
+P00183,CYP101A1 (P450cam),Pseudomonas putida,6CPP,CAE,CAMPHANE,substrate,SUBSTRATE,high,2026-01-25,Codex PDB analysis,
+P00183,CYP101A1 (P450cam),Pseudomonas putida,3P6P,A6B,"(3S,5S,7S)-N-[6-({5-[(3aS,4S,6aR)-2-oxohexahydro-1H-thieno[3,4-d]imidazol-4-yl]pentanoyl}amino)hexyl]tricyclo[3.3.1.1~3,7~]decane-1-carboxamide",substrate,EXCLUDE,med-high,2026-01-25,Codex DROP fix,Tethered probe
+P00183,CYP101A1 (P450cam),Pseudomonas putida,3P6T,SBF,"N-[8-({[5-(dimethylamino)naphthalen-1-yl]sulfonyl}amino)octyl]-2-[(3S,5S,7S)-tricyclo[3.3.1.1~3,7~]dec-1-yl]acetamide",substrate,EXCLUDE,med-high,2026-01-25,Codex DROP fix,Dansyl probe
+P00183,CYP101A1 (P450cam),Pseudomonas putida,1CP4,BNZ,BENZENE,unknown,INHIBITOR,med-high,2026-01-25,Codex PDB analysis,
+P00183,CYP101A1 (P450cam),Pseudomonas putida,1DZ9,O,OXYGEN ATOM,unknown,EXCLUDE,high,2026-01-25,Codex PDB analysis,
+P00183,CYP101A1 (P450cam),Pseudomonas putida,4EK1,MTN,"S-[(1-oxyl-2,2,5,5-tetramethyl-2,5-dihydro-1H-pyrrol-3-yl)methyl] methanesulfonothioate",unknown,EXCLUDE,high,2026-01-25,Codex PDB analysis,
+P00183,CYP101A1 (P450cam),Pseudomonas putida,1UYU,XE,XENON,unknown,EXCLUDE,high,2026-01-25,Codex PDB analysis,
+P00183,CYP101A1 (P450cam),Pseudomonas putida,7CPP,NCM,NORCAMPHOR,substrate,SUBSTRATE,high,2026-01-25,Codex PDB analysis,
+P00183,CYP101A1 (P450cam),Pseudomonas putida,4KKY,1T4,N-(pyren-1-yl)acetamide,substrate,EXCLUDE,high,2026-01-25,Codex PDB analysis,
+P00183,CYP101A1 (P450cam),Pseudomonas putida,3P6O,ETG,"(3S,5S,7S)-N-(2-{2-[2-({[5-(dimethylamino)naphthalen-1-yl]sulfonyl}amino)ethoxy]ethoxy}ethyl)tricyclo[3.3.1.1~3,7~]decane-1-carboxamide",substrate,EXCLUDE,med-high,2026-01-25,Codex DROP fix,PEG-Dansyl probe
+P00183,CYP101A1 (P450cam),Pseudomonas putida,5CPP,ADO,ADAMANTANONE,substrate,SUBSTRATE,med-high,2026-01-25,Codex PDB analysis,
+P00183,CYP101A1 (P450cam),Pseudomonas putida,4JX1,1N0,"1,1'-hexane-1,6-diyldipyrrolidine-2,5-dione",substrate,EXCLUDE,high,2026-01-25,Codex PDB analysis,
+P00183,CYP101A1 (P450cam),Pseudomonas putida,2H7R,1MZ,1-METHYLIMIDAZOLE,inhibitor,INHIBITOR,high,2026-01-25,Codex PDB analysis,
+P00183,CYP101A1 (P450cam),Pseudomonas putida,2GQX,5CL,"1,2,3,4,5-PENTACHLOROBENZENE",unknown,INHIBITOR,medium,2026-01-25,Codex DROP fix,Pentachlorobenzene
+P00183,CYP101A1 (P450cam),Pseudomonas putida,8CPP,TCM,THIOCAMPHOR,substrate,SUBSTRATE,high,2026-01-25,Codex PDB analysis,
+P00183,CYP101A1 (P450cam),Pseudomonas putida,4CPP,ADM,ADAMANTANE,substrate,SUBSTRATE,med-high,2026-01-25,Codex PDB analysis,
+P00183,CYP101A1 (P450cam),Pseudomonas putida,1J51,TCZ,"1,3,5-TRICHLORO-BENZENE",unknown,INHIBITOR,medium,2026-01-25,Codex DROP fix,Trichlorobenzene
+P00183,CYP101A1 (P450cam),Pseudomonas putida,1GJM,FEM,N-(2-FERROCENYLETHYL)MALEIMIDE,unknown,EXCLUDE,high,2026-01-25,Codex PDB analysis,
+P00183,CYP101A1 (P450cam),Pseudomonas putida,1P2Y,NCT,(S)-3-(1-METHYLPYRROLIDIN-2-YL)PYRIDINE,unknown,INHIBITOR,high,2026-01-25,Codex PDB analysis,
+P00183,CYP101A1 (P450cam),Pseudomonas putida,1MPW,TMH,(+)-alpha-Pinene,unknown,SUBSTRATE,med-high,2026-01-25,Codex PDB analysis,

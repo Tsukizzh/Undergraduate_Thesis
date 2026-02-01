@@ -1,0 +1,11 @@
+﻿uniprot_id,enzyme_name,organism,pdb_id,ligand_ccd,ligand_name,original_class,final_class,confidence,audit_date,audit_method,notes
+P11509,CYP2A6,Homo sapiens,2FDV,D2G,N-METHYL(5-(PYRIDIN-3-YL)FURAN-2-YL)METHANAMINE,inhibitor,INHIBITOR,high,2026-01-25,Codex PDB analysis,
+P11509,CYP2A6,Homo sapiens,2FDU,D1G,"N,N-DIMETHYL(5-(PYRIDIN-3-YL)FURAN-2-YL)METHANAMINE",inhibitor,INHIBITOR,high,2026-01-25,Codex PDB analysis,
+P11509,CYP2A6,Homo sapiens,1Z10,COU,COUMARIN,unknown,SUBSTRATE,high,2026-01-25,Codex PDB analysis,
+P11509,CYP2A6,Homo sapiens,2FDY,D4G,"4,4'-DIPYRIDYL DISULFIDE",inhibitor,INHIBITOR,high,2026-01-25,Codex PDB analysis,
+P11509,CYP2A6,Homo sapiens,1Z11,8MO,METHOXSALEN,unknown,INHIBITOR,high,2026-01-25,Codex PDB analysis,8-methoxypsoralen is a mechanism-based inactivator
+P11509,CYP2A6,Homo sapiens,2FDW,D3G,(5-(PYRIDIN-3-YL)FURAN-2-YL)METHANAMINE,inhibitor,INHIBITOR,high,2026-01-25,Codex PDB analysis,
+P11509,CYP2A6,Homo sapiens,3T3Q,9PL,"(3S,4R)-3-ethyl-4-[(1-methyl-1H-imidazol-5-yl)methyl]dihydrofuran-2(3H)-one",unknown,INHIBITOR,med-high,2026-01-25,Codex PDB analysis,
+P11509,CYP2A6,Homo sapiens,3EBS,N4E,N-(4-ethoxyphenyl)acetamide,unknown,SUBSTRATE,med-high,2026-01-25,Codex PDB analysis,
+P11509,CYP2A6,Homo sapiens,4EJJ,NCT,(S)-3-(1-METHYLPYRROLIDIN-2-YL)PYRIDINE,unknown,SUBSTRATE,high,2026-01-25,Codex PDB analysis,
+P11509,CYP2A6,Homo sapiens,4RUI,SNE,Sabinene,unknown,SUBSTRATE,medium,2026-01-25,Codex DROP fix,Sabinene terpene

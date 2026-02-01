@@ -1,0 +1,40 @@
+Step 4 CSV Format Fix Report
+Generated: 2026-01-29T08:29:24.436572
+==================================================
+
+Dataset: B1_仅底物_272pos
+  Rows: 272
+  Had BOM: True
+  Columns: ['Dock Index', 'Enzyme Index', 'Substrate Index', 'Label']
+  Issues: None
+
+Dataset: B2_底物正产物负_272pos23neg
+  Rows: 295
+  Had BOM: True
+  Columns: ['Dock Index', 'Enzyme Index', 'Substrate Index', 'Label']
+  Issues: None
+
+Dataset: B3_完整数据集_272pos267neg
+  Rows: 539
+  Had BOM: True
+  Columns: ['Dock Index', 'Enzyme Index', 'Substrate Index', 'Label']
+  Issues: None
+
+Dataset: B4_仅产物_23neg
+  Rows: 23
+  Had BOM: True
+  Columns: ['Dock Index', 'Enzyme Index', 'Substrate Index', 'Label']
+  Issues: None
+
+Dataset: B5_仅抑制剂_244neg
+  Rows: 244
+  Had BOM: True
+  Columns: ['Dock Index', 'Enzyme Index', 'Substrate Index', 'Label']
+  Issues: None
+
+Dataset: B6_底物正抑制剂负_272pos244neg
+  Rows: 516
+  Had BOM: True
+  Columns: ['Dock Index', 'Enzyme Index', 'Substrate Index', 'Label']
+  Issues: None
+

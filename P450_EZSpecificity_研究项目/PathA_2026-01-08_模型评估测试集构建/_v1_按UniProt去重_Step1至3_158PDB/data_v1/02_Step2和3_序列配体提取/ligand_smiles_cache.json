@@ -1,0 +1,538 @@
+{
+  "0QA": {
+    "name": "4-[methyl(nitroso)amino]-1-(pyridin-3-yl)butan-1-one",
+    "smiles": "CN(CCCC(=O)c1cccnc1)N=O"
+  },
+  "12H": {
+    "name": "12-HYDROXYDODECANOIC ACID",
+    "smiles": "OCCCCCCCCCCCC(O)=O"
+  },
+  "1BO": {
+    "name": "1-BUTANOL",
+    "smiles": "CCCCO"
+  },
+  "1G4": {
+    "name": "(3S,6S)-3,6-bis(4-hydroxybenzyl)piperazin-2-one",
+    "smiles": "Oc1ccc(C[C@H]2CN[C@@H](Cc3ccc(O)cc3)C(=O)N2)cc1"
+  },
+  "1YN": {
+    "name": "2-[(2R)-butan-2-yl]-4-{4-[4-(4-{[(2R,4S)-2-(2,4-dichlorophenyl)-2-(1H-1,2,4-triazol-1-ylmethyl)-1,3-dioxolan-4-yl]methoxy}phenyl)piperazin-1-yl]phenyl}-2,4-dihydro-3H-1,2,4-triazol-3-one",
+    "smiles": "CC[C@@H](C)N1N=CN(C1=O)c2ccc(cc2)N3CCN(CC3)c4ccc(OC[C@H]5CO[C@@](Cn6cncn6)(O5)c7ccc(Cl)cc7Cl)cc4"
+  },
+  "225": {
+    "name": "FELODIPINE",
+    "smiles": "CCOC(=O)C1=C(C)NC(=C([C@H]1c2cccc(Cl)c2Cl)C(=O)OC)C"
+  },
+  "231": {
+    "name": "4-PHENYL-1H-IMIDAZOLE",
+    "smiles": "[nH]1cnc(c1)c2ccccc2"
+  },
+  "26N": {
+    "name": "Nalpha-(2-fluoro-4-{4-[4-(trifluoromethyl)phenyl]piperazin-1-yl}benzoyl)-N-pyridin-4-yl-D-tryptophanamide",
+    "smiles": "Fc1cc(ccc1C(=O)N[C@H](Cc2c[nH]c3ccccc23)C(=O)Nc4ccncc4)N5CCN(CC5)c6ccc(cc6)C(F)(F)F"
+  },
+  "2IO": {
+    "name": "(3S,6S)-3,6-bis(2-methylpropyl)piperazine-2,5-dione",
+    "smiles": "CC(C)C[C@@H]1NC(=O)[C@H](CC(C)C)NC1=O"
+  },
+  "2OH": {
+    "name": "4,4'-PROPANE-2,2-DIYLDIPHENOL",
+    "smiles": "CC(C)(c1ccc(O)cc1)c2ccc(O)cc2"
+  },
+  "2UO": {
+    "name": "Mevastatin, Compactin",
+    "smiles": "CC[C@H](C)C(=O)O[C@H]1CCC=C2C=C[C@H](C)[C@H](CC[C@@H]3C[C@@H](O)CC(=O)O3)[C@@H]12"
+  },
+  "3I5": {
+    "name": "(3~{S},8~{a}~{S})-3-[(5-fluoranyl-1~{H}-indol-3-yl)methyl]-2,3,6,7,8,8~{a}-hexahydropyrrolo[1,2-a]pyrazine-1,4-dione",
+    "smiles": "Fc1ccc2[nH]cc(C[C@@H]3NC(=O)[C@@H]4CCCN4C3=O)c2c1"
+  },
+  "4UH": {
+    "name": " Amphotericin B",
+    "smiles": "C[C@H]1O[C@@H](O[C@@H]/2C[C@@H]3O[C@](O)(C[C@@H](O)C[C@@H](O)[C@H](O)CC[C@@H](O)C[C@@H](O)CC(=O)O[C@@H](C)[C@H](C)[C@H](O)[C@@H](C)\\C=C\\C=C\\C=C\\C=C\\C=C\\C=C\\C=C/2)C[C@H](O)[C@H]3C(O)=O)[C@@H](O)[C@@H](N)[C@@H]1O"
+  },
+  "5MK": {
+    "name": "2-azanyl-5-chloranyl-benzamide",
+    "smiles": "NC(=O)c1cc(Cl)ccc1N"
+  },
+  "5YG": {
+    "name": "~{N}-[(4-methoxyphenyl)methyl]-4-(pyridin-4-ylmethyl)aniline",
+    "smiles": "COc1ccc(CNc2ccc(Cc3ccncc3)cc2)cc1"
+  },
+  "6XD": {
+    "name": "1-(1-adamantyl)-3-(3-imidazol-1-ylpropyl)urea",
+    "smiles": "O=C(NCCCn1ccnc1)NC23CC4CC(CC(C4)C2)C3"
+  },
+  "85D": {
+    "name": "(1S,5R)-2-(bromomethyl)-6,6-dimethylbicyclo[3.1.1]hept-2-ene",
+    "smiles": "CC1(C)[C@@H]2CC=C(CBr)[C@H]1C2"
+  },
+  "88L": {
+    "name": "(4-ethylphenyl) dihydrogen phosphate",
+    "smiles": "CCc1ccc(O[P](O)(O)=O)cc1"
+  },
+  "9LF": {
+    "name": "(2S,12E,14E,16S,17S,18R,19R,20R,21S,22R,23S,24E)-21-(acetyloxy)-5,6,17,19-tetrahydroxy-23-methoxy-2,4,12,16,18,20,22-heptamethyl-1,11-dioxo-1,2-dihydro-2,7-(epoxypentadeca[1,11,13]trienoimino)naphtho[2,1-b]furan-9-yl hydroxyacetate",
+    "smiles": "CO[C@H]1\\C=C\\O[C@@]2(C)Oc3c(C)c(O)c4c(O)c(NC(=O)\\C(=C\\C=C\\[C@H](C)[C@H](O)[C@@H](C)[C@@H](O)[C@@H](C)[C@H](OC(C)=O)[C@@H]1C)C)cc(OC(=O)CO)c4c3C2=O"
+  },
+  "A1AB6": {
+    "name": "N-[(2S)-2-(2,4-difluorophenyl)-2-hydroxy-3-(1H-1,2,4-triazol-1-yl)propyl]-4'-(trifluoromethoxy)[1,1'-biphenyl]-4-carboxamide",
+    "smiles": "O[C@@](CNC(=O)c1ccc(cc1)c2ccc(OC(F)(F)F)cc2)(Cn3cncn3)c4ccc(F)cc4F"
+  },
+  "A1AZ7": {
+    "name": "Nystatin",
+    "smiles": "C[C@@H]1OC(=O)C[C@H](O)C[C@H](O)C[C@H](O)CC[C@@H](O)[C@H](O)C[C@]2(O)C[C@H](O)[C@H]([C@H](C[C@@H](O[C@@H]3O[C@H](C)[C@@H](O)[C@H](N)[C@@H]3O)\\C=C\\C=C\\C=C\\C=C\\CC\\C=C\\C=C\\[C@H](C)[C@@H](O)[C@H]1C)O2)C(O)=O"
+  },
+  "A1BNX": {
+    "name": "N'-(2-chlorophenyl)-N-[(3-hydroxyphenyl)methyl]-N-[(2P)-2-(1H-imidazol-1-yl)-5-(trifluoromethyl)phenyl]urea",
+    "smiles": "Oc1cccc(CN(C(=O)Nc2ccccc2Cl)c3cc(ccc3n4ccnc4)C(F)(F)F)c1"
+  },
+  "A1EGF": {
+    "name": "forazoline C",
+    "smiles": "C\\C=C(C)\\[C@H]1C/C=C/C=C(\\C)CC[C@@H](O)[C@@](C)(O)C(=S)\\C=C2/N[C@](C)([C@@H](O)S2)C3=N[C@@H](CS3)C(=O)O1"
+  },
+  "ANN": {
+    "name": "4-METHOXYBENZOIC ACID",
+    "smiles": "COc1ccc(cc1)C(O)=O"
+  },
+  "AUI": {
+    "name": "3-[(2E,6E,9R)-9-hydroxy-3,7,11-trimethyldodeca-2,6,10-trien-1-yl]-2-methylquinolin-4(1H)-one",
+    "smiles": "CC(C)=C[C@H](O)CC(/C)=C/CCC(/C)=C/CC1=C(C)Nc2ccccc2C1=O"
+  },
+  "B9L": {
+    "name": "N-[(2S)-1-hydroxy-3-(1H-indol-3-yl)propan-2-yl]-Nalpha-methyl-L-phenylalaninamide",
+    "smiles": "CN[C@@H](Cc1ccccc1)C(=O)N[C@H](CO)Cc2c[nH]c3ccccc23"
+  },
+  "B9R": {
+    "name": "N-[(2S)-1-hydroxy-3-(1H-indol-3-yl)propan-2-yl]-N~2~-methyl-L-valinamide",
+    "smiles": "CN[C@@H](C(C)C)C(=O)N[C@H](CO)Cc1c[nH]c2ccccc12"
+  },
+  "BCN": {
+    "name": "BICINE",
+    "smiles": "OCCN(CCO)CC(O)=O"
+  },
+  "BHF": {
+    "name": "2-PHENYL-4H-BENZO[H]CHROMEN-4-ONE",
+    "smiles": "O=C1C=C(Oc2c1ccc3ccccc23)c4ccccc4"
+  },
+  "BOG": {
+    "name": "octyl beta-D-glucopyranoside",
+    "smiles": "CCCCCCCCO[C@@H]1O[C@H](CO)[C@@H](O)[C@H](O)[C@H]1O"
+  },
+  "BR": {
+    "name": "BROMIDE ION",
+    "smiles": "[Br-]"
+  },
+  "BTB": {
+    "name": "2-[BIS-(2-HYDROXY-ETHYL)-AMINO]-2-HYDROXYMETHYL-PROPANE-1,3-DIOL",
+    "smiles": "OCCN(CCO)C(CO)(CO)CO"
+  },
+  "C0R": {
+    "name": "CORTICOSTERONE",
+    "smiles": "C[C@]12C[C@H](O)[C@H]3[C@@H](CCC4=CC(=O)CC[C@]34C)[C@@H]1CC[C@@H]2C(=O)CO"
+  },
+  "C4O": {
+    "name": "1-chloranyl-4-methyl-benzene",
+    "smiles": "Cc1ccc(Cl)cc1"
+  },
+  "C8B": {
+    "name": "(3~{R},6~{S})-1,4-dimethyl-6-[(4-nitro-1~{H}-indol-3-yl)methyl]-3-oxidanyl-3-(phenylmethyl)piperazine-2,5-dione",
+    "smiles": "CN1[C@@H](Cc2c[nH]c3cccc(c23)[N+]([O-])=O)C(=O)N(C)[C@@](O)(Cc4ccccc4)C1=O"
+  },
+  "CAH": {
+    "name": "5-EXO-HYDROXYCAMPHOR",
+    "smiles": "CC1(C)[C@H]2CC(=O)[C@]1(C)C[C@H]2O"
+  },
+  "CAM": {
+    "name": "CAMPHOR",
+    "smiles": "CC1(C)[C@@H]2CC[C@@]1(C)C(=O)C2"
+  },
+  "CGM": {
+    "name": "(4R,5S,6S,7R,9R,11E,13E,15S,16R)-16-ethyl-4-hydroxy-5,9,13,15-tetramethyl-2,10-dioxo-7-(2-oxoethyl)-1-oxacyclohexadeca-11,13-dien-6-yl 3,6-dideoxy-3-(dimethylamino)-beta-D-glucopyranoside",
+    "smiles": "CC[C@H]1OC(=O)C[C@@H](O)[C@H](C)[C@@H](O[C@@H]2O[C@H](C)[C@@H](O)[C@@H]([C@H]2O)N(C)C)[C@@H](CC=O)C[C@@H](C)C(=O)\\C=C\\C(=C\\[C@@H]1C)C"
+  },
+  "CHD": {
+    "name": "CHOLIC ACID",
+    "smiles": "C[C@H](CCC(O)=O)[C@H]1CC[C@H]2[C@@H]3[C@H](O)C[C@@H]4C[C@H](O)CC[C@]4(C)[C@H]3C[C@H](O)[C@]12C"
+  },
+  "CL6": {
+    "name": "1-[(2-CHLOROPHENYL)(DIPHENYL)METHYL]-1H-IMIDAZOLE",
+    "smiles": "Clc1ccccc1C(n2ccnc2)(c3ccccc3)c4ccccc4"
+  },
+  "CLR": {
+    "name": "CHOLESTEROL",
+    "smiles": "CC(C)CCC[C@@H](C)[C@H]1CC[C@H]2[C@@H]3CC=C4C[C@@H](O)CC[C@]4(C)[C@H]3CC[C@]12C"
+  },
+  "CM5": {
+    "name": "5-CYCLOHEXYL-1-PENTYL-BETA-D-MALTOSIDE",
+    "smiles": "OC[C@H]1O[C@H](O[C@H]2[C@H](O)[C@@H](O)[C@H](OCCCCCC3CCCCC3)O[C@@H]2CO)[C@H](O)[C@@H](O)[C@@H]1O"
+  },
+  "CM6": {
+    "name": "(2S)-2-[(2,1,3-BENZOTHIADIAZOL-4-YLSULFONYL)AMINO]-2-PHENYL-N-PYRIDIN-4-YLACETAMIDE",
+    "smiles": "O=C(Nc1ccncc1)[C@@H](N[S](=O)(=O)c2cccc3nsnc23)c4ccccc4"
+  },
+  "CPZ": {
+    "name": "4-(4-CHLOROPHENYL)IMIDAZOLE",
+    "smiles": "Clc1ccc(cc1)c2[nH]cnc2"
+  },
+  "D12": {
+    "name": "DODECANE",
+    "smiles": "CCCCCCCCCCCC"
+  },
+  "D2G": {
+    "name": "N-METHYL(5-(PYRIDIN-3-YL)FURAN-2-YL)METHANAMINE",
+    "smiles": "CNCc1oc(cc1)c2cccnc2"
+  },
+  "D8L": {
+    "name": "(2R)-3-(1H-indol-3-yl)-2-methylsulfanyl-propanoic acid",
+    "smiles": "CS[C@H](Cc1c[nH]c2ccccc12)C(O)=O"
+  },
+  "DAO": {
+    "name": "LAURIC ACID",
+    "smiles": "CCCCCCCCCCCC(O)=O"
+  },
+  "DCR": {
+    "name": "icosanoic acid",
+    "smiles": "CCCCCCCCCCCCCCCCCCCC(O)=O"
+  },
+  "DEB": {
+    "name": "6-DEOXYERYTHRONOLIDE B",
+    "smiles": "CC[C@H]1OC(=O)[C@H](C)[C@@H](O)[C@H](C)[C@@H](O)[C@@H](C)C[C@@H](C)C(=O)[C@H](C)[C@@H](O)[C@H]1C"
+  },
+  "DIF": {
+    "name": "2-[2,6-DICHLOROPHENYL)AMINO]BENZENEACETIC ACID",
+    "smiles": "OC(=O)Cc1ccccc1Nc2c(Cl)cccc2Cl"
+  },
+  "DIO": {
+    "name": "1,4-DIETHYLENE DIOXIDE",
+    "smiles": "C1COCCO1"
+  },
+  "DTV": {
+    "name": "(2S,3S)-1,4-DIMERCAPTOBUTANE-2,3-DIOL",
+    "smiles": "O[C@H](CS)[C@H](O)CS"
+  },
+  "DXJ": {
+    "name": "(3E,5E)-6,10-dimethylundeca-3,5,9-trien-2-one",
+    "smiles": "CC(C)=CCC\\C(C)=C\\C=C\\C(C)=O"
+  },
+  "E53": {
+    "name": "Everolimus",
+    "smiles": "CO[C@H]1C[C@@H](CC[C@H]1OCCO)C[C@H](C)[C@@H]2CC(=O)[C@H](C)\\C=C(/C)[C@@H](O)[C@H](OC)C(=O)[C@H](C)C[C@H](C)\\C=C/C=C\\C=C(\\C)[C@@H](C[C@H]3CC[C@H](C)[C@](O)(O3)C(=O)C(=O)N4CCCC[C@@H]4C(=O)O2)OC"
+  },
+  "E5I": {
+    "name": "(1Z,3E,5S,8R,9S,10S,11R,13R,15R,16S,18Z,24S,25S)-11-ethyl-2,24-dihydroxy-10-methyl-21,26-diazapentacyclo[23.2.1.09,13.08,15.05,16]octacosa-1(2),3,18-triene-7,20,27,28-tetraone",
+    "smiles": "CC[C@@H]1C[C@@H]2C[C@@H]3[C@H]4C\\C=C/C(=O)NCC[C@H](O)[C@@H]5NC(=O)\\C(=C(O)\\C=C\\[C@@H]4CC(=O)[C@H]3[C@@H]2[C@H]1C)C5=O"
+  },
+  "EFO": {
+    "name": "Oligomycin A",
+    "smiles": "CC[C@@H]/1CC[C@@H]2O[C@]3(CC[C@H](C)[C@H](C[C@@H](C)O)O3)[C@@H](C)[C@H](OC(=O)/C=C/[C@H](C)[C@@H](O)[C@H](C)C(=O)[C@H](C)[C@@H](O)[C@H](C)C(=O)[C@](C)(O)[C@@H](O)[C@H](C)C\\C=C\\C=C/1)[C@@H]2C"
+  },
+  "EGM": {
+    "name": "4-ethylbenzoic acid",
+    "smiles": "CCc1ccc(cc1)C(O)=O"
+  },
+  "EIA": {
+    "name": "(1Z,3E,5S,7R,8R,10R,11R,12S,15R,16S,18Z,25S)-11-ethyl-2-hydroxy-10-methyl-21,26-diazapentacyclo[23.2.1.05,16.07,15.08,12]octacosa-1(2),3,13,18-tetraene-20,27,28-trione",
+    "smiles": "CC[C@@H]1[C@H](C)C[C@@H]2[C@H]3C[C@H]4/C=C/C(=C5/C(=O)N[C@@H](CCCNC(=O)\\C=C/C[C@@H]4[C@H]3C=C[C@@H]12)C5=O)O"
+  },
+  "ELA": {
+    "name": "Elaidic acid",
+    "smiles": "CCCCCCCC/C=C/CCCCCCCC(O)=O"
+  },
+  "EMZ": {
+    "name": "6-O-methyl-beta-D-galactopyranose",
+    "smiles": "COC[C@H]1O[C@@H](O)[C@H](O)[C@@H](O)[C@H]1O"
+  },
+  "EPA": {
+    "name": "5,8,11,14,17-EICOSAPENTAENOIC ACID",
+    "smiles": "CC\\C=C/C/C=C\\C\\C=C/C/C=C\\C\\C=C/CCCC(O)=O"
+  },
+  "EPB": {
+    "name": "7,11-DIHYDROXY-8,8,10,12,16-PENTAMETHYL-3-[1-METHYL-2-(2-METHYL-THIAZOL-4-YL)VINYL]-4,17-DIOXABICYCLO[14.1.0]HEPTADECANE-5,9-DIONE",
+    "smiles": "C[C@H]1CCC[C@@]2(C)O[C@H]2C[C@H](OC(=O)C[C@H](O)C(C)(C)C(=O)[C@H](C)[C@H]1O)\\C(C)=C\\c3csc(C)n3"
+  },
+  "EV1": {
+    "name": "1-(3,4-DIMETHOXYBENZYL)-6,7-DIMETHOXYISOQUINOLINE",
+    "smiles": "COc1ccc(Cc2nccc3cc(OC)c(OC)cc23)cc1OC"
+  },
+  "F3S": {
+    "name": "FE3-S4 CLUSTER",
+    "smiles": "S1[Fe]S[Fe]2S[Fe]1S2"
+  },
+  "F4O": {
+    "name": "6-methoxy-streptovaricin C",
+    "smiles": "COC(=O)[C@@H]1[C@H](O)[C@H](C)[C@H](O)[C@H](C)/C=C\\C=C(C)\\C(=O)Nc2c(C)c(OC(C)=O)c3c(c(O)c(C)c(OC)c3C(=O)\\C(=C\\[C@@](C)(O)[C@@H](O)[C@@H](C)[C@H]1O)C)c2O"
+  },
+  "FES": {
+    "name": "FE2/S2 (INORGANIC) CLUSTER",
+    "smiles": "S1[Fe]S[Fe]1"
+  },
+  "FJQ": {
+    "name": "Tioconazole",
+    "smiles": "Clc1ccc([C@H](Cn2ccnc2)OCc3ccsc3Cl)c(Cl)c1"
+  },
+  "FLI": {
+    "name": "(3R,4S,6S,8S,10R,12R,14R,16S,17E,19E,21E,23E,25E,28R)-3-hexyl-4,6,8,10,12,14,16-heptahydroxy-17,28-dimethyloxacyclooctacosa-17,19,21,23,25-pentaen-2-one",
+    "smiles": "CCCCCC[C@@H]1[C@@H](O)C[C@@H](O)C[C@@H](O)C[C@@H](O)C[C@@H](O)C[C@@H](O)C[C@H](O)\\C(=C\\C=C\\C=C\\C=C\\C=C\\C[C@@H](C)OC1=O)C"
+  },
+  "FLP": {
+    "name": "FLURBIPROFEN",
+    "smiles": "C[C@H](C(O)=O)c1ccc(c(F)c1)c2ccccc2"
+  },
+  "FOF": {
+    "name": "(2E,6E)-3,7,11-trimethyldodeca-2,6,10-trien-1-ol",
+    "smiles": "CC(C)=CCC\\C(C)=C\\CC/C(C)=C/CO"
+  },
+  "HIS": {
+    "name": "HISTIDINE",
+    "smiles": "N[C@@H](Cc1c[nH]c[nH+]1)C(O)=O"
+  },
+  "HO2": {
+    "name": "(9E,11E,13S)-13-hydroxyoctadeca-9,11-dienoic acid",
+    "smiles": "CCCCC[C@H](O)/C=C/C=C/CCCCCCCC(O)=O"
+  },
+  "HPA": {
+    "name": "HYPOXANTHINE",
+    "smiles": "O=C1NC=Nc2nc[nH]c12"
+  },
+  "HTG": {
+    "name": "heptyl 1-thio-beta-D-glucopyranoside",
+    "smiles": "CCCCCCCS[C@@H]1O[C@H](CO)[C@@H](O)[C@H](O)[C@H]1O"
+  },
+  "HX2": {
+    "name": "(2R,5R)-hexane-2,5-diol",
+    "smiles": "C[C@@H](O)CC[C@@H](C)O"
+  },
+  "II4": {
+    "name": "1-(3-METHYLPHENYL)-1H-BENZIMIDAZOL-5-AMINE",
+    "smiles": "Cc1cccc(c1)n2cnc3cc(N)ccc23"
+  },
+  "IMD": {
+    "name": "IMIDAZOLE",
+    "smiles": "[nH]1cc[nH+]c1"
+  },
+  "JDJ": {
+    "name": "23-[4-(2,4,4-trimethylpentan-2-yl)phenoxy]-3,6,9,12,15,18,21-heptaoxatricosan-1-ol",
+    "smiles": "CC(C)(C)CC(C)(C)c1ccc(OCCOCCOCCOCCOCCOCCOCCOCCO)cc1"
+  },
+  "JZ3": {
+    "name": "Guaiacol",
+    "smiles": "COc1ccccc1O"
+  },
+  "K2B": {
+    "name": "(8ALPHA,9BETA)-CHOLEST-4-EN-3-ONE",
+    "smiles": "CC(C)CCC[C@@H](C)[C@H]1CC[C@H]2[C@@H]3CCC4=CC(=O)CC[C@]4(C)[C@H]3CC[C@]12C"
+  },
+  "KH4": {
+    "name": "S-[2-({N-[(2R)-2-hydroxy-3,3-dimethyl-4-(phosphonooxy)butanoyl]-beta-alanyl}amino)ethyl] 1H-imidazole-4-carbothioate",
+    "smiles": "CC(C)(CO[P](O)(O)=O)[C@@H](O)C(=O)NCCC(=O)NCCSC(=O)c1c[nH]cn1"
+  },
+  "LFV": {
+    "name": "N-[(1R)-1-(2,4-dichlorophenyl)-2-(1H-imidazol-1-yl)ethyl]-4-{5-[2-fluoro-4-(2,2,2-trifluoroethoxy)phenyl]-1,3,4-oxadiazol-2-yl}benzamide",
+    "smiles": "Fc1cc(OCC(F)(F)F)ccc1c2oc(nn2)c3ccc(cc3)C(=O)N[C@@H](Cn4ccnc4)c5ccc(Cl)cc5Cl"
+  },
+  "LI": {
+    "name": "LITHIUM ION",
+    "smiles": "[Li+]"
+  },
+  "LMT": {
+    "name": "DODECYL-BETA-D-MALTOSIDE",
+    "smiles": "CCCCCCCCCCCCO[C@@H]1O[C@H](CO)[C@@H](O[C@H]2O[C@H](CO)[C@@H](O)[C@H](O)[C@H]2O)[C@H](O)[C@H]1O"
+  },
+  "LZ1": {
+    "name": "1H-indazole",
+    "smiles": "[nH]1ncc2ccccc12"
+  },
+  "M65": {
+    "name": "ethyl 7-imidazol-1-ylheptanoate",
+    "smiles": "CCOC(=O)CCCCCCn1ccnc1"
+  },
+  "MXD": {
+    "name": "6-PIPERIDIN-1-YLPYRIMIDINE-2,4-DIAMINE 3-OXIDE",
+    "smiles": "Nc1cc(nc(N)[n+]1[O-])N2CCCCC2"
+  },
+  "MY8": {
+    "name": "Mycinamicin VIII",
+    "smiles": "CC[C@H]1OC(=O)/C=C/[C@H](C)[C@@H](O[C@@H]2O[C@H](C)C[C@@H]([C@H]2O)N(C)C)[C@@H](C)C[C@@H](C)[C@H](O)/C=C/C=C/[C@@H]1C"
+  },
+  "MYR": {
+    "name": "MYRISTIC ACID",
+    "smiles": "CCCCCCCCCCCCCC(O)=O"
+  },
+  "MYT": {
+    "name": "METYRAPONE",
+    "smiles": "CC(C)(c1cccnc1)C(=O)c2cccnc2"
+  },
+  "MYV": {
+    "name": "MYCINAMICIN V",
+    "smiles": "CC[C@H]1OC(=O)\\C=C\\[C@H](C)[C@@H](O[C@@H]2O[C@H](C)C[C@@H]([C@H]2O)N(C)C)[C@@H](C)C[C@@H](C)C(=O)\\C=C\\C=C\\[C@]1(O)CO[C@@H]3O[C@H](C)[C@@H](O)[C@@H](OC)[C@H]3OC"
+  },
+  "NE4": {
+    "name": "(8alpha,9beta,10alpha,13alpha)-kaur-16-en-18-oic acid",
+    "smiles": "C[C@@]12CCC[C@](C)([C@H]1CC[C@@]34C[C@@H](CC[C@@H]23)C(=C)C4)C(O)=O"
+  },
+  "NO": {
+    "name": "NITRIC OXIDE",
+    "smiles": "[N]=O"
+  },
+  "OCA": {
+    "name": "OCTANOIC ACID (CAPRYLIC ACID)",
+    "smiles": "CCCCCCCC(O)=O"
+  },
+  "OCT": {
+    "name": "N-OCTANE",
+    "smiles": "CCCCCCCC"
+  },
+  "OLA": {
+    "name": "OLEIC ACID",
+    "smiles": "CCCCCCCC\\C=C/CCCCCCCC(O)=O"
+  },
+  "P33": {
+    "name": "3,6,9,12,15,18-HEXAOXAICOSANE-1,20-DIOL",
+    "smiles": "OCCOCCOCCOCCOCCOCCOCCO"
+  },
+  "P3Z": {
+    "name": "(S)-cyclopropyl(4-methoxyphenyl)pyrimidin-5-ylmethanol",
+    "smiles": "COc1ccc(cc1)[C@@](O)(C2CC2)c3cncnc3"
+  },
+  "PAM": {
+    "name": "PALMITOLEIC ACID",
+    "smiles": "CCCCCC\\C=C/CCCCCCCC(O)=O"
+  },
+  "PEO": {
+    "name": "HYDROGEN PEROXIDE",
+    "smiles": "OO"
+  },
+  "PIM": {
+    "name": "4-PHENYL-1H-IMIDAZOLE",
+    "smiles": "[nH]1cncc1c2ccccc2"
+  },
+  "PLM": {
+    "name": "PALMITIC ACID",
+    "smiles": "CCCCCCCCCCCCCCCC(O)=O"
+  },
+  "PP9": {
+    "name": "PROTOPORPHYRIN IX",
+    "smiles": "Cc1c2[nH]c(cc3nc(cc4[nH]c(cc5nc(c2)c(C)c5C=C)c(C)c4C=C)c(C)c3CCC(O)=O)c1CCC(O)=O"
+  },
+  "PXI": {
+    "name": "4-{[4-(DIMETHYLAMINO)-3-HYDROXY-6-METHYLTETRAHYDRO-2H-PYRAN-2-YL]OXY}-12-ETHYL-3,5,7,11-TETRAMETHYLOXACYCLODODEC-9-ENE-2,8-DIONE",
+    "smiles": "CC[C@H]1OC(=O)[C@H](C)[C@@H](O[C@H]2O[C@@H](C)C[C@H]([C@@H]2O)N(C)C)[C@@H](C)C[C@H](C)C(=O)\\C=C\\[C@H]1C"
+  },
+  "RAM": {
+    "name": "alpha-L-rhamnopyranose",
+    "smiles": "C[C@@H]1O[C@@H](O)[C@H](O)[C@H](O)[C@H]1O"
+  },
+  "REA": {
+    "name": "RETINOIC ACID",
+    "smiles": "CC1=C(\\C=C\\C(C)=C\\C=C\\C(C)=C\\C(O)=O)C(C)(C)CCC1"
+  },
+  "RET": {
+    "name": "RETINAL",
+    "smiles": "CC(=C\\C=O)/C=C/C=C(C)/C=C/C1=C(C)CCCC1(C)C"
+  },
+  "RRM": {
+    "name": "(2E,4S,5S,6E,8E)-10-{(2R,3S,6S,8R,9S)-9-butyl-8-[(1E,3E)-4-carboxy-3-methylbuta-1,3-dien-1-yl]-3-methyl-1,7-dioxaspiro[5.5]undec-2-yl}-5-hydroxy-4,8-dimethyldeca-2,6,8-trienoic acid",
+    "smiles": "CCCC[C@H]1CC[C@]2(CC[C@H](C)[C@@H](C/C=C(C)/C=C/[C@H](O)[C@@H](C)/C=C/C(O)=O)O2)O[C@H]1/C=C/C(C)=C/C(O)=O"
+  },
+  "RT8": {
+    "name": "NALPHA-[(TRANS-4-METHYLCYCLOHEXYL)CARBONYL]-N-PYRIDIN-4-YL-D-TRYPTOPHANAMIDE",
+    "smiles": "C[C@@H]1CC[C@H](CC1)C(=O)N[C@H](Cc2c[nH]c3ccccc23)C(=O)Nc4ccncc4"
+  },
+  "RTZ": {
+    "name": "10-{2-[(2R)-1-methylpiperidin-2-yl]ethyl}-2-(methylsulfanyl)-10H-phenothiazine",
+    "smiles": "CSc1ccc2Sc3ccccc3N(CC[C@H]4CCCCN4C)c2c1"
+  },
+  "SCN": {
+    "name": "THIOCYANATE ION",
+    "smiles": "[S-]C#N"
+  },
+  "SER": {
+    "name": "SERINE",
+    "smiles": "N[C@@H](CO)C(O)=O"
+  },
+  "SPD": {
+    "name": "SPERMIDINE",
+    "smiles": "NCCCCNCCCN"
+  },
+  "SRT": {
+    "name": "S,R MESO-TARTARIC ACID",
+    "smiles": "O[C@@H]([C@@H](O)C(O)=O)C(O)=O"
+  },
+  "STR": {
+    "name": "PROGESTERONE",
+    "smiles": "CC(=O)[C@H]1CC[C@H]2[C@@H]3CCC4=CC(=O)CC[C@]4(C)[C@H]3CC[C@]12C"
+  },
+  "T25": {
+    "name": "(9Z)-11-[(2R,3S)-3-pentyloxiran-2-yl]undec-9-enoic acid",
+    "smiles": "CCCCC[C@@H]1O[C@@H]1C\\C=C/CCCCCCCC(O)=O"
+  },
+  "TAM": {
+    "name": "TRIS(HYDROXYETHYL)AMINOMETHANE",
+    "smiles": "NC(CCO)(CCO)CCO"
+  },
+  "TES": {
+    "name": "TESTOSTERONE",
+    "smiles": "C[C@]12CC[C@H]3[C@@H](CCC4=CC(=O)CC[C@]34C)[C@@H]1CC[C@@H]2O"
+  },
+  "U51": {
+    "name": "(5Z)-7-{(1R,4S,5R,6R)-6-[(1E)-oct-1-en-1-yl]-2,3-diazabicyclo[2.2.1]hept-2-en-5-yl}hept-5-enoic acid",
+    "smiles": "CCCCCC\\C=C\\[C@H]1[C@H]2C[C@H](N=N2)[C@@H]1C\\C=C/CCCC(O)=O"
+  },
+  "UB9": {
+    "name": "2,6-dimethoxy-4-methylphenol",
+    "smiles": "COc1cc(C)cc(OC)c1O"
+  },
+  "UYG": {
+    "name": "(3S,6S)-3-[(1H-indol-3-yl)methyl]-6-(propan-2-yl)piperazine-2,5-dione",
+    "smiles": "CC(C)[C@@H]1NC(=O)[C@H](Cc2c[nH]c3ccccc23)NC1=O"
+  },
+  "V0A": {
+    "name": "(3E)-3-{(2E,4E,6R)-1-hydroxy-4-methyl-6-[(1R,3R,4S,5R)-1,4,8-trimethyl-2,9-dioxabicyclo[3.3.1]non-7-en-3-yl]hepta-2,4-dien-1-ylidene}-2H-pyrrole-2,4(3H)-dione",
+    "smiles": "C[C@H](/C=C(C)/C=C/C(O)=C1/C(=O)C=NC1=O)[C@H]2O[C@@]3(C)O[C@H](CC=C3C)[C@@H]2C"
+  },
+  "V55": {
+    "name": "4-hydroxy-3-methoxybenzaldehyde",
+    "smiles": "COc1cc(C=O)ccc1O"
+  },
+  "VI4": {
+    "name": "13-(3-Amino-2,3,6-trideoxy-alpha-L-ribo-hexopyranosyl)-6,7,12,13-tetrahydro-5H-indolo[2,3-a]pyrrolo[3,4-c]carbazol-5-one",
+    "smiles": "C[C@@H]1O[C@H](C[C@@H](N)[C@H]1O)n2c3ccccc3c4c2c5[nH]c6ccccc6c5c7CNC(=O)c47"
+  },
+  "VNT": {
+    "name": "N-[(1R)-1-(2,4-dichlorophenyl)-2-(1H-1,2,4-triazol-1-yl)ethyl]-4-(5-phenyl-1,3,4-oxadiazol-2-yl)benzamide",
+    "smiles": "Clc1ccc([C@H](Cn2cncn2)NC(=O)c3ccc(cc3)c4oc(nn4)c5ccccc5)c(Cl)c1"
+  },
+  "VT1": {
+    "name": "(R)-2-(2,4-Difluorophenyl)-1,1-difluoro-3-(1H-tetrazol-1-yl)-1-(5-(4-(2,2,2-trifluoroethoxy)phenyl)pyridin-2-yl)propan-2-ol",
+    "smiles": "O[C@@](Cn1cnnn1)(c2ccc(F)cc2F)C(F)(F)c3ccc(cn3)c4ccc(OCC(F)(F)F)cc4"
+  },
+  "W2L": {
+    "name": "(4~{S},6~{S})-4,6-dimethyloctanoic acid",
+    "smiles": "CC[C@H](C)C[C@@H](C)CCC(O)=O"
+  },
+  "WAA": {
+    "name": "(2S)-2-[[(1R,4aR,4bR,10aR)-1,4a-dimethyl-7-propan-2-yl-2,3,4,4b,5,6,10,10a-octahydrophenanthren-1-yl]carbonylamino]-3-(\n1H-indol-3-yl)propanoic acid",
+    "smiles": "CC(C)C1=CC2=CC[C@@H]3[C@](C)(CCC[C@@]3(C)C(=O)N[C@@H](Cc4c[nH]c5ccccc45)C(O)=O)[C@H]2CC1"
+  },
+  "X2N": {
+    "name": "POSACONAZOLE",
+    "smiles": "CC[C@@H]([C@H](C)O)N1N=CN(C1=O)c2ccc(cc2)N3CCN(CC3)c4ccc(OC[C@@H]5CO[C@@](C5)(Cn6cncn6)c7ccc(F)cc7F)cc4"
+  },
+  "XBK": {
+    "name": "4,5-DE-EPOXYPIMARICIN",
+    "smiles": "C[C@@H]1C/C=C/C=C/C=C/C=C/[C@@H](C[C@@H]2O[C@](O)(C[C@@H](O)C/C=C/C=C/C(=O)O1)C[C@H](O)[C@H]2C(O)=O)O[C@@H]3O[C@H](C)[C@@H](O)[C@H](N)[C@@H]3O"
+  },
+  "XGE": {
+    "name": "alpha-TERPINEOL",
+    "smiles": "CC1=CC[C@H](CC1)C(C)(C)O"
+  },
+  "YTT": {
+    "name": "(3S,6S)-3,6-bis(4-hydroxybenzyl)piperazine-2,5-dione",
+    "smiles": "Oc1ccc(C[C@@H]2NC(=O)[C@H](Cc3ccc(O)cc3)NC2=O)cc1"
+  },
+  "ZMP": {
+    "name": "S-[2-({N-[(2S)-2-hydroxy-3,3-dimethyl-4-(phosphonooxy)butanoyl]-beta-alanyl}amino)ethyl] tetradecanethioate",
+    "smiles": "CCCCCCCCCCCCCC(=O)SCCNC(=O)CCNC(=O)[C@@H](O)C(C)(C)CO[P](O)(O)=O"
+  }
+}

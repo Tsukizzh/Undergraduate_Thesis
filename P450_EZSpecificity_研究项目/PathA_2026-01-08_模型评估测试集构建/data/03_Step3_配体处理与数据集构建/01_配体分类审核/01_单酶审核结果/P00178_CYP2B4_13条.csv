@@ -1,0 +1,14 @@
+﻿uniprot_id,enzyme_name,organism,pdb_id,ligand_ccd,ligand_name,original_class,final_class,confidence,audit_date,audit_method,notes
+P00178,CYP2B4,Oryctolagus cuniculus,3MVR,CM5,5-CYCLOHEXYL-1-PENTYL-BETA-D-MALTOSIDE,unknown,EXCLUDE,very high,2026-01-25,Codex two-round debate,
+P00178,CYP2B4,Oryctolagus cuniculus,1SUO,CPZ,4-(4-CHLOROPHENYL)IMIDAZOLE,inhibitor,INHIBITOR,very high,2026-01-25,Codex two-round debate,
+P00178,CYP2B4,Oryctolagus cuniculus,4JLT,8PR,Paroxetine,unknown,INHIBITOR,low-medium,2026-01-25,Codex DROP fix,Paroxetine
+P00178,CYP2B4,Oryctolagus cuniculus,3TMZ,06X,Amlodipine,unknown,SUBSTRATE,medium,2026-01-25,Codex DROP fix,Amlodipine
+P00178,CYP2B4,Oryctolagus cuniculus,2BDM,TMI,1-[PHENYL-(4-PHENYLPHENYL)-METHYL]IMIDAZOLE,inhibitor,INHIBITOR,very high,2026-01-25,Codex two-round debate,
+P00178,CYP2B4,Oryctolagus cuniculus,5IUT,32M,"3,6,9,12,15,18-hexaoxahexacosan-1-ol",product,EXCLUDE,high,2026-01-25,Codex two-round debate,
+P00178,CYP2B4,Oryctolagus cuniculus,3G5N,PB2,1-(biphenyl-4-ylmethyl)-1H-imidazole,inhibitor,INHIBITOR,very high,2026-01-25,Codex two-round debate,
+P00178,CYP2B4,Oryctolagus cuniculus,3KW4,TIC,ticlopidine,unknown,SUBSTRATE,medium,2026-01-25,Codex two-round debate,
+P00178,CYP2B4,Oryctolagus cuniculus,3KW4,CH0,"2-{[(3alpha,5alpha,7alpha,8alpha,10alpha,12alpha,17alpha)-3,12-bis{2-[(4-O-alpha-D-glucopyranosyl-beta-D-glucopyranosyl)oxy]ethoxy}cholan-7-yl]oxy}ethyl 4-O-alpha-D-glucopyranosyl-beta-D-glucopyranoside",unknown,EXCLUDE,high,2026-01-25,Codex two-round debate,
+P00178,CYP2B4,Oryctolagus cuniculus,3UAS,0BV,phenanthren-9-ylacetaldehyde,unknown,PRODUCT,very high,2026-01-25,Codex two-round debate,
+P00178,CYP2B4,Oryctolagus cuniculus,3UAS,TAM,TRIS(HYDROXYETHYL)AMINOMETHANE,unknown,EXCLUDE,very high,2026-01-25,Codex two-round debate,
+P00178,CYP2B4,Oryctolagus cuniculus,4H1N,CGE,Clopidogrel,unknown,SUBSTRATE,medium-high,2026-01-25,Codex two-round debate,
+P00178,CYP2B4,Oryctolagus cuniculus,3R1B,TB2,(4-tert-butylphenyl)acetaldehyde,unknown,PRODUCT,very high,2026-01-25,Codex two-round debate,

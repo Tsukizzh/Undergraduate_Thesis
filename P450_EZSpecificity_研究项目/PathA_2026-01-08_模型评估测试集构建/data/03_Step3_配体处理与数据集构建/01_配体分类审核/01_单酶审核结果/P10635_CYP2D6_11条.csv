@@ -1,0 +1,12 @@
+﻿uniprot_id,enzyme_name,organism,pdb_id,ligand_ccd,ligand_name,original_class,final_class,confidence,audit_date,audit_method,notes
+P10635,CYP2D6,Homo sapiens,3TBG,RTZ,10-{2-[(2R)-1-methylpiperidin-2-yl]ethyl}-2-(methylsulfanyl)-10H-phenothiazine,unknown,SUBSTRATE,high,2026-01-25,Codex one-round,
+P10635,CYP2D6,Homo sapiens,4WNU,QDN,Quinidine,unknown,INHIBITOR,very high,2026-01-25,Codex one-round,
+P10635,CYP2D6,Homo sapiens,4WNV,QI9,Quinine,unknown,SUBSTRATE,medium-high,2026-01-25,Codex one-round,
+P10635,CYP2D6,Homo sapiens,6CSD,PN0,Prinomastat,unknown,SUBSTRATE,medium,2026-01-25,Codex DROP fix,Prinomastat
+P10635,CYP2D6,Homo sapiens,6CSD,CPS,3-[(3-CHOLAMIDOPROPYL)DIMETHYLAMMONIO]-1-PROPANESULFONATE,unknown,EXCLUDE,very high,2026-01-25,Codex one-round,
+P10635,CYP2D6,Homo sapiens,6CSB,2CV,HEGA-10,unknown,EXCLUDE,very high,2026-01-25,Codex one-round,
+P10635,CYP2D6,Homo sapiens,4XRZ,SI6,"(4aR,6R,8aS)-8a-(2,4-difluorophenyl)-6-(1H-pyrazol-4-yl)-4,4a,5,6,8,8a-hexahydropyrano[3,4-d][1,3]thiazin-2-amine",inhibitor,INHIBITOR,very high,2026-01-25,Codex one-round,
+P10635,CYP2D6,Homo sapiens,4XRY,SI5,"(4aR,6R,8aS)-8a-(2,4-difluorophenyl)-6-(1-methyl-1H-pyrazol-4-yl)-4,4a,5,6,8,8a-hexahydropyrano[3,4-d][1,3]thiazin-2-amine",inhibitor,INHIBITOR,very high,2026-01-25,Codex one-round,
+P10635,CYP2D6,Homo sapiens,4WNT,AJN,Ajmalicine,unknown,SUBSTRATE,medium-high,2026-01-25,Codex one-round,
+P10635,CYP2D6,Homo sapiens,5TFT,P6U,"(4S)-4-[2,4-difluoro-5-({[1-(trifluoromethyl)cyclopropyl]amino}methyl)phenyl]-4-methyl-5,6-dihydro-4H-1,3-thiazin-2-amine",inhibitor,INHIBITOR,very high,2026-01-25,Codex one-round,
+P10635,CYP2D6,Homo sapiens,5TFU,P6M,"(4S,6R)-4-[2,4-difluoro-5-({[1-(trifluoromethyl)cyclopropyl]amino}methyl)phenyl]-4,6-dimethyl-5,6-dihydro-4H-1,3-thiazin-2-amine",inhibitor,INHIBITOR,very high,2026-01-25,Codex one-round,

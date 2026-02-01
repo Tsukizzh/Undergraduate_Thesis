@@ -1,0 +1,60 @@
+﻿uniprot_id,enzyme_name,organism,pdb_id,ligand_ccd,ligand_name,original_class,final_class,confidence,audit_date,audit_method,notes
+A0A380DQV1,CYP134A1 (S. aureus),Staphylococcus aureus,7OW9,2IO,"(3S,6S)-3,6-bis(2-methylpropyl)piperazine-2,5-dione",unknown,SUBSTRATE,high,2026-01-25,Codex PDB deep analysis,DKP (cyclo-Leu-Leu)
+A0A380DQV1,CYP134A1 (S. aureus),Staphylococcus aureus,7OW9,NO3,NITRATE ION,unknown,EXCLUDE,high,2026-01-25,Codex PDB deep analysis,Nitrate ion
+A0A380DQV1,CYP134A1 (S. aureus),Staphylococcus aureus,8A91,LC9,1H-indol-3-ylmethanamine,unknown,INHIBITOR,high,2026-01-25,Codex PDB deep analysis,"Tryptamine, Fe-N=2.13A"
+A0A380DQV1,CYP134A1 (S. aureus),Staphylococcus aureus,8A8L,LBJ,"6-methoxy-2,3,4,9-tetrahydro-1H-pyrido[3,4-b]indole",unknown,INHIBITOR,high,2026-01-25,Codex PDB deep analysis,"Beta-carboline, Fe-N=2.38A"
+A0A380DQV1,CYP134A1 (S. aureus),Staphylococcus aureus,8AE8,LUU,1~{H}-indol-5-ylmethanamine,unknown,INHIBITOR,high,2026-01-25,Codex PDB deep analysis,"Indole amine, Fe-N=2.34A"
+A0A380DQV1,CYP134A1 (S. aureus),Staphylococcus aureus,8ADR,LS9,pyridin-3-ylboronic acid,unknown,INHIBITOR,medium,2026-01-25,Codex PDB deep analysis,"Boronic acid, Fe-N=2.62A"
+A0A380DQV1,CYP134A1 (S. aureus),Staphylococcus aureus,8AA7,WYH,"2,3,4,9-tetrahydro-1~{H}-pyrido[3,4-b]indole",unknown,INHIBITOR,high,2026-01-25,Codex PDB deep analysis,"Beta-carboline, Fe-N=2.39A"
+P9WPL5,CYP142 (M. tuberculosis),Mycobacterium tuberculosis H37Rv,7P5T,5YG,~{N}-[(4-methoxyphenyl)methyl]-4-(pyridin-4-ylmethyl)aniline,inhibitor,INHIBITOR,high,2026-01-25,Codex PDB deep analysis,"MEK216, Fe-N=2.09A"
+P9WPL5,CYP142 (M. tuberculosis),Mycobacterium tuberculosis H37Rv,7P5T,BR,BROMIDE ION,inhibitor,EXCLUDE,high,2026-01-25,Codex PDB deep analysis,Bromide ion
+P9WPL5,CYP142 (M. tuberculosis),Mycobacterium tuberculosis,7QJL,DQE,ethyl 5-pyridin-4-yl-1~{H}-indole-2-carboxylate,inhibitor,INHIBITOR,high,2026-01-25,Codex PDB deep analysis,"Indole carboxylate, Fe-N=2.14A"
+P9WPL5,CYP142 (M. tuberculosis),Mycobacterium tuberculosis H37Rv,7QQ7,EIQ,~{N}-[4-(pyridin-4-ylmethyl)phenyl]benzenesulfonamide,inhibitor,INHIBITOR,high,2026-01-25,Codex PDB deep analysis,"Sulfonamide, Fe-N=2.21A"
+P9WPL5,CYP142 (M. tuberculosis),Mycobacterium tuberculosis H37Rv,8S53,3QO,4-benzylpyridine,unknown,INHIBITOR,high,2026-01-25,Codex PDB deep analysis,"Benzylpyridine, Fe-N=2.07A"
+P9WPL5,CYP142 (M. tuberculosis),Mycobacterium tuberculosis H37Rv,8A9P,ENK,"(3-phenyl-1,2,4-oxadiazol-5-yl)methanamine",unknown,INHIBITOR,high,2026-01-25,Codex PDB deep analysis,"Oxadiazole, Fe-N=2.10A"
+P9WPL5,CYP142 (M. tuberculosis),Mycobacterium tuberculosis H37Rv,8A6W,K2B,"(8ALPHA,9BETA)-CHOLEST-4-EN-3-ONE",unknown,SUBSTRATE,high,2026-01-25,Codex PDB deep analysis,Cholestenone
+Q5YNS8,CYP154C5 (steroid hydroxylase),Nocardia farcinica IFM 10152,9KG5,CD,CADMIUM ION,unknown,EXCLUDE,high,2026-01-25,Codex PDB deep analysis,Cadmium ion
+Q5YNS8,CYP154C5 (steroid hydroxylase),Nocardia farcinica IFM 10152,9KG5,TES,TESTOSTERONE,substrate,SUBSTRATE,high,2026-01-25,Codex PDB deep analysis,Testosterone
+Q5YNS8,CYP154C5 (steroid hydroxylase),Nocardia farcinica IFM 10152,4J6C,STR,PROGESTERONE,substrate,SUBSTRATE,high,2026-01-25,Codex PDB deep analysis,Progesterone
+Q5YNS8,CYP154C5 (steroid hydroxylase),Nocardia farcinica IFM 10152,6TO2,NQ8,"(5~{S},8~{S},9~{S},10~{S},13~{S},14~{S})-10,13-dimethyl-1,2,4,5,6,7,8,9,11,12,14,15,16,17-tetradecahydrocyclopenta[a]phenanthren-3-one",unknown,SUBSTRATE,high,2026-01-25,Codex PDB deep analysis,5a-androstan-3-one
+Q5YNS8,CYP154C5 (steroid hydroxylase),Nocardia farcinica IFM 10152,4JBT,ASD,4-ANDROSTENE-3-17-DIONE,unknown,SUBSTRATE,high,2026-01-25,Codex PDB deep analysis,Androstenedione
+Q5YNS8,CYP154C5 (steroid hydroxylase),Nocardia farcinica IFM 10152,4J6B,PLO,(3BETA)-3-HYDROXYPREGN-5-EN-20-ONE,unknown,SUBSTRATE,high,2026-01-25,Codex PDB deep analysis,Pregnenolone
+A0A088FL33,P450TOL (toluene monooxygenase),Rhodococcus coprophilus,7V43,C4O,1-chloranyl-4-methyl-benzene,unknown,SUBSTRATE,high,2026-01-25,Codex PDB deep analysis,p-Chlorotoluene
+A0A088FL33,P450TOL (toluene monooxygenase),Rhodococcus coprophilus,7V44,C3U,1-chloranyl-2-methyl-benzene,unknown,SUBSTRATE,high,2026-01-25,Codex PDB deep analysis,m-Chlorotoluene
+A0A088FL33,P450TOL (toluene monooxygenase),Rhodococcus coprophilus,7V45,C5O,1-bromanyl-4-methyl-benzene,unknown,SUBSTRATE,high,2026-01-25,Codex PDB deep analysis,p-Bromotoluene
+A0A088FL33,P450TOL (toluene monooxygenase),Rhodococcus coprophilus,7V41,MBN,TOLUENE,unknown,SUBSTRATE,high,2026-01-25,Codex PDB deep analysis,Toluene
+A0A088FL33,P450TOL (toluene monooxygenase),Rhodococcus coprophilus,7V42,010,phenylmethanol,unknown,PRODUCT,high,2026-01-25,Codex PDB deep analysis,Benzyl alcohol (toluene oxidation)
+A0A088FL33,P450TOL (toluene monooxygenase),Rhodococcus coprophilus,7V46,C4U,1-chloranyl-3-methyl-benzene,unknown,SUBSTRATE,high,2026-01-25,Codex PDB deep analysis,o-Chlorotoluene
+P20815,"CYP3A5 (NOTE: UniProt P20815 maps to CYP2A13, but PDBs are CYP3A5)",Homo sapiens,9MS2,A1BNX,N'-(2-chlorophenyl)-N-[(3-hydroxyphenyl)methyl]-N-[(2P)-2-(1H-imidazol-1-yl)-5-(trifluoromethyl)phenyl]urea,unknown,INHIBITOR,high,2026-01-25,Codex PDB deep analysis,"SJYHJ-111, Fe-N=2.29-2.32A"
+P20815,"CYP3A5 (NOTE: UniProt P20815 maps to CYP2A13, but PDBs are CYP3A5)",Homo sapiens,7SV2,MWY,"(3aS,4R,5S,6R,8R,9R,9aR,10R)-6-ethyl-5-hydroxy-4,6,9,10-tetramethyl-1-oxodecahydro-3a,9-propanocyclopenta[8]annulen-8-yl [(5-amino-1H-1,2,4-triazol-3-yl)sulfanyl]acetate",product,INHIBITOR,high,2026-01-25,Codex PDB deep analysis,Azamulin
+P20815,"CYP3A5 (NOTE: UniProt P20815 maps to CYP2A13, but PDBs are CYP3A5)",Homo sapiens,7LAD,XRD,Clobetasol propionate,unknown,INHIBITOR,high,2026-01-25,Codex PDB deep analysis,Clobetasol propionate
+P20815,"CYP3A5 (NOTE: UniProt P20815 maps to CYP2A13, but PDBs are CYP3A5)",Homo sapiens,8SG5,CE9,DODECYL NONA ETHYLENE GLYCOL ETHER,inhibitor,EXCLUDE,high,2026-01-25,Codex PDB deep analysis,Detergent
+P20815,"CYP3A5 (NOTE: UniProt P20815 maps to CYP2A13, but PDBs are CYP3A5)",Homo sapiens,8SG5,CL6,1-[(2-CHLOROPHENYL)(DIPHENYL)METHYL]-1H-IMIDAZOLE,inhibitor,INHIBITOR,high,2026-01-25,Codex PDB deep analysis,"Clotrimazole, Fe-N=1.91-2.08A"
+P20815,"CYP3A5 (NOTE: UniProt P20815 maps to CYP2A13, but PDBs are CYP3A5)",Homo sapiens,5VEU,RIT,RITONAVIR,inhibitor,INHIBITOR,high,2026-01-25,Codex PDB deep analysis,"Ritonavir, Fe-N=2.20A"
+P04798,"CYP1A1 (NOTE: P04798 is CYP1A2, but PDBs are CYP1A1)",Homo sapiens,4I8V,NO3,NITRATE ION,unknown,EXCLUDE,high,2026-01-25,Codex PDB deep analysis,Nitrate ion
+P04798,"CYP1A1 (NOTE: P04798 is CYP1A2, but PDBs are CYP1A1)",Homo sapiens,4I8V,BHF,2-PHENYL-4H-BENZO[H]CHROMEN-4-ONE,unknown,INHIBITOR,high,2026-01-25,Codex PDB deep analysis,Alpha-naphthoflavone
+P04798,"CYP1A1 (NOTE: P04798 is CYP1A2, but PDBs are CYP1A1)",Homo sapiens,6DWM,HJJ,"4-{[(2E)-3,7-dimethylocta-2,6-dien-1-yl]oxy}-7H-furo[3,2-g][1]benzopyran-7-one",unknown,INHIBITOR,medium,2026-01-25,Codex PDB deep analysis,Bergamottin (furocoumarin)
+P04798,"CYP1A1 (NOTE: P04798 is CYP1A2, but PDBs are CYP1A1)",Homo sapiens,6DWM,CPS,3-[(3-CHOLAMIDOPROPYL)DIMETHYLAMMONIO]-1-PROPANESULFONATE,unknown,EXCLUDE,high,2026-01-25,Codex PDB deep analysis,CHAPS detergent
+P04798,"CYP1A1 (NOTE: P04798 is CYP1A2, but PDBs are CYP1A1)",Homo sapiens,6UDL,Q4M,"[(1S)-1-(chloromethyl)-1,6-dihydropyrrolo[3,2-e]indol-3(2H)-yl](5-methoxy-1H-indol-2-yl)methanone",unknown,SUBSTRATE,medium,2026-01-25,Codex PDB deep analysis,Duocarmycin prodrug
+P04798,"CYP1A1 (NOTE: P04798 is CYP1A2, but PDBs are CYP1A1)",Homo sapiens,6DWN,AQ4,"[6,7-BIS(2-METHOXY-ETHOXY)QUINAZOLINE-4-YL]-(3-ETHYNYLPHENYL)AMINE",unknown,SUBSTRATE,medium,2026-01-25,Codex PDB deep analysis,Erlotinib
+Q59819,OleP (oleandomycin pathway),Streptomyces antibioticus,7Q89,DEB,6-DEOXYERYTHRONOLIDE B,unknown,SUBSTRATE,high,2026-01-25,Codex PDB deep analysis,6-Deoxyerythronolide B
+Q59819,OleP (oleandomycin pathway),Streptomyces antibioticus,6ZI3,RAM,alpha-L-rhamnopyranose,unknown,EXCLUDE,high,2026-01-25,Codex PDB deep analysis,Rhamnose sugar
+Q59819,OleP (oleandomycin pathway),Streptomyces antibioticus,6ZHZ,QR8,"(3~{R},4~{S},5~{R},6~{S},7~{S},9~{S},11~{R},12~{S},13~{R},14~{R})-3,5,7,9,11,13,14-heptamethyl-4,6,12-tris(oxidanyl)-1-oxacyclotetradecane-2,10-dione",unknown,SUBSTRATE,high,2026-01-25,Codex PDB deep analysis,Oleandolide (DEO)
+Q59819,OleP (oleandomycin pathway),Streptomyces antibioticus,8QYI,4OA,"(3beta,5beta,14beta,17alpha)-3-hydroxycholan-24-oic acid",unknown,SUBSTRATE,medium,2026-01-25,Codex PDB deep analysis,Lithocholic acid
+Q59819,OleP (oleandomycin pathway),Streptomyces antibioticus,8QRD,TES,TESTOSTERONE,substrate,SUBSTRATE,medium,2026-01-25,Codex PDB deep analysis,Testosterone
+Q59819,OleP (oleandomycin pathway),Streptomyces antibioticus,4XE3,CL6,1-[(2-CHLOROPHENYL)(DIPHENYL)METHYL]-1H-IMIDAZOLE,inhibitor,INHIBITOR,high,2026-01-25,Codex PDB deep analysis,"Clotrimazole, Fe-N=1.96A"
+Q00441,EryF (erythromycin biosynthesis),Saccharopolyspora erythraea,1Z8O,OXY,OXYGEN MOLECULE,unknown,EXCLUDE,high,2026-01-25,Codex PDB deep analysis,O2 cofactor
+Q00441,EryF (erythromycin biosynthesis),Saccharopolyspora erythraea,1Z8O,DEB,6-DEOXYERYTHRONOLIDE B,unknown,SUBSTRATE,high,2026-01-25,Codex PDB deep analysis,6-DEB (canonical EryF substrate)
+Q00441,EryF (erythromycin biosynthesis),Saccharopolyspora erythraea,1JIP,KTN,"CIS-1-ACETYL-4-(4-((2-(2,4-DICHLOROPHENYL)-2-(1H-IMIDAZOL-1-YLMETHYL)-1,3-DIOXOLAN-4-YL)METHOXY)PHENYL)PIPERAZINE",inhibitor,INHIBITOR,high,2026-01-25,Codex PDB deep analysis,"Ketoconazole, Fe-N=2.23A"
+Q00441,EryF (erythromycin biosynthesis),Saccharopolyspora erythraea,1EUP,ASD,4-ANDROSTENE-3-17-DIONE,unknown,INHIBITOR,low,2026-01-25,Codex PDB deep analysis,Androstenedione (non-native)
+Q00441,EryF (erythromycin biosynthesis),Saccharopolyspora erythraea,1EGY,9AP,9-AMINOPHENANTHRENE,unknown,INHIBITOR,high,2026-01-25,Codex PDB deep analysis,"9-Aminophenanthrene, Fe-N=2.10A"
+Q59523,MycG (mycinamicin pathway),Micromonospora griseorubida,2Y5N,MYV,MYCINAMICIN V,unknown,PRODUCT,medium,2026-01-25,Codex PDB deep analysis,Mycinamicin V
+Q59523,MycG (mycinamicin pathway),Micromonospora griseorubida,2Y98,MIV,MYCINAMICIN IV,unknown,SUBSTRATE,high,2026-01-25,Codex PDB deep analysis,Mycinamicin IV
+Q59523,MycG (mycinamicin pathway),Micromonospora griseorubida,2YCA,SIN,SUCCINIC ACID,unknown,EXCLUDE,high,2026-01-25,Codex PDB deep analysis,Succinic acid artifact
+Q59523,MycG (mycinamicin pathway),Micromonospora griseorubida,2YCA,ZM3,MYCINAMICIN III,unknown,SUBSTRATE,medium,2026-01-25,Codex PDB deep analysis,Mycinamicin III
+Q59523,MycG (mycinamicin pathway),Micromonospora griseorubida,2Y46,BEN,BENZAMIDINE,unknown,EXCLUDE,high,2026-01-25,Codex PDB deep analysis,Benzamidine artifact
+P10632,"CYP2C8 (NOTE: P10632 is CYP3A4, but PDBs are CYP2C8)",Homo sapiens,2NNJ,225,FELODIPINE,unknown,SUBSTRATE,high,2026-01-25,Codex PDB deep analysis,Felodipine
+P10632,"CYP2C8 (NOTE: P10632 is CYP3A4, but PDBs are CYP2C8)",Homo sapiens,2NNJ,PLM,PALMITIC ACID,substrate,EXCLUDE,high,2026-01-25,Codex PDB deep analysis,Palmitic acid (structural)
+P10632,"CYP2C8 (NOTE: P10632 is CYP3A4, but PDBs are CYP2C8)",Homo sapiens,2NNH,9CR,(9cis)-retinoic acid,unknown,SUBSTRATE,high,2026-01-25,Codex PDB deep analysis,9-cis-retinoic acid
+P10632,"CYP2C8 (NOTE: P10632 is CYP3A4, but PDBs are CYP2C8)",Homo sapiens,2VN0,TDZ,"(5R)-5-(4-{[(2R)-6-HYDROXY-2,5,7,8-TETRAMETHYL-3,4-DIHYDRO-2H-CHROMEN-2-YL]METHOXY}BENZYL)-1,3-THIAZOLIDINE-2,4-DIONE",product,SUBSTRATE,high,2026-01-25,Codex PDB deep analysis,Troglitazone
+P10632,"CYP2C8 (NOTE: P10632 is CYP3A4, but PDBs are CYP2C8)",Homo sapiens,2NNI,MTK,MONTELUKAST,unknown,SUBSTRATE,high,2026-01-25,Codex PDB deep analysis,Montelukast

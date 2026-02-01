@@ -1,0 +1,11 @@
+﻿uniprot_id,enzyme_name,organism,pdb_id,ligand_ccd,ligand_name,original_class,final_class,confidence,audit_date,audit_method,notes
+P9WPP9,CYP51 (Sterol 14α-demethylase),Mycobacterium tuberculosis H37Rv,2CIB,CM6,"(2S)-2-[(2,1,3-BENZOTHIADIAZOL-4-YLSULFONYL)AMINO]-2-PHENYL-N-PYRIDIN-4-YLACETAMIDE",inhibitor,INHIBITOR,high,2026-01-25,Codex PDB analysis,
+P9WPP9,CYP51 (Sterol 14α-demethylase),Mycobacterium tuberculosis H37Rv,2CI0,1CM,(2R)-2-PHENYL-N-PYRIDIN-4-YLBUTANAMIDE,inhibitor,INHIBITOR,high,2026-01-25,Codex PDB analysis,
+P9WPP9,CYP51 (Sterol 14α-demethylase),Mycobacterium tuberculosis H37Rv,1X8V,ESL,ESTRIOL,unknown,SUBSTRATE,med-high,2026-01-25,Codex DROP fix,Estriol (sterol mimic)
+P9WPP9,CYP51 (Sterol 14α-demethylase),Mycobacterium tuberculosis H37Rv,2W0B,CMW,3-{[(4-methylphenyl)sulfonyl]amino}propyl pyridin-4-ylcarbamate,inhibitor,INHIBITOR,high,2026-01-25,Codex PDB analysis,
+P9WPP9,CYP51 (Sterol 14α-demethylase),Mycobacterium tuberculosis H37Rv,2W09,CM9,CIS-4-METHYL-N-[(1S)-3-(METHYLSULFANYL)-1-(PYRIDIN-4-YLCARBAMOYL)PROPYL]CYCLOHEXANECARBOXAMIDE,inhibitor,INHIBITOR,high,2026-01-25,Codex PDB analysis,
+P9WPP9,CYP51 (Sterol 14α-demethylase),Mycobacterium tuberculosis H37Rv,2W0A,CII,N-[(1S)-2-methyl-1-(pyridin-4-ylcarbamoyl)propyl]cyclohexanecarboxamide,inhibitor,INHIBITOR,high,2026-01-25,Codex PDB analysis,
+P9WPP9,CYP51 (Sterol 14α-demethylase),Mycobacterium tuberculosis H37Rv,2VKU,DBE,bis(4-hydroxyphenyl)methanone,substrate,SUBSTRATE,high,2026-01-25,Codex DROP fix,Bis-phenol methanone (sterol mimic)
+P9WPP9,CYP51 (Sterol 14α-demethylase),Mycobacterium tuberculosis H37Rv,1H5Z,FE2,FE (II) ION,unknown,EXCLUDE,high,2026-01-25,Codex PDB analysis,
+P9WPP9,CYP51 (Sterol 14α-demethylase),Mycobacterium tuberculosis H37Rv,1E9X,PIM,4-PHENYL-1H-IMIDAZOLE,inhibitor,INHIBITOR,high,2026-01-25,Codex PDB analysis,
+P9WPP9,CYP51 (Sterol 14α-demethylase),Mycobacterium tuberculosis H37Rv,1EA1,TPF,"2-(2,4-DIFLUOROPHENYL)-1,3-DI(1H-1,2,4-TRIAZOL-1-YL)PROPAN-2-OL",inhibitor,INHIBITOR,high,2026-01-25,Codex PDB analysis,Fluconazole - clinical antifungal/anti-TB azole drug

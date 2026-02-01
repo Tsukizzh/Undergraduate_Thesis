@@ -1,0 +1,67 @@
+﻿uniprot_id,enzyme_name,organism,pdb_id,ligand_ccd,ligand_name,original_class,final_class,confidence,audit_date,audit_method,notes
+O53937,P450_O53937,Mycobacterium tuberculosis H37Rv,8AMQ,F3S,FE3-S4 CLUSTER,unknown,EXCLUDE,high,2026-01-25,Codex PDB batch analysis,Fe3-S4 cluster
+P9WPL3,P450_P9WPL3,Mycobacterium tuberculosis H37Rv,8AMQ,F3S,FE3-S4 CLUSTER,unknown,EXCLUDE,high,2026-01-25,Codex PDB batch analysis,Fe3-S4 cluster
+C7SFP5,P450_C7SFP5,Rhodococcus sp. ECU0066,6KBH,FES,FE2/S2 (INORGANIC) CLUSTER,unknown,EXCLUDE,high,2026-01-25,Codex PDB batch analysis,Fe2-S2 cluster
+D5DF35,P450_D5DF35,Priestia megaterium DSM 319,7ZZL,OXY,OXYGEN MOLECULE,unknown,EXCLUDE,high,2026-01-25,Codex PDB batch analysis,Molecular oxygen
+A0A4V8GZW5,P450_A0A4V8,Arthrobacter,6G71,PP9,PROTOPORPHYRIN IX,unknown,EXCLUDE,high,2026-01-25,Codex PDB batch analysis,Protoporphyrin IX
+Q746J6,P450_Q746J6,Thermus thermophilus HB27,1N97,SRT,"S,R MESO-TARTARIC ACID",unknown,EXCLUDE,high,2026-01-25,Codex PDB batch analysis,Tartaric acid buffer
+G3LGZ6,P450_G3LGZ6,Pseudomonas sp. 19-rlim,6HQD,SRT,"S,R MESO-TARTARIC ACID",unknown,EXCLUDE,high,2026-01-25,Codex PDB batch analysis,Tartaric acid buffer
+G0LWB2,P450_G0LWB2,Streptomyces himastatinicus ATCC 53653,5Z9J,TAM,TRIS(HYDROXYETHYL)AMINOMETHANE,unknown,EXCLUDE,high,2026-01-25,Codex PDB batch analysis,Tris buffer
+Q8GGM6,P450_Q8GGM6,Streptomyces atroolivaceus,4Z5Q,P33,"3,6,9,12,15,18-HEXAOXAICOSANE-1,20-DIOL",unknown,EXCLUDE,high,2026-01-25,Codex PDB batch analysis,PEG additive
+F4F6Q5,P450_F4F6Q5,Micromonospora maris AB-18-032,7QAN,P33,"3,6,9,12,15,18-HEXAOXAICOSANE-1,20-DIOL",unknown,EXCLUDE,high,2026-01-25,Codex PDB batch analysis,PEG additive
+A0A1H9KM06,P450_A0A1H9,Actinokineospora terrae,9CJG,1BO,1-BUTANOL,unknown,EXCLUDE,high,2026-01-25,Codex PDB batch analysis,1-Butanol solvent
+G0L713,P450_G0L713,Zobellia galactanivorans,6G5Q,EMZ,6-O-methyl-beta-D-galactopyranose,unknown,EXCLUDE,high,2026-01-25,Codex PDB batch analysis,Sugar additive
+B2HH81,P450_B2HH81,Mycobacterium marinum,7TEF,BTB,"2-[BIS-(2-HYDROXY-ETHYL)-AMINO]-2-HYDROXYMETHYL-PROPANE-1,3-DIOL",product,EXCLUDE,high,2026-01-25,Codex PDB batch analysis,Bis-Tris buffer (NOT product)
+Q9KZR7,P450_Q9KZR7,Streptomyces coelicolor A3(2),1ODO,PIM,4-PHENYL-1H-IMIDAZOLE,inhibitor,INHIBITOR,high,2026-01-25,Codex PDB batch analysis,"4-phenylimidazole, Fe-N=2.29A"
+P05177,P450_P05177,Homo sapiens,2HI4,BHF,2-PHENYL-4H-BENZO[H]CHROMEN-4-ONE,unknown,INHIBITOR,high,2026-01-25,Codex PDB batch analysis,Alpha-naphthoflavone (CYP1A2)
+Q16678,P450_Q16678,Homo sapiens,3PM0,BHF,2-PHENYL-4H-BENZO[H]CHROMEN-4-ONE,unknown,INHIBITOR,high,2026-01-25,Codex PDB batch analysis,Alpha-naphthoflavone (CYP1B1)
+F2YRY7,P450_F2YRY7,Streptomyces sp. Acta 2897,4PXH,KH4,"S-[2-({N-[(2R)-2-hydroxy-3,3-dimethyl-4-(phosphonooxy)butanoyl]-beta-alanyl}amino)ethyl] 1H-imidazole-4-carbothioate",inhibitor,INHIBITOR,high,2026-01-25,Codex PDB batch analysis,"ACP phosphopantetheine, Fe-N=1.99A"
+P15128,P450_P15128,Oryctolagus cuniculus,6C94,V16,N-(4-butyl-2-methylphenyl)-N'-hydroxyimidoformamide,inhibitor,INHIBITOR,high,2026-01-25,Codex PDB batch analysis,"N-hydroxyimidoyl compound, Fe-N=2.01A"
+P50859,P450_P50859,Nakaseomyces glabratus CBS 138,5JLC,1YN,"2-[(2R)-butan-2-yl]-4-{4-[4-(4-{[(2R,4S)-2-(2,4-dichlorophenyl)-2-(1H-1,2,4-triazol-1-ylmethyl)-1,3-dioxolan-4-yl]methoxy}phenyl)piperazin-1-yl]phenyl}-2,4-dihydro-3H-1,2,4-triazol-3-one",unknown,INHIBITOR,high,2026-01-25,Codex PDB batch analysis,"Itraconazole analog, Fe-N=2.04A"
+W5VH56,P450_W5VH56,Amycolatopsis orientalis,4OQR,2UO,"Mevastatin, Compactin",unknown,INHIBITOR,high,2026-01-25,Codex PDB batch analysis,Compactin/mevastatin
+I3DZK9,P450_I3DZK9,Bacillus methanolicus,6FYJ,MYR,MYRISTIC ACID,unknown,SUBSTRATE,high,2026-01-25,Codex PDB batch analysis,Myristic acid
+A9ERX9,P450_A9ERX9,Sorangium cellulosum So ce56,6GK6,MYR,MYRISTIC ACID,unknown,SUBSTRATE,high,2026-01-25,Codex PDB batch analysis,Myristic acid
+A0A5P2W9N6,P450_A0A5P2,Streptomyces nodosus,8FZ8,OCA,OCTANOIC ACID (CAPRYLIC ACID),unknown,SUBSTRATE,high,2026-01-25,Codex PDB batch analysis,Octanoic acid
+Q82D73,P450_Q82D73,Streptomyces avermitilis,7WZM,OLA,OLEIC ACID,unknown,SUBSTRATE,high,2026-01-25,Codex PDB batch analysis,Oleic acid
+A0A657XIU7,P450_A0A657,Staphylococcus aureus,9RXH,ELA,Elaidic acid,unknown,SUBSTRATE,high,2026-01-25,Codex PDB batch analysis,Elaidic acid
+D0Q1H3,P450_D0Q1H3,Alloalcanivorax dieselolei,8B2P,OCA,OCTANOIC ACID (CAPRYLIC ACID),unknown,SUBSTRATE,high,2026-01-25,Codex PDB batch analysis,Octanoic acid
+A0A0B0D9P4,P450_A0A0B0,Kocuria marina,8VWK,MYR,MYRISTIC ACID,substrate,SUBSTRATE,high,2026-01-25,Codex PDB batch analysis,Myristic acid
+A1TY82,P450_A1TY82,Marinobacter nauticus,5FYG,12H,12-HYDROXYDODECANOIC ACID,unknown,PRODUCT,high,2026-01-25,Codex PDB batch analysis,12-hydroxydodecanoic acid
+C4L2G9,P450_C4L2G9,Exiguobacterium sp. AT1b,5YHJ,MYR,MYRISTIC ACID,unknown,SUBSTRATE,high,2026-01-25,Codex PDB batch analysis,Myristic acid
+G2QDZ3,P450_G2QDZ3,Thermothelomyces thermophilus ATCC 42464,7P6L,DAO,LAURIC ACID,substrate,SUBSTRATE,high,2026-01-25,Codex PDB batch analysis,Lauric acid
+Q82LM3,P450_Q82LM3,Streptomyces avermitilis MA-4680 = NBRC 14893,5CWE,DAO,LAURIC ACID,substrate,SUBSTRATE,high,2026-01-25,Codex PDB batch analysis,Lauric acid
+A0A1M7CBV6,P450_A0A1M7,Lacicoccus alkaliphilus DSM 16010,9JQM,DCR,icosanoic acid,unknown,SUBSTRATE,high,2026-01-25,Codex PDB batch analysis,Icosanoic acid
+A0A1Y1RQ53,P450_A0A1Y1,Rothia nasimurium,8D8P,PLM,PALMITIC ACID,substrate,SUBSTRATE,high,2026-01-25,Codex PDB batch analysis,Palmitic acid
+Q81BF4,P450_Q81BF4,Bacillus cereus,8HKJ,PLM,PALMITIC ACID,substrate,SUBSTRATE,high,2026-01-25,Codex PDB batch analysis,Palmitic acid
+A9FDB7,P450_A9FDB7,Sorangium cellulosum So ce56,6F88,STR,PROGESTERONE,substrate,SUBSTRATE,high,2026-01-25,Codex PDB batch analysis,Progesterone
+A0PUV7,P450_A0PUV7,Mycobacterium ulcerans Agy99,7SH5,K2B,"(8ALPHA,9BETA)-CHOLEST-4-EN-3-ONE",unknown,SUBSTRATE,high,2026-01-25,Codex PDB batch analysis,Cholestenone
+B2HI07,P450_B2HI07,Mycobacterium marinum ATCC BAA-535,7SMZ,K2B,"(8ALPHA,9BETA)-CHOLEST-4-EN-3-ONE",unknown,SUBSTRATE,high,2026-01-25,Codex PDB batch analysis,Cholestenone
+M5PFT9,P450_M5PFT9,Bacillus sonorensis L12,7Y98,TES,TESTOSTERONE,substrate,SUBSTRATE,high,2026-01-25,Codex PDB batch analysis,Testosterone
+P08686,P450_P08686,Homo sapiens,4Y8W,STR,PROGESTERONE,substrate,SUBSTRATE,high,2026-01-25,Codex PDB batch analysis,Progesterone
+A0A1V0UEC8,P450_A0A1V0,Streptomyces violaceoruber,6A7J,TES,TESTOSTERONE,substrate,SUBSTRATE,high,2026-01-25,Codex PDB batch analysis,Testosterone
+Q9EW92,P450_Q9EW92,Streptomyces natalensis,2XBK,XBK,"4,5-DE-EPOXYPIMARICIN",substrate,SUBSTRATE,high,2026-01-25,Codex PDB batch analysis,"4,5-de-epoxypimaricin"
+Q9ZHQ1,P450_Q9ZHQ1,Streptomyces fradiae,6B11,CGM,"(4R,5S,6S,7R,9R,11E,13E,15S,16R)-16-ethyl-4-hydroxy-5,9,13,15-tetramethyl-2,10-dioxo-7-(2-oxoethyl)-1-oxacyclohexadeca-11,13-dien-6-yl 3,6-dideoxy-3-(dimethylamino)-beta-D-glucopyranoside",substrate,SUBSTRATE,high,2026-01-25,Codex PDB batch analysis,Forazoline intermediate
+Q93NX6,P450_Q93NX6,Streptomyces nodosus,7SHI,4UH,Amphotericin B,substrate,SUBSTRATE,high,2026-01-25,Codex PDB batch analysis,Amphotericin B
+Q9L4X0,P450_Q9L4X0,Streptomyces noursei,9CV8,A1AZ7,Nystatin,unknown,SUBSTRATE,high,2026-01-25,Codex PDB batch analysis,Nystatin
+A0A286SBY7,P450_A0A286,Streptomyces spectabilis,6M4P,F4O,6-methoxy-streptovaricin C,substrate,SUBSTRATE,high,2026-01-25,Codex PDB batch analysis,6-methoxy-streptovaricin C
+Q93HJ0,P450_Q93HJ0,Streptomyces avermitilis,4WQ0,EFO,Oligomycin A,unknown,SUBSTRATE,high,2026-01-25,Codex PDB batch analysis,Oligomycin A
+A0A0A0NSZ7,P450_A0A0A0,Streptomyces rapamycinicus NRRL 5491,6L3A,E53,Everolimus,unknown,SUBSTRATE,high,2026-01-25,Codex PDB batch analysis,Everolimus
+W5R4Y8,P450_W5R4Y8,Streptomyces sanyensis,8K1X,VI4,"13-(3-Amino-2,3,6-trideoxy-alpha-L-ribo-hexopyranosyl)-6,7,12,13-tetrahydro-5H-indolo[2,3-a]pyrrolo[3,4-c]carbazol-5-one",unknown,SUBSTRATE,high,2026-01-25,Codex PDB batch analysis,Oleandolide derivative
+A0A239NBQ6,P450_A0A239,Actinomadura sp.,9KPU,A1EGF,forazoline C,unknown,SUBSTRATE,high,2026-01-25,Codex PDB batch analysis,Forazoline C
+A0A0M2KDV0,P450_A0A0M2,Erwinia tracheiphila,8FIC,NE4,"(8alpha,9beta,10alpha,13alpha)-kaur-16-en-18-oic acid",unknown,SUBSTRATE,high,2026-01-25,Codex PDB batch analysis,Kaurene
+P33006,P450_P33006,Pseudomonas sp.,8EUH,XGE,alpha-TERPINEOL,unknown,SUBSTRATE,high,2026-01-25,Codex PDB batch analysis,Alpha-terpineol
+S6BVH1,P450_S6BVH1,Rhodococcus erythropolis,3WEC,AUI,"3-[(2E,6E,9R)-9-hydroxy-3,7,11-trimethyldodeca-2,6,10-trien-1-yl]-2-methylquinolin-4(1H)-one",product,PRODUCT,high,2026-01-25,Codex PDB batch analysis,Hydroxy-farnesene
+F1RE08,P450_F1RE08,Danio rerio,3B99,U51,"(5Z)-7-{(1R,4S,5R,6R)-6-[(1E)-oct-1-en-1-yl]-2,3-diazabicyclo[2.2.1]hept-2-en-5-yl}hept-5-enoic acid",substrate,SUBSTRATE,high,2026-01-25,Codex PDB batch analysis,Prostaglandin
+C9ZDC6,P450_C9ZDC6,Streptomyces scabiei 87.22,4TPO,TRP,TRYPTOPHAN,substrate,SUBSTRATE,high,2026-01-25,Codex PDB batch analysis,Tryptophan
+B2HMF7,P450_B2HMF7,Mycobacterium marinum M,6BLD,DXJ,"(3E,5E)-6,10-dimethylundeca-3,5,9-trien-2-one",unknown,SUBSTRATE,high,2026-01-25,Codex PDB batch analysis,Dimethylundecatrienol
+A0A290YXM6,P450_A0A290,Actinoplanes tsinanensis,6KFW,D8L,(2R)-3-(1H-indol-3-yl)-2-methylsulfanyl-propanoic acid,unknown,SUBSTRATE,high,2026-01-25,Codex PDB batch analysis,Indole-methylsulfanyl alanine
+A0A160P685,P450_A0A160,Streptomyces laurentii,7DLS,EV1,"1-(3,4-DIMETHOXYBENZYL)-6,7-DIMETHOXYISOQUINOLINE",unknown,SUBSTRATE,high,2026-01-25,Codex PDB batch analysis,Dimethoxybenzyl isoquinoline
+Q70AS3,P450_Q70AS3,Streptomyces peucetius,5IT1,2OH,"4,4'-PROPANE-2,2-DIYLDIPHENOL",unknown,SUBSTRATE,high,2026-01-25,Codex PDB batch analysis,Bisphenol A
+Q2G8A2,P450_Q2G8A2,Novosphingobium aromaticivorans DSM 12444,3NV6,CAM,CAMPHOR,substrate,SUBSTRATE,high,2026-01-25,Codex PDB batch analysis,Camphor
+Q825I8,P450_Q825I8,Streptomyces avermitilis MA-4680 = NBRC 14893,4UBS,DIF,"2-[2,6-DICHLOROPHENYL)AMINO]BENZENEACETIC ACID",unknown,SUBSTRATE,high,2026-01-25,Codex PDB batch analysis,Diclofenac
+Q70KH6,P450_Q70KH6,Streptomyces thioluteus,3P3Z,P3Z,(S)-cyclopropyl(4-methoxyphenyl)pyrimidin-5-ylmethanol,unknown,SUBSTRATE,high,2026-01-25,Codex PDB batch analysis,Cyclopropyl pyrimidine
+Q9KZF5,P450_Q9KZF5,Streptomyces coelicolor A3(2),2NZ5,226,"naphthalene-1,2,4,5,7-pentol",unknown,SUBSTRATE,high,2026-01-25,Codex PDB batch analysis,Naphthalene pentol
+P0A515,P450_P0A515,Mycobacterium tuberculosis H37Rv,5EDT,5MK,2-azanyl-5-chloranyl-benzamide,unknown,SUBSTRATE,high,2026-01-25,Codex PDB batch analysis,2-amino-5-chloro-benzamide
+Q93VK5,P450_Q93VK5,Arabidopsis thaliana,6J95,RET,RETINAL,unknown,SUBSTRATE,high,2026-01-25,Codex PDB batch analysis,Retinal
+A0A0H3CVZ6,P450_A0A0H3,Amycolatopsis mediterranei U32,5YSW,9LF,"(2S,12E,14E,16S,17S,18R,19R,20R,21S,22R,23S,24E)-21-(acetyloxy)-5,6,17,19-tetrahydroxy-23-methoxy-2,4,12,16,18,20,22-heptamethyl-1,11-dioxo-1,2-dihydro-2,7-(epoxypentadeca[1,11,13]trienoimino)naphtho[2,1-b]furan-9-yl hydroxyacetate",product,PRODUCT,high,2026-01-25,Codex PDB batch analysis,Oligomycin intermediate
+D3Y1J3,P450_D3Y1J3,Streptomyces sp. 307-9,6XA2,V0A,"(3E)-3-{(2E,4E,6R)-1-hydroxy-4-methyl-6-[(1R,3R,4S,5R)-1,4,8-trimethyl-2,9-dioxabicyclo[3.3.1]non-7-en-3-yl]hepta-2,4-dien-1-ylidene}-2H-pyrrole-2,4(3H)-dione",product,PRODUCT,high,2026-01-25,Codex PDB batch analysis,Spirotetronate product
