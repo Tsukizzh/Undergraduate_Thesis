@@ -1,0 +1,2473 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>P450研究项目组会汇报材料 v2</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+            line-height: 1.8;
+            color: #333;
+            background: #f5f7fa;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 40px 60px;
+            border-radius: 12px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+        }
+        
+        h1 {
+            font-size: 2.2em;
+            color: #1a1a2e;
+            border-bottom: 3px solid #4361ee;
+            padding-bottom: 15px;
+            margin-bottom: 30px;
+        }
+        
+        h2 {
+            font-size: 1.6em;
+            color: #16213e;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            padding: 12px 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #fff;
+            border-radius: 8px;
+        }
+        
+        h3 {
+            font-size: 1.3em;
+            color: #1a1a2e;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            padding-left: 15px;
+            border-left: 4px solid #4361ee;
+        }
+        
+        h4 {
+            font-size: 1.15em;
+            color: #2d3748;
+            margin-top: 25px;
+            margin-bottom: 12px;
+        }
+        
+        h5, h6 {
+            font-size: 1em;
+            color: #4a5568;
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+        
+        p {
+            margin-bottom: 16px;
+            text-align: justify;
+        }
+        
+        /* 表格样式 - 关键修复 */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 0.9em;
+            display: table !important;
+            table-layout: auto;
+        }
+        
+        thead {
+            background: #4361ee;
+        }
+        
+        th {
+            padding: 12px 15px;
+            text-align: left;
+            border: 1px solid #4361ee;
+            color: #fff;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+        
+        td {
+            padding: 10px 15px;
+            text-align: left;
+            border: 1px solid #e2e8f0;
+            vertical-align: top;
+        }
+        
+        tbody tr:nth-child(even) {
+            background: #f8fafc;
+        }
+        
+        tbody tr:hover {
+            background: #edf2f7;
+        }
+        
+        /* 代码块样式 - 关键修复 */
+        pre {
+            background: #1e1e1e;
+            color: #d4d4d4;
+            padding: 20px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 20px 0;
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+            font-size: 0.85em;
+            line-height: 1.5;
+            white-space: pre !important;
+        }
+        
+        pre code {
+            background: transparent;
+            padding: 0;
+            color: inherit;
+            white-space: pre !important;
+            display: block;
+        }
+        
+        code {
+            background: #f1f5f9;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Consolas', 'Monaco', 'Courier New', monospace;
+            font-size: 0.9em;
+            color: #e53e3e;
+        }
+        
+        blockquote {
+            border-left: 4px solid #4361ee;
+            padding: 15px 20px;
+            margin: 20px 0;
+            background: #f8fafc;
+            border-radius: 0 8px 8px 0;
+            color: #4a5568;
+        }
+        
+        ul, ol {
+            margin: 15px 0;
+            padding-left: 30px;
+        }
+        
+        li {
+            margin-bottom: 8px;
+        }
+        
+        hr {
+            border: none;
+            height: 2px;
+            background: linear-gradient(to right, #4361ee, #764ba2);
+            margin: 40px 0;
+            border-radius: 1px;
+        }
+        
+        a {
+            color: #4361ee;
+            text-decoration: none;
+        }
+        
+        a:hover {
+            text-decoration: underline;
+        }
+        
+        strong {
+            color: #1a202c;
+        }
+        
+        /* 响应式表格容器 */
+        .table-wrapper {
+            overflow-x: auto;
+            margin: 20px 0;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+            }
+            
+            table {
+                font-size: 0.8em;
+            }
+            
+            th, td {
+                padding: 8px 10px;
+            }
+            
+            pre {
+                font-size: 0.75em;
+                padding: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+<h1>P450研究项目组会汇报材料 v2</h1>
+<hr />
+<h2>目录</h2>
+<ol start="0">
+<li><a href="#%E9%9B%B6%E8%83%8C%E6%99%AF%E5%9B%9E%E9%A1%BE%E5%9B%9B%E8%B7%AF%E5%BE%84%E8%A7%84%E5%88%92%E4%B8%8E%E9%85%8D%E4%BD%93%E5%A4%84%E7%90%86%E6%96%B9%E6%A1%88">背景回顾：四路径规划与配体处理方案</a></li>
+<li><a href="#%E4%B8%80%E5%AE%9E%E9%AA%8C%E4%BA%8Cv2%E5%8F%8D%E9%A6%88%E4%B8%8E%E6%95%B0%E6%8D%AE%E9%87%8D%E6%9E%84">实验二v2：反馈与数据重构</a></li>
+<li><a href="#%E4%BA%8Cpath-a-step-1-3%E6%95%B0%E6%8D%AE%E5%87%86%E5%A4%87%E9%98%B6%E6%AE%B5">Path A Step 1-3：数据准备阶段</a></li>
+<li><a href="#%E4%B8%89path-a-step-4-8%E7%89%B9%E5%BE%81%E7%94%9F%E6%88%90%E9%98%B6%E6%AE%B5">Path A Step 4-8：特征生成阶段</a></li>
+<li><a href="#%E5%9B%9Bpath-a-step-9-10%E6%A8%A1%E5%9E%8B%E6%8E%A8%E7%90%86%E4%B8%8E%E7%BB%93%E6%9E%9C%E5%88%86%E6%9E%90">Path A Step 9-10：模型推理与结果分析</a></li>
+<li><a href="#%E4%BA%94%E6%94%B9%E8%BF%9B%E6%96%B9%E5%90%91">改进方向</a></li>
+</ol>
+<hr />
+<h2>零、背景回顾：四路径规划与配体处理方案</h2>
+<h3>0.1 P450研究四路径规划</h3>
+<table>
+<thead>
+<tr>
+<th>路径</th>
+<th>目标</th>
+<th>前置条件</th>
+<th style="text-align:center">状态</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>A</strong></td>
+<td>用PDB实验结构评估EZSpecificity模型（初步尝试）</td>
+<td>无</td>
+<td style="text-align:center">✅ 已完成</td>
+</tr>
+<tr>
+<td>B</td>
+<td>构建P450专属训练数据集（以路径A为基础扩大样本量）</td>
+<td>路径A完成</td>
+<td style="text-align:center">⏳ 待定</td>
+</tr>
+<tr>
+<td>C</td>
+<td>训练或微调P450专属模型</td>
+<td>路径B完成</td>
+<td style="text-align:center">⏳ 待定</td>
+</tr>
+<tr>
+<td>D</td>
+<td>区域选择性预测</td>
+<td>路径A效果好</td>
+<td style="text-align:center">⏳ 待定</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<p><strong>路径A执行步骤</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>阶段</th>
+<th>步骤</th>
+<th>任务</th>
+<th>描述</th>
+<th>产出</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>数据准备</strong></td>
+<td>Step 1</td>
+<td>下载PDB文件</td>
+<td>从RCSB下载627个P450晶体结构</td>
+<td>pdb_files/</td>
+</tr>
+<tr>
+<td></td>
+<td>Step 2</td>
+<td>提取酶序列</td>
+<td>从PDB提取292条唯一酶序列</td>
+<td>Enzymes.csv</td>
+</tr>
+<tr>
+<td></td>
+<td>Step 3</td>
+<td>配体处理与数据集构建</td>
+<td>三方深度验证（Claude+Codex+Gemini）配体分类，生成6套方案</td>
+<td>Substrates.csv + data.csv</td>
+</tr>
+<tr>
+<td></td>
+<td>Step 4</td>
+<td>CSV格式修正</td>
+<td>统一列名、列顺序，确保与模型输入要求一致</td>
+<td>修正后的CSV文件</td>
+</tr>
+<tr>
+<td><strong>特征生成</strong></td>
+<td>Step 5</td>
+<td>ESM酶嵌入生成</td>
+<td>ESM-2模型提取1280维蛋白序列特征</td>
+<td>enzyme_features.lmdb</td>
+</tr>
+<tr>
+<td></td>
+<td>Step 6</td>
+<td>反应图特征生成</td>
+<td>从SMILES构建分子图，提取拓扑特征</td>
+<td>reaction_features.lmdb</td>
+</tr>
+<tr>
+<td></td>
+<td>Step 7</td>
+<td>分子指纹生成</td>
+<td>Morgan指纹（1024-bit）+ GROVER嵌入（2400+4885维）</td>
+<td>多个特征文件</td>
+</tr>
+<tr>
+<td></td>
+<td>Step 8</td>
+<td>结构特征生成</td>
+<td>提取10Å口袋，配体对齐，生成结构特征</td>
+<td>structure_features.lmdb</td>
+</tr>
+<tr>
+<td><strong>预测分析</strong></td>
+<td>Step 9</td>
+<td>模型推理</td>
+<td>使用best-checkpoint对517条数据预测特异性</td>
+<td>predictions.csv</td>
+</tr>
+<tr>
+<td></td>
+<td>Step 10</td>
+<td>结果分析</td>
+<td>计算AUC-ROC/AUC-PR，三方协作根因分析</td>
+<td>评估报告</td>
+</tr>
+</tbody>
+</table>
+<h3>0.2 路径A Step 3 的关键问题：多配体处理</h3>
+<p><strong>问题发现</strong>：一个PDB结构中可能包含多个配体（底物、产物、抑制剂混合）</p>
+<p>例如：某个PDB结构中同时包含底物和产物，或者同时包含底物和抑制剂，这些都会被提取为独立的酶-配体对。</p>
+<p><strong>问题根源：ESIBank vs 我们的流程差异</strong></p>
+<table>
+<thead>
+<tr>
+<th>方面</th>
+<th>ESIBank</th>
+<th>我们</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>数据流</strong></td>
+<td>关系优先→结构其次</td>
+<td>结构优先→关系推断</td>
+</tr>
+<tr>
+<td><strong>起点</strong></td>
+<td>BRENDA酶-底物关系（文献验证）</td>
+<td>PDB实验结构</td>
+</tr>
+<tr>
+<td><strong>对接</strong></td>
+<td>AutoDock一次一个底物</td>
+<td>直接使用PDB配体</td>
+</tr>
+<tr>
+<td><strong>配体来源</strong></td>
+<td>已知是底物</td>
+<td>可能是底物/产物/抑制剂</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>ESIBank从BRENDA获取&quot;酶A催化底物X&quot;的关系，然后为每个关系单独做AutoDock对接，每个复合物天然只有一个目标配体</strong></li>
+<li>我们直接从PDB拿实验结构，PDB是晶体学实验的记录，配体是实验条件的产物，可能同时有底物+产物+抑制剂
+<ul>
+<li>例如：P450cam（CYP101A1）的晶体结构中可能同时包含樟脑（底物）和5-羧基樟脑（产物），这两个都会被提取为独立的酶-配体对</li>
+</ul>
+</li>
+</ul>
+<p><strong>三种解决方案</strong></p>
+<p><strong>方案A：严格筛选（只用共晶底物）</strong></p>
+<ul>
+<li><strong>做法</strong>：查阅文献，逐一确认每个PDB配体是否为该酶的真正底物，只保留确认是底物的酶-配体对</li>
+<li><strong>优点</strong>：数据质量最高，标签可靠，预测结果可信度高</li>
+<li><strong>缺点</strong>：需要大量人工查阅文献，耗时较长，数据量会减少约40%</li>
+</ul>
+<p><strong>方案B：多配体展开（直接使用）</strong></p>
+<ul>
+<li><strong>做法</strong>：不区分底物/产物/抑制剂，把所有提取到的每个配体都当作单独的&quot;酶-配体对&quot;输入模型</li>
+<li><strong>优点</strong>：最快速，不需要额外工作，可以立即开始后续流程</li>
+<li><strong>缺点</strong>：标签可能不准确（产物/抑制剂被当作底物），但可以观察模型对不同类型配体的预测差异</li>
+</ul>
+<p><strong>方案C：虚拟对接（ESIBank风格）</strong></p>
+<ul>
+<li><strong>做法</strong>：去掉PDB中的配体，查阅文献或其他数据库找到该酶的真正底物，然后用AutoDock将真正底物对接到我们的PDB实验结构（酶）上</li>
+<li><strong>优点</strong>：酶结构是实验解析的高质量结构，底物标签可靠（文献验证），与ESIBank训练数据生成方式一致</li>
+<li><strong>缺点</strong>：需要查阅文献确认底物、额外的对接工作，计算耗时最长</li>
+</ul>
+<p><strong>执行计划</strong>：B → A → C（先快速验证，再按需精细化）</p>
+<h3>0.3 开会后反馈：方案B需要细化</h3>
+<blockquote>
+<p>&quot;方案B按配体类型拆分成多个子方案&quot;</p>
+</blockquote>
+<p>因此我们将方案B拆分为：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">子方案</th>
+<th>包含的配体类型</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><strong>B1</strong></td>
+<td>仅 SUBSTRATE（底物）</td>
+<td>最严格，符合EZSpecificity原始定义</td>
+</tr>
+<tr>
+<td style="text-align:center"><strong>B2</strong></td>
+<td>SUBSTRATE + PRODUCT</td>
+<td>包含代谢产物</td>
+</tr>
+<tr>
+<td style="text-align:center"><strong>B3</strong></td>
+<td>SUBSTRATE + PRODUCT + INHIBITOR</td>
+<td>最宽松，测试模型边界</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>一、实验二v2：数据重构</h2>
+<h3>1.1 上次开会时的修改意见（在路径A进行前的筛选操作）</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">编号</th>
+<th>修改内容</th>
+<th>原方案 (v1)</th>
+<th>新方案 (v2)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><strong>1</strong></td>
+<td><strong>去重规则</strong></td>
+<td><strong>按 UniProt ID 分组</strong></td>
+<td>按 <strong>(UniProt + 配体)</strong> 分组</td>
+</tr>
+</tbody>
+</table>
+<pre><code>                        实验二v2 数据筛选流程（含植物追踪）
+
+输入数据                    ┌─────────────────────────────────┐
+(RCSB搜索结果)              │  1,591个实体 (任务2全局搜索)      │
+                           │  └─ plants: 27个结构              │
+                           └────────┬─────────────────────────┘
+                                    │ 任务3: 质量筛选
+                                    │ • 分辨率 ≤ 3.0Å
+                                    │ • 序列长度 300-1200 aa
+                                    │ • 实验方法: X-ray/EM
+                                    ▼
+                           ┌─────────────────────────────────┐
+                           │  1,426个实体 (任务3输出)         │
+                           │  └─ plants: 26个结构 (-1个)      │
+                           │     └─ 原因: 1个植物PDB因质量     │
+                           │        筛选被排除(分辨率/序列)    │
+                           └────────┬─────────────────────────┘
+                                    │
+                                    ▼
+┌─────────────────────────────────────────────────────────────────────┐
+│ 实验二v2 - Step 1: 展开配体对                                        │
+│         ├── 将每个PDB的每个配体展开为独立记录                          │
+│         └── 记录单位：(PDB, UniProt, Ligand CCD)                     │
+├─────────────────────────────────────────────────────────────────────┤
+│         输出：3,510条配体对 (平均2.46配体/结构)                       │
+│         └─ plants: 61条配体对 (26个PDB × 2.35配体/PDB)               │
+│             └─ 原因: 26个植物PDB平均每个包含2.35个配体               │
+│                (包括底物、抑制剂、辅因子、溶剂等)                      │
+└─────────────────────────────────────────────────────────────────────┘
+                                    │
+                                    ▼
+┌─────────────────────────────────────────────────────────────────────┐
+│ 实验二v2 - Step 2: 过滤辅因子/溶剂                                   │
+│         ├── 排除88种辅因子/溶剂/结晶添加剂                             │
+│         └── 分类配体：SUBSTRATE/INHIBITOR/PRODUCT/EXCLUDE             │
+├─────────────────────────────────────────────────────────────────────┤
+│         排除列表（88种化合物）：                                       │
+│         ├── 血红素：HEM, HEC, HEA, HEB, HAS, HDD                     │
+│         ├── 辅酶：FAD, FMN, NAD, NAP, NDP, NADP, NADPH               │
+│         ├── 水/离子：HOH, DOD, H2O, OXY, O2, NA, CL, K, MG, CA, ZN   │
+│         ├── 缓冲盐：SO4, PO4, TRS, EPE, HEP, MES, CIT               │
+│         ├── 溶剂：IPA, MOH, EOH, GOL, EDO, PEG, MPD, DMS, BME       │
+│         └── 其他：PGE, 1PE, P6G, MRD, ACY, ACT, FMT, MLA, TLA...     │
+├─────────────────────────────────────────────────────────────────────┤
+│         排除：2,140条配体对 (60.97%)                                 │
+│         └─ plants: 剔除45条 (73.8%) → 保留16条                       │
+│             └─ 原因分析:                                              │
+│                • 所有26个植物PDB都含血红素(HEM): 26条                 │
+│                • 甘油(GOL)结晶添加剂: 13条                            │
+│                • 其他辅因子/溶剂(OCT/MN/EPE): 6条                     │
+│                • 10个PDB仅含辅因子，完全被排除                        │
+│                • 16个PDB至少有1个有效配体保留                         │
+│         结果：1,370条有效配体对                                       │
+└─────────────────────────────────────────────────────────────────────┘
+                                    │
+                                    ▼
+┌─────────────────────────────────────────────────────────────────────┐
+│ 实验二v2 - Step 3: 去重 (按UniProt + Ligand CCD)                    │
+│         ├── 同一酶(UniProt) + 同一配体(CCD) 视为重复                  │
+│         └── 保留分辨率最佳的结构                                       │
+├─────────────────────────────────────────────────────────────────────┤
+│         去除：440条冗余配体对 (32.12%)                               │
+│         └─ plants: 剔除3条 (18.8%) → 保留13条                        │
+│             └─ 原因: 3个植物PDB的(UniProt+配体)组合重复，             │
+│                输给更高分辨率的同配体结构:                             │
+│                • 2RCH (1.85Å) 输给 3DSJ (1.60Å)                     │
+│                • 2RCL (2.41Å) 输给 3DSK (1.55Å)                     │
+│                • 6L8J (2.40Å) 输给 6J95 (2.00Å)                     │
+│         结果：930条非冗余配体对                                       │
+└─────────────────────────────────────────────────────────────────────┘
+                                    │
+                                    ▼
+┌─────────────────────────────────────────────────────────────────────┐
+│ 实验二v2 - Step 4: 排除ESIBank交集 (PDB级别严格排除)                 │
+│         ├── 排除所有包含ESIBank UniProt的PDB                          │
+│         └── 确保测试集与训练集完全独立                                 │
+├─────────────────────────────────────────────────────────────────────┤
+│         排除：190条配体对 (20.43%)                                   │
+│         └─ plants: 剔除4条 (30.8%) → 保留9条                         │
+│             └─ 原因: 4个植物PDB的UniProt在ESIBank 389中:              │
+│                • 5YM3 (S4UX02, 丹参CYP76AH1)                        │
+│                • 6L8H (Q6TBX7, 拟南芥CYP97C1)                        │
+│                • 7CB9 (S4UX02, 丹参CYP76AH1)                        │
+│                • 8X3E (Q6WG30, 红豆杉CYP725A4)                      │
+│         结果：740条独立测试集 (v2.0-Raw)                              │
+└─────────────────────────────────────────────────────────────────────┘
+                                    │
+                                    ▼
+┌─────────────────────────────────────────────────────────────────────┐
+│ 实验二v2 - Step 5: 质量控制 (排除Photosystem I污染)                  │
+│         └── 剔除58条非P450记录 (光合系统I蛋白，误分类为Other)          │
+├─────────────────────────────────────────────────────────────────────┤
+│         排除：58条非P450配体对 (7.84%)                               │
+│         └─ plants: 无影响 (0条) → 保持9条                            │
+│             └─ 原因: 58条Photosystem I全部被误分类为&quot;Other&quot;,         │
+│                植物类别数据准确，无需修正                               │
+│         结果：682条纯P450测试集 (v2.0-Final) ✅                       │
+└─────────────────────────────────────────────────────────────────────┘
+                                    │
+                                    ▼
+                           ┌─────────────────────────────────┐
+最终测试集                  │   682条P450-配体对              │
+(v2.0-Final)               │   ├─ 627个唯一PDB               │
+                           │   ├─ 153个唯一UniProt           │
+                           │   └─ 按物种：                    │
+                           │      ├─ bacteria: 426条 (62.5%) │
+                           │      ├─ mammals:  101条 (14.8%) │
+                           │      ├─ other:    116条 (17.0%) │
+                           │      ├─ fungi:     30条 (4.4%)  │
+                           │      └─ plants:     9条 (1.3%)  │
+                           └─────────────────────────────────┘
+
+植物类别详细追踪（27 → 26 → 9）：
+
+质量筛选 (27→26)：
+└─ 剔除1个PDB: 不满足质量标准(分辨率&gt;3.0Å或序列长度不在300-1200aa范围)
+
+辅因子过滤 (26→16对应PDB)：
+├─ 剔除10个PDB: 仅含辅因子(HEM/GOL等)无有效配体
+│   ├─ 拟南芥(Arabidopsis): 2RCM, 3CLI
+│   ├─ 银胶菊(Parthenium): 3DAM, 3DAN
+│   ├─ 丹参(Salvia): 5YLW
+│   ├─ 高粱(Sorghum): 6VBY
+│   ├─ 苜蓿(Medicago): 8E83
+│   └─ 红豆杉(Taxus): 8X1W, 及其他2个
+
+去重 (16→13对应PDB)：
+├─ 剔除3个PDB: 去重时输给更高分辨率结构
+│   └─ 全部来自拟南芥(Arabidopsis):
+│      • 2RCH (1.85Å) 输给 3DSJ (1.60Å) - 同为Q96242+CCD_243
+│      • 2RCL (2.41Å) 输给 3DSK (1.55Å) - 同为Q96242+CCD_T25
+│      • 6L8J (2.40Å) 输给 6J95 (2.00Å) - 同为Q93VK5+CCD_RET
+
+ESIBank排除 (13→9对应PDB)：
+├─ 剔除4个PDB: UniProt在ESIBank训练集中
+│   ├─ 丹参(Salvia): 5YM3 (S4UX02), 7CB9 (S4UX02)
+│   ├─ 拟南芥(Arabidopsis): 6L8H (Q6TBX7)
+│   └─ 红豆杉(Taxus): 8X3E (Q6WG30)
+
+最终保留9个PDB：
+├─ 银胶菊(Parthenium argentatum): 3DBM (Q40778)
+├─ 拟南芥(Arabidopsis thaliana): 8个PDB
+│   ├─ CYP74A系列: 3DSI, 3DSJ, 3DSK (Q96242)
+│   ├─ CYP90B1系列: 6A15, 6A16, 6A17, 6A18 (O64989)
+│   └─ CYP97A3: 6J95 (Q93VK5)
+└─ 涵盖3个UniProt ID、9条配体对
+</code></pre>
+<h3>1.1.1 植物PDB逐个追踪详表</h3>
+<p>以下是26个植物PDB在筛选过程中的完整追踪记录：</p>
+<table>
+<thead>
+<tr>
+<th>PDB</th>
+<th>UniProt</th>
+<th>PDB Title</th>
+<th>最终状态</th>
+<th>剔除原因</th>
+<th>保留配体CCD</th>
+<th>排除配体CCD</th>
+<th>Resolution</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>2RCH</td>
+<td>Q96242</td>
+<td>Crystal Structure of Arabidopsis thaliana AOS (CYP74A) Complexed with 13(S)-HOD</td>
+<td>❌ Step3去重</td>
+<td>输给3DSJ (1.60&lt;1.85)</td>
+<td>243</td>
+<td>GOL, HEM</td>
+<td>1.85</td>
+</tr>
+<tr>
+<td>2RCL</td>
+<td>Q96242</td>
+<td>Crystal Structure of Arabidopsis thaliana AOS (CYP74A) Complexed with Vernolic Acid</td>
+<td>❌ Step3去重</td>
+<td>输给3DSK (1.55&lt;2.41)</td>
+<td>T25</td>
+<td>GOL, HEM</td>
+<td>2.41</td>
+</tr>
+<tr>
+<td>2RCM</td>
+<td>Q96242</td>
+<td>Crystal Structure of Arabidopsis thaliana AOS variant (F137L)</td>
+<td>❌ Step2全排除</td>
+<td>仅辅因子/溶剂</td>
+<td>-</td>
+<td>GOL, HEM</td>
+<td>1.73</td>
+</tr>
+<tr>
+<td>3CLI</td>
+<td>Q96242</td>
+<td>Crystal Structure of Arabidopsis thaliana AOS (CYP74A)</td>
+<td>❌ Step2全排除</td>
+<td>仅辅因子/溶剂</td>
+<td>-</td>
+<td>GOL, HEM</td>
+<td>1.8</td>
+</tr>
+<tr>
+<td>3DAM</td>
+<td>Q40778</td>
+<td>Crystal Structure of Allene oxide synthase</td>
+<td>❌ Step2全排除</td>
+<td>仅辅因子</td>
+<td>-</td>
+<td>HEM</td>
+<td>2.4</td>
+</tr>
+<tr>
+<td>3DAN</td>
+<td>Q40778</td>
+<td>Crystal Structure of Allene oxide synthase</td>
+<td>❌ Step2全排除</td>
+<td>仅辅因子</td>
+<td>-</td>
+<td>HEM</td>
+<td>1.8</td>
+</tr>
+<tr>
+<td>3DBM</td>
+<td>Q40778</td>
+<td>Crystal Structure of Allene oxide synthase</td>
+<td>✅ 保留到682</td>
+<td>-</td>
+<td>HO2</td>
+<td>HEM</td>
+<td>2.6</td>
+</tr>
+<tr>
+<td>3DSI</td>
+<td>Q96242</td>
+<td>Crystal Structure of Arabidopsis thaliana AOS (CYP74A) Complexed with 13(S)-HOT</td>
+<td>✅ 保留到682</td>
+<td>-</td>
+<td>T24</td>
+<td>GOL, HEM, OCT</td>
+<td>1.60</td>
+</tr>
+<tr>
+<td>3DSJ</td>
+<td>Q96242</td>
+<td>Crystal Structure of Arabidopsis thaliana AOS Variant (F137L) Complexed with 13(S)-HOD</td>
+<td>✅ 保留到682</td>
+<td>-</td>
+<td>243</td>
+<td>GOL, HEM, OCT</td>
+<td>1.60</td>
+</tr>
+<tr>
+<td>3DSK</td>
+<td>Q96242</td>
+<td>Crystal Structure of Arabidopsis thaliana AOS variant (F137L) Complexed with Vernolic Acid</td>
+<td>✅ 保留到682</td>
+<td>-</td>
+<td>T25</td>
+<td>GOL, HEM, OCT</td>
+<td>1.55</td>
+</tr>
+<tr>
+<td>5YLW</td>
+<td>S4UX02</td>
+<td>CYP76AH1 from Salvia miltiorrhiza</td>
+<td>❌ Step2全排除</td>
+<td>仅辅因子/离子</td>
+<td>-</td>
+<td>HEM, MN</td>
+<td>1.7</td>
+</tr>
+<tr>
+<td>5YM3</td>
+<td>S4UX02</td>
+<td>CYP76AH1-4pi from Salvia miltiorrhiza</td>
+<td>❌ Step4 ESIBank</td>
+<td>UniProt在ESIBank</td>
+<td>PIM</td>
+<td>HEM, MN</td>
+<td>2.601</td>
+</tr>
+<tr>
+<td>6A15</td>
+<td>O64989</td>
+<td>Structure of CYP90B1 in complex with cholesterol</td>
+<td>✅ 保留到682</td>
+<td>-</td>
+<td>CLR</td>
+<td>GOL, HEM</td>
+<td>1.79</td>
+</tr>
+<tr>
+<td>6A16</td>
+<td>O64989</td>
+<td>Crystal structure of CYP90B1 in complex with uniconazole</td>
+<td>✅ 保留到682</td>
+<td>-</td>
+<td>UCZ</td>
+<td>GOL, HEM</td>
+<td>1.998</td>
+</tr>
+<tr>
+<td>6A17</td>
+<td>O64989</td>
+<td>Crystal structure of CYP90B1 in complex with brassinazole</td>
+<td>✅ 保留到682</td>
+<td>-</td>
+<td>9RL</td>
+<td>GOL, HEM</td>
+<td>2.301</td>
+</tr>
+<tr>
+<td>6A18</td>
+<td>O64989</td>
+<td>Crystal structure of CYP90B1 in complex with 1,6-hexandiol</td>
+<td>✅ 保留到682</td>
+<td>-</td>
+<td>HEZ</td>
+<td>GOL, HEM</td>
+<td>2.48</td>
+</tr>
+<tr>
+<td>6J94</td>
+<td>Q93VK5</td>
+<td>Crystal structure of CYP97A3</td>
+<td>❌ Step2全排除</td>
+<td>仅辅因子</td>
+<td>-</td>
+<td>HEM</td>
+<td>2.401</td>
+</tr>
+<tr>
+<td>6J95</td>
+<td>Q93VK5</td>
+<td>Crystal structure of CYP97A3 in complex with retinal</td>
+<td>✅ 保留到682</td>
+<td>-</td>
+<td>RET</td>
+<td>HEM</td>
+<td>2.002</td>
+</tr>
+<tr>
+<td>6L8H</td>
+<td>Q6TBX7</td>
+<td>Crystal structure of CYP97C1</td>
+<td>❌ Step4 ESIBank</td>
+<td>UniProt在ESIBank</td>
+<td>SOG</td>
+<td>GOL, HEM</td>
+<td>2.0</td>
+</tr>
+<tr>
+<td>6L8I</td>
+<td>Q93VK5</td>
+<td>Crystal structure of CYP97A3 mutant S290D/W300L/S304V</td>
+<td>❌ Step2全排除</td>
+<td>仅辅因子</td>
+<td>-</td>
+<td>HEM</td>
+<td>1.7</td>
+</tr>
+<tr>
+<td>6L8J</td>
+<td>Q93VK5</td>
+<td>Crystal structure of CYP97A3 mutant S290D/W300L/S304V in complex with retinal</td>
+<td>❌ Step3去重</td>
+<td>输给6J95 (2.002&lt;2.399)</td>
+<td>RET</td>
+<td>HEM</td>
+<td>2.399</td>
+</tr>
+<tr>
+<td>6VBY</td>
+<td>Q94IP1</td>
+<td>Cinnamate 4-hydroxylase (C4H1) from Sorghum bicolor</td>
+<td>❌ Step2全排除</td>
+<td>仅辅因子/缓冲液</td>
+<td>-</td>
+<td>EPE, GOL, HEM</td>
+<td>1.7</td>
+</tr>
+<tr>
+<td>7CB9</td>
+<td>S4UX02</td>
+<td>CYP76AH1/miltiradiene from Salvia miltiorrhiza</td>
+<td>❌ Step4 ESIBank</td>
+<td>UniProt在ESIBank</td>
+<td>J6C</td>
+<td>HEM</td>
+<td>1.9</td>
+</tr>
+<tr>
+<td>8E83</td>
+<td>A0A072UMR6</td>
+<td>Structure of 2-hydroxyisoflavanone synthase from Medicago truncatula</td>
+<td>❌ Step2全排除</td>
+<td>仅辅因子</td>
+<td>-</td>
+<td>HEM</td>
+<td>2.0</td>
+</tr>
+<tr>
+<td>8X1W</td>
+<td>Q6WG30</td>
+<td>CYP725A4 apo structure</td>
+<td>❌ Step2全排除</td>
+<td>仅辅因子</td>
+<td>-</td>
+<td>HEM</td>
+<td>2.1</td>
+</tr>
+<tr>
+<td>8X3E</td>
+<td>Q6WG30</td>
+<td>CYP725A4-Taxa-4,11-diene complex</td>
+<td>❌ Step4 ESIBank</td>
+<td>UniProt在ESIBank</td>
+<td>A1L3H</td>
+<td>HEM</td>
+<td>2.5</td>
+</tr>
+</tbody>
+</table>
+<p><strong>表格说明</strong>：</p>
+<ul>
+<li><strong>PDB Title</strong>: 简化后的结构标题（AOS=Allene Oxide Synthase，完整标题见源数据）</li>
+<li><strong>最终状态</strong>: ✅=保留到682条最终数据集，❌=被筛选剔除</li>
+<li><strong>剔除原因</strong>: Step2=辅因子过滤，Step3=去重，Step4=ESIBank排除</li>
+<li><strong>保留配体CCD</strong>: 通过Step2辅因子过滤的配体代号</li>
+<li><strong>排除配体CCD</strong>: 被Step2判定为辅因子/溶剂的配体</li>
+</ul>
+<p><strong>关键发现</strong>：</p>
+<ul>
+<li>10个PDB在Step2被完全排除（仅含辅因子，无有效配体）</li>
+<li>3个PDB在Step3去重中输给更高分辨率的同配体结构</li>
+<li>4个PDB在Step4因UniProt在ESIBank中而被排除</li>
+<li>最终保留9个PDB，涵盖3个UniProt ID，来自2个植物物种（拟南芥8个 + 银胶菊1个）</li>
+</ul>
+<hr />
+<h3>1.2 数据量变化</h3>
+<p>这是数据管道的<strong>上游改动</strong>，后续所有步骤都需重做：</p>
+<table>
+<thead>
+<tr>
+<th>指标</th>
+<th>v1 版本</th>
+<th>v2 版本</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>总记录数</td>
+<td>158条</td>
+<td><strong>682条</strong></td>
+<td>v2一个UniProt可对应多条记录</td>
+</tr>
+<tr>
+<td>唯一 PDB 数</td>
+<td>158个</td>
+<td><strong>626个</strong></td>
+<td>v2一个UniProt可有多个PDB</td>
+</tr>
+<tr>
+<td>唯一 UniProt 数</td>
+<td>155个</td>
+<td><strong>153个</strong></td>
+<td>v2排除了2个Photosystem I污染的UniProt（对应58条记录、1个PDB:6ZZX）</td>
+</tr>
+<tr>
+<td>唯一酶序列数</td>
+<td>158个</td>
+<td><strong>292个</strong></td>
+<td>PDB序列≠UniProt规范序列（见下方说明）</td>
+</tr>
+<tr>
+<td>Step 2后唯一UniProt</td>
+<td>-</td>
+<td><strong>148个</strong></td>
+<td>153→148：5对UniProt的全部序列完全重复，去重后合并（另有1对共享部分序列但各有独立PDB，保留）</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>为什么153个UniProt能产生292个唯一序列？</strong></p>
+<p>这是<strong>正常且合理的</strong>，因为：</p>
+<ul>
+<li><strong>PDB中的序列</strong>是实验室表达构建物的序列，不是UniProt数据库中的规范（canonical）序列</li>
+<li><strong>序列差异来源</strong>：His-tag纯化标签（28.7%的序列含有<code>HHHHHH</code>）、N端截断、突变体、不同表达载体</li>
+<li><strong>具体分布</strong>：105个UniProt（69%）只有1个序列；48个UniProt（31%）有2-36个不同序列</li>
+<li><strong>典型案例</strong>：P14779（P450 BM3）有78条记录、69个PDB、36个唯一序列（长度455-494 aa）</li>
+</ul>
+</blockquote>
+<hr />
+<h2>二、Path A Step 1-3：数据准备阶段</h2>
+<h3>2.1 Step 1：下载 PDB 文件</h3>
+<p>从 RCSB PDB 数据库下载 627 个结构文件：</p>
+<table>
+<thead>
+<tr>
+<th>指标</th>
+<th>数值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>目标 PDB 数</td>
+<td>627</td>
+</tr>
+<tr>
+<td>.pdb 格式</td>
+<td>619</td>
+</tr>
+<tr>
+<td>.cif 格式</td>
+<td>8</td>
+</tr>
+<tr>
+<td>从 v1 复用</td>
+<td>145</td>
+</tr>
+<tr>
+<td>新下载</td>
+<td>482</td>
+</tr>
+</tbody>
+</table>
+<h3>2.2 Step 2：提取酶序列</h3>
+<p>从 682 条记录中提取唯一酶序列：</p>
+<table>
+<thead>
+<tr>
+<th>指标</th>
+<th>数值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>总记录数</td>
+<td>682</td>
+</tr>
+<tr>
+<td>唯一酶序列数</td>
+<td>292</td>
+</tr>
+<tr>
+<td>唯一 UniProt 数</td>
+<td>148（源数据153个，5对共享相同序列被合并）</td>
+</tr>
+<tr>
+<td>平均序列长度</td>
+<td>~450 aa</td>
+</tr>
+</tbody>
+</table>
+<p><strong>产出文件</strong>：</p>
+<ul>
+<li><code>Enzymes.csv</code>：292 条唯一酶序列（对应 148 个 UniProt）</li>
+<li><code>record_enzyme_mapping.csv</code>：记录与酶的映射关系</li>
+</ul>
+<h3>2.3 Step 3：配体处理与数据集构建（重点）</h3>
+<p>Step 3 是整个流程中<strong>工作量最大</strong>的步骤，包含 5 个子任务。其中<strong>子任务 03 三方深度验证</strong>是核心。</p>
+<h4>概览</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">子任务</th>
+<th>名称</th>
+<th style="text-align:center">状态</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">01</td>
+<td>初步分类</td>
+<td style="text-align:center">✅</td>
+<td>基于规则的初步分类</td>
+</tr>
+<tr>
+<td style="text-align:center">02</td>
+<td>并行预审</td>
+<td style="text-align:center">✅</td>
+<td>快速预审，数据不够准确</td>
+</tr>
+<tr>
+<td style="text-align:center"><strong>03</strong></td>
+<td><strong>三方深度验证</strong></td>
+<td style="text-align:center">✅</td>
+<td><strong>核心任务，见下方详解</strong></td>
+</tr>
+<tr>
+<td style="text-align:center">04</td>
+<td>提取 SMILES</td>
+<td style="text-align:center">✅</td>
+<td>从 CCD 提取配体结构</td>
+</tr>
+<tr>
+<td style="text-align:center">05</td>
+<td>数据集切分</td>
+<td style="text-align:center">✅</td>
+<td>生成 B1-B6 六套方案</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3>子任务 03：三方深度验证</h3>
+<p>这是整个项目中<strong>投入最大</strong>的任务，我们使用 12 个并行窗口，每个窗口调用 3 个 AI API 对每条记录进行深度验证。</p>
+<pre><code>┌─────────────────────────────────────────────────────────────┐
+│                    三方深度验证架构                           │
+├─────────────────────────────────────────────────────────────┤
+│                                                             │
+│   总记录数：682 条                                           │
+│   并行窗口：12 个（每个处理约 57 条）                         │
+│   每条记录调用：Claude API、Codex API、Gemini API            │
+│   每个窗口执行时间：约 26 小时（并行）                           │
+│                                                             │
+│   ┌─────────┐    ┌─────────┐    ┌─────────┐                │
+│   │ Window 1│    │ Window 2│    │   ...   │    ...共12个    │
+│   │ (~57条) │    │ (~57条) │    │ (~57条) │                │
+│   └────┬────┘    └────┬────┘    └────┬────┘                │
+│        │              │              │                      │
+│        ▼              ▼              ▼                      │
+│   ┌─────────────────────────────────────────────┐          │
+│   │           每条记录的验证流程                  │          │
+│   │                                             │          │
+│   │  ┌──────────────┐                           │          │
+│   │  │ Claude Code  │ ← 最终决策、协调三方        │          │
+│   │  └──────┬───────┘                           │          │
+│   │         │  分发任务 + 综合结果                │          │
+│   │  ┌──────┴───────┐                           │          │
+│   │  ▼              ▼                           │          │
+│   │  ┌────────┐  ┌────────┐                     │          │
+│   │  │ Codex  │  │ Gemini │                     │          │
+│   │  │结构分析│  │文献搜索│                      │          │
+│   │  └────────┘  └────────┘                     │          │
+│   │                                             │          │
+│   │  三方分工：                                  │          │
+│   │  ├─ Claude Code（决策）：                   │          │
+│   │  │  综合三方意见，做出最终分类决定             │          │
+│   │  ├─ Codex（PDB结构分析）：                     │          │
+│   │  │  分析 Fe-配体距离、结合模式、共价键判断等    │          │
+│   │  └─ Gemini（文献检索）：                    │          │
+│   │     搜索 PMID、Ki/IC50 数据、催化证据等        │          │
+│   │                                             │          │
+│   │  每条记录验证内容：                           │          │
+│   │  ├─ 配体角色：SUBSTRATE / PRODUCT /          │          │
+│   │  │            INHIBITOR / EXCLUDE            │          │
+│   │  ├─ 文献证据：PMID、Ki/IC50等                 │          │
+│   │  ├─ 结构证据：Fe-配体距离、共价键等            │          │
+│   │  └─ 置信度：HIGH / MEDIUM / LOW              │          │
+│   └─────────────────────────────────────────────┘          │
+│                                                             │
+│   验证成果：                                                │
+│   ├── 发现标注错误：若干                                     │
+│   │   ├── 分类错误（SUBSTRATE ↔ INHIBITOR 误判）             │
+│   │   └── 排除遗漏（应排除的记录未被标记）                    │
+│   ├── 三方一致率：87.8%（599/682）                           │
+│   └── 证据等级 A+B：91.2%（622 条有文献支持）                │
+│                                                             │
+└─────────────────────────────────────────────────────────────┘
+</code></pre>
+<hr />
+<h3>子任务 04：提取 SMILES</h3>
+<p>从 CCD (Chemical Component Dictionary) 提取配体的 SMILES 结构：</p>
+<table>
+<thead>
+<tr>
+<th>指标</th>
+<th>数值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>唯一 CCD 代码数</td>
+<td>543</td>
+</tr>
+<tr>
+<td>成功提取</td>
+<td>543 (100%)</td>
+</tr>
+<tr>
+<td>最终唯一底物 SMILES</td>
+<td>436</td>
+</tr>
+</tbody>
+</table>
+<h3>子任务 05：数据集切分</h3>
+<p>根据三方深度验证的配体分类结果，生成 6 套评估方案用于不同的研究目的：</p>
+<p><strong>基础数据（来自子任务03三方深度验证）</strong>：</p>
+<ul>
+<li>SUBSTRATE（底物）：271条</li>
+<li>PRODUCT（产物）：23条</li>
+<li>INHIBITOR（抑制剂）：245条</li>
+<li>EXCLUDE（排除）：143条</li>
+<li>总计：682条</li>
+</ul>
+<p><strong>6套评估方案详解</strong>：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">方案</th>
+<th>正样本构成</th>
+<th>负样本构成</th>
+<th style="text-align:center">样本数</th>
+<th style="text-align:center">正负比</th>
+<th>评估目的</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center"><strong>B1</strong></td>
+<td>SUBSTRATE (271)</td>
+<td>—</td>
+<td style="text-align:center">271</td>
+<td style="text-align:center">—</td>
+<td>仅底物，用于正样本基线</td>
+</tr>
+<tr>
+<td style="text-align:center"><strong>B2</strong></td>
+<td>SUBSTRATE (271)</td>
+<td>PRODUCT (23)</td>
+<td style="text-align:center">294</td>
+<td style="text-align:center">11.8:1</td>
+<td>底物正、产物负，测试底物-产物区分能力</td>
+</tr>
+<tr>
+<td style="text-align:center"><strong>B3</strong></td>
+<td>SUBSTRATE (271)</td>
+<td>PRODUCT + INHIBITOR (268)</td>
+<td style="text-align:center">539</td>
+<td style="text-align:center">1.01:1</td>
+<td><strong>实际使用</strong>：完整数据集，正负均衡</td>
+</tr>
+<tr>
+<td style="text-align:center"><strong>B4</strong></td>
+<td>—</td>
+<td>PRODUCT (23)</td>
+<td style="text-align:center">23</td>
+<td style="text-align:center">—</td>
+<td>仅产物，用于负样本分析</td>
+</tr>
+<tr>
+<td style="text-align:center"><strong>B5</strong></td>
+<td>—</td>
+<td>INHIBITOR (245)</td>
+<td style="text-align:center">245</td>
+<td style="text-align:center">—</td>
+<td>仅抑制剂，用于负样本分析</td>
+</tr>
+<tr>
+<td style="text-align:center"><strong>B6</strong></td>
+<td>SUBSTRATE (271)</td>
+<td>INHIBITOR (245)</td>
+<td style="text-align:center">516</td>
+<td style="text-align:center">1.1:1</td>
+<td>底物正、抑制剂负，排除产物</td>
+</tr>
+</tbody>
+</table>
+<p><strong>方案B3的详细构成</strong>（实际用于Step 9推理）：</p>
+<pre><code>总样本：539条 → 结构特征提取成功：517条 (95.9%)
+├── 正样本：261条
+│   └── SUBSTRATE（底物）：261条
+└── 负样本：256条
+    ├── PRODUCT（产物）：~22条
+    └── INHIBITOR（抑制剂）：~234条
+</code></pre>
+<p><strong>后续使用 B3 方案</strong>进行模型评估，原因：</p>
+<ol>
+<li><strong>正负样本均衡</strong>：正负比1.01:1，避免类别不平衡问题</li>
+<li><strong>负样本多样性</strong>：包含产物（化学结构相似）和抑制剂（能结合但不催化），比ESIBank的随机配对更具挑战性</li>
+<li><strong>数据完整性</strong>：95.9%的记录有完整结构特征，样本损失率低</li>
+</ol>
+<hr />
+<h2>三、Path A Step 4-8：特征生成阶段</h2>
+<h3>3.1 Step 4：CSV 格式修正</h3>
+<p>确保数据文件符合模型输入要求：</p>
+<table>
+<thead>
+<tr>
+<th>文件</th>
+<th>修正内容</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>data.csv</td>
+<td>列顺序调整为：Dock Index, Enzyme Index, Substrate Index, Label</td>
+</tr>
+<tr>
+<td>Enzymes.csv</td>
+<td>确保列名为 &quot;Protein sequence&quot;</td>
+</tr>
+<tr>
+<td>Substrates.csv</td>
+<td>确保列名为 &quot;Substrate_SMILES&quot;</td>
+</tr>
+</tbody>
+</table>
+<h3>3.2 Step 5：ESM 酶嵌入生成</h3>
+<p>使用 ESM-2 模型生成蛋白质序列嵌入：</p>
+<table>
+<thead>
+<tr>
+<th>指标</th>
+<th>数值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>模型</td>
+<td>esm2_t33_650M_UR50D (650M 参数)</td>
+</tr>
+<tr>
+<td>输出维度</td>
+<td>1280 维 per residue</td>
+</tr>
+<tr>
+<td>输入序列数</td>
+<td>292 条</td>
+</tr>
+<tr>
+<td>成功数</td>
+<td>292 条 (100%)</td>
+</tr>
+<tr>
+<td>输出大小</td>
+<td>~700 MB (enzyme_features.lmdb)</td>
+</tr>
+<tr>
+<td>硬件</td>
+<td>NVIDIA 4070 Super GPU</td>
+</tr>
+</tbody>
+</table>
+<h3>3.3 Step 6：反应图特征生成</h3>
+<table>
+<thead>
+<tr>
+<th>指标</th>
+<th>数值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>输入底物数</td>
+<td>436</td>
+</tr>
+<tr>
+<td>成功数</td>
+<td>436 (100%)</td>
+</tr>
+<tr>
+<td>输出</td>
+<td>reaction_features.lmdb</td>
+</tr>
+</tbody>
+</table>
+<h3>3.4 Step 7：分子指纹生成</h3>
+<p><strong>7.1 Morgan 指纹</strong></p>
+<table>
+<thead>
+<tr>
+<th>指标</th>
+<th>数值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>维度</td>
+<td>1024-bit</td>
+</tr>
+<tr>
+<td>输出形状</td>
+<td>(436, 1024)</td>
+</tr>
+<tr>
+<td>数据类型</td>
+<td>int8</td>
+</tr>
+<tr>
+<td>文件大小</td>
+<td>436.1 KB</td>
+</tr>
+</tbody>
+</table>
+<p><strong>7.2 GROVER 指纹</strong></p>
+<table>
+<thead>
+<tr>
+<th>指标</th>
+<th>数值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>处理底物数</td>
+<td>436</td>
+</tr>
+<tr>
+<td>embedding 维度</td>
+<td>2400</td>
+</tr>
+<tr>
+<td>total 维度</td>
+<td>4885</td>
+</tr>
+<tr>
+<td>输出大小</td>
+<td>~10 GB (LMDB)</td>
+</tr>
+</tbody>
+</table>
+<h3>3.5 Step 8：结构特征生成</h3>
+<p><strong>与论文原始代码的关系</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>数据类型</th>
+<th>流程</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>论文训练数据</strong><br>(BRENDA)</td>
+<td>AlphaFold预测 + AutoDock对接<br>↓<br>对接复合物（已分离）<br>↓<br><strong>直接Step 8.3</strong> → LMDB</td>
+<td>对接结果已经是&quot;口袋+配体&quot;分离<br>原子顺序由对接工具保证与SMILES一致</td>
+</tr>
+<tr>
+<td><strong>我们测试数据</strong><br>(PDB晶体结构)</td>
+<td>PDB完整结构<br>↓<br><strong>Step 8.1</strong>（提取）<br>↓<br><strong>Step 8.2</strong>（对齐）<br>↓<br><strong>Step 8.3</strong> → LMDB</td>
+<td>PDB是完整蛋白质（几千个原子）<br>原子顺序是晶体学实验决定的<br><strong>必须自己写8.1-8.2预处理</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>代码来源</strong>：</p>
+<ul>
+<li><strong>Step 8.1-8.2</strong>：我们自己写的（论文没有此需求）</li>
+<li><strong>Step 8.3</strong>：复用论文模块（<code>PDBProtein</code>, <code>parse_sdf_file_mol</code>, <code>StructureComplexData</code>）</li>
+</ul>
+<hr />
+<p><strong>结构特征提取完整流程</strong>：</p>
+<pre><code>┌─────────────────────────────────────────────────────────────────┐
+│ Step 8.1: 口袋和配体提取 (extract_pocket_ligand.py)              │
+│ 【代码来源：我们自己写的 - 论文没有此步骤】                       │
+├─────────────────────────────────────────────────────────────────┤
+│                                                                 │
+│  输入：                                                          │
+│  ├─ dock_index_mapping.csv  (Dock_Index → pdb_id, ligand_ccd) │
+│  └─ 01_Step1_PDB文件/*.pdb  (627个实验结构)                     │
+│                                                                 │
+│  处理逻辑：                                                      │
+│  1. 解析PDB/CIF文件 (Bio.PDB parser)                            │
+│  2. 定位配体残基                                                │
+│     ├─ 按 ligand_ccd 匹配残基名                                 │
+│     ├─ 如多个实例：选择最接近HEM铁的配体（P450特异性）            │
+│     └─ 排除辅因子 (HEM, FAD, NAD, FMN)                          │
+│  3. 提取口袋原子                                                │
+│     ├─ 标准：配体任意原子 10Å 范围内的蛋白质原子                │
+│     ├─ 仅ATOM记录（hetflag=' '），排除HETATM                    │
+│     ├─ 排除水分子 (HOH, WAT, DOD, H2O)                          │
+│     └─ 处理disordered原子：优先选择最高占据度的altLoc            │
+│  4. 分别写入口袋PDB和配体SDF                                     │
+│                                                                 │
+│  输出：                                                          │
+│  ├─ str_tmp_data/pocket/{Dock_Index}.pdb      (526个)          │
+│  ├─ str_tmp_data/raw_ligand/{Dock_Index}.sdf (526个)           │
+│  └─ extraction_summary.csv                                     │
+│                                                                 │
+│  成功率：526/539 (97.6%)                                        │
+└─────────────────────────────────────────────────────────────────┘
+                             ↓
+┌─────────────────────────────────────────────────────────────────┐
+│ Step 8.2: 配体原子对齐 (align_ligand.py)                         │
+│ 【代码来源：我们自己写的 - 论文没有此步骤】                       │
+├─────────────────────────────────────────────────────────────────┤
+│                                                                 │
+│  问题背景：                                                      │
+│  PDB晶体结构中的原子顺序 ≠ SMILES的拓扑顺序                      │
+│  → 需要建立映射关系，确保原子编号一致                            │
+│                                                                 │
+│  输入：                                                          │
+│  ├─ str_tmp_data/raw_ligand/{Dock_Index}.sdf  (PDB坐标)        │
+│  ├─ Substrates.csv  (SMILES字符串)                              │
+│  └─ dock_index_mapping.csv  (Dock_Index → Substrate_Index)     │
+│                                                                 │
+│  处理逻辑：                                                      │
+│  1. 从SMILES创建参考分子（ref_mol）                              │
+│  2. 读取PDB提取的配体分子（pdb_mol）                             │
+│  3. 去氢原子（RDKit RemoveHs）                                   │
+│  4. 修正键序：                                                   │
+│     └─ AllChem.AssignBondOrdersFromTemplate(ref, pdb)           │
+│        → 用SMILES的键信息纠正PDB的键识别错误                     │
+│  5. 子结构匹配：                                                 │
+│     └─ pdb.GetSubstructMatches(ref, useChirality=True)          │
+│        → 得到 match[smiles_idx] = pdb_idx 映射                  │
+│  6. 设置原子编号：                                               │
+│     └─ SetAtomMapNum(smiles_idx)                                │
+│        → 每个原子携带其在SMILES中的索引                         │
+│                                                                 │
+│  输出：                                                          │
+│  ├─ str_tmp_data/ligand/{Dock_Index}.sdf  (517个)              │
+│  │   └─ 每个原子的 AtomMapNum = SMILES中的索引                  │
+│  └─ alignment_summary.csv                                       │
+│                                                                 │
+│  成功率：517/526 (98.3%)                                        │
+└─────────────────────────────────────────────────────────────────┘
+                             ↓
+┌─────────────────────────────────────────────────────────────────┐
+│ Step 8.3: 生成结构特征LMDB (generate_structure_lmdb.py)          │
+│ 【代码来源：复用论文模块 + 我们的改写】                           │
+│   ✅ 论文原始：PDBProtein, parse_sdf_file_mol,                   │
+│                StructureComplexData, torchify_dict               │
+│   ⚠️ 我们改写：去除torch_scatter依赖，修复中文路径兼容性          │
+├─────────────────────────────────────────────────────────────────┤
+│                                                                 │
+│  输入：                                                          │
+│  ├─ str_tmp_data/pocket/{Dock_Index}.pdb                        │
+│  └─ str_tmp_data/ligand/{Dock_Index}.sdf  (已对齐)              │
+│                                                                 │
+│  处理逻辑：                                                      │
+│  1. 解析口袋PDB → protein_dict （使用论文的 PDBProtein 类）       │
+│     ├─ element: 原子序数                                        │
+│     ├─ pos: 3D坐标 (N×3)                                        │
+│     ├─ is_backbone: CA/C/N/O标记                                │
+│     └─ atom_to_aa_type: 氨基酸类型 (20种+UNK)                   │
+│  2. 解析配体SDF → ligand_dict （使用论文的 parse_sdf_file_mol） │
+│     ├─ element: 原子序数                                        │
+│     ├─ pos: 3D坐标 (M×3)                                        │
+│     ├─ bond_index: 边索引 (2×E)                                 │
+│     ├─ bond_type: 边类型 (单/双/三/芳香)                        │
+│     ├─ atom_feature: 原子特征矩阵 (原子序数, 芳香性, 度, H数, 杂化)│
+│     ├─ center_of_mass: 配体质心                                 │
+│     └─ index: SMILES原子索引 (从AtomMapNum读取)                 │
+│  3. 创建 StructureComplexData （使用论文的 PyG Data 类）         │
+│     └─ 合并 protein_dict + ligand_dict (使用 torchify_dict)     │
+│  4. Pickle序列化 → LMDB                                         │
+│     └─ Key: Dock_Index (str)                                    │
+│     └─ Value: pickle(StructureComplexData)                      │
+│                                                                 │
+│  输出：                                                          │
+│  ├─ structure_features.lmdb  (517条)                            │
+│  └─ high_quality_id.txt  (517个Dock_Index)                     │
+│                                                                 │
+│  成功率：517/517 (100%)                                         │
+└─────────────────────────────────────────────────────────────────┘
+                             ↓
+                      最终结构特征
+                     (用于模型推理)
+</code></pre>
+<p><strong>关键技术细节</strong>：</p>
+<ol>
+<li>
+<p><strong>为什么论文没有Step 8.1-8.2？</strong></p>
+<ul>
+<li>论文训练数据：BRENDA酶序列 + AlphaFold预测结构 + AutoDock Vina对接
+<ul>
+<li>对接输出已经是&quot;口袋+配体&quot;分离的复合物PDB</li>
+<li>原子顺序在对接时已经由Vina保证与SMILES一致</li>
+<li><strong>可以直接进入Step 8.3（论文模块）</strong></li>
+</ul>
+</li>
+<li>我们测试数据：PDB晶体结构（实验解析）
+<ul>
+<li>完整的蛋白质结构（几千个原子，含配体、辅因子、水分子等）</li>
+<li>原子顺序是晶体学实验决定的（与SMILES无关）</li>
+<li><strong>必须自己写Step 8.1-8.2进行预处理</strong></li>
+</ul>
+</li>
+</ul>
+</li>
+<li>
+<p><strong>P450特异性处理</strong>：</p>
+<ul>
+<li>当配体有多个实例时，选择最接近HEM铁原子（FE）的配体</li>
+<li>确保选中的是活性位点的真实底物，而非其他位置的分子</li>
+</ul>
+</li>
+<li>
+<p><strong>口袋定义</strong>：</p>
+<ul>
+<li>半径：10 Å（配体任意原子10埃范围内）</li>
+<li>仅包含标准氨基酸（ATOM记录），排除辅因子（HETATM）</li>
+<li>处理无序原子：选择最高占据度的构象</li>
+</ul>
+</li>
+<li>
+<p><strong>原子对齐必要性</strong>：</p>
+<ul>
+<li>PDB原子顺序是任意的（晶体学实验决定）</li>
+<li>SMILES原子顺序是拓扑顺序（化学结构决定）</li>
+<li>模型需要一致的原子索引来学习结构-活性关系</li>
+</ul>
+</li>
+<li>
+<p><strong>数据过滤</strong>（逐层）：</p>
+<ul>
+<li>539 → 526：口袋/配体提取失败（配体未找到、PDB解析错误）</li>
+<li>526 → 517：原子对齐失败（键序识别错误、SMILES与PDB不匹配）</li>
+<li>517 → 517：LMDB生成全部成功</li>
+</ul>
+</li>
+</ol>
+<p><strong>统计总结</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>步骤</th>
+<th>输入</th>
+<th>输出</th>
+<th>成功率</th>
+<th>主要失败原因</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>8.1 口袋/配体提取</td>
+<td>539</td>
+<td>526</td>
+<td>97.6%</td>
+<td>配体未找到、解析错误</td>
+</tr>
+<tr>
+<td>8.2 原子对齐</td>
+<td>526</td>
+<td>517</td>
+<td>98.3%</td>
+<td>键序识别失败、部分匹配</td>
+</tr>
+<tr>
+<td>8.3 LMDB生成</td>
+<td>517</td>
+<td>517</td>
+<td>100%</td>
+<td>-</td>
+</tr>
+<tr>
+<td><strong>总计</strong></td>
+<td><strong>539</strong></td>
+<td><strong>517</strong></td>
+<td><strong>95.9%</strong></td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>四、Path A Step 9-10：模型推理与结果分析</h2>
+<h3>4.1 使用的模型检查点（重要）</h3>
+<p>我们使用的是 EZSpecificity 论文发布的预训练模型：</p>
+<pre><code>┌─────────────────────────────────────────────────────────────┐
+│                    模型检查点信息                            │
+├─────────────────────────────────────────────────────────────┤
+│                                                             │
+│   文件名：best-checkpoint.ckpt                               │
+│   文件大小：22 MB                                            │
+│   训练时间：2023-12-30 ~ 2023-12-31                          │
+│                                                             │
+│   训练数据：                                                 │
+│   ├── BRENDA 数据库（主要来源）                              │
+│   ├── 包含 389 个 P450 酶（来自 BRENDA）                     │
+│   └── 7 个小家族酶                                          │
+│       ├── Duf                                               │
+│       ├── Esterase                                          │
+│       ├── Gt_acceptor                                       │
+│       ├── Nitrilase                                         │
+│       ├── Phosphatase                                       │
+│       ├── Thiolase                                          │
+│       └── halogenase                                        │
+│                                                             │
+│   模型性能（fold-0单折）：                                    │
+│   ├── 测试集 AUC-ROC：0.8878                                │
+│   ├── 测试集 AUC-PR：0.5927                                 │
+│   └── 验证集 AUC-PR：0.6142（用于Early Stopping选择最佳模型）│
+│                                                             │
+│   关键特点：                                                 │
+│   ├── 训练集含 389 个 P450（BRENDA 来源）                     │
+│   └── ⚠️ 与我们测试集的 148 个 P450 完全不重叠（0%）          │
+│                                                             │
+└─────────────────────────────────────────────────────────────┘
+</code></pre>
+<p><strong>模型架构</strong>：</p>
+<ul>
+<li>SE(3)-等变图神经网络 (EGNN)</li>
+<li>交叉注意力机制</li>
+<li>输入特征：ESM 嵌入 + Morgan 指纹 + GROVER 指纹 + 结构特征</li>
+</ul>
+<h3>4.2 推理执行</h3>
+<table>
+<thead>
+<tr>
+<th>指标</th>
+<th>数值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>使用数据集</td>
+<td>B3 方案</td>
+</tr>
+<tr>
+<td>总样本数</td>
+<td>539 条</td>
+</tr>
+<tr>
+<td>高质量样本（有结构特征）</td>
+<td><strong>517 条</strong></td>
+</tr>
+<tr>
+<td>正样本</td>
+<td>261 条</td>
+</tr>
+<tr>
+<td>负样本</td>
+<td>256 条</td>
+</tr>
+</tbody>
+</table>
+<h3>4.3 评估结果</h3>
+<pre><code>┌─────────────────────────────────────────────────────────────┐
+│                    P450 测试集评估结果                        │
+├─────────────────────────────────────────────────────────────┤
+│                                                             │
+│   核心指标：                                                 │
+│   ┌────────────────────────────────────────────┐            │
+│   │  AUC-ROC：0.6636                           │            │
+│   │  AUC-PR：0.6360                            │            │
+│   └────────────────────────────────────────────┘            │
+│                                                             │
+│   其他指标（默认阈值 0.5）：                                  │
+│   ├── Accuracy：0.5164                                      │
+│   ├── Recall：0.0996（极低）                                 │
+│   └── 最优阈值（Youden's J）：0.0379                         │
+│                                                             │
+└─────────────────────────────────────────────────────────────┘
+</code></pre>
+<h3>4.4 与论文基准对比</h3>
+<table>
+<thead>
+<tr>
+<th>场景</th>
+<th>AUC-ROC</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>论文 Random Split</td>
+<td>0.8878</td>
+<td>酶和底物都见过</td>
+</tr>
+<tr>
+<td>论文 Unknown enzyme</td>
+<td>0.7741</td>
+<td>酶未见过</td>
+</tr>
+<tr>
+<td>论文 Unknown substrate</td>
+<td>0.8003</td>
+<td>底物未见过</td>
+</tr>
+<tr>
+<td>论文 Unknown enzyme+substrate</td>
+<td><strong>0.7198</strong></td>
+<td>酶和底物都未见过</td>
+</tr>
+<tr>
+<td><strong>我们的 P450 测试</strong></td>
+<td><strong>0.6636</strong></td>
+<td>低 5.6%</td>
+</tr>
+</tbody>
+</table>
+<h3>4.5 可能的根因分析</h3>
+<h4>根因 1：P450 泛化能力不足 —— 训练集和测试集的 P450 完全不重叠（0%）</h4>
+<blockquote>
+<p><strong>定义</strong>：测试集的 148 个 P450 与训练集的 389 个 P450 完全不重叠（0%），模型需要对未见过的 P450 进行预测</p>
+</blockquote>
+<p><strong>我们的数据与结果</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>维度</th>
+<th>训练集（ESIBank）</th>
+<th>测试集（独立实验）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>P450 数量</td>
+<td>389 个</td>
+<td>148 个</td>
+</tr>
+<tr>
+<td>酶重叠率</td>
+<td><strong>0%</strong></td>
+<td>无任何训练集 P450 出现</td>
+</tr>
+<tr>
+<td>结构来源</td>
+<td>AlphaFold 预测</td>
+<td>RCSB 实验结构</td>
+</tr>
+<tr>
+<td><strong>实际 AUC-ROC</strong></td>
+<td>-</td>
+<td><strong>0.6636</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>与论文基准对比</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>场景</th>
+<th>AUC-ROC</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>论文：Known enzyme+substrate</td>
+<td>0.8878</td>
+<td>酶和底物都在训练集中</td>
+</tr>
+<tr>
+<td>论文：Unknown enzyme+substrate</td>
+<td>0.7198</td>
+<td>酶和底物都未见过（类似我们的场景）</td>
+</tr>
+<tr>
+<td><strong>我们的实验</strong></td>
+<td><strong>0.6636</strong></td>
+<td>P450 完全未见过 + 负样本定义不同</td>
+</tr>
+<tr>
+<td><strong>差距</strong></td>
+<td><strong>-5.6%</strong></td>
+<td>主要由根因2（负样本语义差异）和根因3（结构信息缺失）累积影响</td>
+</tr>
+</tbody>
+</table>
+<p><strong>深入分析：为什么我们比论文的 Unknown 基准还低？</strong></p>
+<p>论文的 Unknown enzyme+substrate 场景（0.7198）和我们的场景都是&quot;酶和底物都未见过&quot;，但我们更低的原因：</p>
+<ol>
+<li>
+<p><strong>酶的陌生程度不同</strong></p>
+<ul>
+<li>论文：Unknown酶可能与训练集存在家族相似性（如都是氧化还原酶类）</li>
+<li>我们：P450 与训练集 8,124 种酶完全不同（完全陌生的家族）</li>
+</ul>
+</li>
+<li>
+<p><strong>负样本定义不同</strong></p>
+<ul>
+<li>论文：随机配对负样本（容易区分）</li>
+<li>我们：抑制剂负样本（难以区分）→ 贡献额外 5-6% 下降</li>
+</ul>
+</li>
+<li>
+<p><strong>结构信息缺失</strong></p>
+<ul>
+<li>Heme 辅因子、口袋截断、晶体vs对接结构差异 → 加剧泛化失败</li>
+</ul>
+</li>
+</ol>
+<p>因此，<strong>即使我们换成随机负样本（方案1），预期的 0.72 仍会低于论文的 0.7198</strong>，因为 P450 对模型而言是完全陌生的酶家族。</p>
+<blockquote>
+<p>🔍 <strong>验证方法</strong>：使用 <code>check_enzyme_overlap.py</code> 检查训练集和测试集 P450 重叠率 = 0%</p>
+</blockquote>
+<hr />
+<h4>根因 2：负样本定义不同 —— 训练用随机配对，测试用抑制剂</h4>
+<blockquote>
+<p><strong>定义</strong>：训练集负样本是随机配对（容易区分），测试集负样本是真实抑制剂（难以区分）</p>
+</blockquote>
+<blockquote>
+<p><strong>影响</strong>：AUC-ROC 从 ~0.72 进一步降至 0.6636（贡献约 <strong>25%</strong> 的下降）</p>
+</blockquote>
+<pre><code>训练时的&quot;负样本&quot;：
+├── 做法：酶 A 随机配对底物 X（两者通常完全无关）
+├── 模型学到：区分&quot;催化底物&quot;与&quot;随机分子&quot;
+└── 难度：低（化学结构差异大，容易区分）
+
+我们的&quot;负样本&quot;：
+├── 做法：酶 A 的抑制剂/产物 Y（来自同一 PDB 结构）
+├── 实际是：能结合到酶活性口袋、只是不催化的分子
+└── 难度：高（与底物化学结构相似，占据相同结合位点）
+</code></pre>
+<p><strong>关键区别</strong>（分点解析）：</p>
+<ol>
+<li>
+<p><strong>训练集的负样本定义</strong>
+随机分子（与酶完全无关），模型学会区分&quot;能关联 vs 不能关联&quot;</p>
+</li>
+<li>
+<p><strong>测试集的负样本定义</strong>
+抑制剂/产物——它们能结合到活性口袋，只是不催化</p>
+</li>
+<li>
+<p><strong>得分差异分析</strong></p>
+<ul>
+<li>正样本平均：-2.99 logit</li>
+<li>负样本平均：-5.05 logit（比正样本低，但没低到随机配对的程度）</li>
+<li>随机配对预期：-7 以下（比抑制剂更远离正样本）</li>
+</ul>
+</li>
+<li>
+<p><strong>间距压缩问题</strong>
+正负样本间距仅 2.06 logit（太小），限制了 AUC-ROC 的上限</p>
+</li>
+<li>
+<p><strong>不是&quot;假阳性&quot;问题</strong>
+混淆矩阵中 FP 仅 15 个，真阴性率 94%（说明模型能正确识别大部分负样本），核心问题是<strong>得分分布重叠导致的排序困难</strong></p>
+</li>
+</ol>
+<blockquote>
+<p>详细的得分分布图解与提升瓶颈分析见下方 <a href="#%E6%B7%B1%E5%BA%A6%E5%88%86%E6%9E%90auroc-%E6%8F%90%E5%8D%87%E7%9A%84%E7%93%B6%E9%A2%88%E4%B8%8E%E8%B7%AF%E5%BE%84-1">改进方向 - 深度分析</a></p>
+</blockquote>
+<hr />
+<h4>根因 3：P450 关键结构信息缺失 —— heme、口袋、结构来源</h4>
+<blockquote>
+<p><strong>定义</strong>：模型输入的结构特征缺失 P450 的关键信息</p>
+</blockquote>
+<blockquote>
+<p><strong>影响</strong>：对 AUC-ROC 的独立贡献难以精确量化，但构成泛化失败的物理机制</p>
+</blockquote>
+<p>三个具体问题：</p>
+<table>
+<thead>
+<tr>
+<th>问题</th>
+<th>详情</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Heme 辅因子被排除</strong></td>
+<td>蛋白质解析器只读 ATOM 记录，heme 作为 HETATM 被丢弃。P450 的催化核心正是 heme-铁中心，这个缺失对 P450 的影响远大于其他酶家族</td>
+</tr>
+<tr>
+<td><strong>10Å 口袋截断</strong></td>
+<td>P450 普遍具有深而长的底物通道（access channel），决定底物选择性的关键残基可能位于通道入口处，超出 10Å 范围</td>
+</tr>
+<tr>
+<td><strong>晶体结构 vs 对接结构</strong></td>
+<td>训练数据使用对接生成的复合物结构，我们直接使用 PDB 晶体结构。两者在配体位姿、蛋白构象上存在系统差异</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h4>其他次要影响因素</h4>
+<p>以下因素对 AUC-ROC 影响较小，但仍值得关注：</p>
+<ol>
+<li>
+<p><strong>标签噪声</strong></p>
+<p>Step 3 三方验证已修正 8.5% 的标注错误，但仍有约 8.8% 的标签缺乏强文献支持（证据等级 C/D）。根据估算，残余噪声可能导致 AUC-ROC 被低估约 0.03-0.04。</p>
+</li>
+<li>
+<p><strong>正负比例差异影响 AUPR</strong></p>
+<p>训练集正负比 1:9.36，测试集 1:1。AUROC 作为 rank-based 指标不受类别比例影响（<a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC11240176/">Richardson et al., 2024</a>），但 AUPR 的随机基线会随正样本比例变化——我们测试集基线为 50.5%（261/517），而训练集基线仅约 10%，因此两者的 AUPR 不可直接比较。</p>
+</li>
+</ol>
+<hr />
+<h4>归因总结</h4>
+<pre><code>AUC-ROC 下降路径：
+
+  0.8878 (训练集基准)
+    │
+    ├─ 根因1: P450 泛化不足 ──→ 降至 ~0.72 (论文 Unknown 基准)
+    │   └─ 训练集 389 个 P450 与测试集 148 个完全不重叠（0%）
+    │
+    ├─ 根因2: 负样本定义不同 ──→ 降至 0.6636 (实际结果)
+    │   └─ 训练用随机配对，测试用抑制剂
+    │
+    └─ 根因3: 结构信息缺失 ──→ 加剧泛化失败
+        └─ heme 缺失 + 口袋截断 + 晶体/对接结构差异
+
+  次要：标签噪声（~0.03-0.04 AUC 低估）
+        正负比例差异（影响 AUPR，不影响 AUROC）
+</code></pre>
+<h4>反事实推演：逐一修复会怎样？</h4>
+<table>
+<thead>
+<tr>
+<th>假设情景</th>
+<th>修复的根因</th>
+<th>预期效果</th>
+<th>可行性</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>改用随机配对负样本</td>
+<td>根因 2（负样本定义）</td>
+<td>AUC 预计升至 ~0.72（达论文基准）</td>
+<td>路径 1 可快速验证</td>
+</tr>
+<tr>
+<td>在 P450 数据上微调模型</td>
+<td>根因 1（泛化不足）</td>
+<td>AUC 预计升至 0.80+（接近训练集水平）</td>
+<td>路径 2 长期规划</td>
+</tr>
+<tr>
+<td>纳入 heme + 扩大口袋范围</td>
+<td>根因 3（结构缺失）</td>
+<td>结构特征更准确，辅助提升泛化</td>
+<td>需修改特征生成代码</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h3>4.6 结论</h3>
+<pre><code>┌─────────────────────────────────────────────────────────────┐
+│                         核心结论                             │
+├─────────────────────────────────────────────────────────────┤
+│                                                             │
+│   1. AUC-ROC 0.6636 在预期范围内                             │
+│      └── 比论文最难场景 (0.7198) 低 5.6%                     │
+│                                                             │
+│   2. 差距主要来自任务定义不同                                 │
+│      └── 我们用抑制剂+产物做负样本，比随机配对更难区分          │
+│                                                             │
+│   3. 这不代表模型&quot;失败&quot;                                      │
+│      └── 而是评估任务本身与训练任务不同                       │
+│                                                             │
+│   4. 模型在这批未见过的 P450 酶上仍有一定泛化能力             │
+│      └── AUC-ROC &gt; 0.5 表明预测优于随机                      │
+│                                                             │
+└─────────────────────────────────────────────────────────────┘
+</code></pre>
+<hr />
+<h2>五、改进方向</h2>
+<p>基于以上根因分析，我们提出三条改进路径。在展开具体方案前，先理解 <strong>AUROC 提升的核心问题</strong>：</p>
+<h3>核心问题：正负样本得分的分布重叠</h3>
+<p><strong>AUROC 的本质</strong> = 从正负样本中各随机抽一个，正样本得分更高的概率（纯看排序，不看阈值）</p>
+<p><strong>当前数据证据</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>得分区间</th>
+<th>正样本(261)</th>
+<th>负样本(256)</th>
+<th>正样本能赢吗？</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>logit ≥ 0</td>
+<td>26 (10%)</td>
+<td>2 (1%)</td>
+<td>✓ 稳赢</td>
+</tr>
+<tr>
+<td>-3 ~ 0</td>
+<td>89 (34%)</td>
+<td>9 (4%)</td>
+<td>✓ 稳赢</td>
+</tr>
+<tr>
+<td><strong>-7 ~ -3</strong></td>
+<td><strong>102 (39%)</strong></td>
+<td><strong>211 (82%)</strong></td>
+<td>⚠️ <strong>重叠区</strong></td>
+</tr>
+<tr>
+<td>&lt; -7</td>
+<td>44 (17%)</td>
+<td>34 (13%)</td>
+<td>✗ 稳输</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><strong>正样本平均</strong>：-2.99（方差极大：-14.58 ~ +2.82）</li>
+<li><strong>负样本平均</strong>：-5.05（相对集中：-12.34 ~ +2.20）</li>
+<li><strong>问题</strong>：重叠区域很大，导致 60-70% 的配对中正样本赢 → AUROC ≈ 0.66</li>
+</ul>
+<p><strong>分布可视化</strong>：</p>
+<pre><code>正负样本Logit分布直方图
+
+logit范围        负样本(256)              正样本(261)
+─────────────────────────────────────────────────────────
+[ 2, 3]                                   ██  (6)
+[ 1, 2]                                   ███  (9)
+[ 0, 1]          █  (2)                   ███  (11)
+[-1, 0]          █  (3)                   █████  (18)
+[-2,-1]          ██  (6)                  ████████  (30)
+[-3,-2]          █████  (17)              ███████████  (40)
+[-4,-3]          ████████  (29)           █████████  (32)
+[-5,-4]          ███████████  (42)        ████████  (29)
+[-6,-5]          ████████████  (45)       █████  (19)
+[-7,-6]          ██████████  (36)         ████  (14)
+[-8,-7]          ██████  (22)             ███  (12)
+[-9,-8]          ████  (14)               ██  (9)
+[-10,-9]         ███  (10)                ██  (7)
+[-15,-10]        ████  (15)               ███  (13)
+[-22,-15]        ████  (15)               ███  (12)
+─────────────────────────────────────────────────────────
+             ←负偏移                  ←也负偏移但略高
+</code></pre>
+<pre><code>当前情况（抑制剂负样本）：
+
+正样本：█░░░░░░░░░█████████████████░░░░░█  (-14.58 ~ +2.82)
+负样本：          ████████████              (-12.34 ~ +2.20)
+                      ↑ 平均-5.05
+
+重叠区域很大！很多正样本被负样本超越。
+</code></pre>
+<p><strong>提升 AUROC 的策略</strong>：</p>
+<ol>
+<li><strong>推负样本</strong>（往左）：换成随机配对负样本，得分从 -5 降到 -7 → 方案1</li>
+<li><strong>拉正样本</strong>（往右）：P450 微调，得分从 -3 升到 +2 → 方案2</li>
+<li><strong>最大化提升</strong>：方案1 → 方案2（递进组合，双重拉开距离）</li>
+</ol>
+<hr />
+<h3>5.1 方案 1：数据重构（随机配对负样本）</h3>
+<p><strong>定位</strong>：方案2（微调）的数据基础 + 根因2验证</p>
+<p><strong>目标</strong>：</p>
+<ol>
+<li><strong>主要目标</strong>：构建符合训练集分布的测试数据（随机配对负样本）</li>
+<li><strong>次要目标</strong>：量化根因2（负样本定义不同）的影响程度</li>
+</ol>
+<p><strong>方法</strong>：</p>
+<ol>
+<li>保持正样本不变（271 条真实酶-底物对）</li>
+<li>生成新负样本：随机配对 P450 酶和非催化底物（~2,537 对，正负比 1:9.36）</li>
+<li>对随机负样本进行分子对接（生成3D复合物结构）</li>
+<li>重新运行 Step 5-10 流程，评估 AUC-ROC</li>
+</ol>
+<p><strong>预期效果</strong>：</p>
+<p>假设随机负样本平均得分降至 <strong>-7</strong> logit：</p>
+<pre><code>新情况（随机负样本）：
+
+正样本：█░░░░░░░░░█████████████████░░░░░█  (不变, 平均-2.99)
+负样本：     █████████                    (平均-7，往左移)
+                ↑ 平均-7
+
+重叠区域缩小！更多正样本能超过负样本。
+</code></pre>
+<ul>
+<li><strong>预期提升</strong>：AUROC 0.66 → 0.72-0.75 (+6-9%)</li>
+<li><strong>机制</strong>：83% 的正样本（217个）得分 &gt; -7 → 能赢大部分随机负样本</li>
+</ul>
+<p><strong>为什么单独做方案1只有 6% 提升？</strong></p>
+<ol>
+<li><strong>真阴性率提升空间小</strong>：94% → 96%（已经很高）</li>
+<li><strong>召回率根本不变</strong>：正样本得分没变，仍有 17%（44个）&lt; -7</li>
+<li><strong>瓶颈在正样本</strong>：即使负样本降到 -7，44 个低分正样本仍会输</li>
+</ol>
+<p><strong>方案1的双重价值</strong></p>
+<p><strong>不仅仅是验证假说</strong>，更重要的是：</p>
+<ol>
+<li><strong>构建方案2的数据基础</strong>：微调时需要用随机配对负样本（与原始训练数据分布一致）</li>
+<li><strong>量化根因权重</strong>：明确负样本语义差异贡献了多少 AUROC 下降</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>方案1结果</th>
+<th>说明什么</th>
+<th>对方案2的指导</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>AUROC 升到 0.72</td>
+<td>负样本语义差异贡献 5-6%</td>
+<td>方案2数据基础已建立，可直接微调</td>
+</tr>
+<tr>
+<td>AUROC 几乎不变</td>
+<td>几乎全部来自泛化不足</td>
+<td>需要更多训练数据或更大的模型改进</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>📋 <strong>详细操作指南</strong>：参见项目根目录 <a href="P450%E6%89%B9%E9%87%8F%E5%AF%B9%E6%8E%A5%E5%AE%8C%E6%95%B4%E6%93%8D%E4%BD%9C%E6%89%8B%E5%86%8C.md"><code>P450批量对接完整操作手册.md</code></a></p>
+</blockquote>
+<hr />
+<h3>5.2 方案 2：P450 专属模型微调（在方案1基础上）</h3>
+<p><strong>定位</strong>：在方案1重构的数据上微调，双重提升 AUROC</p>
+<p><strong>目标</strong>：让模型学会识别 P450，提高正样本得分</p>
+<p><strong>前提条件</strong>：方案1已完成（数据已用随机配对负样本重构）</p>
+<p><strong>方法</strong>：</p>
+<ol>
+<li>
+<p><strong>Path B</strong>：构建 P450 专属训练集</p>
+<p><strong>数据来源</strong>：专业 P450 数据库（避免与 ESIBank 重叠）</p>
+<table>
+<thead>
+<tr>
+<th>数据库</th>
+<th>植物P450数量</th>
+<th>底物信息</th>
+<th>下载格式</th>
+<th>数据质量</th>
+<th>推荐优先级</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Plant P450 Database</strong><br>(<a href="http://erda.dk">erda.dk</a>)</td>
+<td><strong>874 条</strong><br>CYP sequences</td>
+<td>✅ <strong>明确的</strong><br>enzyme-substrate pairs</td>
+<td>FASTA (序列)<br>substrate info (文献引用)</td>
+<td>⭐⭐⭐⭐⭐<br>文献验证,<br>直接可用</td>
+<td><strong>🥇 最高</strong></td>
+</tr>
+<tr>
+<td><strong>P450Rdb</strong><br>(<a href="http://cellknowledge.com.cn">cellknowledge.com.cn</a>)</td>
+<td>342 条</td>
+<td>✅ 1,692 reactions<br>200+ species</td>
+<td>FASTA (序列)<br>Reaction data<br>Compound info</td>
+<td>⭐⭐⭐⭐<br>人工策展,<br>文献支持</td>
+<td><strong>🥈 次优</strong></td>
+</tr>
+<tr>
+<td><strong>PCPD</strong><br>(<a href="http://p450.biodesign.ac.cn">p450.biodesign.ac.cn</a>)</td>
+<td>181 条<br>with functions</td>
+<td>⚠️ 功能注释<br>需转为substrate pairs</td>
+<td>FASTA (序列)<br>PDB (结构)<br>SDF (配体)</td>
+<td>⭐⭐⭐<br>结构质量高,<br>但需额外处理</td>
+<td><strong>🥉 备选</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>推荐数据获取策略</strong>：</p>
+<ul>
+<li>
+<p><strong>阶段1（核心数据）</strong>：Plant P450 Database</p>
+<ul>
+<li>理由：874 条 enzyme-substrate pairs <strong>最符合需求</strong></li>
+<li>数据直接可用，无需额外转换</li>
+<li>植物数据占比高（符合导师研究重心）</li>
+<li><strong>预计可获得</strong>：300-500 对高质量训练样本</li>
+</ul>
+</li>
+<li>
+<p><strong>阶段2（数据扩充）</strong>：P450Rdb</p>
+<ul>
+<li>理由：补充更多物种的 P450 反应数据</li>
+<li>1,692 reactions 可提供额外训练样本</li>
+<li>需要将 reaction 转换为 enzyme-substrate pairs</li>
+<li><strong>预计可获得</strong>：200-400 对额外样本</li>
+</ul>
+</li>
+<li>
+<p><strong>阶段3（结构优化）</strong>：PCPD（可选）</p>
+<ul>
+<li>理由：提供高质量 PDB 结构和对接配体</li>
+<li>可用于验证 AlphaFold 结构质量</li>
+<li>181 条数量较少，作为补充</li>
+</ul>
+</li>
+</ul>
+<p><strong>数据处理流程</strong>：</p>
+<pre><code>Step 1: 下载 Plant P450 Database
+    ↓ FASTA + substrate info
+Step 2: 提取 enzyme-substrate pairs
+    ↓ 构建 Enzymes.csv, Substrates.csv, data.csv
+Step 3: 生成负样本（随机配对，正负比 1:9.36）
+    ↓ 与方案1保持一致
+Step 4: 结构准备
+    ↓ AlphaFold 预测 + AutoDock Vina 对接
+Step 5: 特征生成（Step 5-8流程）
+    ↓ ESM, GROVER, Morgan, Structure
+</code></pre>
+<p><strong>预期数据规模</strong>：</p>
+<ul>
+<li>正样本：300-500 对（Plant P450 Database）</li>
+<li>负样本：2,800-4,700 对（随机配对，比例 1:9.36）</li>
+<li><strong>总计</strong>：~3,100-5,200 对训练数据</li>
+</ul>
+<p><strong>与 ESIBank 重叠性</strong>：</p>
+<ul>
+<li>ESIBank 使用 BRENDA 数据（广泛但浅层）</li>
+<li>专业 P450 数据库使用文献策展（深度但专精）</li>
+<li><strong>预计重叠</strong>：&lt; 10%（多数为新数据）</li>
+</ul>
+</li>
+<li>
+<p><strong>Path C</strong>：微调 best-checkpoint</p>
+<ul>
+<li>在 P450 数据上微调模型（使用 Path B 构建的数据集）</li>
+<li>评估性能提升</li>
+</ul>
+</li>
+</ol>
+<p><strong>预期效果</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>如果想让 AUROC 达到...</th>
+<th>需要...</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0.72</td>
+<td>83% 的正样本得分 &gt; 负样本</td>
+</tr>
+<tr>
+<td>0.80</td>
+<td>90% 的正样本得分 &gt; 负样本</td>
+</tr>
+<tr>
+<td>0.90</td>
+<td>95% 的正样本得分 &gt; 负样本</td>
+</tr>
+</tbody>
+</table>
+<p><strong>当前瓶颈</strong>：44 个正样本得分 &lt; -7（17%）</p>
+<p><strong>解决方法只有一个：让这 44 个正样本得分变高</strong></p>
+<p><strong>方案1→方案2 组合效果图解</strong>：</p>
+<pre><code>Step 0: 当前情况（抑制剂负样本，无微调）
+
+正样本：█░░░░░░░░░█████████████████░░░░░█  (-14.58 ~ +2.82, 平均-2.99)
+负样本：          ████████████              (-12.34 ~ +2.20, 平均-5.05)
+                      ↑ 平均-5.05
+
+→ AUROC ≈ 0.66
+</code></pre>
+<pre><code>Step 1: 方案1完成（随机配对负样本，无微调）
+
+正样本：█░░░░░░░░░█████████████████░░░░░█  (不变, 平均-2.99)
+负样本：     █████████                      (平均-7，往左移)
+                ↑ 平均-7
+
+→ AUROC ≈ 0.72 (+6%)
+</code></pre>
+<pre><code>Step 2: 方案2完成（随机配对负样本 + P450微调）
+
+正样本：                  ███████████████████████████  (+0 ~ +5, 平均+2)
+负样本：     █████████                                  (不变, 平均-7)
+                ↑ 平均-7
+
+→ AUROC ≈ 0.85+ (+19%)  ← 双重拉开！
+</code></pre>
+<p><strong>组合预期</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>阶段</th>
+<th>操作</th>
+<th>AUROC</th>
+<th>提升</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>当前</td>
+<td>无</td>
+<td>0.66</td>
+<td>-</td>
+</tr>
+<tr>
+<td>方案1</td>
+<td>随机配对负样本</td>
+<td>0.72</td>
+<td>+6%</td>
+</tr>
+<tr>
+<td><strong>方案1→方案2</strong></td>
+<td><strong>+ P450微调</strong></td>
+<td><strong>0.85+</strong></td>
+<td><strong>+19%</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>为什么组合效果更好？</strong></p>
+<ol>
+<li>
+<p><strong>双重拉开距离</strong>：</p>
+<ul>
+<li>方案1：负样本往左（-5 → -7）</li>
+<li>方案2：正样本往右（-3 → +2）</li>
+<li>组合：间距从 2.06 扩大到 9 logit</li>
+</ul>
+</li>
+<li>
+<p><strong>数据分布一致</strong>：</p>
+<ul>
+<li>微调时使用随机配对负样本（方案1）</li>
+<li>与原始训练数据分布一致</li>
+<li>避免过拟合到抑制剂负样本</li>
+</ul>
+</li>
+<li>
+<p><strong>突破瓶颈</strong>：</p>
+<ul>
+<li>方案1解决负样本问题（根因2）</li>
+<li>方案2解决泛化不足问题（根因1）</li>
+<li>两个根因同时修复</li>
+</ul>
+</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>能解决哪个问题？</th>
+<th>单独 AUROC</th>
+<th>组合 AUROC</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>只做方案1</td>
+<td>根因2（负样本）</td>
+<td>0.72</td>
+<td>-</td>
+</tr>
+<tr>
+<td>只做方案2（在抑制剂数据上）</td>
+<td>根因1（泛化）</td>
+<td>~0.75</td>
+<td>-</td>
+</tr>
+<tr>
+<td><strong>方案1→方案2</strong></td>
+<td><strong>根因1+2</strong></td>
+<td>-</td>
+<td><strong>0.85+</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>结论</strong>：方案1是方案2的必要前提，两者递进组合才能最大化提升 AUROC。</p>
+<hr />
+<h3>5.3 方案 3：结构特征改进与数据质量修复</h3>
+<p><strong>目标</strong>：解决根因3（结构信息缺失）并排除数据问题对评估的影响</p>
+<h4>3a. 结构特征改进（针对根因3）</h4>
+<table>
+<thead>
+<tr>
+<th>问题</th>
+<th>改进方案</th>
+<th>难度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Heme 辅因子被排除</strong></td>
+<td>修改解析器，纳入 HETATM 记录中的 HEM 残基</td>
+<td>中</td>
+</tr>
+<tr>
+<td><strong>10Å 口袋截断</strong></td>
+<td>扩大口袋范围至 15-20Å，覆盖 P450 底物通道入口</td>
+<td>低</td>
+</tr>
+<tr>
+<td><strong>晶体结构 vs 对接结构</strong></td>
+<td>对晶体结构进行重对接（确保一致性），或训练时混用两类结构</td>
+<td>高</td>
+</tr>
+</tbody>
+</table>
+<p><strong>预期</strong>：帮助模型更好识别 P450 的催化位点，辅助方案2提升泛化能力</p>
+<h4>3b. 数据质量修复（针对次要因素）</h4>
+<p><strong>方法</strong>：</p>
+<ol>
+<li><strong>标签验证</strong>：
+<ul>
+<li>对低置信度样本进行人工复核</li>
+<li>修正错误标签</li>
+</ul>
+</li>
+<li><strong>结构特征检查</strong>：
+<ul>
+<li>检查失败的 22 条结构特征（539-517=22）</li>
+<li>尝试修复或排除</li>
+</ul>
+</li>
+</ol>
+<p><strong>预期</strong>：</p>
+<ul>
+<li>小幅提升评估可靠性（AUC 约 +0.03-0.04）</li>
+<li>为后续研究提供更干净的数据</li>
+</ul>
+<hr />
+<h3>5.4 实施路线图</h3>
+<p><strong>核心思路</strong>：方案1 → 方案2 递进组合，最大化 AUROC 提升</p>
+<pre><code>实施路线图：
+
+阶段1：数据重构（方案1）
+  ├─ 生成随机配对负样本（~2,537 对）
+  ├─ 批量分子对接（~10小时）
+  ├─ 验证：AUROC 应升至 0.72+
+  └─ 输出：重构后的测试集
+
+阶段2：模型微调（方案2）
+  ├─ 前提：阶段1已完成
+  ├─ 构建P450训练集（随机配对负样本）
+  ├─ 微调 best-checkpoint
+  └─ 验证：AUROC 应升至 0.85+
+
+阶段3：特征优化（方案3，可选）
+  ├─ 纳入 heme、扩大口袋
+  ├─ 修正标签噪声
+  └─ 预期：额外 +3-4%
+</code></pre>
+
+    </div>
+</body>
+</html>
