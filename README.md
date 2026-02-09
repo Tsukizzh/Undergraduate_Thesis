@@ -16,7 +16,7 @@ EZSpecificity 是一个基于交叉注意力机制的 SE(3)-等变图神经网�
   - 发现并修正8.5%的标注错误
   - 证据等级A+B达91.2%（有文献支持）
 - ✅ **v2数据重构**：按(UniProt+配体)去重，从158条扩展到682条
-- 📄 **汇报材料v2**：完整的研究进展报告（见 `P450研究项目组会汇报材料_v2.md`）
+- 📄 **汇报材料v2**：完整的研究进展报告（见 `毕业设计/组会汇报材料/P450研究项目组会汇报材料_v2.md`）
 
 ## 目录结构
 
@@ -24,29 +24,31 @@ EZSpecificity 是一个基于交叉注意力机制的 SE(3)-等变图神经网�
 EZSpecificity_Project/
 ├── src/                                    # EZSpecificity源代码（不上传）
 │
-├── P450_EZSpecificity_研究项目/             # 核心研究目录
-│   ├── PathA_2026-01-08_模型评估测试集构建/
-│   │   ├── data/                           # 数据文件（Step 1-10产出）
-│   │   │   ├── 02_Step2_酶序列/            # 292条唯一酶序列
-│   │   │   ├── 03_Step3_.../               # 配体分类+6套方案
-│   │   │   ├── 04_Step4_CSV格式修正/       # 格式化后CSV
-│   │   │   ├── 05_Step5_ESM酶嵌入/         # enzyme_features.lmdb
-│   │   │   ├── 06_Step6_反应图/            # reaction_features.lmdb
-│   │   │   ├── 07_Step7_分子指纹/          # Morgan + GROVER
-│   │   │   ├── 08_Step8_结构特征/          # structure_features.lmdb
-│   │   │   ├── 09_Step9_模型推理/          # predictions.csv
-│   │   │   └── 10_Step10_结果分析/         # 评估报告
-│   │   ├── scripts/                        # 执行脚本（按Step组织）
-│   │   ├── sessions/                       # 执行日志（按Step组织）
-│   │   ├── source_data/                    # 源数据（682条）
-│   │   └── 进度日志.md
-│   ├── P450研究四路径计划.md
-│   └── 全局进度日志.md
+├── 毕业设计/                               # 所有用户研究内容
+│   ├── P450_EZSpecificity_研究项目/         # 核心研究目录
+│   │   ├── PathA_2026-01-08_模型评估测试集构建/
+│   │   │   ├── data/                       # 数据文件（Step 1-10产出）
+│   │   │   │   ├── 02_Step2_酶序列/        # 292条唯一酶序列
+│   │   │   │   ├── 03_Step3_.../           # 配体分类+6套方案
+│   │   │   │   ├── 04_Step4_CSV格式修正/   # 格式化后CSV
+│   │   │   │   ├── 05_Step5_ESM酶嵌入/     # enzyme_features.lmdb
+│   │   │   │   ├── 06_Step6_反应图/        # reaction_features.lmdb
+│   │   │   │   ├── 07_Step7_分子指纹/      # Morgan + GROVER
+│   │   │   │   ├── 08_Step8_结构特征/      # structure_features.lmdb
+│   │   │   │   ├── 09_Step9_模型推理/      # predictions.csv
+│   │   │   │   └── 10_Step10_结果分析/     # 评估报告
+│   │   │   ├── scripts/                    # 执行脚本（按Step组织）
+│   │   │   ├── sessions/                   # 执行日志（按Step组织）
+│   │   │   ├── source_data/                # 源数据（682条）
+│   │   │   └── 进度日志.md
+│   │   ├── P450研究四路径计划.md
+│   │   └── 全局进度日志.md
+│   │
+│   ├── 提取P450过程日志/                    # 研究过程记录
+│   ├── 组会汇报材料/                        # 汇报材料（MD + HTML）
+│   ├── P450_EZSpecificity完整研究手册_终极整合版.md
+│   └── *.md / *.pdf                        # 其他文档
 │
-├── 提取P450过程日志/                        # 研究过程记录
-│
-├── P450研究项目组会汇报材料_v2.md            # 完整汇报材料（最新）
-├── P450_EZSpecificity完整研究手册_终极整合版.md
 ├── CLAUDE.md                               # Claude Code工作指南
 └── README.md                               # 本文件
 ```
@@ -103,10 +105,10 @@ EZSpecificity_Project/
 
 ## 相关文档
 
-- **[P450研究项目组会汇报材料_v2.md](P450研究项目组会汇报材料_v2.md)**：完整汇报材料（包含所有步骤详情）
-- **[P450研究四路径计划.md](P450_EZSpecificity_研究项目/P450研究四路径计划.md)**：战略规划
-- **[全局进度日志.md](P450_EZSpecificity_研究项目/全局进度日志.md)**：项目进度追踪
-- **[PathA进度日志.md](P450_EZSpecificity_研究项目/PathA_2026-01-08_模型评估测试集构建/进度日志.md)**：路径A执行详情
+- **[P450研究项目组会汇报材料_v2.md](毕业设计/组会汇报材料/P450研究项目组会汇报材料_v2.md)**：完整汇报材料（包含所有步骤详情）
+- **[P450研究四路径计划.md](毕业设计/P450_EZSpecificity_研究项目/P450研究四路径计划.md)**：战略规划
+- **[全局进度日志.md](毕业设计/P450_EZSpecificity_研究项目/全局进度日志.md)**：项目进度追踪
+- **[PathA进度日志.md](毕业设计/P450_EZSpecificity_研究项目/PathA_2026-01-08_模型评估测试集构建/进度日志.md)**：路径A执行详情
 
 ## 参考文献
 
