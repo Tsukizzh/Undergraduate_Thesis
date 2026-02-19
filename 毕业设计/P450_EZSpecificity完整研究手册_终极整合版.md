@@ -1471,7 +1471,7 @@ mkdir -p "P450_EZSpecificity_研究项目/PathA_2026-01-08_模型评估测试集
 mkdir -p "P450_EZSpecificity_研究项目/PathA_2026-01-08_模型评估测试集构建/sessions"
 
 # 创建Path B/C/D预留目录
-mkdir -p "P450_EZSpecificity_研究项目/PathB_待定_P450专属数据集构建"
+mkdir -p "P450_EZSpecificity_研究项目/PathB_2026-02-12_P450数据集构建与结构优化"
 mkdir -p "P450_EZSpecificity_研究项目/PathC_待定_P450专属模型训练"
 mkdir -p "P450_EZSpecificity_研究项目/PathD_待定_区域选择性预测"
 ```

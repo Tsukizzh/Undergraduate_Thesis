@@ -1,0 +1,50 @@
+# PathB default experiment configuration
+# Override per-experiment via --config or CLI flags
+
+experiment:
+  name: ""                     # Set per experiment (e.g. EXP01_B6_10A_noHeme)
+
+# Paths (relative to PathB root)
+paths:
+  pathb_root: ""               # Auto-detected from script location
+  patha_root: ""               # Auto-detected (sibling of pathb_root)
+  project_root: ""             # Auto-detected (EZSpecificity_Project/)
+
+  # Input data
+  dataset_dir: "data/00_shared/datasets/B6_v1"
+  mapping_csv: ""              # PathA's dock_index_mapping.csv (auto-resolved)
+  pdb_dir: ""                  # PathA's PDB files (auto-resolved)
+
+  # Shared features (from PathA)
+  features_dir: "data/00_shared/features"
+
+  # Model
+  checkpoint: ""               # Auto-resolved to saved_model/model/run_0/
+  config_yaml: ""              # Auto-resolved
+
+# Structure extraction parameters (Step 8.1)
+structure:
+  pocket_radius: 10.0          # Angstroms (6.0 or 10.0)
+  include_heme: false          # Include HEM-family residues in pocket
+
+# Inference parameters (Step 9)
+inference:
+  batch_size: 16
+  num_workers: 0               # Windows compatibility
+  use_gpu: true
+
+# Experiment matrix (for batch runs)
+# Each entry generates one experiment directory
+factorial_matrix:
+  - name: "EXP01_B6_10A_noHeme"
+    pocket_radius: 10.0
+    include_heme: false
+  - name: "EXP02_B6_10A_Heme"
+    pocket_radius: 10.0
+    include_heme: true
+  - name: "EXP03_B6_6A_noHeme"
+    pocket_radius: 6.0
+    include_heme: false
+  - name: "EXP04_B6_6A_Heme"
+    pocket_radius: 6.0
+    include_heme: true
