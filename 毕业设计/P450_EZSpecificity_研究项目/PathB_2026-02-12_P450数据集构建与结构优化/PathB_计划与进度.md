@@ -167,6 +167,22 @@ Step 9：  模型推理（使用 00_shared/ 的共享特征 + 本实验的结构
 Step 10： 评估分析（AUC-ROC、AUC-PR、得分分布）
 ```
 
+**⚠️ Step 2 前置修复（2026-02-20 Codex 四轮验证确认）**：
+
+Step 1 的 `extract_pocket_ligand.py` 已支持 `--include_heme`，但下游 `step8_generate_structure_lmdb.py` 的 `PDBProtein` 解析器**只读 ATOM 记录，会静默丢弃 Heme 的 HETATM 行**。若不修复，Heme 因子实际无效，2×2 退化为仅测半径。
+
+**修复 TODO**（Step 2 执行前必须完成）：
+1. 创建 PathB 版 `step8_generate_structure_lmdb.py`，其中 `PDBProtein._parse()` 支持 `ATOM` + `HETATM`
+2. residue 分组 key 增加 `record_type`（防极端情况下的 ID 冲突）
+3. 增加 HETATM 统计日志（`n_atom`, `n_hetatm`, `n_heme_atoms`, `n_fe_atoms`）
+4. 增加门禁校验：EXP01 输出 HETATM 必须 = 0；EXP02/04 必须 > 0
+5. 同一 Dock_Index 在 heme on/off 下 `protein_atom_count` 必须有变化
+
+**科学定位**：修复后本实验为「推理敏感性/结构扰动实验」，非「Heme 生化机理验证」。原因：
+- 模型训练时未见 HETATM（PathA 539 个 pocket 中 HETATM=0，已全量验证）
+- Fe(26) 不在 `FeaturizeProteinAtom.atomic_numbers` 中（全零向量），Heme 的 C/N/O 可正常编码
+- 结论措辞应限定为"模型对 Heme 几何节点注入的敏感性"
+
 **分析重点**：
 
 | 对比 | 分析目的 |
@@ -458,7 +474,12 @@ PathB_2026-02-12_P450数据集构建与结构优化/
 | | | - 共享特征迁移 (ESM/反应图/GROVER/Morgan ~19GB) | ✅ |
 | | | - extract_pocket_ligand.py 改造 (Heme+半径参数化) | ✅ |
 | | | - run_experiment.py 实验运行器 + base.yaml 配置 | ✅ |
-| | Step 2 | 结构特征 2×2 因子实验 | ⏳ 待开始 |
+| 2026-02-20 | Step 1 补充 | HETATM 兼容性风险 Codex 四轮深度验证 | ✅ 已验证 |
+| | | - 确认风险真实：下游 PDBProtein 只读 ATOM，Heme HETATM 被静默丢弃 | ✅ |
+| | | - 确认修复方案：PathB fork 版 PDBProtein 支持 ATOM+HETATM | ✅ |
+| | | - 确认实验定位：推理敏感性实验（非生化机理验证） | ✅ |
+| | | - 已更新 session_log.md 和 PathB_计划与进度.md | ✅ |
+| | Step 2 | 结构特征 2×2 因子实验 | ⏳ 待开始（需先完成前置修复） |
 | | Step 3 | 对接环境搭建 | ⏳ 待开始 |
 | | Step 4 | 随机负样本生成与批量对接 | ⏳ 待开始 |
 | | Step 5 | 重构评估分析 | ⏳ 待开始 |

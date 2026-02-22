@@ -178,23 +178,57 @@ def run_single_experiment(
     if not run_step("Step 8.1 Extract", cmd_81):
         return False
 
-    # --- Step 8.2: Align ligand ---
-    # Use PathA's align script (no structural parameter changes needed)
-    align_script = paths["patha_scripts"] / "08_Step8_结构特征生成" / "step8_align_ligand.py"
-    if align_script.exists():
-        # The align script uses hardcoded paths, so we need a PathB wrapper
-        # For now, copy the raw_ligand files and run alignment
-        logger.info("Step 8.2: Ligand alignment (using PathA script as reference)")
-        # TODO: Create PathB version of align_ligand.py with configurable paths
-        # For the factorial experiment, alignment is the same regardless of
-        # pocket_radius/include_heme, so we can share alignment results
-        logger.warning("Step 8.2: Skipping alignment (will be addressed in Step 2 execution)")
-    else:
-        logger.warning("Step 8.2: align_ligand.py not found, skipping")
+    # --- Step 8.2: Align ligand (shared across experiments) ---
+    # Alignment depends only on raw_ligand + SMILES, not on pocket params.
+    # Use shared alignment directory to avoid redundant computation.
+    shared_align_dir = pathb_root / "data" / "02_Step2_因子实验" / "shared_alignment"
+    aligned_ligand_dir = shared_align_dir / "ligand"
+    alignment_summary = shared_align_dir / "alignment_summary.csv"
 
-    # --- Step 8.3: Generate structure LMDB ---
-    # TODO: Create PathB version with configurable paths and HETATM support
-    logger.warning("Step 8.3: generate_structure_lmdb not yet parameterized for PathB")
+    # Check if shared alignment is valid (exists + has reasonable row count)
+    alignment_valid = False
+    if alignment_summary.exists():
+        try:
+            with open(alignment_summary, "r", encoding="utf-8") as f:
+                import csv as _csv
+                row_count = sum(1 for _ in _csv.reader(f)) - 1  # minus header
+            if row_count > 0:
+                alignment_valid = True
+                logger.info("Step 8.2: Using existing shared alignment (%d records) at %s",
+                            row_count, shared_align_dir)
+            else:
+                logger.warning("Step 8.2: alignment_summary.csv is empty, re-running alignment")
+        except Exception as e:
+            logger.warning("Step 8.2: alignment_summary.csv unreadable (%s), re-running alignment", e)
+
+    if not alignment_valid:
+        align_script = pathb_root / "scripts" / "02_Step2_因子实验" / "step8_align_ligand.py"
+        substrates_csv = paths["shared_datasets"] / "B6_v1" / "Substrates.csv"
+        cmd_82 = [
+            python, str(align_script),
+            "--raw_ligand_dir", str(str_tmp / "raw_ligand"),
+            "--aligned_ligand_dir", str(aligned_ligand_dir),
+            "--mapping_csv", str(paths["mapping_csv"]),
+            "--substrates_csv", str(substrates_csv),
+            "--summary_csv", str(alignment_summary),
+        ]
+        if not run_step("Step 8.2 Align", cmd_82):
+            return False
+
+    # --- Step 8.3: Generate structure LMDB (with HETATM support) ---
+    lmdb_script = pathb_root / "scripts" / "02_Step2_因子实验" / "step8_generate_structure_lmdb.py"
+    dataset_csv = paths["shared_datasets"] / "B6_v1" / "data.csv"
+    cmd_83 = [
+        python, str(lmdb_script),
+        "--pocket_dir", str(str_tmp / "pocket"),
+        "--ligand_dir", str(aligned_ligand_dir),
+        "--alignment_summary", str(alignment_summary),
+        "--output_dir", str(exp_dir),
+        "--dataset_csv", str(dataset_csv),
+        "--experiment_name", exp_name,
+    ]
+    if not run_step("Step 8.3 LMDB", cmd_83):
+        return False
 
     # --- Step 9: Inference ---
     # TODO: Create PathB version with configurable feature paths
@@ -204,9 +238,8 @@ def run_single_experiment(
     # TODO: Create PathB version with configurable input paths
     logger.warning("Step 10: analysis not yet parameterized for PathB")
 
-    logger.info("Experiment %s: Step 8.1 completed. Steps 8.2-10 pending parameterization.", exp_name)
-    # Partial success: only Step 8.1 is implemented so far
-    return True  # Step 8.1 succeeded; caller should note TODO steps
+    logger.info("Experiment %s: Steps 8.1-8.3 completed. Steps 9-10 pending.", exp_name)
+    return True
 
 
 def parse_args() -> argparse.Namespace:
@@ -236,6 +269,17 @@ def main() -> int:
         if not matrix:
             logger.error("No factorial_matrix in config")
             return 2
+
+        # Sort by pocket_radius DESC then include_heme DESC so the most permissive
+        # experiment runs first.  This ensures shared alignment gets the most complete
+        # raw_ligand set:
+        #   - Larger radius → fewer pocket failures → more raw_ligand files
+        #   - include_heme=True → heme atoms prevent empty-pocket failure → more raw_ligand
+        matrix = sorted(
+            matrix,
+            key=lambda e: (e.get("pocket_radius", 0), int(e.get("include_heme", False))),
+            reverse=True,
+        )
 
         results = {}
         for exp in matrix:

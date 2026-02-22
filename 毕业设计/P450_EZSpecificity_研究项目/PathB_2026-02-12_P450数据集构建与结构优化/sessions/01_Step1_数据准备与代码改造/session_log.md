@@ -122,7 +122,82 @@ configs/
 
 ## 已知问题与 Step 2 待处理事项
 
-1. **下游 HETATM 兼容性**: `step8_generate_structure_lmdb.py` 的 PDBProtein 解析器只读 ATOM 记录。Step 2 执行前需创建 PathB 版本，增加 HETATM 支持。
-2. **Step 8.2 align_ligand.py**: 需要 PathB 版本（可配置路径），但对齐逻辑本身不受 heme/radius 影响。
-3. **Step 9/10**: 需要 PathB 版本以支持可配置的特征路径和输出目录。
-4. **B6 标签分布**: 实际为 272/244（非 271/245），需更新计划文档。
+### 1. [阻断级] 下游 HETATM 兼容性（已验证）
+
+**2026-02-20 Codex 四轮深度验证结论**：
+
+**风险确认**：`extract_pocket_ligand.py` 的 `--include_heme` 在当前链路中**对模型输入无效**，2×2 实验会退化为只测半径。
+
+**根因链路**：
+1. `extract_pocket_ligand.py` 用 BioPython PDBIO 写出 pocket PDB
+2. BioPython PDBIO 根据残基的 `hetfield` 决定写 `ATOM` 还是 `HETATM`（已查阅 PDBIO.py 源码确认）
+3. Heme 残基的 `hetfield != " "`，因此写出为 `HETATM` 行
+4. 下游 `PDBProtein._parse()` 只匹配 `line[0:6].strip() == 'ATOM'`，完全跳过 `HETATM`
+5. 结果：Heme 原子被静默丢弃，`include_heme=True/False` 产生的 LMDB 数据相同
+
+**受影响代码**：
+- PathA 的 `step8_generate_structure_lmdb.py:127` — 独立 `PDBProtein` 副本，同样只读 ATOM
+- `src/Datasets/Structure/protein_ligand.py:67` — 原始代码（gitignored，仅供参考）
+- 两处实现完全一致，都只解析 ATOM 记录
+
+**额外发现**：
+- PDB 格式中 ATOM 与 HETATM 列布局完全一致（wwPDB 标准确认），可直接复用解析逻辑
+- PathA 的 539 个 pocket PDB 中 HETATM 行数为 0（全量扫描已验证）
+- Heme 原子量级：单个 HEM 残基约 43 个非氢重原子，占 pocket 平均原子数（~411）的 ~10.5%
+- 元素编码：Fe(26) 不在 `FeaturizeProteinAtom.atomic_numbers` 中（会得到全零向量），但 Heme 中的 C/N/O 可正确编码
+- `AA_NAME_NUMBER` 中无 "HEM"，Heme 原子会被标记为 `UNK`（index=20），与非标准残基处理一致
+- residue key 冲突风险极低（实际 P450 数据中 ATOM 与 HETATM 的 chain+resSeq+iCode 无冲突）
+- `_parse()` 不依赖 `atom_id` 连续性（用 `next_ptr = len(self.element)` 作内部索引）
+
+**推荐修复方案**：方案 A — 在 PathB 创建 fork 版 `PDBProtein`，支持 `ATOM` + `HETATM`，不修改 `src/` 原始代码
+- 改动点：`line[0:6].strip() == 'ATOM'` → `line[0:6].strip() in ('ATOM', 'HETATM')`
+- 建议 residue key 增加 record_type 字段（防未来数据冲突）
+- 增加日志：每样本的 `n_atom`, `n_hetatm`, `n_heme_atoms`, `n_fe_atoms`
+
+**实验科学意义评估**：
+- 修复后 Step 2 仍有价值，但定位为**推理敏感性/结构扰动实验**
+- 不能直接宣称模型"学会了 Heme 生化机理"（训练分布未包含 HETATM，且 Fe 特征缺失）
+- 若要机理层面结论，需在 Path C 重训时纳入 Heme 和 Fe 特征通道
+
+### 2. Step 8.2 align_ligand.py — ✅ 已完成
+PathB 版已创建（可配置路径 CLI），对齐逻辑与 PathA 一致。
+
+### 3. Step 8.3 generate_structure_lmdb.py — ✅ 已完成
+PathB 版已创建，核心改动：PDBProtein 支持 HETATM。
+
+### 4. run_experiment.py — ✅ 已更新
+已集成 Step 8.2 和 8.3。Steps 9-10 仍 TODO。
+
+### 5. Step 9/10
+需要 PathB 版本以支持可配置的特征路径和输出目录。
+
+### 6. B6 标签分布
+实际为 272/244（非 271/245），需更新计划文档。
+
+---
+
+## Codex 三轮代码审核记录（2026-02-21）
+
+### 审核范围
+3 个 PathB 脚本：`step8_generate_structure_lmdb.py`、`step8_align_ligand.py`、`run_experiment.py`
+
+### 已修复问题（7 项）
+
+| # | 严重度 | 文件 | 问题 | 修复 |
+|---|--------|------|------|------|
+| 1 | MEDIUM | step8_generate_structure_lmdb.py | `element_symb` 回退 `line[13:14]` 对 Fe 等双字母元素只取 1 字符 | → `line[12:14].strip().capitalize()` |
+| 2 | MEDIUM | step8_generate_structure_lmdb.py | `r["success"] == "True"` 大小写敏感 | → `.strip().lower() == "true"` |
+| 3 | LOW | step8_generate_structure_lmdb.py | AtomMapNum 全零检查误拒单原子配体 | → 加 `mol.GetNumAtoms() > 1` 守卫 |
+| 4 | HIGH | run_experiment.py | 共享对齐实验顺序依赖 | → 排序 radius DESC + heme DESC |
+| 5 | HIGH | run_experiment.py | `alignment_summary.exists()` 不检测空/损坏文件 | → 行数验证 + 重跑逻辑 |
+| 6 | MEDIUM | step8_align_ligand.py | 缺失 raw_ligand 静默成功 | → 成功率 < 50% 返回错误码 1 |
+| 7 | LOW | step8_generate_structure_lmdb.py | 空 target_docks 仍生成空 LMDB | → fail fast 返回 2 |
+
+### 确认无问题
+- `is_backbone` 只对 ATOM 记录为 True
+- PDB 列布局 ATOM/HETATM 一致
+- pickle 兼容性保持
+- `project_root` 路径解析正确
+
+### 接受的残余风险
+- alignment_summary 验证用 `row_count > 0`（完美验证需循环依赖，当前已足够实用）
