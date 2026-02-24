@@ -29,6 +29,9 @@ P450研究项目_PPT大纲.md
 P450批量对接完整操作手册.md
 GPU利用率分析_GROVER指纹生成.md
 
+# IDE
+.vscode/
+
 # 系统文件
 .DS_Store
 Thumbs.db
