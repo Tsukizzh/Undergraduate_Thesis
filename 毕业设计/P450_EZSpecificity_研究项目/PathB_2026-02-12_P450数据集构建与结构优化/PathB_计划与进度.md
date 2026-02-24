@@ -171,12 +171,14 @@ Step 10： 评估分析（AUC-ROC、AUC-PR、得分分布）
 
 Step 1 的 `extract_pocket_ligand.py` 已支持 `--include_heme`，但下游 `step8_generate_structure_lmdb.py` 的 `PDBProtein` 解析器**只读 ATOM 记录，会静默丢弃 Heme 的 HETATM 行**。若不修复，Heme 因子实际无效，2×2 退化为仅测半径。
 
-**修复 TODO**（Step 2 执行前必须完成）：
-1. 创建 PathB 版 `step8_generate_structure_lmdb.py`，其中 `PDBProtein._parse()` 支持 `ATOM` + `HETATM`
-2. residue 分组 key 增加 `record_type`（防极端情况下的 ID 冲突）
-3. 增加 HETATM 统计日志（`n_atom`, `n_hetatm`, `n_heme_atoms`, `n_fe_atoms`）
-4. 增加门禁校验：EXP01 输出 HETATM 必须 = 0；EXP02/04 必须 > 0
-5. 同一 Dock_Index 在 heme on/off 下 `protein_atom_count` 必须有变化
+**修复 TODO**（Step 2 执行前必须完成）— **✅ 全部完成（2026-02-21）**：
+1. ✅ 创建 PathB 版 `step8_generate_structure_lmdb.py`，`PDBProtein._parse()` 支持 `ATOM` + `HETATM`
+2. ✅ atom dict 增加 `record_type` 字段（防极端情况下的 ID 冲突）
+3. ✅ 增加 HETATM 统计日志（n_atom, n_hetatm 等）
+4. ⏳ 门禁校验待实验运行后验证（EXP01 HETATM=0，EXP02/04 > 0）
+5. ⏳ 同一 Dock_Index 对比待实验运行后验证
+
+**额外完成**（Codex 三轮审核修复 7 个 bug）：详见 `sessions/02_Step2_.../session_log.md`
 
 **科学定位**：修复后本实验为「推理敏感性/结构扰动实验」，非「Heme 生化机理验证」。原因：
 - 模型训练时未见 HETATM（PathA 539 个 pocket 中 HETATM=0，已全量验证）
@@ -469,20 +471,45 @@ PathB_2026-02-12_P450数据集构建与结构优化/
 | 日期 | Step | 内容 | 状态 |
 |------|:----:|------|:----:|
 | 2026-02-12 | - | PathB 规划完成，目录结构创建 | ✅ |
-| 2026-02-12 | Step 1 | 数据准备与代码改造 | ✅ 已完成 |
+| 2026-02-12 | Step 1 | **数据准备与代码改造** | **✅ 已完成** |
 | | | - B6 数据集迁移到 00_shared/datasets/B6_v1/ (516条) | ✅ |
-| | | - 共享特征迁移 (ESM/反应图/GROVER/Morgan ~19GB) | ✅ |
+| | | - 共享特征迁移到 00_shared/features/ (~19GB，仅 Windows) | ✅ |
 | | | - extract_pocket_ligand.py 改造 (Heme+半径参数化) | ✅ |
 | | | - run_experiment.py 实验运行器 + base.yaml 配置 | ✅ |
-| 2026-02-20 | Step 1 补充 | HETATM 兼容性风险 Codex 四轮深度验证 | ✅ 已验证 |
-| | | - 确认风险真实：下游 PDBProtein 只读 ATOM，Heme HETATM 被静默丢弃 | ✅ |
+| 2026-02-20 | Step 2 | **代码准备：HETATM 问题验证** | ✅ |
+| | | - Codex 四轮深度验证确认 HETATM 阻断风险 | ✅ |
 | | | - 确认修复方案：PathB fork 版 PDBProtein 支持 ATOM+HETATM | ✅ |
 | | | - 确认实验定位：推理敏感性实验（非生化机理验证） | ✅ |
-| | | - 已更新 session_log.md 和 PathB_计划与进度.md | ✅ |
-| | Step 2 | 结构特征 2×2 因子实验 | ⏳ 待开始（需先完成前置修复） |
+| 2026-02-21 | Step 2 | **代码准备：编写 Step 8.2/8.3 脚本** | ✅ |
+| | | - step8_align_ligand.py（配体原子对齐，CLI 可配置） | ✅ |
+| | | - step8_generate_structure_lmdb.py（LMDB 生成，含 HETATM 修复） | ✅ |
+| | | - run_experiment.py 集成 8.2/8.3 | ✅ |
+| 2026-02-21 | Step 2 | **代码审核：Codex 三轮审核** | ✅ |
+| | | - 修复 7 个 bug（2 HIGH + 3 MEDIUM + 2 LOW） | ✅ |
+| | | - 详见 sessions/02_Step2_.../session_log.md | ✅ |
+| 2026-02-22 | Step 2 | **环境准备：MacBook 依赖安装** | ✅ |
+| | | - 安装 RDKit 2025.09.5 + lmdb 1.7.5 + PyG 2.7.0 | ✅ |
+| | | - dry-run 验证通过（4 个实验命令正确） | ✅ |
+| 2026-02-22 | Step 2 | **阻断：缺失数据文件** | **🔴 阻断中** |
+| | | - Mac 上缺少：PDB 原始文件 + 4 个特征 LMDB | 🔴 |
+| | | - 需从 Windows 迁移或在 Windows 上运行 | 🔴 |
+| | Step 2 | **待做：运行 Steps 8.1-8.3** | ⏳ 等数据迁移 |
+| | Step 2 | **待做：编写 Step 9/10 脚本** | ⏳ |
 | | Step 3 | 对接环境搭建 | ⏳ 待开始 |
 | | Step 4 | 随机负样本生成与批量对接 | ⏳ 待开始 |
 | | Step 5 | 重构评估分析 | ⏳ 待开始 |
 | | Step 6 | 外部数据库收集与清洗 | ⏳ 待开始 |
 | | Step 7 | 结构获取与质量控制 | ⏳ 待开始 |
 | | Step 8 | 全量特征生成与数据集交付 | ⏳ 待开始 |
+
+### 缺失文件清单（待迁移）
+
+以下文件被 `.gitignore` 排除，仅在 Windows 机器上存在：
+
+| 文件 | 大小 | 原始位置 | 目标位置 | Step 需要 |
+|------|------|---------|---------|----------|
+| 627 个 PDB 对接文件 | ~数 GB | `PathA/data/01_Step1_PDB文件/` | 同 | 8.1 |
+| enzyme_features.lmdb | 4.29 GB | `PathA/data/05_Step5_.../` | `PathB/data/00_shared/features/` | 9 |
+| reaction_features.lmdb | 4.29 GB | `PathA/data/06_Step6_.../` | `PathB/data/00_shared/features/` | 9 |
+| grover_fingerprint.lmdb | 10.74 GB | `PathA/data/07_Step7_.../` | `PathB/data/00_shared/features/` | 9 |
+| morgan_fingerprint.npy | 447 KB | `PathA/data/07_Step7_.../` | `PathB/data/00_shared/features/` | 9 |
