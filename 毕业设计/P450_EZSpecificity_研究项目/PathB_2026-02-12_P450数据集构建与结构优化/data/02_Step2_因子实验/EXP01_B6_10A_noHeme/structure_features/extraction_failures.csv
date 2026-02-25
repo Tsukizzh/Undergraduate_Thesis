@@ -1,0 +1,8 @@
+Dock_Index,pdb_id,ligand_ccd,error
+26,9KPU,A1EGF,RDKit failed to parse ligand
+192,8VK6,A1AB6,RDKit failed to parse ligand
+277,9KW3,A1L6Q,RDKit failed to parse ligand
+278,9KW4,A1L6X,RDKit failed to parse ligand
+294,9MS2,A1BNX,RDKit failed to parse ligand
+335,8S4M,A1H47,RDKit failed to parse ligand
+534,9CV8,A1AZ7,RDKit failed to parse ligand

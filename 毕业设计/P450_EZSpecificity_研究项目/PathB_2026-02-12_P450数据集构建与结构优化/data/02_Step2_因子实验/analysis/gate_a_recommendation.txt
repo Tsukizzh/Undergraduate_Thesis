@@ -1,0 +1,25 @@
+Gate A Recommendation Report
+======================================================================
+Generated: 2026-02-25 19:41:30
+PathA baseline AUC-ROC: 0.6636
+Decision threshold: delta > 0.0050
+
+Best experiment: EXP01_B6_10A_noHeme
+  include_heme=False, pocket_radius=10.0A
+  AUC-ROC=0.7115
+  Delta vs baseline: +0.0479 (+4.79%)
+
+Gate A Decision: PASS
+Recommendation: adopt this config for downstream PathB steps.
+
+Main Effects:
+  Heme effect  = mean(Heme) - mean(noHeme)  = -0.2322
+  Radius effect = mean(10A) - mean(6A)       = +0.0537
+
+Per-experiment:
+  EXP01_B6_10A_noHeme: heme=False, radius=10A, AUC-ROC=0.7115, AUC-PR=0.7356, acc=0.5091, n=495
+  EXP02_B6_10A_Heme: heme=True, radius=10A, AUC-ROC=0.4894, AUC-PR=0.5492, acc=0.4848, n=495
+  EXP03_B6_6A_noHeme: heme=False, radius=6A, AUC-ROC=0.6678, AUC-PR=0.6990, acc=0.5131, n=495
+  EXP04_B6_6A_Heme: heme=True, radius=6A, AUC-ROC=0.4257, AUC-PR=0.4973, acc=0.4525, n=495
+
+======================================================================
