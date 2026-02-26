@@ -314,7 +314,7 @@ ESIBank 训练集中的 P450
 
 #### 当前研究阶段
 
-**阶段二十四**：Path B Step 2 代码准备完毕，等待数据迁移（2026-02-23）
+**阶段二十五**：Path B Step 2 因子实验完成，Gate A PASS（2026-02-26）
 
 | 路径 | 名称 | 状态 | 说明 |
 |------|------|------|------|
@@ -322,21 +322,21 @@ ESIBank 训练集中的 P450
 | │    | └─ Step 1-8 | ✅ 已完成 | 特征生成全流程 |
 | │    | └─ Step 9 | ✅ 已完成 | 模型推理（517条样本） |
 | │    | └─ Step 10 | ✅ 已完成 | 结果分析（AUC-ROC 0.6636） |
-| **B** | P450数据集构建与结构优化 | 🔄 进行中 | Step 1 ✅，Step 2 代码就绪/等数据 |
+| **B** | P450数据集构建与结构优化 | 🔄 进行中 | Step 1-2 ✅，Step 3+ 待定 |
 | │    | └─ Step 1 | ✅ 已完成 | 数据准备 + extract_pocket_ligand.py |
-| │    | └─ Step 2 代码 | ✅ 已完成 | 8.2/8.3 脚本 + HETATM 修复 + Codex 审核 |
-| │    | └─ Step 2 运行 | 🔴 阻断 | Mac 缺少 PDB 文件 + 特征 LMDB |
+| │    | └─ Step 2 | ✅ 已完成 | 2×2因子实验 + Gate A PASS (10Å/noHeme) |
 | C | P450专属模型训练 | ⏳ 待定 | 路径B完成后 |
 | D | 区域选择性预测 | ⏳ 待定 | 路径A完成后可选 |
 
 **工作目录**: `毕业设计/P450_EZSpecificity_研究项目/PathB_2026-02-12_P450数据集构建与结构优化/`
 
 **Path B 当前状态**:
-- Step 2 的 3 个脚本（8.1/8.2/8.3）+ 调度器全部写好并通过 Codex 三轮代码审核
-- MacBook 环境依赖已装好（RDKit/lmdb/PyG），dry-run 验证通过
-- **阻断**：Mac 上缺少 PDB 原始文件 + 特征 LMDB（共~22GB，被 .gitignore 排除）
-- 需从 Windows 迁移文件后才能运行
-- Step 9/10 脚本尚未编写
+- Step 2 已完成：2×2 因子实验（Heme on/off × 6Å/10Å）全部执行+分析
+- **最佳配置**: EXP01 (10Å/noHeme) AUC-ROC=0.7115
+- **Gate A: PASS** — 采用 10Å/noHeme 配置
+- **关键发现**: Heme 加入严重损害性能（OOD: Fe 不在原子词汇表），Heme 效应=-0.2322
+- Git 分支: `pathb-step2`，提交 `ba7c22a`
+- 下一步: Step 3 — AutoDock Vina 对接管线
 
 **Path A 核心结论**:
 - AUC-ROC: 0.6636（比论文Unknown enzyme+substrate场景低5.6%）
@@ -344,10 +344,16 @@ ESIBank 训练集中的 P450
 - 酶重叠: 0%（148个P450与ESIBank完全不重叠）
 - 结论: 结果在预期范围内，不代表模型失败
 
-**关键成果** (Step 9-10):
+**Path A 关键成果** (Step 9-10):
 - Step 9: 模型推理成功（517/539高质量样本）
 - Step 10: 深度根因分析（Claude + Codex + Gemini三方协作）
   - 详见: `sessions/10_Step10_结果分析/推理训练微调区别详解.md` (v4.0)
+
+**Path B Step 2 关键成果**:
+- 2×2 因子实验: EXP01(0.7115) > EXP03(0.6678) > EXP02(0.4894) > EXP04(0.4257)
+- Heme 效应: -0.2322（Fe 不在模型词汇表，OOD 问题）
+- Radius 效应: +0.0537（10Å > 6Å）
+- 分析产物: `data/02_Step2_因子实验/analysis/`（metrics, ROC图, heatmap, Gate A报告）
 
 #### 重要概念澄清
 
