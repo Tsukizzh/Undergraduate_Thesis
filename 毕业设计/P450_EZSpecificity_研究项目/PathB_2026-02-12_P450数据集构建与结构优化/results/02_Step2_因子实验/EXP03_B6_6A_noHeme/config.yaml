@@ -1,0 +1,18 @@
+experiment_name: EXP03_B6_6A_noHeme
+include_heme: false
+paths:
+  checkpoint_dir: C:\Users\Administrator\Desktop\EZSpecificity_Project\saved_model\model\run_0
+  mapping_csv: C:\Users\Administrator\Desktop\EZSpecificity_Project\毕业设计\P450_EZSpecificity_研究项目\PathA_2026-01-08_模型评估测试集构建\data\04_Step4_格式修正后数据\dock_index_mapping.csv
+  patha_data: C:\Users\Administrator\Desktop\EZSpecificity_Project\毕业设计\P450_EZSpecificity_研究项目\PathA_2026-01-08_模型评估测试集构建\data
+  patha_root: C:\Users\Administrator\Desktop\EZSpecificity_Project\毕业设计\P450_EZSpecificity_研究项目\PathA_2026-01-08_模型评估测试集构建
+  patha_scripts: C:\Users\Administrator\Desktop\EZSpecificity_Project\毕业设计\P450_EZSpecificity_研究项目\PathA_2026-01-08_模型评估测试集构建\scripts
+  pathb_data: C:\Users\Administrator\Desktop\EZSpecificity_Project\毕业设计\P450_EZSpecificity_研究项目\PathB_2026-02-12_P450数据集构建与结构优化\data
+  pathb_root: C:\Users\Administrator\Desktop\EZSpecificity_Project\毕业设计\P450_EZSpecificity_研究项目\PathB_2026-02-12_P450数据集构建与结构优化
+  pathb_scripts: C:\Users\Administrator\Desktop\EZSpecificity_Project\毕业设计\P450_EZSpecificity_研究项目\PathB_2026-02-12_P450数据集构建与结构优化\scripts
+  pdb_dir: C:\Users\Administrator\Desktop\EZSpecificity_Project\毕业设计\P450_EZSpecificity_研究项目\PathA_2026-01-08_模型评估测试集构建\data\01_Step1_PDB文件
+  project_root: C:\Users\Administrator\Desktop\EZSpecificity_Project
+  research_root: C:\Users\Administrator\Desktop\EZSpecificity_Project\毕业设计\P450_EZSpecificity_研究项目
+  shared_datasets: C:\Users\Administrator\Desktop\EZSpecificity_Project\毕业设计\P450_EZSpecificity_研究项目\PathB_2026-02-12_P450数据集构建与结构优化\data\00_shared\datasets
+  shared_features: C:\Users\Administrator\Desktop\EZSpecificity_Project\毕业设计\P450_EZSpecificity_研究项目\PathB_2026-02-12_P450数据集构建与结构优化\data\00_shared\features
+pocket_radius: 6.0
+timestamp: '2026-02-25T18:51:16.702263'
