@@ -314,7 +314,7 @@ ESIBank 训练集中的 P450
 
 #### 当前研究阶段
 
-**阶段二十五**：Path B Step 2 因子实验完成，Gate A PASS（2026-02-26）
+**阶段二十五**：Path B Step 2 因子实验完成，Gate A PASS + 目录重构 + 半径决策（2026-02-28）
 
 | 路径 | 名称 | 状态 | 说明 |
 |------|------|------|------|
@@ -335,8 +335,9 @@ ESIBank 训练集中的 P450
 - **最佳配置**: EXP01 (10Å/noHeme) AUC-ROC=0.7115
 - **Gate A: PASS** — 采用 10Å/noHeme 配置
 - **关键发现**: Heme 加入严重损害性能（OOD: Fe 不在原子词汇表），Heme 效应=-0.2322
-- Git 分支: `pathb-step2`，提交 `ba7c22a`
-- 下一步: Step 3 — AutoDock Vina 对接管线
+- **半径决策**: 不扩展至 15/20Å（Radius 效应仅 +0.0537，边际递减；GNN 边数 O(N²)；论文默认 10Å；Step 3 ROI 更高）
+- Git 分支: `pathb-step2`，提交 `4486dfa`
+- 下一步: Step 3 — AutoDock Vina 对接管线（随机负样本生成）
 
 **Path A 核心结论**:
 - AUC-ROC: 0.6636（比论文Unknown enzyme+substrate场景低5.6%）
@@ -353,7 +354,8 @@ ESIBank 训练集中的 P450
 - 2×2 因子实验: EXP01(0.7115) > EXP03(0.6678) > EXP02(0.4894) > EXP04(0.4257)
 - Heme 效应: -0.2322（Fe 不在模型词汇表，OOD 问题）
 - Radius 效应: +0.0537（10Å > 6Å）
-- 分析产物: `data/02_Step2_因子实验/analysis/`（metrics, ROC图, heatmap, Gate A报告）
+- 分析产物: `results/02_Step2_因子实验/analysis/`（metrics, ROC图, heatmap, Gate A报告）
+- **目录规范（PathB 起）**: `data/` = 输入+中间产物，`results/` = 最终输出（predictions, analysis, config）
 
 #### 重要概念澄清
 
