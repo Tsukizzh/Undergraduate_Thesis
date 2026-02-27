@@ -5,7 +5,7 @@ Compares EXP01-EXP04 predictions and produces Gate A recommendation.
 
 Usage:
     python step10_comparative_analysis.py \
-        --experiments_dir <parent of EXP01-EXP04> \
+        --predictions_dir <parent of EXP01-EXP04 predictions in results/> \
         --shared_datasets <path_to_shared/datasets> \
         --output_dir      <analysis output dir>
 
@@ -255,12 +255,13 @@ def _gate_a_report(df: pd.DataFrame, notes: Dict[str, str]) -> str:
 
 def main() -> int:
     p = argparse.ArgumentParser(description="PathB Step 2 comparative analysis.")
-    p.add_argument("--experiments_dir", required=True)
+    p.add_argument("--predictions_dir", required=True,
+                   help="Parent dir containing EXP*/predictions.csv (in results/)")
     p.add_argument("--shared_datasets", required=True)
     p.add_argument("--output_dir", required=True)
     args = p.parse_args()
 
-    exp_dir = Path(args.experiments_dir).resolve()
+    exp_dir = Path(args.predictions_dir).resolve()
     out_dir = Path(args.output_dir).resolve()
     labels_df = pd.read_csv(_resolve_dataset_csv(Path(args.shared_datasets).resolve()),
                             usecols=KEY_COLS + ["Label"])

@@ -2,16 +2,17 @@
 PathB Step 2 - Inference for one factorial experiment.
 
 Runs EZSpecificity inference on a single EXP directory and writes
-<experiment_dir>/predictions.csv.
+predictions.csv to --output_dir (defaults to --experiment_dir).
 
 Windows-safe: no DDP, no file_descriptor sharing, num_workers=0.
 
 Usage:
     python step9_inference.py \
-        --experiment_dir  <path_to_EXP*> \
+        --experiment_dir  <path_to_EXP* in data/> \
         --shared_features <path_to_shared/features> \
         --shared_datasets <path_to_shared/datasets> \
-        --checkpoint_dir  <path_to_run_0>
+        --checkpoint_dir  <path_to_run_0> \
+        --output_dir      <path_to_EXP* in results/>  # optional
 """
 
 from __future__ import annotations
@@ -167,6 +168,8 @@ def parse_args():
     p.add_argument("--shared_features", required=True)
     p.add_argument("--shared_datasets", required=True)
     p.add_argument("--checkpoint_dir", required=True)
+    p.add_argument("--output_dir", default=None,
+                   help="Where to write predictions.csv (default: same as experiment_dir)")
     return p.parse_args()
 
 
@@ -180,6 +183,7 @@ def main() -> int:
     shared_features = Path(args.shared_features).resolve()
     shared_datasets = Path(args.shared_datasets).resolve()
     checkpoint_dir = Path(args.checkpoint_dir).resolve()
+    output_dir = Path(args.output_dir).resolve() if args.output_dir else experiment_dir
 
     dataset_csv = _resolve_dataset_csv(shared_datasets)
     config_yaml, checkpoint_path = _resolve_checkpoint(checkpoint_dir)
@@ -223,7 +227,8 @@ def main() -> int:
     for col in REQUIRED_OUTPUT_COLS:
         assert col in pred_df.columns, f"Missing column: {col}"
 
-    out_csv = experiment_dir / "predictions.csv"
+    output_dir.mkdir(parents=True, exist_ok=True)
+    out_csv = output_dir / "predictions.csv"
     pred_df[REQUIRED_OUTPUT_COLS + ["score", "logit", "prob"]].to_csv(out_csv, index=False)
 
     print(f"[{exp_name}] Saved: {out_csv}")

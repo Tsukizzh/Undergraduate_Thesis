@@ -359,22 +359,32 @@ EXP01（0.7115）和 PathA（0.6636）使用的**不是同一批数据**：
 | `scripts/02_Step2_因子实验/step10_comparative_analysis.py` | 对比分析 + Gate A | Windows |
 | `scripts/utils/run_experiment.py` | 实验编排（8.1→8.2→8.3） | Mac |
 
-### 数据
+### 数据（data/ = 输入 + 中间产物）
 
 ```
 data/02_Step2_因子实验/
-├── EXP01_B6_10A_noHeme/          ← 最佳配置
-│   ├── config.yaml               # 实验参数快照
-│   ├── high_quality_id.txt       # 495 条有效 Dock Index
-│   ├── predictions.csv           # 推理结果（7 列 × 495 行）
-│   ├── structure_build_summary.csv
-│   ├── structure_features.lmdb   # (gitignored)
-│   └── structure_features/       # pocket/ + raw_ligand/ (gitignored)
+├── EXP01_B6_10A_noHeme/
+│   ├── high_quality_id.txt       # 中间产物：495 条有效 Dock Index
+│   ├── structure_build_summary.csv # 中间产物：LMDB 构建日志
+│   ├── structure_features.lmdb   # 中间产物 (gitignored)
+│   └── structure_features/       # 中间产物：pocket/ + raw_ligand/ (gitignored)
 ├── EXP02_B6_10A_Heme/            # 同结构
 ├── EXP03_B6_6A_noHeme/           # 同结构
 ├── EXP04_B6_6A_Heme/             # 同结构
-├── shared_alignment/             # 共享对齐数据 (gitignored)
-└── analysis/
+└── shared_alignment/             # 共享对齐数据 (gitignored)
+```
+
+### 结果（results/ = 最终输出）
+
+```
+results/02_Step2_因子实验/
+├── EXP01_B6_10A_noHeme/          ← 最佳配置
+│   ├── predictions.csv           # Step 9 推理结果（7 列 × 495 行）
+│   └── config.yaml               # 实验参数快照（便于追溯）
+├── EXP02_B6_10A_Heme/            # 同结构
+├── EXP03_B6_6A_noHeme/           # 同结构
+├── EXP04_B6_6A_Heme/             # 同结构
+└── analysis/                     # Step 10 对比分析
     ├── comparative_metrics.csv   # 4 行指标汇总
     ├── gate_a_recommendation.txt # Gate A 决策报告
     └── figures/
