@@ -17,6 +17,9 @@
 **/02_Step2_*/EXP*/structure_features/raw_ligand/
 **/02_Step2_*/shared_alignment/
 
+# PathB Step 3 docking data (11GB: PDBQT, SDF, docking outputs)
+**/data/03_Step3_对接预实验/
+
 # 大文件类型（全局排除）
 *.lmdb
 *.lmdb-lock
