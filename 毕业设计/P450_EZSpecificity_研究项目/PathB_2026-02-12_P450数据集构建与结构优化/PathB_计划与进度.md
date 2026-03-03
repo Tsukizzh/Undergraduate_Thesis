@@ -506,7 +506,15 @@ PathB_2026-02-12_P450数据集构建与结构优化/
 | | | - 三层重试: Tier0(FE阈值) + Tier1(延时) + Tier2(降exhaustiveness) | ✅ |
 | | | - 最终: 2,766/2,797 = **98.9%** 成功 (265正 + 2,501负, 比1:9.44) | ✅ |
 | | | - 产出: results/04_Step4_批量对接/data.csv (模型兼容) | ✅ |
-| | Step 5 | 重构评估分析（特征生成 + 推理） | ⏳ 待开始 |
+| 2026-03-03 | Step 5 | **重构评估 + Gate B 决策** | **✅ 已完成** |
+| | | - 特征复用: ESM/Reaction/GROVER/Morgan 全覆盖 (无需重新生成) | ✅ |
+| | | - 配体对齐: 2,766/2,766 = 100% (8s) | ✅ |
+| | | - 结构 LMDB: 2,766/2,766 = 100% (23s, HETATM=0) | ✅ |
+| | | - 模型推理: 2,766/2,766 = 100% | ✅ |
+| | | - **Gate B: INFORMATIVE FAIL** (AUC-ROC=0.5170 [0.4804, 0.5521]) | ✅ |
+| | | - 根因: Dockability≠Catalysis + OOD enzymes (0% overlap) | ✅ |
+| | | - Codex 2 轮审核 + bootstrap CI + 混杂变量分析 | ✅ |
+| | | - 产出: analysis/ (报告+ROC+分布图+per-enzyme), predictions.csv | ✅ |
 | | Step 6 | 外部数据库收集与清洗 | ⏳ 待开始 |
 | | Step 7 | 结构获取与质量控制 | ⏳ 待开始 |
 | | Step 8 | 全量特征生成与数据集交付 | ⏳ 待开始 |

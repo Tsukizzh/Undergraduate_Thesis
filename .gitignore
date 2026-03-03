@@ -25,6 +25,9 @@
 **/data/04_Step4_批量对接/pocket/
 **/data/04_Step4_批量对接/raw_ligand/
 
+# PathB Step 5 structure feature intermediates (2,766 SDF + 10GB LMDB)
+**/data/05_Step5_重构评估/aligned_ligand/
+
 # 大文件类型（全局排除）
 *.lmdb
 *.lmdb-lock
