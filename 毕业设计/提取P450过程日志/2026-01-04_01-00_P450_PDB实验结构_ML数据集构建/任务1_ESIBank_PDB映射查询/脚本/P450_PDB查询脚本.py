@@ -32,7 +32,7 @@ from typing import Dict, List, Optional, Tuple, Any, Set
 from pathlib import Path
 
 # Configuration
-BASE_DIR = Path(r"C:\Users\Administrator\Desktop\EZSpecificity_Project")
+BASE_DIR = Path(r"D:\EZSpecificity_Project")
 OUTPUT_DIR = BASE_DIR / "提取P450过程日志" / "2026-01-04_PDB结构查询与筛选" / "数据文件"
 LOG_DIR = BASE_DIR / "提取P450过程日志" / "2026-01-04_PDB结构查询与筛选" / "日志"
 

@@ -30,7 +30,7 @@ from typing import Dict, List, Set, Tuple, Optional, Any
 # =============================================================================
 # Configuration
 # =============================================================================
-BASE_DIR = Path(r"C:\Users\Administrator\Desktop\EZSpecificity_Project")
+BASE_DIR = Path(r"D:\EZSpecificity_Project")
 INPUT_DIR = BASE_DIR / "提取P450过程日志" / "2026-01-04_02-23_任务2_RCSB全局P450搜索" / "数据文件"
 OUTPUT_DIR = BASE_DIR / "提取P450过程日志" / "2026-01-04_04-30_修复后脚本v3" / "数据文件_v5"
 LOG_DIR = BASE_DIR / "提取P450过程日志" / "2026-01-04_04-30_修复后脚本v3" / "日志"

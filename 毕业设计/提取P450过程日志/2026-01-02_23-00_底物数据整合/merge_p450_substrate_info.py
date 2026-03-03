@@ -18,8 +18,8 @@ from collections import defaultdict
 
 # File paths
 ESIBANK_PATH = r"G:\.shortcut-targets-by-id\173a36NiOLgXcvzvJjRDH29y2xd7Ey3Pr\ESIBank\brenda"
-P450_LIST_PATH = r"C:\Users\Administrator\Desktop\EZSpecificity_Project\毕业设计\提取P450过程日志\2026-01-02_01-46_P450精确验证\P450酶列表_最终版389个.csv"
-OUTPUT_PATH = r"C:\Users\Administrator\Desktop\EZSpecificity_Project\毕业设计\提取P450过程日志\2026-01-02_01-46_P450精确验证"
+P450_LIST_PATH = r"D:\EZSpecificity_Project\毕业设计\提取P450过程日志\2026-01-02_01-46_P450精确验证\P450酶列表_最终版389个.csv"
+OUTPUT_PATH = r"D:\EZSpecificity_Project\毕业设计\提取P450过程日志\2026-01-02_01-46_P450精确验证"
 
 
 def main():

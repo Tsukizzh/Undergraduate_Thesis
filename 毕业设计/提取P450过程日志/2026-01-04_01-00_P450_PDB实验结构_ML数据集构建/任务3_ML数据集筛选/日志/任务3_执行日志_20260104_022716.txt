@@ -3,7 +3,7 @@
 [2026-01-04 02:27:16] Started at: 2026-01-04 02:27:16.672732
 [2026-01-04 02:27:16] ============================================================
 [2026-01-04 02:27:16] 
-Loading data from: C:\Users\Administrator\Desktop\EZSpecificity_Project\提取P450过程日志\2026-01-04_PDB结构查询与筛选\01_全局搜索\all_p450_structures.csv
+Loading data from: D:\EZSpecificity_Project\提取P450过程日志\2026-01-04_PDB结构查询与筛选\01_全局搜索\all_p450_structures.csv
 [2026-01-04 02:27:16] Total entries loaded: 1591
 [2026-01-04 02:27:16] 
 ============================================================
@@ -43,13 +43,13 @@ Loading data from: C:\Users\Administrator\Desktop\EZSpecificity_Project\提取P4
 ============================================================
 [2026-01-04 02:27:16] STEP 5: Saving Results
 [2026-01-04 02:27:16] ============================================================
-[2026-01-04 02:27:16] ML dataset: C:\Users\Administrator\Desktop\EZSpecificity_Project\提取P450过程日志\2026-01-04_PDB结构查询与筛选\02_ML筛选\p450_ml_dataset.csv (183 entries)
-[2026-01-04 02:27:16] All high-quality: C:\Users\Administrator\Desktop\EZSpecificity_Project\提取P450过程日志\2026-01-04_PDB结构查询与筛选\02_ML筛选\p450_high_quality_all.csv (1421 entries)
-[2026-01-04 02:27:16]   ML bacteria: C:\Users\Administrator\Desktop\EZSpecificity_Project\提取P450过程日志\2026-01-04_PDB结构查询与筛选\02_ML筛选\p450_ml_bacteria.csv (106 entries)
-[2026-01-04 02:27:16]   ML other: C:\Users\Administrator\Desktop\EZSpecificity_Project\提取P450过程日志\2026-01-04_PDB结构查询与筛选\02_ML筛选\p450_ml_other.csv (35 entries)
-[2026-01-04 02:27:16]   ML fungi: C:\Users\Administrator\Desktop\EZSpecificity_Project\提取P450过程日志\2026-01-04_PDB结构查询与筛选\02_ML筛选\p450_ml_fungi.csv (5 entries)
-[2026-01-04 02:27:16]   ML mammals: C:\Users\Administrator\Desktop\EZSpecificity_Project\提取P450过程日志\2026-01-04_PDB结构查询与筛选\02_ML筛选\p450_ml_mammals.csv (33 entries)
-[2026-01-04 02:27:16]   ML plants: C:\Users\Administrator\Desktop\EZSpecificity_Project\提取P450过程日志\2026-01-04_PDB结构查询与筛选\02_ML筛选\p450_ml_plants.csv (4 entries)
+[2026-01-04 02:27:16] ML dataset: D:\EZSpecificity_Project\提取P450过程日志\2026-01-04_PDB结构查询与筛选\02_ML筛选\p450_ml_dataset.csv (183 entries)
+[2026-01-04 02:27:16] All high-quality: D:\EZSpecificity_Project\提取P450过程日志\2026-01-04_PDB结构查询与筛选\02_ML筛选\p450_high_quality_all.csv (1421 entries)
+[2026-01-04 02:27:16]   ML bacteria: D:\EZSpecificity_Project\提取P450过程日志\2026-01-04_PDB结构查询与筛选\02_ML筛选\p450_ml_bacteria.csv (106 entries)
+[2026-01-04 02:27:16]   ML other: D:\EZSpecificity_Project\提取P450过程日志\2026-01-04_PDB结构查询与筛选\02_ML筛选\p450_ml_other.csv (35 entries)
+[2026-01-04 02:27:16]   ML fungi: D:\EZSpecificity_Project\提取P450过程日志\2026-01-04_PDB结构查询与筛选\02_ML筛选\p450_ml_fungi.csv (5 entries)
+[2026-01-04 02:27:16]   ML mammals: D:\EZSpecificity_Project\提取P450过程日志\2026-01-04_PDB结构查询与筛选\02_ML筛选\p450_ml_mammals.csv (33 entries)
+[2026-01-04 02:27:16]   ML plants: D:\EZSpecificity_Project\提取P450过程日志\2026-01-04_PDB结构查询与筛选\02_ML筛选\p450_ml_plants.csv (4 entries)
 [2026-01-04 02:27:16] 
 ============================================================
 [2026-01-04 02:27:16] FINAL SUMMARY

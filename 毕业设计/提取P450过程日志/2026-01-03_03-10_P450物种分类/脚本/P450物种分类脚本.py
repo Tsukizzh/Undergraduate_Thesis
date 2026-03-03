@@ -23,8 +23,8 @@ import json
 from collections import defaultdict
 
 # Paths
-P450_LIST_PATH = r"C:\Users\Administrator\Desktop\EZSpecificity_Project\毕业设计\提取P450过程日志\2026-01-02_01-46_P450精确验证\P450酶列表_最终版389个.csv"
-OUTPUT_PATH = r"C:\Users\Administrator\Desktop\EZSpecificity_Project\毕业设计\提取P450过程日志\2026-01-03_03-10_P450物种分类"
+P450_LIST_PATH = r"D:\EZSpecificity_Project\毕业设计\提取P450过程日志\2026-01-02_01-46_P450精确验证\P450酶列表_最终版389个.csv"
+OUTPUT_PATH = r"D:\EZSpecificity_Project\毕业设计\提取P450过程日志\2026-01-03_03-10_P450物种分类"
 
 # BIA-producing plant orders (Ranunculales and related)
 BIA_ORDERS = ["Ranunculales"]

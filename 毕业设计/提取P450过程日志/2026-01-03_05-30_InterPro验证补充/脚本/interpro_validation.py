@@ -23,7 +23,7 @@ from collections import defaultdict
 from pathlib import Path
 
 # 路径配置
-BASE_DIR = Path(r"C:\Users\Administrator\Desktop\EZSpecificity_Project")
+BASE_DIR = Path(r"D:\EZSpecificity_Project")
 LOG_DIR = BASE_DIR / "提取P450过程日志"
 VERIFY_DIR = LOG_DIR / "2026-01-03_05-30_InterPro验证补充"
 DATA_DIR = VERIFY_DIR / "数据文件"

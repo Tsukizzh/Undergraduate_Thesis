@@ -98,13 +98,13 @@ Total unique polymer entities: 1492
 ============================================================
 [2026-01-04 02:23:58] STEP 4: Exporting to CSV
 [2026-01-04 02:23:58] ============================================================
-[2026-01-04 02:23:58] Exported to: C:\Users\Administrator\Desktop\EZSpecificity_Project\提取P450过程日志\2026-01-04_PDB结构查询与筛选\01_全局搜索\all_p450_structures.csv
-[2026-01-04 02:23:58]   Exported bacteria: C:\Users\Administrator\Desktop\EZSpecificity_Project\提取P450过程日志\2026-01-04_PDB结构查询与筛选\01_全局搜索\p450_bacteria.csv
-[2026-01-04 02:23:58]   Exported fungi: C:\Users\Administrator\Desktop\EZSpecificity_Project\提取P450过程日志\2026-01-04_PDB结构查询与筛选\01_全局搜索\p450_fungi.csv
-[2026-01-04 02:23:58]   Exported mammals: C:\Users\Administrator\Desktop\EZSpecificity_Project\提取P450过程日志\2026-01-04_PDB结构查询与筛选\01_全局搜索\p450_mammals.csv
-[2026-01-04 02:23:58]   Exported other: C:\Users\Administrator\Desktop\EZSpecificity_Project\提取P450过程日志\2026-01-04_PDB结构查询与筛选\01_全局搜索\p450_other.csv
-[2026-01-04 02:23:58]   Exported plants: C:\Users\Administrator\Desktop\EZSpecificity_Project\提取P450过程日志\2026-01-04_PDB结构查询与筛选\01_全局搜索\p450_plants.csv
-[2026-01-04 02:23:58]   Exported unknown: C:\Users\Administrator\Desktop\EZSpecificity_Project\提取P450过程日志\2026-01-04_PDB结构查询与筛选\01_全局搜索\p450_unknown.csv
+[2026-01-04 02:23:58] Exported to: D:\EZSpecificity_Project\提取P450过程日志\2026-01-04_PDB结构查询与筛选\01_全局搜索\all_p450_structures.csv
+[2026-01-04 02:23:58]   Exported bacteria: D:\EZSpecificity_Project\提取P450过程日志\2026-01-04_PDB结构查询与筛选\01_全局搜索\p450_bacteria.csv
+[2026-01-04 02:23:58]   Exported fungi: D:\EZSpecificity_Project\提取P450过程日志\2026-01-04_PDB结构查询与筛选\01_全局搜索\p450_fungi.csv
+[2026-01-04 02:23:58]   Exported mammals: D:\EZSpecificity_Project\提取P450过程日志\2026-01-04_PDB结构查询与筛选\01_全局搜索\p450_mammals.csv
+[2026-01-04 02:23:58]   Exported other: D:\EZSpecificity_Project\提取P450过程日志\2026-01-04_PDB结构查询与筛选\01_全局搜索\p450_other.csv
+[2026-01-04 02:23:58]   Exported plants: D:\EZSpecificity_Project\提取P450过程日志\2026-01-04_PDB结构查询与筛选\01_全局搜索\p450_plants.csv
+[2026-01-04 02:23:58]   Exported unknown: D:\EZSpecificity_Project\提取P450过程日志\2026-01-04_PDB结构查询与筛选\01_全局搜索\p450_unknown.csv
 [2026-01-04 02:23:58] 
 ============================================================
 [2026-01-04 02:23:58] Pipeline completed at: 2026-01-04 02:23:58.599813

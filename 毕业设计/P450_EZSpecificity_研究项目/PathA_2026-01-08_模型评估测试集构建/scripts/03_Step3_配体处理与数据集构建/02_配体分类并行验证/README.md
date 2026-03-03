@@ -43,7 +43,7 @@ reports/03_Step3_配体处理与数据集构建/
 运行一键准备脚本，自动完成分块和SOP生成：
 
 ```bash
-cd "C:\Users\Administrator\Desktop\EZSpecificity_Project\毕业设计\P450_EZSpecificity_研究项目\PathA_2026-01-08_模型评估测试集构建\scripts\03_Step3_配体处理与数据集构建\02_配体分类并行验证"
+cd "D:\EZSpecificity_Project\毕业设计\P450_EZSpecificity_研究项目\PathA_2026-01-08_模型评估测试集构建\scripts\03_Step3_配体处理与数据集构建\02_配体分类并行验证"
 
 python 00_一键准备.py
 ```

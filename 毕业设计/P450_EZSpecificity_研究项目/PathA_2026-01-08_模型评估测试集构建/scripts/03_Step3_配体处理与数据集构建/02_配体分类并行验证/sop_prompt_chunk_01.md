@@ -94,21 +94,21 @@
 
 **输入文件（读取）：**
 ```
-C:\Users\Administrator\Desktop\EZSpecificity_Project\毕业设计\P450_EZSpecificity_研究项目\PathA_2026-01-08_模型评估测试集构建\data\03_Step3_配体处理与数据集构建\02_配体分类并行验证\01_输入数据_chunks\chunk_01.csv
+D:\EZSpecificity_Project\毕业设计\P450_EZSpecificity_研究项目\PathA_2026-01-08_模型评估测试集构建\data\03_Step3_配体处理与数据集构建\02_配体分类并行验证\01_输入数据_chunks\chunk_01.csv
 ```
 
 **输出文件夹（写入数据）：**
 ```
-C:\Users\Administrator\Desktop\EZSpecificity_Project\毕业设计\P450_EZSpecificity_研究项目\PathA_2026-01-08_模型评估测试集构建\data\03_Step3_配体处理与数据集构建\02_配体分类并行验证\02_输出数据_results\chunk_01_results
+D:\EZSpecificity_Project\毕业设计\P450_EZSpecificity_研究项目\PathA_2026-01-08_模型评估测试集构建\data\03_Step3_配体处理与数据集构建\02_配体分类并行验证\02_输出数据_results\chunk_01_results
 ```
 
 **输出文件：**
-- `C:\Users\Administrator\Desktop\EZSpecificity_Project\毕业设计\P450_EZSpecificity_研究项目\PathA_2026-01-08_模型评估测试集构建\data\03_Step3_配体处理与数据集构建\02_配体分类并行验证\02_输出数据_results\chunk_01_results\verified_results.jsonl` - 验证结果（每条一行JSON）
-- `C:\Users\Administrator\Desktop\EZSpecificity_Project\毕业设计\P450_EZSpecificity_研究项目\PathA_2026-01-08_模型评估测试集构建\data\03_Step3_配体处理与数据集构建\02_配体分类并行验证\02_输出数据_results\chunk_01_results\verification_report.md` - 验证报告
+- `D:\EZSpecificity_Project\毕业设计\P450_EZSpecificity_研究项目\PathA_2026-01-08_模型评估测试集构建\data\03_Step3_配体处理与数据集构建\02_配体分类并行验证\02_输出数据_results\chunk_01_results\verified_results.jsonl` - 验证结果（每条一行JSON）
+- `D:\EZSpecificity_Project\毕业设计\P450_EZSpecificity_研究项目\PathA_2026-01-08_模型评估测试集构建\data\03_Step3_配体处理与数据集构建\02_配体分类并行验证\02_输出数据_results\chunk_01_results\verification_report.md` - 验证报告
 
 **操作日志（写入文档）：**
 ```
-C:\Users\Administrator\Desktop\EZSpecificity_Project\毕业设计\P450_EZSpecificity_研究项目\PathA_2026-01-08_模型评估测试集构建\sessions\03_Step3_配体处理与数据集构建\02_配体分类并行验证\chunk_01_session_log.md
+D:\EZSpecificity_Project\毕业设计\P450_EZSpecificity_研究项目\PathA_2026-01-08_模型评估测试集构建\sessions\03_Step3_配体处理与数据集构建\02_配体分类并行验证\chunk_01_session_log.md
 ```
 完成后生成操作日志，记录本窗口的工作内容、统计数据、遇到的问题等。
 
@@ -227,7 +227,7 @@ C:\Users\Administrator\Desktop\EZSpecificity_Project\毕业设计\P450_EZSpecifi
 
 请先使用 Read 工具读取输入文件：
 ```
-C:\Users\Administrator\Desktop\EZSpecificity_Project\毕业设计\P450_EZSpecificity_研究项目\PathA_2026-01-08_模型评估测试集构建\data\03_Step3_配体处理与数据集构建\02_配体分类并行验证\01_输入数据_chunks\chunk_01.csv
+D:\EZSpecificity_Project\毕业设计\P450_EZSpecificity_研究项目\PathA_2026-01-08_模型评估测试集构建\data\03_Step3_配体处理与数据集构建\02_配体分类并行验证\01_输入数据_chunks\chunk_01.csv
 ```
 
 确认CSV包含以下列：

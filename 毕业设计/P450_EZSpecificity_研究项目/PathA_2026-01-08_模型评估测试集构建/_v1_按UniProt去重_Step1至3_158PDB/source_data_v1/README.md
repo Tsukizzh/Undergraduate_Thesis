@@ -95,7 +95,7 @@ Q6TBX7, Q6VVX0, Q6WG30, Q83WG3, Q8VQF6, Q9UNU6, Q9Y6A2, Q9ZAU3, S4UX02
 
 所有数据复制自：
 ```
-C:\Users\Administrator\Desktop\EZSpecificity_Project\毕业设计\提取P450过程日志\
+D:\EZSpecificity_Project\毕业设计\提取P450过程日志\
 ├── 2026-01-02_01-46_P450精确验证\数据\
 ├── 2026-01-02_23-00_底物数据整合\
 ├── 2026-01-04_01-00_P450_PDB实验结构_ML数据集构建\

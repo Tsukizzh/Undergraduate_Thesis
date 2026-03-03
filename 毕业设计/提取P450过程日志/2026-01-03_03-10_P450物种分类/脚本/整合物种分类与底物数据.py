@@ -12,9 +12,9 @@ import os
 import json
 
 # Paths
-SPECIES_CLASSIFICATION_PATH = r"C:\Users\Administrator\Desktop\EZSpecificity_Project\毕业设计\提取P450过程日志\2026-01-03_03-10_P450物种分类\P450物种分类_完整版389个.csv"
-SUBSTRATE_DATA_PATH = r"C:\Users\Administrator\Desktop\EZSpecificity_Project\毕业设计\提取P450过程日志\2026-01-02_23-00_底物数据整合\P450酶底物反应详表_汇总版.csv"
-OUTPUT_DIR = r"C:\Users\Administrator\Desktop\EZSpecificity_Project\毕业设计\提取P450过程日志\2026-01-03_03-10_P450物种分类"
+SPECIES_CLASSIFICATION_PATH = r"D:\EZSpecificity_Project\毕业设计\提取P450过程日志\2026-01-03_03-10_P450物种分类\P450物种分类_完整版389个.csv"
+SUBSTRATE_DATA_PATH = r"D:\EZSpecificity_Project\毕业设计\提取P450过程日志\2026-01-02_23-00_底物数据整合\P450酶底物反应详表_汇总版.csv"
+OUTPUT_DIR = r"D:\EZSpecificity_Project\毕业设计\提取P450过程日志\2026-01-03_03-10_P450物种分类"
 
 
 def main():
