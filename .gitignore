@@ -28,6 +28,12 @@
 # PathB Step 5 structure feature intermediates (2,766 SDF + 10GB LMDB)
 **/data/05_Step5_重构评估/aligned_ligand/
 
+# PathB Step 6 ablation docking intermediates (~11GB)
+**/data/06_Step6_消融实验/phase2_inhibitor_docking/docking_output/
+**/data/06_Step6_消融实验/phase2_inhibitor_docking/pocket/
+**/data/06_Step6_消融实验/phase2_inhibitor_docking/raw_ligand/
+**/data/06_Step6_消融实验/phase2_inhibitor_docking/ligand/
+
 # 大文件类型（全局排除）
 *.lmdb
 *.lmdb-lock
