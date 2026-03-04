@@ -1,0 +1,3 @@
+name,n_total,n_pos,n_neg,ratio,auc_roc,auc_roc_ci_lo,auc_roc_ci_hi,auc_pr,score_mean_pos,score_mean_neg,score_separation
+EXP01,495,267,228,1:0.9,0.7115,0.6657,0.7569,0.7356,-3.0017,-5.5144,2.5126
+ABL-04,487,265,222,1:0.8,0.6885,0.6392,0.7348,0.718,-2.9369,-5.2476,2.3107

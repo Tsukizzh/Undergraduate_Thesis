@@ -1,0 +1,2 @@
+name,n_total,n_pos,n_neg,ratio,auc_roc,auc_roc_ci_lo,auc_roc_ci_hi,auc_pr,score_mean_pos,score_mean_neg,score_separation,seed
+ABL-03 (seed=42),2766,265,2501,1:9.4,0.517,0.4804,0.5521,0.1116,-2.9369,-3.2017,0.2648,42
