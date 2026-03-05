@@ -40,6 +40,10 @@
 *.npz
 *.npy
 
+# Temporary working files
+/tmp_lmdb/
+/e2_exp_tmp.py
+
 # 其他不需要上传的文件
 *.pdf
 .claude/

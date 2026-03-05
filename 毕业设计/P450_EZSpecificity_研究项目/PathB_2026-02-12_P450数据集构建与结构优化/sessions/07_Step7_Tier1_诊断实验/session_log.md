@@ -1,244 +1,825 @@
-# Step 7: Tier 1 Diagnostic Experiments — Session Log
+# Step 7: Tier 1 诊断实验 (E1-E6) — Session Log
 
-**Date**: 2026-03-05
-**Branch**: `pathb-ablation`
-**Purpose**: Execute 6 diagnostic experiments (E1-E6) designed in Step 6's Causal DAG v2 framework to understand WHY the model collapsed from AUC 0.71 to 0.52.
-
----
-
-## Background
-
-Step 6 Phase 1-2 established that:
-- Positive-negative ratio is NOT the cause (Phase 1, effect = -0.0016)
-- Negative sample identity is the dominant factor (Phase 2, conditional attribution 88.2%)
-- Structure source matters little (11.8%)
-
-The Causal DAG v2 framework (Chapter 6 of `hypotheses_and_experiments.md`) identified 6 root causes (R1-R6), 5 mechanisms (M1-M5), and 3 confounds (C1-C3). Tier 1 experiments test specific nodes and edges of this DAG.
+**日期**: 2026-03-05
+**分支**: `pathb-ablation`
+**提交**: `5c07d65`
 
 ---
 
-## Multi-Model Collaboration
+## 一、为什么要做 Step 7
 
-Three-round discussion with Codex + Gemini before implementation:
+### 1.1 问题回顾
 
-**Round 1** (Independent brainstorming):
-- Codex: Hybrid script structure, label leakage concern for E5, KS/Cliff's delta for E1, LOO R2 for E4
-- Gemini: Separate scripts, ESM anisotropy warning for E2, chemical space PCA addition, UMAP visualization
+EZSpecificity 模型的任务是：给定一个酶和一个小分子，判断这个酶能否催化这个小分子的反应。模型会给每一对（酶, 底物）打一个分，分数越高表示越可能催化。
 
-**Round 2** (Cross-critique):
-- My rebuttal on E5 leakage: Under 100% Dir A, p(y=1|s) is near-constant (~0.096) for ALL substrates, so leakage doesn't apply. Codex agreed.
-- My rebuttal on E4 out-of-fold R2: This is attribution/diagnostic, not prediction. In-sample R2 is correct. Both agreed.
-- E2 control: Gemini's anisotropy concern is valid. Generated control from toy_example enzymes (nitrilases).
-- E6: No Phosphatase data locally. Implemented proxy with paper analysis + promiscuity stratification.
-- Added chemical space analysis to E1 (Gemini suggestion).
+模型有三个输入通道：
 
-**Round 3** (Results review):
-- Codex: E1 direction correct but soften causal claim to "dataset-specific chemistry prior". E2 M1 not unique/sufficient cause. E3 >=1 pos threshold may inflate. E4 strong but add grouped bootstrap.
-- Gemini: Brilliant E4-E5 reconciliation — substrate scoring machine gives same score to pos/neg of same substrate. Overall narrative = "shortcut learning". Incorrectly suggested adding cross-attention (model already has it in ss.py).
+| 输入通道 | 吃进去什么 | 怎么处理的 |
+|----------|----------|----------|
+| 序列通道 | 酶的蛋白质序列 | 用 ESM-2 编码成一个 1280 维的数字向量 |
+| 分子通道 | 底物的化学结构 | 用 Morgan 指纹和 GROVER 编码成数字向量 |
+| 结构通道 | 酶-底物对接复合物的 3D 坐标 | 用图神经网络处理 |
 
----
+在之前的实验中，我们观察到一个令人困惑的现象：
 
-## Experiment Results
+| 实验 | 负样本是什么 | 结构来源 | AUC |
+|------|-----------|---------|:---:|
+| EXP01 | 抑制剂（能和酶结合但不催化的分子） | PDB晶体结构 | **0.71** |
+| Step 5 | 随机分子（随机配对的酶-底物对） | Vina对接结构 | **0.52** |
 
-### E5: Substrate Base Frequency Check (M2 confirmation)
+> **AUC 是什么？** 衡量模型打分准不准的指标。AUC = 1.0 表示完美预测（所有正样本分数都高于所有负样本）。AUC = 0.5 表示和扔硬币一样，完全随机。AUC = 0.0 表示完全反了。
 
-**Question**: Does substrate identity carry label information under 100% Direction A?
+把负样本从抑制剂换成随机分子后，模型从"还行"变成了"跟瞎猜一样"。
 
-**Result**: AUC = 0.5172 [0.4824, 0.5521]
+### 1.2 Step 6 已经排除了什么
 
-| Metric | Value |
-|--------|-------|
-| p(y=1\|s) mean | 0.0952 |
-| p(y=1\|s) std | 0.0139 |
-| p(y=1\|s) range | [0.0000, 0.1111] |
+Step 6 的消融实验回答了两个问题：
 
-**Verdict**: CONFIRMED. Substrate identity is uninformative. p(y=1|s) is near-constant (~1/10.5) as expected under 100% Direction A sampling.
+1. **正负样本比例是不是原因？** — 不是。把比例从 1:9.44 改成 1:1 或 1:3，AUC 几乎不变。
+2. **88.2% 的性能下降来自"负样本类型"的改变**（抑制剂→随机），只有 11.8% 来自结构来源的改变（晶体→Vina对接）。
 
----
+但"负样本类型导致了性能下降"只是一个观察，不是解释。我们需要知道**为什么**换了负样本就不行了。
 
-### E1: Label Semantic Probe (C2 test)
+### 1.3 Step 7 的目标
 
-**Question**: Does the model learn binding affinity (C2) or molecular fingerprint shortcuts?
+Step 7 设计了 6 个实验（E1-E6），目标是回答：
 
-**Key Finding**: Inhibitor negatives get **LOWER** scores than random negatives — opposite to C2 hypothesis.
-
-| Metric | Inhibitor neg (ABL-04) | Random neg (ABL-01) |
-|--------|----------------------|---------------------|
-| Mean logit | -5.25 | -3.28 (avg 5 seeds) |
-| Std | 3.93 | 3.15 |
-
-| Test | Value |
-|------|-------|
-| KS statistic | 0.288 (p < 1e-14) |
-| Mann-Whitney U | p < 1e-15 |
-| Cliff's delta | -0.339 |
-| Distinguishing AUC | 0.33 (inverted: inhibitors labeled 1 but scored lower) |
-
-**Chemical Space Analysis**:
-| Comparison | Mean Tanimoto |
-|-----------|---------------|
-| Within substrates | 0.131 |
-| Within inhibitors | 0.151 |
-| Between sub-inhib | 0.084 |
-
-Substrates and inhibitors occupy distinct chemical spaces (between < within), but MW and LogP are similar.
-
-**Verdict**: C2 (binding affinity) is REJECTED. The model does NOT treat inhibitors as "near-positive". Instead, it assigns inhibitors more confidently negative scores, likely via molecular fingerprint shortcuts. EXP01's AUC=0.71 is partly driven by this shortcut — the model can distinguish natural substrates from drug-like inhibitors without understanding catalysis.
+> **模型到底在做什么？它学到了什么能力（或者说，没学到什么能力）？为什么换了负样本就失效了？**
 
 ---
 
-### E3: Per-Substrate AUC (D1 diagnostic)
+## 二、需要理解的核心背景知识
 
-**Question**: Is AUC=0.52 uniform across all substrates, or do some substrates have high AUC?
+### 2.1 我们的数据集长什么样
 
-| Metric | Per-Substrate (n=213) | Per-Enzyme (n=148) |
-|--------|----------------------|-------------------|
-| Median AUC | 0.556 | **0.441** |
-| Mean AUC | 0.529 | 0.481 |
-| Std | 0.317 | — |
-| AUC > 0.65 | 88 (41%) | — |
-| AUC > 0.75 | 65 (30%) | — |
+数据集是一张表，每一行是一个"酶-底物对"：
 
-**Verdict**: NOT uniform failure. Some substrates get good predictions (30% have AUC > 0.75). But per-ENZYME AUC is below 0.5, meaning no enzyme is consistently well-predicted. The model has substrate-level biases but no enzyme-level accuracy.
+| 行号 | 酶 | 底物 | 标签 |
+|:---:|:---:|:---:|:---:|
+| 1 | 酶A | 底物X | 1（正 — 酶A确实能催化底物X） |
+| 2 | 酶B | 底物X | 0（负 — 随机配的） |
+| 3 | 酶C | 底物X | 0（负 — 随机配的） |
+| 4 | 酶D | 底物Y | 1（正 — 酶D确实能催化底物Y） |
+| 5 | 酶E | 底物Y | 0（负 — 随机配的） |
+| 6 | 酶F | 底物Y | 0（负 — 随机配的） |
 
----
+### 2.2 Direction A 采样
 
-### E4: Score Decomposition (D2 diagnostic)
+注意上面的表：**底物X 同时出现在第1行（正）和第2、3行（负）**。底物Y 也一样。
 
-**Question**: Is the prediction just enzyme_bias + substrate_bias (additive model)?
+这就是 Direction A 采样 — 生成负样本时，底物不变，只是随机换了一个酶。所以**同一个底物既在正样本里，也在负样本里**。
 
-| Component | R2 (LOO) | AUC |
-|-----------|----------|-----|
-| Enzyme-only | **-0.06** | 0.530 |
-| Substrate-only | **0.37** | 0.498 |
-| Additive (both) | 0.32 | 0.522 |
-| Residual | — | **0.509** |
+我们的 P450 测试集（Step 5）就是 100% Direction A 采样，正负比约 1:9.44。
 
-**Verdict**: Model is a "substrate scoring machine". Substrate identity explains 37% of logit variance, enzyme identity explains NOTHING (R2 < 0). After removing marginal effects, residual AUC = 0.509 — zero enzyme-substrate interaction signal.
+### 2.3 为什么这很重要
 
-**E4-E5 reconciliation** (Gemini insight): Substrate R2 = 0.37 doesn't contradict E5 AUC = 0.5. The model assigns substrate-level biases (some substrates get globally higher/lower scores), but since the SAME substrate appears in both positive and negative samples (Direction A), these biases don't help distinguish pos from neg. High R2 for variance ≠ high AUC for classification.
+因为正负样本里的底物是**同一个分子**，所以模型的分子通道（处理底物化学结构的部分）看到的东西在正样本和负样本中**完全相同**。唯一不同的是酶的序列和 3D 结构。
 
----
+### 2.4 EXP01 的负样本（抑制剂）有什么不同
 
-### E2: ESM Embedding Similarity (M1 test)
+EXP01 的设置：
+- **正样本**：酶 + 天然底物（小的有机分子）
+- **负样本**：酶 + 抑制剂（人工设计的药物分子）
 
-**Question**: How compressed are P450 ESM-2 embeddings? Is the sequence channel effectively useless?
+这里正样本和负样本的分子**不一样** — 一边是天然小分子，一边是人工药物。两类分子在化学结构上有系统性差异。
 
-| Group | n | Mean Cosine | Std | % > 0.90 |
-|-------|---|------------|-----|----------|
-| **P450** | 292 | **0.935** | 0.048 | 82.4% |
-| Control (nitrilases) | 18 | **0.975** | 0.014 | 100% |
-| Cross-group | — | 0.918 | 0.042 | — |
+### 2.5 训练数据的采样方向验证
 
-PCA: 90% variance in **15 dims**, 95% in 25 dims (out of 1280).
+模型是用 ESIBank 的 BRENDA 数据集（约 58.6 万条样本）训练的。我们对实际训练数据做了采样方向的详细分析。
 
-KS test (P450 vs control): stat=0.5515, p < 1e-44.
+**代码层面**
 
-**Verdict**: M1 CONFIRMED with caveats.
-- P450 embeddings ARE highly compressed (0.935 mean, 82% > 0.90)
-- BUT the control group (nitrilases) is even MORE similar (0.975)
-- This suggests ESM anisotropy is a global phenomenon, not P450-specific
-- P450 has MORE diversity than the control (std 0.048 vs 0.014)
-- Within-vs-between margin is small (0.935 vs 0.918), limiting discriminative geometry
-- M1 is a contributing factor but NOT the unique or sufficient cause of collapse
+`src/Datasets/utils.py:159-190` 中的 `generate_negative_sample` 函数逻辑如下：
+1. 遍历每个正样本 (reaction, enzyme)
+2. 保持 reaction（底物）不变
+3. 从同 EC 类别中随机选一个不催化这个 reaction 的酶作为负样本
 
----
+这是标准的 **Direction A**（固定底物，替换酶）。
 
-### E6: Phosphatase Stress Test (Proxy)
+**实际训练 CSV 的验证**
 
-**Note**: True E6 requires Phosphatase family data (not available locally). This is a proxy analysis.
+训练配置（yml）引用的是预生成的 CSV 文件。我们在 ESIBank 本地数据（`G:\...ESIBank\brenda\data.csv`）中做了验证：
 
-**Key Comparison**:
+| 类别 | 数量 | 说明 |
+|------|------|------|
+| 正样本 | 56,597 | — |
+| 负样本（底物也在正样本中出现）| 477,545 (90.1%) | Direction A 模式 |
+| 负样本（底物**不在**任何正样本中）| 52,373 (9.9%) | 需要进一步分析 |
 
-| Condition | Phosphatase | P450 (ours) |
-|-----------|------------|-------------|
-| Dir B % | 0% | 0% |
-| EC classes | 1 | 1 (CYP) |
-| Promiscuity | ~36.7 enzymes/substrate | ~1 enzyme/substrate |
-| AUROC | **0.896** | **0.517** |
+那 9.9% 的"底物仅出现在负样本中"的样本是什么？我们检查了这 9,361 个仅负底物对应的 SMILES：
 
-The 0.379 gap must come from factors unique to P450: low promiscuity + CYP fold + zero enzyme overlap.
+| 底物类型 | 反应数 | 占比 | 说明 |
+|---------|--------|------|------|
+| 水 (H2O, SMILES="O") | 2,394 | 25.6% | 几乎所有酶反应都涉及水 |
+| NAD+/NADH（辅因子） | ~1,500 | ~16% | 氧化还原反应的通用辅因子 |
+| ATP、CoA 等辅因子 | ~1,000 | ~11% | 其他通用辅因子 |
+| O2, CO2 等简单分子 | 200+ | ~2% | 气体底物 |
+| 其他小分子 | ~4,200 | ~45% | 各类底物 |
 
-**Promiscuity-Stratified Analysis**:
-| Group | n enzymes | Mean AUC |
-|-------|----------|----------|
-| Low (<=1 substrate) | 108 | 0.456 |
-| High (>1 substrates) | 44 | 0.529 |
+**结论**：这 9.9% 的负样本大部分对应的是水和辅因子（co-substrate）——它们参与了大量酶反应，但不是酶特异性预测的主要目标。这些不是有意的"Direction B 采样"，更可能是数据预处理时边缘情况的产物。
 
-Promiscuity-AUC correlation: r = 0.088 (not significant, p = 0.28).
+**对于真正的底物（非水/辅因子），训练数据确实是 Direction A**。同一个底物同时出现在正样本和负样本中，只是配对的酶不同。
 
-**Score Stability**: Positive sample scores are very stable across conditions (r = 0.906 between EXP01 and Step 5). The collapse is entirely due to negative sample scores getting closer to positive scores.
+### 2.6 R²_substrate = 0.37 的来源
 
-| Condition | Score Gap (pos - neg) |
-|-----------|------|
-| EXP01 (crystal+inhibitor) | 2.51 |
-| ABL-04 (Vina+inhibitor) | 2.31 |
-| Step 5 (Vina+random) | **0.26** |
+既然训练是 Direction A（同一底物在正和负中都出现），底物身份对标签没有区分力（E5 验证了：AUC=0.517）。那为什么 E4 发现 R²_substrate = 0.37？
 
-**Proxy Verdict**: Collapse requires the COMBINATION of low promiscuity + 100% Dir A + zero enzyme overlap + CYP fold compression. No single factor alone is sufficient. True E6 requires external family data.
+关键区别：**E5 测的是"底物身份能不能预测标签"，E4 测的是"底物身份能不能解释模型打分的数值变化"**。
+
+模型有三个输入通道。其中分子通道（Morgan 指纹 + GROVER 嵌入）会对每个分子生成一个嵌入向量，经过交叉注意力和 MLP 后变成一个分数。不同的分子有不同的化学结构 → 不同的嵌入 → 不同的分数贡献。这个分数贡献是分子本身的固有属性，和它被配对的酶无关。
+
+所以 R²=0.37 来自模型分子通道的固有特性：**不同分子经过 Morgan+GROVER 编码后产生不同的基线分数**。这不是采样方向造成的，而是模型架构的必然结果——只要有分子特征输入通道，就会有分子级别的分数差异。
 
 ---
 
-## Integrated Findings
+## 三、六个实验详解
 
-### The "Substrate Scoring Machine" Picture
+### E5：底物基频检验
 
-The 6 experiments paint a coherent picture:
+**脚本**: `scripts/07_Step7_诊断实验/e5_substrate_base_frequency.py`
+**结果**: `results/07_Step7_Tier1_诊断实验/E5_底物基频检验/`
 
-1. **E4**: Model assigns scores primarily based on substrate identity (R2=0.37), ignoring enzyme identity (R2=-0.06)
-2. **E5**: Under Direction A, substrate identity is label-uninformative → substrate bias doesn't help → AUC ≈ 0.5
-3. **E1**: In EXP01, inhibitors (drug-like molecules) are easily distinguished from natural substrates via molecular fingerprints → AUC = 0.71
-4. **E3**: Some substrates happen to get globally high/low scores, creating per-substrate AUC variance, but no enzyme is consistently well-predicted
-5. **E2**: P450 ESM embeddings are compressed (0.935 cosine), but this is partly ESM's global anisotropy
-6. **E6-proxy**: Phosphatase survives at 0.896 despite similar Dir A/EC conditions, because high promiscuity provides enough statistical signal even without enzyme-substrate interaction learning
+#### 问的问题
 
-### Causal DAG Updates
+在我们的数据集（Step 5，Direction A 采样）中，如果我**只看底物是什么**，不看酶是谁，也不用模型，光凭底物身份能不能猜出一行样本是正还是负？
 
-| Node | Status Before | Status After Tier 1 |
-|------|--------------|-------------------|
-| R2 (low promiscuity) | Data fact | **KEY DRIVER** — E6 proxy shows promiscuity is the critical differentiator |
-| R5 (100% Dir A) | Data fact | **CONFIRMED** — E5 shows Dir A zeroes out substrate signal |
-| M1 (ESM compression) | Hypothesized | **PARTIALLY CONFIRMED** — E2 shows compression but not P450-specific (anisotropy) |
-| M2 (mol channel silence) | Confirmed | **RECONFIRMED** — E5 + E4 (R2_substrate as variance ≠ AUC as classification) |
-| C2 (label semantic mismatch) | Hypothesized | **REJECTED** — E1 shows model doesn't learn binding affinity |
-| D1 (per-sub AUC) | Unknown | **DIAGNOSED** — Not uniform failure, but substrate-biased, not enzyme-informed |
-| D2 (additive bias) | Unknown | **DIAGNOSED** — Substrate dominates (37%), enzyme contributes nothing |
+#### 怎么验证
 
-### New Insight: Shortcut Learning
+**第一步：统计每个底物的正样本率。**
 
-The model learned a shortcut: classify molecules by their chemical type (natural substrate vs synthetic drug) rather than predicting enzyme-substrate catalytic interaction. This is a form of **feature collapse** or **shortcut learning** where the model exploits the easiest discriminative signal in the training data.
+对数据集里每个底物，数一下它出现在多少行，其中多少行是正样本。
 
-When tested on random negatives (same molecules as positives), this shortcut becomes useless, and the model has no backup — no enzyme-conditioned catalysis prediction was ever learned.
+用上面的小例子：
+- 底物X：出现 3 行，正样本 1 行，正样本率 = 1/3 = 33%
+- 底物Y：出现 3 行，正样本 1 行，正样本率 = 1/3 = 33%
+
+**第二步：用正样本率给每一行"打分"。**
+
+一行样本的底物是谁，就把那个底物的正样本率赋给它当分数：
+
+| 行号 | 底物 | 标签 | "打分" |
+|:---:|:---:|:---:|:---:|
+| 1 | 底物X | 1（正） | 0.33 |
+| 2 | 底物X | 0（负） | 0.33 |
+| 3 | 底物X | 0（负） | 0.33 |
+| 4 | 底物Y | 1（正） | 0.33 |
+| 5 | 底物Y | 0（负） | 0.33 |
+| 6 | 底物Y | 0（负） | 0.33 |
+
+**第三步：用这些分数算 AUC。**
+
+AUC 衡量的是：随机拿一个正样本和一个负样本，分数高的那个是正样本的概率。
+
+但在上面的表里，所有行的分数都是 0.33！正样本和负样本的分数完全一样。AUC 就约等于 0.5（随机猜）。
+
+**这个方法的逻辑**：如果不同底物的正样本率差异很大（比如底物X是50%，底物Y是5%），那"底物是什么"就携带了关于标签的信息。但如果所有底物的正样本率几乎一样，那底物身份对猜标签就没有任何帮助。
+
+#### 实际结果
+
+对我们的真实数据集（2766 条样本，约 280 个底物）做了同样的计算：
+
+| 指标 | 值 | 说明 |
+|------|:---:|------|
+| 所有底物正样本率的**平均值** | 9.52% | 每个底物大约有 1/10.5 的样本是正的 |
+| 所有底物正样本率的**标准差** | 1.39% | 底物之间的差异极小 |
+| 正样本率的**范围** | 0% ~ 11.1% | 即使最高和最低差距也很小 |
+| 用正样本率做预测的 **AUC** | **0.5172** | 几乎等于 0.5 = 随机猜 |
+
+为什么所有底物的正样本率都差不多？因为 Direction A 的采样方式：每个底物有 1 个真正催化它的酶（正样本），然后被随机配了约 9-10 个其他酶（负样本）。所以每个底物的正样本率 ≈ 1/(1+9.44) ≈ 9.5%，对所有底物几乎一样。
+
+#### 这说明什么
+
+**在我们的数据集中，光看"底物是什么"，完全无法区分正样本和负样本。**
+
+这意味着：如果模型的分子通道只学到了"认出每个底物是谁"，那在这个数据集上，分子通道对分类毫无贡献。
 
 ---
 
-## Output Files
+### E1：标签语义探测
 
-### Scripts
-| File | Experiment |
-|------|-----------|
-| `e1_label_semantic_probe.py` | E1: Logit comparison + chemical space |
-| `e2_esm_similarity.py` | E2: ESM cosine similarity + control |
-| `e3_per_substrate_auc.py` | E3: Per-substrate and per-enzyme AUC |
-| `e4_score_decomposition.py` | E4: Marginal decomposition + R2 |
-| `e5_substrate_base_frequency.py` | E5: Base frequency check |
-| `e6_phosphatase_proxy.py` | E6: Proxy analysis |
+**脚本**: `scripts/07_Step7_诊断实验/e1_label_semantic_probe.py`
+**结果**: `results/07_Step7_Tier1_诊断实验/E1_标签语义探测/`
 
-### Results
-| Directory | Contents |
-|-----------|----------|
-| `E1_*` | e1_results.json, e1_logit_comparison.png, e1_chemical_space.png |
-| `E2_*` | e2_results.json, e2_esm_similarity.png |
-| `E3_*` | e3_results.json, e3_per_substrate_auc.png, per_substrate_auc.csv, per_enzyme_auc.csv |
-| `E4_*` | e4_results.json, e4_score_decomposition.png |
-| `E5_*` | e5_results.json, substrate_frequencies.csv |
-| `E6_*` | e6_results.json, e6_proxy_analysis.png, per_enzyme_analysis.csv |
+#### 问的问题
+
+E5 说明了底物身份在 Step 5（随机负样本）中没用。但 EXP01（抑制剂负样本）的 AUC = 0.71，模型在那边确实能区分正负。那 EXP01 里模型到底利用了什么信号？
+
+有两种可能：
+- **可能A（结合亲和力假说）**：模型学会了判断"这个分子能不能和酶结合"。抑制剂能和酶结合（只是不催化），所以模型给抑制剂打了较高的分（"能结合"），但又没有底物高。模型靠"底物分 > 抑制剂分"来区分。
+- **可能B（化学类型假说）**：模型根本没学结合能力，它只是发现正样本里的分子（天然底物）和负样本里的分子（人工药物/抑制剂）在化学结构上长得不一样，直接靠"这个分子看起来像天然的还是像药物"来分类。
+
+#### 怎么验证
+
+**判断逻辑**：如果可能A成立，抑制剂（能和酶结合）应该比随机分子（不一定能结合）得分**更高**。如果可能B成立，抑制剂和随机分子的分数差异不取决于结合能力，而取决于化学类型。
+
+**第一部分：比较两种负样本的模型分数**
+
+> **logit 是什么？** 模型输出的原始打分数字。正数表示模型倾向于判断为正样本，负数表示倾向于判断为负样本。数字越大越"正"，越小越"负"。
+
+1. 取 ABL-04 实验的预测结果（这个实验用了抑制剂作负样本），提取所有抑制剂负样本的 logit
+2. 取 ABL-01 实验的预测结果（用了 Direction A 随机配对的负样本——底物与正样本相同，只是酶不同），提取所有负样本的 logit
+3. 比较两组 logit 的分布。注意：ABL-01 的负样本分子和正样本分子**是同一类P450底物**，ABL-04 的负样本分子是**抑制剂（不同类型的分子）**
+
+**第二部分：比较底物和抑制剂的化学结构差异**
+
+> **Tanimoto 相似度是什么？** 衡量两个分子的化学结构有多像的数字。范围 0~1。=1 表示完全相同，=0 表示完全不同。
+
+1. 计算所有底物之间的 Tanimoto 相似度（底物和底物有多像）
+2. 计算所有抑制剂之间的 Tanimoto 相似度（抑制剂和抑制剂有多像）
+3. 计算底物和抑制剂之间的 Tanimoto 相似度（底物和抑制剂有多像）
+
+如果底物和抑制剂在化学空间中占据不同区域（组间相似度 < 组内相似度），那模型就有捷径可走。
+
+#### 实际结果
+
+**第一部分结果：模型分数对比**
+
+| 指标 | 抑制剂负样本 | 随机负样本 |
+|------|:---:|:---:|
+| 平均 logit | **-5.25** | **-3.28** |
+| 标准差 | 3.93 | 3.15 |
+
+关键发现：**抑制剂的平均 logit 比随机分子更低！**（-5.25 < -3.28）
+
+这和可能A的预测**完全相反**。如果模型学的是"能结合=高分"，那抑制剂（能结合酶）应该比随机分子（不一定能结合）得分更高。但实际上抑制剂得分更低。
+
+统计检验确认这个差异是显著的：
+| 检验 | 值 | 说明 |
+|------|:---:|------|
+| KS 统计量 | 0.288 | p < 0.00000000000001，差异极其显著 |
+| Cliff's delta | -0.339 | 负号表示抑制剂更低，效应大小为中等 |
+
+**第二部分结果：化学结构对比**
+
+| 比较 | 平均 Tanimoto 相似度 | 说明 |
+|------|:---:|------|
+| 底物 vs 底物（组内） | 0.131 | 底物之间有一定相似性 |
+| 抑制剂 vs 抑制剂（组内） | 0.151 | 抑制剂之间有一定相似性 |
+| 底物 vs 抑制剂（**组间**） | **0.084** | 明显低于两个组内 |
+
+组间相似度（0.084）明显低于组内相似度（0.131 和 0.151）。这说明底物和抑制剂在化学结构上确实占据了**不同的区域** — 它们"长得不一样"。
+
+#### 这说明什么
+
+1. **可能A（结合亲和力假说）被否决了**。如果模型学的是"能结合=高分"，那抑制剂（能和酶结合）应该比随机配对的底物得分**更高**。但实际相反（-5.25 < -3.28）。所以模型不是在判断结合能力。
+
+2. **底物和抑制剂在化学结构上确实不同**。Tanimoto 组间相似度仅 0.084（远低于组内的 0.131 和 0.151），说明两类分子占据了不同的化学空间区域。
+
+3. **EXP01 的 AUC=0.71 的来源**：正样本（P450 底物）和负样本（抑制剂）是化学结构不同的两类分子，模型给了它们不同的分数，因此能部分区分正负。但**为什么抑制剂具体得分更低（而不是更高），E1 没有回答这个问题**。这需要进一步分析模型分子通道（Morgan + GROVER）对不同化学类型分子的内部表征，例如比较 P450 底物、抑制剂、BRENDA 训练底物三者在特征空间中的分布关系。
+
+> **背景补充**：ESIBank 训练集中的正样本和负样本都是天然酶促反应的底物（来自 BRENDA 数据库），不是"天然底物 vs 药物分子"的区别。所以不能用"模型学到了天然底物=高分"来解释抑制剂得分低——训练时正负样本的分子来自同一个底物池。
 
 ---
 
-## Next Steps
+### E3：逐底物/逐酶 AUC 分析
 
-1. **Tier 2 experiments** (if needed): E7 (cross-family neg swap), E8 (channel knockout)
-2. **True E6**: Obtain Phosphatase data from paper's public repository
-3. **Path C planning**: Fine-tune on P450 data to force structure channel learning
-4. **Thesis writing**: Integrate diagnostic findings into the academic narrative
+**脚本**: `scripts/07_Step7_诊断实验/e3_per_substrate_auc.py`
+**结果**: `results/07_Step7_Tier1_诊断实验/E3_Per_Substrate_AUC/`
+
+#### 问的问题
+
+Step 5 的整体 AUC = 0.52。但这个 0.52 是所有 2766 条样本混在一起算的。我们想知道：
+
+- 是**每个底物**的预测都差？还是有些底物预测好、有些差？
+- 是**每个酶**的预测都差？还是有些酶预测好、有些差？
+
+#### 怎么做
+
+用一个小例子说明"逐底物算 AUC"是什么意思：
+
+假设数据集里底物X有5条样本，模型给了它们如下分数：
+
+| 酶 | 底物 | 标签 | 模型分数 |
+|:---:|:---:|:---:|:---:|
+| 酶A | 底物X | 1（正） | 3.2 |
+| 酶B | 底物X | 0（负） | 1.5 |
+| 酶C | 底物X | 0（负） | 4.1 |
+| 酶D | 底物X | 0（负） | 0.8 |
+| 酶E | 底物X | 0（负） | 2.0 |
+
+只看底物X这5行，正样本（酶A）得了3.2分，4个负样本中有2个低于3.2（酶B=1.5, 酶D=0.8），2个之中一个高于3.2（酶C=4.1），一个低于（酶E=2.0）。这种情况下底物X的 AUC 大约是 0.75（不算差）。
+
+然后对底物Y、底物Z...每个底物都单独算一遍 AUC，就得到了一组"逐底物 AUC"。
+
+筛选条件：每个底物至少有 1 个正样本和 5 个负样本（样本太少时 AUC 没有统计意义）。
+
+同理，也可以按**酶**分组，每个酶单独算 AUC。
+
+#### 实际结果
+
+**按底物分组**（213 个底物满足筛选条件）：
+
+| 指标 | 值 | 说明 |
+|------|:---:|------|
+| 中位数 AUC | 0.556 | 一半底物高于这个数，一半低于 |
+| AUC > 0.75 的底物数 | 65 个（30%） | 约三成底物看起来预测不错 |
+| AUC > 0.65 的底物数 | 88 个（41%） | |
+| AUC < 0.35 的底物数 | 57 个（27%） | 约三成底物方向反了 |
+| 标准差 | 0.317 | 非常大，底物之间差异很大 |
+
+**按酶分组**（148 个酶满足筛选条件）：
+
+| 指标 | 值 | 说明 |
+|------|:---:|------|
+| 中位数 AUC | **0.441** | 低于 0.5，比随机还差 |
+| 均值 AUC | 0.481 | 也低于 0.5 |
+
+#### 这说明什么
+
+**从底物角度看**：不是所有底物都预测差。30% 的底物 AUC > 0.75，看起来还行。但同时 27% 的底物 AUC < 0.35（方向反了）。底物之间差异极大（标准差 0.317）。
+
+**从酶角度看**：中位数 AUC = 0.441，低于 0.5。这意味着从酶的角度看，**没有任何酶是被模型一致准确预测的**。
+
+**为什么底物角度和酶角度不一致？**
+
+这里需要结合 E4（下一个实验）的发现来理解。简单说：模型给某些底物天生打高分、某些底物天生打低分（不管配什么酶）。如果一个底物被打了高分，那它的正样本（高分）和负样本（也是高分但可能稍低）之间可能恰好有一定差距，产生局部的 AUC。但从酶的角度看，同一个酶面对不同底物时，模型打分完全取决于底物是什么，跟酶无关，所以酶维度的 AUC 很差。
+
+**结论**：模型不是均匀失败的。有些底物碰巧得到了有利的分数差距，但从酶的角度看完全没有区分能力。
+
+---
+
+### E4：分数分解（核心实验）
+
+**脚本**: `scripts/07_Step7_诊断实验/e4_score_decomposition.py`
+**结果**: `results/07_Step7_Tier1_诊断实验/E4_分数分解/`
+
+#### 问的问题
+
+模型给每一对（酶, 底物）打了一个分。这个分数可能由三部分组成：
+
+- **酶偏置**：某些酶不管配什么底物，总是被打高分或低分
+- **底物偏置**：某些底物不管配什么酶，总是被打高分或低分
+- **酶-底物交互**：特定的酶和特定的底物搭配时产生的额外信号（这是我们最希望模型学到的 — 真正理解催化关系）
+
+E4 要做的是：把分数拆成这三部分，看每部分各占多少。
+
+#### 怎么做
+
+用一个小例子逐步演示完整计算过程。
+
+**示例数据**：假设模型给了 6 条样本如下分数：
+
+| 行号 | 酶 | 底物 | 标签 | 模型分数 (logit) |
+|:---:|:---:|:---:|:---:|:---:|
+| 1 | 酶A | 底物X | 1 | +3.0 |
+| 2 | 酶B | 底物X | 0 | +2.5 |
+| 3 | 酶C | 底物X | 0 | +2.8 |
+| 4 | 酶A | 底物Y | 0 | -1.0 |
+| 5 | 酶D | 底物Y | 1 | -0.5 |
+| 6 | 酶E | 底物Y | 0 | -1.2 |
+
+**第一步：算每个底物的平均分（底物偏置）**
+
+- 底物X 出现在第1-3行：(3.0+2.5+2.8)/3 = **+2.77**
+- 底物Y 出现在第4-6行：(-1.0-0.5-1.2)/3 = **-0.90**
+
+注意：底物X不管配什么酶，分数都在+2.5~+3.0。底物Y不管配什么酶，分数都在-1.2~-0.5。分数主要由底物决定。
+
+**第二步：算每个酶的平均分（酶偏置）**
+
+- 酶A 出现在第1行（+3.0）和第4行（-1.0）：平均 = +1.0
+- 酶B 只出现在第2行：平均 = +2.5
+- ...以此类推
+
+**第三步：算 R²（决定系数） — 核心步骤**
+
+> **R² 是什么？** 衡量"用某个预测值能解释多少真实分数变化"的指标。它的公式是：
+>
+> R² = 1 - (预测残差的总方差) / (分数本身的总方差)
+>
+> 更具体地：**R² = 1 - SS_res / SS_tot**
+> - **SS_tot**（总离差平方和）= Σ(每行分数 - 所有分数的总平均)²
+> - **SS_res**（预测残差平方和）= Σ(每行分数 - 我们的预测值)²
+
+用底物偏置做预测的 R² 计算过程如下：
+
+**SS_tot**（总方差）：总平均分 = (3.0+2.5+2.8-1.0-0.5-1.2)/6 = 0.93
+
+| 行号 | 分数 | 分数 - 总平均 | (分数 - 总平均)² |
+|:---:|:---:|:---:|:---:|
+| 1 | +3.0 | +2.07 | 4.28 |
+| 2 | +2.5 | +1.57 | 2.46 |
+| 3 | +2.8 | +1.87 | 3.50 |
+| 4 | -1.0 | -1.93 | 3.72 |
+| 5 | -0.5 | -1.43 | 2.04 |
+| 6 | -1.2 | -2.13 | 4.54 |
+
+SS_tot = 4.28+2.46+3.50+3.72+2.04+4.54 = **20.54**
+
+**SS_res**（用底物平均分预测后的残差方差）：
+
+| 行号 | 分数 | 底物平均分（预测值）| 残差 | 残差² |
+|:---:|:---:|:---:|:---:|:---:|
+| 1 | +3.0 | +2.77 | +0.23 | 0.053 |
+| 2 | +2.5 | +2.77 | -0.27 | 0.073 |
+| 3 | +2.8 | +2.77 | +0.03 | 0.001 |
+| 4 | -1.0 | -0.90 | -0.10 | 0.010 |
+| 5 | -0.5 | -0.90 | +0.40 | 0.160 |
+| 6 | -1.2 | -0.90 | -0.30 | 0.090 |
+
+SS_res = 0.053+0.073+0.001+0.010+0.160+0.090 = **0.387**
+
+**R²_substrate = 1 - 0.387/20.54 = 1 - 0.019 = 0.981**
+
+在这个小例子中 R² 接近 1.0，意味着光知道"底物是谁"就能几乎完美预测模型分数。
+
+> **实际数据中 R²_substrate = 0.37**，比小例子低得多。这是因为真实数据有 ~280 个底物、2766 条样本，底物间差异不像例子那么极端。但 0.37 仍然意味着底物身份解释了 37% 的分数变化——这已经很多了。
+
+> **R² < 0 是什么意思？** 当 SS_res > SS_tot 时 R² 为负。这意味着你的预测值还不如直接用总平均分猜。酶 R²= -0.06 就是这种情况——用"酶的平均分"去预测每行的分数，居然比直接用总平均分更差。这说明不同酶的平均分之间几乎没有差异，而 LOO 引入的微小噪声反而让预测变差了。
+
+**第四步：算残差 AUC — 找交互信号**
+
+把酶偏置和底物偏置从分数中减掉：残差 = 分数 - 酶平均分 - 底物平均分 + 总平均分。残差理论上只包含酶-底物交互信号。用残差去算 AUC，看还能不能区分正负。
+
+> 实际计算中使用了 Leave-One-Out (LOO) 方法：算某一行的底物（或酶）平均分时，排除这一行本身（用该底物/酶其余行的平均），避免"自己解释自己"的偏差。例如算第1行的"底物X平均分"时，只用第2、3行的分数：(2.5+2.8)/2 = 2.65，而不是用全部三行。
+
+#### 实际结果
+
+| 成分 | R² | AUC | 说明 |
+|------|:---:|:---:|------|
+| 仅用酶偏置 | **-0.06** | 0.530 | 酶对分数**没有贡献**（R²为负 = 比用平均分还差） |
+| 仅用底物偏置 | **0.37** | 0.498 | 底物身份解释了 37% 的分数变化 |
+| 两者加起来 | 0.32 | 0.522 | |
+| 残差（去掉两者后） | — | **0.509** | 去掉偏置后，几乎等于随机猜 |
+
+#### 这说明什么
+
+**酶 R² = -0.06**（负数）：不同酶的平均分几乎没有差异。模型根本没有区别对待不同的酶。给酶A配底物X得到的分数，和给酶B配底物X得到的分数，几乎一样。换句话说，模型忽略了酶的身份。
+
+**底物 R² = 0.37**：底物的身份解释了 37% 的分数变化。模型确实给不同底物打了不同的分数 — 有些底物总是被打高分，有些总是被打低分。
+
+**残差 AUC = 0.509**：把酶偏置和底物偏置都去掉后，剩下的分数变化对区分正负**完全没有帮助**（0.509 ≈ 0.5）。这意味着模型没有学到任何"酶-底物交互"信号 — 没有"酶A特别适合催化底物X"这类信息。
+
+**总结**：模型本质上就是一台**"底物打分机"** — 给一对（酶, 底物），输出的分数几乎完全由底物决定，和酶是谁无关，也没有酶-底物之间的交互信号。
+
+#### E4 和 E5 为什么不矛盾
+
+E5 说"底物身份对分类没用"（AUC ≈ 0.5），E4 说"底物身份解释了 37% 的分数变化"（R² = 0.37）。看起来矛盾，其实不矛盾。用一个具体例子说明：
+
+| 酶 | 底物 | 标签 | 模型分数 |
+|:---:|:---:|:---:|:---:|
+| 酶A | 底物X | 1（正） | +3.0 |
+| 酶B | 底物X | 0（负） | +2.8 |
+| 酶C | 底物X | 0（负） | +3.1 |
+| 酶D | 底物Y | 1（正） | -1.0 |
+| 酶E | 底物Y | 0（负） | -0.8 |
+| 酶F | 底物Y | 0（负） | -1.1 |
+
+- **R² 很高**：底物X总是 ~+3，底物Y总是 ~-1。分数变化大部分由底物决定。
+- **AUC ≈ 0.5**：底物X的正样本(+3.0)和负样本(+2.8, +3.1)的分数差不多。底物Y也一样。正负样本的分数没有系统差距。
+
+R² 衡量的是"分数在不同底物之间的变化有多大"，AUC 衡量的是"在同一个底物内部，正样本分数是否高于负样本分数"。底物打分机让分数因底物而异（R²高），但因为 Direction A 下同一个底物的正负样本都拿到同样的分数，所以无法区分正负（AUC低）。
+
+---
+
+### E2：ESM 嵌入相似度分析
+
+**脚本**: `scripts/07_Step7_诊断实验/e2_esm_similarity.py`
+**结果**: `results/07_Step7_Tier1_诊断实验/E2_ESM嵌入相似度/`
+
+#### 问的问题
+
+E4 发现模型完全忽略了酶的身份（酶 R² = -0.06）。为什么？
+
+一个可能的原因是：模型用 ESM-2 把酶的蛋白质序列编码成向量。如果 ESM-2 把所有 P450 酶编码成了**几乎一样的向量**，那模型根本就收不到"不同酶是不同的"这个信息，自然无法利用酶的身份。
+
+#### 怎么做
+
+> **余弦相似度是什么？** 衡量两个向量方向有多一致的数字。范围 -1~1。= 1.0 表示方向完全相同（两个向量几乎一样）。= 0 表示没有关系。值越接近 1，两个向量越相似。
+
+1. 从特征文件中读取 292 个 P450 酶的 ESM-2 向量（1280维）
+2. 计算所有 292×292 = 42,486 个酶对之间的余弦相似度
+3. 还需要一个**对照组**：如果只看 P450 相似度 = 0.935 就说"太高了"，怎么知道 0.935 算高还是不高？所以用了一组完全不同的酶（18 个硝化酶，不是 P450）现场生成 ESM-2 向量作为参照
+4. 做 PCA 分析看 1280 维中有多少维度真正携带有用信息
+
+> **PCA（主成分分析）在这里做什么？**
+>
+> ESM-2 把每个酶编码成一个 1280 维的向量。但 1280 个数字不一定都有用——可能只有少数几个维度真正区分了不同酶，其余维度的值对所有酶都差不多。
+>
+> PCA 就是用来回答"真正有用的维度有多少个"的方法。它把 1280 个原始维度**重新排列组合**成新的维度（叫主成分），并按**信息量从大到小排序**。第 1 个主成分包含最多的变化信息，第 2 个其次，以此类推。
+>
+> 然后我们看：需要前多少个主成分才能覆盖全部信息的 90%（或 95%）？如果只需要 15 个就够了，说明 1280 维空间中大部分维度都是冗余的——所有酶其实只在一个 15 维的"薄片"里活动。
+>
+> **具体做法**：对 292 个 P450 酶的 1280 维向量计算协方差矩阵，做特征值分解。每个特征值代表对应主成分解释的方差量。累加前 k 个特征值占总和的比例，就是前 k 个主成分解释的信息量百分比。
+
+#### 实际结果
+
+| 组别 | 酶数 | 平均余弦相似度 | 高于 0.90 的比例 |
+|------|:---:|:---:|:---:|
+| P450 内部 | 292 | 0.935 | 82.4% |
+| 对照组（硝化酶）内部 | 18 | **0.975** | **100%** |
+| P450 vs 对照组（跨组） | — | 0.918 | — |
+
+**PCA 分析**：1280 维空间中，只要 **15 个维度**就能解释 90% 的变化（95% 只需约 30 个维度）。也就是说，292 个 P450 酶虽然名义上是 1280 维的向量，实际上它们的差异只集中在大约 15 个方向上。其余 1265 个维度的值几乎不变——这些维度对区分不同的 P450 没有贡献。
+
+#### 这说明什么
+
+**P450 嵌入确实非常相似**（0.935，82% 的酶对超过 0.90）。序列通道看到的不同 P450 酶之间差异非常小。这解释了为什么酶 R² = -0.06 — 输入端的酶信息本身就很微弱。
+
+**但对照组更严重**（0.975 > 0.935）！硝化酶是一个完全不同的酶家族，它们之间的 ESM-2 相似度反而更高。这说明高相似度不是 P450 的独有问题，而是 **ESM-2 模型本身的特性** — 所有蛋白质在 ESM-2 的高维空间中都集中在一个很窄的区域里（术语叫"各向异性"anisotropy）。
+
+> **各向异性**：想象一个 1280 维的球。如果所有蛋白质的向量均匀分布在这个球上，那它们的余弦相似度应该接近 0。但实际上 ESM-2 的向量全部挤在了球的一个很小的区域内，导致任意两个蛋白质的余弦相似度都很高（>0.9）。这是 ESM-2 模型训练方式导致的全局现象，不只是 P450。
+
+**跨组相似度 = 0.918**，和 P450 内部（0.935）差距不大。这意味着"同家族内部"和"不同家族之间"的距离差异很小，模型很难从 ESM-2 向量中区分不同的 P450。
+
+**PCA 结果印证了这一点**：1280 维中只有 ~15 维有效，说明区分不同 P450 的信息量极为有限。
+
+**对照组的局限性**：当前对照组只有 18 个硝化酶（来自 `data/toy_example/Enzymes.csv`），样本量较少，结论可靠性有限。后续 E2 扩展实验将加入更多酶家族的对照组以增强统计强度。
+
+**结论**：序列通道（ESM-2 向量）对不同 P450 酶的区分能力确实很弱。但这不是 P450 特有的 — 是 ESM-2 的全局特性。所以序列压缩是性能下降的一个**加重因素**，但不是根本原因（其他酶家族也有这个问题却没有崩溃）。
+
+#### E2 扩展：多家族 ESM-2 余弦相似度
+
+**脚本**: `scripts/07_Step7_诊断实验/e2_expansion_multi_family.py`
+**结果**: `results/07_Step7_Tier1_诊断实验/E2_expansion_多家族ESM相似度/`
+
+原始 E2 的对照组只有 18 个硝化酶，统计强度不足。E2 扩展将分析扩大到 7 个酶家族（P450 + 6 个小家族），验证 ESM-2 各向异性是否是普遍现象。
+
+**结果**：
+
+| 家族 | 酶数 | 平均余弦相似度 | >0.90 比例 | >0.95 比例 | PCA 90%维数 |
+|------|:---:|:---:|:---:|:---:|:---:|
+| Gt_acceptor | 55 | 0.981 | 100% | 93.1% | 10 |
+| Duf | 161 | 0.981 | 100% | 96.6% | 17 |
+| Thiolase | 73 | 0.980 | 99.8% | 95.7% | 16 |
+| Nitrilase | 18 | 0.975 | 100% | 92.8% | 8 |
+| Esterase | 146 | 0.950 | 98.2% | 55.3% | 38 |
+| Phosphatase | 218 | 0.946 | 96.8% | 48.6% | 39 |
+| **P450** | **292** | **0.935** | **82.4%** | **47.0%** | **15** |
+
+**关键发现**：
+- **所有 7 个家族**的平均余弦相似度均 >0.93，确认 ESM-2 各向异性是**普遍现象**
+- P450 实际上是 7 个家族中**最低的**（0.935），而非最高。这意味着 P450 的 ESM-2 向量在同家族中反而是最多样化的
+- P450 的标准差最大（0.048），暗示内部有亚家族结构
+- 跨家族相似度也高（0.90-0.96），家族内和家族间的距离差异不大
+
+**结论更新**：M1（ESM 压缩）假说的定位从"P450 可能特别严重"变为"是 ESM-2 的普遍特性，P450 反而是最轻的一个"。ESM 压缩仍然是限制因素，但其他家族的余弦相似度更高却没有崩溃，说明单独的 ESM 压缩不足以导致性能崩溃。
+
+---
+
+#### E5 新版：底物指纹分类器基线
+
+**脚本**: `scripts/07_Step7_诊断实验/e5_new_fingerprint_classifier.py`
+**结果**: `results/07_Step7_Tier1_诊断实验/E5_new_指纹分类器基线/`
+
+原始 E5 用每个底物的正样本率作为"打分"来算 AUC，验证了底物身份在 Direction A 下不携带标签信息。但那只是最简单的一种测试。E5 新版用更强的方法：训练真正的分类器（LogisticRegression 和 RandomForest）在 1024-bit Morgan 指纹上做二分类，测试底物化学特征是否能预测标签。
+
+**两种交叉验证方式**：
+- **StratifiedKFold**：标准 5 折 CV。同一底物可以出现在训练集和测试集
+- **StratifiedGroupKFold**：按底物分组。同一底物只在训练或测试中出现（不泄漏）
+
+**结果**：
+
+| 分类器 | CV 方式 | AUC-ROC | PR-AUC |
+|--------|---------|:---:|:---:|
+| LogisticRegression | StratifiedKFold | **0.121** | 0.055 |
+| RandomForest | StratifiedKFold | **0.257** | 0.062 |
+| LogisticRegression | StratifiedGroupKFold | **0.503** | 0.096 |
+| RandomForest | StratifiedGroupKFold | **0.504** | 0.097 |
+| 随机基线 | — | 0.500 | 0.096 |
+
+**关键发现**：
+
+1. **GroupKFold（正确的评估方式）**：AUC ≈ 0.503，与随机猜完全一致。底物化学特征在 Direction A 下对标签预测**毫无贡献**。
+
+2. **标准 KFold 的反直觉结果**：AUC = 0.12（远低于 0.5 的随机基线！）。这是一个 CV 伪影，不是"反向预测"。原因：Direction A 下同一底物的正样本率约 9.5%。标准 KFold 中，模型从训练集学到某底物在训练折中大多是负样本（因为 9.44:1），然后在测试集中给这个底物高概率预测为负。但测试集中这个底物的某些行可能是正样本，模型却预测为负，导致 AUC 反转。GroupKFold 消除了这个泄漏。
+
+3. **意义**：M2（分子通道在 Direction A 下沉默）被再次确认。不仅是简单的正样本率统计没有区分力，即使用最强的分子特征分类器也无法从底物化学结构中提取标签信号。
+
+---
+
+### E6：磷酸酶压力测试（代理实验）
+
+**脚本**: `scripts/07_Step7_诊断实验/e6_phosphatase_proxy.py`
+**结果**: `results/07_Step7_Tier1_诊断实验/E6_磷酸酶压力测试/`
+
+#### 问的问题
+
+论文中测试了多个酶家族。磷酸酶（Phosphatase）在类似条件下 AUC = 0.896，我们的 P450 只有 0.517。条件很相似（都是单一 EC 类、都用 Direction A、模型训练时都没见过这些酶），**为什么表现差这么多？**
+
+找到差异，就能定位根本原因。
+
+#### 怎么做
+
+磷酸酶原始数据不在本地（在论文作者的服务器上），所以做了三个方面的代理分析。
+
+**第一部分：对比两个家族的关键属性**
+
+> **杂泛性（promiscuity）是什么？** 指一个底物能被多少个不同的酶催化。比如底物X如果能被 30 个酶催化，那它的杂泛性就是 30。
+
+杂泛性为什么重要？回想 Direction A 采样：每个底物有若干正样本（能催化它的酶）和若干负样本（随机配的酶）。如果一个底物能被 30 个酶催化（高杂泛性），那正样本的酶和负样本的酶之间有足够的差异可供模型学习。但如果一个底物只被 1 个酶催化（低杂泛性），正样本只有 1 个酶，负样本是 9 个随机酶，模型从 1 个 vs 9 个中很难找到规律。
+
+**第二部分：在 P450 内部看杂泛性和 AUC 的关系**
+
+把 P450 酶按"催化几种底物"分组，看催化更多底物的酶是否预测更好。
+
+**第三部分：不同实验条件下模型分数的变化**
+
+对比 EXP01（抑制剂）、ABL-04（Vina+抑制剂）、Step 5（随机）三种条件下，正样本和负样本的平均分数各是多少，差距是多少。
+
+#### 实际结果
+
+**第一部分：家族对比**
+
+| 属性 | 磷酸酶 | P450 |
+|------|:---:|:---:|
+| Direction B 比例 | 0% | 0% |
+| EC 类数量 | 1 | 1 |
+| 杂泛性（每个底物被多少酶催化） | **~36.7** | **~1** |
+| AUC | **0.896** | **0.517** |
+
+关键差异：**杂泛性差距巨大**。磷酸酶的底物平均被 36.7 个酶催化，P450 的底物平均只被约 1 个酶催化。这是 36 倍的差距。
+
+**第二部分：P450 内部分层**
+
+| 分组 | 酶数 | 平均 AUC |
+|------|:---:|:---:|
+| 低杂泛性（催化 ≤1 种底物） | 108 | 0.456 |
+| 高杂泛性（催化 >1 种底物） | 44 | 0.529 |
+
+方向正确（高杂泛性的酶 AUC 稍好），但 P450 内部的杂泛性变化范围太小（大部分酶只催化 1-2 种底物），差异不显著。
+
+**第三部分：分数稳定性**
+
+| 实验条件 | 正样本平均分 - 负样本平均分（分数差距） |
+|----------|:---:|
+| EXP01（晶体+抑制剂） | **2.51** |
+| ABL-04（Vina+抑制剂） | **2.31** |
+| Step 5（Vina+随机） | **0.26** |
+
+另外，正样本分数在不同条件下非常稳定（相关系数 r = 0.906）。说明模型给正样本打的分基本不变，**性能崩溃完全是因为负样本的分数升高了** — 从远低于正样本变成接近正样本，导致正负样本难以区分。
+
+#### 这说明什么
+
+1. **杂泛性是磷酸酶和 P450 的核心差异**。磷酸酶的底物被很多酶催化（~36.7），即使用 Direction A 采样，同一个底物对应的正样本酶和负样本酶之间也有足够的统计差异供模型学习。P450 的底物几乎只被 1 个酶催化，Direction A 下正负样本之间的差异太弱。
+
+2. **性能崩溃是多个因素叠加的结果**：
+   - 低杂泛性（~1 酶/底物）→ Direction A 下没有足够信号
+   - 100% Direction A → 没有其他采样方式补偿
+   - 模型训练时没见过任何 P450 → 无法利用已知经验
+   - ESM-2 对 P450 的区分度低 → 序列通道信号弱
+   - 四个条件同时满足才导致崩溃。磷酸酶因为高杂泛性，逃过了这个命运
+
+3. **分数差距的变化**说明：正样本分数稳定，是负样本分数在变。当负样本是抑制剂（和底物化学类型不同）时，模型给负样本打了很低的分，差距大，AUC高。当负样本是随机配对（底物和正样本相同）时，模型给出的分数和正样本差不多，差距小，AUC低。
+
+#### E6 扩展：多家族推理 + 杂泛性分析
+
+**脚本**: `scripts/07_Step7_诊断实验/e6_multi_family_inference.py`
+**结果**: `results/07_Step7_Tier1_诊断实验/E6_expansion_多家族推理/`
+
+原始 E6 只做了代理分析（因为磷酸酶数据不在本地）。E6 扩展直接从 ESIBank 读取 6 个小家族的特征数据，用训练好的模型做推理，得到真实的 AUC-ROC。
+
+**方法**：
+- 使用每个家族的 `random_split/testing_datas_0.csv`（模型训练时的测试集）
+- 用训练好的最佳模型（`best-checkpoint.ckpt`）做推理
+- 从 `data.csv` 的正样本中计算每个底物的杂泛性（被多少酶催化）
+- P450 数据来自 Step 5（完全独立数据）作为对比
+
+**结果**：
+
+| 家族 | 杂泛性(均值) | AUC-ROC | AUC-PR | 测试样本 | 有效样本 |
+|------|:---:|:---:|:---:|:---:|:---:|
+| Esterase | 34.6 | **0.934** | 0.830 | 2,453 | 2,451 |
+| Gt_acceptor | 14.2 | **0.888** | 0.722 | 878 | 834 |
+| Thiolase | 39.3 | **0.880** | 0.865 | 192 | 187 |
+| Phosphatase | 32.9 | **0.877** | 0.656 | 6,295 | 6,291 |
+| Nitrilase | 2.4 | **0.859** | 0.540 | 120 | 117 |
+| Duf | 16.1 | **0.796** | 0.519 | 479 | 473 |
+| **P450** | **1.0** | **0.517** | 0.112 | 2,766 | 2,766 |
+
+**关键发现**：
+
+1. **P450 是唯一崩溃的家族**。其他所有家族（包括杂泛性仅 2.4 的 Nitrilase）都达到 AUC > 0.79。
+
+2. **Nitrilase 否定了"杂泛性单因素假说"**。Nitrilase 的杂泛性（2.4）接近 P450（1.0），但 AUC 高达 0.859。这说明低杂泛性是一个风险因素（risk factor），但不是充分条件。
+
+3. **重大混淆变量（confound）**：6 个小家族的测试数据是模型训练体系内的"分内测试"（in-distribution），而 P450 的数据是完全域外（OOD）。具体差异：
+   - **6 个小家族**：模型在训练时见过这些家族的数据（虽然是不同的 fold）。特征文件（ESM 嵌入、结构特征等）和训练数据来自同一个处理管线。
+   - **P450**：模型训练时没见过任何 P450。结构来自 Vina 对接（而非 AlphaFold），SMILES 和酶序列完全不同于训练分布。
+
+4. **最诚实的解读**：P450 的崩溃不能归因于单一因素。它是多个条件**同时满足**的结果：
+   - 低杂泛性（~1 酶/底物）→ Direction A 下信号极弱
+   - 完全 OOD（模型从未见过 P450）→ 无法利用训练经验
+   - Vina 对接结构 vs AlphaFold 结构 → 结构通道数据模态偏移
+   - ESM-2 压缩 → 序列通道信号弱（虽然是全局特性）
+   - Nitrilase 的成功证明：只要去掉 OOD 这个条件（即便杂泛性低），模型就能工作
+
+5. **分位数分析**：在可计算逐底物 AUC 的 256 个底物中，高杂泛性底物的平均 AUC 更高（Esterase/Phosphatase 的逐底物 AUC 均值 >0.84），但即使是低杂泛性底物在分布内也表现不错。
+
+**结论更新**：
+
+| 之前的理解 | 更新后 |
+|----------|--------|
+| 杂泛性是 P450 与磷酸酶的核心差异 | 杂泛性是风险因素之一，但**不是充分条件**。Nitrilase 反例证明低杂泛性+分布内仍可工作 |
+| 多因素叠加导致崩溃 | 确认。核心因素从"杂泛性优先"修正为"**OOD 偏移优先 + 杂泛性加重**" |
+
+---
+
+## 四、六个实验的整体逻辑链
+
+把六个实验串起来，讲一个完整的故事：
+
+### 第一层：模型在做什么？
+
+**E4** 揭示了核心事实：模型打分 = 底物偏置（解释 37% 变化）+ 噪声。酶身份贡献为零（R² = -0.06）。去掉偏置后残差 AUC = 0.509，没有酶-底物交互信号。
+
+→ 模型是一台**"底物打分机"**。
+
+**E3** 验证了这一点：按底物分组有一定区分度（30% 底物 AUC > 0.75），但按酶分组完全没有（中位 AUC = 0.441）。
+
+### 第二层：为什么底物打分机在 EXP01 有用、在 Step 5 没用？
+
+**E5** 解释了 Step 5 为什么不行：Direction A 下所有底物的正样本率几乎相同（~9.5%），底物身份不携带标签信息。底物打分机的分数对区分正负没有帮助。
+
+**E1** 观察到 EXP01 中正样本（P450 底物）和负样本（抑制剂）在化学结构上差异大（Tanimoto 组间仅 0.084），模型给了它们不同的分数，因此能部分区分正负（AUC=0.71）。同时否决了结合亲和力假说（抑制剂得分更低而非更高）。但为什么抑制剂具体得分更低，E1 没有回答。
+
+### 第三层：为什么模型不用酶的信息？
+
+**E2** 回答了这个问题：ESM-2 把不同 P450 编码成非常相似的向量（余弦 0.935），序列通道的输入几乎没有区分度。但 E2 扩展揭示这是 ESM-2 的全局各向异性（7 个家族余弦相似度均 >0.93），不只是 P450 的问题。
+
+### 第四层：为什么其他酶家族没崩溃？
+
+**E6 代理分析** 初步指向杂泛性：磷酸酶的杂泛性是 P450 的 36 倍（~36.7 vs ~1），高杂泛性提供了足够的统计信号。
+
+**E6 扩展** 用真实推理数据推翻了单因素假说：Nitrilase 的杂泛性仅 2.4（接近 P450 的 1.0），但 AUC 高达 0.859。P450 是 **7 个家族中唯一崩溃的**。关键区别在于：6 个小家族是分布内测试（in-distribution），P450 是完全域外（OOD）。Nitrilase 的成功证明：**只要去掉 OOD 条件，低杂泛性不足以导致崩溃**。
+
+### 总结
+
+**已确认的事实**：
+- 模型打分几乎完全由底物决定（R²=0.37），酶身份没有贡献（R²=-0.06），酶-底物交互信号为零（残差 AUC=0.509）（E4）
+- Direction A 下底物身份不携带标签信息（E5），所以底物偏置无法帮助分类（AUC≈0.5）
+- ESM-2 对同家族酶的区分度很低（余弦 0.935），但这是 ESM-2 全局各向异性，并非 P450 特有（E2 + E2 扩展）
+- 低杂泛性是风险因素但不是充分条件 — Nitrilase 反例（杂泛性 2.4, AUC 0.859）证伪了单因素假说（E6 扩展）
+- P450 崩溃 = OOD 偏移（主因）+ 低杂泛性（加重因素）+ ESM 压缩 + 100% Dir A，四者叠加的结果（E6 扩展）
+- 结合亲和力假说被否决（E1）
+
+**待解答的问题**：
+- 为什么抑制剂具体得分比 P450 底物更低？E1 观察到了这个现象但没有解释机制
+- OOD 偏移中具体哪个维度（酶序列分布、底物化学空间、结构模态）贡献最大？需要 Tier 2 跨家族实验（E7-E11）
+- fine-tune 方案（Path C）能多大程度恢复 P450 性能？论文 HaloS 先例（~3,300 对 → 91.7% Top-1）提供了乐观预期
+
+---
+
+## 五、Causal DAG 更新
+
+| DAG 节点 | 之前状态 | 之后状态 | 依据 |
+|----------|:---:|:---:|------|
+| R2 (低杂泛性) | 数据事实 | **风险因素，非充分原因** | E6 扩展: Nitrilase(杂泛性2.4, AUC=0.859)证伪单因素假说 |
+| R5 (100% Dir A) | 数据事实 | **确认** | E5: Dir A 使底物信号归零 |
+| R6 (OOD 偏移) | 数据事实 | **主要驱动因素** | E6 扩展: 6个分布内家族全部>0.79, 唯有OOD的P450崩溃 |
+| M1 (ESM 压缩) | 假设 | **ESM全局特性** | E2+E2扩展: 7家族余弦均>0.93, P450非特例 |
+| M2 (分子通道沉默) | 已确认 | **再确认** | E5 + E4: 底物偏置大但对分类无用 |
+| C2 (结合亲和力假说) | 假设 | **否决** | E1: 抑制剂得分更低，与假说相反 |
+| D1 (逐组AUC) | 未知 | **已诊断** | E3: 非均匀失败，底物偏置驱动 |
+| D2 (加性偏置) | 未知 | **已诊断** | E4: 底物37%、酶-6%、交互≈0 |
+
+---
+
+## 六、文件清单
+
+### 脚本
+
+| 文件 | 实验 |
+|------|------|
+| `scripts/07_Step7_诊断实验/e5_substrate_base_frequency.py` | E5: 底物基频检验 |
+| `scripts/07_Step7_诊断实验/e5_new_fingerprint_classifier.py` | E5 新版: 底物指纹分类器基线 |
+| `scripts/07_Step7_诊断实验/e1_label_semantic_probe.py` | E1: 标签语义探测 |
+| `scripts/07_Step7_诊断实验/e3_per_substrate_auc.py` | E3: 逐底物/逐酶AUC |
+| `scripts/07_Step7_诊断实验/e4_score_decomposition.py` | E4: 分数分解 |
+| `scripts/07_Step7_诊断实验/e2_esm_similarity.py` | E2: ESM嵌入相似度 |
+| `scripts/07_Step7_诊断实验/e2_expansion_multi_family.py` | E2 扩展: 多家族ESM相似度 |
+| `scripts/07_Step7_诊断实验/e6_phosphatase_proxy.py` | E6: 磷酸酶代理分析 |
+| `scripts/07_Step7_诊断实验/e6_multi_family_inference.py` | E6 扩展: 多家族推理 |
+
+### 结果
+
+| 目录 | 内容 |
+|------|------|
+| `results/.../E1_标签语义探测/` | e1_results.json, e1_logit_comparison.png, e1_chemical_space.png |
+| `results/.../E2_ESM嵌入相似度/` | e2_results.json, e2_esm_similarity.png |
+| `results/.../E2_expansion_多家族ESM相似度/` | e2_expansion_results.json, e2_exp_ridge_plot.png, e2_exp_heatmap.png |
+| `results/.../E3_Per_Substrate_AUC/` | e3_results.json, e3_per_substrate_auc.png, per_substrate_auc.csv, per_enzyme_auc.csv |
+| `results/.../E4_分数分解/` | e4_results.json, e4_score_decomposition.png |
+| `results/.../E5_底物基频检验/` | e5_results.json, substrate_frequencies.csv |
+| `results/.../E5_new_指纹分类器基线/` | e5_new_results.json, e5_new_fingerprint_classifier.png |
+| `results/.../E6_磷酸酶压力测试/` | e6_results.json, e6_proxy_analysis.png, per_enzyme_analysis.csv |
+| `results/.../E6_expansion_多家族推理/` | e6_expansion_results.json, 各家族predictions.csv, 多张分析图 |
+
+---
+
+## 七、遇到的技术问题
+
+1. **E4 编码错误**：Windows 控制台打印 R² 字符时报错。解决：用 `R2` 替代。
+2. **E6 数据不可用**：磷酸酶数据在论文作者服务器上。解决：先做代理分析，后做 E6 扩展（直接从 ESIBank 读取 6 个小家族数据做推理）。
+3. **E2 对照组**：没有预计算的非P450 ESM 嵌入。解决：用 fair-esm 现场为硝化酶生成嵌入；后做 E2 扩展加入 6 个家族。
+4. **E5 原版有缺陷**：用每个底物的正样本率作为"分数"在 Direction A 下是同义反复（所有底物正样本率都≈9.5%）。解决：新版用 Morgan 指纹训练真正的分类器。
+5. **G: 盘中文路径编码问题**：Python 进程通过 bash 调用时无法解析 `G:\我的云端硬盘\...`（GBK 编码截断）。解决：发现 Google Drive 的 shortcut 路径 `G:\.shortcut-targets-by-id\173a36NiOLgXcvzvJjRDH29y2xd7Ey3Pr\ESIBank\small_family\` 是纯 ASCII，Python 可以正常访问。
+6. **小家族 CSV 列名不同**：ESIBank 小家族数据用 `reaction, enzyme, label, structure_index`，模型代码要 `Substrate Index, Enzyme Index, Label, Dock Index`。解决：推理前自动重命名列。
+
+---
+
+## 八、下一步
+
+1. **Tier 2 实验**（E7-E11）：跨家族负样本交换、通道敲除等更深入测试。重点：E7 跨家族负样本交换（分离 OOD 效应）、E8 通道消融（量化各通道贡献）
+2. **Path C 规划**：基于论文的 fine-tune 方法训练 P450 专属模型。Tier 1 诊断已充分揭示根因（OOD 偏移 + 低杂泛性），fine-tune 是论文推荐的解决方案（HaloS 先例：~3,300 对 → 91.7% Top-1）
+3. **论文写作**：将"底物打分机"诊断发现（E4）、Nitrilase 反例（E6 扩展）、OOD 偏移分析整合到毕业论文的分析章节中
