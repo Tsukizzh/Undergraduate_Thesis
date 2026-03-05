@@ -1,0 +1,99 @@
+{
+  "experiment": "E6-proxy",
+  "name": "Phosphatase Stress Test (Proxy)",
+  "tests": "Synergistic Collapse - P450-specific vs task-condition-driven",
+  "note": "True E6 requires Phosphatase test split data (not available locally)",
+  "paper_families": [
+    {
+      "family": "Halogenase",
+      "auroc_random_split": 0.9498,
+      "n_enzymes": 315,
+      "n_pairs": 3300,
+      "dir_b_pct": 28.9,
+      "n_ec_classes": 4.0,
+      "note": "4 distinct subclasses, high structural diversity"
+    },
+    {
+      "family": "Phosphatase",
+      "auroc_random_split": 0.896,
+      "n_enzymes": 148,
+      "n_pairs": 4100,
+      "dir_b_pct": 0.0,
+      "n_ec_classes": 1.0,
+      "note": "0% Dir B but HIGH promiscuity (36.7 enzymes/substrate)"
+    },
+    {
+      "family": "Esterase",
+      "auroc_random_split": 0.956,
+      "n_enzymes": 423,
+      "n_pairs": 5100,
+      "dir_b_pct": NaN,
+      "n_ec_classes": NaN,
+      "note": "Large diverse family"
+    },
+    {
+      "family": "Gt_acceptor",
+      "auroc_random_split": 0.967,
+      "n_enzymes": 1089,
+      "n_pairs": 8200,
+      "dir_b_pct": NaN,
+      "n_ec_classes": NaN,
+      "note": "Largest family"
+    },
+    {
+      "family": "Nitrilase",
+      "auroc_random_split": 0.979,
+      "n_enzymes": 120,
+      "n_pairs": 2800,
+      "dir_b_pct": NaN,
+      "n_ec_classes": NaN,
+      "note": "Smallest family but highest AUROC"
+    },
+    {
+      "family": "Thiolase",
+      "auroc_random_split": 0.936,
+      "n_enzymes": 150,
+      "n_pairs": 3000,
+      "dir_b_pct": NaN,
+      "n_ec_classes": NaN,
+      "note": ""
+    },
+    {
+      "family": "Duf",
+      "auroc_random_split": 0.92,
+      "n_enzymes": 200,
+      "n_pairs": 2500,
+      "dir_b_pct": NaN,
+      "n_ec_classes": NaN,
+      "note": "Domain of unknown function"
+    }
+  ],
+  "promiscuity_analysis": {
+    "n_enzymes_analyzed": 152,
+    "low_prom_count": 108,
+    "low_prom_auc_mean": 0.455883472162067,
+    "high_prom_count": 44,
+    "high_prom_auc_mean": 0.5285227309517083,
+    "corr_promiscuity_auc": 0.08818732245016042
+  },
+  "score_distributions": {
+    "conditions": {
+      "EXP01 (crystal+inhib)": {
+        "pos_mean": -3.0017232360411983,
+        "neg_mean": -5.514363340495615,
+        "gap": 2.512640104454417
+      },
+      "ABL-04 (Vina+inhib)": {
+        "pos_mean": -2.9368976213132076,
+        "neg_mean": -5.247642237702703,
+        "gap": 2.310744616389495
+      },
+      "Step 5 (Vina+random)": {
+        "pos_mean": -2.9368975487924525,
+        "neg_mean": -3.2016870764846064,
+        "gap": 0.2647895276921539
+      }
+    }
+  },
+  "verdict": "PROXY: Phosphatase survives (0.896) despite sharing 0% Dir B with P450. Collapse requires ADDITIONAL factors: low promiscuity + ESM compression + zero overlap. True E6 blocked by data availability."
+}

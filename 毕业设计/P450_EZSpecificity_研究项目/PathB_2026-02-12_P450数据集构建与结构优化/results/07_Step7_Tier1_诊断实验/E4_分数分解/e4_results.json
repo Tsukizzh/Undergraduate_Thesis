@@ -1,0 +1,15 @@
+{
+  "experiment": "E4",
+  "name": "Score Decomposition",
+  "tests": "D2 — additive bias vs interaction",
+  "r2_enzyme_loo": -0.06009488838901378,
+  "r2_substrate_loo": 0.3726729531948745,
+  "r2_additive_loo": 0.31701472067758285,
+  "r2_additive_standard": 0.5219046528367746,
+  "auc_original": 0.517001501286278,
+  "auc_enzyme_mean": 0.5304051964120012,
+  "auc_substrate_mean": 0.4978506710523338,
+  "auc_additive": 0.5223284271197182,
+  "auc_residual": 0.5094384887554413,
+  "verdict": "INTERACTION PRESENT: Marginal effects explain < 50% of variance. Model may capture some enzyme-substrate specificity."
+}

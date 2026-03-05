@@ -1,0 +1,40 @@
+{
+  "experiment": "E1",
+  "name": "Label Semantic Probe",
+  "tests": "C2 — does model learn binding or catalysis?",
+  "logit_comparison": {
+    "neg04_mean": -5.247642237702703,
+    "neg04_std": 3.934238112382641,
+    "neg01_mean": -3.2835515205513213,
+    "neg01_std": 3.2149633824389214,
+    "ks_stat": 0.2884344722080571,
+    "ks_p": 1.7824428580416412e-14,
+    "mwu_p": 5.893230825100291e-16,
+    "cliffs_delta": -0.33890192078871323,
+    "distinguishing_auc": 0.33054903960564336,
+    "per_seed_aucs": [
+      0.3543600203977562,
+      0.33268740438551764,
+      0.32117967023627403,
+      0.3287268400475948,
+      0.3157912629610743
+    ],
+    "direction": "inhibitor negatives get LOWER scores than random negatives",
+    "c2_verdict": "Model does NOT treat inhibitors as 'near-positive'. Instead, inhibitors are more confidently classified as negative, likely via molecular fingerprint shortcut (substrates vs drug-like inhibitors)."
+  },
+  "chemical_space": {
+    "n_substrates": 215,
+    "n_inhibitors": 195,
+    "substrates_mw_mean": 300.2876790697675,
+    "inhibitors_mw_mean": 318.838876923077,
+    "substrates_logp_mean": 3.1768187906976766,
+    "inhibitors_logp_mean": 3.372836974358976,
+    "tanimoto_within_substrates": 0.13111689086827402,
+    "tanimoto_within_inhibitors": 0.15144736758708274,
+    "tanimoto_between": 0.08358072102042537,
+    "pca_var_explained": [
+      0.06334649622238986,
+      0.046683297439387886
+    ]
+  }
+}

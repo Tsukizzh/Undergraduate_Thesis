@@ -1,0 +1,15 @@
+{
+  "experiment": "E5",
+  "name": "Substrate Base Frequency Check",
+  "tests": "M2 — substrate identity uninformative under 100% Direction A",
+  "n_samples": 2766,
+  "n_substrates": 217,
+  "p_pos_mean": 0.09515673175511527,
+  "p_pos_std": 0.013923744866314924,
+  "p_pos_min": 0.0,
+  "p_pos_max": 0.1111111111111111,
+  "auc": 0.5171916139204695,
+  "ci_lower": 0.4824044743572111,
+  "ci_upper": 0.5521320992413661,
+  "verdict": "CONFIRMED: substrate identity carries no label signal (AUC ≈ 0.5)"
+}

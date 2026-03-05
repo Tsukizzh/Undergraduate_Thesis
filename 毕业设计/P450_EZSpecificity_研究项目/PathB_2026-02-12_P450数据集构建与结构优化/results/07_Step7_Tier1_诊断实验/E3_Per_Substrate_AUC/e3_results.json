@@ -1,0 +1,15 @@
+{
+  "experiment": "E3",
+  "name": "Per-Substrate AUC",
+  "tests": "D1 — uniform failure vs partial ability",
+  "n_substrates_analyzed": 213,
+  "auc_median": 0.5555555555555556,
+  "auc_mean": 0.5294062199492148,
+  "auc_std": 0.317302027623622,
+  "auc_q25": 0.22499999999999998,
+  "auc_q75": 0.7777777777777778,
+  "n_above_065": 88,
+  "n_above_075": 65,
+  "verdict": "WEAK SIGNAL: Slight above-random performance for most substrates.",
+  "per_enzyme_median": 0.4409722222222222
+}

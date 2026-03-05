@@ -1,0 +1,27 @@
+{
+  "experiment": "E2",
+  "name": "ESM Embedding Similarity",
+  "tests": "M1 - sequence channel compression",
+  "n_enzymes": 292,
+  "n_pairs": 42486,
+  "cos_mean": 0.9350796341896057,
+  "cos_std": 0.047697100788354874,
+  "cos_median": 0.9480074644088745,
+  "cos_min": 0.6505905389785767,
+  "cos_max": 0.9999959468841553,
+  "cos_q25": 0.9200521856546402,
+  "cos_q75": 0.966216191649437,
+  "pct_above_090": 0.8239420044249871,
+  "pct_above_095": 0.46999011439062277,
+  "pca_dims_90pct": 15,
+  "pca_dims_95pct": 25,
+  "control": {
+    "n_control": 18,
+    "ctrl_cos_mean": 0.9751667976379395,
+    "ctrl_cos_std": 0.013560548424720764,
+    "cross_cos_mean": 0.9176211357116699,
+    "ks_stat": 0.5514647039439982,
+    "ks_p": 5.859708617846689e-44
+  },
+  "m1_verdict": "M1 CONFIRMED: P450 ESM embeddings are highly similar (mean cosine > 0.90). Sequence channel has very limited discriminative power. Delta vs control = -0.0401."
+}
