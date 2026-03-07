@@ -1,0 +1,698 @@
+{
+  "level1_inter_family": {
+    "spearman": {
+      "rho": 0.642857142857143,
+      "p": 0.11939237342741094
+    },
+    "kendall": {
+      "tau": 0.5238095238095238,
+      "p": 0.1361111111111111
+    },
+    "pearson_log": {
+      "r": 0.7359392857829438,
+      "p": 0.059339095062172956
+    },
+    "summary": [
+      {
+        "family": "P450",
+        "auc": 0.517001501286278,
+        "promiscuity_mean": 1.244131455399061,
+        "promiscuity_median": 1.0,
+        "n_pairs": 2766,
+        "n_substrates": 217,
+        "n_enzymes": 282
+      },
+      {
+        "family": "Duf",
+        "auc": 0.7964288871210112,
+        "promiscuity_mean": 16.11764705882353,
+        "promiscuity_median": 16.0,
+        "n_pairs": 473,
+        "n_substrates": 17,
+        "n_enzymes": 154
+      },
+      {
+        "family": "Nitrilase",
+        "auc": 0.8585298196948682,
+        "promiscuity_mean": 2.4285714285714284,
+        "promiscuity_median": 2.0,
+        "n_pairs": 117,
+        "n_substrates": 38,
+        "n_enzymes": 18
+      },
+      {
+        "family": "Phosphatase",
+        "auc": 0.8773997260260263,
+        "promiscuity_mean": 32.872727272727275,
+        "promiscuity_median": 35.0,
+        "n_pairs": 6291,
+        "n_substrates": 165,
+        "n_enzymes": 218
+      },
+      {
+        "family": "Thiolase",
+        "auc": 0.8801510989010989,
+        "promiscuity_mean": 39.285714285714285,
+        "promiscuity_median": 36.5,
+        "n_pairs": 187,
+        "n_substrates": 15,
+        "n_enzymes": 70
+      },
+      {
+        "family": "Gt_acceptor",
+        "auc": 0.8883471351546578,
+        "promiscuity_mean": 14.338028169014084,
+        "promiscuity_median": 11.0,
+        "n_pairs": 834,
+        "n_substrates": 98,
+        "n_enzymes": 54
+      },
+      {
+        "family": "Esterase",
+        "auc": 0.934316314496507,
+        "promiscuity_mean": 34.561797752808985,
+        "promiscuity_median": 28.0,
+        "n_pairs": 2451,
+        "n_substrates": 96,
+        "n_enzymes": 146
+      }
+    ],
+    "leave_one_out": [
+      {
+        "excluded": "P450",
+        "rho": 0.4285714285714286,
+        "p": 0.3965014577259474
+      },
+      {
+        "excluded": "Duf",
+        "rho": 0.7142857142857143,
+        "p": 0.1107871720116617
+      },
+      {
+        "excluded": "Nitrilase",
+        "rho": 0.5428571428571429,
+        "p": 0.26570262390670557
+      },
+      {
+        "excluded": "Phosphatase",
+        "rho": 0.6,
+        "p": 0.20799999999999982
+      },
+      {
+        "excluded": "Thiolase",
+        "rho": 0.7142857142857143,
+        "p": 0.1107871720116617
+      },
+      {
+        "excluded": "Gt_acceptor",
+        "rho": 0.8857142857142858,
+        "p": 0.01884548104956266
+      },
+      {
+        "excluded": "Esterase",
+        "rho": 0.5428571428571429,
+        "p": 0.26570262390670557
+      }
+    ]
+  },
+  "level2_intra_family": {
+    "Duf": {
+      "binned": [
+        {
+          "bin": "2",
+          "n_pos": 0,
+          "n_neg": 26,
+          "n_substrates": 1,
+          "prom_median": 2.0,
+          "auc": null,
+          "low_confidence": true,
+          "note": "single class"
+        },
+        {
+          "bin": "3-4",
+          "n_pos": 3,
+          "n_neg": 25,
+          "n_substrates": 1,
+          "prom_median": 4.0,
+          "auc": 0.28,
+          "low_confidence": true,
+          "note": null
+        },
+        {
+          "bin": "5-8",
+          "n_pos": 4,
+          "n_neg": 40,
+          "n_substrates": 2,
+          "prom_median": 7.5,
+          "auc": 0.66875,
+          "low_confidence": true,
+          "note": null
+        },
+        {
+          "bin": "9-16",
+          "n_pos": 20,
+          "n_neg": 161,
+          "n_substrates": 6,
+          "prom_median": 15.5,
+          "auc": 0.8754658385093168,
+          "low_confidence": false,
+          "note": null
+        },
+        {
+          "bin": "17-32",
+          "n_pos": 24,
+          "n_neg": 144,
+          "n_substrates": 6,
+          "prom_median": 23.0,
+          "auc": 0.8310185185185185,
+          "low_confidence": false,
+          "note": null
+        },
+        {
+          "bin": "33-64",
+          "n_pos": 3,
+          "n_neg": 23,
+          "n_substrates": 1,
+          "prom_median": 34.0,
+          "auc": 0.8115942028985508,
+          "low_confidence": true,
+          "note": null
+        }
+      ],
+      "spearman": {
+        "rho": null,
+        "p": null,
+        "n_bins": 2,
+        "note": "fewer than 4 high-confidence bins (have 2)"
+      },
+      "peak_pattern": {
+        "peak_bin": "9-16",
+        "peak_auc": 0.8754658385093168,
+        "peak_position": "3/5",
+        "n_valid_bins": 5,
+        "n_increases": 2,
+        "n_decreases": 2,
+        "pattern": "interior_peak",
+        "note": null
+      },
+      "promiscuity_range": [
+        2,
+        34
+      ]
+    },
+    "Esterase": {
+      "binned": [
+        {
+          "bin": "1",
+          "n_pos": 0,
+          "n_neg": 91,
+          "n_substrates": 4,
+          "prom_median": 1.0,
+          "auc": null,
+          "low_confidence": true,
+          "note": "single class"
+        },
+        {
+          "bin": "2",
+          "n_pos": 1,
+          "n_neg": 53,
+          "n_substrates": 2,
+          "prom_median": 2.0,
+          "auc": 0.9811320754716981,
+          "low_confidence": true,
+          "note": null
+        },
+        {
+          "bin": "3-4",
+          "n_pos": 2,
+          "n_neg": 126,
+          "n_substrates": 5,
+          "prom_median": 3.0,
+          "auc": 0.9246031746031745,
+          "low_confidence": true,
+          "note": null
+        },
+        {
+          "bin": "5-8",
+          "n_pos": 9,
+          "n_neg": 121,
+          "n_substrates": 5,
+          "prom_median": 7.0,
+          "auc": 0.82277318640955,
+          "low_confidence": true,
+          "note": null
+        },
+        {
+          "bin": "9-16",
+          "n_pos": 29,
+          "n_neg": 387,
+          "n_substrates": 16,
+          "prom_median": 11.5,
+          "auc": 0.888443375211619,
+          "low_confidence": false,
+          "note": null
+        },
+        {
+          "bin": "17-32",
+          "n_pos": 85,
+          "n_neg": 419,
+          "n_substrates": 21,
+          "prom_median": 28.0,
+          "auc": 0.8879685525761618,
+          "low_confidence": false,
+          "note": null
+        },
+        {
+          "bin": "33-64",
+          "n_pos": 198,
+          "n_neg": 462,
+          "n_substrates": 25,
+          "prom_median": 44.0,
+          "auc": 0.8883204337749792,
+          "low_confidence": false,
+          "note": null
+        },
+        {
+          "bin": "65-128",
+          "n_pos": 185,
+          "n_neg": 91,
+          "n_substrates": 10,
+          "prom_median": 104.0,
+          "auc": 0.8312444312444313,
+          "low_confidence": false,
+          "note": null
+        },
+        {
+          "bin": "129-256",
+          "n_pos": 23,
+          "n_neg": 1,
+          "n_substrates": 1,
+          "prom_median": 139.0,
+          "auc": 0.8695652173913043,
+          "low_confidence": true,
+          "note": null
+        }
+      ],
+      "spearman": {
+        "rho": -0.7999999999999999,
+        "p": 0.20000000000000007,
+        "n_bins": 4,
+        "note": null
+      },
+      "peak_pattern": {
+        "peak_bin": "2",
+        "peak_auc": 0.9811320754716981,
+        "peak_position": "1/8",
+        "n_valid_bins": 8,
+        "n_increases": 3,
+        "n_decreases": 4,
+        "pattern": "mixed",
+        "note": null
+      },
+      "promiscuity_range": [
+        0,
+        139
+      ]
+    },
+    "Gt_acceptor": {
+      "binned": [
+        {
+          "bin": "1",
+          "n_pos": 2,
+          "n_neg": 109,
+          "n_substrates": 12,
+          "prom_median": 1.0,
+          "auc": 0.10550458715596328,
+          "low_confidence": true,
+          "note": null
+        },
+        {
+          "bin": "2",
+          "n_pos": 3,
+          "n_neg": 31,
+          "n_substrates": 5,
+          "prom_median": 2.0,
+          "auc": 0.4946236559139785,
+          "low_confidence": true,
+          "note": null
+        },
+        {
+          "bin": "3-4",
+          "n_pos": 7,
+          "n_neg": 53,
+          "n_substrates": 7,
+          "prom_median": 3.0,
+          "auc": 0.7681940700808625,
+          "low_confidence": true,
+          "note": null
+        },
+        {
+          "bin": "5-8",
+          "n_pos": 15,
+          "n_neg": 88,
+          "n_substrates": 10,
+          "prom_median": 7.0,
+          "auc": 0.49621212121212116,
+          "low_confidence": false,
+          "note": null
+        },
+        {
+          "bin": "9-16",
+          "n_pos": 22,
+          "n_neg": 71,
+          "n_substrates": 12,
+          "prom_median": 12.5,
+          "auc": 0.5396927016645326,
+          "low_confidence": false,
+          "note": null
+        },
+        {
+          "bin": "17-32",
+          "n_pos": 68,
+          "n_neg": 70,
+          "n_substrates": 18,
+          "prom_median": 24.5,
+          "auc": 0.7342436974789915,
+          "low_confidence": false,
+          "note": null
+        },
+        {
+          "bin": "33-64",
+          "n_pos": 60,
+          "n_neg": 9,
+          "n_substrates": 7,
+          "prom_median": 45.0,
+          "auc": 0.674074074074074,
+          "low_confidence": true,
+          "note": null
+        }
+      ],
+      "spearman": {
+        "rho": null,
+        "p": null,
+        "n_bins": 3,
+        "note": "fewer than 4 high-confidence bins (have 3)"
+      },
+      "peak_pattern": {
+        "peak_bin": "3-4",
+        "peak_auc": 0.7681940700808625,
+        "peak_position": "3/7",
+        "n_valid_bins": 7,
+        "n_increases": 4,
+        "n_decreases": 2,
+        "pattern": "interior_peak",
+        "note": null
+      },
+      "promiscuity_range": [
+        0,
+        55
+      ]
+    },
+    "Nitrilase": {
+      "binned": [
+        {
+          "bin": "1",
+          "n_pos": 3,
+          "n_neg": 38,
+          "n_substrates": 14,
+          "prom_median": 1.0,
+          "auc": 0.8070175438596492,
+          "low_confidence": true,
+          "note": null
+        },
+        {
+          "bin": "2",
+          "n_pos": 4,
+          "n_neg": 12,
+          "n_substrates": 6,
+          "prom_median": 2.0,
+          "auc": 0.9791666666666666,
+          "low_confidence": true,
+          "note": null
+        },
+        {
+          "bin": "3-4",
+          "n_pos": 5,
+          "n_neg": 27,
+          "n_substrates": 11,
+          "prom_median": 3.0,
+          "auc": 0.7777777777777779,
+          "low_confidence": true,
+          "note": null
+        },
+        {
+          "bin": "5-8",
+          "n_pos": 2,
+          "n_neg": 16,
+          "n_substrates": 4,
+          "prom_median": 5.0,
+          "auc": 1.0,
+          "low_confidence": true,
+          "note": null
+        }
+      ],
+      "spearman": {
+        "rho": null,
+        "p": null,
+        "n_bins": 0,
+        "note": "fewer than 4 high-confidence bins (have 0)"
+      },
+      "peak_pattern": {
+        "peak_bin": "5-8",
+        "peak_auc": 1.0,
+        "peak_position": "4/4",
+        "n_valid_bins": 4,
+        "n_increases": 2,
+        "n_decreases": 1,
+        "pattern": "mixed",
+        "note": null
+      },
+      "promiscuity_range": [
+        0,
+        7
+      ]
+    },
+    "Phosphatase": {
+      "binned": [
+        {
+          "bin": "2",
+          "n_pos": 1,
+          "n_neg": 38,
+          "n_substrates": 1,
+          "prom_median": 2.0,
+          "auc": 1.0,
+          "low_confidence": true,
+          "note": null
+        },
+        {
+          "bin": "3-4",
+          "n_pos": 1,
+          "n_neg": 190,
+          "n_substrates": 5,
+          "prom_median": 4.0,
+          "auc": 0.6947368421052631,
+          "low_confidence": true,
+          "note": null
+        },
+        {
+          "bin": "5-8",
+          "n_pos": 22,
+          "n_neg": 672,
+          "n_substrates": 19,
+          "prom_median": 6.0,
+          "auc": 0.6939935064935066,
+          "low_confidence": false,
+          "note": null
+        },
+        {
+          "bin": "9-16",
+          "n_pos": 60,
+          "n_neg": 926,
+          "n_substrates": 27,
+          "prom_median": 12.0,
+          "auc": 0.7864830813534918,
+          "low_confidence": false,
+          "note": null
+        },
+        {
+          "bin": "17-32",
+          "n_pos": 116,
+          "n_neg": 931,
+          "n_substrates": 27,
+          "prom_median": 23.0,
+          "auc": 0.7662320826697284,
+          "low_confidence": false,
+          "note": null
+        },
+        {
+          "bin": "33-64",
+          "n_pos": 627,
+          "n_neg": 2259,
+          "n_substrates": 75,
+          "prom_median": 48.0,
+          "auc": 0.8919127671486656,
+          "low_confidence": false,
+          "note": null
+        },
+        {
+          "bin": "65-128",
+          "n_pos": 151,
+          "n_neg": 297,
+          "n_substrates": 11,
+          "prom_median": 67.0,
+          "auc": 0.8613508149931992,
+          "low_confidence": false,
+          "note": null
+        }
+      ],
+      "spearman": {
+        "rho": 0.7999999999999999,
+        "p": 0.10408803866182788,
+        "n_bins": 5,
+        "note": null
+      },
+      "peak_pattern": {
+        "peak_bin": "2",
+        "peak_auc": 1.0,
+        "peak_position": "1/7",
+        "n_valid_bins": 7,
+        "n_increases": 2,
+        "n_decreases": 4,
+        "pattern": "mixed",
+        "note": null
+      },
+      "promiscuity_range": [
+        2,
+        74
+      ]
+    },
+    "Thiolase": {
+      "binned": [
+        {
+          "bin": "9-16",
+          "n_pos": 2,
+          "n_neg": 33,
+          "n_substrates": 3,
+          "prom_median": 10.0,
+          "auc": 1.0,
+          "low_confidence": true,
+          "note": null
+        },
+        {
+          "bin": "17-32",
+          "n_pos": 14,
+          "n_neg": 20,
+          "n_substrates": 3,
+          "prom_median": 28.0,
+          "auc": 0.6642857142857143,
+          "low_confidence": false,
+          "note": null
+        },
+        {
+          "bin": "33-64",
+          "n_pos": 42,
+          "n_neg": 28,
+          "n_substrates": 5,
+          "prom_median": 46.0,
+          "auc": 0.6581632653061225,
+          "low_confidence": false,
+          "note": null
+        },
+        {
+          "bin": "65-128",
+          "n_pos": 33,
+          "n_neg": 1,
+          "n_substrates": 3,
+          "prom_median": 71.0,
+          "auc": 0.24242424242424243,
+          "low_confidence": true,
+          "note": null
+        }
+      ],
+      "spearman": {
+        "rho": null,
+        "p": null,
+        "n_bins": 2,
+        "note": "fewer than 4 high-confidence bins (have 2)"
+      },
+      "peak_pattern": {
+        "peak_bin": "9-16",
+        "peak_auc": 1.0,
+        "peak_position": "1/4",
+        "n_valid_bins": 4,
+        "n_increases": 0,
+        "n_decreases": 3,
+        "pattern": "monotone_decreasing",
+        "note": null
+      },
+      "promiscuity_range": [
+        0,
+        71
+      ]
+    },
+    "P450": {
+      "binned": [
+        {
+          "bin": "1",
+          "n_pos": 183,
+          "n_neg": 1705,
+          "n_substrates": 183,
+          "prom_median": 1.0,
+          "auc": 0.5255452462221368,
+          "low_confidence": false,
+          "note": null
+        },
+        {
+          "bin": "2",
+          "n_pos": 40,
+          "n_neg": 384,
+          "n_substrates": 20,
+          "prom_median": 2.0,
+          "auc": 0.51484375,
+          "low_confidence": false,
+          "note": null
+        },
+        {
+          "bin": "3-4",
+          "n_pos": 28,
+          "n_neg": 260,
+          "n_substrates": 8,
+          "prom_median": 3.5,
+          "auc": 0.5449175824175824,
+          "low_confidence": false,
+          "note": null
+        },
+        {
+          "bin": "5-8",
+          "n_pos": 14,
+          "n_neg": 131,
+          "n_substrates": 2,
+          "prom_median": 7.0,
+          "auc": 0.3451472191930207,
+          "low_confidence": false,
+          "note": null
+        }
+      ],
+      "spearman": {
+        "rho": -0.39999999999999997,
+        "p": 0.6,
+        "n_bins": 4,
+        "note": null
+      },
+      "peak_pattern": {
+        "peak_bin": "3-4",
+        "peak_auc": 0.5449175824175824,
+        "peak_position": "3/4",
+        "n_valid_bins": 4,
+        "n_increases": 1,
+        "n_decreases": 2,
+        "pattern": "interior_peak",
+        "note": null
+      },
+      "promiscuity_range": [
+        0,
+        8
+      ]
+    }
+  }
+}

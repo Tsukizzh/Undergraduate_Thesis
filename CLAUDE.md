@@ -314,48 +314,42 @@ ESIBank 训练集中的 P450
 
 #### 当前研究阶段
 
-**阶段二十五**：Path B Step 2 因子实验完成，Gate A PASS + 目录重构 + 半径决策（2026-02-28）
+**阶段三十三**：Path B Step 7 全部完成（E1-E6 Tier 1 诊断 + 扩展实验 + E7 ESIBank 内部基准）（2026-03-07）
 
 | 路径 | 名称 | 状态 | 说明 |
 |------|------|------|------|
 | **A** | 模型评估测试集构建 | ✅ 已完成 | Step 1-10全部完成 |
-| │    | └─ Step 1-8 | ✅ 已完成 | 特征生成全流程 |
-| │    | └─ Step 9 | ✅ 已完成 | 模型推理（517条样本） |
-| │    | └─ Step 10 | ✅ 已完成 | 结果分析（AUC-ROC 0.6636） |
-| **B** | P450数据集构建与结构优化 | 🔄 进行中 | Step 1-2 ✅，Step 3+ 待定 |
-| │    | └─ Step 1 | ✅ 已完成 | 数据准备 + extract_pocket_ligand.py |
-| │    | └─ Step 2 | ✅ 已完成 | 2×2因子实验 + Gate A PASS (10Å/noHeme) |
+| │    | └─ Step 1-10 | ✅ 已完成 | 推理+分析（AUC-ROC 0.6636） |
+| **B** | P450数据集构建与结构优化 | 🔄 进行中 | Step 1-7 ✅，Step 8+ 待定 |
+| │    | └─ Step 1-2 | ✅ 已完成 | 结构因子实验 + Gate A PASS |
+| │    | └─ Step 3-5 | ✅ 已完成 | Vina对接 + Gate B INFORMATIVE FAIL |
+| │    | └─ Step 6 | ✅ 已完成 | 消融实验 + Causal DAG v2 |
+| │    | └─ Step 7 | ✅ 已完成 | Tier 1 诊断(E1-E6) + 扩展 + E7内部基准 |
 | C | P450专属模型训练 | ⏳ 待定 | 路径B完成后 |
 | D | 区域选择性预测 | ⏳ 待定 | 路径A完成后可选 |
 
 **工作目录**: `毕业设计/P450_EZSpecificity_研究项目/PathB_2026-02-12_P450数据集构建与结构优化/`
 
 **Path B 当前状态**:
-- Step 2 已完成：2×2 因子实验（Heme on/off × 6Å/10Å）全部执行+分析
-- **最佳配置**: EXP01 (10Å/noHeme) AUC-ROC=0.7115
-- **Gate A: PASS** — 采用 10Å/noHeme 配置
-- **关键发现**: Heme 加入严重损害性能（OOD: Fe 不在原子词汇表），Heme 效应=-0.2322
-- **半径决策**: 不扩展至 15/20Å（Radius 效应仅 +0.0537，边际递减；GNN 边数 O(N²)；论文默认 10Å；Step 3 ROI 更高）
-- Git 分支: `pathb-step2`，提交 `4486dfa`
-- 下一步: Step 3 — AutoDock Vina 对接管线（随机负样本生成）
+- Step 7 已完成：E1-E6 Tier 1 诊断实验 + E2/E5/E6 扩展实验 + E7 ESIBank P450 内部基准
+- **Gate B: INFORMATIVE FAIL** — AUC-ROC=0.5170（Vina对接负样本近随机）
+- **Step 7 核心发现**: 底物身份驱动评分（我们的P450）vs 配对交互信号（ESIBank P450）
+- **E7 关键结果**: ESIBank P450 AUC=0.638（100%酶泄漏），仍是8个家族中最低
+- Git 分支: `pathb-ablation`
+- 下一步: Tier 2 实验 (E8-E11) 或 Path C 规划（P450专属模型微调）
+
+**Path B Step 7 关键成果**:
+- E4: R²(底物)=0.37, R²(酶)=-0.06, 残差AUC=0.509 → **底物身份驱动评分**
+- E6 扩展: 7家族对比 — Esterase=0.934 ... Duf=0.796 ... **P450=0.517（最低）**
+- E7(ESIBank内部基准): AUC=0.638，Dir B=61%，R²(底物)=0.08，残差AUC=0.612
+- **两种失败模式**: 我们=底物身份捷径；ESIBank=配对信号存在但P450family本质困难
+- BRENDA负样本含化学捷径（指纹分类器AUC=0.77）；PDB负样本无捷径（AUC=0.503）
+- 详见: `sessions/07_Step7_Tier1_诊断实验/session_log.md` 第四/七节
 
 **Path A 核心结论**:
 - AUC-ROC: 0.6636（比论文Unknown enzyme+substrate场景低5.6%）
-- 主因: 任务不匹配（抑制剂负样本 vs 随机配对负样本）
-- 酶重叠: 0%（148个P450与ESIBank完全不重叠）
+- 主因: 任务不匹配（抑制剂负样本 vs 随机配对负样本）+ 0%酶重叠
 - 结论: 结果在预期范围内，不代表模型失败
-
-**Path A 关键成果** (Step 9-10):
-- Step 9: 模型推理成功（517/539高质量样本）
-- Step 10: 深度根因分析（Claude + Codex + Gemini三方协作）
-  - 详见: `sessions/10_Step10_结果分析/推理训练微调区别详解.md` (v4.0)
-
-**Path B Step 2 关键成果**:
-- 2×2 因子实验: EXP01(0.7115) > EXP03(0.6678) > EXP02(0.4894) > EXP04(0.4257)
-- Heme 效应: -0.2322（Fe 不在模型词汇表，OOD 问题）
-- Radius 效应: +0.0537（10Å > 6Å）
-- 分析产物: `results/02_Step2_因子实验/analysis/`（metrics, ROC图, heatmap, Gate A报告）
-- **目录规范（PathB 起）**: `data/` = 输入+中间产物，`results/` = 最终输出（predictions, analysis, config）
 
 #### 重要概念澄清
 

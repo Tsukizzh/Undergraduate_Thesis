@@ -1,0 +1,14 @@
+{
+  "n_input_csv_rows": 2023,
+  "n_valid_predictions": 1359,
+  "n_dropped_by_feature_filter": 664,
+  "n_positive": 106,
+  "n_negative": 1253,
+  "auc_roc": 0.6381891008748815,
+  "auc_pr": 0.1525100423140745,
+  "logit_mean": -6.021467685699463,
+  "logit_std": 5.516026973724365,
+  "logit_pos_mean": -4.541678428649902,
+  "logit_neg_mean": -6.146652698516846,
+  "score_gap": 1.6049742698669434
+}

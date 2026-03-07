@@ -1,0 +1,14 @@
+{
+  "n_verified_p450_uniprots": 367,
+  "n_matched_enzymes": 367,
+  "n_unmatched_uniprots": 0,
+  "n_test_fold_total": 102640,
+  "n_p450_test_rows": 2023,
+  "n_p450_enzymes": 341,
+  "n_p450_substrates": 1523,
+  "n_positive": 156,
+  "n_negative": 1867,
+  "n_with_structure": 1399,
+  "n_without_structure": 624,
+  "pos_neg_ratio": "1:12.0"
+}
