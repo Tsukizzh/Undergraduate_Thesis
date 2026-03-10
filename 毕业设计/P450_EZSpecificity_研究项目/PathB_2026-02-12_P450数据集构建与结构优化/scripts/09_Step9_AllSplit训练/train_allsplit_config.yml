@@ -1,0 +1,166 @@
+num_cpus: 0
+num_gpus: 1
+root_dir: D:/EZSpecificity_Project
+log: True
+seed: 3407
+n_runs: 1
+
+data:
+  tag: allsplit-fold0-no-halogenase
+  representer: structure_sequence
+
+  train_data_path:
+    - D:/EZSpecificity_Project/毕业设计/P450_EZSpecificity_研究项目/PathB_2026-02-12_P450数据集构建与结构优化/data/09_Step9_AllSplit训练/brenda/all_split/training_datas_0_renamed.csv
+    - D:/EZSpecificity_Project/毕业设计/P450_EZSpecificity_研究项目/PathB_2026-02-12_P450数据集构建与结构优化/data/09_Step9_AllSplit训练/Duf/all_split/training_datas_0_renamed.csv
+    - D:/EZSpecificity_Project/毕业设计/P450_EZSpecificity_研究项目/PathB_2026-02-12_P450数据集构建与结构优化/data/09_Step9_AllSplit训练/Esterase/all_split/training_datas_0_renamed.csv
+    - D:/EZSpecificity_Project/毕业设计/P450_EZSpecificity_研究项目/PathB_2026-02-12_P450数据集构建与结构优化/data/09_Step9_AllSplit训练/Gt_acceptor/all_split/training_datas_0_renamed.csv
+    - D:/EZSpecificity_Project/毕业设计/P450_EZSpecificity_研究项目/PathB_2026-02-12_P450数据集构建与结构优化/data/09_Step9_AllSplit训练/Nitrilase/all_split/training_datas_0_renamed.csv
+    - D:/EZSpecificity_Project/毕业设计/P450_EZSpecificity_研究项目/PathB_2026-02-12_P450数据集构建与结构优化/data/09_Step9_AllSplit训练/Phosphatase/all_split/training_datas_0_renamed.csv
+    - D:/EZSpecificity_Project/毕业设计/P450_EZSpecificity_研究项目/PathB_2026-02-12_P450数据集构建与结构优化/data/09_Step9_AllSplit训练/Thiolase/all_split/training_datas_0_renamed.csv
+  val_data_path:
+    - D:/EZSpecificity_Project/毕业设计/P450_EZSpecificity_研究项目/PathB_2026-02-12_P450数据集构建与结构优化/data/09_Step9_AllSplit训练/brenda/all_split/val_datas_0_renamed.csv
+    - D:/EZSpecificity_Project/毕业设计/P450_EZSpecificity_研究项目/PathB_2026-02-12_P450数据集构建与结构优化/data/09_Step9_AllSplit训练/Duf/all_split/val_datas_0_renamed.csv
+    - D:/EZSpecificity_Project/毕业设计/P450_EZSpecificity_研究项目/PathB_2026-02-12_P450数据集构建与结构优化/data/09_Step9_AllSplit训练/Esterase/all_split/val_datas_0_renamed.csv
+    - D:/EZSpecificity_Project/毕业设计/P450_EZSpecificity_研究项目/PathB_2026-02-12_P450数据集构建与结构优化/data/09_Step9_AllSplit训练/Gt_acceptor/all_split/val_datas_0_renamed.csv
+    - D:/EZSpecificity_Project/毕业设计/P450_EZSpecificity_研究项目/PathB_2026-02-12_P450数据集构建与结构优化/data/09_Step9_AllSplit训练/Nitrilase/all_split/val_datas_0_renamed.csv
+    - D:/EZSpecificity_Project/毕业设计/P450_EZSpecificity_研究项目/PathB_2026-02-12_P450数据集构建与结构优化/data/09_Step9_AllSplit训练/Phosphatase/all_split/val_datas_0_renamed.csv
+    - D:/EZSpecificity_Project/毕业设计/P450_EZSpecificity_研究项目/PathB_2026-02-12_P450数据集构建与结构优化/data/09_Step9_AllSplit训练/Thiolase/all_split/val_datas_0_renamed.csv
+  test_data_path:
+    - D:/EZSpecificity_Project/毕业设计/P450_EZSpecificity_研究项目/PathB_2026-02-12_P450数据集构建与结构优化/data/09_Step9_AllSplit训练/brenda/all_split/testing_datas_0_renamed.csv
+    - D:/EZSpecificity_Project/毕业设计/P450_EZSpecificity_研究项目/PathB_2026-02-12_P450数据集构建与结构优化/data/09_Step9_AllSplit训练/Duf/all_split/testing_datas_0_renamed.csv
+    - D:/EZSpecificity_Project/毕业设计/P450_EZSpecificity_研究项目/PathB_2026-02-12_P450数据集构建与结构优化/data/09_Step9_AllSplit训练/Esterase/all_split/testing_datas_0_renamed.csv
+    - D:/EZSpecificity_Project/毕业设计/P450_EZSpecificity_研究项目/PathB_2026-02-12_P450数据集构建与结构优化/data/09_Step9_AllSplit训练/Gt_acceptor/all_split/testing_datas_0_renamed.csv
+    - D:/EZSpecificity_Project/毕业设计/P450_EZSpecificity_研究项目/PathB_2026-02-12_P450数据集构建与结构优化/data/09_Step9_AllSplit训练/Nitrilase/all_split/testing_datas_0_renamed.csv
+    - D:/EZSpecificity_Project/毕业设计/P450_EZSpecificity_研究项目/PathB_2026-02-12_P450数据集构建与结构优化/data/09_Step9_AllSplit训练/Phosphatase/all_split/testing_datas_0_renamed.csv
+    - D:/EZSpecificity_Project/毕业设计/P450_EZSpecificity_研究项目/PathB_2026-02-12_P450数据集构建与结构优化/data/09_Step9_AllSplit训练/Thiolase/all_split/testing_datas_0_renamed.csv
+
+  enzyme_lmdb_path:
+    - D:/EZSpecificity_Project/毕业设计/P450_EZSpecificity_研究项目/PathB_2026-02-12_P450数据集构建与结构优化/data/09_Step9_AllSplit训练/brenda/enzyme_features.lmdb
+    - D:/EZSpecificity_Project/毕业设计/P450_EZSpecificity_研究项目/PathB_2026-02-12_P450数据集构建与结构优化/data/09_Step9_AllSplit训练/Duf/enzyme_features.lmdb
+    - D:/EZSpecificity_Project/毕业设计/P450_EZSpecificity_研究项目/PathB_2026-02-12_P450数据集构建与结构优化/data/09_Step9_AllSplit训练/Esterase/enzyme_features.lmdb
+    - D:/EZSpecificity_Project/毕业设计/P450_EZSpecificity_研究项目/PathB_2026-02-12_P450数据集构建与结构优化/data/09_Step9_AllSplit训练/Gt_acceptor/enzyme_features.lmdb
+    - D:/EZSpecificity_Project/毕业设计/P450_EZSpecificity_研究项目/PathB_2026-02-12_P450数据集构建与结构优化/data/09_Step9_AllSplit训练/Nitrilase/enzyme_features.lmdb
+    - D:/EZSpecificity_Project/毕业设计/P450_EZSpecificity_研究项目/PathB_2026-02-12_P450数据集构建与结构优化/data/09_Step9_AllSplit训练/Phosphatase/enzyme_features.lmdb
+    - D:/EZSpecificity_Project/毕业设计/P450_EZSpecificity_研究项目/PathB_2026-02-12_P450数据集构建与结构优化/data/09_Step9_AllSplit训练/Thiolase/enzyme_features.lmdb
+
+  reaction_lmdb_path:
+    - D:/EZSpecificity_Project/毕业设计/P450_EZSpecificity_研究项目/PathB_2026-02-12_P450数据集构建与结构优化/data/09_Step9_AllSplit训练/brenda/reaction_features.lmdb
+    - D:/EZSpecificity_Project/毕业设计/P450_EZSpecificity_研究项目/PathB_2026-02-12_P450数据集构建与结构优化/data/09_Step9_AllSplit训练/Duf/reaction_features.lmdb
+    - D:/EZSpecificity_Project/毕业设计/P450_EZSpecificity_研究项目/PathB_2026-02-12_P450数据集构建与结构优化/data/09_Step9_AllSplit训练/Esterase/reaction_features.lmdb
+    - D:/EZSpecificity_Project/毕业设计/P450_EZSpecificity_研究项目/PathB_2026-02-12_P450数据集构建与结构优化/data/09_Step9_AllSplit训练/Gt_acceptor/reaction_features.lmdb
+    - D:/EZSpecificity_Project/毕业设计/P450_EZSpecificity_研究项目/PathB_2026-02-12_P450数据集构建与结构优化/data/09_Step9_AllSplit训练/Nitrilase/reaction_features.lmdb
+    - D:/EZSpecificity_Project/毕业设计/P450_EZSpecificity_研究项目/PathB_2026-02-12_P450数据集构建与结构优化/data/09_Step9_AllSplit训练/Phosphatase/reaction_features.lmdb
+    - D:/EZSpecificity_Project/毕业设计/P450_EZSpecificity_研究项目/PathB_2026-02-12_P450数据集构建与结构优化/data/09_Step9_AllSplit训练/Thiolase/reaction_features.lmdb
+
+  grover_path:
+    - D:/EZSpecificity_Project/毕业设计/P450_EZSpecificity_研究项目/PathB_2026-02-12_P450数据集构建与结构优化/data/09_Step9_AllSplit训练/brenda/grover_fingerprint.lmdb
+    - D:/EZSpecificity_Project/毕业设计/P450_EZSpecificity_研究项目/PathB_2026-02-12_P450数据集构建与结构优化/data/09_Step9_AllSplit训练/Duf/grover_fingerprint.lmdb
+    - D:/EZSpecificity_Project/毕业设计/P450_EZSpecificity_研究项目/PathB_2026-02-12_P450数据集构建与结构优化/data/09_Step9_AllSplit训练/Esterase/grover_fingerprint.lmdb
+    - D:/EZSpecificity_Project/毕业设计/P450_EZSpecificity_研究项目/PathB_2026-02-12_P450数据集构建与结构优化/data/09_Step9_AllSplit训练/Gt_acceptor/grover_fingerprint.lmdb
+    - D:/EZSpecificity_Project/毕业设计/P450_EZSpecificity_研究项目/PathB_2026-02-12_P450数据集构建与结构优化/data/09_Step9_AllSplit训练/Nitrilase/grover_fingerprint.lmdb
+    - D:/EZSpecificity_Project/毕业设计/P450_EZSpecificity_研究项目/PathB_2026-02-12_P450数据集构建与结构优化/data/09_Step9_AllSplit训练/Phosphatase/grover_fingerprint.lmdb
+    - D:/EZSpecificity_Project/毕业设计/P450_EZSpecificity_研究项目/PathB_2026-02-12_P450数据集构建与结构优化/data/09_Step9_AllSplit训练/Thiolase/grover_fingerprint.lmdb
+
+  morgan_path:
+    - D:/EZSpecificity_Project/毕业设计/P450_EZSpecificity_研究项目/PathB_2026-02-12_P450数据集构建与结构优化/data/09_Step9_AllSplit训练/brenda/morgan_fingerprint.npy
+    - D:/EZSpecificity_Project/毕业设计/P450_EZSpecificity_研究项目/PathB_2026-02-12_P450数据集构建与结构优化/data/09_Step9_AllSplit训练/Duf/morgan_fingerprint.npy
+    - D:/EZSpecificity_Project/毕业设计/P450_EZSpecificity_研究项目/PathB_2026-02-12_P450数据集构建与结构优化/data/09_Step9_AllSplit训练/Esterase/morgan_fingerprint.npy
+    - D:/EZSpecificity_Project/毕业设计/P450_EZSpecificity_研究项目/PathB_2026-02-12_P450数据集构建与结构优化/data/09_Step9_AllSplit训练/Gt_acceptor/morgan_fingerprint.npy
+    - D:/EZSpecificity_Project/毕业设计/P450_EZSpecificity_研究项目/PathB_2026-02-12_P450数据集构建与结构优化/data/09_Step9_AllSplit训练/Nitrilase/morgan_fingerprint.npy
+    - D:/EZSpecificity_Project/毕业设计/P450_EZSpecificity_研究项目/PathB_2026-02-12_P450数据集构建与结构优化/data/09_Step9_AllSplit训练/Phosphatase/morgan_fingerprint.npy
+    - D:/EZSpecificity_Project/毕业设计/P450_EZSpecificity_研究项目/PathB_2026-02-12_P450数据集构建与结构优化/data/09_Step9_AllSplit训练/Thiolase/morgan_fingerprint.npy
+
+  structure_processed_path:
+    - D:/EZSpecificity_Project/毕业设计/P450_EZSpecificity_研究项目/PathB_2026-02-12_P450数据集构建与结构优化/data/09_Step9_AllSplit训练/brenda/structure/structure_features.lmdb
+    - D:/EZSpecificity_Project/毕业设计/P450_EZSpecificity_研究项目/PathB_2026-02-12_P450数据集构建与结构优化/data/09_Step9_AllSplit训练/Duf/structure/structure_features.lmdb
+    - D:/EZSpecificity_Project/毕业设计/P450_EZSpecificity_研究项目/PathB_2026-02-12_P450数据集构建与结构优化/data/09_Step9_AllSplit训练/Esterase/structure/structure_features.lmdb
+    - D:/EZSpecificity_Project/毕业设计/P450_EZSpecificity_研究项目/PathB_2026-02-12_P450数据集构建与结构优化/data/09_Step9_AllSplit训练/Gt_acceptor/structure/structure_features.lmdb
+    - D:/EZSpecificity_Project/毕业设计/P450_EZSpecificity_研究项目/PathB_2026-02-12_P450数据集构建与结构优化/data/09_Step9_AllSplit训练/Nitrilase/structure/structure_features.lmdb
+    - D:/EZSpecificity_Project/毕业设计/P450_EZSpecificity_研究项目/PathB_2026-02-12_P450数据集构建与结构优化/data/09_Step9_AllSplit训练/Phosphatase/structure/structure_features.lmdb
+    - D:/EZSpecificity_Project/毕业设计/P450_EZSpecificity_研究项目/PathB_2026-02-12_P450数据集构建与结构优化/data/09_Step9_AllSplit训练/Thiolase/structure/structure_features.lmdb
+
+  sequence_processed_path:
+    - D:/EZSpecificity_Project/毕业设计/P450_EZSpecificity_研究项目/PathB_2026-02-12_P450数据集构建与结构优化/data/09_Step9_AllSplit训练/brenda/structure/sequence_features.lmdb
+    - D:/EZSpecificity_Project/毕业设计/P450_EZSpecificity_研究项目/PathB_2026-02-12_P450数据集构建与结构优化/data/09_Step9_AllSplit训练/Duf/structure/sequence_features.lmdb
+    - D:/EZSpecificity_Project/毕业设计/P450_EZSpecificity_研究项目/PathB_2026-02-12_P450数据集构建与结构优化/data/09_Step9_AllSplit训练/Esterase/structure/sequence_features.lmdb
+    - D:/EZSpecificity_Project/毕业设计/P450_EZSpecificity_研究项目/PathB_2026-02-12_P450数据集构建与结构优化/data/09_Step9_AllSplit训练/Gt_acceptor/structure/sequence_features.lmdb
+    - D:/EZSpecificity_Project/毕业设计/P450_EZSpecificity_研究项目/PathB_2026-02-12_P450数据集构建与结构优化/data/09_Step9_AllSplit训练/Nitrilase/structure/sequence_features.lmdb
+    - D:/EZSpecificity_Project/毕业设计/P450_EZSpecificity_研究项目/PathB_2026-02-12_P450数据集构建与结构优化/data/09_Step9_AllSplit训练/Phosphatase/structure/sequence_features.lmdb
+    - D:/EZSpecificity_Project/毕业设计/P450_EZSpecificity_研究项目/PathB_2026-02-12_P450数据集构建与结构优化/data/09_Step9_AllSplit训练/Thiolase/structure/sequence_features.lmdb
+
+  high_quality_id_path:
+    - 'None'
+    - 'None'
+    - 'None'
+    - 'None'
+    - 'None'
+    - 'None'
+    - 'None'
+
+  pdb_dir: None
+  ligand_dir: None
+  full_data: False
+
+  fake_sequence_ratio: 0
+
+  sample_weight:
+    - 1.0
+    - 1.0
+
+  batch_size: 4
+
+  max_substrate_length: 280
+  max_enzyme_length: 1450
+
+  features:
+    - 'morgan'
+    - 1024
+    - 'grover_mean'
+    - 4885
+
+  atom_features:
+    - 'grover'
+    - 2400
+
+transform:
+  dist_noise: True
+  cutoff: 10
+  num_r_gaussian: 32
+  k: 48
+
+model:
+  name: 'structure_sequence'
+  use_gnn: True
+  hidden_dim: 128
+  feature_norm: False
+
+  header:
+    act_fn: 'relu'
+    norm: True
+    num_layers: 3
+
+  graph:
+    name: egnn
+    hidden_dim: 128
+    act_fn: relu
+    num_layers: 3
+    attention: True
+    residual: True
+    norm: layer
+    mode: complex
+
+  cross_attention:
+    n_head: 8
+    dropout: 0.9
+
+training:
+  gradient_clip_val: 8
+  optimizer: 'adamW'
+  warmup_epochs: 8
+  lr: 3.0e-04
+  weight_decay: 0
+  min_lr: 5.0e-06
+  sched_factor: 0.5
+  sched_patience: 10
+  val_frequency: 1
+  accumulate_grad_batches: 8

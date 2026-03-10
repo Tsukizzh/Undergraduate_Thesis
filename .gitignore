@@ -40,9 +40,15 @@
 *.npz
 *.npy
 
+# PathB Step 9 training outputs (logs, checkpoints, TensorBoard events)
+**/logs/09_Step9_AllSplit*/
+**/results/09_Step9_AllSplit*/*.log
+**/results/09_Step9_AllSplit*/checkpoints/
+
 # Temporary working files
 /tmp_lmdb/
 /e2_exp_tmp.py
+{fname}
 
 # 其他不需要上传的文件
 *.pdf
