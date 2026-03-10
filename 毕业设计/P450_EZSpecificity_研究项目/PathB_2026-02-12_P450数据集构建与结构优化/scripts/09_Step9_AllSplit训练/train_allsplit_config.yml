@@ -107,7 +107,7 @@ data:
     - 1.0
     - 1.0
 
-  batch_size: 4
+  batch_size: 8
 
   max_substrate_length: 280
   max_enzyme_length: 1450
@@ -163,4 +163,4 @@ training:
   sched_factor: 0.5
   sched_patience: 10
   val_frequency: 1
-  accumulate_grad_batches: 8
+  accumulate_grad_batches: 4

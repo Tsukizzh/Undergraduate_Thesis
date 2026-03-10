@@ -87,7 +87,7 @@ SS.transfer_batch_to_device = _fast_transfer
 
 class BackgroundPrefetchLoader:
     """Wraps a DataLoader to prefetch batches in a background thread."""
-    def __init__(self, loader, max_prefetch=2):
+    def __init__(self, loader, max_prefetch=4):
         self.loader = loader
         self.max_prefetch = max_prefetch
 
@@ -126,7 +126,7 @@ class BackgroundPrefetchLoader:
 # ============================================================
 # 5. LMDB handle management for Windows multiprocessing
 # ============================================================
-NUM_WORKERS = 2
+NUM_WORKERS = 6
 print(f"[Config] num_workers={NUM_WORKERS}")
 
 def _close_lmdb_handles(dataset):
@@ -196,7 +196,7 @@ class TrainingDataModule(pl.LightningDataModule):
             follow_batch=['ligand_index']
         )
         if NUM_WORKERS > 0:
-            loader_kwargs.update(persistent_workers=True, prefetch_factor=2)
+            loader_kwargs.update(persistent_workers=True, prefetch_factor=4)
         return data, DataLoader(data, **loader_kwargs)
 
     def train_dataloader(self):
