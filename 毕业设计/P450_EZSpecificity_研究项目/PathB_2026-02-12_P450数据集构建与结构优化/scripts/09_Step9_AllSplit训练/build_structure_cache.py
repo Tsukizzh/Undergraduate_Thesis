@@ -1,19 +1,36 @@
 """
-Offline structure cache builder for EZSpecificity Step 9.
+Offline structure cache builder for EZSpecificity Step 9 (multiprocessing).
 
 Iterates valid samples from the original StructureDataset (transform=None),
 runs BuildStructureCacheData to extract split real/knn partitions, and writes
-them to LMDB. One LMDB per dataset_id.
+them to LMDB.  One LMDB per dataset_id.
+
+SAFETY:
+- Processes one dataset at a time (sequential LMDB writes).
+- Windows LMDB preallocates full map_size — per-dataset sizing + disk check.
+- Workers only READ source LMDBs; main process is the sole LMDB writer.
+- OMP/MKL/torch threads capped at 1 per process to prevent CPU oversubscription.
+- Bounded queues to prevent RAM explosion.
 
 Usage:
     cd D:/EZSpecificity_Project/src
-    D:/anaconda3/envs/torch/python.exe "../毕业设计/.../scripts/09_Step9_AllSplit训练/build_structure_cache.py" --split all
+    D:/anaconda3/envs/torch/python.exe "../毕业设计/.../build_structure_cache.py" --split all
 """
 from __future__ import annotations
 
-import argparse
+# --- Cap BLAS/OMP threads BEFORE numpy/torch import ---
 import os
+os.environ.setdefault("OMP_NUM_THREADS", "1")
+os.environ.setdefault("MKL_NUM_THREADS", "1")
+os.environ.setdefault("OPENBLAS_NUM_THREADS", "1")
+os.environ.setdefault("NUMEXPR_NUM_THREADS", "1")
+
+import argparse
+import math
+import multiprocessing as mp
 import pickle
+import queue
+import shutil
 import sys
 import time
 import warnings
@@ -24,11 +41,10 @@ from easydict import EasyDict
 from tqdm.auto import tqdm
 
 # ---------------------------------------------------------------------------
-# 1. Monkey-patch lmdb.open for large databases
+# 1. Monkey-patch lmdb.open for large databases (read-only opens only)
 # ---------------------------------------------------------------------------
 _ORIGINAL_LMDB_OPEN = lmdb.open
-_READ_MAP_SIZE = 256 * 1024 ** 3
-_WRITE_MAP_SIZE = 200 * 1024 ** 3  # 512GB fails on Windows; 200GB is safe
+_READ_MAP_SIZE = 200 * 1024 ** 3
 
 
 def _patched_lmdb_open(path, **kwargs):
@@ -65,6 +81,12 @@ def parse_args():
     p.add_argument("--split", choices=["train", "val", "test", "all"], default="all")
     p.add_argument("--commit-interval", type=int, default=500)
     p.add_argument("--overwrite", action="store_true")
+    p.add_argument("--num-workers", type=int, default=2,
+                   help="Worker processes for parallel structure building (default: 2)")
+    p.add_argument("--chunk-size", type=int, default=4,
+                   help="Samples per worker task (default: 4)")
+    p.add_argument("--queue-size", type=int, default=4,
+                   help="Max in-flight result batches (default: 4)")
     return p.parse_args()
 
 
@@ -97,7 +119,6 @@ def _fmt_bytes(n: float) -> str:
 
 
 def _default_cache_dir() -> str:
-    # Use ASCII-only path to avoid LMDB Unicode issues on Windows
     return os.path.normpath(os.path.join(SRC_DIR, "..", "data", "step9_structure_cache"))
 
 
@@ -130,40 +151,7 @@ def _close_handles(dataset: StructureDataset):
             setattr(dataset, attr, None)
 
 
-# ---------------------------------------------------------------------------
-# Size estimation
-# ---------------------------------------------------------------------------
-def estimate_size(dataset, builder, n_preview=100):
-    indices = dataset.valid_idx[:min(n_preview, len(dataset.valid_idx))]
-    sizes = []
-    preview = {}
-    for idx in tqdm(indices, desc="Size estimate", leave=False):
-        try:
-            data = dataset.getitem_with_real_idx(idx)
-            if str(getattr(data, "str_tag", "complex")) != "complex":
-                continue
-            payload = builder(data)
-            blob = pickle.dumps(payload, protocol=pickle.HIGHEST_PROTOCOL)
-            sizes.append(len(blob))
-            ds_id = int(dataset.df.loc[idx, "dataset_id"])
-            preview[idx] = (ds_id, blob)
-        except Exception as e:
-            warnings.warn(f"[Estimate] idx={idx}: {e}")
-
-    if sizes:
-        import numpy as np
-        mean_sz = np.mean(sizes)
-        total_est = mean_sz * len(dataset.valid_idx)
-        print(f"[Estimate] {len(sizes)} samples, mean={_fmt_bytes(mean_sz)}, "
-              f"projected={_fmt_bytes(total_est)}")
-    return preview
-
-
-# ---------------------------------------------------------------------------
-# Main build
-# ---------------------------------------------------------------------------
 def _scan_existing_keys(path: str) -> set[bytes]:
-    """Scan an existing LMDB for all keys (for resume support)."""
     if not os.path.exists(path):
         return set()
     env = _ORIGINAL_LMDB_OPEN(path, map_size=_READ_MAP_SIZE, create=False,
@@ -177,14 +165,299 @@ def _scan_existing_keys(path: str) -> set[bytes]:
         env.close()
 
 
-def build_cache(config, split, output_dir, commit_interval, overwrite):
+def _chunked(items, chunk_size):
+    chunk = []
+    for item in items:
+        chunk.append(item)
+        if len(chunk) >= chunk_size:
+            yield chunk
+            chunk = []
+    if chunk:
+        yield chunk
+
+
+# ---------------------------------------------------------------------------
+# Size estimation (single-process, runs before workers start)
+# ---------------------------------------------------------------------------
+def estimate_size(dataset, builder, n_preview=100):
+    indices = dataset.valid_idx[:min(n_preview, len(dataset.valid_idx))]
+    sizes = []
+    for idx in tqdm(indices, desc="Size estimate", leave=False):
+        try:
+            data = dataset.getitem_with_real_idx(idx)
+            if str(getattr(data, "str_tag", "complex")) != "complex":
+                continue
+            payload = builder(data)
+            blob = pickle.dumps(payload, protocol=pickle.HIGHEST_PROTOCOL)
+            sizes.append(len(blob))
+        except Exception as e:
+            warnings.warn(f"[Estimate] idx={idx}: {e}")
+
+    if sizes:
+        import numpy as np
+        mean_sz = np.mean(sizes)
+        total_est = mean_sz * len(dataset.valid_idx)
+        print(f"[Estimate] {len(sizes)} samples, mean={_fmt_bytes(mean_sz)}, "
+              f"projected={_fmt_bytes(total_est)}")
+    return sizes
+
+
+# ---------------------------------------------------------------------------
+# Disk safety
+# ---------------------------------------------------------------------------
+GIB = 1024 ** 3
+SAFETY_MARGIN = 10 * GIB
+MIN_MAP_SIZE = 1 * GIB
+GROWTH_FACTOR = 1.4
+
+
+def _round_up_gib(num_bytes: int) -> int:
+    return max(MIN_MAP_SIZE, int(math.ceil(num_bytes / GIB) * GIB))
+
+
+def _disk_free(path: str) -> int:
+    return int(shutil.disk_usage(path).free)
+
+
+def _estimated_map_size(num_unique_keys: int, avg_bytes: int) -> int:
+    raw = int(math.ceil(num_unique_keys * avg_bytes * GROWTH_FACTOR))
+    return _round_up_gib(max(raw, MIN_MAP_SIZE))
+
+
+# ---------------------------------------------------------------------------
+# Worker process (module-level for Windows spawn picklability)
+# ---------------------------------------------------------------------------
+def _worker_process(worker_id, config_path, split, k, max_substrate_length,
+                    task_queue, result_queue, stop_event):
+    """Worker: create own StructureDataset, process chunks, return (key, blob)."""
+    import torch
+    torch.set_num_threads(1)
+    try:
+        torch.set_num_interop_threads(1)
+    except RuntimeError:
+        pass
+
+    dataset = None
+    try:
+        config = load_config(config_path)
+        df = _get_split_df(config, split)
+        dataset = StructureDataset(config=config, df=df, transform=None, is_train=False)
+        builder = BuildStructureCacheData(k=k, max_substrate_length=max_substrate_length)
+        dock_indices = dataset.df["Dock Index"].values
+
+        while not stop_event.is_set():
+            try:
+                task = task_queue.get(timeout=2.0)
+            except queue.Empty:
+                continue
+            if task is None:  # poison pill
+                break
+
+            batch_id, real_indices = task
+            records = []
+            errors = []
+
+            for real_idx in real_indices:
+                if stop_event.is_set():
+                    break
+                try:
+                    data = dataset.getitem_with_real_idx(int(real_idx))
+                    if str(getattr(data, "str_tag", "complex")) != "complex":
+                        continue
+                    payload = builder(data)
+                    blob = pickle.dumps(payload, protocol=pickle.HIGHEST_PROTOCOL)
+                    key = str(int(dock_indices[int(real_idx)])).encode()
+                    records.append((key, blob))
+                except Exception as e:
+                    errors.append((int(real_idx), repr(e)))
+
+            result_queue.put((batch_id, records, errors))
+
+    except Exception as e:
+        try:
+            result_queue.put(("__FATAL__", worker_id, repr(e)))
+        except Exception:
+            pass
+    finally:
+        if dataset is not None:
+            _close_handles(dataset)
+        try:
+            result_queue.cancel_join_thread()
+        except Exception:
+            pass
+
+
+# ---------------------------------------------------------------------------
+# Parallel build for one dataset
+# ---------------------------------------------------------------------------
+def _build_dataset_parallel(*, config_path, split, ds_name,
+                            pending_real_indices, output_path,
+                            resume_key_set, map_size, commit_interval,
+                            num_workers, chunk_size, queue_size, k,
+                            max_substrate_length):
+    """Build one dataset's LMDB using worker processes + single main writer."""
+    if not pending_real_indices:
+        return {"writes": 0, "errors": 0, "dup": 0}
+
+    ctx = mp.get_context("spawn")
+    num_workers = max(1, min(num_workers, len(pending_real_indices)))
+    task_maxsize = max(num_workers * 2, 4)
+
+    task_queue = ctx.Queue(maxsize=task_maxsize)
+    result_queue = ctx.Queue(maxsize=max(2, queue_size))
+    stop_event = ctx.Event()
+
+    workers = []
+    for wid in range(num_workers):
+        p = ctx.Process(
+            target=_worker_process,
+            args=(wid, config_path, split, k, max_substrate_length,
+                  task_queue, result_queue, stop_event),
+            daemon=True,
+        )
+        p.start()
+        workers.append(p)
+
+    env = None
+    txn = None
+    seen = set(resume_key_set)
+    writes = 0
+    errors = 0
+    dup = 0
+
+    chunks = list(_chunked(pending_real_indices, chunk_size))
+    total_items = len(pending_real_indices)
+    next_chunk = 0
+    in_flight = 0
+
+    try:
+        env = _ORIGINAL_LMDB_OPEN(
+            output_path, map_size=map_size,
+            create=True, subdir=False, readonly=False,
+        )
+        txn = env.begin(write=True)
+
+        # Prime the task queue
+        while next_chunk < len(chunks) and in_flight < task_maxsize:
+            task_queue.put((next_chunk, chunks[next_chunk]))
+            next_chunk += 1
+            in_flight += 1
+
+        pbar = tqdm(total=total_items, desc=f"Building {ds_name}",
+                    unit="sample", smoothing=0.1)
+        no_progress_count = 0
+        MAX_NO_PROGRESS = 5  # 5 × 60s = 5 min without any result → abort
+
+        while in_flight > 0:
+            try:
+                result = result_queue.get(timeout=60.0)
+                no_progress_count = 0  # reset on any result
+            except queue.Empty:
+                no_progress_count += 1
+                # Check for dead workers
+                dead = [p for p in workers
+                        if not p.is_alive() and p.exitcode not in (0, None)]
+                if dead:
+                    raise RuntimeError(
+                        f"Worker crashed: "
+                        + ", ".join(f"pid={p.pid} exit={p.exitcode}" for p in dead))
+                if no_progress_count >= MAX_NO_PROGRESS:
+                    raise RuntimeError(
+                        f"No progress for {MAX_NO_PROGRESS} min. "
+                        f"Workers may be stuck. in_flight={in_flight}")
+                continue
+
+            if result and result[0] == "__FATAL__":
+                _, wid, msg = result
+                raise RuntimeError(f"Worker {wid} fatal error: {msg}")
+
+            batch_id, records, batch_errors = result
+            in_flight -= 1
+
+            for real_idx, msg in batch_errors:
+                errors += 1
+                if errors <= 10:
+                    warnings.warn(f"[Build:{ds_name}] idx={real_idx}: {msg}")
+
+            batch_wrote = 0
+            for key, blob in records:
+                if key in seen:
+                    dup += 1
+                    continue
+                txn.put(key, blob)
+                seen.add(key)
+                writes += 1
+                batch_wrote += 1
+
+                if writes % commit_interval == 0:
+                    txn.commit()
+                    txn = env.begin(write=True)
+
+            pbar.update(len(records) + len(batch_errors))
+
+            # Dispatch more work
+            while next_chunk < len(chunks) and in_flight < task_maxsize:
+                task_queue.put((next_chunk, chunks[next_chunk]))
+                next_chunk += 1
+                in_flight += 1
+
+        pbar.close()
+
+    finally:
+        # Signal workers to stop
+        stop_event.set()
+        for _ in workers:
+            try:
+                task_queue.put_nowait(None)
+            except Exception:
+                pass
+
+        if txn is not None:
+            try:
+                txn.commit()
+            except Exception:
+                pass
+        if env is not None:
+            try:
+                env.sync()
+            except Exception:
+                pass
+            try:
+                env.close()
+            except Exception:
+                pass
+
+        for p in workers:
+            p.join(timeout=15)
+            if p.is_alive():
+                p.terminate()
+                p.join(timeout=5)
+
+        try:
+            task_queue.close()
+            result_queue.close()
+        except Exception:
+            pass
+
+    return {"writes": writes, "errors": errors, "dup": dup}
+
+
+# ---------------------------------------------------------------------------
+# Main build — one dataset at a time, parallel workers per dataset
+# ---------------------------------------------------------------------------
+def build_cache(config, config_path, split, output_dir, commit_interval,
+                overwrite, num_workers, chunk_size, queue_size):
+    if commit_interval <= 0:
+        raise ValueError(f"commit_interval must be > 0, got {commit_interval}")
     cache_dir = output_dir or _default_cache_dir()
     os.makedirs(cache_dir, exist_ok=True)
 
     ds_names = _dataset_names(config)
     n_datasets = len(ds_names)
+    k = int(config.transform.k)
+    max_substrate_length = int(config.data.max_substrate_length)
 
-    # Output paths: one LMDB per dataset_id
+    # Output paths + resume scan
     output_paths = []
     resume_keys = [set() for _ in range(n_datasets)]
     for i, name in enumerate(ds_names):
@@ -197,7 +470,6 @@ def build_cache(config, split, output_dir, commit_interval, overwrite):
                 if os.path.exists(lock_path):
                     os.remove(lock_path)
             else:
-                # Resume mode: scan existing keys
                 resume_keys[i] = _scan_existing_keys(path)
                 if resume_keys[i]:
                     print(f"[Resume] dataset {i} ({name}): {len(resume_keys[i])} existing entries")
@@ -206,139 +478,192 @@ def build_cache(config, split, output_dir, commit_interval, overwrite):
     for i, p in enumerate(output_paths):
         print(f"  dataset {i} ({ds_names[i]}): {os.path.basename(p)}")
 
-    # Load data
+    # Load data (main process only, for metadata extraction)
     print(f"[Build] Loading DataFrame (split={split})...")
     df = _get_split_df(config, split)
     print(f"[Build] DataFrame: {len(df)} rows")
 
-    # StructureDataset with NO transform — gives raw data with str_tag/sample_weight
-    print("[Build] Initializing StructureDataset (transform=None)...")
+    print("[Build] Initializing StructureDataset for metadata + size estimate...")
     t0 = time.time()
     dataset = StructureDataset(config=config, df=df, transform=None, is_train=False)
     n_valid = len(dataset.valid_idx)
     print(f"[Build] Ready in {time.time()-t0:.1f}s, valid={n_valid}")
 
-    builder = BuildStructureCacheData(
-        k=int(config.transform.k),
-        max_substrate_length=int(config.data.max_substrate_length),
-    )
+    builder = BuildStructureCacheData(k=k, max_substrate_length=max_substrate_length)
 
     # Size estimate
-    preview = estimate_size(dataset, builder)
-
-    # Open output LMDBs (create=True works for both new and existing)
-    envs = []
-    for path in output_paths:
-        envs.append(_ORIGINAL_LMDB_OPEN(
-            path, map_size=_WRITE_MAP_SIZE, create=True, subdir=False, readonly=False,
-        ))
-    txns = [env.begin(write=True) for env in envs]
-    writes = [0] * n_datasets
-    # Initialize seen sets from resume keys
-    seen = [set(rk) for rk in resume_keys]
-    n_resumed = sum(len(s) for s in seen)
-    if n_resumed > 0:
-        print(f"[Resume] Skipping {n_resumed} already-cached entries across all datasets")
-
-    ok, err, dup, skip, skipped_resume = 0, 0, 0, 0, 0
-    t_start = time.time()
-
-    try:
-        for real_idx in tqdm(dataset.valid_idx, desc=f"Building cache ({split})"):
-            try:
-                ds_id = int(dataset.df.loc[real_idx, "dataset_id"])
-                dock_idx = int(dataset.df.loc[real_idx, "Dock Index"])
-                key = str(dock_idx).encode()
-
-                if key in seen[ds_id]:
-                    # Distinguish resumed vs true duplicate
-                    if key in resume_keys[ds_id]:
-                        skipped_resume += 1
-                    else:
-                        dup += 1
-                    continue
-
-                # Reuse preview if available
-                if real_idx in preview:
-                    blob = preview[real_idx][1]
-                else:
-                    data = dataset.getitem_with_real_idx(real_idx)
-                    if str(getattr(data, "str_tag", "complex")) != "complex":
-                        skip += 1
-                        continue
-                    payload = builder(data)
-                    blob = pickle.dumps(payload, protocol=pickle.HIGHEST_PROTOCOL)
-
-                txns[ds_id].put(key, blob)
-                seen[ds_id].add(key)
-                writes[ds_id] += 1
-                ok += 1
-
-                if writes[ds_id] % commit_interval == 0:
-                    txns[ds_id].commit()
-                    txns[ds_id] = envs[ds_id].begin(write=True)
-
-            except KeyboardInterrupt:
-                raise
-            except Exception as e:
-                err += 1
-                if err <= 10:
-                    warnings.warn(f"[Build] idx={real_idx}: {e}")
-    finally:
-        for i in range(n_datasets):
-            try:
-                txns[i].commit()
-            except Exception:
-                pass
-            try:
-                envs[i].sync()
-                envs[i].close()
-            except Exception:
-                pass
+    preview_sizes = estimate_size(dataset, builder)
+    if not preview_sizes:
         _close_handles(dataset)
+        raise RuntimeError("Size estimate produced no complex payloads.")
+    avg_sample_bytes = int(sum(preview_sizes) / len(preview_sizes))
+    print(f"[Estimate] Average payload: {_fmt_bytes(avg_sample_bytes)} "
+          f"(from {len(preview_sizes)} preview samples)")
 
-    elapsed = time.time() - t_start
-    print(f"\n[Build] Complete in {elapsed/60:.1f} min")
-    print(f"  new_writes={ok}, errors={err}, duplicates={dup}, non_complex={skip}, "
-          f"skipped_resume={skipped_resume}, pre_existing={n_resumed}")
-    for i, name in enumerate(ds_names):
-        sz = os.path.getsize(output_paths[i]) if os.path.exists(output_paths[i]) else 0
-        print(f"  {name}: {writes[i]} new + {len(resume_keys[i])} resumed, {_fmt_bytes(sz)}")
+    # Extract metadata before closing main dataset
+    valid_idx = list(dataset.valid_idx)
+    dataset_ids = dataset.df["dataset_id"].values.copy()
+    dock_indices = dataset.df["Dock Index"].values.copy()
 
-    # Post-build count verification
-    print("\n[Verify] Checking final LMDB entry counts...")
-    all_ok = True
-    for i, name in enumerate(ds_names):
-        if not os.path.exists(output_paths[i]):
+    # Close main dataset to free RAM before spawning workers
+    _close_handles(dataset)
+    del dataset, builder, df
+    print("[Build] Main dataset closed (RAM freed for workers)")
+
+    # Organize valid rows by dataset_id
+    rows_by_ds = [[] for _ in range(n_datasets)]
+    target_keys_by_ds = [set() for _ in range(n_datasets)]
+    for real_idx in valid_idx:
+        ds_id = int(dataset_ids[real_idx])
+        dock_idx = int(dock_indices[real_idx])
+        rows_by_ds[ds_id].append(real_idx)
+        target_keys_by_ds[ds_id].add(str(dock_idx).encode())
+
+    # Print plan
+    print(f"\n[Plan] Sequential per-dataset, {num_workers} workers per dataset")
+    for ds_id, name in enumerate(ds_names):
+        n_unique = len(target_keys_by_ds[ds_id])
+        est_ms = _estimated_map_size(n_unique, avg_sample_bytes)
+        print(f"  [{ds_id}] {name}: rows={len(rows_by_ds[ds_id])}, "
+              f"unique_docks={n_unique}, resume={len(resume_keys[ds_id])}, "
+              f"map_size={_fmt_bytes(est_ms)}")
+
+    total_new = 0
+    total_err = 0
+    total_dup = 0
+    total_skipped_resume = 0
+    overall_start = time.time()
+
+    for ds_id, name in enumerate(ds_names):
+        ds_rows = rows_by_ds[ds_id]
+        target_keys = target_keys_by_ds[ds_id]
+        output_path = output_paths[ds_id]
+
+        if not ds_rows:
+            print(f"\n[Build] Dataset {ds_id} ({name}): no valid rows, skipping.")
             continue
-        final_keys = _scan_existing_keys(output_paths[i])
-        expected = writes[i] + len(resume_keys[i])
+
+        # Pre-deduplicate: skip resume keys + intra-dataset duplicates
+        pending = []
+        scheduled_keys = set()
+        ds_skipped_resume = 0
+        ds_pre_dup = 0
+        for real_idx in ds_rows:
+            key = str(int(dock_indices[real_idx])).encode()
+            if key in resume_keys[ds_id]:
+                ds_skipped_resume += 1
+                continue
+            if key in scheduled_keys:
+                ds_pre_dup += 1
+                continue
+            scheduled_keys.add(key)
+            pending.append(real_idx)
+
+        # Compute map_size
+        existing_size = os.path.getsize(output_path) if os.path.exists(output_path) else 0
+        map_size = max(_estimated_map_size(len(target_keys), avg_sample_bytes), existing_size)
+        map_size = _round_up_gib(map_size)
+
+        # Disk safety check
+        free_before = _disk_free(cache_dir)
+        additional_needed = max(0, map_size - existing_size)
+        if free_before < additional_needed + SAFETY_MARGIN:
+            raise RuntimeError(
+                f"[Safety] Not enough disk for dataset {ds_id} ({name}). "
+                f"free={_fmt_bytes(free_before)}, need={_fmt_bytes(additional_needed)}, "
+                f"safety_margin={_fmt_bytes(SAFETY_MARGIN)}, map_size={_fmt_bytes(map_size)}")
+
+        print(f"\n[Build] Dataset {ds_id} ({name})")
+        print(f"  unique_docks={len(target_keys)}, pre_existing={len(resume_keys[ds_id])}, "
+              f"pending_new={len(pending)}, pre_dup={ds_pre_dup}")
+        print(f"  map_size={_fmt_bytes(map_size)}, existing={_fmt_bytes(existing_size)}, "
+              f"free={_fmt_bytes(free_before)}")
+
+        ds_start = time.time()
+
+        stats = _build_dataset_parallel(
+            config_path=config_path,
+            split=split,
+            ds_name=name,
+            pending_real_indices=pending,
+            output_path=output_path,
+            resume_key_set=resume_keys[ds_id],
+            map_size=map_size,
+            commit_interval=commit_interval,
+            num_workers=num_workers,
+            chunk_size=chunk_size,
+            queue_size=queue_size,
+            k=k,
+            max_substrate_length=max_substrate_length,
+        )
+
+        # Per-dataset verification
+        final_keys = _scan_existing_keys(output_path)
+        expected = len(target_keys)
         actual = len(final_keys)
         status = "OK" if actual == expected else "MISMATCH"
-        if actual != expected:
-            all_ok = False
-        print(f"  {name}: expected={expected}, actual={actual} [{status}]")
-    if all_ok:
-        print("[Verify] All counts match.")
-    else:
-        print("[Verify] WARNING: Count mismatches detected!")
+        ds_elapsed = time.time() - ds_start
+        file_size = os.path.getsize(output_path) if os.path.exists(output_path) else 0
 
-    if err > 0:
-        print(f"\n[WARNING] {err} errors occurred during build. Inspect and consider rebuilding affected samples.")
+        print(f"  finished in {ds_elapsed/60:.1f} min")
+        print(f"  new_writes={stats['writes']}, errors={stats['errors']}, "
+              f"dup={stats['dup'] + ds_pre_dup}, skipped_resume={ds_skipped_resume}")
+        print(f"  verify: expected={expected}, actual={actual} [{status}]")
+        print(f"  file_size={_fmt_bytes(file_size)}")
+
+        if actual != expected:
+            raise RuntimeError(
+                f"[Verify] Dataset {ds_id} ({name}) count mismatch: "
+                f"expected={expected}, actual={actual}")
+
+        total_new += stats["writes"]
+        total_err += stats["errors"]
+        total_dup += stats["dup"] + ds_pre_dup
+        total_skipped_resume += ds_skipped_resume
+
+    elapsed = time.time() - overall_start
+    total_pre = sum(len(k) for k in resume_keys)
+    print(f"\n[Build] Complete in {elapsed/60:.1f} min")
+    print(f"  new_writes={total_new}, errors={total_err}, duplicates={total_dup}, "
+          f"skipped_resume={total_skipped_resume}, pre_existing={total_pre}")
+
+    print("\n[Verify] Final LMDB entry counts:")
+    for ds_id, name in enumerate(ds_names):
+        path = output_paths[ds_id]
+        if not os.path.exists(path):
+            print(f"  {name}: missing")
+            continue
+        actual = len(_scan_existing_keys(path))
+        expected = len(target_keys_by_ds[ds_id])
+        status = "OK" if actual == expected else "MISMATCH"
+        size = os.path.getsize(path)
+        print(f"  {name}: expected={expected}, actual={actual} [{status}], size={_fmt_bytes(size)}")
+
+    if total_err > 0:
+        print(f"\n[WARNING] {total_err} errors occurred during build.")
 
 
 def main():
     args = parse_args()
-    print(f"[Config] {args.config}")
-    config = load_config(args.config)
-    print(f"[Config] split={args.split}, commit={args.commit_interval}, overwrite={args.overwrite}")
+    config_path = args.config
+    print(f"[Config] {config_path}")
+    config = load_config(config_path)
+    print(f"[Config] split={args.split}, commit={args.commit_interval}, "
+          f"overwrite={args.overwrite}")
+    print(f"[MP] num_workers={args.num_workers}, chunk_size={args.chunk_size}, "
+          f"queue_size={args.queue_size}")
+    print("[Safety] Sequential datasets + bounded queues + thread caps")
 
     build_cache(
         config=config,
+        config_path=config_path,
         split=args.split,
         output_dir=args.output_dir,
         commit_interval=args.commit_interval,
         overwrite=args.overwrite,
+        num_workers=args.num_workers,
+        chunk_size=args.chunk_size,
+        queue_size=args.queue_size,
     )
 
 

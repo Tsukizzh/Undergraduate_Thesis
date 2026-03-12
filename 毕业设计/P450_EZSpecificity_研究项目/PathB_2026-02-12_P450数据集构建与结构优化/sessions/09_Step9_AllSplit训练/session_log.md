@@ -301,7 +301,170 @@ scripts/step9/
 - [x] 方法2实施（3文件: cache_utils.py, build_structure_cache.py, main_training_cached.py）
 - [x] 方法2冒烟测试（导入/端到端/运行时重建/缓存往返 全部通过）
 - [x] 方法2 Codex审核（累计7轮: 4轮设计 + 3轮构建脚本）
-- [ ] 缓存构建（~2-4小时一次性）← **进行中**
-- [ ] 正式训练（50 epochs, fixed模式）
+- [x] 缓存构建 ✅ 7 LMDBs, 187,166 entries, 240GB total, ~945KB/sample
+- [x] 方法2 Benchmark Matrix（5种配置）
+- [x] 正式训练启动 → 4 epochs完成（epoch 0-3），epoch 4被中断
+- [x] BlockShuffleSampler实验 → ❌ 失败，2.26 it/s（比random慢5x）
+- [ ] 正式训练（50 epochs, fixed模式）← **暂停中**（内存问题）
 - [ ] 可选: legacy_bug基线训练（对比用）
 - [ ] 结果分析
+
+---
+
+## 2026-03-11：缓存构建完成 + Benchmark + 训练
+
+### 时间线（续）
+
+| 时间 | 事件 | 备注 |
+|------|------|------|
+| 2026-03-11 ~03:00 | 缓存构建完成 | 7 LMDBs, 187,166 entries, 240GB, ~945KB/sample |
+| 2026-03-11 ~04:00 | Benchmark Matrix (5配置) | 最优: 2 workers, no prefetch, 14.93 it/s |
+| 2026-03-11 ~09:29 | 首次正式训练启动 | 2 workers, random shuffle |
+| 2026-03-11 ~10:18 | 速度衰减诊断 | 12.45→5 it/s（page cache thrashing） |
+| 2026-03-11 ~10:28 | BlockShuffleSampler benchmark | ❌ 2.71→2.02 it/s，比random慢5x |
+| 2026-03-11 ~11:00 | 回退random shuffle，重启训练 | 2 workers |
+| 2026-03-11 12:13 | Epoch 0完成 | AUC=0.620, AUPR=0.180, 1h21m |
+| 2026-03-11 13:43 | Epoch 1完成 | AUC=0.649, AUPR=0.243, 1h30m |
+| 2026-03-11 15:02 | Epoch 2完成 | AUC=0.654, AUPR=0.291, 1h19m |
+| 2026-03-11 ~15:02 | 停训→改1 worker+EarlyStopping | 监控epoch 2完成后自动kill |
+| 2026-03-11 ~15:07 | 恢复训练 | 1 worker, --resume last, 从epoch 3继续 |
+| 2026-03-11 16:14 | Epoch 3完成 | AUC=0.632, AUPR=0.245, 1h07m |
+| 2026-03-11 ~16:36 | Epoch 4在28%时手动停止 | 内存问题严重（99%占用），用户体验太差 |
+
+### 方法2 Benchmark Matrix
+
+| Workers | Prefetch Wrapper | Speed (it/s) | vs M1 (4.3) |
+|---------|-----------------|--------------|-------------|
+| 6 | ON | 3.74 | 0.87x ❌ |
+| **2** | **OFF** | **14.93** | **3.47x** ✅ |
+| 4 | OFF | 14.78 | 3.44x |
+| 2 | ON | 14.66 | 3.41x |
+| 4 | ON | 14.64 | 3.41x |
+
+**关键发现**: 14.93 it/s是**误导性的**——仅跑300 batches，全在page cache中。真实训练240GB数据>>32GB RAM，page cache thrashing导致稳态仅~4.5 it/s。
+
+### 速度衰减分析（Random Shuffle, 2 Workers）
+
+| Batch | 累积速度(it/s) | 说明 |
+|-------|---------------|------|
+| 1000 | 9.98 | page cache warm |
+| 2000 | 7.81 | 开始下降 |
+| 4000 | 7.09 | |
+| 6000 | 6.82 | 趋于稳定 |
+| 8000 | 6.77 | |
+| 12000 | 5.67 | 继续缓慢下降 |
+| 16000 | 4.46 | 稳态 |
+
+**根因**: 240GB LMDB mmap vs 32GB RAM → random access导致page cache不断置换 → SSD random read成为瓶颈
+
+### BlockShuffleSampler 实验（❌ 失败）
+
+**设计**: 按dataset_id分组，LMDB byte-key排序，256样本为一个block，block间shuffle，block内batch-sized chunk shuffle。694个blocks。
+
+**结果**: 2.71→2.53→2.32→2.26→2.02 it/s，**持续下降，比random shuffle慢5倍**
+
+**Codex诊断（4个原因）**:
+1. **批次同质化**: block内所有样本来自同一数据集，图大小相似 → GNN计算不均匀
+2. **只优化了一个LMDB**: 每个样本读5个LMDB（structure+reaction+enzyme+grover+morgan），排序仅优化structure key
+3. **readahead=False反噬**: 关闭预读对随机有利，但block的顺序读反而得不到预读加速
+4. **LMDB overflow pages**: 945KB大值存在溢出页中，key顺序≠磁盘物理顺序
+
+**结论**: 立即废弃，回退random shuffle。
+
+### 训练结果
+
+| Epoch | AUC | AUPR | Loss | 耗时 | 速度(it/s) |
+|-------|-----|------|------|------|-----------|
+| 0 | 0.620 | 0.180 | 0.352 | 1h21m | 4.57 |
+| 1 | 0.649 | 0.243 | 0.357 | 1h30m | 4.15 |
+| **2** | **0.654** | **0.291** | 0.277 | 1h19m | 4.70 |
+| 3 | 0.632 | 0.245 | 0.303 | 1h07m | 5.53 |
+| 4(28%) | - | - | 0.252 | 22m | 4.77 |
+
+**最佳checkpoint**: epoch 2, AUPR=0.2906
+
+**Epoch 3 分数据集AUC**:
+| Dataset ID | AUC | 说明 |
+|------------|-----|------|
+| 0 (brenda) | 0.551 | 主数据集，最低 |
+| 1 (Duf) | nan | 样本不足 |
+| 2 (Esterase) | 0.810 | |
+| 3 (Gt_acceptor) | 0.906 | |
+| 4 (Nitrilase) | 1.000 | 样本极少 |
+| 5 (Phosphatase) | 0.632 | |
+| 6 (Thiolase) | nan | 样本不足 |
+
+### 保存的Checkpoints
+
+```
+results/09_Step9_AllSplit训练/checkpoints/
+├── allsplit-fold0-fixed-epoch01-aupr0.2429.ckpt  (22MB)
+├── allsplit-fold0-fixed-epoch02-aupr0.2906.ckpt  (22MB)  ← BEST
+├── allsplit-fold0-fixed-epoch03-aupr0.2451.ckpt  (22MB)
+└── last.ckpt                                      (22MB, = epoch 3)
+```
+
+### 代码变更记录
+
+**main_training_cached.py 修改**:
+1. `NUM_WORKERS`: 6→2→1（内存优化）
+2. 新增`--resume`参数: 支持`--resume last`断点续传
+3. 新增`BlockShuffleSampler`类（已废弃，train_dataloader已回退为shuffle=True）
+4. 新增`EarlyStopping` callback: patience=15, monitor=aupr/val, mode=max
+5. 新增`import EarlyStopping`
+6. Trainer callbacks: `[lr_monitor, ckpt_cb, early_stop_cb]`
+
+### 内存问题
+
+| 配置 | Worker内存 | 总RAM使用 | 电脑可用性 |
+|------|-----------|----------|-----------|
+| 2 workers | 各10.7GB | 31.4/32GB | 极卡 |
+| 1 worker | 20.9GB | 31.4/32GB | 仍然卡 |
+
+**根因**: LMDB mmap将240GB文件映射到内存，OS page cache填满32GB。committed memory=48.3GB>>32GB physical，系统active swapping(5.8GB swap used)。
+
+**Codex诊断**: 无法同时"留4-8GB空闲"和"保持当前速度"。三个选项:
+1. 回退无缓存训练（~4.3 it/s, 低内存）
+2. num_workers=0（可能仍满）
+3. 重建紧凑缓存（最优但耗时）
+
+### 原始论文 run_0 训练信息
+
+从TensorBoard日志和config分析得出:
+
+| 项目 | 值 |
+|------|-----|
+| 硬件 | NCSA Delta HPC, **4块GPU**, 36 CPU |
+| batch_size | 16 × 4 GPU = 64/step |
+| accumulate | 2 |
+| effective_batch | 128 |
+| 总epoch数 | **~256**（多次resume累积） |
+| 本次run | 69 epochs（从epoch ~187 resume） |
+| 收敛情况 | epoch ~187已收敛，后69个epoch几乎不涨 |
+| 最终AUC | 0.893 |
+| 最终AUPR | 0.607 |
+| 本次run时间 | ~14小时（4块GPU！） |
+| max_epochs | 50（每次run） |
+
+**AUC/AUPR收敛曲线（本次69个epoch）**:
+- AUC: 0.892→0.895→0.893（极度平坦）
+- AUPR: 0.597→0.614→0.607（微弱波动）
+
+### 暂停原因与后续计划
+
+1. **内存问题**: 240GB缓存在32GB机器上导致系统几乎不可用
+2. **速度收益有限**: 缓存稳态~4.5 it/s vs 无缓存~4.3 it/s，差距极小
+3. **原始论文需~256 epochs**: 4块GPU训练，我们仅完成4/256 epochs（1.5%进度）
+4. **用户决定**: 暂停训练，2026-03-12找导师要服务器，在服务器上恢复
+5. **服务器优势**: 更大RAM（无mmap问题）+ 多GPU（加速4-8x）+ 不影响日常使用
+
+### 恢复训练指南
+
+如需恢复训练（从epoch 3 checkpoint继续）:
+```bash
+cd D:/EZSpecificity_Project/src
+D:/anaconda3/envs/torch/python.exe "../毕业设计/.../scripts/09_Step9_AllSplit训练/main_training_cached.py" \
+    --edge-mode fixed --num-workers 1 --no-prefetch-wrapper --resume last
+```
+
+当前配置: 1 worker, EarlyStopping(patience=15), random shuffle, fp16
