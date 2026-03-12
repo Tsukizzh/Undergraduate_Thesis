@@ -135,23 +135,85 @@ PathB_.../
 ## 性能优化
 
 ### 基线性能（优化前）
-- GPU利用率: 8% avg, max 40%
+- GPU利用率: 8% avg, max 40%（从未超过50%）
 - 速度: 1.71 it/s (0.58s/batch)
-- 44,582 batches/epoch, ~7.2h/epoch, 50 epochs ≈ 15天
-- 瓶颈: CPU数据加载（EdgeConnection k-NN占50-70%）
+- 44,582 batches/epoch（batch_size=4），~7.2h/epoch, 50 epochs ≈ 15天
+- VRAM使用: ~8GB / 12GB（4GB空余）
+- GPU功耗: 42W / 220W TDP（仅19%）
+- **瓶颈: 100% CPU数据加载**（不是GPU计算）
+
+#### 每样本CPU耗时分解
+| 操作 | 占比 | 耗时 | 说明 |
+|------|------|------|------|
+| EdgeConnection k-NN图构建 | 50-70% | 10-50ms | k=48，scipy spatial → 主要瓶颈 |
+| LMDB读取 + pickle反序列化 | 15-25% | 5-8ms | 多个LMDB文件 |
+| 特征padding/tensorization | 5-10% | ~1ms | |
+| 原子特征化(one-hot编码) | ~2% | <1ms | |
 
 ### 方法1: 参数调优（已完成 + 基准测试）
+
+#### 参数变更详情
+| 参数 | 优化前 | 优化后 | 原因 |
+|------|--------|--------|------|
+| batch_size | 4 | **8** | VRAM有4GB空余 |
+| accumulate_grad_batches | 8 | **4** | 保持effective batch=32不变 |
+| num_workers | 2 | **6** | CPU有20线程，6是32GB RAM极限 |
+| prefetch_factor | 2 | **4** | 每worker更多预取缓冲 |
+| BackgroundPrefetchLoader max_prefetch | 2 | **4** | 更大预取队列 |
+
+#### 基准测试结果（44分钟, 11488/22292 batches）
 | 指标 | 优化前 | 方法1 | 变化 |
 |------|--------|-------|------|
 | 速度 | 1.71 it/s | **4.3 it/s** | +2.5x |
 | GPU利用率(avg) | 8% | **29.0%** | +3.6x |
 | GPU利用率(max) | 40% | **94%** | 可满载 |
-| VRAM | ~8GB | **11.4GB (93%)** | 接近极限 |
+| VRAM | ~8GB | **11.4GB (93.1%)** | 接近极限 |
+| GPU功耗 | 42W | **77.1W (35% TDP)** | 1.8x |
 | 每epoch | ~7.2h | **~1.44h** | -5x |
 | 50 epochs | ~15天 | **~3天** | 可行 |
 
-GPU脉冲模式: 646次活跃段(avg 2.0s, ~60% util) + 646次空闲段(avg 2.1s)
+#### GPU利用率分布（稳态39分钟采样）
+| 区间 | 占比 | 说明 |
+|------|------|------|
+| 0-5% | 46.5% | GPU空闲等数据 |
+| 6-30% | 14.3% | 过渡 |
+| 31-60% | 15.4% | 中等负载 |
+| 61-100% | 23.1% | 满载计算 |
+
+**GPU脉冲模式**: 646次活跃段(avg 2.0s, ~60% util) + 646次空闲段(avg 2.1s)
 瓶颈仍是CPU数据加载 — GPU每次~2s算完，等~2s等下一个batch
+
+#### 速度爬升曲线（冷启动→稳态）
+| Batch | 速度(it/s) | 说明 |
+|-------|-----------|------|
+| 50 | 1.45 | 冷启动 |
+| 200 | 2.36 | worker预热中 |
+| 500 | 3.72 | 接近稳态 |
+| 1000+ | **4.3** | 稳态 |
+
+#### num_workers=10 尝试（❌ 失败）
+- 尝试增加到10个worker以进一步加速
+- **结果**: 32GB RAM几乎OOM，系统卡死
+- 估算: 10 workers × ~5GB/worker = 50GB >> 32GB物理内存
+- **结论**: 回退到6 workers（6×5GB=30GB，接近极限）。无法通过增加worker继续提速
+
+### 其他优化方法评估（均已排除）
+
+#### 方法3: k-NN移至GPU（❌ 不推荐）
+- DataLoader workers（Windows spawn模式）无法访问GPU
+- 需要num_workers=0（失去并行LMDB读取）或架构改造
+- 效果退化为方法2的子集，不值得
+
+#### 方法4: 替换LMDB+pickle为pre-tensorized格式（⏭️ 低优先级）
+- 将特征存为.pt文件代替LMDB+pickle
+- 独立增益: ~15-20%加速
+- 已被方法2覆盖（方法2直接存处理后数据）
+- 需修改src/Datasets/代码，侵入性大
+
+#### 方法5: torch.compile（❌ 不值得）
+- 瓶颈在CPU数据加载，不在GPU模型计算
+- 预期增益: <5%
+- 完全跳过
 
 ### 方法2: 结构缓存（设计完成 + 4轮Codex验证完成，待实施）
 
@@ -404,29 +466,72 @@ results/09_Step9_AllSplit训练/checkpoints/
 └── last.ckpt                                      (22MB, = epoch 3)
 ```
 
+### 操作细节
+
+#### Epoch 2完成后的停训操作
+- **需求**: 在epoch 2完成时立即停止训练，避免新epoch消耗时间
+- **方法**: 编写bash监控脚本，轮询训练日志检测epoch完成标志，触发后自动`taskkill`
+- **执行**: 成功在epoch 2验证完成后秒级kill，无资源浪费
+
+#### 恢复训练（Epoch 3）
+- PyTorch Lightning 1.9.0 `trainer.fit(ckpt_path=...)` 恢复: 模型权重 + 优化器状态 + epoch计数器 + 调度器状态
+- 命令: `--resume last` → 从`last.ckpt`恢复，自动从epoch 3继续
+- 同时新增EarlyStopping和减少worker
+
+#### 原始论文学习率调度
+- 使用 `ReduceLROnPlateau`（不是EarlyStopping）: patience=10, factor=0.5, min_lr=5e-6
+- 我们额外加了EarlyStopping(patience=15)作为安全网
+
+#### Zombie进程清理
+- 发现两个旧训练进程仍在运行（PID 60052: 旧full training, PID 12044: benchmark）
+- 使用 `taskkill //T //F` 强制终止
+- 释放了被占用的GPU/CPU资源
+
 ### 代码变更记录
 
 **main_training_cached.py 修改**:
-1. `NUM_WORKERS`: 6→2→1（内存优化）
+1. `NUM_WORKERS`: 6→2→1（内存优化，三次变更）
 2. 新增`--resume`参数: 支持`--resume last`断点续传
-3. 新增`BlockShuffleSampler`类（已废弃，train_dataloader已回退为shuffle=True）
+3. 新增`BlockShuffleSampler`类（lines 199-250，已废弃，train_dataloader回退为shuffle=True）
 4. 新增`EarlyStopping` callback: patience=15, monitor=aupr/val, mode=max
-5. 新增`import EarlyStopping`
-6. Trainer callbacks: `[lr_monitor, ckpt_cb, early_stop_cb]`
+5. 新增`import EarlyStopping` (line 72)
+6. Trainer callbacks: `[lr_monitor, ckpt_cb, early_stop_cb]` (line 485)
 
-### 内存问题
+### 内存问题（详细分析）
 
-| 配置 | Worker内存 | 总RAM使用 | 电脑可用性 |
-|------|-----------|----------|-----------|
-| 2 workers | 各10.7GB | 31.4/32GB | 极卡 |
-| 1 worker | 20.9GB | 31.4/32GB | 仍然卡 |
+#### 任务管理器实测数据
+| 配置 | Worker Working Set | 总RAM使用 | Committed | Swap使用 | 电脑可用性 |
+|------|-------------------|----------|-----------|---------|-----------|
+| 2 workers | 各10.7GB | 31.4/32GB (99%) | 48.3GB | 5.8GB | 极卡，鼠标延迟>1s |
+| 1 worker | 20.9GB | 31.4/32GB (99%) | 48.3GB | 5.8GB | 仍然卡，无改善 |
 
-**根因**: LMDB mmap将240GB文件映射到内存，OS page cache填满32GB。committed memory=48.3GB>>32GB physical，系统active swapping(5.8GB swap used)。
+**关键观察**: 减少worker数量**不能**减少总内存使用——因为LMDB mmap的page cache由OS管理，不受worker数量影响。无论几个worker，OS都会尝试将240GB LMDB映射到32GB RAM中。
 
-**Codex诊断**: 无法同时"留4-8GB空闲"和"保持当前速度"。三个选项:
-1. 回退无缓存训练（~4.3 it/s, 低内存）
-2. num_workers=0（可能仍满）
-3. 重建紧凑缓存（最优但耗时）
+#### 根因分析
+```
+LMDB mmap机制:
+  lmdb.open(map_size=256GB) → OS创建虚拟内存映射
+  → 随机读取 → OS按需加载pages到物理RAM
+  → 240GB数据 >> 32GB RAM → page不断被换入换出
+  → committed memory = 48.3GB（虚拟承诺）>> 32GB physical
+  → 系统被迫使用5.8GB swap file
+  → 磁盘I/O成为瓶颈 → 系统整体卡顿
+```
+
+#### 为什么缓存速度收益极小
+- **Benchmark骗局**: 300 batches × 8 samples × ~1MB ≈ 2.4GB，完全在32GB page cache中 → 14.93 it/s
+- **真实训练**: 22,292 batches × 8 samples × ~1MB ≈ 22GB/epoch，加上5个LMDB的交叉访问，远超page cache容量
+- **稳态速度**: 缓存4.5 it/s vs 无缓存4.3 it/s（+4.6%），因为两者都受限于SSD random read
+
+#### Codex诊断结论
+**无法同时实现"留4-8GB内存空闲"和"保持当前速度"**。在32GB机器上跑240GB mmap，二者不可兼得。
+
+三个替代方案:
+1. **回退无缓存训练**（~4.3 it/s, 低内存）— 放弃缓存，回到Method 1的main_training.py
+2. **num_workers=0**（可能仍满）— 主进程直接读LMDB，但mmap问题依旧
+3. **重建紧凑缓存**（最优但耗时）— 将945KB/sample压缩到~50KB（仅存必要字段，使用稀疏格式）
+
+**最终决策**: 以上方案均为权宜之计。等服务器（多GPU+大RAM）才能真正解决。
 
 ### 原始论文 run_0 训练信息
 
