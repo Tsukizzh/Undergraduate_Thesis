@@ -8,10 +8,42 @@ Drop-in replacement for main_training.py. Uses:
 Fixes the edge-attr/edge-index ordering bug in original EdgeConnection (transforms.py:130-147)
 when run with --edge-mode fixed (default).
 
-Usage:
-    cd D:/EZSpecificity_Project/src
-    D:/anaconda3/envs/torch/python.exe "../毕业设计/.../scripts/09_Step9_AllSplit训练/main_training_cached.py"
-    D:/anaconda3/envs/torch/python.exe "../毕业设计/.../scripts/09_Step9_AllSplit训练/main_training_cached.py" --edge-mode legacy_bug
+Checkpoint selection & early stopping: monitor AUC-ROC (auc/val).
+Metrics CSV: epoch, lr, grad_norm, train_loss, val_loss, auc, aupr, per-family (7x2).
+Plots: auto-generated after training (3x2 training dynamics + per-family bar chart).
+
+=== HOW TO START TRAINING ===
+
+  # Fresh start:
+  cd D:/EZSpecificity_Project/src
+  D:/anaconda3/envs/torch/python.exe "../毕业设计/P450_EZSpecificity_研究项目/PathB_2026-02-12_P450数据集构建与结构优化/scripts/09_Step9_AllSplit训练/main_training_cached.py" --edge-mode fixed --num-workers 2 --no-prefetch-wrapper
+
+  # Resume from last checkpoint:
+  cd D:/EZSpecificity_Project/src
+  D:/anaconda3/envs/torch/python.exe "../毕业设计/P450_EZSpecificity_研究项目/PathB_2026-02-12_P450数据集构建与结构优化/scripts/09_Step9_AllSplit训练/main_training_cached.py" --edge-mode fixed --num-workers 2 --no-prefetch-wrapper --resume last
+
+  # Stop training:
+  taskkill /IM python.exe /F
+
+=== HOW TO EVALUATE ===
+
+  cd D:/EZSpecificity_Project/src
+  D:/anaconda3/envs/torch/python.exe "../毕业设计/P450_EZSpecificity_研究项目/PathB_2026-02-12_P450数据集构建与结构优化/scripts/09_Step9_AllSplit训练/eval_checkpoints.py"
+
+=== OUTPUT FILES ===
+
+  results/09_Step9_AllSplit训练/
+  ├── checkpoints/           # Model checkpoints (top-3 by AUC + last.ckpt)
+  ├── metrics_history.csv    # Per-epoch metrics (written during training, append-mode)
+  └── eval_epochXX/          # Evaluation figures (created by eval_checkpoints.py)
+      ├── fig1_training_dynamics.png
+      ├── fig2_best_checkpoint_analysis.png
+      ├── fig3_family_heatmap.png
+      └── metrics_history.csv
+
+  Data persistence: metrics_history.csv is flushed after EVERY validation epoch.
+  Killing training mid-epoch only loses the current epoch's in-memory accumulators.
+  All completed epochs are safe on disk.
 """
 from __future__ import annotations
 
@@ -69,7 +101,7 @@ os.makedirs(CKPT_DIR, exist_ok=True)
 import torch
 import pytorch_lightning as pl
 from easydict import EasyDict
-from pytorch_lightning.callbacks import EarlyStopping, LearningRateMonitor, ModelCheckpoint
+from pytorch_lightning.callbacks import Callback, EarlyStopping, LearningRateMonitor, ModelCheckpoint
 from pytorch_lightning.loggers import TensorBoardLogger
 from torch_geometric.data import DataLoader
 
@@ -330,7 +362,333 @@ class CachedTrainingDataModule(pl.LightningDataModule):
 
 
 # ============================================================
-# 8. Main
+# 8. Metrics CSV Logger Callback
+# ============================================================
+METRICS_DIR = os.path.join(PATHB_DIR, "results", "09_Step9_AllSplit训练")
+METRICS_CSV = os.path.join(METRICS_DIR, "metrics_history.csv")
+
+# Family name mapping (tag index → family name, from config data sources)
+FAMILY_NAMES = {
+    "0": "brenda", "1": "Duf", "2": "Esterase", "3": "Gt_acceptor",
+    "4": "Nitrilase", "5": "Phosphatase", "6": "Thiolase",
+}
+
+
+def _metric_val(m, key):
+    """Extract float from callback_metrics, return None if missing/nan."""
+    v = m.get(key)
+    if v is None:
+        return None
+    v = v.item() if hasattr(v, "item") else float(v)
+    import math
+    return v if not math.isnan(v) else None
+
+
+class MetricsCSVLogger(Callback):
+    """Log comprehensive metrics to CSV after each validation epoch."""
+
+    HEADER = (
+        "epoch,timestamp,lr,grad_norm,"
+        "train_loss,val_loss,"
+        "val_auc,val_aupr,"
+        "val_auc_0,val_auc_1,val_auc_2,val_auc_3,val_auc_4,val_auc_5,val_auc_6,"
+        "val_aupr_0,val_aupr_1,val_aupr_2,val_aupr_3,val_aupr_4,val_aupr_5,val_aupr_6"
+    )
+
+    def __init__(self, csv_path: str = METRICS_CSV):
+        super().__init__()
+        self.csv_path = csv_path
+        self._train_loss_sum = 0.0
+        self._train_loss_count = 0
+        self._grad_norm_sum = 0.0
+        self._grad_norm_count = 0
+        self._ensure_csv_header(csv_path)
+
+    @staticmethod
+    def _ensure_csv_header(csv_path):
+        """Create CSV if missing, or migrate old CSV if header changed."""
+        expected_cols = MetricsCSVLogger.HEADER.replace("\n", "").split(",")
+        if not os.path.exists(csv_path):
+            with open(csv_path, "w", encoding="utf-8") as f:
+                f.write(MetricsCSVLogger.HEADER + "\n")
+            return
+        with open(csv_path, "r", encoding="utf-8") as f:
+            first_line = f.readline().strip()
+        existing_cols = first_line.split(",")
+        if existing_cols == expected_cols:
+            return
+        # Migrate: re-read all rows, re-write with new header
+        import csv as csv_mod
+        rows = []
+        with open(csv_path, "r", encoding="utf-8") as f:
+            reader = csv_mod.DictReader(f)
+            for row in reader:
+                rows.append(row)
+        with open(csv_path, "w", newline="", encoding="utf-8") as f:
+            writer = csv_mod.DictWriter(f, fieldnames=expected_cols, extrasaction="ignore")
+            writer.writeheader()
+            for row in rows:
+                writer.writerow(row)
+        print(f"[MetricsCSV] Migrated {len(rows)} rows to new schema ({csv_path})")
+
+    def on_train_batch_end(self, trainer, pl_module, outputs, batch, batch_idx):
+        # SS.training_step returns a bare tensor, so handle all cases
+        import torch
+        if isinstance(outputs, torch.Tensor):
+            loss = outputs
+        elif isinstance(outputs, dict):
+            loss = outputs.get("loss")
+        else:
+            loss = getattr(outputs, "loss", None)
+        if loss is not None:
+            self._train_loss_sum += loss.item()
+            self._train_loss_count += 1
+
+    def on_before_optimizer_step(self, trainer, pl_module, optimizer, opt_idx=0):
+        import torch
+        grads = [p.grad.detach().flatten() for p in pl_module.parameters() if p.grad is not None]
+        if grads:
+            total_norm = torch.cat(grads).norm(2).item()  # single GPU sync
+            self._grad_norm_sum += total_norm
+            self._grad_norm_count += 1
+
+    def on_validation_epoch_end(self, trainer, pl_module):
+        if trainer.sanity_checking:
+            return
+        m = trainer.callback_metrics
+        epoch = trainer.current_epoch
+        ts = time.strftime("%Y-%m-%d %H:%M:%S")
+
+        # LR from optimizer
+        lr = ""
+        if trainer.optimizers:
+            opt = trainer.optimizers[0]
+            lr = f"{opt.param_groups[0]['lr']:.2e}"
+
+        # Gradient norm (accumulated average)
+        grad_norm = ""
+        if self._grad_norm_count > 0:
+            grad_norm = f"{self._grad_norm_sum / self._grad_norm_count:.4f}"
+            self._grad_norm_sum = 0.0
+            self._grad_norm_count = 0
+
+        # Train loss (accumulated)
+        train_loss = ""
+        if self._train_loss_count > 0:
+            train_loss = f"{self._train_loss_sum / self._train_loss_count:.6f}"
+            self._train_loss_sum = 0.0
+            self._train_loss_count = 0
+
+        # Val metrics
+        val_loss = _metric_val(m, "sp_loss/val")
+        val_auc = _metric_val(m, "auc/val")
+        val_aupr = _metric_val(m, "aupr/val")
+
+        # Per-family metrics
+        family_aucs = [_metric_val(m, f"auc/{i}/val") for i in range(7)]
+        family_auprs = [_metric_val(m, f"aupr/{i}/val") for i in range(7)]
+
+        def fmt(v):
+            return f"{v:.6f}" if v is not None else ""
+
+        row = (
+            f"{epoch},{ts},{lr},{grad_norm},"
+            f"{train_loss},{fmt(val_loss)},"
+            f"{fmt(val_auc)},{fmt(val_aupr)},"
+            + ",".join(fmt(a) for a in family_aucs) + ","
+            + ",".join(fmt(a) for a in family_auprs)
+        )
+        with open(self.csv_path, "a", encoding="utf-8") as f:
+            f.write(row + "\n")
+
+        # Console summary
+        fam_aucs_valid = [a for a in family_aucs if a is not None]
+        macro_auc = sum(fam_aucs_valid) / len(fam_aucs_valid) if fam_aucs_valid else 0
+        worst_auc = min(fam_aucs_valid) if fam_aucs_valid else 0
+        print(f"[Metrics] ep={epoch} auc={fmt(val_auc)} aupr={fmt(val_aupr)} "
+              f"macro_auc={macro_auc:.4f} worst_auc={worst_auc:.4f} "
+              f"train_loss={train_loss} val_loss={fmt(val_loss)} grad_norm={grad_norm}")
+
+
+def plot_training_curves(csv_path: str = METRICS_CSV):
+    """Generate comprehensive training report figures."""
+    try:
+        import csv as csv_mod
+        import matplotlib
+        matplotlib.use("Agg")
+        import matplotlib.pyplot as plt
+        import numpy as np
+
+        rows = []
+        with open(csv_path, encoding="utf-8") as f:
+            reader = csv_mod.DictReader(f)
+            for row in reader:
+                rows.append(row)
+
+        if len(rows) < 2:
+            print("[Plot] Not enough data points.")
+            return
+
+        def col_floats(key):
+            return [float(r[key]) if r.get(key) else np.nan for r in rows]
+
+        epochs = [int(r["epoch"]) for r in rows]
+        val_auc = col_floats("val_auc")
+        val_aupr = col_floats("val_aupr")
+        val_loss = col_floats("val_loss")
+        train_loss = col_floats("train_loss")
+        lr_vals = col_floats("lr")
+        grad_norm = col_floats("grad_norm")
+
+        # Per-family AUC
+        fam_aucs = {}
+        for i in range(7):
+            name = FAMILY_NAMES.get(str(i), str(i))
+            fam_aucs[name] = col_floats(f"val_auc_{i}")
+
+        # ---- Figure 1: Core Learning Curves (3x2) ----
+        fig, axes = plt.subplots(3, 2, figsize=(14, 15))
+
+        # 1a: Train/Val Loss
+        ax = axes[0, 0]
+        if not all(np.isnan(train_loss)):
+            ax.plot(epochs, train_loss, "o-", label="Train", color="#FF5722", markersize=4)
+        if not all(np.isnan(val_loss)):
+            ax.plot(epochs, val_loss, "s-", label="Val", color="#2196F3", markersize=4)
+        ax.set_xlabel("Epoch"); ax.set_ylabel("Loss"); ax.set_title("Train / Val Loss")
+        ax.legend(); ax.grid(True, alpha=0.3)
+
+        # 1b: AUC + AUPR
+        ax = axes[0, 1]
+        ax.plot(epochs, val_auc, "o-", label="AUC-ROC", color="#2196F3", markersize=4)
+        ax.plot(epochs, val_aupr, "s-", label="AUPR", color="#4CAF50", markersize=4)
+        ax.set_xlabel("Epoch"); ax.set_ylabel("Score"); ax.set_title("Val AUC-ROC & AUPR")
+        ax.legend(); ax.grid(True, alpha=0.3)
+        bi = int(np.nanargmax(val_auc))
+        ax.annotate(f"Best AUC: {val_auc[bi]:.4f} (ep{epochs[bi]})",
+                    xy=(epochs[bi], val_auc[bi]), xytext=(0, 12),
+                    textcoords="offset points", arrowprops=dict(arrowstyle="->", color="red"),
+                    color="red", fontweight="bold", ha="center", fontsize=9)
+
+        # 1c: Learning Rate
+        ax = axes[1, 0]
+        if not all(np.isnan(lr_vals)):
+            ax.plot(epochs, lr_vals, "D-", color="#FF9800", markersize=4, linewidth=2)
+            ax.set_yscale("log")
+            ax.set_xlabel("Epoch"); ax.set_ylabel("Learning Rate")
+            ax.set_title("Learning Rate Schedule")
+            ax.grid(True, alpha=0.3)
+        else:
+            ax.text(0.5, 0.5, "No LR data (pre-upgrade epochs)", ha="center", va="center",
+                    transform=ax.transAxes, fontsize=12, color="gray")
+            ax.set_title("Learning Rate Schedule")
+
+        # 1d: Gradient Norm
+        ax = axes[1, 1]
+        if not all(np.isnan(grad_norm)):
+            ax.plot(epochs, grad_norm, "^-", color="#9C27B0", markersize=4, linewidth=2)
+            ax.set_xlabel("Epoch"); ax.set_ylabel("Avg Gradient L2 Norm")
+            ax.set_title("Gradient Norm (per epoch avg)")
+            ax.grid(True, alpha=0.3)
+        else:
+            ax.text(0.5, 0.5, "No gradient norm data (pre-upgrade epochs)", ha="center",
+                    va="center", transform=ax.transAxes, fontsize=12, color="gray")
+            ax.set_title("Gradient Norm")
+
+        # 1e: Generalization gap
+        ax = axes[2, 0]
+        if not all(np.isnan(train_loss)) and not all(np.isnan(val_loss)):
+            gap = [v - t if not (np.isnan(v) or np.isnan(t)) else np.nan
+                   for t, v in zip(train_loss, val_loss)]
+            ax.plot(epochs, gap, "D-", color="#795548", markersize=4)
+            ax.axhline(y=0, color="gray", linestyle="--", alpha=0.5)
+            ax.set_xlabel("Epoch"); ax.set_ylabel("Val Loss - Train Loss")
+            ax.set_title("Generalization Gap")
+            ax.grid(True, alpha=0.3)
+        else:
+            ax.text(0.5, 0.5, "No train loss data", ha="center", va="center",
+                    transform=ax.transAxes, fontsize=12, color="gray")
+            ax.set_title("Generalization Gap")
+
+        # 1f: Per-Family AUC over epochs
+        ax = axes[2, 1]
+        colors = ["#E53935", "#1E88E5", "#43A047", "#FB8C00", "#8E24AA", "#00ACC1", "#6D4C41"]
+        macro_aucs = []
+        for idx, (name, vals) in enumerate(fam_aucs.items()):
+            valid = [v for v in vals if not np.isnan(v)]
+            if valid:
+                ax.plot(epochs, vals, "-", label=name, color=colors[idx % 7],
+                        alpha=0.7, linewidth=1.5, markersize=3)
+        for ei in range(len(epochs)):
+            fam_vals = [fam_aucs[n][ei] for n in fam_aucs
+                        if not np.isnan(fam_aucs[n][ei])]
+            macro_aucs.append(np.mean(fam_vals) if fam_vals else np.nan)
+        ax.plot(epochs, macro_aucs, "k-", linewidth=2.5, label="Macro Avg", zorder=10)
+        ax.set_xlabel("Epoch"); ax.set_ylabel("AUC-ROC"); ax.set_title("Per-Family AUC Trend")
+        ax.legend(fontsize=7, ncol=2); ax.grid(True, alpha=0.3)
+
+        plt.suptitle("Step 9: AllSplit Training Report", fontsize=16, fontweight="bold")
+        plt.tight_layout()
+        path1 = os.path.join(os.path.dirname(csv_path), "fig1_training_dynamics.png")
+        plt.savefig(path1, dpi=150, bbox_inches="tight")
+        print(f"[Plot] Fig1 saved: {path1}")
+        plt.close()
+
+        # ---- Figure 2: Per-Family Bar Chart (final epoch) ----
+        fig, ax = plt.subplots(figsize=(12, 6))
+        last = rows[-1]
+        names, aucs_bar, auprs_bar = [], [], []
+        for i in range(7):
+            name = FAMILY_NAMES.get(str(i), str(i))
+            a = float(last.get(f"val_auc_{i}", "nan"))
+            p = float(last.get(f"val_aupr_{i}", "nan"))
+            if not (np.isnan(a) and np.isnan(p)):
+                names.append(name)
+                aucs_bar.append(a if not np.isnan(a) else 0)
+                auprs_bar.append(p if not np.isnan(p) else 0)
+
+        if names:
+            x = np.arange(len(names))
+            w = 0.35
+            bars1 = ax.bar(x - w/2, aucs_bar, w, label="AUC-ROC", color="#2196F3", alpha=0.8)
+            bars2 = ax.bar(x + w/2, auprs_bar, w, label="AUPR", color="#4CAF50", alpha=0.8)
+            ax.set_xticks(x); ax.set_xticklabels(names, rotation=30, ha="right")
+            ax.set_ylabel("Score"); ax.set_title(f"Per-Family Performance (Epoch {last['epoch']})")
+            ax.legend(); ax.grid(True, alpha=0.3, axis="y")
+            # Value labels
+            for bar in bars1:
+                h = bar.get_height()
+                if h > 0:
+                    ax.text(bar.get_x() + bar.get_width()/2, h + 0.01, f"{h:.3f}",
+                            ha="center", va="bottom", fontsize=8)
+            for bar in bars2:
+                h = bar.get_height()
+                if h > 0:
+                    ax.text(bar.get_x() + bar.get_width()/2, h + 0.01, f"{h:.3f}",
+                            ha="center", va="bottom", fontsize=8)
+            # Overall lines
+            oa = float(last.get("val_auc", "nan"))
+            op = float(last.get("val_aupr", "nan"))
+            if not np.isnan(oa):
+                ax.axhline(y=oa, color="#2196F3", linestyle="--", alpha=0.5, label=f"Overall AUC={oa:.3f}")
+            if not np.isnan(op):
+                ax.axhline(y=op, color="#4CAF50", linestyle="--", alpha=0.5, label=f"Overall AUPR={op:.3f}")
+            ax.legend(fontsize=9)
+
+        plt.tight_layout()
+        path2 = os.path.join(os.path.dirname(csv_path), "fig2_family_performance.png")
+        plt.savefig(path2, dpi=150, bbox_inches="tight")
+        print(f"[Plot] Fig2 saved: {path2}")
+        plt.close()
+
+    except Exception as e:
+        import traceback
+        print(f"[Plot] Failed: {e}")
+        traceback.print_exc()
+
+
+# ============================================================
+# 9. Main
 # ============================================================
 def main():
     args = parse_args()
@@ -467,15 +825,16 @@ def main():
         lr_monitor = LearningRateMonitor(logging_interval="step")
         ckpt_cb = ModelCheckpoint(
             dirpath=CKPT_DIR,
-            filename=f"allsplit-fold0-{args.edge_mode}-epoch{{epoch:02d}}-aupr{{aupr/val:.4f}}",
-            monitor="aupr/val", mode="max",
+            filename=f"allsplit-fold0-{args.edge_mode}-epoch{{epoch:02d}}-auc{{auc/val:.4f}}",
+            monitor="auc/val", mode="max",
             save_top_k=3, save_last=True, verbose=True,
             auto_insert_metric_name=False,
         )
         early_stop_cb = EarlyStopping(
-            monitor="aupr/val", mode="max", patience=15, verbose=True,
+            monitor="auc/val", mode="max", patience=15, verbose=True,
         )
         logger = TensorBoardLogger(save_dir=LOG_DIR, name=f"allsplit_fold0_{args.edge_mode}")
+        metrics_csv_cb = MetricsCSVLogger()
 
         print("[3/4] Initializing Trainer...")
         trainer = pl.Trainer(
@@ -485,7 +844,7 @@ def main():
             accumulate_grad_batches=config.training.accumulate_grad_batches,
             check_val_every_n_epoch=config.training.val_frequency,
             num_sanity_val_steps=2,
-            callbacks=[lr_monitor, ckpt_cb, early_stop_cb],
+            callbacks=[lr_monitor, ckpt_cb, early_stop_cb, metrics_csv_cb],
             logger=logger,
             enable_progress_bar=True, log_every_n_steps=50,
         )
@@ -526,8 +885,154 @@ def main():
             print(f"Batches/epoch: {n_batches}, Epochs: {n_epochs}, "
                   f"Total batches: {total_batches}, avg {elapsed/total_batches:.3f}s/batch")
         print(f"Best ckpt: {ckpt_cb.best_model_path}")
-        print(f"Best aupr/val: {ckpt_cb.best_model_score}")
+        print(f"Best auc/val: {ckpt_cb.best_model_score}")
         print("=" * 70)
+
+        # ---- Auto post-training analysis ----
+        # 1) Plot training curves from CSV (loss, AUC, LR, grad_norm, per-family)
+        plot_training_curves()
+
+        # 2) Detailed analysis of best checkpoint (PR/ROC curves, confusion matrix, etc.)
+        best_path = ckpt_cb.best_model_path
+        if best_path and os.path.exists(best_path):
+            print("\n[Post-training] Running detailed eval on best checkpoint...")
+            try:
+                _run_best_checkpoint_analysis(model_cls=SS, config=config, dm=dm,
+                                               ckpt_path=best_path, trainer=trainer)
+            except Exception as e:
+                import traceback
+                print(f"[Post-training] Analysis failed: {e}")
+                traceback.print_exc()
+
+
+def _run_best_checkpoint_analysis(model_cls, config, dm, ckpt_path, trainer):
+    """Run validation on best checkpoint and generate detailed figures (PR/ROC, confusion matrix)."""
+    import matplotlib
+    matplotlib.use("Agg")
+    import matplotlib.pyplot as plt
+    from sklearn import metrics as skmetrics
+
+    # Run validation to get raw logits
+    model = model_cls(config)
+    trainer_eval = pl.Trainer(
+        accelerator="gpu", devices=1, precision=16,
+        enable_progress_bar=True, logger=False,
+    )
+    trainer_eval.validate(model, datamodule=dm, ckpt_path=ckpt_path)
+
+    logits = getattr(model, "logits", None)
+    labels = getattr(model, "labels", None)
+    if logits is None or labels is None:
+        print("[Post-training] Model did not store logits/labels, skipping detailed analysis.")
+        return
+
+    import numpy as np
+    logits = np.array(logits).ravel()
+    labels = np.array(labels).ravel()
+    probs = 1.0 / (1.0 + np.exp(-logits))
+
+    # Extract epoch from checkpoint
+    ckpt_data = torch.load(ckpt_path, map_location="cpu", weights_only=False)
+    epoch = ckpt_data.get("epoch", -1)
+
+    output_dir = os.path.join(METRICS_DIR, f"eval_epoch{epoch:02d}")
+    os.makedirs(output_dir, exist_ok=True)
+
+    # ---- Figure: Best Checkpoint Analysis (3x2) ----
+    fig, axes = plt.subplots(3, 2, figsize=(14, 15))
+
+    # Score distribution
+    ax = axes[0, 0]
+    pos_scores, neg_scores = probs[labels == 1], probs[labels == 0]
+    bins = np.linspace(0, 1, 50)
+    ax.hist(neg_scores, bins=bins, alpha=0.6, label=f"Neg (n={len(neg_scores)})",
+            color="#2196F3", density=True)
+    ax.hist(pos_scores, bins=bins, alpha=0.6, label=f"Pos (n={len(pos_scores)})",
+            color="#E53935", density=True)
+    ax.set_xlabel("Predicted Probability"); ax.set_ylabel("Density")
+    ax.set_title("Score Distribution"); ax.legend(); ax.grid(True, alpha=0.3)
+
+    # PR Curve
+    ax = axes[0, 1]
+    precision, recall, _ = skmetrics.precision_recall_curve(labels, probs)
+    aupr_val = skmetrics.average_precision_score(labels, probs)
+    prevalence = labels.mean()
+    ax.plot(recall, precision, color="#4CAF50", linewidth=2, label=f"AUPR={aupr_val:.4f}")
+    ax.axhline(y=prevalence, color="gray", linestyle="--", alpha=0.7,
+                label=f"Prevalence={prevalence:.3f}")
+    ax.set_xlabel("Recall"); ax.set_ylabel("Precision")
+    ax.set_title("Precision-Recall Curve"); ax.legend(); ax.grid(True, alpha=0.3)
+    ax.set_xlim(0, 1); ax.set_ylim(0, 1)
+
+    # ROC Curve
+    ax = axes[1, 0]
+    fpr, tpr, _ = skmetrics.roc_curve(labels, probs)
+    auroc = skmetrics.auc(fpr, tpr)
+    ax.plot(fpr, tpr, color="#2196F3", linewidth=2, label=f"AUC={auroc:.4f}")
+    ax.plot([0, 1], [0, 1], "k--", alpha=0.3)
+    ax.set_xlabel("FPR"); ax.set_ylabel("TPR")
+    ax.set_title("ROC Curve"); ax.legend(); ax.grid(True, alpha=0.3)
+
+    # Threshold sweep
+    ax = axes[1, 1]
+    thresholds = np.linspace(0.01, 0.99, 200)
+    f1s, precs, recs = [], [], []
+    for t in thresholds:
+        preds = (probs >= t).astype(int)
+        tp = ((preds == 1) & (labels == 1)).sum()
+        fp = ((preds == 1) & (labels == 0)).sum()
+        fn = ((preds == 0) & (labels == 1)).sum()
+        p = tp / (tp + fp) if (tp + fp) > 0 else 0
+        r = tp / (tp + fn) if (tp + fn) > 0 else 0
+        f1 = 2 * p * r / (p + r) if (p + r) > 0 else 0
+        f1s.append(f1); precs.append(p); recs.append(r)
+    ax.plot(thresholds, precs, label="Precision", color="#FF9800", linewidth=1.5)
+    ax.plot(thresholds, recs, label="Recall", color="#03A9F4", linewidth=1.5)
+    ax.plot(thresholds, f1s, label="F1", color="#4CAF50", linewidth=2)
+    best_f1_idx = np.argmax(f1s)
+    best_t = thresholds[best_f1_idx]
+    ax.axvline(x=best_t, color="red", linestyle="--", alpha=0.5,
+                label=f"Best F1={f1s[best_f1_idx]:.3f} @t={best_t:.2f}")
+    ax.set_xlabel("Threshold"); ax.set_ylabel("Score")
+    ax.set_title("Threshold Sweep"); ax.legend(fontsize=8); ax.grid(True, alpha=0.3)
+
+    # Confusion matrix (best F1 threshold)
+    ax = axes[2, 0]
+    preds = (probs >= best_t).astype(int)
+    cm = skmetrics.confusion_matrix(labels, preds, labels=[0, 1])
+    im = ax.imshow(cm, interpolation="nearest", cmap="Blues")
+    ax.set_xticks([0, 1]); ax.set_xticklabels(["Neg", "Pos"])
+    ax.set_yticks([0, 1]); ax.set_yticklabels(["Neg", "Pos"])
+    ax.set_xlabel("Predicted"); ax.set_ylabel("True")
+    ax.set_title(f"Confusion Matrix (threshold={best_t:.2f})")
+    for i_cm in range(2):
+        for j_cm in range(2):
+            color = "white" if cm[i_cm, j_cm] > cm.max() / 2 else "black"
+            ax.text(j_cm, i_cm, f"{cm[i_cm, j_cm]}", ha="center", va="center",
+                    fontsize=16, fontweight="bold", color=color)
+    plt.colorbar(im, ax=ax, fraction=0.046, pad=0.04)
+
+    # Confusion matrix (0.5 threshold)
+    ax = axes[2, 1]
+    preds_05 = (probs >= 0.5).astype(int)
+    cm05 = skmetrics.confusion_matrix(labels, preds_05, labels=[0, 1])
+    im2 = ax.imshow(cm05, interpolation="nearest", cmap="Oranges")
+    ax.set_xticks([0, 1]); ax.set_xticklabels(["Neg", "Pos"])
+    ax.set_yticks([0, 1]); ax.set_yticklabels(["Neg", "Pos"])
+    ax.set_xlabel("Predicted"); ax.set_ylabel("True")
+    ax.set_title("Confusion Matrix (threshold=0.50)")
+    for i_cm in range(2):
+        for j_cm in range(2):
+            color = "white" if cm05[i_cm, j_cm] > cm05.max() / 2 else "black"
+            ax.text(j_cm, i_cm, f"{cm05[i_cm, j_cm]}", ha="center", va="center",
+                    fontsize=16, fontweight="bold", color=color)
+    plt.colorbar(im2, ax=ax, fraction=0.046, pad=0.04)
+
+    plt.suptitle(f"Best Checkpoint Analysis (Epoch {epoch})", fontsize=16, fontweight="bold")
+    plt.tight_layout()
+    p = os.path.join(output_dir, "fig_best_checkpoint_analysis.png")
+    plt.savefig(p, dpi=150, bbox_inches="tight"); plt.close()
+    print(f"[Post-training] Saved: {p}")
 
 
 if __name__ == "__main__":

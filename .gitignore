@@ -42,8 +42,10 @@
 
 # PathB Step 9 training outputs (logs, checkpoints, TensorBoard events)
 **/logs/09_Step9_AllSplit*/
-**/results/09_Step9_AllSplit*/*.log
+**/logs/09_server_training/
 **/results/09_Step9_AllSplit*/checkpoints/
+**/results/09_Step9_AllSplit*/_archive/
+*.ckpt
 
 # Temporary working files
 /tmp_lmdb/

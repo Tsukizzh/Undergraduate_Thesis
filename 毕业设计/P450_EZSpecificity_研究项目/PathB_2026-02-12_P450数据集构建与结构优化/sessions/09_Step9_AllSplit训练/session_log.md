@@ -22,6 +22,8 @@
 | 2026-03-11 ~02:00 | 冒烟测试全部通过 | 导入/端到端构建/运行时重建(fixed+legacy)/缓存往返 |
 | 2026-03-11 ~02:30 | Codex审核#5-7(构建脚本) | resume支持 + 计数验证 + 性能建议 |
 | 2026-03-11 ~03:00 | 缓存构建启动 | `--split all`, 176K样本, 预计2-4小时 |
+| 2026-03-13 04:23 | 本地恢复训练 | bs14/accum2, 2 workers, 从epoch 3恢复 |
+| 2026-03-13 ~18:05 | 手动停止训练 | 达到epoch 12, best=ep8(AUPR=0.2943) |
 
 ## 硬件配置
 - GPU: NVIDIA RTX 4070 Super, 12GB VRAM
@@ -367,7 +369,7 @@ scripts/step9/
 - [x] 方法2 Benchmark Matrix（5种配置）
 - [x] 正式训练启动 → 4 epochs完成（epoch 0-3），epoch 4被中断
 - [x] BlockShuffleSampler实验 → ❌ 失败，2.26 it/s（比random慢5x）
-- [ ] 正式训练（50 epochs, fixed模式）← **暂停中**（内存问题）
+- [ ] 正式训练（50 epochs, fixed模式）← **本地恢复中**（2026-03-13, bs14/accum2, epoch 4+）
 - [ ] 可选: legacy_bug基线训练（对比用）
 - [ ] 结果分析
 
@@ -573,3 +575,282 @@ D:/anaconda3/envs/torch/python.exe "../毕业设计/.../scripts/09_Step9_AllSpli
 ```
 
 当前配置: 1 worker, EarlyStopping(patience=15), random shuffle, fp16
+
+---
+
+## 2026-03-13：本地恢复训练（优化配置）
+
+### 时间线（续）
+
+| 时间 | 事件 | 备注 |
+|------|------|------|
+| 2026-03-13 ~04:00 | 决定本地恢复训练 | 用户睡觉期间跑 |
+| 2026-03-13 ~04:10 | 错误使用server_train.py | 路径解析失败，创建junction修复 |
+| 2026-03-13 ~04:12 | 切回正确脚本main_training_cached.py | 读取记忆后纠正 |
+| 2026-03-13 ~04:15 | 2 workers启动，batch_size=8 | 速度~4.3→4.7 it/s |
+| 2026-03-13 ~04:18 | GPU利用率优化：batch_size 8→14, accumulate 4→2 | VRAM从8.5→11.4GB |
+| 2026-03-13 04:23 | 优化后重启训练 | batch_size=14, accumulate=2, 2 workers |
+| 2026-03-13 04:30 | 缓存预热中 | 3.17 it/s, 爬升中 |
+| 2026-03-13 ~04:40 | 稳态速度 | 3.0~4.5 it/s (page cache thrashing波动) |
+
+### 配置变更
+
+| 参数 | 之前(2026-03-11) | 现在(2026-03-13) | 原因 |
+|------|------------------|------------------|------|
+| batch_size | 8 | **14** | VRAM还有3.5GB余量 |
+| accumulate_grad_batches | 4 | **2** | 保持effective batch接近原来(28 vs 32) |
+| num_workers | 1 | **2** | 平衡内存和数据加载 |
+| batches/epoch | 22,292 | **12,738** | batch变大→迭代数减少43% |
+| 预计epoch耗时 | ~79min | **~47min** | 减少40% |
+
+### 硬件使用情况（稳态）
+
+| 硬件 | 使用率 | 说明 |
+|------|--------|------|
+| GPU利用率 | 30-80%波动 | 数据加载(低)↔计算(高)交替 |
+| GPU VRAM | 11.4/12GB (95%) | 接近满载 |
+| RAM | 31.1/31.8GB (98%) | LMDB mmap page cache |
+| SSD(D:) | 33-37% | page eviction时读取 |
+| SSD(E:) | 0% | 未使用（加E:盘无益，瓶颈是RAM不是SSD带宽） |
+| CPU | 42% | 2 workers数据加载 |
+| GPU温度 | 59°C | 正常范围 |
+
+### GPU利用率波动分析
+
+GPU利用率在30%和80%之间周期波动，原因：
+- **低利用率(~30%)**：GPU等待数据——SSD正在读LMDB数据到内存（page fault）
+- **高利用率(~80%)**：GPU在做forward/backward——数据已在内存中
+- **根因**：32GB RAM无法缓存240GB LMDB，random shuffle导致持续page eviction
+- **解决方案**：只能加内存到64GB（但性价比不高，仅提升10-20%到稳定4.5-5 it/s）
+
+### 恢复训练命令
+
+```bash
+cd D:/EZSpecificity_Project/src
+D:/anaconda3/envs/torch/python.exe "../毕业设计/P450_EZSpecificity_研究项目/PathB_2026-02-12_P450数据集构建与结构优化/scripts/09_Step9_AllSplit训练/main_training_cached.py" \
+    --edge-mode fixed --num-workers 2 --no-prefetch-wrapper --resume last
+```
+
+### 停止训练
+
+```bash
+taskkill /IM python.exe /F
+```
+
+---
+
+## 2026-03-13 本地过夜训练结果
+
+### 训练概况
+
+| 项目 | 值 |
+|------|-----|
+| 启动时间 | 2026-03-13 04:23 |
+| 停止时间 | 2026-03-13 ~18:05 (手动kill) |
+| 恢复自 | last.ckpt (epoch 3) |
+| 停止于 | epoch 12 (global_step=78952) |
+| 完成epochs | epoch 4 ~ epoch 12 (共9个epoch) |
+| 总训练时间 | ~13.7小时 |
+
+### 训练结果
+
+| Epoch | AUPR | 是否保留 | 备注 |
+|-------|------|----------|------|
+| 0 | 0.180 | ❌ 已删除 | |
+| 1 | 0.243 | ❌ 已删除 | |
+| 2 | 0.291 | ✅ 保留 | 旧best |
+| 3 | 0.245 | ❌ 已删除 | |
+| 4-7 | < 0.2901 | ❌ 未保留 | |
+| **8** | **0.2943** | **✅ BEST** | **新best，超过epoch 2** |
+| 9 | 0.2901 | ✅ 保留 | |
+| 10-11 | < 0.2901 | ❌ 未保留 | |
+| 12 | (last.ckpt) | ✅ last | EarlyStopping wait=4/15 |
+
+### 关键观察
+
+1. **AUPR在0.29附近震荡**：epoch 2(0.291) → epoch 8(0.294) → epoch 9(0.290)，提升极缓慢
+2. **新best仅微提升**：0.2943 vs 0.2906，差距仅+0.0037
+3. **EarlyStopping还剩11个epoch patience**：best=ep8, 当前ep12, wait_count=4, 最多跑到ep23
+4. **实际训练速度**：2.7~4.5 it/s，平均约3.0 it/s（比预期的4.5 it/s低，page cache thrashing影响更大）
+5. **原始论文run_0参考**：4块GPU训了~256 epochs才到AUC=0.893, AUPR=0.607
+
+### 检查点文件
+
+```
+checkpoints/
+├── allsplit-fold0-fixed-epoch02-aupr0.2906.ckpt  (22MB, 2026-03-11)
+├── allsplit-fold0-fixed-epoch08-aupr0.2943.ckpt  (22MB, 2026-03-13 11:45)
+├── allsplit-fold0-fixed-epoch09-aupr0.2901.ckpt  (22MB, 2026-03-13 13:19)
+└── last.ckpt                                      (22MB, 2026-03-13 18:05, epoch 12)
+```
+
+### 完整评估结果（AUC + AUPR + Per-Family）
+
+使用 `eval_checkpoints.py` 对所有保留的checkpoints进行完整验证推理：
+
+| Epoch | AUC-ROC | AUPR | Val Loss | brenda AUPR | Duf | Esterase | Gt_acceptor | Nitrilase | Phosphatase | Thiolase |
+|-------|---------|------|----------|-------------|-----|----------|-------------|-----------|-------------|----------|
+| 2 | 0.6538 | 0.2906 | 0.3324 | 0.098 | N/A | 0.566 | 0.844 | 1.000 | 0.555 | N/A |
+| **8** | **0.7422** | **0.2942** | **0.3130** | 0.159 | N/A | 0.588 | 0.920 | 1.000 | 0.511 | N/A |
+| 9 | 0.7472 | 0.2901 | 0.3171 | 0.151 | N/A | 0.475 | 0.684 | 0.500 | 0.510 | N/A |
+| 12 | 0.7505 | 0.2830 | 0.3288 | 0.162 | N/A | 0.473 | 0.747 | 0.500 | 0.530 | N/A |
+
+**Best Checkpoint (Epoch 8) 详细分析**:
+| 指标 | 值 |
+|------|-----|
+| AUC-ROC | 0.7422 |
+| AUPR | 0.2942 |
+| Prevalence | 0.108 (正样本占10.8%) |
+| 最佳F1 | 0.340 @ threshold=0.22 |
+| 验证集大小 | 1,483 samples (neg=1,322, pos=161) |
+
+### AUC vs AUPR 背离现象
+
+**关键发现**: AUC持续上升(0.654→0.750)，但AUPR在epoch 8达峰(0.294)后下降。
+
+- **AUC上升**: 模型整体排序能力在改善（正样本整体比负样本排得更前）
+- **AUPR下降**: 模型在高置信区域的精确率在退化（top-k预测中正样本比例降低）
+- **原因**: 可能发生了"边界模糊化"——模型学到了更好的全局排序，但牺牲了高阈值处的精确判别
+
+这是不平衡分类中常见的现象（正:负≈1:9.4），AUPR对高置信区误判更敏感。
+
+### Per-Family 表现分析
+
+| 家族 | AUC-ROC | AUPR | 验证集大小 | 分析 |
+|------|---------|------|-----------|------|
+| Nitrilase | 1.000 | 1.000 | 极少 | 样本过少，不具统计意义 |
+| Gt_acceptor | 0.938 | 0.920 | 中等 | 表现优秀 |
+| Esterase | 0.828 | 0.588 | 中等 | 良好 |
+| Phosphatase | 0.707 | 0.511 | 中等 | 中等 |
+| brenda | 0.697 | 0.159 | 最多 | 主数据集，最难（样本多但负样本比例更高） |
+| Duf | N/A | N/A | 极少 | 验证集无有效样本 |
+| Thiolase | N/A | N/A | 极少 | 验证集无有效样本 |
+
+**brenda家族AUPR极低(0.159)的原因**: brenda是最大数据集，正负比例更悬殊，且enzyme/substrate组合更多样，all_split下完全没有酶/底物重叠。
+
+### 生成的可视化图表
+
+保存在 `results/09_Step9_AllSplit训练/`:
+
+| 文件 | 内容 | 说明 |
+|------|------|------|
+| `fig1_training_dynamics.png` | 2x2: val loss + AUC/AUPR曲线 + per-family AUPR柱状图 + per-family趋势 | 训练动态总览 |
+| `fig2_best_checkpoint_analysis.png` | 2x2: score分布 + PR曲线 + ROC曲线 + threshold sweep | Best checkpoint (ep8) 深度分析 |
+| `fig3_family_heatmap.png` | 家族性能热力图 (AUC-ROC × AUPR) | 跨家族对比 |
+| `metrics_history.csv` | 完整评估数据表 | 可用于后续分析/绘图 |
+
+### 代码改进
+
+**新增 `eval_checkpoints.py`**: 独立评估脚本，支持：
+- 自动发现所有checkpoints + last.ckpt
+- 对每个checkpoint运行完整验证推理
+- 提取overall + per-family AUC/AUPR/loss
+- 生成3组publication-quality图表
+- 输出metrics_history.csv
+
+**升级 `main_training_cached.py` 的 MetricsCSVLogger**:
+- 从简单4列(epoch,lr,train_loss,val_loss)升级为20+列
+- 记录per-family AUC和AUPR (7个家族×2指标)
+- 训练完成后自动调用`plot_training_curves()`生成图表
+- 后续训练run将自动产生完整训练报告
+
+---
+
+## 2026-03-13：训练管线全面升级
+
+### 摘要
+
+用户提出四项核心需求：(1) 核心指标从AUPR切换为AUC-ROC，(2) 增加完整训练可视化（Loss/LR/梯度/混淆矩阵），(3) 保证数据持久化（断电不丢数据），(4) 消除独立评估步骤（训练完成自动分析）。经Codex两轮审核后全部实现。
+
+### 核心指标切换：AUPR → AUC-ROC
+
+用户明确表示"我不希望看aupr，我觉得最核心的是auc"。以下组件全部切换：
+
+| 组件 | 之前 | 之后 |
+|------|------|------|
+| ModelCheckpoint monitor | `aupr/val` | `auc/val` |
+| ModelCheckpoint filename | `aupr{aupr/val:.4f}` | `auc{auc/val:.4f}` |
+| EarlyStopping monitor | `aupr/val` | `auc/val` |
+| Console summary | macro_aupr, worst_aupr | macro_auc, worst_auc |
+| Plot best annotation | `Best AUPR` | `Best AUC` |
+| eval_checkpoints.py best | `best_aupr` | `best_auc` |
+
+**注意**: `ReduceLROnPlateau`（src/Models/ss.py:264）仍监控`aupr/val`，这是有意为之（LR调度和checkpoint选择解耦）。
+
+### 新增功能
+
+#### 1. 梯度范数追踪 (grad_norm)
+- **位置**: `MetricsCSVLogger.on_before_optimizer_step()`
+- **实现**: 收集所有参数梯度 → `torch.cat(grads).norm(2).item()` (单次GPU sync)
+- **CSV列**: 新增`grad_norm`列（第4列）
+
+#### 2. Train Loss 修复
+- **问题**: `SS.training_step()`返回bare tensor（非dict），原`on_train_batch_end`只处理dict
+- **修复**: 新增`isinstance(outputs, torch.Tensor)`分支
+
+#### 3. CSV Schema Migration
+- **问题**: 新增`grad_norm`列导致旧CSV列错位
+- **解决**: `_ensure_csv_header()` 静态方法，自动检测旧schema并用DictReader/DictWriter迁移
+
+#### 4. 训练后自动分析
+- **函数**: `_run_best_checkpoint_analysis()`（~120行）
+- **流程**: 加载best checkpoint → 重跑验证集 → 收集raw logits → 生成3x2图
+- **图内容**: Score分布 / PR曲线 / ROC曲线 / 阈值扫描 / 混淆矩阵(best-F1) / 混淆矩阵(0.5)
+
+#### 5. 扩展训练曲线
+- `plot_training_curves()` 从2x2→3x2
+- 新增: LR Schedule（对数轴）+ Gradient Norm
+- Per-family柱状图从AUPR改为AUC
+
+### 文件组织规范
+
+建立 `eval_epochXX/` 子目录规范：
+```
+results/09_Step9_AllSplit训练/
+├── checkpoints/           # 模型检查点
+├── eval_epoch12/          # 评估输出（XX=最大epoch）
+│   ├── fig1_training_dynamics.png
+│   ├── fig2_best_checkpoint_analysis.png
+│   ├── fig3_family_heatmap.png
+│   └── metrics_history.csv
+└── _archive/              # 旧文件归档
+```
+
+### Codex审核记录
+
+**第1轮（AUPR→AUC切换）**:
+- 发现: plot注释仍写"Best AUPR" → 修复为"Best AUC"
+- 发现: `np.nanargmax(val_aupr)` → 修复为 `np.nanargmax(val_auc)`
+
+**第2轮（综合变更审核）**:
+- **CRITICAL**: train_loss未记录 — SS返回bare tensor，on_train_batch_end只处理dict → 已修复
+- **CRITICAL**: CSV向后不兼容 — 新grad_norm列导致旧CSV列错位 → 添加_ensure_csv_header()迁移
+- **MEDIUM**: GPU sync开销 — 逐参数`.item()`导致多次sync → 改为`torch.cat(grads).norm(2).item()`单次sync
+- **MEDIUM**: 0.0值truthiness — `r.get("val_auc") or 0`把0.0当falsy → 已记录
+
+### 训练/恢复/评估命令
+
+**训练（从头）**:
+```bash
+cd D:/EZSpecificity_Project/src
+D:/anaconda3/envs/torch/python.exe "../毕业设计/.../scripts/09_Step9_AllSplit训练/main_training_cached.py" \
+    --edge-mode fixed --num-workers 2 --no-prefetch-wrapper
+```
+
+**恢复训练**:
+```bash
+cd D:/EZSpecificity_Project/src
+D:/anaconda3/envs/torch/python.exe "../毕业设计/.../scripts/09_Step9_AllSplit训练/main_training_cached.py" \
+    --edge-mode fixed --num-workers 2 --no-prefetch-wrapper --resume last
+```
+
+**独立评估（备用）**:
+```bash
+cd D:/EZSpecificity_Project/src
+D:/anaconda3/envs/torch/python.exe "../毕业设计/.../scripts/09_Step9_AllSplit训练/eval_checkpoints.py"
+```
+
+### 数据持久化保证
+- MetricsCSVLogger每个validation epoch用`with open("a")`写入一行 → close时自动flush
+- 断电/kill只丢当前epoch未完成的数据，已完成epoch的指标全部安全
+- Checkpoints由PL ModelCheckpoint callback管理，每个epoch末保存

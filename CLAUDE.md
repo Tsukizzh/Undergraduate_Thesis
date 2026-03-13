@@ -326,19 +326,20 @@ ESIBank 训练集中的 P450
 | │    | └─ Step 6 | ✅ 已完成 | 消融实验 + Causal DAG v2 |
 | │    | └─ Step 7 | ✅ 已完成 | Tier 1 诊断(E1-E6) + 扩展 + E7内部基准 |
 | │    | └─ Step 8 | ✅ 已完成 | E8v1+E8v2通道关闭消融 + E9废弃 |
-| │    | └─ Step 9 | ⏸️ 暂停 | AllSplit训练4epoch后暂停（内存问题），等待服务器 |
+| │    | └─ Step 9 | 🔄 ep12暂停 | AllSplit训练, best=ep8 AUC=0.7422, 管线已升级 |
 | C | P450专属模型训练 | ⏳ 待定 | 优先修复任务/数据设计，再pilot对比通道配置 |
 | D | 区域选择性预测 | ⏳ 待定 | 路径A完成后可选 |
 
 **工作目录**: `毕业设计/P450_EZSpecificity_研究项目/PathB_2026-02-12_P450数据集构建与结构优化/`
 
 **Step 9 当前状态（AllSplit训练）**:
-- 4 epochs完成: E0(AUC=0.620) → E1(0.649) → **E2(0.654, AUPR=0.291, BEST)** → E3(0.632)
-- 暂停原因: 240GB LMDB缓存mmap填满32GB RAM（99%），电脑不可用
-- 缓存收益极小: 稳态4.5 it/s vs 无缓存4.3 it/s（+4.6%）
-- BlockShuffleSampler实验失败（2.26 it/s，比random慢5x）
+- **核心指标: AUC-ROC**（用户明确要求，AUPR仅辅助参考）
+- 12 epochs完成（暂停于ep12）: E0(0.620) → E2(0.654) → **E8(AUC=0.7422, BEST)** → E12(0.7505, AUC仍在升)
+- AUC持续上升(0.654→0.750)，AUPR在ep8后下降(0.294→0.283)
+- **训练管线已升级(2026-03-13)**: 自动评估+绘图、grad_norm追踪、数据持久化（断电不丢数据）
+- EarlyStopping(patience=15, monitor=auc/val), best=ep8, wait=4/15 → 最多训到ep23
+- 训练入口: `main_training_cached.py`，恢复: `--resume last`
 - 原始论文run_0: **4块GPU训了~256 epochs**才到AUC=0.893, AUPR=0.607
-- 恢复: `--resume last` 从epoch 3继续，已配置EarlyStopping(patience=15)
 - 发现并修复了**边排序Bug**（transforms.py:130-147），训练使用fixed模式
 
 **Path B 诊断阶段总结（Step 7-8）**:
