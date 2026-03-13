@@ -509,6 +509,9 @@ class MetricsCSVLogger(Callback):
               f"macro_auc={macro_auc:.4f} worst_auc={worst_auc:.4f} "
               f"train_loss={train_loss} val_loss={fmt(val_loss)} grad_norm={grad_norm}")
 
+        # Update training curve plots after every epoch
+        plot_training_curves(self.csv_path)
+
 
 def plot_training_curves(csv_path: str = METRICS_CSV):
     """Generate comprehensive training report figures."""
@@ -640,8 +643,10 @@ def plot_training_curves(csv_path: str = METRICS_CSV):
         names, aucs_bar, auprs_bar = [], [], []
         for i in range(7):
             name = FAMILY_NAMES.get(str(i), str(i))
-            a = float(last.get(f"val_auc_{i}", "nan"))
-            p = float(last.get(f"val_aupr_{i}", "nan"))
+            a_raw = last.get(f"val_auc_{i}", "")
+            p_raw = last.get(f"val_aupr_{i}", "")
+            a = float(a_raw) if a_raw else np.nan
+            p = float(p_raw) if p_raw else np.nan
             if not (np.isnan(a) and np.isnan(p)):
                 names.append(name)
                 aucs_bar.append(a if not np.isnan(a) else 0)

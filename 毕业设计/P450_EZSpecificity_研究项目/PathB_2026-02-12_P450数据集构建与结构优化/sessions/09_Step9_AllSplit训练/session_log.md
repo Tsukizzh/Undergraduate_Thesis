@@ -854,3 +854,41 @@ D:/anaconda3/envs/torch/python.exe "../毕业设计/.../scripts/09_Step9_AllSpli
 - MetricsCSVLogger每个validation epoch用`with open("a")`写入一行 → close时自动flush
 - 断电/kill只丢当前epoch未完成的数据，已完成epoch的指标全部安全
 - Checkpoints由PL ModelCheckpoint callback管理，每个epoch末保存
+
+---
+
+## 2026-03-14 目录整理
+
+### 执行的操作
+
+**1. .log 文件归集到 logs/ 目录**
+- `scripts/09_Step9/` 中 4 个 .log → `logs/09_Step9_AllSplit训练/`
+  - benchmark_blockshuffle.log, training_full_run.log, training_full_run_resumed.log, training_output.log
+- `results/09_Step9/_archive/` 中 4 个 .log → `logs/09_Step9_AllSplit训练/_archive/`
+  - timing_run.log, training_detached.log, training_output.log, training_v3.log
+
+**2. scripts/09_Step9 子目录化**
+- 创建 `data_prep/`：移入 copy_all_data.py, copy_enzyme.py（一次性数据准备脚本）
+- 创建 `_archive/`：移入 main_training.py（被cached版替代）, wait_and_train.py, pipeline_test.py, smoke_test.py（一次性测试脚本）
+
+**3. 清理 __pycache__/**
+- 删除 scripts/ 下所有 __pycache__ 目录（4个）
+
+### 整理后 scripts/09 结构
+```
+scripts/09_Step9_AllSplit训练/
+├── main_training_cached.py   # 当前唯一训练入口
+├── cache_utils.py            # 缓存核心库
+├── build_structure_cache.py  # 缓存构建工具
+├── eval_checkpoints.py       # 评估工具
+├── train_allsplit_config.yml # 配置
+├── run_training.sh           # 启动脚本
+├── data_prep/                # 一次性数据准备
+│   ├── copy_all_data.py
+│   └── copy_enzyme.py
+└── _archive/                 # 已替代/一次性脚本
+    ├── main_training.py
+    ├── wait_and_train.py
+    ├── pipeline_test.py
+    └── smoke_test.py
+```
