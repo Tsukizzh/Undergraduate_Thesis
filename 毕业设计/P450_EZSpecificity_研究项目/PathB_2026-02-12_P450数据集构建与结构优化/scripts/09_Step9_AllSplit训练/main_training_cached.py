@@ -136,6 +136,8 @@ def parse_args():
     p.add_argument("--config", default=CONFIG_PATH)
     p.add_argument("--edge-mode", choices=["fixed", "legacy_bug"], default="fixed",
                    help="Edge ordering mode (fixed=bug-corrected, legacy_bug=original)")
+    p.add_argument("--no-cache", action="store_true",
+                   help="Use on-the-fly structure processing instead of LMDB cache (recommended for <=32GB RAM)")
     p.add_argument("--cache-dir", default=CACHE_DIR)
     p.add_argument("--num-workers", type=int, default=NUM_WORKERS)
     p.add_argument("--benchmark", action="store_true",
@@ -357,6 +359,188 @@ class CachedTrainingDataModule(pl.LightningDataModule):
         print("[DataModule] Building test dataset...")
         t0 = time.time()
         data, loader = self._make_loader(self.test_df, is_train=False)
+        print(f"[DataModule] Test built in {time.time()-t0:.1f}s, valid={len(data)}")
+        return loader
+
+
+# ============================================================
+# 7b. LiveTrainingDataModule — on-the-fly structure processing (no cache)
+# ============================================================
+def _apply_edge_fix():
+    """Monkey-patch EdgeConnection to fix edge_attr/edge_index ordering bug."""
+    import torch.nn.functional as F
+    import Datasets.Structure.transforms as utils_trans
+
+    _original_call = utils_trans.EdgeConnection.__call__
+
+    def _fixed_edge_call(self, data):
+        N_substrate = data.ligand_pos.size(0)
+        N_protein = data.protein_pos.size(0)
+        if data.str_tag == "ligand":
+            knn_index = torch.zeros((2, 0), dtype=torch.long)
+        else:
+            knn_index = self._build_knn_graph(data)
+        pos = torch.cat([data.ligand_pos, data.protein_pos], dim=0)
+        knn_index, dist_feat_knn = self._get_dist(knn_index, pos)
+        data.ligand_bond_index, dist_feat_real = self._get_dist(
+            data.ligand_bond_index, pos
+        )
+        dist_feat = torch.cat([dist_feat_knn, dist_feat_real], dim=0)
+        data.ligand_bond_type[data.ligand_bond_type == 12] = 5
+        ligand_bond_feature_real = F.one_hot(
+            (data.ligand_bond_type - 1).long(), num_classes=6
+        )
+        ligand_bond_feature_knn = F.one_hot(
+            torch.ones((knn_index.shape[1],), dtype=torch.long) * 5, num_classes=6
+        )
+        bond_feat = torch.cat(
+            [ligand_bond_feature_knn, ligand_bond_feature_real], dim=0
+        )
+        cross_bond = (
+            (knn_index[0, :] < N_substrate)
+            .logical_and(knn_index[1, :] >= N_substrate)
+        ).logical_or(
+            (knn_index[0, :] >= N_substrate)
+            .logical_and(knn_index[1, :] < N_substrate)
+        )
+        cross_bond = torch.cat(
+            [cross_bond, torch.zeros([data.ligand_bond_index.size(1)], dtype=bool)],
+            dim=0,
+        )[:, None].int()
+        data.complex_edge_attr = torch.cat(
+            [bond_feat, dist_feat, cross_bond], dim=-1
+        )
+        data.protein_x = torch.cat(
+            [torch.zeros((N_substrate, data.protein_atom_feature.shape[1])),
+             data.protein_atom_feature], dim=0,
+        )
+        data.ligand_x = torch.cat(
+            [data.ligand_atom_feature_full,
+             torch.zeros((N_protein, data.ligand_atom_feature_full.shape[1]))], dim=0,
+        )
+        data.ligand_mask = torch.cat(
+            [torch.ones((N_substrate,)), torch.zeros((N_protein,))], dim=0
+        )
+        data.protein_mask = torch.cat(
+            [torch.zeros((N_substrate,)), torch.ones((N_protein,))], dim=0
+        )
+        # FIX: match edge_attr ordering [knn, real]
+        data.complex_edge_index = torch.cat(
+            [knn_index, data.ligand_bond_index], dim=-1
+        )
+        data.ligand_index = torch.cat(
+            [data.ligand_index, torch.ones((N_protein,)).long() * 280], dim=-1
+        )
+        data.ligand_atom_feature_full = None
+        data.protein_atom_feature = None
+        data.protein_pos = None
+        data.ligand_pos = None
+        data.ligand_bond_index = None
+        data.ligand_bond_type = None
+        data.protein_molecule_name = None
+        data.protein_filename = None
+        return data
+
+    utils_trans.EdgeConnection.__call__ = _fixed_edge_call
+    print("[Patch] EdgeConnection.__call__ patched with edge-ordering fix")
+
+
+def _close_lmdb_handles(dataset):
+    """Close LMDB handles so dataset can be pickled for DataLoader workers."""
+    seq_db = dataset.sequence_db
+    for attr in ["grover_dbs", "enzyme_dbs", "reaction_dbs"]:
+        dbs = getattr(seq_db, attr, None)
+        if dbs is not None:
+            for db in dbs:
+                if hasattr(db, "close"):
+                    db.close()
+            setattr(seq_db, attr, None)
+    str_db = dataset.structure_db
+    for attr in ["complex_dbs", "ligand_dbs"]:
+        dbs = getattr(str_db, attr, None)
+        if dbs is not None:
+            for db in dbs:
+                if db is not None and hasattr(db, "close"):
+                    db.close()
+            setattr(str_db, attr, None)
+
+
+class LiveTrainingDataModule(pl.LightningDataModule):
+    """On-the-fly structure processing DataModule (no cache needed)."""
+
+    def __init__(self, config, num_workers, use_prefetch_wrapper=True):
+        super().__init__()
+        self.config = config
+        self.batch_size = config.data.batch_size
+        self.num_workers = num_workers
+        self.use_prefetch_wrapper = use_prefetch_wrapper
+
+        from torch_geometric.transforms import Compose
+        import Datasets.Structure.transforms as utils_trans
+
+        self.train_transform = Compose([
+            utils_trans.FeaturizeProteinAtom(),
+            utils_trans.FeaturizeLigandAtom(),
+            utils_trans.EdgeConnection(
+                dist_noise=config.transform.dist_noise,
+                cutoff=config.transform.cutoff,
+                num_r_gaussian=config.transform.num_r_gaussian,
+                k=config.transform.k,
+            ),
+        ])
+        self.val_transform = Compose([
+            utils_trans.FeaturizeProteinAtom(),
+            utils_trans.FeaturizeLigandAtom(),
+            utils_trans.EdgeConnection(
+                dist_noise=False,
+                cutoff=config.transform.cutoff,
+                num_r_gaussian=config.transform.num_r_gaussian,
+                k=config.transform.k,
+            ),
+        ])
+
+        print("[DataModule] Loading CSVs...")
+        t0 = time.time()
+        self.train_df = read_datasets(config.data.train_data_path)
+        self.val_df = read_datasets(config.data.val_data_path)
+        self.test_df = read_datasets(config.data.test_data_path)
+        print(f"[DataModule] CSVs loaded in {time.time()-t0:.1f}s")
+        print(f"[DataModule] Train: {len(self.train_df)}, Val: {len(self.val_df)}, Test: {len(self.test_df)}")
+
+    def _make_loader(self, df, transform, is_train, shuffle=False):
+        from Datasets.data_representer import get_representer
+        data = get_representer(df=df, config=self.config, transform=transform, is_train=is_train)
+        if self.num_workers > 0:
+            _close_lmdb_handles(data)
+        kwargs = dict(
+            batch_size=self.batch_size, shuffle=shuffle,
+            num_workers=self.num_workers, pin_memory=True,
+            follow_batch=["ligand_index"],
+        )
+        if self.num_workers > 0:
+            kwargs.update(persistent_workers=True, prefetch_factor=4)
+        return data, DataLoader(data, **kwargs)
+
+    def train_dataloader(self):
+        print("[DataModule] Building train dataset...")
+        t0 = time.time()
+        data, loader = self._make_loader(self.train_df, self.train_transform, is_train=True, shuffle=True)
+        print(f"[DataModule] Train built in {time.time()-t0:.1f}s, valid={len(data)}")
+        if self.use_prefetch_wrapper:
+            return BackgroundPrefetchLoader(loader)
+        return loader
+
+    def val_dataloader(self):
+        print("[DataModule] Building val dataset...")
+        t0 = time.time()
+        data, loader = self._make_loader(self.val_df, self.val_transform, is_train=False)
+        print(f"[DataModule] Val built in {time.time()-t0:.1f}s, valid={len(data)}")
+        return loader
+
+    def test_dataloader(self):
+        print("[DataModule] Building test dataset...")
+        t0 = time.time()
+        data, loader = self._make_loader(self.test_df, self.val_transform, is_train=False)
         print(f"[DataModule] Test built in {time.time()-t0:.1f}s, valid={len(data)}")
         return loader
 
@@ -698,7 +882,12 @@ def plot_training_curves(csv_path: str = METRICS_CSV):
 def main():
     args = parse_args()
     config = load_config(args.config)
-    cache_paths = resolve_cache_paths(config, args.cache_dir)
+    use_cache = not args.no_cache
+    if use_cache:
+        cache_paths = resolve_cache_paths(config, args.cache_dir)
+    else:
+        cache_paths = None
+        _apply_edge_fix()
 
     is_benchmark = args.benchmark
     use_prefetch = not args.no_prefetch_wrapper
@@ -709,8 +898,10 @@ def main():
         print(f"  Batches: {args.benchmark_batches} (warmup: {args.benchmark_warmup})")
         print(f"  Prefetch wrapper: {'ON' if use_prefetch else 'OFF'}")
     else:
-        print("Step 9: Training EZSpecificity (cached structure, all_split fold 0)")
-    print(f"  Edge mode: {args.edge_mode}")
+        mode_str = "on-the-fly (no cache)" if not use_cache else "cached structure"
+        print(f"Step 9: Training EZSpecificity ({mode_str}, all_split fold 0)")
+    print(f"  Edge mode: {args.edge_mode if use_cache else 'fixed (monkey-patch)'}")
+    print(f"  Data mode: {'LIVE (on-the-fly)' if not use_cache else 'CACHED'}")
     print("=" * 70)
     print(f"Config: {args.config}")
     print(f"GPU: {torch.cuda.get_device_name(0) if torch.cuda.is_available() else 'CPU'}")
@@ -718,19 +909,25 @@ def main():
     print(f"Batch: {config.data.batch_size} x {config.training.accumulate_grad_batches} "
           f"= {config.data.batch_size * config.training.accumulate_grad_batches}")
     print(f"Workers: {args.num_workers}")
-    print("Cache LMDBs:")
-    for i, p in enumerate(cache_paths):
-        print(f"  [{i}] {p}")
+    if use_cache:
+        print("Cache LMDBs:")
+        for i, p in enumerate(cache_paths):
+            print(f"  [{i}] {p}")
     print()
 
     pl.seed_everything(config.seed)
 
     # DataModule
     print("[1/4] Initializing DataModule...")
-    dm = CachedTrainingDataModule(
-        config, cache_paths, args.edge_mode, args.num_workers,
-        use_prefetch_wrapper=use_prefetch,
-    )
+    if use_cache:
+        dm = CachedTrainingDataModule(
+            config, cache_paths, args.edge_mode, args.num_workers,
+            use_prefetch_wrapper=use_prefetch,
+        )
+    else:
+        dm = LiveTrainingDataModule(
+            config, args.num_workers, use_prefetch_wrapper=use_prefetch,
+        )
 
     # Model
     print("[2/4] Initializing Model (random weights)...")
