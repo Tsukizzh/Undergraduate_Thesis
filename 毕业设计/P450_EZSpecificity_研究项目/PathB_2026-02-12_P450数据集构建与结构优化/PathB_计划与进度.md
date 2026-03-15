@@ -1,5 +1,7 @@
 # Path B：P450 数据集构建与结构优化
 
+> **2026-03-15 更新**: Step 9 AllSplit训练完成, **FINAL BEST=ep14 AUC=0.7667**. 关键发现: (1) Edge fix已在基线中，需对照实验 (2) 底物6.56%泄露，需量化影响 (3) mmap衰减是瓶颈，.pt方案解决. 详见`Step9_AllSplit训练完成总结_2026-03-15.md`和`../../../.claude/projects/d--EZSpecificity-Project/memory/`下的`step9-final-findings.md`、`next-experiment-plan.md`.
+
 ## 一、背景与目标
 
 ### 1.1 前置条件
