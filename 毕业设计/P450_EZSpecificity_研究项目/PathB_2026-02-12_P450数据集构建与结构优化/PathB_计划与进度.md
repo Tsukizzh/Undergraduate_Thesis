@@ -1,6 +1,6 @@
 # Path B：P450 数据集构建与结构优化
 
-> **2026-03-15 更新**: Step 9 AllSplit训练完成, **FINAL BEST=ep14 AUC=0.7667**. 关键发现: (1) Edge fix已在基线中，需对照实验 (2) 底物6.56%泄露，需量化影响 (3) mmap衰减是瓶颈，.pt方案解决. 详见`Step9_AllSplit训练完成总结_2026-03-15.md`和`../../../.claude/projects/d--EZSpecificity-Project/memory/`下的`step9-final-findings.md`、`next-experiment-plan.md`.
+> **2026-03-16 更新**: Step 9 AllSplit训练完成, **FINAL BEST=ep14 AUC=0.7667确认最优**. 已完成: (1) ep20-27训练 (2) .pt缓存构建(44GB完成验证) (3) Codex执行计划复审(5问题修正) (4) 服务器就绪. 下一步：迁移.pt→编写Dataset类→7阶段实验(2-3周).
 
 ## 一、背景与目标
 
@@ -529,11 +529,17 @@ PathB_2026-02-12_P450数据集构建与结构优化/
 | | | - E8v1(EXP01): P450结构通道主导，磷酸酶序列通道主导（逆转） | ✅ |
 | | | - E8v2(Step5): 所有通道变化均不显著（瓶颈在任务/数据设计） | ✅ |
 | | | - E9废弃（分子通道仅1.4%） | ✅ |
-| | Step 9 | **AllSplit从头训练** | 🔄 ep12暂停 |
-| | | - 12 epochs完成，best=ep8 AUC=0.7422 | ✅ |
+| | Step 9 | **AllSplit从头训练** | ✅ **ep27完成** |
+| | | - 27 epochs完成，**FINAL BEST=ep14 AUC=0.7667** | ✅ |
+| | | - 过拟合确认：train_loss↓(0.352→0.088), val_loss↑(0.328→0.374) | ✅ |
+| | | - EarlyStopping wait=13/15@ep27，继续训训将在ep29触发 | ✅ |
 | | | - 训练管线升级：AUC指标+grad_norm+自动分析+数据持久化 | ✅ |
-| | | - EarlyStopping wait=4/15，可继续`--resume last` | 🔄 |
-| | Step 10 | 全量特征生成与数据集交付 | ⏳ 待开始 |
+| | 后续 | **.pt缓存构建 + 执行计划复审** | ✅ **已完成** |
+| | | - build_pt_cache.py成功构建ezspec_pt_v1/(44GB，通过验证) | ✅ |
+| | | - 数据泄露审计：酶0.15%可忽略，底物6.56%需量化 | ✅ |
+| | | - Codex复审：发现5个执行计划问题，已修正 | ✅ |
+| | | - 服务器准备：build_pt_cache.py已上传，数据已确认 | ✅ |
+| | Step 10 | 全量特征生成与数据集交付 | ⏳ 后续 |
 
 ### 缺失文件清单（待迁移）
 
