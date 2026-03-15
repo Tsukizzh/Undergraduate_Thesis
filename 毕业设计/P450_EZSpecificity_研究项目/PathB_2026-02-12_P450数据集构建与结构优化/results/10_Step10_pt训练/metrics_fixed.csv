@@ -1,0 +1,1 @@
+epoch,timestamp,lr,grad_norm,train_loss,val_loss,val_auc,val_aupr,val_auc_0,val_auc_1,val_auc_2,val_auc_3,val_auc_4,val_auc_5,val_auc_6,val_aupr_0,val_aupr_1,val_aupr_2,val_aupr_3,val_aupr_4,val_aupr_5,val_aupr_6
