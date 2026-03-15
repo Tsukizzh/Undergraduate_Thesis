@@ -1,14 +1,15 @@
 """
 Step 10: PyG Dataset reading from .pt shard cache (ezspec_pt_v1/).
 
-Codex-reviewed (3 rounds). Fixes applied:
-- Shard field names match build_pt_cache.py exactly
-- Global enzyme/substrate IDs (dataset_id * 10M + local_idx)
-- ligand_x feature order matches FeaturizeLigandAtom exactly
-- Per-entity tensor cache (enzyme/substrate decoded+padded)
-- Pre-built vocab tensors (no per-call allocation)
-- Reuses single GaussianSmearing instance
-- Worker-safe via __getstate__
+v2: Enzyme/substrate loading via seek-based flat binary files instead of
+    torch.load on 900MB shard files. Graph shards still use ShardCache.
+
+Flat binary files (produced by build_pt_cache.py convert_shards_to_flatbin):
+  enzymes/enzymes.bin        — raw fp16 ESM embeddings
+  enzymes/enzymes_index.pt   — {global_id: (byte_offset, seq_len)}
+  substrates/substrates_grover.bin  — raw fp16 grover_atom
+  substrates/substrates_meta.pt     — grover_mean + morgan (all rows)
+  substrates/substrates_index.pt    — {global_id: (offset, atom_len, meta_row)}
 """
 from __future__ import annotations
 
@@ -65,13 +66,19 @@ LIGAND_INDEX_SENTINEL = 280
 PROTEIN_ELEMENTS_T = torch.tensor(PROTEIN_ELEMENTS, dtype=torch.long)
 LIGAND_ELEMENTS_T = torch.tensor(LIGAND_ELEMENTS, dtype=torch.long)
 
+ESM_DIM = 1280
+GROVER_ATOM_DIM = 2400
+GROVER_MEAN_DIM = 4885
+MORGAN_DIM = 1024
+FP16_BYTES = 2
+
 
 # ---------------------------------------------------------------------------
 # Caches
 # ---------------------------------------------------------------------------
 
 class ShardCache:
-    """LRU cache for loaded .pt shards."""
+    """LRU cache for loaded .pt shards (graph shards only)."""
     def __init__(self, max_size: int = 8):
         self._cache: OrderedDict[str, dict] = OrderedDict()
         self._max_size = max_size
@@ -228,7 +235,11 @@ def rebuild_edge_features(
 # ---------------------------------------------------------------------------
 
 class PtCacheDataset(torch.utils.data.Dataset):
-    """PyG-compatible dataset reading from .pt shard cache."""
+    """PyG-compatible dataset reading from .pt shard cache.
+
+    v2: enzyme/substrate loaded via seek on flat binary files.
+    Graph shards still use ShardCache (they are accessed sequentially).
+    """
 
     def __init__(
         self,
@@ -241,8 +252,6 @@ class PtCacheDataset(torch.utils.data.Dataset):
         max_enzyme_len: int = MAX_ENZYME_LEN,
         max_substrate_len: int = MAX_SUBSTRATE_LEN,
         graph_cache_size: int = 2,
-        enzyme_cache_size: int = 2,
-        substrate_cache_size: int = 8,
     ):
         super().__init__()
         self.cache_dir = Path(cache_dir)
@@ -258,46 +267,78 @@ class PtCacheDataset(torch.utils.data.Dataset):
         )
         self._n_samples = len(self._index["sample_ids"])
 
-        # Enzyme & substrate indices
+        # Enzyme flatbin index: global_id → (byte_offset, seq_len)
         enz_idx = torch.load(
-            self.cache_dir / "enzymes" / "index.pt", map_location="cpu", weights_only=False
+            self.cache_dir / "enzymes" / "enzymes_index.pt",
+            map_location="cpu", weights_only=False,
         )
+        self._enz_lookup: dict[int, tuple[int, int]] = enz_idx["index"]
+        self._enz_bin_path = str(self.cache_dir / "enzymes" / "enzymes.bin")
+
+        # Substrate flatbin index: global_id → (byte_offset, atom_len, meta_row)
         sub_idx = torch.load(
-            self.cache_dir / "substrates" / "index.pt", map_location="cpu", weights_only=False
+            self.cache_dir / "substrates" / "substrates_index.pt",
+            map_location="cpu", weights_only=False,
         )
+        self._sub_lookup: dict[int, tuple[int, int, int]] = sub_idx["index"]
+        self._sub_bin_path = str(self.cache_dir / "substrates" / "substrates_grover.bin")
 
-        # Build lookup dicts: global_id → (shard_id, row_id)
-        self._enz_lookup = {
-            int(enz_idx["enzyme_ids"][i]): (int(enz_idx["shard_ids"][i]), int(enz_idx["row_ids"][i]))
-            for i in range(len(enz_idx["enzyme_ids"]))
-        }
-        self._sub_lookup = {
-            int(sub_idx["substrate_ids"][i]): (int(sub_idx["shard_ids"][i]), int(sub_idx["row_ids"][i]))
-            for i in range(len(sub_idx["substrate_ids"]))
-        }
+        # Substrate meta (grover_mean + morgan) — loaded once, shared across calls.
+        # ~430MB for 40K substrates. Each worker gets its own copy via spawn.
+        sub_meta = torch.load(
+            self.cache_dir / "substrates" / "substrates_meta.pt",
+            map_location="cpu", weights_only=False,
+        )
+        self._sub_grover_mean = sub_meta["grover_mean"]  # fp16 [N, 4885]
+        self._sub_morgan = sub_meta["morgan"]             # uint8 or fp16 [N, 1024]
+        del sub_meta
 
-        # Caches (per-worker, cleared on spawn)
+        # Graph shard cache (sequential access pattern, small LRU is fine)
         self._graph_cache = ShardCache(graph_cache_size)
-        self._enz_cache = ShardCache(enzyme_cache_size)
-        self._sub_cache = ShardCache(substrate_cache_size)
+
+        # Entity tensor caches (decoded + padded results)
         self._enzyme_tensor_cache = EntityTensorCache(4096)
         self._substrate_tensor_cache = EntityTensorCache(4096)
 
+        # File handles for bin files — opened lazily for worker safety
+        self._enz_fh = None
+        self._sub_fh = None
+
         # Reusable GaussianSmearing (stateless)
         self._smear = GaussianSmearing(stop=cutoff, num_gaussians=num_r_gaussian)
+
+    def _ensure_file_handles(self):
+        """Lazily open binary file handles (called per-worker after spawn)."""
+        if self._enz_fh is None:
+            self._enz_fh = open(self._enz_bin_path, "rb")
+        if self._sub_fh is None:
+            self._sub_fh = open(self._sub_bin_path, "rb")
 
     def __len__(self) -> int:
         return self._n_samples
 
     def __getstate__(self):
-        """Clear caches before pickling (Windows spawn mode)."""
+        """Drop file handles before pickling (Windows spawn mode).
+
+        Do NOT close them — __getstate__ is called on the *parent* object,
+        and closing would invalidate the parent's live handles. Workers
+        will lazily open their own handles via _ensure_file_handles().
+        """
         state = self.__dict__.copy()
+        state["_enz_fh"] = None
+        state["_sub_fh"] = None
         state["_graph_cache"] = ShardCache(state["_graph_cache"]._max_size)
-        state["_enz_cache"] = ShardCache(state["_enz_cache"]._max_size)
-        state["_sub_cache"] = ShardCache(state["_sub_cache"]._max_size)
         state["_enzyme_tensor_cache"] = EntityTensorCache(4096)
         state["_substrate_tensor_cache"] = EntityTensorCache(4096)
         return state
+
+    def __del__(self):
+        for fh in (self._enz_fh, self._sub_fh):
+            if fh is not None:
+                try:
+                    fh.close()
+                except Exception:
+                    pass
 
     def _load_graph_sample(self, idx: int) -> dict:
         shard_id = int(self._index["graph_shards"][idx])
@@ -330,8 +371,8 @@ class PtCacheDataset(torch.utils.data.Dataset):
             "bond_index": shard["bond_index"][:, s_b:e_b].long(),
             "bond_type": shard["bond_type"][s_b:e_b].long(),
             "knn_edge_index": shard["knn_edge_index"][:, s_k:e_k].long(),
-            "enzyme_global_id": local_enz,  # already global in shards
-            "substrate_global_id": local_sub,  # already global in shards
+            "enzyme_global_id": local_enz,
+            "substrate_global_id": local_sub,
             "dataset_id": ds_id,
             "label": int(shard["labels"][row_id]),
             "str_tag_code": int(shard["str_tag_codes"][row_id]),
@@ -345,22 +386,26 @@ class PtCacheDataset(torch.utils.data.Dataset):
 
         if enzyme_global_id not in self._enz_lookup:
             out = (
-                torch.zeros(self.max_enzyme_len, 1280, dtype=torch.float32),
+                torch.zeros(self.max_enzyme_len, ESM_DIM, dtype=torch.float32),
                 torch.ones(1, self.max_enzyme_len, dtype=torch.bool),
             )
             self._enzyme_tensor_cache.put(enzyme_global_id, out)
             return out
 
-        shard_id, row_id = self._enz_lookup[enzyme_global_id]
-        shard_path = str(self.cache_dir / "enzymes" / f"esm_{shard_id:04d}.pt")
-        shard = self._enz_cache.get(shard_path)
+        self._ensure_file_handles()
+        byte_offset, seq_len = self._enz_lookup[enzyme_global_id]
+        nbytes = seq_len * ESM_DIM * FP16_BYTES
 
-        offsets = shard["offsets"]
-        start, end = int(offsets[row_id]), int(offsets[row_id + 1])
-        raw_emb = shard["embedding"][start:end].float()
+        self._enz_fh.seek(byte_offset)
+        raw = self._enz_fh.read(nbytes)
+        assert len(raw) == nbytes, f"Short read for enzyme {enzyme_global_id}"
 
-        length = min(raw_emb.shape[0], self.max_enzyme_len)
-        emb = torch.zeros(self.max_enzyme_len, 1280, dtype=torch.float32)
+        raw_emb = torch.from_numpy(
+            np.frombuffer(raw, dtype="<f2").reshape(seq_len, ESM_DIM).copy()
+        ).float()
+
+        length = min(seq_len, self.max_enzyme_len)
+        emb = torch.zeros(self.max_enzyme_len, ESM_DIM, dtype=torch.float32)
         emb[:length] = raw_emb[:length]
 
         mask = torch.zeros(1, self.max_enzyme_len, dtype=torch.bool)
@@ -377,34 +422,38 @@ class PtCacheDataset(torch.utils.data.Dataset):
 
         if substrate_global_id not in self._sub_lookup:
             out = {
-                "grover": torch.zeros(self.max_substrate_len, 2400, dtype=torch.float32),
+                "grover": torch.zeros(self.max_substrate_len, GROVER_ATOM_DIM, dtype=torch.float32),
                 "reaction_padding_mask": torch.ones(1, self.max_substrate_len, dtype=torch.bool),
-                "grover_mean": torch.zeros(1, 4885, dtype=torch.float32),
-                "morgan": torch.zeros(1, 1024, dtype=torch.float32),
+                "grover_mean": torch.zeros(1, GROVER_MEAN_DIM, dtype=torch.float32),
+                "morgan": torch.zeros(1, MORGAN_DIM, dtype=torch.float32),
             }
             self._substrate_tensor_cache.put(substrate_global_id, out)
             return out
 
-        shard_id, row_id = self._sub_lookup[substrate_global_id]
-        shard_path = str(self.cache_dir / "substrates" / f"grover_{shard_id:04d}.pt")
-        shard = self._sub_cache.get(shard_path)
+        self._ensure_file_handles()
+        byte_offset, atom_len, meta_row = self._sub_lookup[substrate_global_id]
+        nbytes = atom_len * GROVER_ATOM_DIM * FP16_BYTES
 
-        atom_offsets = shard["atom_offsets"]
-        a_start, a_end = int(atom_offsets[row_id]), int(atom_offsets[row_id + 1])
-        raw_grover = shard["grover_atom"][a_start:a_end].float()
+        self._sub_fh.seek(byte_offset)
+        raw = self._sub_fh.read(nbytes)
+        assert len(raw) == nbytes, f"Short read for substrate {substrate_global_id}"
 
-        atom_len = min(raw_grover.shape[0], self.max_substrate_len)
-        grover = torch.zeros(self.max_substrate_len, 2400, dtype=torch.float32)
-        grover[:atom_len] = raw_grover[:atom_len]
+        raw_grover = torch.from_numpy(
+            np.frombuffer(raw, dtype="<f2").reshape(atom_len, GROVER_ATOM_DIM).copy()
+        ).float()
+
+        clamped_len = min(atom_len, self.max_substrate_len)
+        grover = torch.zeros(self.max_substrate_len, GROVER_ATOM_DIM, dtype=torch.float32)
+        grover[:clamped_len] = raw_grover[:clamped_len]
 
         r_mask = torch.zeros(1, self.max_substrate_len, dtype=torch.bool)
-        r_mask[0, atom_len:] = True
+        r_mask[0, clamped_len:] = True
 
         out = {
             "grover": grover,
             "reaction_padding_mask": r_mask,
-            "grover_mean": shard["grover_mean"][row_id:row_id + 1].float(),
-            "morgan": shard["morgan"][row_id:row_id + 1].float(),
+            "grover_mean": self._sub_grover_mean[meta_row:meta_row + 1].float(),
+            "morgan": self._sub_morgan[meta_row:meta_row + 1].float(),
         }
         self._substrate_tensor_cache.put(substrate_global_id, out)
         return out

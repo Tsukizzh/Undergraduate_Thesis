@@ -585,6 +585,212 @@ def build_substrate_shards(output_dir: Path,
 
 
 # ---------------------------------------------------------------------------
+# Flat binary conversion (shard .pt → seek-friendly .bin + index)
+# ---------------------------------------------------------------------------
+
+def convert_enzyme_shards_to_flatbin(output_dir: Path,
+                                      overwrite: bool = False) -> None:
+    """Convert enzymes/esm_*.pt shards into a single flat binary file.
+
+    Produces:
+      enzymes/enzymes.bin       — raw fp16 embeddings, contiguous
+      enzymes/enzymes_index.pt  — {global_id: (byte_offset, seq_len)} + metadata
+    """
+    enz_dir = output_dir / "enzymes"
+    shard_paths = sorted(enz_dir.glob("esm_*.pt"))
+    if not shard_paths:
+        raise FileNotFoundError(f"No enzyme shards under {enz_dir}")
+
+    bin_path = enz_dir / "enzymes.bin"
+    idx_path = enz_dir / "enzymes_index.pt"
+    if not overwrite and bin_path.exists() and idx_path.exists():
+        print(f"  Enzyme flatbin already exists, skipping.")
+        return
+
+    tmp_bin = enz_dir / "enzymes.bin.tmp"
+    tmp_idx = enz_dir / "enzymes_index.pt.tmp"
+    EMB_DIM = 1280
+    FP16_BYTES = 2
+    index_map: dict[int, tuple[int, int]] = {}
+    byte_offset = 0
+    num_items = 0
+
+    try:
+        with open(tmp_bin, "wb") as fout:
+            for sp in tqdm(shard_paths, desc="Enzyme shards → flatbin"):
+                shard = torch.load(sp, map_location="cpu", weights_only=False)
+                enzyme_ids = shard["enzyme_ids"].numpy()
+                lengths = shard["lengths"].numpy()
+                offsets = shard["offsets"].numpy()
+                embedding = shard["embedding"].numpy().astype(np.float16)
+
+                assert embedding.ndim == 2 and embedding.shape[1] == EMB_DIM, \
+                    f"{sp.name}: bad embedding shape {embedding.shape}"
+
+                for row, gid in enumerate(enzyme_ids.tolist()):
+                    gid = int(gid)
+                    if gid in index_map:
+                        raise ValueError(f"Duplicate enzyme global_id: {gid}")
+                    seq_len = int(lengths[row])
+                    s, e = int(offsets[row]), int(offsets[row + 1])
+                    assert e - s == seq_len
+
+                    raw = np.ascontiguousarray(
+                        embedding[s:e], dtype="<f2"
+                    ).tobytes()
+                    expected = seq_len * EMB_DIM * FP16_BYTES
+                    assert len(raw) == expected
+
+                    fout.write(raw)
+                    index_map[gid] = (byte_offset, seq_len)
+                    byte_offset += expected
+                    num_items += 1
+                del shard
+
+        assert os.path.getsize(tmp_bin) == byte_offset
+
+        torch.save({
+            "version": 1,
+            "format": "enzyme_flatbin_v1",
+            "dtype": "float16",
+            "endianness": "little",
+            "embedding_dim": EMB_DIM,
+            "num_items": num_items,
+            "total_bytes": byte_offset,
+            "index": index_map,
+        }, tmp_idx)
+
+        os.replace(tmp_bin, bin_path)
+        os.replace(tmp_idx, idx_path)
+        print(f"  Enzyme flatbin: {bin_path} ({byte_offset / 1e9:.2f} GB, {num_items} enzymes)")
+
+    except Exception:
+        for p in (tmp_bin, tmp_idx):
+            if p.exists():
+                p.unlink()
+        raise
+
+
+def convert_substrate_shards_to_flatbin(output_dir: Path,
+                                         overwrite: bool = False) -> None:
+    """Convert substrates/grover_*.pt shards into flat binary + meta files.
+
+    Produces:
+      substrates/substrates_grover.bin  — raw fp16 grover_atom, contiguous
+      substrates/substrates_meta.pt     — grover_mean (fp16) + morgan, all rows
+      substrates/substrates_index.pt    — {global_id: (byte_offset, atom_len, meta_row)}
+    """
+    sub_dir = output_dir / "substrates"
+    shard_paths = sorted(sub_dir.glob("grover_*.pt"))
+    if not shard_paths:
+        raise FileNotFoundError(f"No substrate shards under {sub_dir}")
+
+    bin_path = sub_dir / "substrates_grover.bin"
+    meta_path = sub_dir / "substrates_meta.pt"
+    idx_path = sub_dir / "substrates_index.pt"
+    if not overwrite and bin_path.exists() and meta_path.exists() and idx_path.exists():
+        print(f"  Substrate flatbin already exists, skipping.")
+        return
+
+    tmp_bin = sub_dir / "substrates_grover.bin.tmp"
+    tmp_meta = sub_dir / "substrates_meta.pt.tmp"
+    tmp_idx = sub_dir / "substrates_index.pt.tmp"
+    ATOM_DIM = 2400
+    FP16_BYTES = 2
+    index_map: dict[int, tuple[int, int, int]] = {}
+    grover_mean_chunks: list[torch.Tensor] = []
+    morgan_chunks: list[torch.Tensor] = []
+    byte_offset = 0
+    meta_row = 0
+
+    try:
+        with open(tmp_bin, "wb") as fout:
+            for sp in tqdm(shard_paths, desc="Substrate shards → flatbin"):
+                shard = torch.load(sp, map_location="cpu", weights_only=False)
+                substrate_ids = shard["substrate_ids"].numpy()
+                atom_lengths = shard["atom_lengths"].numpy()
+                atom_offsets = shard["atom_offsets"].numpy()
+                grover_atom = shard["grover_atom"].numpy().astype(np.float16)
+                grover_mean = shard["grover_mean"].to(dtype=torch.float16)
+                morgan = shard["morgan"]
+
+                assert grover_atom.ndim == 2 and grover_atom.shape[1] == ATOM_DIM
+                assert grover_mean.shape == (len(substrate_ids), 4885)
+                assert morgan.shape == (len(substrate_ids), 1024)
+
+                grover_mean_chunks.append(grover_mean)
+                morgan_chunks.append(morgan)
+
+                for row, gid in enumerate(substrate_ids.tolist()):
+                    gid = int(gid)
+                    if gid in index_map:
+                        raise ValueError(f"Duplicate substrate global_id: {gid}")
+                    atom_len = int(atom_lengths[row])
+                    s, e = int(atom_offsets[row]), int(atom_offsets[row + 1])
+                    assert e - s == atom_len
+
+                    raw = np.ascontiguousarray(
+                        grover_atom[s:e], dtype="<f2"
+                    ).tobytes()
+                    expected = atom_len * ATOM_DIM * FP16_BYTES
+                    assert len(raw) == expected
+
+                    fout.write(raw)
+                    index_map[gid] = (byte_offset, atom_len, meta_row)
+                    byte_offset += expected
+                    meta_row += 1
+                del shard
+
+        assert os.path.getsize(tmp_bin) == byte_offset
+
+        all_morgan = torch.cat(morgan_chunks, dim=0)
+        morgan_dtype = "uint8" if all_morgan.dtype == torch.uint8 else "float16"
+        if morgan_dtype == "float16":
+            all_morgan = all_morgan.to(dtype=torch.float16)
+
+        torch.save({
+            "version": 1,
+            "grover_mean": torch.cat(grover_mean_chunks, dim=0),
+            "morgan": all_morgan,
+            "num_items": meta_row,
+            "grover_mean_dim": 4885,
+            "morgan_dim": 1024,
+            "morgan_dtype": morgan_dtype,
+        }, tmp_meta)
+
+        torch.save({
+            "version": 1,
+            "format": "substrate_flatbin_v1",
+            "dtype": "float16",
+            "endianness": "little",
+            "grover_atom_dim": ATOM_DIM,
+            "num_items": meta_row,
+            "total_bytes": byte_offset,
+            "index": index_map,
+        }, tmp_idx)
+
+        os.replace(tmp_bin, bin_path)
+        os.replace(tmp_meta, meta_path)
+        os.replace(tmp_idx, idx_path)
+        print(f"  Substrate grover flatbin: {bin_path} ({byte_offset / 1e9:.2f} GB, {meta_row} substrates)")
+
+    except Exception:
+        for p in (tmp_bin, tmp_meta, tmp_idx):
+            if p.exists():
+                p.unlink()
+        raise
+
+
+def convert_shards_to_flatbin(output_dir: Path,
+                               overwrite: bool = False) -> None:
+    """Convert all enzyme/substrate shards to flat binary format."""
+    print("\n[flatbin] Converting sequence shards to flat binaries ...")
+    convert_enzyme_shards_to_flatbin(output_dir, overwrite=overwrite)
+    convert_substrate_shards_to_flatbin(output_dir, overwrite=overwrite)
+    print("[flatbin] Done.")
+
+
+# ---------------------------------------------------------------------------
 # Per-sample structure extractor
 # ---------------------------------------------------------------------------
 
