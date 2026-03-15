@@ -344,7 +344,7 @@ ESIBank 训练集中的 P450
 
 **.pt 预处理缓存（已完成，2026-03-16）**:
 - 脚本: `scripts/09_Step9_AllSplit训练/build_pt_cache.py`
-- 输出: `data/09_Step9_AllSplit训练/ezspec_pt_v1/`（~44GB）
+- 输出: `data/10_Step10_pt训练/ezspec_pt_v1/`（~44GB）
 - 结构: enzymes/(ESM fp16分片17GB) + substrates/(GROVER+Morgan 0.5GB) + train/val/test/(graph分片26GB)
 - 特点: 预计算k-NN边索引，保留dist_noise和edge_mode灵活性
 - 验证: 全部分片通过结构完整性检查
