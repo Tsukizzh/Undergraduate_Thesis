@@ -1683,5 +1683,128 @@ def main() -> None:
     print_summary(output_dir, t_start)
 
 
+def convert_shards_to_per_sample(cache_dir: str, splits=("train", "val", "test"),
+                                  num_workers: int = 8):
+    """Convert graph shard files into per-sample .pt files.
+
+    Reads existing graph_XXXX.pt shards and splits each sample into its own
+    file at  <split>/samples/SSS/sample_NNNNNN.pt  where SSS = NNNNNN // 1000.
+
+    Each per-sample .pt contains exactly the fields needed to reconstruct one
+    training sample, with compact dtypes (no padding, no duplication).
+    """
+    from concurrent.futures import ProcessPoolExecutor, as_completed
+
+    cache_dir = Path(cache_dir)
+
+    for split in splits:
+        split_dir = cache_dir / split
+        if not split_dir.exists():
+            print(f"  Skipping {split} (directory not found)")
+            continue
+
+        samples_dir = split_dir / "samples"
+        samples_dir.mkdir(exist_ok=True)
+
+        # Load index to get sample metadata
+        index_path = split_dir / "index.pt"
+        if not index_path.exists():
+            print(f"  Skipping {split} (no index.pt)")
+            continue
+
+        index = torch.load(index_path, weights_only=False)
+        n_samples = len(index["sample_ids"])
+
+        # Count how many already done (resume support)
+        already_done = 0
+        for i in range(n_samples):
+            sample_id = int(index["sample_ids"][i])
+            sub_dir = samples_dir / f"{sample_id // 1000:03d}"
+            if (sub_dir / f"sample_{sample_id:06d}.pt").exists():
+                already_done += 1
+
+        if already_done == n_samples:
+            print(f"  [{split}] All {n_samples} per-sample files exist, skipping.")
+            continue
+
+        print(f"  [{split}] {already_done}/{n_samples} done, processing remaining...")
+
+        # Group samples by shard
+        shard_to_rows = {}
+        for i in range(n_samples):
+            shard_id = int(index["graph_shards"][i])
+            shard_to_rows.setdefault(shard_id, []).append(i)
+
+        # Process each shard: load once, extract all samples
+        done_count = already_done
+        shard_ids = sorted(shard_to_rows.keys())
+
+        for shard_id in tqdm(shard_ids, desc=f"  [{split}] shards"):
+            shard_path = split_dir / f"graph_{shard_id:04d}.pt"
+            if not shard_path.exists():
+                print(f"  WARNING: {shard_path} not found, skipping")
+                continue
+
+            shard = torch.load(shard_path, weights_only=False)
+            rows = shard_to_rows[shard_id]
+
+            for i in rows:
+                sample_id = int(index["sample_ids"][i])
+                sub_dir = samples_dir / f"{sample_id // 1000:03d}"
+                out_path = sub_dir / f"sample_{sample_id:06d}.pt"
+
+                if out_path.exists():
+                    continue
+
+                sub_dir.mkdir(exist_ok=True)
+                row_id = int(index["graph_rows"][i])
+
+                # Slice this sample from shard using pointers
+                lp = shard["ligand_ptr"]
+                pp = shard["protein_ptr"]
+                bp = shard["bond_ptr"]
+                kp = shard["knn_ptr"]
+
+                ls, le = int(lp[row_id]), int(lp[row_id + 1])
+                ps, pe = int(pp[row_id]), int(pp[row_id + 1])
+                bs, be = int(bp[row_id]), int(bp[row_id + 1])
+                ks, ke = int(kp[row_id]), int(kp[row_id + 1])
+
+                sample = {
+                    "ligand_pos": shard["ligand_pos"][ls:le].clone(),
+                    "ligand_element": shard["ligand_element"][ls:le].clone(),
+                    "ligand_atom_aux": shard["ligand_atom_aux"][ls:le].clone(),
+                    "ligand_index_raw": shard["ligand_index_raw"][ls:le].clone(),
+                    "protein_pos": shard["protein_pos"][ps:pe].clone(),
+                    "protein_element": shard["protein_element"][ps:pe].clone(),
+                    "protein_aa_type": shard["protein_aa_type"][ps:pe].clone(),
+                    "protein_is_backbone": shard["protein_is_backbone"][ps:pe].clone(),
+                    "bond_index": shard["bond_index"][:, bs:be].clone(),
+                    "bond_type": shard["bond_type"][bs:be].clone(),
+                    "knn_edge_index": shard["knn_edge_index"][:, ks:ke].clone(),
+                    # metadata
+                    "enzyme_id": int(shard["enzyme_ids"][row_id]),
+                    "substrate_id": int(shard["substrate_ids"][row_id]),
+                    "dataset_id": int(shard["dataset_ids"][row_id]),
+                    "str_tag_code": int(shard["str_tag_codes"][row_id]),
+                    "label": int(shard["labels"][row_id]),
+                    "sample_weight": float(shard["sample_weights"][row_id]),
+                }
+
+                torch.save(sample, out_path)
+                done_count += 1
+
+            del shard
+
+        print(f"  [{split}] Done: {done_count} per-sample files")
+
+
 if __name__ == "__main__":
-    main()
+    import sys as _sys
+    if len(_sys.argv) > 1 and _sys.argv[1] == "convert-per-sample":
+        # Quick entry point: python build_pt_cache.py convert-per-sample <cache_dir>
+        _cache_dir = _sys.argv[2] if len(_sys.argv) > 2 else "."
+        _splits = _sys.argv[3:] if len(_sys.argv) > 3 else ["train", "val", "test"]
+        convert_shards_to_per_sample(_cache_dir, splits=_splits)
+    else:
+        main()

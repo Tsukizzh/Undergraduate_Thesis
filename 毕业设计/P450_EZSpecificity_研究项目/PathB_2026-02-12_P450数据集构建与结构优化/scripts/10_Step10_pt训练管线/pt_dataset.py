@@ -328,8 +328,8 @@ class PtCacheDataset(torch.utils.data.Dataset):
         state["_enz_fh"] = None
         state["_sub_fh"] = None
         state["_graph_cache"] = ShardCache(state["_graph_cache"]._max_size)
-        state["_enzyme_tensor_cache"] = EntityTensorCache(4096)
-        state["_substrate_tensor_cache"] = EntityTensorCache(4096)
+        state["_enzyme_tensor_cache"] = EntityTensorCache(64)
+        state["_substrate_tensor_cache"] = EntityTensorCache(256)
         return state
 
     def __del__(self):
@@ -341,6 +341,35 @@ class PtCacheDataset(torch.utils.data.Dataset):
                     pass
 
     def _load_graph_sample(self, idx: int) -> dict:
+        sample_id = int(self._index["sample_ids"][idx])
+
+        # Try per-sample file first (fast path: 160KB per read)
+        sub_dir = self.cache_dir / self.split / "samples" / f"{sample_id // 1000:03d}"
+        sample_path = sub_dir / f"sample_{sample_id:06d}.pt"
+
+        if sample_path.exists():
+            s = torch.load(sample_path, map_location="cpu", weights_only=False)
+            return {
+                "ligand_pos": s["ligand_pos"].float(),
+                "protein_pos": s["protein_pos"].float(),
+                "ligand_element": s["ligand_element"].long(),
+                "protein_element": s["protein_element"].long(),
+                "protein_aa_type": s["protein_aa_type"].long(),
+                "protein_is_backbone": s["protein_is_backbone"].long(),
+                "ligand_atom_aux": s["ligand_atom_aux"].long(),
+                "ligand_index_raw": s["ligand_index_raw"].long(),
+                "bond_index": s["bond_index"].long(),
+                "bond_type": s["bond_type"].long(),
+                "knn_edge_index": s["knn_edge_index"].long(),
+                "enzyme_global_id": int(s["enzyme_id"]),
+                "substrate_global_id": int(s["substrate_id"]),
+                "dataset_id": int(s["dataset_id"]),
+                "label": int(s["label"]),
+                "str_tag_code": int(s["str_tag_code"]),
+                "sample_weight": float(s["sample_weight"]),
+            }
+
+        # Fallback: shard mode (backward compatible)
         shard_id = int(self._index["graph_shards"][idx])
         row_id = int(self._index["graph_rows"][idx])
         shard_path = str(self.cache_dir / self.split / f"graph_{shard_id:04d}.pt")
