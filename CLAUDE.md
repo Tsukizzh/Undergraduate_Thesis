@@ -314,33 +314,41 @@ ESIBank 训练集中的 P450
 
 #### 当前研究阶段
 
-**阶段三十九**：Step 9 等待服务器 + 文档整理（2026-03-12）
+**阶段四十**：Step 9 完成 + .pt 缓存构建 + Path C 准备（2026-03-16）
 
 | 路径 | 名称 | 状态 | 说明 |
 |------|------|------|------|
 | **A** | 模型评估测试集构建 | ✅ 已完成 | Step 1-10全部完成 |
 | │    | └─ Step 1-10 | ✅ 已完成 | 推理+分析（AUC-ROC 0.6636） |
-| **B** | P450数据集构建与结构优化 | 🔄 进行中 | Step 1-8 ✅，Step 9 ⏸️ |
+| **B** | P450数据集构建与结构优化 | ✅ 已完成 | Step 1-9 全部完成 |
 | │    | └─ Step 1-2 | ✅ 已完成 | 结构因子实验 + Gate A PASS |
 | │    | └─ Step 3-5 | ✅ 已完成 | Vina对接 + Gate B INFORMATIVE FAIL |
 | │    | └─ Step 6 | ✅ 已完成 | 消融实验 + Causal DAG v2 |
 | │    | └─ Step 7 | ✅ 已完成 | Tier 1 诊断(E1-E6) + 扩展 + E7内部基准 |
 | │    | └─ Step 8 | ✅ 已完成 | E8v1+E8v2通道关闭消融 + E9废弃 |
-| │    | └─ Step 9 | 🔄 ep12暂停 | AllSplit训练, best=ep8 AUC=0.7422, 管线已升级 |
-| C | P450专属模型训练 | ⏳ 待定 | 优先修复任务/数据设计，再pilot对比通道配置 |
+| │    | └─ Step 9 | ✅ 已完成 | AllSplit训练 ep27完成, **BEST=ep14 AUC=0.7667** |
+| **C** | P450专属模型训练 | 🔄 准备中 | .pt缓存已构建，待写Dataset类+消融实验 |
 | D | 区域选择性预测 | ⏳ 待定 | 路径A完成后可选 |
 
 **工作目录**: `毕业设计/P450_EZSpecificity_研究项目/PathB_2026-02-12_P450数据集构建与结构优化/`
 
-**Step 9 当前状态（AllSplit训练）**:
+**Step 9 最终结果（AllSplit训练，已完成）**:
 - **核心指标: AUC-ROC**（用户明确要求，AUPR仅辅助参考）
-- 12 epochs完成（暂停于ep12）: E0(0.620) → E2(0.654) → **E8(AUC=0.7422, BEST)** → E12(0.7505, AUC仍在升)
-- AUC持续上升(0.654→0.750)，AUPR在ep8后下降(0.294→0.283)
-- **训练管线已升级(2026-03-13)**: 自动评估+绘图、grad_norm追踪、数据持久化（断电不丢数据）
-- EarlyStopping(patience=15, monitor=auc/val), best=ep8, wait=4/15 → 最多训到ep23
-- 训练入口: `main_training_cached.py`，恢复: `--resume last`
-- 原始论文run_0: **4块GPU训了~256 epochs**才到AUC=0.893, AUPR=0.607
-- 发现并修复了**边排序Bug**（transforms.py:130-147），训练使用fixed模式
+- **FINAL BEST: ep14 AUC=0.7667**（超论文 0.7198，+0.047）
+- 训练到 ep27，过拟合确认：train_loss 0.107→0.088↓，val_loss 0.328→0.374↑
+- AUC趋势: ep2(0.654) → ep8(0.742) → **ep14(0.7667 BEST)** → ep19(0.766) → ep27(0.751)
+- EarlyStopping wait=13/15 at ep27, ep14 is definitive best
+- 边排序Bug已在训练前修复（monkey-patch fixed模式），**baseline 已包含边修复**
+- **数据泄露**: 酶0.15%（可忽略），底物6.56%（跨数据集Morgan FP重叠）
+- 原始论文run_0: 4块GPU训了~256 epochs → AUC=0.893
+
+**.pt 预处理缓存（已完成，2026-03-16）**:
+- 脚本: `scripts/09_Step9_AllSplit训练/build_pt_cache.py`
+- 输出: `data/09_Step9_AllSplit训练/ezspec_pt_v1/`（~44GB）
+- 结构: enzymes/(ESM fp16分片17GB) + substrates/(GROVER+Morgan 0.5GB) + train/val/test/(graph分片26GB)
+- 特点: 预计算k-NN边索引，保留dist_noise和edge_mode灵活性
+- 验证: 全部分片通过结构完整性检查
+- 下一步: 写.pt Dataset类 → 在老师服务器(RTX 4090)上跑消融实验
 
 **Path B 诊断阶段总结（Step 7-8）**:
 - **Step 7 核心发现**: 底物身份驱动评分（我们的P450）vs 配对交互信号（ESIBank P450）
