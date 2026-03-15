@@ -1,1 +1,2 @@
 epoch,timestamp,lr,grad_norm,train_loss,val_loss,val_auc,val_aupr,val_auc_0,val_auc_1,val_auc_2,val_auc_3,val_auc_4,val_auc_5,val_auc_6,val_aupr_0,val_aupr_1,val_aupr_2,val_aupr_3,val_aupr_4,val_aupr_5,val_aupr_6
+0,2026-03-16 07:51:42,5.00e-06,inf,0.173889,0.336606,0.610269,0.144960,0.535902,,0.652121,0.291667,0.000000,0.355236,,0.083211,0.000000,0.478862,0.324651,0.500000,0.170252,0.000000
