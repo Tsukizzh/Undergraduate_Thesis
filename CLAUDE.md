@@ -327,7 +327,8 @@ ESIBank 训练集中的 P450
 | │    | └─ Step 7 | ✅ 已完成 | Tier 1 诊断(E1-E6) + 扩展 + E7内部基准 |
 | │    | └─ Step 8 | ✅ 已完成 | E8v1+E8v2通道关闭消融 + E9废弃 |
 | │    | └─ Step 9 | ✅ 已完成 | AllSplit训练 ep27完成, **BEST=ep14 AUC=0.7667** |
-| **C** | P450专属模型训练 | 🔄 准备中 | .pt缓存已构建，待写Dataset类+消融实验 |
+| │    | └─ Step 10 | ✅ 已完成 | .pt缓存v3(per-sample) + Dataset类 + 训练脚本, **7.56 it/s** |
+| **C** | P450专属模型训练 | 🔄 Step 11准备中 | 待跑legacy_bug+fixed两轮基线训练 |
 | D | 区域选择性预测 | ⏳ 待定 | 路径A完成后可选 |
 
 **工作目录**: `毕业设计/P450_EZSpecificity_研究项目/PathB_2026-02-12_P450数据集构建与结构优化/`
@@ -342,13 +343,16 @@ ESIBank 训练集中的 P450
 - **数据泄露**: 酶0.15%（可忽略），底物6.56%（跨数据集Morgan FP重叠）
 - 原始论文run_0: 4块GPU训了~256 epochs → AUC=0.893
 
-**.pt 预处理缓存（已完成，2026-03-16）**:
-- 脚本: `scripts/09_Step9_AllSplit训练/build_pt_cache.py`
-- 输出: `data/10_Step10_pt训练/ezspec_pt_v1/`（~44GB）
-- 结构: enzymes/(ESM fp16分片17GB) + substrates/(GROVER+Morgan 0.5GB) + train/val/test/(graph分片26GB)
-- 特点: 预计算k-NN边索引，保留dist_noise和edge_mode灵活性
-- 验证: 全部分片通过结构完整性检查
-- 下一步: 写.pt Dataset类 → 在老师服务器(RTX 4090)上跑消融实验
+**Step 10: .pt训练管线（已完成，2026-03-16）**:
+- **缓存v3 (per-sample)**：176K个独立.pt文件(~160KB/个)，PyG标准模式
+- 三层存储: enzymes.bin(27GB,seek读取) + substrates_grover.bin(4.3GB) + per-sample .pt(28GB)
+- **速度: 7.56 it/s**（比LMDB缓存3.8 it/s快2倍，不衰减）
+- **内存: ~10GB**（vs LMDB 15-30GB mmap）
+- 训练脚本: `scripts/10_Step10_pt训练管线/main_training_pt.py`
+- Dataset类: `scripts/10_Step10_pt训练管线/pt_dataset.py`
+- 支持 --edge-mode fixed/legacy_bug 切换（消融实验用）
+- 迭代历史: v1(分片300MB,SSD爆)→v2(flatbin,慢)→**v3(per-sample,最优)**
+- 下一步: 传数据到服务器 → Step 11两轮基线训练
 
 **Path B 诊断阶段总结（Step 7-8）**:
 - **Step 7 核心发现**: 底物身份驱动评分（我们的P450）vs 配对交互信号（ESIBank P450）
