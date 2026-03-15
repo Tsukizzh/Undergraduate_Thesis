@@ -297,8 +297,8 @@ class PtCacheDataset(torch.utils.data.Dataset):
         self._graph_cache = ShardCache(graph_cache_size)
 
         # Entity tensor caches (decoded + padded results)
-        self._enzyme_tensor_cache = EntityTensorCache(4096)
-        self._substrate_tensor_cache = EntityTensorCache(4096)
+        self._enzyme_tensor_cache = EntityTensorCache(64)   # 64 enzymes × ~7MB = ~450MB max
+        self._substrate_tensor_cache = EntityTensorCache(256)  # 256 substrates × ~2.7MB = ~690MB max
 
         # File handles for bin files — opened lazily for worker safety
         self._enz_fh = None
