@@ -35,9 +35,8 @@ Usage
 
 Design decisions
 ────────────────
-  * Sequential LMDB reads (no multiprocessing) for Windows compatibility.
-    Parallelism can be added for Linux by switching to ProcessPoolExecutor
-    with subdir=False LMDBs (which are fully fork-safe on Linux).
+  * Enzyme/substrate/graph shards all support multi-worker (ProcessPoolExecutor)
+    and resume (skip existing shard files). Each worker opens its own LMDB handles.
   * enzyme_idx and substrate_idx are LOCAL to each dataset (0-indexed).
     Global identity is (dataset_id, local_idx); enzyme_shard and
     substrate_shard are keyed by (dataset_id, local_idx) as well.
@@ -225,17 +224,78 @@ def build_knn_graph(ligand_pos: np.ndarray,
 # Enzyme shard builder
 # ---------------------------------------------------------------------------
 
+def _process_single_enzyme_shard(args_tuple):
+    """Process a single enzyme shard in a worker process. Returns index metadata."""
+    (shard_idx, batch_keys, enz_dir_str) = args_tuple
+
+    S = len(batch_keys)
+    enzyme_ids_arr = np.empty(S, dtype=np.int32)
+    lengths_arr    = np.empty(S, dtype=np.int16)
+    offsets_arr    = np.zeros(S + 1, dtype=np.int64)
+
+    # Group keys by LMDB path to minimise open/close overhead
+    path_to_indices: dict[str, list[tuple[int, int, int]]] = {}
+    for row_in_shard, (ds_id, enz_idx, path) in enumerate(batch_keys):
+        path_to_indices.setdefault(path, []).append((row_in_shard, ds_id, enz_idx))
+
+    emb_by_row: list[np.ndarray | None] = [None] * S
+
+    for path, entries in path_to_indices.items():
+        env = _open_lmdb(path)
+        try:
+            with env.begin(write=False) as txn:
+                for row_in_shard, ds_id, enz_idx in entries:
+                    raw = txn.get(str(enz_idx).encode())
+                    if raw is None:
+                        raise RuntimeError(
+                            f"Key {enz_idx} missing from enzyme LMDB {path}"
+                        )
+                    data = pickle.loads(raw)
+                    emb = np.array(data["embedding"], dtype=np.float32)
+                    enzyme_ids_arr[row_in_shard] = ds_id * 10_000_000 + enz_idx
+                    lengths_arr[row_in_shard]    = emb.shape[0]
+                    emb_by_row[row_in_shard]     = emb
+        finally:
+            env.close()
+
+    # Build offsets and concatenate
+    for i in range(S):
+        offsets_arr[i + 1] = offsets_arr[i] + emb_by_row[i].shape[0]
+    embedding = np.concatenate(emb_by_row, axis=0).astype(np.float16)
+
+    shard = {
+        "enzyme_ids": torch.from_numpy(enzyme_ids_arr),  # int32
+        "lengths":    torch.from_numpy(lengths_arr),      # int16
+        "offsets":    torch.from_numpy(offsets_arr),      # int64
+        "embedding":  torch.from_numpy(embedding),        # float16
+    }
+    torch.save(shard, os.path.join(enz_dir_str, f"esm_{shard_idx:04d}.pt"))
+
+    # Return index metadata: list of (global_id, shard_idx, row_in_shard)
+    index_meta = []
+    for row_in_shard in range(S):
+        index_meta.append((int(enzyme_ids_arr[row_in_shard]), shard_idx, row_in_shard))
+
+    del emb_by_row, embedding, shard
+    return index_meta
+
+
 def build_enzyme_shards(output_dir: Path,
                         config: dict,
-                        shard_size: int) -> None:
+                        shard_size: int,
+                        num_workers: int = 0) -> None:
     """Iterate all enzyme LMDBs and write fp16 ESM shards.
 
     Streaming two-pass approach to avoid loading all embeddings into RAM:
       Pass 1: scan keys only (no values) to build (ds_id, enz_idx) list and assign shards.
       Pass 2: for each shard, load only its entries, write, then free.
+    Supports resume (skips existing shards) and multi-worker via ProcessPoolExecutor.
     """
+    from concurrent.futures import ProcessPoolExecutor, as_completed
+
     enz_dir = output_dir / "enzymes"
     enz_dir.mkdir(parents=True, exist_ok=True)
+    enz_dir_str = str(enz_dir)
 
     enz_paths: list[str] = config["data"]["enzyme_lmdb_path"]
 
@@ -259,70 +319,62 @@ def build_enzyme_shards(output_dir: Path,
     total_shards = math.ceil(total / shard_size) if total > 0 else 0
     print(f"  {total} enzymes → {total_shards} shards")
 
-    # Index arrays for enzymes/index.pt (Fix 3)
+    # Index arrays for enzymes/index.pt
     all_global_ids: list[int] = []
     all_shard_ids:  list[int] = []
     all_row_ids:    list[int] = []
 
-    # Pass 2: for each shard load only its entries, write, free
-    for shard_idx in tqdm(range(total_shards), desc="Writing enzyme shards"):
+    # Pass 2: build tasks, with resume check
+    tasks = []
+    skipped = 0
+    for shard_idx in range(total_shards):
+        shard_path = enz_dir / f"esm_{shard_idx:04d}.pt"
         batch_keys = all_keys[shard_idx * shard_size: (shard_idx + 1) * shard_size]
-        S = len(batch_keys)
 
-        enzyme_ids_arr = np.empty(S, dtype=np.int32)
-        lengths_arr    = np.empty(S, dtype=np.int16)
-        offsets_arr    = np.zeros(S + 1, dtype=np.int64)
-        emb_chunks: list[np.ndarray] = []
+        if shard_path.exists():
+            # Resume: recover index metadata from existing shard
+            existing = torch.load(shard_path, map_location="cpu", weights_only=False)
+            S_existing = len(existing["enzyme_ids"])
+            for row_in_shard in range(S_existing):
+                all_global_ids.append(int(existing["enzyme_ids"][row_in_shard].item()))
+                all_shard_ids.append(shard_idx)
+                all_row_ids.append(row_in_shard)
+            del existing
+            skipped += 1
+            continue
 
-        # Group keys by LMDB path to minimise open/close overhead
-        path_to_indices: dict[str, list[tuple[int, int, int]]] = {}
-        for row_in_shard, (ds_id, enz_idx, path) in enumerate(batch_keys):
-            path_to_indices.setdefault(path, []).append((row_in_shard, ds_id, enz_idx))
+        tasks.append((shard_idx, batch_keys, enz_dir_str))
 
-        # Pre-allocate list for ordered insertion
-        emb_by_row: list[np.ndarray | None] = [None] * S
+    if skipped > 0:
+        print(f"  Skipped {skipped} existing shards (resume).")
 
-        for path, entries in path_to_indices.items():
-            env = _open_lmdb(path)
-            try:
-                with env.begin(write=False) as txn:
-                    for row_in_shard, ds_id, enz_idx in entries:
-                        raw = txn.get(str(enz_idx).encode())
-                        if raw is None:
-                            raise RuntimeError(
-                                f"Key {enz_idx} missing from enzyme LMDB {path}"
-                            )
-                        data = pickle.loads(raw)
-                        emb = np.array(data["embedding"], dtype=np.float32)
-                        enzyme_ids_arr[row_in_shard] = ds_id * 10_000_000 + enz_idx
-                        lengths_arr[row_in_shard]    = emb.shape[0]
-                        emb_by_row[row_in_shard]     = emb
-            finally:
-                env.close()
+    if not tasks:
+        print(f"  All enzyme shards already exist.")
+    elif num_workers <= 1:
+        # Single-process fallback
+        for task in tqdm(tasks, desc="Writing enzyme shards"):
+            index_meta = _process_single_enzyme_shard(task)
+            for (gid, si, ri) in index_meta:
+                all_global_ids.append(gid)
+                all_shard_ids.append(si)
+                all_row_ids.append(ri)
+    else:
+        # Multi-process
+        print(f"  Using {num_workers} workers for {len(tasks)} enzyme shards ...")
+        completed = 0
+        with ProcessPoolExecutor(max_workers=num_workers) as executor:
+            futures = {executor.submit(_process_single_enzyme_shard, t): t[0] for t in tasks}
+            for future in as_completed(futures):
+                shard_idx = futures[future]
+                index_meta = future.result()
+                for (gid, si, ri) in index_meta:
+                    all_global_ids.append(gid)
+                    all_shard_ids.append(si)
+                    all_row_ids.append(ri)
+                completed += 1
+                print(f"    Enzyme shard {shard_idx:04d} done ({completed}/{len(tasks)})")
 
-        # Build offsets and concatenate
-        for i in range(S):
-            offsets_arr[i + 1] = offsets_arr[i] + emb_by_row[i].shape[0]
-        embedding = np.concatenate(emb_by_row, axis=0).astype(np.float16)
-
-        shard = {
-            "enzyme_ids": torch.from_numpy(enzyme_ids_arr),  # int32
-            "lengths":    torch.from_numpy(lengths_arr),      # int16
-            "offsets":    torch.from_numpy(offsets_arr),      # int64
-            "embedding":  torch.from_numpy(embedding),        # float16
-        }
-        torch.save(shard, enz_dir / f"esm_{shard_idx:04d}.pt")
-
-        # Accumulate index entries (Fix 3)
-        for row_in_shard in range(S):
-            all_global_ids.append(int(enzyme_ids_arr[row_in_shard]))
-            all_shard_ids.append(shard_idx)
-            all_row_ids.append(row_in_shard)
-
-        # Explicitly free large arrays to keep peak RAM low
-        del emb_by_row, embedding, shard
-
-    # Fix 3: write enzymes/index.pt for O(1) lookup at training time
+    # Write enzymes/index.pt for O(1) lookup at training time
     if all_global_ids:
         enz_index = {
             "enzyme_ids": torch.tensor(all_global_ids, dtype=torch.int32),   # int32[M]
@@ -338,19 +390,107 @@ def build_enzyme_shards(output_dir: Path,
 # Substrate shard builder
 # ---------------------------------------------------------------------------
 
+def _process_single_substrate_shard(args_tuple):
+    """Process a single substrate shard in a worker process. Returns index metadata."""
+    (shard_idx, batch_keys, morgan_paths, sub_dir_str) = args_tuple
+
+    S = len(batch_keys)
+    substrate_ids_arr = np.empty(S, dtype=np.int32)
+    atom_lengths_arr  = np.empty(S, dtype=np.int16)
+    atom_offsets_arr  = np.zeros(S + 1, dtype=np.int64)
+    grover_atom_by_row: list[np.ndarray | None] = [None] * S
+    grover_mean_by_row: list[np.ndarray | None] = [None] * S
+    morgan_by_row:      list[np.ndarray | None] = [None] * S
+
+    # Each worker loads its own Morgan mmaps
+    morgan_mmap: list[np.ndarray | None] = []
+    for mpath in morgan_paths:
+        if os.path.exists(mpath):
+            morgan_mmap.append(np.load(mpath, mmap_mode='r'))
+        else:
+            morgan_mmap.append(None)
+
+    # Group by LMDB path to minimise open/close overhead
+    path_to_indices: dict[str, list[tuple[int, int, int]]] = {}
+    for row_in_shard, (ds_id, sub_idx, path) in enumerate(batch_keys):
+        path_to_indices.setdefault(path, []).append((row_in_shard, ds_id, sub_idx))
+
+    for path, entries in path_to_indices.items():
+        env = _open_lmdb(path)
+        try:
+            with env.begin(write=False) as txn:
+                for row_in_shard, ds_id, sub_idx in entries:
+                    raw = txn.get(str(sub_idx).encode())
+                    if raw is None:
+                        raise RuntimeError(
+                            f"Key {sub_idx} missing from grover LMDB {path}"
+                        )
+                    data = pickle.loads(raw)
+                    g_atom = np.array(data["embedding"],       dtype=np.float32)
+                    g_mean = np.array(data["total_embedding"], dtype=np.float32)
+
+                    mmap = morgan_mmap[ds_id] if ds_id < len(morgan_mmap) else None
+                    morgan = (mmap[sub_idx].copy()
+                              if mmap is not None and sub_idx < len(mmap)
+                              else np.zeros(1024, dtype=np.float32))
+
+                    substrate_ids_arr[row_in_shard] = ds_id * 10_000_000 + sub_idx
+                    atom_lengths_arr[row_in_shard]  = g_atom.shape[0]
+                    grover_atom_by_row[row_in_shard] = g_atom
+                    grover_mean_by_row[row_in_shard] = g_mean
+                    morgan_by_row[row_in_shard]      = morgan
+        finally:
+            env.close()
+
+    for i in range(S):
+        atom_offsets_arr[i + 1] = atom_offsets_arr[i] + grover_atom_by_row[i].shape[0]
+
+    grover_atom = np.concatenate(grover_atom_by_row, axis=0).astype(np.float16)
+    grover_mean = np.stack(grover_mean_by_row, axis=0).astype(np.float16)
+    morgan_data = np.stack(morgan_by_row, axis=0)
+
+    # Store morgan as uint8 if all values are binary (0/1), else float16
+    if np.all((morgan_data == 0) | (morgan_data == 1)):
+        morgan_out = torch.from_numpy(morgan_data.astype(np.uint8))
+    else:
+        morgan_out = torch.from_numpy(morgan_data.astype(np.float16))
+
+    shard = {
+        "substrate_ids":  torch.from_numpy(substrate_ids_arr),
+        "atom_lengths":   torch.from_numpy(atom_lengths_arr),
+        "atom_offsets":   torch.from_numpy(atom_offsets_arr),
+        "grover_atom":    torch.from_numpy(grover_atom),
+        "grover_mean":    torch.from_numpy(grover_mean),
+        "morgan":         morgan_out,
+    }
+    torch.save(shard, os.path.join(sub_dir_str, f"grover_{shard_idx:04d}.pt"))
+
+    # Return index metadata: list of (global_id, shard_idx, row_in_shard)
+    index_meta = []
+    for row_in_shard in range(S):
+        index_meta.append((int(substrate_ids_arr[row_in_shard]), shard_idx, row_in_shard))
+
+    del grover_atom_by_row, grover_mean_by_row, morgan_by_row
+    del grover_atom, grover_mean, morgan_data, shard
+    return index_meta
+
+
 def build_substrate_shards(output_dir: Path,
                             config: dict,
-                            shard_size: int) -> None:
+                            shard_size: int,
+                            num_workers: int = 0) -> None:
     """Iterate all substrate LMDBs / npy and write fp16 GROVER + uint8 Morgan shards.
 
     Streaming two-pass approach to avoid loading all embeddings into RAM:
       Pass 1: scan GROVER LMDB keys only (no value loading) to assign shards.
       Pass 2: for each shard, load only its entries, write, then free.
-    Morgan npy files are memory-mapped (read-only), so individual row access
-    is O(1) and does not load the full array.
+    Supports resume (skips existing shards) and multi-worker via ProcessPoolExecutor.
     """
+    from concurrent.futures import ProcessPoolExecutor, as_completed
+
     sub_dir = output_dir / "substrates"
     sub_dir.mkdir(parents=True, exist_ok=True)
+    sub_dir_str = str(sub_dir)
 
     grover_paths: list[str] = config["data"]["grover_path"]
     morgan_paths: list[str] = config["data"]["morgan_path"]
@@ -377,100 +517,62 @@ def build_substrate_shards(output_dir: Path,
     total_shards = math.ceil(total / shard_size) if total > 0 else 0
     print(f"  {total} substrates → {total_shards} shards")
 
-    # Pre-load Morgan arrays.  Each file is ≤40MB as uint8, so a full in-memory
-    # load is cheap.  We keep the native uint8 dtype here; conversion to float32
-    # is done per-row at access time so that a single .astype() never allocates
-    # the full float32 copy of the whole array.
-    morgan_mmap: list[np.ndarray | None] = []
-    for mpath in morgan_paths:
-        if os.path.exists(mpath):
-            morgan_mmap.append(np.load(mpath, mmap_mode='r'))  # keep native dtype; copy one row at a time
-        else:
-            morgan_mmap.append(None)
-
-    # Index arrays for substrates/index.pt (Fix 3)
+    # Index arrays for substrates/index.pt
     all_global_ids: list[int] = []
     all_shard_ids:  list[int] = []
     all_row_ids:    list[int] = []
 
-    # Pass 2: for each shard load only its entries, write, free
-    for shard_idx in tqdm(range(total_shards), desc="Writing substrate shards"):
+    # Pass 2: build tasks, with resume check
+    tasks = []
+    skipped = 0
+    for shard_idx in range(total_shards):
+        shard_path = sub_dir / f"grover_{shard_idx:04d}.pt"
         batch_keys = all_keys[shard_idx * shard_size: (shard_idx + 1) * shard_size]
-        S = len(batch_keys)
 
-        substrate_ids_arr = np.empty(S, dtype=np.int32)
-        atom_lengths_arr  = np.empty(S, dtype=np.int16)
-        atom_offsets_arr  = np.zeros(S + 1, dtype=np.int64)
-        grover_atom_by_row: list[np.ndarray | None] = [None] * S
-        grover_mean_by_row: list[np.ndarray | None] = [None] * S
-        morgan_by_row:      list[np.ndarray | None] = [None] * S
+        if shard_path.exists():
+            # Resume: recover index metadata from existing shard
+            existing = torch.load(shard_path, map_location="cpu", weights_only=False)
+            S_existing = len(existing["substrate_ids"])
+            for row_in_shard in range(S_existing):
+                all_global_ids.append(int(existing["substrate_ids"][row_in_shard].item()))
+                all_shard_ids.append(shard_idx)
+                all_row_ids.append(row_in_shard)
+            del existing
+            skipped += 1
+            continue
 
-        # Group by LMDB path to minimise open/close overhead
-        path_to_indices: dict[str, list[tuple[int, int, int]]] = {}
-        for row_in_shard, (ds_id, sub_idx, path) in enumerate(batch_keys):
-            path_to_indices.setdefault(path, []).append((row_in_shard, ds_id, sub_idx))
+        tasks.append((shard_idx, batch_keys, morgan_paths, sub_dir_str))
 
-        for path, entries in path_to_indices.items():
-            env = _open_lmdb(path)
-            try:
-                with env.begin(write=False) as txn:
-                    for row_in_shard, ds_id, sub_idx in entries:
-                        raw = txn.get(str(sub_idx).encode())
-                        if raw is None:
-                            raise RuntimeError(
-                                f"Key {sub_idx} missing from grover LMDB {path}"
-                            )
-                        data = pickle.loads(raw)
-                        g_atom = np.array(data["embedding"],       dtype=np.float32)
-                        g_mean = np.array(data["total_embedding"], dtype=np.float32)
+    if skipped > 0:
+        print(f"  Skipped {skipped} existing shards (resume).")
 
-                        mmap = morgan_mmap[ds_id] if ds_id < len(morgan_mmap) else None
-                        morgan = (mmap[sub_idx].copy()
-                                  if mmap is not None and sub_idx < len(mmap)
-                                  else np.zeros(1024, dtype=np.float32))
+    if not tasks:
+        print(f"  All substrate shards already exist.")
+    elif num_workers <= 1:
+        # Single-process fallback
+        for task in tqdm(tasks, desc="Writing substrate shards"):
+            index_meta = _process_single_substrate_shard(task)
+            for (gid, si, ri) in index_meta:
+                all_global_ids.append(gid)
+                all_shard_ids.append(si)
+                all_row_ids.append(ri)
+    else:
+        # Multi-process
+        print(f"  Using {num_workers} workers for {len(tasks)} substrate shards ...")
+        completed = 0
+        with ProcessPoolExecutor(max_workers=num_workers) as executor:
+            futures = {executor.submit(_process_single_substrate_shard, t): t[0] for t in tasks}
+            for future in as_completed(futures):
+                shard_idx = futures[future]
+                index_meta = future.result()
+                for (gid, si, ri) in index_meta:
+                    all_global_ids.append(gid)
+                    all_shard_ids.append(si)
+                    all_row_ids.append(ri)
+                completed += 1
+                print(f"    Substrate shard {shard_idx:04d} done ({completed}/{len(tasks)})")
 
-                        substrate_ids_arr[row_in_shard] = ds_id * 10_000_000 + sub_idx
-                        atom_lengths_arr[row_in_shard]  = g_atom.shape[0]
-                        grover_atom_by_row[row_in_shard] = g_atom
-                        grover_mean_by_row[row_in_shard] = g_mean
-                        morgan_by_row[row_in_shard]      = morgan
-            finally:
-                env.close()
-
-        for i in range(S):
-            atom_offsets_arr[i + 1] = atom_offsets_arr[i] + grover_atom_by_row[i].shape[0]
-
-        grover_atom = np.concatenate(grover_atom_by_row, axis=0).astype(np.float16)
-        grover_mean = np.stack(grover_mean_by_row, axis=0).astype(np.float16)
-        morgan_data = np.stack(morgan_by_row, axis=0)
-
-        # Store morgan as uint8 if all values are binary (0/1), else float16
-        if np.all((morgan_data == 0) | (morgan_data == 1)):
-            morgan_out = torch.from_numpy(morgan_data.astype(np.uint8))
-        else:
-            morgan_out = torch.from_numpy(morgan_data.astype(np.float16))
-
-        shard = {
-            "substrate_ids":  torch.from_numpy(substrate_ids_arr),
-            "atom_lengths":   torch.from_numpy(atom_lengths_arr),
-            "atom_offsets":   torch.from_numpy(atom_offsets_arr),
-            "grover_atom":    torch.from_numpy(grover_atom),
-            "grover_mean":    torch.from_numpy(grover_mean),
-            "morgan":         morgan_out,
-        }
-        torch.save(shard, sub_dir / f"grover_{shard_idx:04d}.pt")
-
-        # Accumulate index entries (Fix 3)
-        for row_in_shard in range(S):
-            all_global_ids.append(int(substrate_ids_arr[row_in_shard]))
-            all_shard_ids.append(shard_idx)
-            all_row_ids.append(row_in_shard)
-
-        # Free large arrays
-        del grover_atom_by_row, grover_mean_by_row, morgan_by_row
-        del grover_atom, grover_mean, morgan_data, shard
-
-    # Fix 3: write substrates/index.pt for O(1) lookup at training time
+    # Write substrates/index.pt for O(1) lookup at training time
     if all_global_ids:
         sub_index = {
             "substrate_ids": torch.tensor(all_global_ids, dtype=torch.int32),  # int32[M]
@@ -1177,7 +1279,7 @@ def parse_args() -> argparse.Namespace:
         "--num-workers",
         type=int,
         default=0,
-        help="Reserved for future parallel mode. Currently only 0 (sequential) is used.",
+        help="Number of parallel workers for shard generation (0 = sequential).",
     )
     p.add_argument(
         "--splits",
@@ -1270,7 +1372,8 @@ def main() -> None:
     # Step 1: Enzyme shards
     # ---------------------
     if not args.skip_enzyme_shards:
-        build_enzyme_shards(output_dir, config, shard_size=args.enzyme_shard_size)
+        build_enzyme_shards(output_dir, config, shard_size=args.enzyme_shard_size,
+                            num_workers=args.num_workers)
     else:
         print("\n[1/5] Skipping enzyme shards (--skip-enzyme-shards).")
 
@@ -1278,7 +1381,8 @@ def main() -> None:
     # Step 2: Substrate shards
     # ---------------------
     if not args.skip_substrate_shards:
-        build_substrate_shards(output_dir, config, shard_size=args.substrate_shard_size)
+        build_substrate_shards(output_dir, config, shard_size=args.substrate_shard_size,
+                               num_workers=args.num_workers)
     else:
         print("\n[2/5] Skipping substrate shards (--skip-substrate-shards).")
 
