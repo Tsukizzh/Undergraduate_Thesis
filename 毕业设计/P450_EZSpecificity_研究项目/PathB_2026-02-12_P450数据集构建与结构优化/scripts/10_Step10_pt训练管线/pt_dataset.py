@@ -240,8 +240,8 @@ class PtCacheDataset(torch.utils.data.Dataset):
         num_r_gaussian: int = 32,
         max_enzyme_len: int = MAX_ENZYME_LEN,
         max_substrate_len: int = MAX_SUBSTRATE_LEN,
-        graph_cache_size: int = 4,
-        enzyme_cache_size: int = 8,
+        graph_cache_size: int = 2,
+        enzyme_cache_size: int = 2,
         substrate_cache_size: int = 8,
     ):
         super().__init__()

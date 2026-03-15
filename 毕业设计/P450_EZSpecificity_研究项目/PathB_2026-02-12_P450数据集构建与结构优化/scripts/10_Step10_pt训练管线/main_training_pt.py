@@ -86,7 +86,9 @@ def parse_args():
     p.add_argument("--config", required=True, help="YAML config file")
     p.add_argument("--cache-dir", required=True, help="Path to ezspec_pt_v1 directory")
     p.add_argument("--edge-mode", choices=["fixed", "legacy_bug"], default="fixed")
-    p.add_argument("--num-workers", type=int, default=4)
+    p.add_argument("--num-workers", type=int, default=0,
+                   help="DataLoader workers. 0=main process only (safest). "
+                        "Each worker caches ~2GB of shards, so memory = (1+N)*2GB.")
     p.add_argument("--batch-size", type=int, default=None,
                    help="Override config batch size (default: from config)")
     p.add_argument("--resume", type=str, default=None,
@@ -129,7 +131,7 @@ class PtTrainingDataModule(pl.LightningDataModule):
         ds = self._make_dataset(split, is_train)
         kw = dict(
             batch_size=self.batch_size, shuffle=shuffle,
-            num_workers=self.num_workers, pin_memory=True,
+            num_workers=self.num_workers, pin_memory=(self.num_workers > 0),
             follow_batch=["ligand_index"],
         )
         if self.num_workers > 0:
@@ -221,11 +223,13 @@ class MetricsCSVLogger(Callback):
             self._train_loss_count += 1
 
     def on_before_optimizer_step(self, trainer, pl_module, optimizer, opt_idx=0):
-        grads = [p.grad.detach().flatten() for p in pl_module.parameters()
-                 if p.grad is not None]
-        if grads:
-            total_norm = torch.cat(grads).norm(2).item()
-            self._grad_norm_sum += total_norm
+        # O(1) memory: accumulate per-parameter norm, no giant cat tensor
+        total_norm_sq = 0.0
+        for p in pl_module.parameters():
+            if p.grad is not None:
+                total_norm_sq += p.grad.detach().norm(2).item() ** 2
+        if total_norm_sq > 0:
+            self._grad_norm_sum += total_norm_sq ** 0.5
             self._grad_norm_count += 1
 
     def on_validation_epoch_end(self, trainer, pl_module):
