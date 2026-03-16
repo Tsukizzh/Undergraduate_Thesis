@@ -346,13 +346,23 @@ ESIBank 训练集中的 P450
 **Step 10: .pt训练管线（已完成，2026-03-16）**:
 - **缓存v3 (per-sample)**：176K个独立.pt文件(~160KB/个)，PyG标准模式
 - 三层存储: enzymes.bin(27GB,seek读取) + substrates_grover.bin(4.3GB) + per-sample .pt(28GB)
-- **速度: 7.56 it/s**（比LMDB缓存3.8 it/s快2倍，不衰减）
-- **内存: ~10GB**（vs LMDB 15-30GB mmap）
+- **速度: 7.56 it/s**（比LMDB缓存3.8→2.09 it/s衰减快2倍，不衰减）
+- **内存: ~10GB**（vs LMDB 15-30GB mmap thrashing）
 - 训练脚本: `scripts/10_Step10_pt训练管线/main_training_pt.py`
 - Dataset类: `scripts/10_Step10_pt训练管线/pt_dataset.py`
 - 支持 --edge-mode fixed/legacy_bug 切换（消融实验用）
 - 迭代历史: v1(分片300MB,SSD爆)→v2(flatbin,慢)→**v3(per-sample,最优)**
-- 下一步: 传数据到服务器 → Step 11两轮基线训练
+- **为什么LMDB失败（关键洞察）**:
+  - 论文作者: 256GB+ RAM服务器, LMDB 60GB mmap完全驻留内存 = 随机读=内存速度
+  - 我们: 32GB RAM < 60GB LMDB → mmap thrashing(pageout/pagein循环) → 2.09 it/s decay, 99% page cache换页
+  - .pt方案: 仅160KB/样本随机读 → ~10GB工作集 → no thrashing → 7.56 it/s stable, 3.6倍提速
+- **P450数据扩增方案**（未来Phase 6, 使用.pt管线）:
+  1. 新增P450酶 → ESM-2 → append到enzymes.bin
+  2. 新增底物 → GROVER/Morgan → append到substrates_grover.bin
+  3. 新增酶-底物对 → AlphaFold+Vina对接 → build_pt_cache.py生成per-sample .pt
+  4. 合并 .pt文件, 更新index.pt
+  5. 优势: build_pt_cache.py已支持增量生成(resume/skip existing), 无需重新处理历史数据
+- 下一步: 传数据到服务器 → Step 11两轮基线训练(legacy_bug vs fixed)
 
 **Path B 诊断阶段总结（Step 7-8）**:
 - **Step 7 核心发现**: 底物身份驱动评分（我们的P450）vs 配对交互信号（ESIBank P450）
