@@ -214,7 +214,7 @@ ezspec_pt_v1/ (~57GB)
 
 - [ ] 传 per-sample 文件到老师服务器（train 26GB + val + test + enzymes.bin + substrates）
 - [ ] Step 11：跑两轮基线训练（legacy_bug + fixed）
-- [ ] Step 12：数据泄露量化
+- [x] Step 12：~~数据泄露量化~~ → 已跳过（泄露已记录，用户决定不单独量化）
 - [ ] Step 13：消融实验（Dropout / Fe+Heme / 融合）
 
 ---
