@@ -157,7 +157,7 @@ PyG 社区的标准做法：预计算所有图数据，存成 per-sample .pt 文
 ## 六、最终存储布局（清理后）
 
 ```
-ezspec_pt_v1/ (~57GB)
+allsplit_pt_cache/ (~57GB)
 ├── manifest.pt                        (1KB)
 ├── enzymes/
 │   ├── enzymes.bin                    (27GB, seek 读取)
@@ -325,7 +325,7 @@ export PYTHONPATH=/root/rivermind-data/EZSpecificity/src:$PYTHONPATH
 ulimit -n 65536
 python ../scripts/10_Step10_pt训练管线/main_training_pt.py \
   --config ../scripts/server_config.yml \
-  --cache-dir ../data/10_Step10_pt训练/ezspec_pt_v1 \
+  --cache-dir ../data/10_Step10_pt训练/allsplit_pt_cache \
   --edge-mode legacy_bug \
   --devices 2 --num-workers 6 --batch-size 56 \
   --max-epochs 50 --shutdown

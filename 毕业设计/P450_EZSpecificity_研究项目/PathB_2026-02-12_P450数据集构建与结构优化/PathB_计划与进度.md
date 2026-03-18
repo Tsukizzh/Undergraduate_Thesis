@@ -535,7 +535,7 @@ PathB_2026-02-12_P450数据集构建与结构优化/
 | | | - EarlyStopping wait=13/15@ep27，继续训训将在ep29触发 | ✅ |
 | | | - 训练管线升级：AUC指标+grad_norm+自动分析+数据持久化 | ✅ |
 | | 后续 | **.pt缓存构建 + 执行计划复审** | ✅ **已完成** |
-| | | - build_pt_cache.py成功构建ezspec_pt_v1/(44GB，通过验证) | ✅ |
+| | | - build_pt_cache.py成功构建allsplit_pt_cache/(44GB，通过验证) | ✅ |
 | | | - 数据泄露审计：酶0.15%可忽略，底物6.56%需量化 | ✅ |
 | | | - Codex复审：发现5个执行计划问题，已修正 | ✅ |
 | | | - 服务器准备：build_pt_cache.py已上传，数据已确认 | ✅ |

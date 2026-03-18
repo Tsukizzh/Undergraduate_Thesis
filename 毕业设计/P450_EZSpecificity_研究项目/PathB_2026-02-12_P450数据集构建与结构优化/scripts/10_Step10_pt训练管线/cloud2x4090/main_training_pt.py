@@ -6,10 +6,10 @@ Uses PtCacheDataset for all data loading (enzyme, substrate, structure).
 
 Usage:
   # Fresh start:
-  python main_training_pt.py --config train_pt_config.yml --cache-dir /path/to/ezspec_pt_v1
+  python main_training_pt.py --config train_pt_config.yml --cache-dir /path/to/allsplit_pt_cache
 
   # Resume:
-  python main_training_pt.py --config train_pt_config.yml --cache-dir /path/to/ezspec_pt_v1 --resume last
+  python main_training_pt.py --config train_pt_config.yml --cache-dir /path/to/allsplit_pt_cache --resume last
 """
 from __future__ import annotations
 
@@ -84,7 +84,7 @@ FAMILY_NAMES = {
 def parse_args():
     p = argparse.ArgumentParser(description="Train EZSpecificity with .pt shard cache")
     p.add_argument("--config", required=True, help="YAML config file")
-    p.add_argument("--cache-dir", required=True, help="Path to ezspec_pt_v1 directory")
+    p.add_argument("--cache-dir", required=True, help="Path to allsplit_pt_cache directory")
     p.add_argument("--edge-mode", choices=["fixed", "legacy_bug"], default="fixed")
     p.add_argument("--num-workers", type=int, default=0,
                    help="DataLoader workers. 0=main process only (safest). "

@@ -11,7 +11,7 @@ throughput during training.
 
 Three-tier storage
 ──────────────────
-  ezspec_pt_v1/
+  allsplit_pt_cache/
   ├── manifest.pt                  # Schema + hyper-params
   ├── enzymes/
   │   └── esm_XXXX.pt              # fp16 ESM embeddings (unpadded, sharded)
@@ -26,11 +26,11 @@ Three-tier storage
 Usage
 ─────
   python build_pt_cache.py --config train_allsplit_config.yml \\
-                           --output-dir ./ezspec_pt_v1
+                           --output-dir ./allsplit_pt_cache
 
   # Override shard size and worker count:
   python build_pt_cache.py --config train_allsplit_config.yml \\
-                           --output-dir ./ezspec_pt_v1 \\
+                           --output-dir ./allsplit_pt_cache \\
                            --shard-size 2048 --num-workers 0
 
 Design decisions
@@ -1454,7 +1454,7 @@ def parse_args() -> argparse.Namespace:
     )
     p.add_argument(
         "--output-dir",
-        default=os.path.join(os.path.dirname(__file__), "ezspec_pt_v1"),
+        default=os.path.join(os.path.dirname(__file__), "allsplit_pt_cache"),
         help="Root directory for output .pt files.",
     )
     p.add_argument(

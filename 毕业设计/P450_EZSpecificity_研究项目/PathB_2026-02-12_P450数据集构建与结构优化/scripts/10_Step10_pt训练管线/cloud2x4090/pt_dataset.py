@@ -1,5 +1,5 @@
 """
-Step 10: PyG Dataset reading from .pt shard cache (ezspec_pt_v1/).
+Step 10: PyG Dataset reading from .pt shard cache (allsplit_pt_cache/).
 
 v2: Enzyme/substrate loading via seek-based flat binary files instead of
     torch.load on 900MB shard files. Graph shards still use ShardCache.
