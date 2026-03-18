@@ -507,7 +507,45 @@ Effective batch 112 vs 论文 64 — 每 epoch 更少的优化器更新步数。
 
 ---
 
-## 十三、下一步
+## 十三、文件组织重构（2026-03-19）
+
+### 13.1 脚本目录拆分
+
+将 `scripts/10_Step10_pt训练管线/` 拆分为本地和云服务器两个子目录：
+
+```
+scripts/10_Step10_pt训练管线/
+├── local/                        ← 本地开发版本
+│   ├── main_training_pt.py
+│   ├── pt_dataset.py
+│   └── train_allsplit_config.yml  (renamed from server_config.yml)
+└── cloud2x4090/                  ← 云服务器运行版本
+    ├── main_training_pt.py
+    ├── pt_dataset.py
+    ├── server_config.yml
+    └── start_ddp_2gpu.sh
+```
+
+### 13.2 删除的文件
+- `start_parallel_2x1gpu_废弃.sh`：双单卡并行方案已放弃（比DDP慢）
+- `__pycache__/`：已添加到 .gitignore
+
+### 13.3 重命名
+| 旧名称 | 新名称 | 原因 |
+|--------|--------|------|
+| `ezspec_pt_v1/` | `allsplit_pt_cache/` | 更准确描述内容 |
+| `cloud_legacy_bug/` | `cloud2x4090_legacy_bug/` | 包含服务器名 |
+| `server_config.yml`（local） | `train_allsplit_config.yml` | 区分本地/云配置 |
+
+### 13.4 Gitignore 修复
+- 添加 `**/allsplit_pt_cache/` 防止 176K 个 .pt 文件（57GB）被 git 跟踪
+- 添加 `tmp_*`、`__pycache__/` 模式
+- 从 git 跟踪中移除 `P450_EZSpecificity完整研究手册_终极整合版.md`
+- Checkpoint gitignore：只保留最佳（ep27）
+
+---
+
+## 十四、下一步
 
 - [x] Cloud-2 legacy_bug 基线训练 → **完成（test AUC=0.7244）**
 - [ ] 应用 all_gather 修复 → 跑 fixed 基线对比
@@ -516,4 +554,4 @@ Effective batch 112 vs 论文 64 — 每 epoch 更少的优化器更新步数。
 
 ---
 
-**版本**: v6.0 | **更新**: 2026-03-19
+**版本**: v7.0 | **更新**: 2026-03-19

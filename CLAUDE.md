@@ -349,9 +349,10 @@ ESIBank 训练集中的 P450
 - 三层存储: enzymes.bin(27GB,seek读取) + substrates_grover.bin(4.3GB) + per-sample .pt(28GB)
 - **速度: 7.56 it/s**（比LMDB缓存3.8→2.09 it/s衰减快2倍，不衰减）
 - **内存: ~10GB**（vs LMDB 15-30GB mmap thrashing）
-- 训练脚本: `scripts/10_Step10_pt训练管线/main_training_pt.py`
-- Dataset类: `scripts/10_Step10_pt训练管线/pt_dataset.py`
+- 训练脚本: `scripts/10_Step10_pt训练管线/local/main_training_pt.py`（本地）/ `cloud2x4090/main_training_pt.py`（云服务器DDP）
+- Dataset类: `scripts/10_Step10_pt训练管线/local/pt_dataset.py` / `cloud2x4090/pt_dataset.py`
 - 支持 --edge-mode fixed/legacy_bug 切换（消融实验用）
+- **目录组织（2026-03-19重构）**: scripts拆分为 `local/` 和 `cloud2x4090/` 子目录，数据缓存从 `ezspec_pt_v1` 重命名为 `allsplit_pt_cache`
 - 迭代历史: v1(分片300MB,SSD爆)→v2(flatbin,慢)→**v3(per-sample,最优)**
 - **为什么LMDB失败（关键洞察）**:
   - 论文作者: 256GB+ RAM服务器, LMDB 60GB mmap完全驻留内存 = 随机读=内存速度
