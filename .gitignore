@@ -74,6 +74,9 @@ Thumbs.db
 __pycache__/
 nul
 
+# .pt training cache (57GB, 176K files)
+**/allsplit_pt_cache/
+
 # Large checkpoint files (keep only best)
 毕业设计/**/results/**/checkpoints/**/*.ckpt
 !毕业设计/**/results/**/checkpoints/**/pt-*-ep27-*.ckpt
