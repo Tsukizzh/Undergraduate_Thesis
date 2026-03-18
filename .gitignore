@@ -79,3 +79,4 @@ nul
 # Large train logs
 毕业设计/**/results/**/train.log
 __pycache__/
+tmp_*
