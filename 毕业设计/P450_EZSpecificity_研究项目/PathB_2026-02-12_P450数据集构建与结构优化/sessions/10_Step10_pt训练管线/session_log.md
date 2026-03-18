@@ -430,7 +430,84 @@ python ../scripts/10_Step10_pt训练管线/main_training_pt.py \
 
 ---
 
-## 十二、下一步
+## 十二、关键发现：Val Loss ↑ 而 AUC ↑ — Codex 深度分析（2026-03-19）
+
+### 12.1 现象
+
+legacy_bug 基线训练（Cloud-2, 2×RTX4090, 32 epochs）过程中观察到：
+- 验证集: 161 正样本, 1322 负样本（10.8% 阳性率）
+- train_loss: 持续下降（0.362 → 0.180）
+- val_loss: 从 ep2 开始上升（0.319 → 0.393@ep22 → 0.422@ep31）
+- val AUC: 持续上升直到 ep22（0.598 → 0.722），之后下降
+
+### 12.2 根因分析（Codex 确认：非 Bug）
+
+BCE Loss 和 AUC 度量的是**完全不同的维度**：
+
+- **BCE Loss 是逐点度量（pointwise）**：逐样本计算损失再取平均。一个极端错误的预测会支配整个平均值。
+  - 关键数字：负样本 logit z=5 → 单样本损失 5.01；logit z=0 → 损失仅 0.693。**7.2 倍差距**。
+- **AUC 是成对度量（pairwise）**：统计正确排序的正-负样本对比例。一个错误预测只影响配对中的一小部分。
+
+**真实数据量化（ep2→ep22）**：
+- 验证集总配对数: 161 × 1322 = 212,842 对
+- AUC 从 ~0.60 → 0.722 ≈ 额外 **~26,500 对**被正确排序
+- val_loss 增加 ~100 个 BCE 单位（总计）— 由**几十个**在极端错误 logit 上的 hard 样本导致
+
+### 12.3 三个阶段
+
+| 阶段 | Epochs | LR | 表现 | 机制 |
+|------|--------|-----|------|------|
+| **Warmup** | 0-8 | 5e-6 → 3e-4 | val_loss 震荡, AUC 不稳定 | LR 快速上升，模型尚未收敛 |
+| **Divergence** | 8-22 | 固定 3e-4 | **AUC ↑ 但 val_loss ↑** | 排序改善但对 hard OOD 样本过度自信 |
+| **True overfitting** | 22+ | 固定 3e-4 | AUC ↓ 且 val_loss ↑ | 全面过拟合 |
+
+### 12.4 LR Schedule 的贡献
+
+- Warmup 5e-6→3e-4（8 epochs）解释了早期震荡
+- Warmup 后 LR 固定 3e-4，持续推动 logits 幅度增大 → 有利于排序但伤害 BCE
+- **ReduceLROnPlateau 监控 aupr/val（不是 auc/val 或 loss）**— 不匹配，可能导致 LR 未及时衰减
+
+### 12.5 Codex 建议
+
+1. **选择 checkpoint**: 同等 AUC 下优先选择 loss 更低的（更早 epoch，更"校准"）
+2. **LR 衰减**: warmup 后添加余弦衰减或线性衰减，而非固定 3e-4
+3. **不换 loss**: focal loss 恶化校准，contrastive loss 差异太大
+4. **后处理**: 若下游需要概率值，用 temperature scaling 后校准
+
+### 12.6 验证
+
+- 损失函数: BCEWithLogitsLoss（`src/Models/ss.py:159`）— 标准二分类损失，与论文一致
+- 论文使用相同的 Loss + AUC-ROC 组合
+- 论文未展示训练曲线（仅最终 AUC 数字），无法直接对比动态过程
+- 我们的 test AUC = 0.7244 > 论文 all_split 0.7198，确认模型正确工作
+
+### 12.7 论文对比
+
+| 指标 | 论文 all_split | 我们（legacy_bug） |
+|------|---------------|-------------------|
+| AUROC | 0.7198 | **0.7244**（+0.0046）|
+| AUPR | 仅图（Fig. S3）| 0.2142-0.2351 |
+| 训练 epoch | ~256 | 32 |
+| GPU 数 | 4 | 2 |
+| Effective batch | 64 | 112 |
+
+**补充**: 论文 Supplementary PDF（78 页）中 Table S3（p64）有各 EC 层级的完整 AUROC/AUPR，但不包含 unknown enzyme & substrate split。
+
+### 12.8 EZSpecificity 三种训练模式
+
+| 模式 | 训练数据 | 说明 |
+|------|---------|------|
+| **EZSpecificity** | 全 ESIBank（323K 对）| 直接应用，不针对特定家族 |
+| **EZSpecificity-finetune** | ESIBank 预训练 + 目标家族微调 | |
+| **EZSpecificity-individual** | **仅目标家族**（85-5424 对）从头训 | 我们的 AllSplit 方式类似此模式 |
+
+### 12.9 Codex 超参建议（下一轮 fixed 训练）
+
+Effective batch 112 vs 论文 64 — 每 epoch 更少的优化器更新步数。建议：lr 3e-4→4e-4（sqrt scaling）、warmup 300→400、epochs 50→100-150、weight_decay 0→1e-5。用户决定不改 batch size（优先速度）。
+
+---
+
+## 十三、下一步
 
 - [x] Cloud-2 legacy_bug 基线训练 → **完成（test AUC=0.7244）**
 - [ ] 应用 all_gather 修复 → 跑 fixed 基线对比
@@ -439,4 +516,4 @@ python ../scripts/10_Step10_pt训练管线/main_training_pt.py \
 
 ---
 
-**版本**: v5.0 | **更新**: 2026-03-19
+**版本**: v6.0 | **更新**: 2026-03-19

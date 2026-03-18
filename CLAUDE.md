@@ -364,6 +364,8 @@ ESIBank 训练集中的 P450
   4. 合并 .pt文件, 更新index.pt
   5. 优势: build_pt_cache.py已支持增量生成(resume/skip existing), 无需重新处理历史数据
 - **Step 11 legacy_bug 已完成**: Cloud-2 DDP 32ep, test AUC=0.7244 > paper 0.7198
+- **Val Loss ↑ while AUC ↑（Codex深度分析，非Bug）**: BCE=逐点（outlier主导），AUC=成对排序（outlier鲁棒）。ep2→ep22: +26,500对正确排序但few dozen hard samples极端logit(z=5→loss=5.01)主导loss均值。三阶段: warmup(ep0-8)→divergence(ep8-22,排序↑过度自信↑)→true overfitting(ep22+)。ReduceLROnPlateau监控aupr（非auc/loss）不匹配。建议: 同AUC选低loss ckpt, warmup后加LR衰减, temperature scaling后校准。
+- **EZSpecificity-individual**: 论文中"仅目标家族数据从头训练"模式（85-5424对），我们的AllSplit方式类似此模式
 - 下一步: fixed基线训练（应用all_gather修复+Codex建议）
 
 **Path B 诊断阶段总结（Step 7-8）**:
