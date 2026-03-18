@@ -1,7 +1,7 @@
 # Path C：P450 专属模型训练 — 计划与进度
 
 > **创建日期**: 2026-03-19
-> **当前状态**: C1 模型架构优化 — 准备中
+> **当前状态**: C1 模型架构优化 — C1-Step 1 运行中
 > **前置条件**: Path B Step 1-10 全部完成，legacy_bug 基线 Test AUC=0.7244 > 论文 0.7198
 
 ---
@@ -190,7 +190,7 @@ Path C
 
 | Step | 内容 | 状态 | 结果 |
 |------|------|------|------|
-| C1-Step 1 | fixed 基线训练 | ⏳ 待开始 | |
+| C1-Step 1 | fixed 基线训练 | 🔄 运行中 | Cloud-2 DDP 2×4090, --edge-mode fixed, bs=56, max-epochs=50, patience=15, ~2.6 it/s ~10min/ep. 启动: 2026-03-19. Log: PathC/logs/train_fixed.log |
 | C1-Step 2a | Dropout 0.9→0.1 | ⏳ | |
 | C1-Step 2b | lr 4e-4 + warmup 400 | ⏳ | |
 | C1-Step 2c | weight_decay 1e-5 | ⏳ | |
