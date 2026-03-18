@@ -1,6 +1,6 @@
 # Path B：P450 数据集构建与结构优化
 
-> **2026-03-19 更新**: Path B Step 1-10 全部完成. Step 10 (Path C) legacy_bug 基线完成: Cloud-2 DDP 32ep, **test AUC=0.7244 > paper 0.7198**. 文件组织重构: scripts拆分为local/cloud2x4090, 数据缓存重命名allsplit_pt_cache. 下一步: fixed基线训练.
+> **2026-03-19 更新**: ✅ **Path B 全部完成（Step 1-10）**. Step 10 legacy_bug 基线: Cloud-2 DDP 32ep, **test AUC=0.7244 > paper 0.7198**. 后续工作移至 **Path C**: `PathC_2026-03-19_P450专属模型训练/PathC_计划与进度.md`.
 
 ## 一、背景与目标
 

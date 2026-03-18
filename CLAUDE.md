@@ -314,7 +314,7 @@ ESIBank 训练集中的 P450
 
 #### 当前研究阶段
 
-**阶段四十一**：Step 10 Cloud-2 DDP legacy_bug 基线完成（2026-03-19）
+**阶段四十一**：Path C 计划完成，C1-Step 1 待开始（2026-03-19）
 
 | 路径 | 名称 | 状态 | 说明 |
 |------|------|------|------|
@@ -327,12 +327,13 @@ ESIBank 训练集中的 P450
 | │    | └─ Step 7 | ✅ 已完成 | Tier 1 诊断(E1-E6) + 扩展 + E7内部基准 |
 | │    | └─ Step 8 | ✅ 已完成 | E8v1+E8v2通道关闭消融 + E9废弃 |
 | │    | └─ Step 9 | ✅ 已完成 | AllSplit训练 ep27完成, **BEST=ep14 AUC=0.7667** |
-| │    | └─ Step 10 | ✅ 已完成 | .pt缓存v3(per-sample) + Dataset类 + 训练脚本, **7.56 it/s** |
-| **C** | P450专属模型训练 | 🔄 Step 10 ✅ | **legacy_bug test AUC=0.7244 > paper 0.7198**, fixed基线待跑 |
-| │    | └─ Step 10b | ✅ 已完成 | Cloud-2 DDP 32ep, DDP all_gather bug修复 |
+| │    | └─ Step 10 | ✅ 已完成 | .pt缓存v3 + legacy_bug基线(Cloud-2 DDP 32ep, **test AUC=0.7244**) |
+| **C** | P450专属模型训练 | 🔄 计划完成 | `PathC_2026-03-19_P450专属模型训练/`, C1-Step 1 待开始 |
+| │    | └─ C1 模型架构优化 | ⏳ 3/19-30 | C1-Step 1(fixed基线) → Step 2(6项消融) → Step 3(组合) → Step 4(多seed) |
+| │    | └─ C2 数据集扩建 | ⏳ 3/31-4/5 | 外部P450数据收集 + 对接 + .pt缓存 + 重训 |
 | D | 区域选择性预测 | ⏳ 待定 | 路径A完成后可选 |
 
-**工作目录**: `毕业设计/P450_EZSpecificity_研究项目/PathB_2026-02-12_P450数据集构建与结构优化/`
+**工作目录**: `毕业设计/P450_EZSpecificity_研究项目/PathC_2026-03-19_P450专属模型训练/`
 
 **Step 9 最终结果（AllSplit训练，已完成）**:
 - **核心指标: AUC-ROC**（用户明确要求，AUPR仅辅助参考）
@@ -367,7 +368,7 @@ ESIBank 训练集中的 P450
 - **Step 10 legacy_bug 已完成**: Cloud-2 DDP 32ep, test AUC=0.7244 > paper 0.7198
 - **Val Loss ↑ while AUC ↑（Codex深度分析，非Bug）**: BCE=逐点（outlier主导），AUC=成对排序（outlier鲁棒）。ep2→ep22: +26,500对正确排序但few dozen hard samples极端logit(z=5→loss=5.01)主导loss均值。三阶段: warmup(ep0-8)→divergence(ep8-22,排序↑过度自信↑)→true overfitting(ep22+)。ReduceLROnPlateau监控aupr（非auc/loss）不匹配。建议: 同AUC选低loss ckpt, warmup后加LR衰减, temperature scaling后校准。
 - **EZSpecificity-individual**: 论文中"仅目标家族数据从头训练"模式（85-5424对），我们的AllSplit方式类似此模式
-- 下一步: fixed基线训练（应用all_gather修复+Codex建议）
+- 下一步: Path C C1-Step 1 fixed基线训练（应用all_gather修复+Codex建议）
 
 **Path B 诊断阶段总结（Step 7-8）**:
 - **Step 7 核心发现**: 底物身份驱动评分（我们的P450）vs 配对交互信号（ESIBank P450）
