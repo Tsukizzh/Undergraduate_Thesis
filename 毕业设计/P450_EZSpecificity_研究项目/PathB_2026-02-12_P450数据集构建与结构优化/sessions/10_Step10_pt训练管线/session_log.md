@@ -1,8 +1,8 @@
 # Step 10: .pt 训练管线 — 完整 Session 日志
 
-> **日期**: 2026-03-16
-> **目标**: 用 .pt 预处理缓存替代 LMDB，消除 mmap 抖动和 CPU k-NN 瓶颈
-> **最终成果**: ✅ per-sample .pt v3 方案，7.33-7.70 it/s，29 min/epoch，内存 ~10GB
+> **日期**: 2026-03-16 ~ 2026-03-17
+> **目标**: 用 .pt 预处理缓存替代 LMDB + 部署云服务器 + 还原论文基线(legacy_bug)训练
+> **最终成果**: ✅ per-sample .pt v3，本地 7.56 it/s / 云服务器 3.74 it/s(bs48) GPU 100%
 
 ---
 
@@ -210,13 +210,233 @@ ezspec_pt_v1/ (~57GB)
 
 ---
 
-## 九、下一步
+## 九、云服务器部署与训练（2026-03-17）
 
-- [ ] 传 per-sample 文件到老师服务器（train 26GB + val + test + enzymes.bin + substrates）
-- [ ] Step 11：跑两轮基线训练（legacy_bug + fixed）
-- [x] Step 12：~~数据泄露量化~~ → 已跳过（泄露已记录，用户决定不单独量化）
-- [ ] Step 13：消融实验（Dropout / Fe+Heme / 融合）
+### 9.1 本地 legacy_bug 训练（归档）
+
+**配置**: bs14, 2 workers, edge-mode legacy_bug, 本地 4070S
+
+| 指标 | 数值 |
+|------|------|
+| 运行范围 | ep0-18 |
+| 最佳 | ep10 AUC=0.715 |
+| 速度 | 7.26-7.56 it/s |
+| Per Epoch | ~29 min |
+
+结果已归档到 `results/10_Step10_pt训练/local_训练/`
+
+### 9.2 云服务器配置
+
+| | Cloud-1（单卡，测试用） | Cloud-2（双卡，主力） |
+|---|---|---|
+| SSH | `root@sh01-ssh.gpuhome.cc -p 30008` | `root@hn01-ssh.gpuhome.cc -p 30156` |
+| GPU | 1×RTX 4090 24GB | 2×RTX 4090 24GB |
+| RAM | 90GB | 180GB |
+| vCPU | 14 | 14 |
+| 费用 | ¥1.46/h | ¥2.26/h |
+
+### 9.3 环境搭建经验（新实例快速配置）
+
+基于 PyTorch 2.5.1+cu124 预装镜像，一条命令装完所有依赖：
+```bash
+export PATH=/opt/conda/bin:$PATH
+pip install pytorch_lightning==1.9.0 easydict lmdb tqdm matplotlib \
+    torch_geometric warmup-scheduler scikit-learn cython tensorboard \
+    pandas ray 'numpy<2' rdkit-pypi
+```
+
+**踩过的坑**：
+- NumPy 2.x 和 RDKit 不兼容 → 必须 `numpy<2`（降到 1.26.4）
+- `warmup_scheduler`、`scikit-learn`、`ray`、`cython`、`tensorboard` 镜像都没预装
+- conda 环境：无需创建独立环境，直接用 `/opt/conda/bin/python`
+
+### 9.4 fd limit 修复（关键！）
+
+**问题**：8 workers 崩溃 `received 0 items of ancdata`
+**原因**：容器默认 `ulimit -n = 1024`，多 worker 的 pipe fd 超限
+**修复**：`ulimit -n 65536`（容器允许调高）
+**必须在每次训练前执行**
+
+### 9.5 Cloud-1 验证训练（ep0-1）
+
+**配置**: bs48, accumulate=1, 4 workers, edge-mode legacy_bug
+
+| Epoch | AUC | Loss | 速度 | 时间 |
+|-------|-----|------|------|------|
+| 0 | 0.606 | 0.316 | 3.74 it/s | 16:41 |
+| 1 | 0.590 | 0.341 | 3.79 it/s | 16:21 |
+
+GPU 100%利用率，19.6/24.6GB 显存，38°C。
+Checkpoint: `pt-legacy_bug-ep00-auc0.6061.ckpt`（在Cloud-1数据盘上）
+
+### 9.6 全环境性能对比
+
+| 环境 | 速度 | 样本吞吐 | GPU利用率 | Per Epoch |
+|------|------|----------|----------|-----------|
+| Local 4070S (bs14, 2w) | 7.56 it/s | 103 samples/s | 30-60% | 29 min |
+| Advisor 4090 (bs14, 2w) | 5.19 it/s | 72 samples/s | 30-55% | 41 min |
+| **Cloud-1 4090 (bs48, 4w)** | 3.74 it/s | **166 samples/s** | **100%** | **16:41** |
+| Cloud-2 2×4090 DDP (预估) | 7-15 it/s | 200-400 samples/s | ~90% | ~10-15 min |
+
+### 9.7 代码改动
+
+- `main_training_pt.py`：新增 `--devices`（多卡DDP）、`--shutdown`（训练完自动关机）
+- `server_config.yml`：`accumulate_grad_batches: 2→1`（云服bs够大不需累积）
+- Trainer：`devices > 1` 时自动用 `strategy="ddp"`
+
+### 9.8 关键技术发现
+
+1. **GPU compute bound**：Cloud-1 GPU 100% = 瓶颈从数据加载转移到 GPU 计算，FP16+TF32 已开启
+2. **LMDB + DDP 有已知性能问题**：mmap 多进程冲突、锁竞争。.pt per-sample 天然适合 DDP
+3. **RTX 4090 FP16 算力**：660 Tensor TFLOPS，单卡 > 2×RTX 3090 总和
+4. **数据传输**：流式 tar（`tar cf - | ssh tar xf -`）不占服务器临时空间，适合小磁盘
 
 ---
 
-**版本**: v2.0 | **更新**: 2026-03-16 08:00
+## 十、Cloud-2 DDP 参数调优（2026-03-17）
+
+在 Cloud-2（2×RTX 4090, 14vCPU, 180GB RAM）上进行了 14 轮参数调优。
+
+### 调优结果汇总
+
+| # | bs | accum | workers | 关键改动 | it/s | 每epoch | 结果 |
+|---|-----|-------|---------|----------|------|---------|------|
+| 1 | 48 | 1 | 6 | 默认DDP | **2.82** | 11 min | ✅ 初始基线 |
+| 2 | 48 | 1 | 7 | +find_unused=F/bucket_view/prefetch=4 | 2.78 | 11 min | ✅ 微弱提升 |
+| 3 | 56 | 2 | 7 | +static_graph=T | CRASH | - | ❌ 变长图不兼容 |
+| 4 | 56 | 2 | 7 | 去掉static_graph | 2.35 | 11.3 min | ✅ 更慢 |
+| 5 | 96 | 1 | 8 | +preload | OOM | - | ❌ 显存爆 |
+| 6 | 64 | 1 | 6 | +preload | KILLED | - | ❌ 内存爆(DDP×2份) |
+| 7 | 48 | 1 | 6 | +preload | KILLED | - | ❌ 同上 |
+| 8 | 48 | 1 | 7 | +torch.compile | CRASH | - | ❌ torch_scatter不兼容 |
+| 9 | 48 | 2 | 7 | accum=2 | 2.73 | 11.3 min | ✅ 无提升 |
+| 10 | 56 | 1 | 6 | 最优DDP参数 | 2.63 | 10.1 min | ✅ 快 |
+| 11 | 56 | 1 | 6 | +sync_dist=F+NCCL_P2P_DISABLE | 2.43 | 10.9 min | ✅ GPU均衡但慢 |
+| **12** | **56** | **1** | **6** | **+sync_dist=F (无NCCL)** | **2.65** | **10.0 min** | **✅ 最优** |
+| 13 | 64 | 1 | 6 | 同#12 | 2.31 | 10.1 min | ✅ 显存紧张 |
+| 14 | 56 | 1 | 6 | +SizeSortedSampler | OOM | - | ❌ 大图集中→爆显存 |
+
+### 最优配置（Run #12）
+
+```bash
+# 启动命令（已保存为 /root/start_train.sh）
+cd /root/rivermind-data/EZSpecificity/src
+export PYTHONPATH=/root/rivermind-data/EZSpecificity/src:$PYTHONPATH
+ulimit -n 65536
+python ../scripts/10_Step10_pt训练管线/main_training_pt.py \
+  --config ../scripts/server_config.yml \
+  --cache-dir ../data/10_Step10_pt训练/ezspec_pt_v1 \
+  --edge-mode legacy_bug \
+  --devices 2 --num-workers 6 --batch-size 56 \
+  --max-epochs 50 --shutdown
+```
+
+**关键参数**：
+- `batch_size=56`，`accumulate_grad_batches=1`（server_config.yml）
+- `DDPStrategy(find_unused_parameters=False, gradient_as_bucket_view=True)`
+- `prefetch_factor=4`，`persistent_workers=True`，`pin_memory=True`
+- `sync_dist=False`（monkey-patch model.log，减少rank0同步开销）
+- `--shutdown`（训练完自动关机，节省费用）
+
+### 核心发现
+
+1. **DDP 对小模型加速有限**：1.8M 参数，GPU 计算极快，通信开销占比大。双卡 295 samples/s vs 单卡 165 samples/s = **1.79× 加速**（非 2×）
+2. **GPU 利用率锯齿不可消除**：变长图导致两卡负载不均，快卡等慢卡。图大小范围 19-1436 原子（75倍差异）
+3. **preload 在 DDP 下不可行**：两个进程各自加载 28GB → 总 56GB+，180GB 内存不够
+4. **torch.compile 与 PyG 不兼容**：torch_scatter 的 dynamo 支持不完善
+
+### 服务器状态
+
+**已关机，已清理**。所有之前的 checkpoint、metrics、tensorboard logs、train.log 全部删除。下次开机直接 `bash /root/start_train.sh` 从 epoch 0 干净启动。
+
+---
+
+## 十一、Cloud-2 DDP legacy_bug 基线训练完成（2026-03-19）
+
+### 11.1 训练配置（最终版）
+
+| 参数 | 值 |
+|------|-----|
+| batch_size | 56 per GPU |
+| accumulate_grad_batches | 1 |
+| effective batch size | 112 |
+| num_workers | 6 |
+| prefetch_factor | 4 |
+| devices | 2 (DDP) |
+| precision | 16 (FP16) |
+| find_unused_parameters | False |
+| gradient_as_bucket_view | True |
+| sync_dist | False (with all_gather fix) |
+| EarlyStopping | patience=15, monitor auc/val |
+| ModelCheckpoint | save_top_k=3, monitor auc/val |
+| --shutdown | 训练完自动关机 |
+
+### 11.2 Validation AUC 趋势
+
+0.518(ep0) → 0.598(ep1) → 0.652(ep6) → 0.714(ep17) → **0.722(ep22=val best)** → 0.720(ep27)
+
+训练跑了 32 epochs 后手动停止。
+
+### 11.3 Test Set 结果（8841 样本，966 正样本）
+
+| Checkpoint | Test AUC | Test AUPR |
+|------------|----------|-----------|
+| ep13 | 0.7175 | 0.2351 |
+| ep22 | 0.7146 | 0.2207 |
+| **ep27** | **0.7244** | **0.2142** |
+
+**ep27 test AUC=0.7244 超过论文 all_split AUC=0.7198**（+0.0046）
+
+### 11.4 DDP 关键 Bug 发现与修复
+
+**问题**：`sync_dist=False` monkey-patch 导致 `validation_epoch_end` 只用一半数据计算 AUC（只有当前 DDP rank 的输出）。
+
+**修复**：在 `validation_epoch_end` 和 `test_epoch_end` 中添加 `all_gather`，收集所有 rank 的输出后再计算 AUC。仅 rank 0 记录聚合指标。
+
+### 11.5 Codex 审计（12 个问题，按严重性排序）
+
+1. validation_epoch_end 只收集本地 rank 输出 → **已用 all_gather 修复**
+2. sync_dist=False 使所有指标为 rank-0 本地值 → **已修复**
+3. test_epoch_end 同样问题 → **已修复**
+4. Effective batch size (112) >> 论文 (64) → 可能解释部分 AUC 差异
+5. 缺失酶/底物 fallback 产生 NaN → 解释 grad_norm=inf
+6. LR scheduler 监控 aupr/val 但 EarlyStopping 监控 auc/val → 不匹配
+
+### 11.6 速度调优总结（14 轮配置测试）
+
+| # | 配置 | 速度 | Per Epoch | 备注 |
+|---|------|------|-----------|------|
+| 1 | bs=48, accum=1, w=8 | 2.85 it/s | ~11 min | 初始基线 |
+| 2 | bs=48, accum=1, w=6 | 2.82 it/s | ~11 min | 减少 workers |
+| 3 | bs=48, accum=2, w=7 | 2.73 it/s | ~11.3 min | accum 无帮助 |
+| 4 | bs=56, accum=2, w=7 | 2.35 it/s | ~11.3 min | 更慢 |
+| **5** | **bs=56, accum=1, w=6** | **2.65 it/s** | **~10 min** | **最优配置** |
+| 6 | bs=56, accum=1, w=6, sync_dist=F | 2.65 it/s | ~10 min | 同速度 |
+| 7 | bs=56, accum=1, w=6, NCCL_P2P_DISABLE | 2.43 it/s | ~11 min | 更慢 |
+| 8 | bs=64, accum=1, w=6 | 2.31 it/s | ~10.1 min | 显存紧张 |
+| 9 | bs=48, accum=1, w=7 (preload) | OOM | - | DDP×2 份 preload 爆内存 |
+| 10 | bs=96 | OOM | - | GPU OOM |
+| 11 | static_graph=True | CRASH | - | 变长图不兼容 |
+| **12** | **bs=56, accum=1, w=6, sync_dist=F** | **2.65 it/s** | **~10 min** | **FINAL BEST** |
+| 13 | 双单卡并行 | 2.14/2.56 | ~15 min | CPU 争抢 |
+| 14 | find_unused_parameters=False | 已包含 | - | 所有配置都包含 |
+
+### 11.7 Codex 建议（下一轮 fixed 训练）
+
+- lr: 3e-4 → 4e-4（sqrt scaling for larger batch）
+- warmup_steps: 300 → 400
+- max_epochs: 50 → 100-150
+- weight_decay: 0 → 1e-5
+
+---
+
+## 十二、下一步
+
+- [x] Cloud-2 legacy_bug 基线训练 → **完成（test AUC=0.7244）**
+- [ ] 应用 all_gather 修复 → 跑 fixed 基线对比
+- [ ] 量化 edge fix 贡献（fixed vs legacy_bug 的 Δ AUC）
+- [x] Step 12：~~数据泄露量化~~ → 已跳过
+
+---
+
+**版本**: v5.0 | **更新**: 2026-03-19

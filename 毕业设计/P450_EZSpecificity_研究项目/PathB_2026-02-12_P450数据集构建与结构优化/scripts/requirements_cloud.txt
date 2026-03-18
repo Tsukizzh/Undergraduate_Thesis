@@ -1,7 +1,0 @@
-pytorch_lightning==1.9.0
-easydict
-rdkit-pypi
-lmdb
-tqdm
-matplotlib
-torch_geometric

@@ -94,6 +94,12 @@ def parse_args():
     p.add_argument("--resume", type=str, default=None,
                    help="'last' or path to checkpoint")
     p.add_argument("--max-epochs", type=int, default=50)
+    p.add_argument("--devices", type=int, default=1,
+                   help="Number of GPUs (1=single, 2+=DDP)")
+    p.add_argument("--shutdown", action="store_true",
+                   help="Auto shutdown server after training completes (for cloud instances)")
+    p.add_argument("--preload", action="store_true",
+                   help="Preload all .pt samples into RAM (needs ~28GB, eliminates disk I/O)")
     return p.parse_args()
 
 
@@ -107,13 +113,15 @@ def load_config(path: str) -> EasyDict:
 # ---------------------------------------------------------------------------
 class PtTrainingDataModule(pl.LightningDataModule):
     def __init__(self, cache_dir: str, config: EasyDict,
-                 edge_mode: str, batch_size: int, num_workers: int):
+                 edge_mode: str, batch_size: int, num_workers: int,
+                 preload: bool = False):
         super().__init__()
         self.cache_dir = cache_dir
         self.config = config
         self.edge_mode = edge_mode
         self.batch_size = batch_size
         self.num_workers = num_workers
+        self.preload = preload
 
     def _make_dataset(self, split: str, is_train: bool) -> PtCacheDataset:
         return PtCacheDataset(
@@ -125,6 +133,7 @@ class PtTrainingDataModule(pl.LightningDataModule):
             num_r_gaussian=self.config.transform.num_r_gaussian,
             max_enzyme_len=self.config.data.max_enzyme_length,
             max_substrate_len=self.config.data.max_substrate_length,
+            preload=self.preload,
         )
 
     def _make_loader(self, split: str, is_train: bool, shuffle: bool = False):
@@ -135,7 +144,7 @@ class PtTrainingDataModule(pl.LightningDataModule):
             follow_batch=["ligand_index"],
         )
         if self.num_workers > 0:
-            kw.update(persistent_workers=True, prefetch_factor=2)
+            kw.update(persistent_workers=True, prefetch_factor=4)
         return ds, DataLoader(ds, **kw)
 
     def train_dataloader(self):
@@ -234,6 +243,8 @@ class MetricsCSVLogger(Callback):
 
     def on_validation_epoch_end(self, trainer, pl_module):
         if trainer.sanity_checking:
+            return
+        if trainer.global_rank != 0:
             return
         m = trainer.callback_metrics
         epoch = trainer.current_epoch
@@ -445,7 +456,7 @@ def main():
     os.makedirs(LOG_DIR, exist_ok=True)
 
     # Validate cache dir
-    cache_dir = args.cache_dir
+    cache_dir = os.path.abspath(args.cache_dir)
     for required in ["train", "val", "enzymes", "substrates"]:
         p = os.path.join(cache_dir, required)
         if not os.path.isdir(p):
@@ -463,7 +474,9 @@ def main():
     print(f"  Workers     : {args.num_workers}")
     print(f"  Max epochs  : {args.max_epochs}")
     print(f"  Seed        : {seed}")
-    print(f"  GPU         : {torch.cuda.get_device_name(0) if torch.cuda.is_available() else 'CPU'}")
+    n_gpus = torch.cuda.device_count() if torch.cuda.is_available() else 0
+    gpu_info = f"{torch.cuda.get_device_name(0)} x{args.devices}" if n_gpus > 0 else "CPU"
+    print(f"  GPU         : {gpu_info} (devices={args.devices})")
     print(f"  CUDA        : {torch.version.cuda}, PyTorch: {torch.__version__}")
     print(f"  Results     : {RESULTS_DIR}")
     print(f"  Checkpoints : {CKPT_DIR}")
@@ -477,11 +490,78 @@ def main():
         cache_dir=cache_dir, config=config,
         edge_mode=args.edge_mode, batch_size=batch_size,
         num_workers=args.num_workers,
+        preload=args.preload,
     )
 
     # Model
     print("[2/4] Initializing Model (random weights)...")
     model = SS(config)
+    # Patch self.log: always sync_dist=False because our gather patch
+    # already computes global metrics on every rank — no need for Lightning sync.
+    _orig_log = model.log
+    def _nosync_log(name, value, **kw):
+        kw["sync_dist"] = False
+        return _orig_log(name, value, **kw)
+    model.log = _nosync_log
+
+    # Patch validation_epoch_end: gather outputs from all DDP ranks before computing AUC
+    _orig_val_epoch_end = model.validation_epoch_end
+    def _ddp_val_epoch_end(outputs):
+        import numpy as np
+        import torch.distributed as dist
+        if dist.is_initialized() and dist.get_world_size() > 1:
+            # Each rank has its own subset of validation outputs
+            # Gather all logits/labels to every rank so AUC is computed on full data
+            local_logits = np.concatenate([a[0] for a in outputs], axis=0).ravel()
+            local_labels = np.concatenate([a[1] for a in outputs], axis=0).ravel()
+            local_logits_t = torch.tensor(local_logits, dtype=torch.float32).cuda()
+            local_labels_t = torch.tensor(local_labels, dtype=torch.float32).cuda()
+            # Gather sizes (ranks may have slightly different counts)
+            local_n = torch.tensor([local_logits_t.shape[0]], device=local_logits_t.device)
+            world = dist.get_world_size()
+            all_n = [torch.zeros_like(local_n) for _ in range(world)]
+            dist.all_gather(all_n, local_n)
+            max_n = max(n.item() for n in all_n)
+            # Pad and gather
+            pad_logits = torch.zeros(max_n, device=local_logits_t.device)
+            pad_labels = torch.zeros(max_n, device=local_labels_t.device)
+            pad_logits[:local_logits_t.shape[0]] = local_logits_t
+            pad_labels[:local_labels_t.shape[0]] = local_labels_t
+            gathered_logits = [torch.zeros_like(pad_logits) for _ in range(world)]
+            gathered_labels = [torch.zeros_like(pad_labels) for _ in range(world)]
+            dist.all_gather(gathered_logits, pad_logits)
+            dist.all_gather(gathered_labels, pad_labels)
+            # Reconstruct full outputs: merge into a single fake "output" tuple
+            all_logits = torch.cat([g[:all_n[i].item()] for i, g in enumerate(gathered_logits)])
+            all_labels = torch.cat([g[:all_n[i].item()] for i, g in enumerate(gathered_labels)])
+            # Also gather tags (list of tuples of tag_0, tag_1 strings)
+            # Tags are needed for per-family AUC; gather via pickle
+            import pickle
+            local_tags = []
+            for out in outputs:
+                for t0, t1 in zip(out[2][0], out[2][1]):
+                    local_tags.append((t0, t1))
+            tag_bytes = pickle.dumps(local_tags)
+            tag_tensor = torch.tensor(list(tag_bytes), dtype=torch.uint8).cuda()
+            tag_sizes = [torch.zeros(1, dtype=torch.long, device=tag_tensor.device) for _ in range(world)]
+            dist.all_gather(tag_sizes, torch.tensor([len(tag_bytes)], dtype=torch.long, device=tag_tensor.device))
+            max_tag = max(s.item() for s in tag_sizes)
+            pad_tags = torch.zeros(max_tag, dtype=torch.uint8, device=tag_tensor.device)
+            pad_tags[:len(tag_bytes)] = tag_tensor
+            gathered_tags = [torch.zeros_like(pad_tags) for _ in range(world)]
+            dist.all_gather(gathered_tags, pad_tags)
+            all_tags = []
+            for i in range(world):
+                t = bytes(gathered_tags[i][:tag_sizes[i].item()].cpu().tolist())
+                all_tags.extend(pickle.loads(t))
+            # Build merged outputs as single entry
+            tag0_list = [t[0] for t in all_tags]
+            tag1_list = [t[1] for t in all_tags]
+            merged_outputs = [(all_logits.cpu().numpy(), all_labels.cpu().numpy(), (tag0_list, tag1_list))]
+            _orig_val_epoch_end(merged_outputs)
+        else:
+            _orig_val_epoch_end(outputs)
+    model.validation_epoch_end = _ddp_val_epoch_end
     n_params = sum(p.numel() for p in model.parameters() if p.requires_grad)
     print(f"  Trainable parameters: {n_params:,}")
 
@@ -504,10 +584,16 @@ def main():
 
     # Trainer
     print("[3/4] Initializing Trainer...")
+    n_devices = args.devices if torch.cuda.is_available() else 1
+    strategy = pl.strategies.DDPStrategy(
+        find_unused_parameters=False,
+        gradient_as_bucket_view=True,
+    ) if n_devices > 1 else None
     trainer = pl.Trainer(
         max_epochs=args.max_epochs,
         accelerator="gpu" if torch.cuda.is_available() else "cpu",
-        devices=1,
+        devices=n_devices,
+        strategy=strategy,
         precision=16 if torch.cuda.is_available() else 32,
         gradient_clip_val=config.training.gradient_clip_val,
         accumulate_grad_batches=accum,
@@ -522,7 +608,7 @@ def main():
     ckpt_path = None
     if args.resume:
         if args.resume.lower() == "last":
-            last_ckpt = os.path.join(CKPT_DIR, "last.ckpt")
+            last_ckpt = os.path.join(CKPT_DIR, args.edge_mode, "last.ckpt")
             if os.path.exists(last_ckpt):
                 ckpt_path = last_ckpt
                 print(f"[4/4] Resuming from: {ckpt_path}")
@@ -558,7 +644,16 @@ def main():
     print(f"  Best auc/val : {ckpt_cb.best_model_score}")
     print("=" * 70)
 
-    plot_training_curves(METRICS_CSV)
+    plot_training_curves(run_metrics_csv)
+
+    # Auto-shutdown for cloud instances
+    if args.shutdown:
+        print("\n[AUTO-SHUTDOWN] Training complete. Shutting down in 30s... (Ctrl+C to cancel)")
+        try:
+            time.sleep(30)
+            os.system("shutdown -h now")
+        except KeyboardInterrupt:
+            print("[AUTO-SHUTDOWN] Cancelled.")
 
 
 if __name__ == "__main__":

@@ -252,6 +252,7 @@ class PtCacheDataset(torch.utils.data.Dataset):
         max_enzyme_len: int = MAX_ENZYME_LEN,
         max_substrate_len: int = MAX_SUBSTRATE_LEN,
         graph_cache_size: int = 2,
+        preload: bool = False,
     ):
         super().__init__()
         self.cache_dir = Path(cache_dir)
@@ -307,6 +308,11 @@ class PtCacheDataset(torch.utils.data.Dataset):
         # Reusable GaussianSmearing (stateless)
         self._smear = GaussianSmearing(stop=cutoff, num_gaussians=num_r_gaussian)
 
+        # Preload all per-sample .pt files into RAM (eliminates disk I/O)
+        self._preloaded: dict[int, dict] | None = None
+        if preload:
+            self._preload_all_samples()
+
     def _ensure_file_handles(self):
         """Lazily open binary file handles (called per-worker after spawn)."""
         if self._enz_fh is None:
@@ -330,6 +336,7 @@ class PtCacheDataset(torch.utils.data.Dataset):
         state["_graph_cache"] = ShardCache(state["_graph_cache"]._max_size)
         state["_enzyme_tensor_cache"] = EntityTensorCache(64)
         state["_substrate_tensor_cache"] = EntityTensorCache(256)
+        # Preloaded data survives pickling — workers inherit it via fork (Linux)
         return state
 
     def __del__(self):
@@ -340,10 +347,60 @@ class PtCacheDataset(torch.utils.data.Dataset):
                 except Exception:
                     pass
 
+    def _preload_all_samples(self):
+        """Load all per-sample .pt files into RAM at init time."""
+        import time
+        t0 = time.time()
+        self._preloaded = {}
+        sample_ids = self._index["sample_ids"]
+        n = len(sample_ids)
+        loaded = 0
+        for i in range(n):
+            sid = int(sample_ids[i])
+            sub_dir = self.cache_dir / self.split / "samples" / f"{sid // 1000:03d}"
+            sample_path = sub_dir / f"sample_{sid:06d}.pt"
+            if sample_path.exists():
+                self._preloaded[sid] = torch.load(
+                    sample_path, map_location="cpu", weights_only=False
+                )
+                loaded += 1
+            if loaded % 20000 == 0 and loaded > 0:
+                elapsed = time.time() - t0
+                print(f"  [preload {self.split}] {loaded}/{n} samples, {elapsed:.1f}s")
+        elapsed = time.time() - t0
+        mb = sum(
+            sum(v.nelement() * v.element_size() for v in s.values() if isinstance(v, torch.Tensor))
+            for s in self._preloaded.values()
+        ) / 1e6
+        print(f"  [preload {self.split}] Done: {loaded}/{n} samples, {mb:.0f} MB, {elapsed:.1f}s")
+
     def _load_graph_sample(self, idx: int) -> dict:
         sample_id = int(self._index["sample_ids"][idx])
 
-        # Try per-sample file first (fast path: 160KB per read)
+        # Fast path: preloaded in RAM
+        if self._preloaded is not None and sample_id in self._preloaded:
+            s = self._preloaded[sample_id]
+            return {
+                "ligand_pos": s["ligand_pos"].float(),
+                "protein_pos": s["protein_pos"].float(),
+                "ligand_element": s["ligand_element"].long(),
+                "protein_element": s["protein_element"].long(),
+                "protein_aa_type": s["protein_aa_type"].long(),
+                "protein_is_backbone": s["protein_is_backbone"].long(),
+                "ligand_atom_aux": s["ligand_atom_aux"].long(),
+                "ligand_index_raw": s["ligand_index_raw"].long(),
+                "bond_index": s["bond_index"].long(),
+                "bond_type": s["bond_type"].long(),
+                "knn_edge_index": s["knn_edge_index"].long(),
+                "enzyme_global_id": int(s["enzyme_id"]),
+                "substrate_global_id": int(s["substrate_id"]),
+                "dataset_id": int(s["dataset_id"]),
+                "label": int(s["label"]),
+                "str_tag_code": int(s["str_tag_code"]),
+                "sample_weight": float(s["sample_weight"]),
+            }
+
+        # Disk path: per-sample file
         sub_dir = self.cache_dir / self.split / "samples" / f"{sample_id // 1000:03d}"
         sample_path = sub_dir / f"sample_{sample_id:06d}.pt"
 
@@ -561,6 +618,7 @@ def build_pt_dataloaders(
     num_workers: int = 4,
     pin_memory: bool = True,
     prefetch_factor: int = 4,
+    preload: bool = False,
 ) -> dict[str, torch.utils.data.DataLoader]:
     from torch_geometric.loader import DataLoader
 
@@ -577,6 +635,7 @@ def build_pt_dataloaders(
             dist_noise=(dist_noise_train if split == "train" else False),
             cutoff=cutoff,
             num_r_gaussian=num_r_gaussian,
+            preload=preload,
         )
 
         kw = dict(
