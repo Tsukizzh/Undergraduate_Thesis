@@ -314,7 +314,7 @@ ESIBank 训练集中的 P450
 
 #### 当前研究阶段
 
-**阶段四十一**：Step 11 Cloud-2 DDP legacy_bug 基线完成（2026-03-19）
+**阶段四十一**：Step 10 Cloud-2 DDP legacy_bug 基线完成（2026-03-19）
 
 | 路径 | 名称 | 状态 | 说明 |
 |------|------|------|------|
@@ -328,8 +328,8 @@ ESIBank 训练集中的 P450
 | │    | └─ Step 8 | ✅ 已完成 | E8v1+E8v2通道关闭消融 + E9废弃 |
 | │    | └─ Step 9 | ✅ 已完成 | AllSplit训练 ep27完成, **BEST=ep14 AUC=0.7667** |
 | │    | └─ Step 10 | ✅ 已完成 | .pt缓存v3(per-sample) + Dataset类 + 训练脚本, **7.56 it/s** |
-| **C** | P450专属模型训练 | 🔄 Step 11 ✅ | **legacy_bug test AUC=0.7244 > paper 0.7198**, fixed基线待跑 |
-| │    | └─ Step 11 | ✅ 已完成 | Cloud-2 DDP 32ep, DDP all_gather bug修复 |
+| **C** | P450专属模型训练 | 🔄 Step 10 ✅ | **legacy_bug test AUC=0.7244 > paper 0.7198**, fixed基线待跑 |
+| │    | └─ Step 10b | ✅ 已完成 | Cloud-2 DDP 32ep, DDP all_gather bug修复 |
 | D | 区域选择性预测 | ⏳ 待定 | 路径A完成后可选 |
 
 **工作目录**: `毕业设计/P450_EZSpecificity_研究项目/PathB_2026-02-12_P450数据集构建与结构优化/`
@@ -364,7 +364,7 @@ ESIBank 训练集中的 P450
   3. 新增酶-底物对 → AlphaFold+Vina对接 → build_pt_cache.py生成per-sample .pt
   4. 合并 .pt文件, 更新index.pt
   5. 优势: build_pt_cache.py已支持增量生成(resume/skip existing), 无需重新处理历史数据
-- **Step 11 legacy_bug 已完成**: Cloud-2 DDP 32ep, test AUC=0.7244 > paper 0.7198
+- **Step 10 legacy_bug 已完成**: Cloud-2 DDP 32ep, test AUC=0.7244 > paper 0.7198
 - **Val Loss ↑ while AUC ↑（Codex深度分析，非Bug）**: BCE=逐点（outlier主导），AUC=成对排序（outlier鲁棒）。ep2→ep22: +26,500对正确排序但few dozen hard samples极端logit(z=5→loss=5.01)主导loss均值。三阶段: warmup(ep0-8)→divergence(ep8-22,排序↑过度自信↑)→true overfitting(ep22+)。ReduceLROnPlateau监控aupr（非auc/loss）不匹配。建议: 同AUC选低loss ckpt, warmup后加LR衰减, temperature scaling后校准。
 - **EZSpecificity-individual**: 论文中"仅目标家族数据从头训练"模式（85-5424对），我们的AllSplit方式类似此模式
 - 下一步: fixed基线训练（应用all_gather修复+Codex建议）

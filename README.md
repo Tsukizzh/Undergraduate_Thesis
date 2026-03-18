@@ -19,7 +19,7 @@ EZSpecificity 是一个基于交叉注意力机制的 SE(3)-等变图神经网�
 - **Step 9 AllSplit训练**：本地完成 27 epochs，**BEST = ep14 AUC=0.7667**（超论文 0.7198）
 - **Step 10 .pt训练管线**：解决 LMDB 内存瓶颈，per-sample .pt 缓存实现 7.56 it/s（3.6倍提速）
 
-### 路径C：P450专属模型训练 🔄 Step 11 ✅ legacy_bug 基线完成
+### 路径C：P450专属模型训练 🔄 Step 10 ✅ legacy_bug 基线完成
 - **Cloud-2 DDP 训练**（2×RTX 4090）：32 epochs，bs=56/GPU
 - **测试集结果**（8841样本）：**Test AUC = 0.7244** > 论文 all_split 0.7198 (+0.0046)
 - **DDP Bug 修复**：发现并修复 `all_gather` 验证集聚合问题，Codex 审计 12 项
@@ -94,7 +94,7 @@ EZSpecificity_Project/
 |------|------|:----:|----------|
 | **A** | 用PDB实验结构评估模型 | ✅ 已完成 | AUC-ROC 0.6636 |
 | **B** | P450数据集构建与系统诊断 | ✅ Step 1-10 完成 | 底物身份驱动 + 家族内泛化失败 |
-| **C** | P450专属模型训练 | 🔄 Step 11 ✅ | **Test AUC=0.7244** > 论文 0.7198 |
+| **C** | P450专属模型训练 | 🔄 Step 10 ✅ | **Test AUC=0.7244** > 论文 0.7198 |
 | D | 区域选择性预测 | ⏳ 待定 | 高创新性 |
 
 ## 路径B详细进展（Step 1-9）
@@ -109,7 +109,7 @@ EZSpecificity_Project/
 | Step 8 | 通道消融(E8v1/v2) | 瓶颈在任务/数据设计, 非单一通道 | ✅ |
 | Step 9 | AllSplit从头训练 | ep14 **AUC=0.7667**(BEST), 超论文0.7198 | ✅ |
 | Step 10 | .pt训练管线+云端部署 | per-sample .pt缓存, 7.56 it/s | ✅ |
-| Step 11 | legacy_bug基线(Cloud-2 DDP) | **Test AUC=0.7244** > 论文0.7198 | ✅ |
+| Step 10 | legacy_bug基线(Cloud-2 DDP) | **Test AUC=0.7244** > 论文0.7198 | ✅ |
 
 ## 评估结果
 
@@ -128,7 +128,7 @@ EZSpecificity_Project/
 | Duf | 0.796 | |
 | **P450** | **0.517** | **唯一崩溃的家族** |
 
-### Step 11：Cloud-2 DDP legacy_bug 基线（测试集评估）
+### Step 10：Cloud-2 DDP legacy_bug 基线（测试集评估）
 | Checkpoint | Val AUC | **Test AUC** | Test AUPR | 样本数 |
 |------------|---------|-------------|-----------|--------|
 | ep13 | 0.722 | 0.7175 | 0.2351 | 8841 |

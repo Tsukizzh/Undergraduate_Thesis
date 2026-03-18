@@ -1,6 +1,6 @@
 # Path B：P450 数据集构建与结构优化
 
-> **2026-03-19 更新**: Path B Step 1-10 全部完成. Step 11 (Path C) legacy_bug 基线完成: Cloud-2 DDP 32ep, **test AUC=0.7244 > paper 0.7198**. 文件组织重构: scripts拆分为local/cloud2x4090, 数据缓存重命名allsplit_pt_cache. 下一步: fixed基线训练.
+> **2026-03-19 更新**: Path B Step 1-10 全部完成. Step 10 (Path C) legacy_bug 基线完成: Cloud-2 DDP 32ep, **test AUC=0.7244 > paper 0.7198**. 文件组织重构: scripts拆分为local/cloud2x4090, 数据缓存重命名allsplit_pt_cache. 下一步: fixed基线训练.
 
 ## 一、背景与目标
 
@@ -543,7 +543,7 @@ PathB_2026-02-12_P450数据集构建与结构优化/
 | | | - per-sample .pt v3缓存: 57GB, 7.56 it/s本地(稳定不衰减) | ✅ |
 | | | - Cloud-2 DDP调优: 14配置测试, best=bs56/w6, 2.65 it/s, ~10min/ep | ✅ |
 | | | - 文件重构: scripts→local/cloud2x4090, ezspec_pt_v1→allsplit_pt_cache | ✅ |
-| | Step 11 | **Cloud-2 DDP legacy_bug 基线训练** | **✅ 已完成** |
+| | Step 10 | **Cloud-2 DDP legacy_bug 基线训练** | **✅ 已完成** |
 | | | - 32 epochs, **test AUC=0.7244 > paper 0.7198** (+0.0046) | ✅ |
 | | | - DDP bug修复: all_gather解决half-data validation问题 | ✅ |
 | | | - Codex审计: 12个问题, 前3个(all_gather)已修复 | ✅ |
