@@ -72,3 +72,9 @@ Thumbs.db
 *.pyc
 __pycache__/
 nul
+
+# Large checkpoint files (keep only best)
+毕业设计/**/results/**/checkpoints/**/*.ckpt
+!毕业设计/**/results/**/checkpoints/**/pt-*-ep27-*.ckpt
+# Large train logs
+毕业设计/**/results/**/train.log
