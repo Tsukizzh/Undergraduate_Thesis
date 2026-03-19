@@ -2,7 +2,7 @@
 
 > **日期**: 2026-03-19
 > **目标**: 在 Cloud-2 上用修复边排序的 `--edge-mode fixed` 训练 AllSplit 基线，与 legacy_bug 基线（test AUC=0.7244）对比
-> **结论**: Val AUC **0.7145** (ep16 best)，低于 legacy_bug 的 0.722。fixed 修复未带来提升。
+> **结论**: Val AUC **0.7145** (ep16 best)，Test AUC **0.7060**。均低于 legacy_bug（Val 0.722, Test 0.7244）。边排序修复未带来提升，Δ=-0.018 (test)。
 
 ---
 
@@ -142,7 +142,7 @@ EZSpecificity/
 | 指标 | Legacy Bug (PathB) | Fixed (PathC C1-Step1) | 差值 |
 |------|-------------------|----------------------|------|
 | Val AUC (best) | 0.7224 (ep22) | 0.7145 (ep16) | **-0.0079** |
-| Test AUC | 0.7244 (ep27) | **待评估** | — |
+| Test AUC | 0.7244 (ep27) | **0.7060** (ep16) | **-0.0184** |
 | Best epoch | 22 | 16 | -6 |
 | 早停 epoch | 32 | 31 | -1 |
 | 总训练时间 | ~5.3h | ~5.2h | ≈ |
@@ -150,11 +150,23 @@ EZSpecificity/
 
 ### 5.1 关键发现
 
-**Fixed 修复并未带来 AUC 提升**，反而略低 0.008。可能的解释：
+**Fixed 修复并未带来 AUC 提升**，Val 低 0.008，Test 低 0.018。可能的解释：
 
-1. **随机波动**: 0.008 差距在单次实验的噪声范围内，需多 seed 验证
+1. **随机波动**: 0.018 差距可能在单次实验的噪声范围内，需多 seed 验证
 2. **"有益噪声"假说**: legacy_bug 的错误边特征分配可能意外引入了某种正则化效果
 3. **Batch size 问题**: 本地 Step 9 fixed (bs=32) 达到了 0.7667，同一修复在大 batch (112) 下只有 0.7145 → 暗示 **batch size 才是主要瓶颈**
+
+### 5.2 Test AUC 评估
+
+使用 best checkpoint (ep16) 在 AllSplit fold 0 test set 上评估：
+
+| 指标 | 值 |
+|------|------|
+| Test AUC-ROC | **0.7060** |
+| Test AUPR | 0.2362 |
+| Test 样本数 | 8,841 |
+| 正/负样本 | 966 / 7,875 |
+| 评估方式 | 单GPU推理，bs=56 |
 
 ### 5.2 Edge Mode 验证
 
@@ -166,7 +178,7 @@ EZSpecificity/
 
 ## 6. 下一步
 
-1. **评估 Test AUC**: 用 best checkpoint (ep16) 跑 test set，与 legacy_bug test AUC (0.7244) 公平对比
+1. ~~**评估 Test AUC**~~: ✅ 已完成。Test AUC = **0.7060**，低于 legacy_bug 的 0.7244（Δ=-0.018）
 2. **C1-Step 2 消融实验**: 重点调整大 batch 下的超参数
    - lr 线性缩放 (3e-4 → 4e-4 或更高)
    - warmup steps 增加 (8 epochs → 更多)

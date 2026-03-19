@@ -329,7 +329,7 @@ ESIBank 训练集中的 P450
 | │    | └─ Step 9 | ✅ 已完成 | AllSplit训练 ep27完成, **BEST=ep14 AUC=0.7667** |
 | │    | └─ Step 10 | ✅ 已完成 | .pt缓存v3 + legacy_bug基线(Cloud-2 DDP 32ep, **test AUC=0.7244**) |
 | **C** | P450专属模型训练 | 🔄 C1-Step 2 待启动 | `PathC_2026-03-19_P450专属模型训练/` |
-| │    | └─ C1 模型架构优化 | 🔄 3/19-30 | C1-Step 1 ✅ (Val AUC=0.7145, ep16, 边修复未提升AUC) → Step 2(6项消融) → Step 3(组合) → Step 4(多seed) |
+| │    | └─ C1 模型架构优化 | 🔄 3/19-30 | C1-Step 1 ✅ (Val=0.7145, Test=0.7060, 边修复未提升AUC) → Step 2(6项消融) → Step 3(组合) → Step 4(多seed) |
 | │    | └─ C2 数据集扩建 | ⏳ 3/31-4/5 | 外部P450数据收集 + 对接 + .pt缓存 + 重训 |
 | D | 区域选择性预测 | ⏳ 待定 | 路径A完成后可选 |
 
@@ -368,7 +368,7 @@ ESIBank 训练集中的 P450
 - **Step 10 legacy_bug 已完成**: Cloud-2 DDP 32ep, test AUC=0.7244 > paper 0.7198
 - **Val Loss ↑ while AUC ↑（Codex深度分析，非Bug）**: BCE=逐点（outlier主导），AUC=成对排序（outlier鲁棒）。ep2→ep22: +26,500对正确排序但few dozen hard samples极端logit(z=5→loss=5.01)主导loss均值。三阶段: warmup(ep0-8)→divergence(ep8-22,排序↑过度自信↑)→true overfitting(ep22+)。ReduceLROnPlateau监控aupr（非auc/loss）不匹配。建议: 同AUC选低loss ckpt, warmup后加LR衰减, temperature scaling后校准。
 - **EZSpecificity-individual**: 论文中"仅目标家族数据从头训练"模式（85-5424对），我们的AllSplit方式类似此模式
-- **C1-Step 1 已完成**: Cloud-2 DDP 2×4090, --edge-mode fixed, bs=56, 32ep ~5.2h ~2.7 it/s. **Val AUC=0.7145 (ep16 best)**, early stopped ep31. 边修复未提升AUC（legacy_bug Val=0.722 vs fixed Val=0.7145, Δ=-0.008）. Test AUC 待评估. Log: PathC/logs/train_fixed.log
+- **C1-Step 1 已完成**: Cloud-2 DDP 2×4090, --edge-mode fixed, bs=56, 32ep ~5.2h ~2.7 it/s. **Val AUC=0.7145 (ep16 best)**, early stopped ep31. 边修复未提升AUC（legacy_bug Val=0.722 vs fixed Val=0.7145, Δ=-0.008）. **Test AUC=0.7060**（AUPR=0.2362, 8841样本, vs legacy_bug test=0.7244, Δ=-0.018）. Log: PathC/logs/train_fixed.log
 - **Cloud-2 服务器重构(2026-03-19)**: 从扁平结构→PathB/(归档legacy_bug) + PathC/(当前工作, scripts路径已修复) + allsplit_pt_cache/(项目根级共享)
 
 **Path B 诊断阶段总结（Step 7-8）**:

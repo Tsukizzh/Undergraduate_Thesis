@@ -54,7 +54,7 @@ Path C
 - fixed 应该 ≥ legacy_bug（0.7244），因为边修复纠正了错误的边特征对齐
 - Step 9 本地 fixed 的 val AUC=0.7667，但 effective batch 不同，不可直接比较
 
-**产出**: fixed 基线的 Test AUC，ΔAUC = fixed - legacy_bug
+**结果**: Test AUC=0.7060, ΔAUC = 0.7060 - 0.7244 = -0.018（边修复未提升测试集性能）
 
 **时间**: ~1 天（8-10 小时训练 + 评估）
 
@@ -190,7 +190,7 @@ Path C
 
 | Step | 内容 | 状态 | 结果 |
 |------|------|------|------|
-| C1-Step 1 | fixed 基线训练 | ✅ 已完成 | **Val AUC=0.7145 (ep16 best)**, early stopped ep31, 32ep ~5.2h ~2.7 it/s. 边修复未提升AUC（legacy_bug Val=0.722 vs fixed=0.7145, Δ=-0.008）. Test AUC 待评估. |
+| C1-Step 1 | fixed 基线训练 | ✅ 已完成 | **Val AUC=0.7145 (ep16 best)**, **Test AUC=0.7060** (AUPR=0.2362, 8841样本). early stopped ep31, 32ep ~5.2h ~2.7 it/s. 边修复未提升AUC（legacy_bug Val=0.722/Test=0.7244 vs fixed Val=0.7145/Test=0.7060, Δ=-0.018）. |
 | C1-Step 2a | Dropout 0.9→0.1 | ⏳ | |
 | C1-Step 2b | lr 4e-4 + warmup 400 | ⏳ | |
 | C1-Step 2c | weight_decay 1e-5 | ⏳ | |
