@@ -1,7 +1,7 @@
 # Path C：P450 专属模型训练 — 计划与进度
 
 > **创建日期**: 2026-03-19
-> **当前状态**: C1 模型架构优化 — C1-Step 1 已完成，C1-Step 2 待启动
+> **当前状态**: C1 模型架构优化 — C1-Step 2 dropout消融已完成（Val提升但Test未迁移），下一步: 其他消融项
 > **前置条件**: Path B Step 1-10 全部完成，legacy_bug 基线 Test AUC=0.7244 > 论文 0.7198
 
 ---
@@ -68,7 +68,8 @@ Path C
 
 | 实验 | 改动 | 预期效果 | 复杂度 | 需重新生成.pt? |
 |------|------|---------|--------|---------------|
-| **2a** | Dropout 0.9 → 0.1 | +0.01~0.03 | 低（改 config） | 否 |
+| **2a** | Dropout 0.9 → 0.1 | ✅ Val=0.7216(+0.007), **Test=0.6936(-0.012)** Val未迁移Test | 低（改 config） | 否 |
+| **2a'** | Dropout 0.9 → 0.3 | ✅ Val=0.7397(+0.025), **Test=0.6959(-0.010)** Val未迁移Test | 低（改 config） | 否 |
 | **2b** | lr 3e-4 → 4e-4 + warmup 400 | +0.01~0.02 | 低（改 config） | 否 |
 | **2c** | weight_decay 0 → 1e-5 | +0.005~0.01 | 低（改代码） | 否 |
 | **2d** | max_epochs 50 → 150 | 更充分训练 | 低（改参数） | 否 |
@@ -191,7 +192,8 @@ Path C
 | Step | 内容 | 状态 | 结果 |
 |------|------|------|------|
 | C1-Step 1 | fixed 基线训练 | ✅ 已完成 | **Val AUC=0.7145 (ep16 best)**, **Test AUC=0.7060** (AUPR=0.2362, 8841样本). early stopped ep31, 32ep ~5.2h ~2.7 it/s. 边修复未提升AUC（legacy_bug Val=0.722/Test=0.7244 vs fixed Val=0.7145/Test=0.7060, Δ=-0.018）. |
-| C1-Step 2a | Dropout 0.9→0.1 | ⏳ | |
+| C1-Step 2a | Dropout 0.9→0.1 | ✅ 已完成 | Val AUC=0.7216 (+0.007, ep17), **Test AUC=0.6936** (-0.012). Val改善未迁移到Test. |
+| C1-Step 2a' | Dropout 0.9→0.3 | ✅ 已完成 | Val AUC=0.7397 (+0.025, ep49), **Test AUC=0.6959** (-0.010). Val改善未迁移到Test. 结论: dropout改动不纳入Step 3组合. |
 | C1-Step 2b | lr 4e-4 + warmup 400 | ⏳ | |
 | C1-Step 2c | weight_decay 1e-5 | ⏳ | |
 | C1-Step 2d | max_epochs 150 | ⏳ | |

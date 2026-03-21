@@ -314,7 +314,7 @@ ESIBank 训练集中的 P450
 
 #### 当前研究阶段
 
-**阶段四十三**：C1-Step 1 fixed 基线训练已完成（Val AUC=0.7145, ep16 best, early stopped ep31）
+**阶段四十四**：C1-Step 2 dropout消融已完成（Val提升但Test未迁移），下一步: 其他消融项
 
 | 路径 | 名称 | 状态 | 说明 |
 |------|------|------|------|
@@ -328,8 +328,8 @@ ESIBank 训练集中的 P450
 | │    | └─ Step 8 | ✅ 已完成 | E8v1+E8v2通道关闭消融 + E9废弃 |
 | │    | └─ Step 9 | ✅ 已完成 | AllSplit训练 ep27完成, **BEST=ep14 AUC=0.7667** |
 | │    | └─ Step 10 | ✅ 已完成 | .pt缓存v3 + legacy_bug基线(Cloud-2 DDP 32ep, **test AUC=0.7244**) |
-| **C** | P450专属模型训练 | 🔄 C1-Step 2 待启动 | `PathC_2026-03-19_P450专属模型训练/` |
-| │    | └─ C1 模型架构优化 | 🔄 3/19-30 | C1-Step 1 ✅ (Val=0.7145, Test=0.7060, 边修复未提升AUC) → Step 2(6项消融) → Step 3(组合) → Step 4(多seed) |
+| **C** | P450专属模型训练 | 🔄 C1-Step 2 其他消融待启动 | `PathC_2026-03-19_P450专属模型训练/` |
+| │    | └─ C1 模型架构优化 | 🔄 3/19-30 | C1-Step 1 ✅ → Step 2 dropout消融 ✅ (Val提升但**Test未迁移**: d=0.3 Val+0.025/Test-0.010) → Step 2 其他消融 → Step 3(组合) → Step 4(多seed) |
 | │    | └─ C2 数据集扩建 | ⏳ 3/31-4/5 | 外部P450数据收集 + 对接 + .pt缓存 + 重训 |
 | D | 区域选择性预测 | ⏳ 待定 | 路径A完成后可选 |
 
@@ -369,6 +369,13 @@ ESIBank 训练集中的 P450
 - **Val Loss ↑ while AUC ↑（Codex深度分析，非Bug）**: BCE=逐点（outlier主导），AUC=成对排序（outlier鲁棒）。ep2→ep22: +26,500对正确排序但few dozen hard samples极端logit(z=5→loss=5.01)主导loss均值。三阶段: warmup(ep0-8)→divergence(ep8-22,排序↑过度自信↑)→true overfitting(ep22+)。ReduceLROnPlateau监控aupr（非auc/loss）不匹配。建议: 同AUC选低loss ckpt, warmup后加LR衰减, temperature scaling后校准。
 - **EZSpecificity-individual**: 论文中"仅目标家族数据从头训练"模式（85-5424对），我们的AllSplit方式类似此模式
 - **C1-Step 1 已完成**: Cloud-2 DDP 2×4090, --edge-mode fixed, bs=56, 32ep ~5.2h ~2.7 it/s. **Val AUC=0.7145 (ep16 best)**, early stopped ep31. 边修复未提升AUC（legacy_bug Val=0.722 vs fixed Val=0.7145, Δ=-0.008）. **Test AUC=0.7060**（AUPR=0.2362, 8841样本, vs legacy_bug test=0.7244, Δ=-0.018）. Log: PathC/logs/train_fixed.log
+- **C1-Step 2 dropout消融已完成 (2026-03-21)**:
+  - dropout=0.1: Val AUC=0.7216(+0.007), **Test AUC=0.6936(-0.012)**, AUPR=0.2012
+  - dropout=0.3: Val AUC=0.7397(+0.025), **Test AUC=0.6959(-0.010)**, AUPR=0.2044
+  - **关键发现: Val改善未迁移到Test**。Val-Test gap随dropout降低而增大(基线0.009→d=0.1: 0.028→d=0.3: 0.044)
+  - 结论: dropout改动不纳入C1-Step 3组合，需关注能改善Test泛化的改动
+  - 数据泄露验证: all_split模式0%酶/底物重叠（per-family），跨家族ID重用: 酶3.2%/底物1.6%
+  - 代码整合: run_test_eval.py合并到main_training_pt.py --test-only, start_ablation.sh已删除
 - **Cloud-2 服务器重构(2026-03-19)**: 从扁平结构→PathB/(归档legacy_bug) + PathC/(当前工作, scripts路径已修复) + allsplit_pt_cache/(项目根级共享)
 
 **Path B 诊断阶段总结（Step 7-8）**:
