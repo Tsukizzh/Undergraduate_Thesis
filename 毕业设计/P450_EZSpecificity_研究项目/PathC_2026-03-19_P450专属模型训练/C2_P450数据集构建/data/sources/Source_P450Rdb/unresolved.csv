@@ -1,0 +1,146 @@
+cyp_symbol,species,row_count,reason
+,,2,empty CYP symbol
+,Bacillus megaterium,1,empty CYP symbol
+,Sphingomonas Sp. HXN-200,9,empty CYP symbol
+,Sphingomonas sp. HXN-200,1,empty CYP symbol
+,Streptomyces sp.,8,empty CYP symbol
+A09437,Fusarium equiseti HG18,1,not found
+AcCYP716A278,Aesculus chinensis,1,not found
+AeCYP716A8/9,Actinidia eriantha Benth,3,not found
+CYP101B1,Novosphingobium aromaticivorans (strain DSM12444),2,not found
+CYP101B1,Novosphingobium aromaticivorans DSM12444,17,not found
+CYP102A1,Escherichia coli DH5 alpha,2,not found
+CYP102D1,,1,not found
+CYP1051A1,Salinispora arenicola (strain CNS-205),1,not found
+CYP105D18,Escherichia coli,1,not found
+CYP107PQ1QE,Meiothermus ruber,1,not found
+CYP108,Gongronemopsis tenacissima,2,not found
+CYP116B,Rhodococcus sp.,9,not found
+CYP116B234,Rhodococcus globerulus,2,not found
+CYP116B4,Labrenzia aggregata,7,not found
+CYP116B46,Tepidiphilus thermophilus,1,not found
+CYP1251 C3,Micromonospora sp. MW-13,29,not found
+CYP150,Gongronemopsis tenacissima,2,not found
+CYP153,Marinobacter nauticus,1,not found
+CYP153A,,1,5 candidates
+CYP153A13a,A. borkumensis SK2,18,not found
+CYP153A6,Pseudomonas putida (strain KT2440),1,not found
+CYP154,Nocardia farcinica (strain IFM 10152),1,not found
+CYP154,Streptomyces,8,not found
+CYP154H1,Thermobifida fusca,8,not found
+CYP161H12-RHFRed,,2,not found
+CYP176A,Citrobacter braakii,2,not found
+CYP1A1/CYP1A2,Aristolochia,2,not found
+CYP255,Amycolatopsis thermoflava N1165,3,not found
+CYP2C19,Homo sapiens,1,5 candidates
+CYP2C8,Homo sapiens,1,5 candidates
+CYP2C9,Homo sapiens,1,5 candidates
+CYP2D6,Homo sapiens,1,5 candidates
+CYP3A4,Escherichia coli,2,not found
+CYP3A4,Homo sapiens,1,5 candidates
+CYP450,Mucor ambiguus,10,not found
+CYP450 Cpd I,,2,not found
+CYP55B1,Chlamydomonas reinhardtii,1,not found
+CYP68J5_fg,Fusarium graminearum,3,not found
+CYP701A1,Aconitum coreanum,6,not found
+CYP701A127,Delphinium grandiflorum,4,not found
+CYP701A1;CYP71A1,Aconitum coreanum,3,not found
+CYP706U5,Andrographis Paniculata,2,not found
+CYP714E19,Centella asiatica,8,not found
+CYP716,Prunella vulgaris,2,not found
+CYP716A,Saccharomyces cerevisiae,1,not found
+CYP716A296,Aralia elata,2,not found
+CYP716A354/CYP716A296/CYP716A433,Aralia elata,6,not found
+CYP716A355,Aralia elata,6,not found
+CYP716A409,Hedera helix,1,not found
+CYP716C49,Crataegus pinnatifida,3,not found
+CYP716C80,Enkianthus chinensis,2,not found
+CYP716E114,Aralia elata,4,not found
+CYP716E60,Enkianthus chinensis,2,not found
+CYP716S11,Hedera helix,1,not found
+CYP7176,Salvia miltiorrhiza (Chinese sage),1,not found
+CYP719A22,Nelumbo nucifera,2,not found
+CYP719C3,Stephania tetrandra,3,not found
+CYP719C4,Stephania tetrandra,3,not found
+CYP71A1,Aconitum coreanum,3,not found
+CYP71AJ49,Peucedanum praeruptorum,1,not found
+CYP71AJ51,Peucedanum praeruptorum,1,not found
+CYP71AX30,Xanthium strumarium,1,not found
+CYP71AZ1,Pastinaca sativa,1,not found
+CYP71AZ18,Angelica dahurica,1,not found
+CYP71AZ19,Angelica dahurica,1,not found
+CYP71B130a,Ficus carica,1,not found
+CYP71B131a,Ficus carica,1,not found
+CYP71BE271,T. wilfordii,1,not found
+CYP71BE50,Andrographis Paniculata,6,not found
+CYP71BE79,Gossypium arboreum (Tree cotton) (Gossypium nanking),1,not found
+CYP71BL7,Xanthium strumarium,1,not found
+CYP71D51,S. lycopersicum,2,not found
+CYP71D587,Andrographis Paniculata,2,not found
+CYP71DD1,Xanthium strumarium,1,not found
+CYP71FH1,Delphinium grandiflorum,4,not found
+CYP71FK1,Delphinium grandiflorum,2,not found
+CYP72056,Mitragyna speciosa,5,not found
+CYP729G1,Delphinium grandiflorum,2,not found
+CYP72A1139,Hedera helix,1,not found
+CYP72A1140,Hedera helix,1,not found
+CYP72A1141,Hedera helix,2,not found
+CYP72A1;CYP71A1,Aconitum coreanum,1,not found
+CYP72A1;CYP725A1,Aconitum coreanum,1,not found
+CYP72A1;CYP93A1,Aconitum coreanum,4,not found
+CYP72D57,Hedera helix,2,not found
+CYP72F1,Andrographis Paniculata,2,not found
+CYP736A196,Gossypium arboreum (Tree cotton) (Gossypium nanking),1,not found
+CYP736A366,Peucedanum praeruptorum,1,not found
+CYP76AD,Caryophyllales,4,not found
+CYP76AD,Red beetroot,1,not found
+CYP78A7,Citrus maxima,1,not found
+CYP79A1,Synechocystis sp. PCC 6803,1,not found
+CYP80B,Stephania tetrandra,4,not found
+CYP80B7,Stephania tetrandra,1,not found
+CYP80G6,Stephania tetrandra,2,not found
+CYP80Q1,Nelumbo nucifera,1,not found
+CYP80Q2,Nelumbo nucifera,1,not found
+CYP80Q5,Stephania tetrandra,2,not found
+CYP81Q58,Cucumis sativus (Cucumber),1,not found
+CYP82A2a,Glycine max,3,not found
+CYP82A2b,Glycine max,1,not found
+CYP82A4a/b,Glycine max,1,not found
+CYP82C1,Aconitum coreanum,1,not found
+CYP82C4,Angelica dahurica,1,not found
+CYP82D113,Gossypium arboreum (Tree cotton) (Gossypium nanking),1,not found
+CYP82D64,Citrus hystrix,1,not found
+CYP82D64,Citrus paradisi,1,not found
+CYP87A103,Calotropis procera,3,not found
+CYP87A106,Digitalis purpurea,3,not found
+CYP90B94,Ornithogalum saundersiae,1,not found
+CYP90G11,Ornithogalum saundersiae,2,not found
+CYP98,L. robustum,1,not found
+CYP98A,Lycoris aurea,1,not found
+DhiH,P. purpurogenum AN13,2,not found
+EpiC,Aspergillus flavipes,6,not found
+FlasE,Aspergillus flavipes,1,not found
+L48F-S49A-I61F-L120T-K352I-L356P-W119I-L125D Mutant protein,Siraitia grosvenorii (Monk's fruit) (Luo han guo),1,not found
+OSD3,Oryza sativa,1,not found
+OsdM,Fusarium oxysporum,3,not found
+P450TbtJ1;P450TbtJ2,,8,not found
+P450cam-RhFRed,Escherichia coli,9,not found
+PanH,Panus rudis,3,not found
+PbdA,Rhodococcus jostii RHA1,3,not found
+PerX,Actinokineospora sp UTMC 2448,1,not found
+PhmC,Phoma sp. ATCC 74077,10,not found
+TOT1,Taxus mairei,2,not found
+TdaG/TdaI/TdaP/TdaS,Hypoxylon aveirense,43,not found
+TlnA,Streptomyces sp. S6043a,1,not found
+TmCYP1,Taxus x media,3,not found
+TwCYP716C52,Celastraceae,1,not found
+VzCP7186,Chrysopogon zizanioides,1,not found
+cyp102A1,Escherichia coli(BOU730 strain),8,not found
+cyp725a1,Aconitum coreanum,4,not found
+cyp725a1;cyp716b1,Aconitum coreanum,1,not found
+cyp725a1;cyp93a1,Aconitum coreanum,1,not found
+cyp736a,Angelica sinensis,2,not found
+cyp736a360,Peucedanum praeruptorum,1,not found
+p450,Allokutzneria albata,1,5 candidates
+p450,Ochrobactrum anthropi strain T5_1,1,not found
+p450,Streptomyces hygroscopicus subsp. hygroscopicus (DSM-40578),1,not found

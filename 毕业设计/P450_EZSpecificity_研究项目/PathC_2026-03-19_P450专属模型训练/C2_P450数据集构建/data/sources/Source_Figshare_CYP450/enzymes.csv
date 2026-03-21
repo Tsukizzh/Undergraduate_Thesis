@@ -1,0 +1,7 @@
+enzyme_id,uniprot_id,p450_symbol,species,species_class,ec_number,sequence,sequence_length
+0,P05177,CYP1A2,Homo sapiens,Animal,,,0
+1,P11712,CYP2C9,Homo sapiens,Animal,,,0
+2,P33261,CYP2C19,Homo sapiens,Animal,,,0
+3,P10635,CYP2D6,Homo sapiens,Animal,,,0
+4,P05181,CYP2E1,Homo sapiens,Animal,,,0
+5,P08684,CYP3A4,Homo sapiens,Animal,,,0

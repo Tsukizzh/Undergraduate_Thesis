@@ -1,0 +1,436 @@
+{
+  "oa": [
+    {
+      "doi": "https://doi.org/10.1002/cbic.201600316",
+      "pdf_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/cbic.201600316",
+      "host": "publisher"
+    },
+    {
+      "doi": "https://doi.org/10.1002/pld3.244",
+      "pdf_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1002/pld3.244",
+      "host": "publisher"
+    },
+    {
+      "doi": "https://doi.org/10.1007/s00253-015-6496-2",
+      "pdf_url": "https://www.ncbi.nlm.nih.gov/pmc/articles/4546517",
+      "host": "repository"
+    },
+    {
+      "doi": "https://doi.org/10.1007/s00299-009-0695-1",
+      "pdf_url": "http://hdl.handle.net/2318/101922",
+      "host": "repository"
+    },
+    {
+      "doi": "https://doi.org/10.1007/s10535-013-0344-y",
+      "pdf_url": "http://bp.ueb.cas.cz/pdfs/bpl/2013/04/06.pdf",
+      "host": "publisher"
+    },
+    {
+      "doi": "https://doi.org/10.1016/j.ab.2010.02.030",
+      "pdf_url": "https://doi.org/10.1016/j.ab.2010.02.030",
+      "host": "publisher"
+    },
+    {
+      "doi": "https://doi.org/10.1016/j.abb.2006.11.019",
+      "pdf_url": "https://www.ncbi.nlm.nih.gov/pmc/articles/1810121",
+      "host": "repository"
+    },
+    {
+      "doi": "https://doi.org/10.1016/j.jgr.2018.02.005",
+      "pdf_url": "https://doi.org/10.1016/j.jgr.2018.02.005",
+      "host": "publisher"
+    },
+    {
+      "doi": "https://doi.org/10.1016/j.xplc.2020.100079",
+      "pdf_url": "https://doi.org/10.1016/j.xplc.2020.100079",
+      "host": "publisher"
+    },
+    {
+      "doi": "https://doi.org/10.1038/366276a0",
+      "pdf_url": "https://hal.inrae.fr/hal-02708031",
+      "host": "repository"
+    },
+    {
+      "doi": "https://doi.org/10.1038/nchembio.1914",
+      "pdf_url": "https://www.ncbi.nlm.nih.gov/pmc/articles/4731101",
+      "host": "repository"
+    },
+    {
+      "doi": "https://doi.org/10.1038/ncomms11472",
+      "pdf_url": "https://www.nature.com/articles/ncomms11472.pdf",
+      "host": "publisher"
+    },
+    {
+      "doi": "https://doi.org/10.1038/ncomms12942",
+      "pdf_url": "https://www.nature.com/articles/ncomms12942.pdf",
+      "host": "publisher"
+    },
+    {
+      "doi": "https://doi.org/10.1038/ncomms14153",
+      "pdf_url": "https://www.nature.com/articles/ncomms14153.pdf",
+      "host": "publisher"
+    },
+    {
+      "doi": "https://doi.org/10.1038/ncomms4283",
+      "pdf_url": "https://www.nature.com/articles/ncomms4283.pdf",
+      "host": "publisher"
+    },
+    {
+      "doi": "https://doi.org/10.1038/ncomms4606",
+      "pdf_url": "https://www.nature.com/articles/ncomms4606.pdf",
+      "host": "publisher"
+    },
+    {
+      "doi": "https://doi.org/10.1038/s41467-017-00154-x",
+      "pdf_url": "https://www.nature.com/articles/s41467-017-00154-x.pdf",
+      "host": "publisher"
+    },
+    {
+      "doi": "https://doi.org/10.1038/s41467-018-02883-z",
+      "pdf_url": "https://www.nature.com/articles/s41467-018-02883-z.pdf",
+      "host": "publisher"
+    },
+    {
+      "doi": "https://doi.org/10.1038/s41467-019-11286-7",
+      "pdf_url": "https://www.nature.com/articles/s41467-019-11286-7.pdf",
+      "host": "publisher"
+    },
+    {
+      "doi": "https://doi.org/10.1038/s41467-022-32667-5",
+      "pdf_url": "https://www.nature.com/articles/s41467-022-32667-5.pdf",
+      "host": "publisher"
+    },
+    {
+      "doi": "https://doi.org/10.1038/s41467-022-32879-9",
+      "pdf_url": "https://www.nature.com/articles/s41467-022-32879-9.pdf",
+      "host": "publisher"
+    },
+    {
+      "doi": "https://doi.org/10.1038/s41477-019-0474-0",
+      "pdf_url": "https://www.nature.com/articles/s41477-019-0474-0.pdf",
+      "host": "publisher"
+    },
+    {
+      "doi": "https://doi.org/10.1038/s41477-023-01515-9",
+      "pdf_url": "https://www.nature.com/articles/s41477-023-01515-9.pdf",
+      "host": "publisher"
+    },
+    {
+      "doi": "https://doi.org/10.1038/s41586-020-2546-8",
+      "pdf_url": "https://www.ncbi.nlm.nih.gov/pmc/articles/7958869",
+      "host": "repository"
+    },
+    {
+      "doi": "https://doi.org/10.1038/s41586-022-04950-4",
+      "pdf_url": "https://www.nature.com/articles/s41586-022-04950-4.pdf",
+      "host": "publisher"
+    },
+    {
+      "doi": "https://doi.org/10.1042/BJ20051667",
+      "pdf_url": "https://portlandpress.com/biochemj/article-pdf/395/3/641/642701/bj3950641.pdf",
+      "host": "publisher"
+    },
+    {
+      "doi": "https://doi.org/10.1046/j.1365-313X.2003.01893.x",
+      "pdf_url": "https://digital.library.unt.edu/ark:/67531/metadc488180/m2/1/high_res_d/2003_plant_journal_471.pdf",
+      "host": "repository"
+    },
+    {
+      "doi": "https://doi.org/10.1073/pnas.0803876105",
+      "pdf_url": "https://www.ncbi.nlm.nih.gov/pmc/articles/2532699",
+      "host": "repository"
+    },
+    {
+      "doi": "https://doi.org/10.1073/pnas.1109273108",
+      "pdf_url": "https://hal.inrae.fr/hal-02647681",
+      "host": "repository"
+    },
+    {
+      "doi": "https://doi.org/10.1073/pnas.1523787113",
+      "pdf_url": "https://www.pnas.org/content/pnas/113/13/3681.full.pdf",
+      "host": "publisher"
+    },
+    {
+      "doi": "https://doi.org/10.1073/pnas.1607504113",
+      "pdf_url": "https://www.pnas.org/content/pnas/113/34/E5082.full.pdf",
+      "host": "publisher"
+    },
+    {
+      "doi": "https://doi.org/10.1073/pnas.2215372119",
+      "pdf_url": "https://www.ncbi.nlm.nih.gov/pmc/articles/9894180",
+      "host": "repository"
+    },
+    {
+      "doi": "https://doi.org/10.1073/pnas.2307981120",
+      "pdf_url": "https://doi.org/10.1073/pnas.2307981120",
+      "host": "publisher"
+    },
+    {
+      "doi": "https://doi.org/10.1074/jbc.M112.400689",
+      "pdf_url": "http://www.jbc.org/article/S0021925820653522/pdf",
+      "host": "publisher"
+    },
+    {
+      "doi": "https://doi.org/10.1074/jbc.M112.420448",
+      "pdf_url": "http://www.jbc.org/article/S0021925820465937/pdf",
+      "host": "publisher"
+    },
+    {
+      "doi": "https://doi.org/10.1074/jbc.M703344200",
+      "pdf_url": "https://doi.org/10.1074/jbc.m703344200",
+      "host": "publisher"
+    },
+    {
+      "doi": "https://doi.org/10.1074/jbc.RA119.010454",
+      "pdf_url": "https://doi.org/10.1074/jbc.ra119.010454",
+      "host": "publisher"
+    },
+    {
+      "doi": "https://doi.org/10.1093/aob/mcy047",
+      "pdf_url": "https://academic.oup.com/aob/article-pdf/122/2/227/25368969/mcy047.pdf",
+      "host": "publisher"
+    },
+    {
+      "doi": "https://doi.org/10.1093/jxb/eri073",
+      "pdf_url": "https://academic.oup.com/jxb/article-pdf/56/413/833/1459342/eri073.pdf",
+      "host": "publisher"
+    },
+    {
+      "doi": "https://doi.org/10.1093/pcp/pcl003",
+      "pdf_url": "https://academic.oup.com/pcp/article-pdf/47/10/1412/19670827/pcl003.pdf",
+      "host": "publisher"
+    },
+    {
+      "doi": "https://doi.org/10.1093/pcp/pcr146",
+      "pdf_url": "https://academic.oup.com/pcp/article-pdf/52/12/2050/17114130/pcr146.pdf",
+      "host": "publisher"
+    },
+    {
+      "doi": "https://doi.org/10.1093/pcp/pcr150",
+      "pdf_url": "https://academic.oup.com/pcp/article-pdf/52/12/2062/17114339/pcr150.pdf",
+      "host": "publisher"
+    },
+    {
+      "doi": "https://doi.org/10.1093/pcp/pcx210",
+      "pdf_url": "https://academic.oup.com/pcp/article-pdf/59/2/222/24697683/pcx210.pdf",
+      "host": "publisher"
+    },
+    {
+      "doi": "https://doi.org/10.1093/plphys/kiab496",
+      "pdf_url": "https://academic.oup.com/plphys/article-pdf/188/1/167/42248220/kiab496.pdf",
+      "host": "publisher"
+    },
+    {
+      "doi": "https://doi.org/10.1104/pp.109.152801",
+      "pdf_url": "https://doi.org/10.1104/pp.109.152801",
+      "host": "publisher"
+    },
+    {
+      "doi": "https://doi.org/10.1104/pp.112.198556",
+      "pdf_url": "http://www.plantphysiol.org/content/plantphysiol/160/1/204.full.pdf",
+      "host": "publisher"
+    },
+    {
+      "doi": "https://doi.org/10.1104/pp.15.00566",
+      "pdf_url": "https://www.ncbi.nlm.nih.gov/pmc/articles/4528758",
+      "host": "repository"
+    },
+    {
+      "doi": "https://doi.org/10.1104/pp.19.00254",
+      "pdf_url": "https://www.ncbi.nlm.nih.gov/pmc/articles/6752896",
+      "host": "repository"
+    },
+    {
+      "doi": "https://doi.org/10.1105/tpc.109.069658",
+      "pdf_url": "https://academic.oup.com/plcell/article-pdf/22/3/973/37012544/plcell_v22_3_973.pdf",
+      "host": "publisher"
+    },
+    {
+      "doi": "https://doi.org/10.1105/tpc.112.098004",
+      "pdf_url": "https://www.ncbi.nlm.nih.gov/pmc/articles/3426112",
+      "host": "repository"
+    },
+    {
+      "doi": "https://doi.org/10.1105/tpc.113.118265",
+      "pdf_url": "https://www.ncbi.nlm.nih.gov/pmc/articles/3875747",
+      "host": "repository"
+    },
+    {
+      "doi": "https://doi.org/10.1111/j.1365-313X.2005.02357.x",
+      "pdf_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1111/j.1365-313X.2005.02357.x",
+      "host": "publisher"
+    },
+    {
+      "doi": "https://doi.org/10.1111/j.1365-313X.2005.02358.x",
+      "pdf_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1111/j.1365-313X.2005.02358.x",
+      "host": "publisher"
+    },
+    {
+      "doi": "https://doi.org/10.1111/j.1365-313X.2006.02843.x",
+      "pdf_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1111/j.1365-313X.2006.02843.x",
+      "host": "publisher"
+    },
+    {
+      "doi": "https://doi.org/10.1111/j.1365-313X.2011.04685.x",
+      "pdf_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1111/j.1365-313X.2011.04685.x",
+      "host": "publisher"
+    },
+    {
+      "doi": "https://doi.org/10.1111/nph.14139",
+      "pdf_url": "https://univoak.eu/islandora/object/islandora%3A79657",
+      "host": "repository"
+    },
+    {
+      "doi": "https://doi.org/10.1111/nph.15055",
+      "pdf_url": "https://nph.onlinelibrary.wiley.com/doi/pdfdirect/10.1111/nph.15055",
+      "host": "publisher"
+    },
+    {
+      "doi": "https://doi.org/10.1111/nph.16498",
+      "pdf_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1111/nph.16498",
+      "host": "publisher"
+    },
+    {
+      "doi": "https://doi.org/10.1111/tpj.12871",
+      "pdf_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1111/tpj.12871",
+      "host": "publisher"
+    },
+    {
+      "doi": "https://doi.org/10.1111/tpj.13012",
+      "pdf_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1111/tpj.13012",
+      "host": "publisher"
+    },
+    {
+      "doi": "https://doi.org/10.1111/tpj.13247",
+      "pdf_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1111/tpj.13247",
+      "host": "publisher"
+    },
+    {
+      "doi": "https://doi.org/10.1111/tpj.15604",
+      "pdf_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1111/tpj.15604",
+      "host": "publisher"
+    },
+    {
+      "doi": "https://doi.org/10.1111/tpj.15634",
+      "pdf_url": "https://onlinelibrary.wiley.com/doi/pdfdirect/10.1111/tpj.15634",
+      "host": "publisher"
+    },
+    {
+      "doi": "https://doi.org/10.1126/sciadv.1501780",
+      "pdf_url": "https://doi.org/10.1126/sciadv.1501780",
+      "host": "publisher"
+    },
+    {
+      "doi": "https://doi.org/10.1126/science.1240230",
+      "pdf_url": "https://www.science.org/cms/asset/58e739c1-585c-4f47-a962-6eea9e071384/pap.pdf",
+      "host": "publisher"
+    },
+    {
+      "doi": "https://doi.org/10.1126/science.aac7202",
+      "pdf_url": "https://science.sciencemag.org/content/sci/349/6253/1224.full.pdf",
+      "host": "publisher"
+    },
+    {
+      "doi": "https://doi.org/10.1186/s12934-023-02024-2",
+      "pdf_url": "https://microbialcellfactories.biomedcentral.com/counter/pdf/10.1186/s12934-023-02024-2",
+      "host": "publisher"
+    },
+    {
+      "doi": "https://doi.org/10.1371/journal.pone.0075053",
+      "pdf_url": "https://journals.plos.org/plosone/article/file?id=10.1371/journal.pone.0075053&type=printable",
+      "host": "publisher"
+    },
+    {
+      "doi": "https://doi.org/10.2503/hortj.MI-029",
+      "pdf_url": "https://www.jstage.jst.go.jp/article/hortj/84/2/84_MI-029/_pdf",
+      "host": "publisher"
+    },
+    {
+      "doi": "https://doi.org/10.3389/fpls.2019.01520",
+      "pdf_url": "https://www.frontiersin.org/articles/10.3389/fpls.2019.01520/pdf",
+      "host": "publisher"
+    },
+    {
+      "doi": "https://doi.org/10.3389/fpls.2023.1200253",
+      "pdf_url": "https://www.frontiersin.org/articles/10.3389/fpls.2023.1200253/pdf",
+      "host": "publisher"
+    },
+    {
+      "doi": "https://doi.org/10.3390/genes10100756",
+      "pdf_url": "https://www.mdpi.com/2073-4425/10/10/756/pdf?version=1569751462",
+      "host": "publisher"
+    },
+    {
+      "doi": "https://doi.org/10.4161/psb.27640",
+      "pdf_url": "https://www.tandfonline.com/doi/pdf/10.4161/psb.27640?needAccess=true",
+      "host": "publisher"
+    },
+    {
+      "doi": "https://doi.org/10.5511/plantbiotechnology.23.5",
+      "pdf_url": "https://www.jstage.jst.go.jp/article/plantbiotechnology/23/1/23_1_5/_pdf",
+      "host": "publisher"
+    },
+    {
+      "doi": "https://doi.org/10.5511/plantbiotechnology.26.175",
+      "pdf_url": "https://www.jstage.jst.go.jp/article/plantbiotechnology/26/1/26_1_175/_pdf",
+      "host": "publisher"
+    },
+    {
+      "doi": "https://doi.org/10.7554/eLife.23001",
+      "pdf_url": "https://doi.org/10.7554/elife.23001",
+      "host": "publisher"
+    }
+  ],
+  "no_oa": [
+    "http://doi.org/10.1126/science.abe4713",
+    "https://doi.org/10.1006/abbi.2000.1867",
+    "https://doi.org/10.1007/BF03030533",
+    "https://doi.org/10.1007/s002990100373",
+    "https://doi.org/10.1007/s00425-008-0806-1",
+    "https://doi.org/10.1007/s00425-015-2293-5",
+    "https://doi.org/10.1007/s00425-019-03332-x",
+    "https://doi.org/10.1007/s11032-005-2520-z",
+    "https://doi.org/10.1007/s11103-006-0012-0",
+    "https://doi.org/10.1007/s11103-006-9028-8",
+    "https://doi.org/10.1007/s11103-010-9663-y",
+    "https://doi.org/10.1007/s11427-019-9538-3",
+    "https://doi.org/10.1007/s11738-016-2275-7",
+    "https://doi.org/10.1007/s11738-017-2585-4",
+    "https://doi.org/10.1007/s13562-017-0422-x",
+    "https://doi.org/10.1016/S0168-9452(00)00355-1",
+    "https://doi.org/10.1016/S0168-9452(02)00098-5",
+    "https://doi.org/10.1016/S0981-9428(02)01474-2",
+    "https://doi.org/10.1016/j.febslet.2007.06.045",
+    "https://doi.org/10.1016/j.molp.2022.12.007",
+    "https://doi.org/10.1016/j.phytochem.2009.10.011",
+    "https://doi.org/10.1016/j.phytochem.2015.02.016",
+    "https://doi.org/10.1016/j.plantsci.2016.05.015",
+    "https://doi.org/10.1016/j.ymben.2014.03.005",
+    "https://doi.org/10.1016/j.ymben.2017.11.009",
+    "https://doi.org/10.1021/acscatal.1c03691",
+    "https://doi.org/10.1021/acssynbio.1c00065",
+    "https://doi.org/10.1021/acssynbio.6b00119",
+    "https://doi.org/10.1021/ja401535g",
+    "https://doi.org/10.1038/72671",
+    "https://doi.org/10.1038/NPLANTS.2016.183",
+    "https://doi.org/10.1038/nature14907",
+    "https://doi.org/10.1038/nbt1173",
+    "https://doi.org/10.1038/nplants.2016.183",
+    "https://doi.org/10.1038/s41477-019-0511-z",
+    "https://doi.org/10.1038/s41477-020-00787-9",
+    "https://doi.org/10.1038/s41477-020-00816-7",
+    "https://doi.org/10.1038/s41589-018-0078-4",
+    "https://doi.org/10.1039/C5CC01309G",
+    "https://doi.org/10.1093/oxfordjournals.pcp.a029004",
+    "https://doi.org/10.1093/pcp/pcs106",
+    "https://doi.org/10.1111/nph.15795",
+    "https://doi.org/10.1111/tpj.14373",
+    "https://doi.org/10.1111/tpj.17199",
+    "https://doi.org/10.1126/science.1154990",
+    "https://doi.org/10.1126/science.1174095",
+    "https://doi.org/10.1126/science.1221614",
+    "https://doi.org/10.1126/science.1259215",
+    "https://doi.org/10.1515/BC.2000.095"
+  ],
+  "errors": []
+}

@@ -85,3 +85,8 @@ nul
 毕业设计/**/logs/**/*.log
 __pycache__/
 tmp_*
+
+# C2 large download files
+毕业设计/**/downloads/P450Rdb/Reactions.csv
+毕业设计/**/downloads/EnzymeMap/*.csv.gz
+毕业设计/**/downloads/PlantP450DB/track2_fulltext/pdfs/*.pdf

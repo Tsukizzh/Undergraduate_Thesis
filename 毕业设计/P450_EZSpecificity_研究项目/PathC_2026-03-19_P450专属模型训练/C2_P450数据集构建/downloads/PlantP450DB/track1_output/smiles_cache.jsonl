@@ -1,0 +1,432 @@
+{"name": "(+)-(S)-linalool", "smiles": "CC(=CCC[C@@](C)(C=C)O)C", "inchikey": "CDOSHBSSFJOMGT-SNVBAGLBSA-N", "cid": "67179", "error": ""}
+{"name": "(+)-abscisic acid (ABA)", "smiles": "CC1=CC(=O)CC([C@]1(/C=C/C(=C\\C(=O)O)/C)O)(C)C", "inchikey": "JLIDBLDQVAYHNE-YKALOCIXSA-N", "cid": "5280896", "error": ""}
+{"name": "(+)-alpha-exo-bergamotene", "smiles": "", "inchikey": "", "cid": "", "error": "HTTP Error 404: PUGREST.NotFound"}
+{"name": "(+)-alpha-santalene", "smiles": "CC(=CCC[C@@]1(C2C[C@H]3C1([C@H]3C2)C)C)C", "inchikey": "KWFJIXPIFLVMPM-PEGGXJLSSA-N", "cid": "12315252", "error": ""}
+{"name": "(+)-beta-santalene", "smiles": "CC(=CCC[C@@]1([C@H]2CC[C@H](C2)C1=C)C)C", "inchikey": "PGBNIHXXFQBCPU-ILXRZTDVSA-N", "cid": "10889018", "error": ""}
+{"name": "(+)-columbianetin", "smiles": "CC(C)([C@@H]1CC2=C(O1)C=CC3=C2OC(=O)C=C3)O", "inchikey": "YRAQEMCYCSSHJG-NSHDSACASA-N", "cid": "92201", "error": ""}
+{"name": "(+)-delta-cadinene", "smiles": "CC1=C[C@H]2[C@@H](CCC(=C2CC1)C)C(C)C", "inchikey": "FUCYIEXQVQJBKY-ZFWWWQNUSA-N", "cid": "441005", "error": ""}
+{"name": "(+)-epi-beta-santalene", "smiles": "CC(=CCCC1(C2CCC(C2)C1=C)C)C", "inchikey": "PGBNIHXXFQBCPU-UHFFFAOYSA-N", "cid": "10534", "error": ""}
+{"name": "(+)-epipinoresinol", "smiles": "COC1=C(C=CC(=C1)[C@H]2[C@H]3CO[C@@H]([C@H]3CO2)C4=CC(=C(C=C4)O)OC)O", "inchikey": "HGXBRUKMWQGOIE-WZBLMQSHSA-N", "cid": "637584", "error": ""}
+{"name": "(+)-germacrene D (tested)", "smiles": "C/C/1=C\\CCC(=C)/C=C/[C@@H](CC1)C(C)C", "inchikey": "GAIBLDCXCZKKJE-RXJOXMPGSA-N", "cid": "5317570", "error": ""}
+{"name": "(+)-marmesin", "smiles": "CC(C)([C@@H]1CC2=C(O1)C=C3C(=C2)C=CC(=O)O3)O", "inchikey": "FWYSBEAFFPBAQU-LBPRGKRZSA-N", "cid": "334704", "error": ""}
+{"name": "(+)-pinoresinol", "smiles": "COC1=C(C=CC(=C1)[C@@H]2[C@H]3CO[C@@H]([C@H]3CO2)C4=CC(=C(C=C4)O)OC)O", "inchikey": "HGXBRUKMWQGOIE-AFHBHXEDSA-N", "cid": "73399", "error": ""}
+{"name": "(+)-piperitol", "smiles": "COC1=C(C=CC(=C1)[C@@H]2[C@H]3CO[C@@H]([C@H]3CO2)C4=CC5=C(C=C4)OCO5)O", "inchikey": "VBIRCRCPHNUJAS-AFHBHXEDSA-N", "cid": "10247670", "error": ""}
+{"name": "(+)-pulegone", "smiles": "C[C@@H]1CCC(=C(C)C)C(=O)C1", "inchikey": "NZGWDASTMWDZIW-MRVPVSSYSA-N", "cid": "442495", "error": ""}
+{"name": "(+)-sabinene", "smiles": "CC(C)[C@]12CCC(=C)[C@H]1C2", "inchikey": "NDVASEGYNIMXJL-NXEZZACHSA-N", "cid": "10887971", "error": ""}
+{"name": "(+)-sesamin", "smiles": "C1[C@H]2[C@H](CO[C@@H]2C3=CC4=C(C=C3)OCO4)[C@H](O1)C5=CC6=C(C=C5)OCO6", "inchikey": "PEYUIKBAABKQKQ-AFHBHXEDSA-N", "cid": "72307", "error": ""}
+{"name": "(+)-valencene", "smiles": "C[C@@H]1CCC=C2[C@]1(C[C@@H](CC2)C(=C)C)C", "inchikey": "QEBNYNLSCGVZOH-NFAWXSAZSA-N", "cid": "9855795", "error": ""}
+{"name": "(+)-valencene (secondary)", "smiles": "C[C@@H]1CCC=C2[C@]1(C[C@@H](CC2)C(=C)C)C", "inchikey": "QEBNYNLSCGVZOH-NFAWXSAZSA-N", "cid": "9855795", "error": ""}
+{"name": "(-)-(R)-linalool", "smiles": "CC(=CCC[C@](C)(C=C)O)C", "inchikey": "CDOSHBSSFJOMGT-JTQLQIEISA-N", "cid": "443158", "error": ""}
+{"name": "(-)-4S-limonene", "smiles": "CC1=CCC(CC1)C(=C)C", "inchikey": "XMGQYMWWDOXHJM-UHFFFAOYSA-N", "cid": "22311", "error": ""}
+{"name": "(-)-limonene", "smiles": "CC1=CC[C@H](CC1)C(=C)C", "inchikey": "XMGQYMWWDOXHJM-SNVBAGLBSA-N", "cid": "439250", "error": ""}
+{"name": "(-)-matairesinol", "smiles": "COC1=C(C=CC(=C1)C[C@H]2COC(=O)[C@@H]2CC3=CC(=C(C=C3)O)OC)O", "inchikey": "MATGKVZWFZHCLI-LSDHHAIUSA-N", "cid": "119205", "error": ""}
+{"name": "(22R,23R)-22,23-dihydroxycampesterol", "smiles": "C[C@@H]([C@H]1CC[C@@H]2[C@@]1(CC[C@H]3[C@H]2CC=C4[C@@]3(CC[C@@H](C4)O)C)C)[C@H]([C@@H]([C@@H](C)C(C)C)O)O", "inchikey": "UJGZOSZMMQGHPD-GTYSVAQVSA-N", "cid": "11048310", "error": ""}
+{"name": "(22S)-22-hydroxycampesterol", "smiles": "C[C@H](C[C@@H]([C@@H](C)[C@H]1CC[C@@H]2[C@@]1(CC[C@H]3[C@H]2CC=C4[C@@]3(CC[C@@H](C4)O)C)C)O)C(C)C", "inchikey": "LSZJAIFORSLKOY-PACUACIMSA-N", "cid": "15341628", "error": ""}
+{"name": "(22S,24R)-22-hydroxy-5alpha-ergostan-3-one", "smiles": "C[C@H](C[C@@H]([C@@H](C)[C@H]1CC[C@@H]2[C@@]1(CC[C@H]3[C@H]2CC[C@@H]4[C@@]3(CCC(=O)C4)C)C)O)C(C)C", "inchikey": "XGIZPVUTLMXXTK-VNSZYHACSA-N", "cid": "46878488", "error": ""}
+{"name": "(22S,24R)-22-hydroxyergost-4-en-3-one", "smiles": "C[C@H](C[C@@H]([C@@H](C)[C@H]1CC[C@@H]2[C@@]1(CC[C@H]3[C@H]2CCC4=CC(=O)CC[C@]34C)C)O)C(C)C", "inchikey": "FMFAICDKESPFNH-NQMBQAPESA-N", "cid": "15341631", "error": ""}
+{"name": "(24R)-5alpha-ergostan-3-one", "smiles": "C[C@H](CC[C@@H](C)C(C)C)[C@H]1CC[C@@H]2[C@@]1(CC[C@H]3[C@H]2CC[C@@H]4[C@@]3(CCC(=O)C4)C)C", "inchikey": "DDJMOMHMVFXEQF-JBQSTXLYSA-N", "cid": "16061343", "error": ""}
+{"name": "(24R)-ergost-4-en-3-one", "smiles": "C[C@H](CC[C@@H](C)C(C)C)[C@H]1CC[C@@H]2[C@@]1(CC[C@H]3[C@H]2CCC4=CC(=O)CC[C@]34C)C", "inchikey": "QQIOPZFVTIHASB-IMUDCKKOSA-N", "cid": "11988279", "error": ""}
+{"name": "(2S)-liquiritigenin", "smiles": "C1[C@H](OC2=C(C1=O)C=CC(=C2)O)C3=CC=C(C=C3)O", "inchikey": "FURUXTVZLHCCNA-AWEZNQCLSA-N", "cid": "114829", "error": ""}
+{"name": "(2S)-naringenin", "smiles": "C1[C@H](OC2=CC(=CC(=C2C1=O)O)O)C3=CC=C(C=C3)O", "inchikey": "FTVWIRXFELQLPI-ZDUSSCGKSA-N", "cid": "439246", "error": ""}
+{"name": "(E)-nerolidol", "smiles": "CC(=CCC/C(=C/CCC(C)(C=C)O)/C)C", "inchikey": "FQTLCLSUCSAZDY-SDNWHVSQSA-N", "cid": "5284507", "error": ""}
+{"name": "(E)-p-hydroxyphenylacetaldoxime", "smiles": "C1=CC(=CC=C1C/C=N\\O)O", "inchikey": "TVXJJNJGTDWFLD-TWGQIWQCSA-N", "cid": "5459810", "error": ""}
+{"name": "(E,E)-geranyllinalool", "smiles": "CC(=CCC/C(=C/CC/C(=C/CCC(C)(C=C)O)/C)/C)C", "inchikey": "IQDXAJNQKSIPGB-HQSZAHFGSA-N", "cid": "5365872", "error": ""}
+{"name": "(E/Z)-4-hydroxyphenylacetaldoxime", "smiles": "C1=CC(=CC=C1C/C=N/O)O", "inchikey": "TVXJJNJGTDWFLD-RMKNXTFCSA-N", "cid": "5460411", "error": ""}
+{"name": "(E/Z)-indole-3-acetaldoxime", "smiles": "C1=CC=C2C(=C1)C(=CN2)C/C=N/O", "inchikey": "ZLIGRGHTISHYNH-WUXMJOGZSA-N", "cid": "5371769", "error": ""}
+{"name": "(E/Z)-phenylacetaldoxime", "smiles": "C1=CC=C(C=C1)CC=NO", "inchikey": "CXISHLWVCSLKOJ-UHFFFAOYSA-N", "cid": "99748", "error": ""}
+{"name": "(R)-N-methylcoclaurine", "smiles": "CN1CCC2=CC(=C(C=C2[C@H]1CC3=CC=C(C=C3)O)O)OC", "inchikey": "BOKVLBSSPUTWLV-MRXNPFEDSA-N", "cid": "440595", "error": ""}
+{"name": "(R)-littorine", "smiles": "C[NH+]1[C@@H]2CC[C@H]1CC(C2)OC(=O)[C@@H](CC3=CC=CC=C3)O", "inchikey": "FNRXUEYLFZLOEZ-VFSICIBPSA-O", "cid": "91820147", "error": ""}
+{"name": "(R)-norreticuline", "smiles": "COC1=C(C=C(C=C1)C[C@@H]2C3=CC(=C(C=C3CCN2)OC)O)O", "inchikey": "FVEMXQCEJGGXJB-CQSZACIVSA-N", "cid": "441066", "error": ""}
+{"name": "(R)-reticuline", "smiles": "CN1CCC2=CC(=C(C=C2[C@H]1CC3=CC(=C(C=C3)OC)O)O)OC", "inchikey": "BHLYRWXGMIUIHG-OAHLLOKOSA-N", "cid": "440586", "error": ""}
+{"name": "(R,S)-N-methylcanadine", "smiles": "C[N+]12CCC3=CC4=C(C=C3[C@@H]1CC5=C(C2)C(=C(C=C5)OC)OC)OCO4", "inchikey": "IPABSWBNWMXCHM-LBOXEOMUSA-N", "cid": "439844", "error": ""}
+{"name": "(R,S)-cheilanthifoline", "smiles": "COC1=C(C=C2[C@@H]3CC4=C(CN3CCC2=C1)C5=C(C=C4)OCO5)O", "inchikey": "FVXCQULKSPVRPK-HNNXBMFYSA-N", "cid": "", "error": ""}
+{"name": "(R,S)-reticuline", "smiles": "CN1CCC2=CC(=C(C=C2[C@@H]1CC3=CC(=C(C=C3)OC)O)O)OC", "inchikey": "BHLYRWXGMIUIHG-HNNXBMFYSA-N", "cid": "439653", "error": ""}
+{"name": "(S)-N-methylcoclaurine", "smiles": "CN1CCC2=CC(=C(C=C2[C@@H]1CC3=CC=C(C=C3)O)O)OC", "inchikey": "BOKVLBSSPUTWLV-INIZCTEOSA-N", "cid": "440584", "error": ""}
+{"name": "(S)-beta-macrocarpene", "smiles": "CC1=CC[C@H](CC1)C2=CCCC(C2)(C)C", "inchikey": "BKRLNEMLMVJATK-CYBMUJFWSA-N", "cid": "49859620", "error": ""}
+{"name": "(S)-cheilanthifoline", "smiles": "COC1=C(C=C2[C@@H]3CC4=C(CN3CCC2=C1)C5=C(C=C4)OCO5)O", "inchikey": "FVXCQULKSPVRPK-HNNXBMFYSA-N", "cid": "440582", "error": ""}
+{"name": "(S)-cis-N-methylstylopine", "smiles": "C[N@@+]12CCC3=CC4=C(C=C3[C@@H]1CC5=C(C2)C6=C(C=C5)OCO6)OCO4", "inchikey": "GBUUKFRQPCPYPW-KKSFZXQISA-N", "cid": "5460426", "error": ""}
+{"name": "(S)-reticuline", "smiles": "CN1CCC2=CC(=C(C=C2[C@@H]1CC3=CC(=C(C=C3)OC)O)O)OC", "inchikey": "BHLYRWXGMIUIHG-HNNXBMFYSA-N", "cid": "439653", "error": ""}
+{"name": "(S)-scoulerine", "smiles": "COC1=C(C2=C(C[C@H]3C4=CC(=C(C=C4CCN3C2)OC)O)C=C1)O", "inchikey": "KNWVMRVOBAFFMH-HNNXBMFYSA-N", "cid": "439654", "error": ""}
+{"name": "(S)-scoulerine (minor alternative)", "smiles": "COC1=C(C2=C(CC3C4=CC(=C(C=C4CCN3C2)OC)O)C=C1)O", "inchikey": "KNWVMRVOBAFFMH-UHFFFAOYSA-N", "cid": "22955", "error": ""}
+{"name": "(S)-tetrahydrocolumbamine", "smiles": "COC1=C(C2=C(C[C@H]3C4=CC(=C(C=C4CCN3C2)OC)O)C=C1)OC", "inchikey": "KDFKJOFJHSVROC-INIZCTEOSA-N", "cid": "440229", "error": ""}
+{"name": "(S)-tetrahydrocolumbamine ((S)-THC)", "smiles": "COC1=C(C2=C(C[C@H]3C4=CC(=C(C=C4CCN3C2)OC)O)C=C1)OC", "inchikey": "KDFKJOFJHSVROC-INIZCTEOSA-N", "cid": "440229", "error": ""}
+{"name": "1,4-benzoxazin-3-one", "smiles": "C1C(=O)NC2=CC=CC=C2O1", "inchikey": "QRCGFTXRXYMJOS-UHFFFAOYSA-N", "cid": "72757", "error": ""}
+{"name": "1-deoxycapsidiol", "smiles": "C[C@@H]1[C@@H](CCC2=CC[C@H](C[C@]12C)C(=C)C)O", "inchikey": "TWGYXCCDWSORFO-QHSBEEBCSA-N", "cid": "14486926", "error": ""}
+{"name": "11-hydroxyferruginol", "smiles": "CC(C)C1=C(C(=C2C(=C1)CC[C@@H]3[C@@]2(CCCC3(C)C)C)O)O", "inchikey": "MUVSVZOWXAYLSD-YWZLYKJASA-N", "cid": "46832173", "error": ""}
+{"name": "11-hydroxysugiol", "smiles": "CC(C)C1=C(C(=C2C(=C1)C(=O)C[C@@H]3[C@@]2(CCCC3(C)C)C)O)O", "inchikey": "GDLRDIDXYBIPFY-YWZLYKJASA-N", "cid": "10403490", "error": ""}
+{"name": "11-oxo-beta-amyrin", "smiles": "C[C@@]12CC[C@@]3(C(=CC(=O)[C@H]4[C@]3(CC[C@@H]5[C@@]4(CC[C@@H](C5(C)C)O)C)C)[C@@H]1CC(CC2)(C)C)C", "inchikey": "UKAIYBGRLWQHDQ-KWRVYEIKSA-N", "cid": "20055661", "error": ""}
+{"name": "13(S)-hydroperoxide of alpha-linolenic acid (13(S)-HPOT)", "smiles": "", "inchikey": "", "cid": "", "error": "not_found_after_3_strategies"}
+{"name": "13(S)-hydroperoxide of alpha-linolenic acid (13-HPOT)", "smiles": "CC/C=C/CC(/C=C/C=C/CCCCCCCC(=O)O)OO", "inchikey": "UYQGVDXDXBAABN-YPPMWDAJSA-N", "cid": "6440263", "error": ""}
+{"name": "13(S)-hydroperoxide of linoleic acid (13(S)-HPOD)", "smiles": "", "inchikey": "", "cid": "", "error": "not_found_after_3_strategies"}
+{"name": "13(S)-hydroperoxide of linoleic acid (13-HPOD)", "smiles": "CCCCCC(/C=C/C=C\\CCCCCCCC(=O)O)OO", "inchikey": "JDSRHVWSAMTSSN-BSZOFBHHSA-N", "cid": "6437847", "error": ""}
+{"name": "13(S)-hydroperoxides of linoleic acid (13-HPODE)", "smiles": "CCCCCC(/C=C/C=C\\CCCCCCCC(=O)O)OO", "inchikey": "JDSRHVWSAMTSSN-BSZOFBHHSA-N", "cid": "6437847", "error": ""}
+{"name": "13(S)-hydroperoxylinoleic acid (13-HPODE)", "smiles": "CCCCC[C@@H](/C=C/C=C\\CCCCCCCC(=O)O)OO", "inchikey": "JDSRHVWSAMTSSN-IRQZEAMPSA-N", "cid": "5280720", "error": ""}
+{"name": "13(S)-hydroperoxylinolenic acid (13-HPOT)", "smiles": "CC/C=C\\C[C@@H](/C=C/C=C\\CCCCCCCC(=O)O)OO", "inchikey": "UYQGVDXDXBAABN-FQSPHKRJSA-N", "cid": "5497123", "error": ""}
+{"name": "13-hydroperoxide of alpha-linolenic acid (13-HPOT)", "smiles": "CC/C=C/CC(/C=C/C=C/CCCCCCCC(=O)O)OO", "inchikey": "UYQGVDXDXBAABN-YPPMWDAJSA-N", "cid": "6440263", "error": ""}
+{"name": "13-hydroperoxides of linoleic acid (13-HPODE)", "smiles": "CCCCCC(/C=C/C=C\\CCCCCCCC(=O)O)OO", "inchikey": "JDSRHVWSAMTSSN-BSZOFBHHSA-N", "cid": "6437847", "error": ""}
+{"name": "13-hydroperoxides of linoleic/linolenic acids", "smiles": "", "inchikey": "", "cid": "", "error": "not_found_after_3_strategies"}
+{"name": "13-hydroperoxides of linolenic acid (13-HPOT)", "smiles": "CC/C=C/CC(/C=C/C=C/CCCCCCCC(=O)O)OO", "inchikey": "UYQGVDXDXBAABN-YPPMWDAJSA-N", "cid": "6440263", "error": ""}
+{"name": "13-hydroperoxides of polyenoic fatty acids", "smiles": "", "inchikey": "", "cid": "", "error": "not_found_after_3_strategies"}
+{"name": "13-hydroperoxy linole(n)ic acid (13-HPOT and 13-HPODE)", "smiles": "CC/C=C/CC(/C=C/C=C/CCCCCCCC(=O)O)OO", "inchikey": "UYQGVDXDXBAABN-YPPMWDAJSA-N", "cid": "6440263", "error": ""}
+{"name": "13-hydroperoxy linoleic acid (13-HPODE)", "smiles": "CCCCCC(/C=C/C=C\\CCCCCCCC(=O)O)OO", "inchikey": "JDSRHVWSAMTSSN-BSZOFBHHSA-N", "cid": "6437847", "error": ""}
+{"name": "13-hydroperoxy linolenic acid (13-HPOT)", "smiles": "CC/C=C/CC(/C=C/C=C/CCCCCCCC(=O)O)OO", "inchikey": "UYQGVDXDXBAABN-YPPMWDAJSA-N", "cid": "6440263", "error": ""}
+{"name": "13-hydroperoxy-alpha-linolenic acid (13-HPOT)", "smiles": "CC/C=C/CC(/C=C/C=C/CCCCCCCC(=O)O)OO", "inchikey": "UYQGVDXDXBAABN-YPPMWDAJSA-N", "cid": "6440263", "error": ""}
+{"name": "13-hydroperoxy-linoleic acid (13-HPOD)", "smiles": "CCCCCC(/C=C/C=C\\CCCCCCCC(=O)O)OO", "inchikey": "JDSRHVWSAMTSSN-BSZOFBHHSA-N", "cid": "6437847", "error": ""}
+{"name": "13-hydroperoxylinoleic acid (13-HPODE; 13-hydroperoxy-9(Z),11(E)-octadecadienoic acid)", "smiles": "CCCCCC(=CC/C=C\\CCCCCCCC(=O)O)OO", "inchikey": "ITZHGZMZQUJODL-MMDKRFMXSA-N", "cid": "92035703", "error": ""}
+{"name": "13-hydroperoxylinolenic acid (13-HPOT; 13-hydroperoxy-9(Z),11(E),15(Z)-octadecatrienoic acid)", "smiles": "CC/C=C\\C/C=C\\C/C=C\\CCCCCCCC(=O)OO", "inchikey": "OEYKGJFTEBHJCL-PDBXOOCHSA-N", "cid": "6439905", "error": ""}
+{"name": "13-hydroxy-8(14)-abietene", "smiles": "", "inchikey": "", "cid": "", "error": "not_found_after_3_strategies"}
+{"name": "13S-hydroperoxide of linoleic acid (13-HPODE)", "smiles": "CCCCCC(/C=C/C=C\\CCCCCCCC(=O)O)OO", "inchikey": "JDSRHVWSAMTSSN-BSZOFBHHSA-N", "cid": "6437847", "error": ""}
+{"name": "13S-hydroperoxy-9(Z),11(E),15(Z)-octadecatrienoic acid (13-HPOT)", "smiles": "CC/C=C\\C[C@@H](/C=C/C=C\\CCCCCCCC(=O)O)OO", "inchikey": "UYQGVDXDXBAABN-FQSPHKRJSA-N", "cid": "5497123", "error": ""}
+{"name": "13S-hydroperoxy-9(Z),11(E)-octadecadienoic acid (13-HPODE)", "smiles": "CCCCCC(/C=C/C=C\\CCCCCCCC(=O)O)OO", "inchikey": "JDSRHVWSAMTSSN-BSZOFBHHSA-N", "cid": "6437847", "error": ""}
+{"name": "13S-hydroperoxy-9Z,11E,15Z-octadecatrienoic acid (13-HPOT; 13S-hydroperoxide of alpha-linolenic acid)", "smiles": "CC/C=C\\C[C@@H](/C=C/C=C\\CCCCCCCC(=O)O)OO", "inchikey": "UYQGVDXDXBAABN-FQSPHKRJSA-N", "cid": "5497123", "error": ""}
+{"name": "14alpha-methyl-24(28)-dihydrofecosterol", "smiles": "", "inchikey": "", "cid": "", "error": "not_found_after_3_strategies"}
+{"name": "16alpha-hydroxy-ent-kaurane", "smiles": "", "inchikey": "", "cid": "", "error": "not_found_after_3_strategies"}
+{"name": "2,3',4,6-tetrahydroxybenzophenone", "smiles": "C1=CC(=CC(=C1)O)C(=O)C2=C(C=C(C=C2O)O)O", "inchikey": "QWRYPHZJTWQLFX-UHFFFAOYSA-N", "cid": "440991", "error": ""}
+{"name": "2,4,6-trihydroxybenzophenone", "smiles": "C1=CC=C(C=C1)C(=O)C2=C(C=C(C=C2O)O)O", "inchikey": "CPEXFJVZFNYXGU-UHFFFAOYSA-N", "cid": "77093", "error": ""}
+{"name": "2-hydroxy-1,4-benzoxazin-3-one (HBOA)", "smiles": "C1=CC=C2C(=C1)NC(=O)C(O2)O", "inchikey": "VMQBFYRBJKDACN-UHFFFAOYSA-N", "cid": "322636", "error": ""}
+{"name": "2-methylbutanal oxime (isoleucine-derived)", "smiles": "CCC(C)C=NO", "inchikey": "SEWWFHKIKWFJNV-UHFFFAOYSA-N", "cid": "170814", "error": ""}
+{"name": "2-methylpropanal oxime (valine-derived)", "smiles": "CC(C)/C=N/O", "inchikey": "SYJPAKDNFZLSMV-HWKANZROSA-N", "cid": "5324282", "error": ""}
+{"name": "20-hydroxylupeol", "smiles": "CC(=C)[C@]1(CC[C@@]2([C@H]1[C@H]3CC[C@@H]4[C@]5(CC[C@@H](C([C@@H]5CC[C@]4([C@@]3(CC2)C)C)(C)C)O)C)C)O", "inchikey": "ZVGFFOWEEGQDPK-OQJNHJQRSA-N", "cid": "129845955", "error": ""}
+{"name": "22R-hydroxycholesterol", "smiles": "C[C@@H]([C@H]1CC[C@@H]2[C@@]1(CC[C@H]3[C@H]2CC=C4[C@@]3(CC[C@@H](C4)O)C)C)[C@@H](CCC(C)C)O", "inchikey": "RZPAXNJLEKLXNO-GFKLAVDKSA-N", "cid": "167685", "error": ""}
+{"name": "24,(25)-dihydro-31-norlanosterol", "smiles": "", "inchikey": "", "cid": "", "error": "not_found_after_3_strategies"}
+{"name": "24-epi-campesterol", "smiles": "C[C@H](CC[C@H](C)C(C)C)[C@H]1CC[C@@H]2[C@@]1(CC[C@H]3C2CC=C4[C@@]3(CC[C@@H](C4)O)C)C", "inchikey": "SGNBVLSWZMBQTH-UUANRBEWSA-N", "cid": "12358800", "error": ""}
+{"name": "24-hydroxy-beta-amyrin", "smiles": "C[C@@]12CC[C@@]3(C(=CC[C@H]4[C@]3(CC[C@@H]5[C@@]4(CC[C@@H]([C@]5(C)CO)O)C)C)[C@@H]1CC(CC2)(C)C)C", "inchikey": "NTWLPZMPTFQYQI-FLZFTVBESA-N", "cid": "14167253", "error": ""}
+{"name": "24alpha(28)-dihydro-obtusifoliol", "smiles": "CCC(C1=CC2=C(C=C1)OCO2)N", "inchikey": "VEOUOCLRLNJOLJ-UHFFFAOYSA-N", "cid": "14647596", "error": ""}
+{"name": "28-norcastasterone", "smiles": "C[C@@H]([C@H]1CC[C@@H]2[C@@]1(CC[C@H]3[C@H]2CC(=O)[C@@H]4[C@@]3(C[C@H]([C@H](C4)O)O)C)C)[C@H]([C@@H](CC(C)C)O)O", "inchikey": "YNZRNENZMVIPBX-SCLBUMFYSA-N", "cid": "13982110", "error": ""}
+{"name": "3,9-dihydroxypterocarpan", "smiles": "C1[C@@H]2[C@H](C3=C(O1)C=C(C=C3)O)OC4=C2C=CC(=C4)O", "inchikey": "ODMIEGVTNZNSLD-WFASDCNBSA-N", "cid": "162933", "error": ""}
+{"name": "3-dehydro-6-deoxoteasterone", "smiles": "C[C@@H]([C@H]1CC[C@@H]2[C@@]1(CC[C@H]3[C@H]2CC[C@@H]4[C@@]3(CCC(=O)C4)C)C)[C@H]([C@@H]([C@@H](C)C(C)C)O)O", "inchikey": "URNVSZVQLKHKDE-WAFXAADMSA-N", "cid": "16061345", "error": ""}
+{"name": "3-epi-6-deoxocathasterone", "smiles": "C[C@H](C[C@@H]([C@@H](C)[C@H]1CC[C@@H]2[C@@]1(CC[C@H]3[C@H]2CC[C@@H]4[C@@]3(CC[C@H](C4)O)C)C)O)C(C)C", "inchikey": "ZHZKWZJLUNXOSN-LOCIZFEWSA-N", "cid": "45480560", "error": ""}
+{"name": "3-hydroxy-5-methoxybiphenyl", "smiles": "COC1=CC(=CC(=C1)O)C2=CC=CC=C2", "inchikey": "MFGGGJCBWVBPEO-UHFFFAOYSA-N", "cid": "12000323", "error": ""}
+{"name": "3-hydroxycinnamic acid", "smiles": "C1=CC(=CC(=C1)O)/C=C/C(=O)O", "inchikey": "KKSDGJDHHZEWEP-SNAWJCMRSA-N", "cid": "637541", "error": ""}
+{"name": "3-hydroxyindolin-2-one", "smiles": "C1=CC=C2C(=C1)C(C(=O)N2)O", "inchikey": "SGZFJWQQBHYNNF-UHFFFAOYSA-N", "cid": "6097", "error": ""}
+{"name": "3alpha-hydroxy-ent-sandaracopimaradiene", "smiles": "C[C@]1(CC[C@@H]2C(=C1)CC[C@H]3[C@]2(CC[C@H](C3(C)C)O)C)C=C", "inchikey": "ATQOOBSXQVRQPY-GNVJSZRZSA-N", "cid": "86289488", "error": ""}
+{"name": "3beta-hydroxy-5beta-cholestan-6-one (5beta-ketone)", "smiles": "C[C@H](CCCC(C)C)[C@H]1CC[C@@H]2[C@@]1(CC[C@H]3[C@H]2CC(=O)[C@H]4[C@@]3(CC[C@@H](C4)O)C)C", "inchikey": "JQMQKOQOLPGBBE-BUYVBUJJSA-N", "cid": "92278124", "error": ""}
+{"name": "4'-O-methylnorbelladine", "smiles": "COC1=C(C=C(C=C1)CNCCC2=CC=C(C=C2)O)O", "inchikey": "SDLILULALIDNSO-UHFFFAOYSA-N", "cid": "253994", "error": ""}
+{"name": "4-(1-methyl-2-pyrrolidinyl)-3-oxobutanoic acid", "smiles": "CN1CCCC1CC(=O)CC(=O)O", "inchikey": "WDFDPXMELFXBFU-UHFFFAOYSA-N", "cid": "57417332", "error": ""}
+{"name": "4-coumaroyl-3',4'-dihydroxyphenyllactate", "smiles": "C1=CC(=CC=C1/C=C/C(=O)O[C@H](CC2=CC(=C(C=C2)O)O)C(=O)[O-])O", "inchikey": "KIMHJUCTTIEANQ-KZJSRBBCSA-M", "cid": "25244690", "error": ""}
+{"name": "4-coumaroyl-4'-hydroxyphenyllactic acid", "smiles": "", "inchikey": "", "cid": "", "error": "not_found_after_3_strategies"}
+{"name": "4-coumaroyl-anthranilate", "smiles": "", "inchikey": "", "cid": "", "error": "not_found_after_3_strategies"}
+{"name": "4-coumaroylshikimate", "smiles": "C1[C@H]([C@@H]([C@@H](C=C1C(=O)[O-])O)O)OC(=O)/C=C/C2=CC=C(C=C2)O", "inchikey": "GVECSFFLZYNEBO-PDXJTRCTSA-M", "cid": "25245116", "error": ""}
+{"name": "5-deoxystrigol (5DS)", "smiles": "CC1=C[C@@H](OC1=O)O/C=C/2\\[C@H]3CC4=C([C@H]3OC2=O)C(CCC4)(C)C", "inchikey": "QXTUQXRFEBHUBA-DYLOANJQSA-N", "cid": "15102684", "error": ""}
+{"name": "5-epi-aristolochene", "smiles": "C[C@@H]1CCCC2=CC[C@H](C[C@]12C)C(=C)C", "inchikey": "YONHOSLUBQJXPR-UMVBOHGHSA-N", "cid": "5460659", "error": ""}
+{"name": "5-epi-jinkoheremol", "smiles": "C[C@@H]1CCCC2=CC[C@H](C[C@]12C)C(C)(C)O", "inchikey": "KEBVXBNFLKYWDP-UXIGCNINSA-N", "cid": "162642166", "error": ""}
+{"name": "5-keto-casbene", "smiles": "", "inchikey": "", "cid": "", "error": "not_found_after_3_strategies"}
+{"name": "5-pentadecatrienyl resorcinol-3-methyl ether", "smiles": "COC1=CC(=CC(=C1)O)CCCCCCC/C=C\\C/C=C\\CC=C", "inchikey": "GKGSHNPKQBMHTD-AFJQJTPPSA-N", "cid": "25244188", "error": ""}
+{"name": "5alpha-acetoxy-10beta-hydroxy taxadiene", "smiles": "", "inchikey": "", "cid": "", "error": "not_found_after_3_strategies"}
+{"name": "6,7,4'-trihydroxyflavanone", "smiles": "C1C(OC2=CC(=C(C=C2C1=O)O)O)C3=CC=C(C=C3)O", "inchikey": "UABMFOBSIHSWFQ-UHFFFAOYSA-N", "cid": "23724670", "error": ""}
+{"name": "6-deoxo-28-norcastasterone", "smiles": "C[C@@H]([C@H]1CC[C@@H]2[C@@]1(CC[C@H]3[C@H]2CC[C@@H]4[C@@]3(C[C@H]([C@H](C4)O)O)C)C)[C@H]([C@@H](CC(C)C)O)O", "inchikey": "LCZMVUQKRUXUPG-MFGLZFITSA-N", "cid": "101682290", "error": ""}
+{"name": "6-deoxocastasterone", "smiles": "C[C@@H]([C@H]1CC[C@@H]2[C@@]1(CC[C@H]3[C@H]2CC[C@@H]4[C@@]3(C[C@H]([C@H](C4)O)O)C)C)[C@H]([C@@H]([C@@H](C)C(C)C)O)O", "inchikey": "VXBLCLVRWCLEOX-BFYSZXNBSA-N", "cid": "13870433", "error": ""}
+{"name": "6-deoxocathasterone", "smiles": "C[C@H](C[C@@H]([C@@H](C)[C@H]1CC[C@@H]2[C@@]1(CC[C@H]3[C@H]2CC[C@@H]4[C@@]3(CC[C@@H](C4)O)C)C)O)C(C)C", "inchikey": "ZHZKWZJLUNXOSN-YUZBOUAZSA-N", "cid": "16061344", "error": ""}
+{"name": "6-deoxoteasterone", "smiles": "C[C@@H]([C@H]1CC[C@@H]2[C@@]1(CC[C@H]3[C@H]2CC[C@@H]4[C@@]3(CC[C@@H](C4)O)C)C)[C@H]([C@@H]([C@@H](C)C(C)C)O)O", "inchikey": "WPHVOXMMNSLJSF-GUOPQYDVSA-N", "cid": "11144580", "error": ""}
+{"name": "6-deoxotyphasterol", "smiles": "C[C@@H]([C@H]1CC[C@@H]2[C@@]1(CC[C@H]3[C@H]2CC[C@@H]4[C@@]3(CC[C@H](C4)O)C)C)[C@H]([C@@H]([C@@H](C)C(C)C)O)O", "inchikey": "WPHVOXMMNSLJSF-DAWJDVIISA-N", "cid": "16061346", "error": ""}
+{"name": "6-methoxycoumarin", "smiles": "COC1=CC2=C(C=C1)OC(=O)C=C2", "inchikey": "VKVCJIMMVPXDQD-UHFFFAOYSA-N", "cid": "11240776", "error": ""}
+{"name": "7-O-methylated flavones with 5-hydroxyl and 7-methoxyl groups (e.g., 7-O-methylated apigenin)", "smiles": "", "inchikey": "", "cid": "", "error": "not_found_after_3_strategies"}
+{"name": "7-O-methylated flavones with 5-hydroxyl group (e.g., 5-hydroxy-7-methoxyflavone; apigenin 7-O-methyl ether class)", "smiles": "", "inchikey": "", "cid": "", "error": "not_found_after_3_strategies"}
+{"name": "7-deoxyloganic acid", "smiles": "C[C@H]1CC[C@H]2[C@@H]1[C@@H](OC=C2C(=O)O)O[C@H]3[C@@H]([C@H]([C@@H]([C@H](O3)CO)O)O)O", "inchikey": "DSXFHNSGLYXPNG-YDYVGBNJSA-N", "cid": "443322", "error": ""}
+{"name": "7-epi-loganin", "smiles": "C[C@@H]1[C@H](C[C@H]2[C@@H]1[C@@H](OC=C2C(=O)OC)O[C@H]3[C@@H]([C@H]([C@@H]([C@H](O3)CO)O)O)O)O", "inchikey": "AMBQHHVBBHTQBF-OZIIXKNCSA-N", "cid": "10548420", "error": ""}
+{"name": "7-epi-zingiberene", "smiles": "CC1=CC[C@@H](C=C1)[C@H](C)CCC=C(C)C", "inchikey": "KKOXKGNSUHTUBV-HUUCEWRRSA-N", "cid": "21729595", "error": ""}
+{"name": "7-ethoxycoumarin", "smiles": "CCOC1=CC2=C(C=C1)C=CC(=O)O2", "inchikey": "LIFAQMGORKPVDH-UHFFFAOYSA-N", "cid": "35703", "error": ""}
+{"name": "7-methoxy-3-methylcoumarin", "smiles": "", "inchikey": "", "cid": "", "error": "not_found_after_3_strategies"}
+{"name": "7-methoxycoumarin", "smiles": "COC1=CC2=C(C=C1)C=CC(=O)O2", "inchikey": "LIIALPBMIOVAHH-UHFFFAOYSA-N", "cid": "10748", "error": ""}
+{"name": "8-methoxypsoralen", "smiles": "COC1=C2C(=CC3=C1OC=C3)C=CC(=O)O2", "inchikey": "QXKHYNVANLEOEG-UHFFFAOYSA-N", "cid": "4114", "error": ""}
+{"name": "8beta-hydroxy-germacrene A acid", "smiles": "", "inchikey": "", "cid": "", "error": "not_found_after_3_strategies"}
+{"name": "9(S)-hydroperoxide of alpha-linolenic acid (9(S)-HPOT)", "smiles": "", "inchikey": "", "cid": "", "error": "not_found_after_3_strategies"}
+{"name": "9(S)-hydroperoxide of linoleic acid (9(S)-HPOD)", "smiles": "", "inchikey": "", "cid": "", "error": "not_found_after_3_strategies"}
+{"name": "9(S)-hydroperoxide of linoleic acid (9-HPODE)", "smiles": "CCCCC/C=C/C=C/C(CCCCCCCC(=O)O)OO", "inchikey": "JGUNZIWGNMQSBM-SIGMCMEVSA-N", "cid": "5282856", "error": ""}
+{"name": "9(S,10E,12Z)-9-hydroperoxy-10,12-octadecadienoic acid (9-HPODE; 9-hydroperoxide of linoleic acid)", "smiles": "CCCCC/C=C/C=C/C(CCCCCCCC(=O)O)OO", "inchikey": "JGUNZIWGNMQSBM-SIGMCMEVSA-N", "cid": "5282856", "error": ""}
+{"name": "9,10-dihydroxystearic acid", "smiles": "CCCCCCCCC(C(CCCCCCCC(=O)O)O)O", "inchikey": "VACHUYIREGFMSP-UHFFFAOYSA-N", "cid": "89377", "error": ""}
+{"name": "9,10-epoxystearic acid", "smiles": "CCCCCCCCC1C(O1)CCCCCCCC(=O)O", "inchikey": "IMYZYCNQZDBZBQ-UHFFFAOYSA-N", "cid": "15868", "error": ""}
+{"name": "9,13-epoxy-labd-14-ene", "smiles": "C[C@@H]1CC[C@@H]2[C@@]([C@@]13CCC(O3)(C)C=C)(CCCC2(C)C)C", "inchikey": "YFIVBYGSVFHTOP-NJNUCJBSSA-N", "cid": "131708299", "error": ""}
+{"name": "9-hydroperoxide of linolenic acid (9-HPOT)", "smiles": "", "inchikey": "", "cid": "", "error": "not_found_after_3_strategies"}
+{"name": "9-hydroperoxides (9-HPOT and 9-HPOD; poor substrates)", "smiles": "", "inchikey": "", "cid": "", "error": "not_found_after_3_strategies"}
+{"name": "9-hydroperoxides of linoleic acid (9-HPODE)", "smiles": "CCCCC/C=C/C=C/C(CCCCCCCC(=O)O)OO", "inchikey": "JGUNZIWGNMQSBM-SIGMCMEVSA-N", "cid": "5282856", "error": ""}
+{"name": "9-hydroperoxides of linoleic/linolenic acids", "smiles": "", "inchikey": "", "cid": "", "error": "not_found_after_3_strategies"}
+{"name": "9-hydroperoxides of linolenic acid (9-HPOT)", "smiles": "", "inchikey": "", "cid": "", "error": "not_found_after_3_strategies"}
+{"name": "9-hydroperoxides of polyenoic fatty acids", "smiles": "", "inchikey": "", "cid": "", "error": "not_found_after_3_strategies"}
+{"name": "9-hydroperoxides of polyunsaturated fatty acids (9-HPL substrates)", "smiles": "", "inchikey": "", "cid": "", "error": "not_found_after_3_strategies"}
+{"name": "9-hydroperoxy linole(n)ic acid (9-HPOT and 9-HPODE)", "smiles": "CCCCC/C=C/C=C/C(CCCCCCCC(=O)O)OO", "inchikey": "JGUNZIWGNMQSBM-SIGMCMEVSA-N", "cid": "5282856", "error": ""}
+{"name": "9-hydroperoxy linoleic acid (9-HPODE)", "smiles": "CCCCC/C=C/C=C/C(CCCCCCCC(=O)O)OO", "inchikey": "JGUNZIWGNMQSBM-SIGMCMEVSA-N", "cid": "5282856", "error": ""}
+{"name": "9-hydroperoxy linolenic acid (9-HPOT)", "smiles": "", "inchikey": "", "cid": "", "error": "not_found_after_3_strategies"}
+{"name": "ACCase inhibitors (sethoxydim/clethodim/pinoxaden class)", "smiles": "", "inchikey": "", "cid": "", "error": "not_found_after_3_strategies"}
+{"name": "C12-C18 fatty acids (varying chain length and unsaturation)", "smiles": "", "inchikey": "", "cid": "", "error": "not_found_after_3_strategies"}
+{"name": "C18-hydroperoxy fatty acids (13-hydroperoxides; both 9- and 13-isomers; 9/13-AOS)", "smiles": "", "inchikey": "", "cid": "", "error": "not_found_after_3_strategies"}
+{"name": "C18-hydroperoxy fatty acids (trace activity; ~1000-fold lower kcat/KM)", "smiles": "", "inchikey": "", "cid": "", "error": "not_found_after_3_strategies"}
+{"name": "C20-hydroperoxy fatty acids", "smiles": "", "inchikey": "", "cid": "", "error": "not_found_after_3_strategies"}
+{"name": "C20-hydroperoxy fatty acids (primary; full activity)", "smiles": "", "inchikey": "", "cid": "", "error": "not_found_after_3_strategies"}
+{"name": "C22 fatty acids", "smiles": "", "inchikey": "", "cid": "", "error": "not_found_after_3_strategies"}
+{"name": "C23-C33 alkanes (primary substrate: C29 hentriacontane)", "smiles": "", "inchikey": "", "cid": "", "error": "not_found_after_3_strategies"}
+{"name": "C24 fatty acids", "smiles": "", "inchikey": "", "cid": "", "error": "not_found_after_3_strategies"}
+{"name": "GA12", "smiles": "C[C@@]12CCC[C@@]([C@H]1[C@@H]([C@]34[C@H]2CC[C@H](C3)C(=C)C4)C(=O)O)(C)C(=O)O", "inchikey": "UJFQJDAESQJXTG-UFUZVNNQSA-N", "cid": "443450", "error": ""}
+{"name": "GA4", "smiles": "C[C@@]12[C@H](CC[C@@]3([C@@H]1[C@@H]([C@]45[C@H]3CC[C@H](C4)C(=C)C5)C(=O)O)OC2=O)O", "inchikey": "RSQSQJNRHICNNH-NFMPGMCNSA-N", "cid": "92109", "error": ""}
+{"name": "GA4 (non-13-hydroxylated GAs)", "smiles": "C[C@@]12[C@H](CC[C@@]3([C@@H]1[C@@H]([C@]45[C@H]3CC[C@H](C4)C(=C)C5)C(=O)O)OC2=O)O", "inchikey": "RSQSQJNRHICNNH-NFMPGMCNSA-N", "cid": "92109", "error": ""}
+{"name": "GA9", "smiles": "C[C@@]12CCC[C@@]3([C@@H]1[C@@H]([C@]45[C@H]3CC[C@H](C4)C(=C)C5)C(=O)O)OC2=O", "inchikey": "MHVYWTXXZIFXDT-YGNOGLJPSA-N", "cid": "5281984", "error": ""}
+{"name": "L-DOPA", "smiles": "C1=CC(=C(C=C1C[C@@H](C(=O)O)N)O)O", "inchikey": "WTDRDQBEARUVNC-LURJTMIESA-N", "cid": "6047", "error": ""}
+{"name": "L-isoleucine", "smiles": "CC[C@H](C)[C@@H](C(=O)O)N", "inchikey": "AGPKZVBTJJNPAG-WHFBIAKZSA-N", "cid": "6306", "error": ""}
+{"name": "L-leucine", "smiles": "CC(C)C[C@@H](C(=O)O)N", "inchikey": "ROHFNLRQFUQHCH-YFKPBYRVSA-N", "cid": "6106", "error": ""}
+{"name": "L-phenylalanine", "smiles": "C1=CC=C(C=C1)C[C@@H](C(=O)O)N", "inchikey": "COLNVLDHVKWLRT-QMMMGPOBSA-N", "cid": "6140", "error": ""}
+{"name": "L-tryptophan", "smiles": "C1=CC=C2C(=C1)C(=CN2)C[C@@H](C(=O)O)N", "inchikey": "QIVBCDIJIAJPQS-VIFPVBQESA-N", "cid": "6305", "error": ""}
+{"name": "L-tyrosine", "smiles": "C1=CC(=CC=C1C[C@@H](C(=O)O)N)O", "inchikey": "OUYCCCASQSFEME-QMMMGPOBSA-N", "cid": "6057", "error": ""}
+{"name": "L-valine", "smiles": "CC(C)[C@@H](C(=O)O)N", "inchikey": "KZSNJWFQEVHDMF-BYPYZUCNSA-N", "cid": "6287", "error": ""}
+{"name": "N-methylcanadine", "smiles": "C[N+]12CCC3=CC4=C(C=C3[C@@H]1CC5=C(C2)C(=C(C=C5)OC)OC)OCO4", "inchikey": "IPABSWBNWMXCHM-LBOXEOMUSA-N", "cid": "439844", "error": ""}
+{"name": "TPS11 monoterpene products", "smiles": "", "inchikey": "", "cid": "", "error": "not_found_after_3_strategies"}
+{"name": "TPS11 sesquiterpene products (blend of sesquiterpenes)", "smiles": "", "inchikey": "", "cid": "", "error": "not_found_after_3_strategies"}
+{"name": "abietadienal", "smiles": "CC(C)C1=CC2=CC[C@H]3[C@](CCC[C@@]3([C@H]2CC1)C)(C)C=O", "inchikey": "HOFSYSONRIGEAC-LWYYNNOASA-N", "cid": "443479", "error": ""}
+{"name": "abietadienol", "smiles": "CC(C)C1=CC2=CC[C@H]3[C@](CCC[C@@]3([C@H]2CC1)C)(C)CO", "inchikey": "GQRUHVMVWNKUFW-LWYYNNOASA-N", "cid": "443474", "error": ""}
+{"name": "abietane diterpenoid (upstream of C16-hydroxylation; specific substrate requires fulltext for exact identity)", "smiles": "", "inchikey": "", "cid": "", "error": "not_found_after_3_strategies"}
+{"name": "abietatriene", "smiles": "CC(C)C1=CC2=C(C=C1)[C@]3(CCCC([C@@H]3CC2)(C)C)C", "inchikey": "QUUCYKKMFLJLFS-AZUAARDMSA-N", "cid": "6432211", "error": ""}
+{"name": "abscisic acid", "smiles": "CC1=CC(=O)CC([C@]1(/C=C/C(=C\\C(=O)O)/C)O)(C)C", "inchikey": "JLIDBLDQVAYHNE-YKALOCIXSA-N", "cid": "5280896", "error": ""}
+{"name": "abscisic acid (ABA)", "smiles": "CC1=CC(=O)CC([C@]1(/C=C/C(=C\\C(=O)O)/C)O)(C)C", "inchikey": "JLIDBLDQVAYHNE-YKALOCIXSA-N", "cid": "5280896", "error": ""}
+{"name": "aliphatic aldoximes", "smiles": "", "inchikey": "", "cid": "", "error": "not_found_after_3_strategies"}
+{"name": "aliphatic oximes derived from chain-elongated methionine homologs", "smiles": "", "inchikey": "", "cid": "", "error": "not_found_after_3_strategies"}
+{"name": "alkanes (midchain, primarily C29 hentriacontane)", "smiles": "", "inchikey": "", "cid": "", "error": "not_found_after_3_strategies"}
+{"name": "alkoxycoumarins", "smiles": "", "inchikey": "", "cid": "", "error": "not_found_after_3_strategies"}
+{"name": "alkoxyresorufins", "smiles": "", "inchikey": "", "cid": "", "error": "not_found_after_3_strategies"}
+{"name": "all tested hydroperoxides (13-HPOT, 13-HPOD, 9-HPOT, 9-HPOD)", "smiles": "C([C@@H]1[C@H]([C@H]([C@H](C(O1)O)O)O)O)O", "inchikey": "WQZGKKKJIJFFOK-IVMDWMLBSA-N", "cid": "439507", "error": ""}
+{"name": "allocryptopine", "smiles": "CN1CCC2=CC3=C(C=C2C(=O)CC4=C(C1)C(=C(C=C4)OC)OC)OCO3", "inchikey": "HYBRYAPKQCZIAE-UHFFFAOYSA-N", "cid": "98570", "error": ""}
+{"name": "alpha-amyrin", "smiles": "C[C@@H]1CC[C@@]2(CC[C@@]3(C(=CC[C@H]4[C@]3(CC[C@@H]5[C@@]4(CC[C@@H](C5(C)C)O)C)C)[C@@H]2[C@H]1C)C)C", "inchikey": "FSLPMRQHCOLESF-SFMCKYFRSA-N", "cid": "73170", "error": ""}
+{"name": "alpha-carotene (beta,epsilon-carotene)", "smiles": "CC1=C(C(CCC1)(C)C)/C=C/C(=C/C=C/C(=C/C=C/C=C(\\C)/C=C/C=C(\\C)/C=C/[C@H]2C(=CCCC2(C)C)C)/C)/C", "inchikey": "ANVAOWXLWRTKGA-NTXLUARGSA-N", "cid": "6419725", "error": ""}
+{"name": "alpha-carotene (beta-ring)", "smiles": "CC1=C(C(CCC1)(C)C)/C=C/C(=C/C=C/C(=C/C=C/C=C(\\C)/C=C/C=C(\\C)/C=C/[C@H]2C(=CCCC2(C)C)C)/C)/C", "inchikey": "ANVAOWXLWRTKGA-NTXLUARGSA-N", "cid": "6419725", "error": ""}
+{"name": "alpha-carotene (epsilon-ring)", "smiles": "CC1=C(C(CCC1)(C)C)/C=C/C(=C/C=C/C(=C/C=C/C=C(\\C)/C=C/C=C(\\C)/C=C/[C@H]2C(=CCCC2(C)C)C)/C)/C", "inchikey": "ANVAOWXLWRTKGA-NTXLUARGSA-N", "cid": "6419725", "error": ""}
+{"name": "alpha-guaiene", "smiles": "C[C@H]1CC[C@H](CC2=C1CC[C@@H]2C)C(=C)C", "inchikey": "ADIDQIZBYUABQK-RWMBFGLXSA-N", "cid": "5317844", "error": ""}
+{"name": "alpha-humulene", "smiles": "C/C/1=C\\CC(/C=C/C/C(=C/CC1)/C)(C)C", "inchikey": "FAMPSKZZVDUYOS-HRGUGZIWSA-N", "cid": "5281520", "error": ""}
+{"name": "alpha-linolenic acid", "smiles": "CC/C=C\\C/C=C\\C/C=C\\CCCCCCCC(=O)O", "inchikey": "DTOSIQBPPRVQHS-PDBXOOCHSA-N", "cid": "5280934", "error": ""}
+{"name": "alpha-pinene", "smiles": "CC1=CCC2CC1C2(C)C", "inchikey": "GRWFGVWFFZKLTI-UHFFFAOYSA-N", "cid": "6654", "error": ""}
+{"name": "amorpha-4,11-diene", "smiles": "C[C@@H]1CC[C@H]([C@@H]2[C@H]1CCC(=C2)C)C(=C)C", "inchikey": "HMTAHNDPLDKYJT-CBBWQLFWSA-N", "cid": "11052747", "error": ""}
+{"name": "amorpha-4,11-diene (secondary)", "smiles": "C[C@@H]1CC[C@H]([C@@H]2[C@H]1CCC(=C2)C)C(=C)C", "inchikey": "HMTAHNDPLDKYJT-CBBWQLFWSA-N", "cid": "11052747", "error": ""}
+{"name": "amorpha-4,11-diene (secondary, non-natural)", "smiles": "C[C@@H]1CC[C@H]([C@@H]2[C@H]1CCC(=C2)C)C(=C)C", "inchikey": "HMTAHNDPLDKYJT-CBBWQLFWSA-N", "cid": "11052747", "error": ""}
+{"name": "amorpha-4,11-diene (tested)", "smiles": "C[C@@H]1CC[C@H]([C@@H]2[C@H]1CCC(=C2)C)C(=C)C", "inchikey": "HMTAHNDPLDKYJT-CBBWQLFWSA-N", "cid": "11052747", "error": ""}
+{"name": "apigenin", "smiles": "C1=CC(=CC=C1C2=CC(=O)C3=C(C=C(C=C3O2)O)O)O", "inchikey": "KZNIFHPLKGYRTM-UHFFFAOYSA-N", "cid": "5280443", "error": ""}
+{"name": "aromatic aldoximes (various, low conversion)", "smiles": "", "inchikey": "", "cid": "", "error": "not_found_after_3_strategies"}
+{"name": "artemisinic alcohol", "smiles": "C[C@@H]1CC[C@H]([C@@H]2[C@H]1CCC(=C2)C)C(=C)CO", "inchikey": "CZSSHKCZSDDOAH-UNQGMJICSA-N", "cid": "15983960", "error": ""}
+{"name": "artemisinic aldehyde", "smiles": "C[C@@H]1CC[C@H]([C@@H]2[C@H]1CCC(=C2)C)C(=C)C=O", "inchikey": "SVAPNGMAOHQQFJ-UNQGMJICSA-N", "cid": "15983961", "error": ""}
+{"name": "avenacin triterpene scaffold intermediate (C-21beta position)", "smiles": "", "inchikey": "", "cid": "", "error": "not_found_after_3_strategies"}
+{"name": "bensulfuron-methyl", "smiles": "COC1=CC(=NC(=N1)NC(=O)NS(=O)(=O)CC2=CC=CC=C2C(=O)OC)OC", "inchikey": "XMQFTWRPUQYINF-UHFFFAOYSA-N", "cid": "54960", "error": ""}
+{"name": "beta-amyrin", "smiles": "C[C@@]12CC[C@@]3(C(=CC[C@H]4[C@]3(CC[C@@H]5[C@@]4(CC[C@@H](C5(C)C)O)C)C)[C@@H]1CC(CC2)(C)C)C", "inchikey": "JFSHUTJDVKUMTJ-QHPUVITPSA-N", "cid": "73145", "error": ""}
+{"name": "beta-carotene (beta,beta-carotene) (minor)", "smiles": "CC1=C(C(CCC1)(C)C)/C=C/C(=C/C=C/C(=C/C=C/C=C(/C=C/C=C(/C=C/C2=C(CCCC2(C)C)C)\\C)\\C)/C)/C", "inchikey": "OENHQHLEOONYIE-JLTXGRSLSA-N", "cid": "5280489", "error": ""}
+{"name": "beta-colubrine", "smiles": "COC1=CC2=C(C=C1)N3[C@@H]4[C@]25CCN6[C@H]5C[C@@H]7[C@H]4[C@H](CC3=O)OCC=C7C6", "inchikey": "ZTHVHELPCLGXHF-JPPAUQSISA-N", "cid": "251890", "error": ""}
+{"name": "beta-sitosterol", "smiles": "CC[C@H](CC[C@@H](C)[C@H]1CC[C@@H]2[C@@]1(CC[C@H]3[C@H]2CC=C4[C@@]3(CC[C@@H](C4)O)C)C)C(C)C", "inchikey": "KZJWDPNRJALLNS-VJSFXXLFSA-N", "cid": "222284", "error": ""}
+{"name": "bispyribac sodium", "smiles": "COC1=CC(=NC(=N1)OC2=C(C(=CC=C2)OC3=NC(=CC(=N3)OC)OC)C(=O)[O-])OC.[Na+]", "inchikey": "FUHMZYWBSHTEDZ-UHFFFAOYSA-M", "cid": "23682789", "error": ""}
+{"name": "brassinolide", "smiles": "C[C@@H]([C@H]1CC[C@@H]2[C@@]1(CC[C@H]3[C@H]2COC(=O)[C@@H]4[C@@]3(C[C@H]([C@H](C4)O)O)C)C)[C@H]([C@@H]([C@@H](C)C(C)C)O)O", "inchikey": "IXVMHGVQKLDRKH-KNBKMWSGSA-N", "cid": "115196", "error": ""}
+{"name": "caffeoyl-4'-hydroxyphenyllactate", "smiles": "C1=CC(=CC=C1C[C@H](C(=O)[O-])OC(=O)/C=C/C2=CC(=C(C=C2)O)O)O", "inchikey": "ZIUGAQNCXNLSFT-KZJSRBBCSA-M", "cid": "25245062", "error": ""}
+{"name": "campestanol", "smiles": "C[C@H](CC[C@@H](C)C(C)C)[C@H]1CC[C@@H]2[C@@]1(CC[C@H]3[C@H]2CC[C@@H]4[C@@]3(CC[C@@H](C4)O)C)C", "inchikey": "ARYTXMNEANMLMU-ATEDBJNTSA-N", "cid": "119394", "error": ""}
+{"name": "campesterol", "smiles": "C[C@H](CC[C@@H](C)C(C)C)[C@H]1CC[C@@H]2[C@@]1(CC[C@H]3[C@H]2CC=C4[C@@]3(CC[C@@H](C4)O)C)C", "inchikey": "SGNBVLSWZMBQTH-PODYLUTMSA-N", "cid": "173183", "error": ""}
+{"name": "capric acid (C10:0)", "smiles": "CCCCCCCCCC(=O)O", "inchikey": "GHVNFZFCNZKVNT-UHFFFAOYSA-N", "cid": "2969", "error": ""}
+{"name": "carlactone", "smiles": "CC1=C(C(CCC1)(C)C)/C=C/C(=C\\OC2C=C(C(=O)O2)C)/C", "inchikey": "OTIYLZVFQIMLQH-FRGMPSNRSA-N", "cid": "66559276", "error": ""}
+{"name": "carlactone (CL)", "smiles": "CC1=C(C(CCC1)(C)C)/C=C/C(=C\\OC2C=C(C(=O)O2)C)/C", "inchikey": "OTIYLZVFQIMLQH-FRGMPSNRSA-N", "cid": "66559276", "error": ""}
+{"name": "carlactonoic acid", "smiles": "CC1=C(C(CCC1)(C)C)/C=C/C(=C\\O[C@H]2C=C(C(=O)O2)C)/C(=O)O", "inchikey": "WUBRWXCVIPHXLX-XMAHBSJYSA-N", "cid": "", "error": ""}
+{"name": "carvacrol", "smiles": "CC1=C(C=C(C=C1)C(C)C)O", "inchikey": "RECUKUPTGUEGMW-UHFFFAOYSA-N", "cid": "10364", "error": ""}
+{"name": "casbene", "smiles": "C/C/1=C\\CC/C(=C/C2C(C2(C)C)CC/C(=C/CC1)/C)/C", "inchikey": "ZJMVJDFTNPZVMB-QOCMWZQCSA-N", "cid": "5280437", "error": ""}
+{"name": "cascarilladiene (tested)", "smiles": "CC1CC(C2=CC(=CCC12C)C)C(C)C", "inchikey": "IVBZYUKCNLJUDA-UHFFFAOYSA-N", "cid": "570507", "error": ""}
+{"name": "castasterone", "smiles": "C[C@@H]([C@H]1CC[C@@H]2[C@@]1(CC[C@H]3[C@H]2CC(=O)[C@@H]4[C@@]3(C[C@H]([C@H](C4)O)O)C)C)[C@H]([C@@H]([C@@H](C)C(C)C)O)O", "inchikey": "VYUIKSFYFRVQLF-YLNAYWRASA-N", "cid": "133534", "error": ""}
+{"name": "cembratriene-ol (CBT-ol)", "smiles": "", "inchikey": "", "cid": "", "error": "not_found_after_3_strategies"}
+{"name": "chlortoluron", "smiles": "CC1=C(C=C(C=C1)NC(=O)N(C)C)Cl", "inchikey": "JXCGFZXSOMJFOA-UHFFFAOYSA-N", "cid": "27375", "error": ""}
+{"name": "cholesterol", "smiles": "C[C@H](CCCC(C)C)[C@H]1CC[C@@H]2[C@@]1(CC[C@H]3[C@H]2CC=C4[C@@]3(CC[C@@H](C4)O)C)C", "inchikey": "HVYWMOMLDIMFJA-DPAQBDIFSA-N", "cid": "5997", "error": ""}
+{"name": "chrysanthemol", "smiles": "CC(=CC1C(C1(C)C)CO)C", "inchikey": "HIPIENNKVJCMAP-UHFFFAOYSA-N", "cid": "110685", "error": ""}
+{"name": "chrysin", "smiles": "C1=CC=C(C=C1)C2=CC(=O)C3=C(C=C(C=C3O2)O)O", "inchikey": "RTIXKCRFFJGDFG-UHFFFAOYSA-N", "cid": "5281607", "error": ""}
+{"name": "chrysoeriol", "smiles": "COC1=C(C=CC(=C1)C2=CC(=O)C3=C(C=C(C=C3O2)O)O)O", "inchikey": "SCZVLDHREVKTSH-UHFFFAOYSA-N", "cid": "5280666", "error": ""}
+{"name": "cis-9,10-epoxystearic acid", "smiles": "CCCCCCCCC1C(O1)CCCCCCCC(=O)O", "inchikey": "IMYZYCNQZDBZBQ-UHFFFAOYSA-N", "cid": "15868", "error": ""}
+{"name": "clomazone", "smiles": "CC1(CON(C1=O)CC2=CC=CC=C2Cl)C", "inchikey": "KIEDNEWSYUYDSN-UHFFFAOYSA-N", "cid": "54778", "error": ""}
+{"name": "coniferaldehyde", "smiles": "COC1=C(C=CC(=C1)/C=C/C=O)O", "inchikey": "DKZBBWMURDFHNE-NSCUHMNNSA-N", "cid": "5280536", "error": ""}
+{"name": "coniferyl alcohol", "smiles": "COC1=C(C=CC(=C1)/C=C/CO)O", "inchikey": "JMFRWRFFLBVWSI-NSCUHMNNSA-N", "cid": "1549095", "error": ""}
+{"name": "coniferyl aldehyde", "smiles": "COC1=C(C=CC(=C1)/C=C/C=O)O", "inchikey": "DKZBBWMURDFHNE-NSCUHMNNSA-N", "cid": "5280536", "error": ""}
+{"name": "costunolide", "smiles": "C/C/1=C\\CC/C(=C/[C@@H]2[C@@H](CC1)C(=C)C(=O)O2)/C", "inchikey": "HRYLQFBHBWLLLL-AHNJNIBGSA-N", "cid": "5281437", "error": ""}
+{"name": "cucurbitadienol", "smiles": "C[C@H](CCC=C(C)C)[C@H]1CC[C@@]2([C@@]1(CC[C@@]3([C@H]2CC=C4[C@H]3CC[C@@H](C4(C)C)O)C)C)C", "inchikey": "WSPRAEIJBDUDRX-FBJXRMALSA-N", "cid": "14543446", "error": ""}
+{"name": "cysteine-indole-3-acetonitrile", "smiles": "", "inchikey": "", "cid": "", "error": "not_found_after_3_strategies"}
+{"name": "daidzein", "smiles": "C1=CC(=CC=C1C2=COC3=C(C2=O)C=CC(=C3)O)O", "inchikey": "ZQSIJRDFPHDXIC-UHFFFAOYSA-N", "cid": "5281708", "error": ""}
+{"name": "dehydroabietadienal", "smiles": "CC(C)C1=CC2=C(C=C1)[C@]3(CCC[C@@]([C@@H]3CC2)(C)C=O)C", "inchikey": "YCLCHPWRGSDZKL-SLFFLAALSA-N", "cid": "11694869", "error": ""}
+{"name": "dehydroabietadienol", "smiles": "CC(C)C1=CC2=C(C=C1)[C@]3(CCC[C@@]([C@@H]3CC2)(C)CO)C", "inchikey": "WSKGRAGZAQRSED-SLFFLAALSA-N", "cid": "15586718", "error": ""}
+{"name": "dehydroabietic acid", "smiles": "CC(C)C1=CC2=C(C=C1)[C@]3(CCC[C@@]([C@@H]3CC2)(C)C(=O)O)C", "inchikey": "NFWKVWVWBFBAOV-MISYRCLQSA-N", "cid": "94391", "error": ""}
+{"name": "delta-amyrin", "smiles": "C[C@@]12CC[C@@]3(C(=C1CC(CC2)(C)C)CC[C@H]4[C@]3(CC[C@@H]5[C@@]4(CC[C@@H](C5(C)C)O)C)C)C", "inchikey": "JOCIRBSYAYKMEF-YDPPSCFKSA-N", "cid": "12358447", "error": ""}
+{"name": "delta-cadinene", "smiles": "CC1=C[C@H]2[C@@H](CCC(=C2CC1)C)C(C)C", "inchikey": "FUCYIEXQVQJBKY-ZFWWWQNUSA-N", "cid": "441005", "error": ""}
+{"name": "delta-guaiene", "smiles": "C[C@H]1CCC2=C(CC[C@H](C[C@@H]12)C(=C)C)C", "inchikey": "YHAJBLWYOIUHHM-GUTXKFCHSA-N", "cid": "94275", "error": ""}
+{"name": "demethylsuberosin", "smiles": "CC(=CCC1=C(C=C2C(=C1)C=CC(=O)O2)O)C", "inchikey": "FIDUIAPDSKSUGO-UHFFFAOYSA-N", "cid": "5316525", "error": ""}
+{"name": "deoxyshikonin", "smiles": "CC(=CCCC1=CC(=O)C2=C(C=CC(=C2C1=O)O)O)C", "inchikey": "VOMDIEGPEURZJO-UHFFFAOYSA-N", "cid": "98914", "error": ""}
+{"name": "dihomoleucine", "smiles": "", "inchikey": "", "cid": "", "error": "not_found_after_3_strategies"}
+{"name": "dihomomethionine", "smiles": "CSCCCCC(C(=O)O)N", "inchikey": "FBWIRBFZWNIGJC-UHFFFAOYSA-N", "cid": "228215", "error": ""}
+{"name": "dihydrocamalexic acid", "smiles": "C1C(N=C(S1)C2=CNC3=CC=CC=C32)C(=O)O", "inchikey": "GTTVJFCVXYCPHB-UHFFFAOYSA-N", "cid": "17756752", "error": ""}
+{"name": "dihydroflavonols", "smiles": "C1=CC=C(C=C1)C2C(C(=O)C3=CC=CC=C3O2)O", "inchikey": "YEDFEBOUHSBQBT-UHFFFAOYSA-N", "cid": "147806", "error": ""}
+{"name": "dihydrokaempferol", "smiles": "C1=CC(=CC=C1[C@@H]2[C@H](C(=O)C3=C(C=C(C=C3O2)O)O)O)O", "inchikey": "PADQINQHPQKXNL-LSDHHAIUSA-N", "cid": "122850", "error": ""}
+{"name": "diterpenoid products of SiTPS8 (including syn-pimara-7,15-diene and related ent-/syn-copalyl pyrophosphate-derived diterpenes)", "smiles": "", "inchikey": "", "cid": "", "error": "not_found_after_3_strategies"}
+{"name": "dolabradiene", "smiles": "C[C@@]1(CC[C@@]2([C@@H](C1)CC[C@]3([C@H]2CCCC3=C)C)C)C=C", "inchikey": "GHYZJFFJSPZRIU-OUUBHVDSSA-N", "cid": "12309316", "error": ""}
+{"name": "ent-2'-epi-5-deoxystrigol", "smiles": "", "inchikey": "", "cid": "", "error": "not_found_after_3_strategies"}
+{"name": "ent-cassadiene", "smiles": "", "inchikey": "", "cid": "", "error": "not_found_after_3_strategies"}
+{"name": "ent-isokaurene", "smiles": "CC1=C[C@@]23CC[C@H]4[C@]([C@@H]2CC[C@@H]1C3)(CCCC4(C)C)C", "inchikey": "DQUHDYWUEKWRLN-HPUSYDDDSA-N", "cid": "12311059", "error": ""}
+{"name": "ent-kaurene", "smiles": "C[C@@]12CCCC([C@H]1CC[C@]34[C@H]2CC[C@H](C3)C(=C)C4)(C)C", "inchikey": "ONVABDHFQKWOSV-HPUSYDDDSA-N", "cid": "11966109", "error": ""}
+{"name": "ent-kaurenoic acid", "smiles": "C[C@@]12CCC[C@@]([C@H]1CC[C@]34[C@H]2CC[C@H](C3)C(=C)C4)(C)C(=O)O", "inchikey": "NIKHGUQULKYIGE-OTCXFQBHSA-N", "cid": "73062", "error": ""}
+{"name": "ent-sandaracopimaradiene", "smiles": "C[C@]1(CC[C@@H]2C(=C1)CC[C@H]3[C@]2(CCCC3(C)C)C)C=C", "inchikey": "XDSYKASBVOZOAG-LFGUQSLTSA-N", "cid": "12314278", "error": ""}
+{"name": "epikunzeaol", "smiles": "", "inchikey": "", "cid": "", "error": "not_found_after_3_strategies"}
+{"name": "eriodictyol", "smiles": "C1[C@H](OC2=CC(=CC(=C2C1=O)O)O)C3=CC(=C(C=C3)O)O", "inchikey": "SBHXYTNGIZCORC-ZDUSSCGKSA-N", "cid": "440735", "error": ""}
+{"name": "erythrodiol", "smiles": "C[C@]12CC[C@@H](C([C@@H]1CC[C@@]3([C@@H]2CC=C4[C@]3(CC[C@@]5([C@H]4CC(CC5)(C)C)CO)C)C)(C)C)O", "inchikey": "PSZDOEIIIJFCFE-OSQDELBUSA-N", "cid": "101761", "error": ""}
+{"name": "esculetin", "smiles": "C1=CC(=O)OC2=CC(=C(C=C21)O)O", "inchikey": "ILEDWLMCKZNDJK-UHFFFAOYSA-N", "cid": "5281416", "error": ""}
+{"name": "farnesene", "smiles": "CC(=CCC/C(=C/C/C=C(\\C)/C=C)/C)C", "inchikey": "CXENHBSYCFFKJS-VDQVFBMKSA-N", "cid": "5281516", "error": ""}
+{"name": "farnesol", "smiles": "CC(=CCC/C(=C/CC/C(=C/CO)/C)/C)C", "inchikey": "CRDAMVZIKSXKFV-YFVJMOTDSA-N", "cid": "445070", "error": ""}
+{"name": "fatty acid 9-hydroperoxides (9-hydroperoxy linoleic acid, 9-hydroperoxy linolenic acid)", "smiles": "", "inchikey": "", "cid": "", "error": "not_found_after_3_strategies"}
+{"name": "fatty acid 9-hydroperoxides (9-hydroperoxy linoleic and linolenic acids)", "smiles": "", "inchikey": "", "cid": "", "error": "not_found_after_3_strategies"}
+{"name": "fatty acid hydroperoxides", "smiles": "", "inchikey": "", "cid": "", "error": "not_found_after_3_strategies"}
+{"name": "fatty acid hydroperoxides (13-hydroperoxide of linolenic acid confirmed for related liverwort/algae AOS)", "smiles": "", "inchikey": "", "cid": "", "error": "not_found_after_3_strategies"}
+{"name": "fatty acid hydroperoxides (C18 and/or C20)", "smiles": "", "inchikey": "", "cid": "", "error": "not_found_after_3_strategies"}
+{"name": "fatty acid hydroperoxides (lipoxygenase-derived lipid hydroperoxides)", "smiles": "", "inchikey": "", "cid": "", "error": "not_found_after_3_strategies"}
+{"name": "fatty acid hydroperoxides (lipoxygenase-derived)", "smiles": "", "inchikey": "", "cid": "", "error": "not_found_after_3_strategies"}
+{"name": "fatty acid hydroperoxides (low activity)", "smiles": "", "inchikey": "", "cid": "", "error": "not_found_after_3_strategies"}
+{"name": "fatty acid hydroperoxides (substrate of allene oxide synthase in the JA biosynthesis pathway)", "smiles": "", "inchikey": "", "cid": "", "error": "not_found_after_3_strategies"}
+{"name": "fatty acids C12-C18", "smiles": "", "inchikey": "", "cid": "", "error": "not_found_after_3_strategies"}
+{"name": "fatty acids C12-C18:1", "smiles": "", "inchikey": "", "cid": "", "error": "not_found_after_3_strategies"}
+{"name": "ferruginol", "smiles": "CC(C)C1=C(C=C2C(=C1)CC[C@@H]3[C@@]2(CCCC3(C)C)C)O", "inchikey": "QXNWVJOHUAQHLM-AZUAARDMSA-N", "cid": "442027", "error": ""}
+{"name": "ferruginol or miltiradiene-derived abietane diterpenoid (C16-hydroxylation substrate; specific precursor requires fulltext for exact identity)", "smiles": "", "inchikey": "", "cid": "", "error": "not_found_after_3_strategies"}
+{"name": "ferulic acid", "smiles": "COC1=C(C=CC(=C1)/C=C/C(=O)O)O", "inchikey": "KSEBMYQBYZTDHS-HWKANZROSA-N", "cid": "445858", "error": ""}
+{"name": "feruperic acid (5-(4-hydroxy-3-methoxyphenyl)-2,4-pentadienoic acid)", "smiles": "", "inchikey": "", "cid": "", "error": "not_found_after_3_strategies"}
+{"name": "flavanones", "smiles": "", "inchikey": "", "cid": "", "error": "not_found_after_3_strategies"}
+{"name": "flavanones (Km 8.8–11.9 µM)", "smiles": "", "inchikey": "", "cid": "", "error": "not_found_after_3_strategies"}
+{"name": "flavanones (liquiritigenin, naringenin implied for IFS class)", "smiles": "C1[C@H](OC2=C(C1=O)C=CC(=C2)O)C3=CC=C(C=C3)O", "inchikey": "FURUXTVZLHCCNA-AWEZNQCLSA-N", "cid": "114829", "error": ""}
+{"name": "flavanones (naringenin, liquiritigenin implied by context)", "smiles": "C1[C@H](OC2=CC(=CC(=C2C1=O)O)O)C3=CC=C(C=C3)O", "inchikey": "FTVWIRXFELQLPI-ZDUSSCGKSA-N", "cid": "439246", "error": ""}
+{"name": "flavanones (naringenin, liquiritigenin implied for IFS class)", "smiles": "C1[C@H](OC2=CC(=CC(=C2C1=O)O)O)C3=CC=C(C=C3)O", "inchikey": "FTVWIRXFELQLPI-ZDUSSCGKSA-N", "cid": "439246", "error": ""}
+{"name": "flavanones (unspecified in abstract)", "smiles": "", "inchikey": "", "cid": "", "error": "not_found_after_3_strategies"}
+{"name": "flavones", "smiles": "", "inchikey": "", "cid": "", "error": "not_found_after_3_strategies"}
+{"name": "flavonols", "smiles": "C1=CC=C(C=C1)C2=C(C(=O)C3=CC=CC=C3O2)O", "inchikey": "HVQAJTFOCKOKIN-UHFFFAOYSA-N", "cid": "11349", "error": ""}
+{"name": "fluorescent chlorophyll catabolites (FCCs)", "smiles": "", "inchikey": "", "cid": "", "error": "not_found_after_3_strategies"}
+{"name": "formononetin", "smiles": "COC1=CC=C(C=C1)C2=COC3=C(C2=O)C=CC(=C3)O", "inchikey": "HKQYGTCOTHHOMP-UHFFFAOYSA-N", "cid": "5280378", "error": ""}
+{"name": "fraxetin (inferred from sideretin pathway)", "smiles": "COC1=C(C(=C2C(=C1)C=CC(=O)O2)O)O", "inchikey": "HAVWRBANWNTOJX-UHFFFAOYSA-N", "cid": "5273569", "error": ""}
+{"name": "friedelin", "smiles": "C[C@H]1C(=O)CC[C@@H]2[C@@]1(CC[C@H]3[C@]2(CC[C@@]4([C@@]3(CC[C@@]5([C@H]4CC(CC5)(C)C)C)C)C)C)C", "inchikey": "OFMXGFHWLZPCFL-SVRPQWSVSA-N", "cid": "91472", "error": ""}
+{"name": "furanocoumarins", "smiles": "", "inchikey": "", "cid": "", "error": "not_found_after_3_strategies"}
+{"name": "gamma-terpinene", "smiles": "CC1=CCC(=CC1)C(C)C", "inchikey": "YKFLAYDHMOASIY-UHFFFAOYSA-N", "cid": "7461", "error": ""}
+{"name": "genistein", "smiles": "C1=CC(=CC=C1C2=COC3=CC(=CC(=C3C2=O)O)O)O", "inchikey": "TZBJGXHYKVUXJN-UHFFFAOYSA-N", "cid": "5280961", "error": ""}
+{"name": "geraniol", "smiles": "CC(=CCC/C(=C/CO)/C)C", "inchikey": "GLZPCOQZEFWAFX-JXMROGBWSA-N", "cid": "637566", "error": ""}
+{"name": "geranylgeraniol (GGOH)", "smiles": "CC(=CCC/C(=C/CC/C(=C/CC/C(=C/CO)/C)/C)/C)C", "inchikey": "OJISWRZIEWCUBN-QIRCYJPOSA-N", "cid": "5281365", "error": ""}
+{"name": "geranylhydroquinone", "smiles": "CC(=CCC/C(=C/CC1=C(C=CC(=C1)O)O)/C)C", "inchikey": "ZSCRTFONTNMQBL-NTUHNPAUSA-N", "cid": "5281857", "error": ""}
+{"name": "germacra-1(10),4,11(13)-trien-12-oic acid (germacrene A acid)", "smiles": "C/C/1=C\\CC/C(=C/C[C@@H](CC1)C(=C)C(=O)O)/C", "inchikey": "IBJVPIJUFFVDBS-JBMXZMKISA-N", "cid": "25245825", "error": ""}
+{"name": "germacratrien-12-oic acid (germacrene A acid)", "smiles": "C/C/1=C\\CC/C(=C/C[C@@H](CC1)C(=C)C(=O)O)/C", "inchikey": "IBJVPIJUFFVDBS-JBMXZMKISA-N", "cid": "25245825", "error": ""}
+{"name": "germacrene A", "smiles": "C/C/1=C\\CC/C(=C/CC(CC1)C(=C)C)/C", "inchikey": "XMRKUJJDDKYUHV-SJRHNVSNSA-N", "cid": "5835162", "error": ""}
+{"name": "germacrene A acid", "smiles": "C/C/1=C\\CC/C(=C/C[C@@H](CC1)C(=C)C(=O)O)/C", "inchikey": "IBJVPIJUFFVDBS-JBMXZMKISA-N", "cid": "25245825", "error": ""}
+{"name": "germacrene D", "smiles": "C/C/1=C\\CCC(=C)/C=C/[C@@H](CC1)C(C)C", "inchikey": "GAIBLDCXCZKKJE-RXJOXMPGSA-N", "cid": "5317570", "error": ""}
+{"name": "germanicol", "smiles": "C[C@@]12CC[C@@]3([C@@H](C1=CC(CC2)(C)C)CC[C@H]4[C@]3(CC[C@@H]5[C@@]4(CC[C@@H](C5(C)C)O)C)C)C", "inchikey": "QMUXVPRGNJLGRT-PNTWTTAKSA-N", "cid": "122857", "error": ""}
+{"name": "hederagenin", "smiles": "C[C@]12CC[C@@H]([C@@]([C@@H]1CC[C@@]3([C@@H]2CC=C4[C@]3(CC[C@@]5([C@H]4CC(CC5)(C)C)C(=O)O)C)C)(C)CO)O", "inchikey": "PGOYMURMZNDHNS-MYPRUECHSA-N", "cid": "73299", "error": ""}
+{"name": "herniarin (C. hystrix only, low efficiency)", "smiles": "COC1=CC2=C(C=C1)C=CC(=O)O2", "inchikey": "LIIALPBMIOVAHH-UHFFFAOYSA-N", "cid": "10748", "error": ""}
+{"name": "hexahomomethionine", "smiles": "CSCCCCCCCCC(C(=O)O)N", "inchikey": "XVGBKWQWYRNGDG-UHFFFAOYSA-N", "cid": "25010766", "error": ""}
+{"name": "ibogamine", "smiles": "CC[C@H]1C[C@@H]2C[C@@H]3[C@H]1N(C2)CCC4=C3NC5=CC=CC=C45", "inchikey": "LRLCVRYKAFDXKU-YGOSVGOTSA-N", "cid": "100217", "error": ""}
+{"name": "indole", "smiles": "C1=CC=C2C(=C1)C=CN2", "inchikey": "SIKJAQJRHWYJAI-UHFFFAOYSA-N", "cid": "798", "error": ""}
+{"name": "indole-3-acetaldoxime", "smiles": "C1=CC=C2C(=C1)C(=CN2)C/C=N/O", "inchikey": "ZLIGRGHTISHYNH-WUXMJOGZSA-N", "cid": "5371769", "error": ""}
+{"name": "indole-3-carbonyl nitrile (ICN) pathway intermediate (unnamed in abstract)", "smiles": "C1=CC=C2C(=C1)C(=CN2)C(=O)C#N", "inchikey": "YWKCWNQLRJKTBZ-UHFFFAOYSA-N", "cid": "11355722", "error": ""}
+{"name": "indole-3-yl-methyl glucosinolate (I3M)", "smiles": "I[I-]I", "inchikey": "WRTMQOHKMFDUKX-UHFFFAOYSA-N", "cid": "105054", "error": ""}
+{"name": "indolin-2-one", "smiles": "C1C2=CC=CC=C2NC1=O", "inchikey": "JYGFTBXVXVMTGB-UHFFFAOYSA-N", "cid": "321710", "error": ""}
+{"name": "isoliquiritigenin", "smiles": "C1=CC(=CC=C1/C=C/C(=O)C2=C(C=C(C=C2)O)O)O", "inchikey": "DXDRHHKMWQZJHT-FPYGCLRLSA-N", "cid": "638278", "error": ""}
+{"name": "isopentenyladenine nucleotides (iP-type cytokinin nucleotides)", "smiles": "", "inchikey": "", "cid": "", "error": "not_found_after_3_strategies"}
+{"name": "isopimara-7,15-dienal", "smiles": "C[C@@]1(CC[C@H]2C(=CC[C@@H]3[C@@]2(CCC[C@@]3(C)C=O)C)C1)C=C", "inchikey": "NLLZQKHFTCHPED-VYJAJWGXSA-N", "cid": "12311183", "error": ""}
+{"name": "isopimara-7,15-dienol", "smiles": "C[C@@]1(CC[C@H]2C(=CC[C@@H]3[C@@]2(CCC[C@@]3(C)CO)C)C1)C=C", "inchikey": "DUEINKIQNGZKPL-VYJAJWGXSA-N", "cid": "15586712", "error": ""}
+{"name": "isoproturon", "smiles": "CC(C)C1=CC=C(C=C1)NC(=O)N(C)C", "inchikey": "PUIYMUZLKQOUOZ-UHFFFAOYSA-N", "cid": "36679", "error": ""}
+{"name": "jasmolone", "smiles": "CC/C=C/CC1=C(C(CC1=O)O)C", "inchikey": "SVRKACAGHUZSGU-SNAWJCMRSA-N", "cid": "5374699", "error": ""}
+{"name": "jasmone", "smiles": "CC/C=C\\CC1=C(CCC1=O)C", "inchikey": "XMLSXPIVAXONDL-PLNGDYQASA-N", "cid": "1549018", "error": ""}
+{"name": "jasmonoyl-L-isoleucine (JA-Ile)", "smiles": "CC/C=C\\C[C@@H]1[C@H](CCC1=O)CC(=O)N[C@@H]([C@@H](C)CC)C(=O)O", "inchikey": "IBZYPBGPOGJMBF-QRHMYKSGSA-N", "cid": "", "error": ""}
+{"name": "jasmonoyl-L-phenylalanine (JA-Phe)", "smiles": "", "inchikey": "", "cid": "", "error": "not_found_after_3_strategies"}
+{"name": "kaempferol", "smiles": "C1=CC(=CC=C1C2=C(C(=O)C3=C(C=C(C=C3O2)O)O)O)O", "inchikey": "IYRMWMYZSQPJKC-UHFFFAOYSA-N", "cid": "5280863", "error": ""}
+{"name": "kaurene", "smiles": "C[C@H]1CC23CC[C@H]4[C@]([C@@H]2CC[C@H]1C3)(C=CCC4(C)C)C", "inchikey": "IODSADAHQKFXES-CCJFMQDPSA-N", "cid": "3033942", "error": ""}
+{"name": "kaurenoic acid", "smiles": "C[C@@]12CCC[C@@]([C@H]1CC[C@]34[C@H]2CC[C@H](C3)C(=C)C4)(C)C(=O)O", "inchikey": "NIKHGUQULKYIGE-OTCXFQBHSA-N", "cid": "73062", "error": ""}
+{"name": "lanosterol", "smiles": "C[C@H](CCC=C(C)C)[C@H]1CC[C@@]2([C@@]1(CCC3=C2CC[C@@H]4[C@@]3(CC[C@@H](C4(C)C)O)C)C)C", "inchikey": "CAHGCLMLTWQZNJ-BQNIITSRSA-N", "cid": "246983", "error": ""}
+{"name": "lauric acid", "smiles": "CCCCCCCCCCCC(=O)O", "inchikey": "POULHZVOKOAJMA-UHFFFAOYSA-N", "cid": "3893", "error": ""}
+{"name": "lauric acid (C12:0)", "smiles": "CCCCCCCCCCCC(=O)O", "inchikey": "POULHZVOKOAJMA-UHFFFAOYSA-N", "cid": "3893", "error": ""}
+{"name": "levopimaradienol", "smiles": "CC(C)C1=CC[C@H]2C(=C1)CC[C@@H]3[C@@]2(CCC[C@@]3(C)CO)C", "inchikey": "CYOURYOZWLIJFB-LWYYNNOASA-N", "cid": "443475", "error": ""}
+{"name": "limonene", "smiles": "CC1=CCC(CC1)C(=C)C", "inchikey": "XMGQYMWWDOXHJM-UHFFFAOYSA-N", "cid": "22311", "error": ""}
+{"name": "linalool", "smiles": "CC(=CCCC(C)(C=C)O)C", "inchikey": "CDOSHBSSFJOMGT-UHFFFAOYSA-N", "cid": "6549", "error": ""}
+{"name": "linoleic acid", "smiles": "CCCCC/C=C\\C/C=C\\CCCCCCCC(=O)O", "inchikey": "OYHQOLUKZRVURQ-HZJYTTRNSA-N", "cid": "5280450", "error": ""}
+{"name": "linoleic acid (C18:2)", "smiles": "CCCCC/C=C\\C/C=C\\CCCCCCCC(=O)O", "inchikey": "OYHQOLUKZRVURQ-HZJYTTRNSA-N", "cid": "5280450", "error": ""}
+{"name": "linoleic acid 13-hydroperoxide (13-HPODE)", "smiles": "CCCCCC(/C=C/C=C\\CCCCCCCC(=O)O)OO", "inchikey": "JDSRHVWSAMTSSN-BSZOFBHHSA-N", "cid": "6437847", "error": ""}
+{"name": "linoleic acid 9-hydroperoxide (9-HPODE)", "smiles": "CCCCC/C=C/C=C/C(CCCCCCCC(=O)O)OO", "inchikey": "JGUNZIWGNMQSBM-SIGMCMEVSA-N", "cid": "5282856", "error": ""}
+{"name": "linolenic acid (C18:3)", "smiles": "CC/C=C\\C/C=C\\C/C=C\\CCCCCCCC(=O)O", "inchikey": "DTOSIQBPPRVQHS-PDBXOOCHSA-N", "cid": "5280934", "error": ""}
+{"name": "linuron", "smiles": "CN(C(=O)NC1=CC(=C(C=C1)Cl)Cl)OC", "inchikey": "XKJMBINCVNINCA-UHFFFAOYSA-N", "cid": "9502", "error": ""}
+{"name": "liquiritigenin", "smiles": "C1[C@H](OC2=C(C1=O)C=CC(=C2)O)C3=CC=C(C=C3)O", "inchikey": "FURUXTVZLHCCNA-AWEZNQCLSA-N", "cid": "114829", "error": ""}
+{"name": "lochnericine", "smiles": "CC[C@]12CC(=C3[C@@]4([C@H]1N(CC4)C[C@H]5[C@@H]2O5)C6=CC=CC=C6N3)C(=O)OC", "inchikey": "AUVZFRDLRJQTQF-KXEYLTKFSA-N", "cid": "11382599", "error": ""}
+{"name": "loganic acid", "smiles": "C[C@H]1[C@H](C[C@H]2[C@@H]1[C@@H](OC=C2C(=O)O)O[C@H]3[C@@H]([C@H]([C@@H]([C@H](O3)CO)O)O)O)O", "inchikey": "JNNGEAWILNVFFD-CDJYTOATSA-N", "cid": "89640", "error": ""}
+{"name": "loganin", "smiles": "C[C@H]1[C@H](C[C@H]2[C@@H]1[C@@H](OC=C2C(=O)OC)O[C@H]3[C@@H]([C@H]([C@@H]([C@H](O3)CO)O)O)O)O", "inchikey": "AMBQHHVBBHTQBF-UOUCRYGSSA-N", "cid": "87691", "error": ""}
+{"name": "long-chain fatty acids", "smiles": "", "inchikey": "", "cid": "", "error": "not_found_after_3_strategies"}
+{"name": "lubimin", "smiles": "C[C@@H]1C[C@@H](C[C@@H]([C@]12CC[C@H](C2)C(=C)C)C=O)O", "inchikey": "CEVNHRPKRNTGKO-ZSAUSMIDSA-N", "cid": "442383", "error": ""}
+{"name": "lup-19(21)-en-3-ol", "smiles": "", "inchikey": "", "cid": "", "error": "not_found_after_3_strategies"}
+{"name": "lupeol", "smiles": "CC(=C)[C@@H]1CC[C@]2([C@H]1[C@H]3CC[C@@H]4[C@]5(CC[C@@H](C([C@@H]5CC[C@]4([C@@]3(CC2)C)C)(C)C)O)C)C", "inchikey": "MQYXUWHLBZFQQO-QGTGJCAVSA-N", "cid": "259846", "error": ""}
+{"name": "lycosantalene", "smiles": "CC(=CCC/C(=C\\CCC1(C2CC3C1(C3C2)C)C)/C)C", "inchikey": "RWQXKZBEXSHTGG-GDNBJRDFSA-N", "cid": "154586123", "error": ""}
+{"name": "marneral", "smiles": "C[C@@H]1CCC(=C(C)C)[C@H]([C@]1(C)CC/C=C(\\C)/CC/C=C(\\C)/CCC=C(C)C)CCC=O", "inchikey": "VNBRFEUEYRHQBM-OPEBEUCHSA-N", "cid": "25001002", "error": ""}
+{"name": "marnerol", "smiles": "C[C@@H]1CCC(=C(C)C)[C@H]([C@]1(C)CC/C=C(\\C)/CC/C=C(\\C)/CCC=C(C)C)CCCO", "inchikey": "AARUWLXSIZJQDK-OPEBEUCHSA-N", "cid": "25000661", "error": ""}
+{"name": "medicagenic acid", "smiles": "C[C@@]12CC[C@@H]3[C@@]([C@H]1CC=C4[C@]2(CC[C@@]5([C@H]4CC(CC5)(C)C)C(=O)O)C)(C[C@@H]([C@@H]([C@@]3(C)C(=O)O)O)O)C", "inchikey": "IDGXIXSKISLYAC-WNTKNEGGSA-N", "cid": "65048", "error": ""}
+{"name": "medium-chain saturated fatty acids", "smiles": "", "inchikey": "", "cid": "", "error": "not_found_after_3_strategies"}
+{"name": "methyl carlactonoate", "smiles": "CC1=C(C(CCC1)(C)C)/C=C/C(=C\\O[C@H]2C=C(C(=O)O2)C)/C(=O)OC", "inchikey": "CKPATFHQOSFGEL-ULWPIZCHSA-N", "cid": "", "error": ""}
+{"name": "miltiradiene", "smiles": "CC(C)C1=CCC2=C(C1)CC[C@@H]3[C@@]2(CCCC3(C)C)C", "inchikey": "BGVUIJDZTQIJIO-AZUAARDMSA-N", "cid": "20837867", "error": ""}
+{"name": "monohomomethionine", "smiles": "", "inchikey": "", "cid": "", "error": "not_found_after_3_strategies"}
+{"name": "multiple diterpenoid substrates (24 total)", "smiles": "", "inchikey": "", "cid": "", "error": "not_found_after_3_strategies"}
+{"name": "myristic acid (C14:0)", "smiles": "CCCCCCCCCCCCCC(=O)O", "inchikey": "TUNFSRHWOTWDNC-UHFFFAOYSA-N", "cid": "11005", "error": ""}
+{"name": "myristicin", "smiles": "COC1=CC(=CC2=C1OCO2)CC=C", "inchikey": "BNWJOHGLIBDBOB-UHFFFAOYSA-N", "cid": "4276", "error": ""}
+{"name": "naringenin", "smiles": "C1[C@H](OC2=CC(=CC(=C2C1=O)O)O)C3=CC=C(C=C3)O", "inchikey": "FTVWIRXFELQLPI-ZDUSSCGKSA-N", "cid": "439246", "error": ""}
+{"name": "naringenin (implied; genistein produced in tobacco)", "smiles": "C1[C@H](OC2=CC(=CC(=C2C1=O)O)O)C3=CC=C(C=C3)O", "inchikey": "FTVWIRXFELQLPI-ZDUSSCGKSA-N", "cid": "439246", "error": ""}
+{"name": "neocembrene", "smiles": "C/C/1=C\\CC/C(=C/C[C@@H](CC/C(=C/CC1)/C)C(=C)C)/C", "inchikey": "VWSPQDDPRITBAM-KPGNMOGWSA-N", "cid": "5281384", "error": ""}
+{"name": "nerol", "smiles": "CC(=CCC/C(=C\\CO)/C)C", "inchikey": "GLZPCOQZEFWAFX-YFHOEESVSA-N", "cid": "643820", "error": ""}
+{"name": "nicosulfuron", "smiles": "CN(C)C(=O)C1=C(N=CC=C1)S(=O)(=O)NC(=O)NC2=NC(=CC(=N2)OC)OC", "inchikey": "RTCOGUMHFFWOJV-UHFFFAOYSA-N", "cid": "73281", "error": ""}
+{"name": "nicotine", "smiles": "CN1CCC[C@H]1C2=CN=CC=C2", "inchikey": "SNICXCGAKADSCV-JTQLQIEISA-N", "cid": "89594", "error": ""}
+{"name": "nitriles (various, low conversion)", "smiles": "", "inchikey": "", "cid": "", "error": "not_found_after_3_strategies"}
+{"name": "obtusifoliol", "smiles": "C[C@H]1[C@@H]2CCC3=C([C@]2(CC[C@@H]1O)C)CC[C@]4([C@]3(CC[C@@H]4[C@H](C)CCC(=C)C(C)C)C)C", "inchikey": "MMNYKQIDRZNIKT-VSADUBDNSA-N", "cid": "65252", "error": ""}
+{"name": "oleanane-type triterpenes", "smiles": "", "inchikey": "", "cid": "", "error": "not_found_after_3_strategies"}
+{"name": "oleanolic acid", "smiles": "C[C@]12CC[C@@H](C([C@@H]1CC[C@@]3([C@@H]2CC=C4[C@]3(CC[C@@]5([C@H]4CC(CC5)(C)C)C(=O)O)C)C)(C)C)O", "inchikey": "MIJYXULNPSFWEK-GTOFXWBISA-N", "cid": "10494", "error": ""}
+{"name": "oleic acid", "smiles": "CCCCCCCC/C=C\\CCCCCCCC(=O)O", "inchikey": "ZQPPMHVWECSIRJ-KTKRTIGZSA-N", "cid": "445639", "error": ""}
+{"name": "oleic acid (C18:1)", "smiles": "CCCCCCCC/C=C\\CCCCCCCC(=O)O", "inchikey": "ZQPPMHVWECSIRJ-KTKRTIGZSA-N", "cid": "445639", "error": ""}
+{"name": "orobanchol", "smiles": "CC1=C[C@@H](OC1=O)O/C=C/2\\[C@H]3[C@@H](C4=C([C@H]3OC2=O)C(CCC4)(C)C)O", "inchikey": "CDBBMEYPRMUMTR-RZXXLYMMSA-N", "cid": "10665247", "error": ""}
+{"name": "oxylubimin", "smiles": "C[C@@H]1[C@H]([C@@H](C[C@@H]([C@]12CC[C@H](C2)C(=C)C)C=O)O)O", "inchikey": "YIGYYGXJIDAEOF-OJVARPOJSA-N", "cid": "21594964", "error": ""}
+{"name": "p-coumaric acid", "smiles": "C1=CC(=CC=C1/C=C/C(=O)O)O", "inchikey": "NGSWKAQJJWESNS-ZZXKWVIFSA-N", "cid": "637542", "error": ""}
+{"name": "p-coumaroylquinate", "smiles": "", "inchikey": "", "cid": "", "error": "not_found_after_3_strategies"}
+{"name": "p-coumaroylshikimate", "smiles": "", "inchikey": "", "cid": "", "error": "not_found_after_3_strategies"}
+{"name": "p-hydroxyphenylacetaldoxime", "smiles": "C1=CC(=CC=C1C/C=N\\O)O", "inchikey": "TVXJJNJGTDWFLD-TWGQIWQCSA-N", "cid": "5459810", "error": ""}
+{"name": "palmitic acid (C16:0)", "smiles": "CCCCCCCCCCCCCCCC(=O)O", "inchikey": "IPCSVZSSVZVIGE-UHFFFAOYSA-N", "cid": "985", "error": ""}
+{"name": "penoxsulam", "smiles": "COC1=CN=C(N2C1=NC(=N2)NS(=O)(=O)C3=C(C=CC=C3OCC(F)F)C(F)(F)F)OC", "inchikey": "SYJGKVOENHZYMQ-UHFFFAOYSA-N", "cid": "11784975", "error": ""}
+{"name": "pentahomomethionine", "smiles": "CSCCCCCCCC(C(=O)O)N", "inchikey": "GYYOKOIBHIWNHE-UHFFFAOYSA-N", "cid": "25010767", "error": ""}
+{"name": "peregrinol", "smiles": "C[C@@H]1CC[C@@H]2[C@@]([C@]1(CC/C(=C/CO)/C)O)(CCCC2(C)C)C", "inchikey": "XFADQGUJWIMYJI-UEHSRLBXSA-N", "cid": "7092583", "error": ""}
+{"name": "phenylacetaldoxime", "smiles": "C1=CC=C(C=C1)CC=NO", "inchikey": "CXISHLWVCSLKOJ-UHFFFAOYSA-N", "cid": "99748", "error": ""}
+{"name": "phenylacetonitrile", "smiles": "C1=CC=C(C=C1)CC#N", "inchikey": "SUSQOBVLVYHIEX-UHFFFAOYSA-N", "cid": "8794", "error": ""}
+{"name": "phenylalanine-derived aldoxime", "smiles": "", "inchikey": "", "cid": "", "error": "not_found_after_3_strategies"}
+{"name": "phenylurea herbicides", "smiles": "", "inchikey": "", "cid": "", "error": "not_found_after_3_strategies"}
+{"name": "premnaspirodiene", "smiles": "C[C@@H]1CCC=C([C@]12CC[C@H](C2)C(=C)C)C", "inchikey": "WEZDOYDDKIHCLM-RBSFLKMASA-N", "cid": "14355861", "error": ""}
+{"name": "primary diterpene alcohol intermediates from class II diterpene synthase products (substrate promiscuity; specific diterpenol requires fulltext)", "smiles": "", "inchikey": "", "cid": "", "error": "not_found_after_3_strategies"}
+{"name": "primary oxidation products of CYP706A3 itself", "smiles": "", "inchikey": "", "cid": "", "error": "not_found_after_3_strategies"}
+{"name": "protopine", "smiles": "CN1CCC2=CC3=C(C=C2C(=O)CC4=C(C1)C5=C(C=C4)OCO5)OCO3", "inchikey": "GPTFURBXHJWNHR-UHFFFAOYSA-N", "cid": "4970", "error": ""}
+{"name": "pseudotropine", "smiles": "CN1[C@@H]2CC[C@H]1CC(C2)O", "inchikey": "CYHOMWAPJJPNMW-DHBOJHSNSA-N", "cid": "449293", "error": ""}
+{"name": "pseudotropine-derived intermediate (specific structure not named in abstract)", "smiles": "", "inchikey": "", "cid": "", "error": "not_found_after_3_strategies"}
+{"name": "psoralen", "smiles": "C1=CC(=O)OC2=CC3=C(C=CO3)C=C21", "inchikey": "ZCCUUQDIBDJBTK-UHFFFAOYSA-N", "cid": "6199", "error": ""}
+{"name": "rishitin", "smiles": "C[C@@H]1[C@H]([C@@H](CC2=C1C[C@@H](CC2)C(=C)C)O)O", "inchikey": "XSCYYIVXGBKTOC-GZZJDILISA-N", "cid": "108064", "error": ""}
+{"name": "sakuranetin", "smiles": "COC1=CC(=C2C(=O)C[C@H](OC2=C1)C3=CC=C(C=C3)O)O", "inchikey": "DJOJDHGQRNZXQQ-AWEZNQCLSA-N", "cid": "73571", "error": ""}
+{"name": "scopoletin", "smiles": "COC1=C(C=C2C(=C1)C=CC(=O)O2)O", "inchikey": "RODXRVNMMDRFIK-UHFFFAOYSA-N", "cid": "5280460", "error": ""}
+{"name": "scoulerine", "smiles": "COC1=C(C2=C(CC3C4=CC(=C(C=C4CCN3C2)OC)O)C=C1)O", "inchikey": "KNWVMRVOBAFFMH-UHFFFAOYSA-N", "cid": "22955", "error": ""}
+{"name": "simple coumarins", "smiles": "", "inchikey": "", "cid": "", "error": "not_found_after_3_strategies"}
+{"name": "sitosterol", "smiles": "CC[C@H](CC[C@@H](C)[C@H]1CC[C@@H]2[C@@]1(CC[C@H]3[C@H]2CC=C4[C@@]3(CC[C@@H](C4)O)C)C)C(C)C", "inchikey": "KZJWDPNRJALLNS-VJSFXXLFSA-N", "cid": "222284", "error": ""}
+{"name": "solavetivone", "smiles": "C[C@@H]1CC(=O)C=C([C@]12CC[C@H](C2)C(=C)C)C", "inchikey": "FGCUSSRGQNHZRW-UMVBOHGHSA-N", "cid": "442399", "error": ""}
+{"name": "sophoradiol", "smiles": "C[C@]12CC[C@@H](C([C@@H]1CC[C@@]3([C@@H]2CC=C4[C@]3(CC[C@@]5([C@H]4CC(C[C@H]5O)(C)C)C)C)C)(C)C)O", "inchikey": "ZEGUWBQDYDXBNS-FVFJQADASA-N", "cid": "9846221", "error": ""}
+{"name": "soyasapogenol B", "smiles": "C[C@]12CC[C@@H]([C@]([C@@H]1CC[C@@]3([C@@H]2CC=C4[C@]3(CC[C@@]5([C@H]4CC(C[C@H]5O)(C)C)C)C)C)(C)CO)O", "inchikey": "YOQAQNKGFOLRGT-UXXABWCISA-N", "cid": "115012", "error": ""}
+{"name": "stearic acid (C18:0)", "smiles": "CCCCCCCCCCCCCCCCCC(=O)O", "inchikey": "QIQXTHQIDYTFRH-UHFFFAOYSA-N", "cid": "5281", "error": ""}
+{"name": "steroidal glycoalkaloid biosynthesis intermediate (22-hydroxylation step substrate)", "smiles": "", "inchikey": "", "cid": "", "error": "not_found_after_3_strategies"}
+{"name": "steroidal glycoalkaloid biosynthesis intermediate (26-hydroxylation step substrate)", "smiles": "", "inchikey": "", "cid": "", "error": "not_found_after_3_strategies"}
+{"name": "strictosamide", "smiles": "C=C[C@@H]1[C@@H]2C[C@H]3C4=C(CCN3C(=O)C2=CO[C@H]1O[C@H]5[C@@H]([C@H]([C@@H]([C@H](O5)CO)O)O)O)C6=CC=CC=C6N4", "inchikey": "LBRPLJCNRZUXLS-IUNANRIWSA-N", "cid": "10345799", "error": ""}
+{"name": "strychnine", "smiles": "C1CN2CC3=CCO[C@H]4CC(=O)N5[C@H]6[C@H]4[C@H]3C[C@H]2[C@@]61C7=CC=CC=C75", "inchikey": "QMGVPVSNSZLJIA-FVWCLLPLSA-N", "cid": "441071", "error": ""}
+{"name": "sugiol", "smiles": "CC(C)C1=C(C=C2C(=C1)C(=O)C[C@@H]3[C@@]2(CCCC3(C)C)C)O", "inchikey": "IPEHJNRNYPOFII-AZUAARDMSA-N", "cid": "94162", "error": ""}
+{"name": "syn-pimara-7,15-diene", "smiles": "C[C@]1(CC[C@@H]2C(=CC[C@@H]3[C@@]2(CCCC3(C)C)C)C1)C=C", "inchikey": "VCOVNILQQQZROK-PIKOESSRSA-N", "cid": "10355909", "error": ""}
+{"name": "syn-pimaradiene", "smiles": "C[C@]1(CCC2C(=CCC3[C@@]2(CCCC3(C)C)C)C1)C=C", "inchikey": "VCOVNILQQQZROK-OTGCGEFBSA-N", "cid": "6432169", "error": ""}
+{"name": "tabersonine", "smiles": "CC[C@]12CC(=C3[C@@]4([C@H]1N(CC4)CC=C2)C5=CC=CC=C5N3)C(=O)OC", "inchikey": "FNGGIPWAZSFKCN-ACRUOGEOSA-N", "cid": "20485", "error": ""}
+{"name": "taraxasterol", "smiles": "C[C@H]1[C@@H]2[C@H]3CC[C@@H]4[C@]5(CC[C@@H](C([C@@H]5CC[C@]4([C@@]3(CC[C@]2(CCC1=C)C)C)C)(C)C)O)C", "inchikey": "XWMMEBCFHUKHEX-ZJJHUPNDSA-N", "cid": "115250", "error": ""}
+{"name": "taxa-4(20),11(12)-dien-5alpha-ol", "smiles": "CC1=C2CC[C@@]3(CC[C@@H](C(=C)[C@H]3C[C@@H](C2(C)C)CC1)O)C", "inchikey": "QHDGSWAXTYWVOP-ZNWBIBPKSA-N", "cid": "443485", "error": ""}
+{"name": "taxa-4(20),11(12)-dien-5alpha-yl acetate", "smiles": "CC1=C2CC[C@@]3(CC[C@@H](C(=C)[C@H]3C[C@@H](C2(C)C)CC1)OC(=O)C)C", "inchikey": "APIZAZFFQBVSJA-ZJDLJICXSA-N", "cid": "443486", "error": ""}
+{"name": "taxa-4(20),11(12)-diene", "smiles": "", "inchikey": "", "cid": "", "error": "not_found_after_3_strategies"}
+{"name": "taxa-4(5),11(12)-diene", "smiles": "CC1=C2CC[C@@]3(CCC=C([C@H]3C[C@@H](C2(C)C)CC1)C)C", "inchikey": "FRJSECSOXKQMOD-HQRMLTQVSA-N", "cid": "443484", "error": ""}
+{"name": "taxadienyl acetate (taxa-4(20),11(12)-dien-5alpha-yl acetate)", "smiles": "", "inchikey": "", "cid": "", "error": "not_found_after_3_strategies"}
+{"name": "taxoid (unspecified taxane substrate)", "smiles": "", "inchikey": "", "cid": "", "error": "not_found_after_3_strategies"}
+{"name": "taxusin (taxa-4(20),11(12)-dien-5alpha,9alpha,10beta,13alpha-tetraol tetraacetate)", "smiles": "CC1=C2[C@H]([C@@H]([C@@]3(CC[C@@H](C(=C)[C@H]3C[C@@H](C2(C)C)C[C@@H]1OC(=O)C)OC(=O)C)C)OC(=O)C)OC(=O)C", "inchikey": "SKJSIVQEPKBFTJ-HUWILPJBSA-N", "cid": "167825", "error": ""}
+{"name": "tetrahomomethionine", "smiles": "CSCCCCCCC(C(=O)O)N", "inchikey": "NBXNZQFZGOQQPE-UHFFFAOYSA-N", "cid": "25010768", "error": ""}
+{"name": "thalianol", "smiles": "C[C@H](CC/C=C(\\C)/CCC=C(C)C)[C@]1(CCC2=C1CC[C@@H]3[C@@]2(CC[C@@H](C3(C)C)O)C)C", "inchikey": "DGAGPZOBTQYNRE-VMSIWEJCSA-N", "cid": "25229600", "error": ""}
+{"name": "thymol", "smiles": "CC1=CC(=C(C=C1)C(C)C)O", "inchikey": "MGSRCZKZVOBKFT-UHFFFAOYSA-N", "cid": "6989", "error": ""}
+{"name": "tirucalla-7,24-dien-3beta-ol", "smiles": "C[C@@H](CCC=C(C)C)[C@@H]1CC[C@]2([C@]1(CC[C@H]3C2=CC[C@@H]4[C@@]3(CC[C@@H](C4(C)C)O)C)C)C", "inchikey": "DICCPNLDOZNSML-CEEMYSEHSA-N", "cid": "12302184", "error": ""}
+{"name": "trans-cinnamate", "smiles": "C1=CC=C(C=C1)/C=C/C(=O)[O-]", "inchikey": "WBYWAXJHAXSJNI-VOTSOKGWSA-M", "cid": "5957728", "error": ""}
+{"name": "trans-cinnamate (cinnamic acid)", "smiles": "C1=CC=C(C=C1)/C=C/C(=O)[O-]", "inchikey": "WBYWAXJHAXSJNI-VOTSOKGWSA-M", "cid": "5957728", "error": ""}
+{"name": "trans-cinnamic acid", "smiles": "C1=CC=C(C=C1)/C=C/C(=O)O", "inchikey": "WBYWAXJHAXSJNI-VOTSOKGWSA-N", "cid": "444539", "error": ""}
+{"name": "trihomomethionine", "smiles": "CSCCCCCC(C(=O)O)N", "inchikey": "UKDJCWUSWYBRDM-UHFFFAOYSA-N", "cid": "22266650", "error": ""}
+{"name": "tryptamine", "smiles": "C1=CC=C2C(=C1)C(=CN2)CCN", "inchikey": "APJYDQYYACXCRM-UHFFFAOYSA-N", "cid": "1150", "error": ""}
+{"name": "tyrosine-derived aldoxime", "smiles": "", "inchikey": "", "cid": "", "error": "not_found_after_3_strategies"}
+{"name": "ursane-type triterpenes", "smiles": "", "inchikey": "", "cid": "", "error": "not_found_after_3_strategies"}
+{"name": "ursolic acid", "smiles": "C[C@@H]1CC[C@@]2(CC[C@@]3(C(=CC[C@H]4[C@]3(CC[C@@H]5[C@@]4(CC[C@@H](C5(C)C)O)C)C)[C@@H]2[C@H]1C)C)C(=O)O", "inchikey": "WCGUUGGRBIKTOS-GPOJBZKASA-N", "cid": "64945", "error": ""}
+{"name": "valencene", "smiles": "C[C@@H]1CCC=C2[C@]1(C[C@@H](CC2)C(=C)C)C", "inchikey": "QEBNYNLSCGVZOH-NFAWXSAZSA-N", "cid": "9855795", "error": ""}
+{"name": "valerenadiene (secondary, from 2019 paper)", "smiles": "", "inchikey": "", "cid": "", "error": "not_found_after_3_strategies"}
+{"name": "vinorine", "smiles": "C/C=C\\1/CN2[C@H]3C[C@@H]1C4[C@@H]2C[C@]5([C@@H]4OC(=O)C)C3=NC6=CC=CC=C56", "inchikey": "CLDVMRAEPFQOSD-WEOXKLFPSA-N", "cid": "5281974", "error": ""}
+{"name": "vomilenine", "smiles": "C/C=C/1\\[C@@H]2C[C@H]3C4=NC5=CC=CC=C5[C@]46C[C@@H](C2[C@H]6OC(=O)C)N3[C@@H]1O", "inchikey": "BERYBAUEDCRDKM-FDHUPVAHSA-N", "cid": "11953806", "error": ""}
+{"name": "xanthotoxin", "smiles": "COC1=C2C(=CC3=C1OC=C3)C=CC(=O)O2", "inchikey": "QXKHYNVANLEOEG-UHFFFAOYSA-N", "cid": "4114", "error": ""}
+{"name": "zeinoxanthin", "smiles": "CC1=C(C(C[C@@H](C1)O)(C)C)/C=C/C(=C/C=C/C(=C/C=C/C=C(\\C)/C=C/C=C(\\C)/C=C/[C@H]2C(=CCCC2(C)C)C)/C)/C", "inchikey": "NBZANZVJRKXVBH-NHWXEJKLSA-N", "cid": "5281234", "error": ""}
+{"name": "zeinoxanthin (epsilon-ring)", "smiles": "CC1=C(C(C[C@@H](C1)O)(C)C)/C=C/C(=C/C=C/C(=C/C=C/C=C(\\C)/C=C/C=C(\\C)/C=C/[C@H]2C(=CCCC2(C)C)C)/C)/C", "inchikey": "NBZANZVJRKXVBH-NHWXEJKLSA-N", "cid": "5281234", "error": ""}
+{"name": "zeinoxanthin (epsilon-ring; primary in vivo substrate)", "smiles": "CC1=C(C(C[C@@H](C1)O)(C)C)/C=C/C(=C/C=C/C(=C/C=C/C=C(\\C)/C=C/C=C(\\C)/C=C/[C@H]2C(=CCCC2(C)C)C)/C)/C", "inchikey": "NBZANZVJRKXVBH-NHWXEJKLSA-N", "cid": "5281234", "error": ""}
