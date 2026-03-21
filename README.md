@@ -6,16 +6,21 @@
 
 EZSpecificity 是一个基于交叉注意力机制的 SE(3)-等变图神经网络，用于预测酶-底物特异性（Nature 2025）。本项目专注于 P450 细胞色素酶家族的特异性研究，系统性地评估、诊断并改进模型在 P450 家族上的表现。
 
-## 最新进展（2026-03-21）
+## 最新进展（2026-03-22）
 
-### 路径C：P450专属模型训练 🔄 C1-Step 2 dropout消融完成
-- **C1-Step 1 fixed基线**：Val AUC=0.7145 (ep16), Test AUC=0.7060。边修复未提升AUC
-- **C1-Step 2 dropout消融**（Cloud-2, 2×4090 DDP）：
-  - dropout=0.1：Val AUC=0.7216 (+0.007), **Test AUC=0.6936 (-0.012)**
-  - dropout=0.3：Val AUC=0.7397 (+0.025), **Test AUC=0.6959 (-0.010)**
-  - **结论**：Val改善未迁移到Test，Val-Test gap随dropout降低而增大（0.009→0.044）
-- **数据泄漏验证**：ESIBank all_split每个家族内酶/底物重叠0%，跨家族ID重用酶3.2%、底物1.6%
-- **下一步**：继续其他消融（lr/weight_decay/LR scheduler）
+### 路径C：P450专属模型训练 🔄 C2 P450全面数据集构建启动
+
+**C2 数据集构建**（2026-03-22启动）：
+- 完成68个P450相关数据库的Deep Research调研
+- **Phase 0 ✅**：ESIBank P450提取数据验证通过（12,329条, 367酶, 11,445底物）
+- **目标**：建立与`ESIBank/small_family/`结构一致的P450专属数据集，支持论文4种benchmark场景
+- **核心数据源**：⭐P450Rdb v2.0 (~10,957反应) + ⭐Plant P450 DB (874序列) + ⭐PCPD (181酶) + RCSB (682对) + ESIBank (12,329对) + CYPED (8,614序列) + EnzymeMap等
+- **Phase 1-2下载中**：预估本地~1-2GB
+
+**C1 架构优化**（可与C2并行）：
+- C1-Step 1 fixed基线：Val AUC=0.7145, **Test AUC=0.7060**
+- C1-Step 2 dropout消融：Val↑但**Test未迁移**（dropout改动不纳入Step 3）
+- 其他消融（lr/weight_decay）待Cloud-2夜间运行
 
 ### 路径A：模型评估 ✅ 已完成
 - AUC-ROC: **0.6636**（论文最难场景 0.7198，差距 -5.6%）
@@ -100,7 +105,7 @@ EZSpecificity_Project/
 |------|------|:----:|----------|
 | **A** | 用PDB实验结构评估模型 | ✅ 已完成 | AUC-ROC 0.6636 |
 | **B** | P450数据集构建+基线训练 | ✅ 全部完成 | **Test AUC=0.7244** > 论文 0.7198 |
-| **C** | P450专属模型训练 | 🔄 C1-Step 2 ✅ | dropout消融: Val↑但Test未迁移 |
+| **C** | P450专属模型训练 | 🔄 C2数据集构建启动 | C2: 68个DB调研完, Phase 0✅. C1: dropout消融Val↑Test未迁移 |
 | D | 区域选择性预测 | ⏳ 待定 | 高创新性 |
 
 ## 路径B详细进展（Step 1-9）

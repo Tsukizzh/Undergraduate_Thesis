@@ -110,45 +110,46 @@ Path C
 
 ---
 
-## 四、C2 数据集扩建
+## 四、C2 P450全面数据集构建（2026-03-22 重新规划）
 
-### C2-Step 1: P450 外部数据收集
+**目标**: 为P450建立与`ESIBank/small_family/Phosphatase/`同等规格的专属数据集，支持论文4种benchmark场景的4折交叉验证。
 
-**数据来源**:
-| 数据库 | 预估规模 | 说明 |
-|--------|---------|------|
-| Plant P450 DB | ~874 条 | 植物 P450 酶-底物对 |
-| P450Rdb | ~342 条 | P450 反应数据库 |
-| PCPD | ~181 条 | P450 催化产物数据库 |
-| PDB 新增结构 | 待评估 | 2025-2026 年新发表的 P450 晶体结构 |
+**详细计划**: 见 `C2_P450数据集构建/C2_计划与进度.md`
 
-**处理流程**: 收集 → 去重 → 与 ESIBank 对比排除重叠 → 质量过滤
+**工作目录**: `C2_P450数据集构建/`
 
----
+### 数据源（68个数据库调研，按优先级排序）
 
-### C2-Step 2: 结构预测 + 对接
+| 来源 | 预估规模 | 状态 |
+|------|---------|------|
+| ⭐ P450Rdb v2.0 | ~10,957反应, ~850酶, 400+物种 | 🔜 最高优先 |
+| ⭐ Plant P450 DB (ERDA) | 874序列(有底物注释) | 🔜 最高优先 |
+| ⭐ PCPD | 181植物P450酶 | 🔜 最高优先 |
+| RCSB PDB (已有) | 682对, 153酶 | ✅ |
+| ESIBank P450子集 (已有) | 12,329对, 367酶 | ✅ 已验证 |
+| CYPED + CPK | 8,614序列, 3,257化合物 | 🔜 |
+| EnzymeMap | 63K反应中P450子集 | 🔜 |
+| 其他A类(BM3/BRENDA/SABIO-RK等) | 见C2计划 | 🔜 |
 
-**方法**: 复用 Path B Step 3-4 的 Vina 对接管线
-- AlphaFold 预测缺失结构
-- Vina-GPU 对接生成酶-底物复合物
-- 口袋提取 + 配体对齐
+### 实施阶段
 
----
+| Phase | 内容 | 资源需求 | 状态 |
+|-------|------|---------|------|
+| Phase 0 | 审计ESIBank已有数据 | 本地 | ✅ 12,329条已验证 |
+| Phase 1-2 | 下载A类核心数据+B类化合物库 | 本地, ~1-2GB | 🔜 |
+| Phase 3 | 统一格式标准化 | 本地 | ⏳ |
+| Phase 4 | 合并去重+泄露检测 | 本地 | ⏳ |
+| Phase 5 | 负样本生成+4种Split | 本地 | ⏳ |
+| Phase 6 | 结构获取+对接 | Cloud-2 GPU | ⏳ |
+| Phase 7 | 特征生成+.pt缓存 | Cloud-2 GPU | ⏳ |
+| Phase 8 | 4种场景Benchmark+模型优化 | Cloud-2 GPU | ⏳ |
 
-### C2-Step 3: .pt 缓存增量生成
+### 关键决策
 
-**方法**: 使用 `build_pt_cache.py` 的增量模式
-- 新增酶 → ESM-2 → append 到 enzymes.bin
-- 新增底物 → GROVER/Morgan → append 到 substrates_grover.bin
-- 新增酶-底物对 → 生成 per-sample .pt 文件
-- 合并索引 index.pt
-
----
-
-### C2-Step 4: 扩充数据重训练
-
-**方法**: 使用 C1 最优架构 + 扩充数据集重新训练
-- 对比扩充前后的 AUC 变化
+- **负样本分三类**: positives.csv + biological.csv(抑制剂等) + generated.csv(随机配对)
+- **反应信息**: 有就记录(reactions.csv)，没有留空
+- **P450验证**: 必须用UniProt protein_families + InterPro域，不可用EC号
+- **最终输出**: 与`small_family/`结构一致，直接接入训练管线
 
 ---
 
@@ -161,8 +162,9 @@ Path C
 | 3/24-26 | C1-Step 2e: Fe 词汇表扩展 | Fe 扩展 ΔAUC |
 | 3/26-27 | C1-Step 3: 组合最优改动 | 最优组合 Test AUC |
 | 3/28-30 | C1-Step 4: 多 seed 验证 | mean ± std |
-| 3/31-4/3 | C2-Step 1-2: 数据收集 + 对接 | 扩充数据集 |
-| 4/3-5 | C2-Step 3-4: .pt 生成 + 重训练 | 最终 AUC |
+| 3/22-3/28 | C2 Phase 1-5: 数据收集+标准化+去重+Split | P450_Family数据集 |
+| 3/28-4/3 | C2 Phase 6-7: 对接+特征生成+.pt缓存 | 模型输入就绪 |
+| 4/3-5 | C2 Phase 8: 4种场景Benchmark+优化 | 最终 AUC |
 | 4/6-10 | 论文写作 | 完整论文草稿 |
 
 ---
@@ -201,7 +203,11 @@ Path C
 | C1-Step 2f | LR scheduler → auc/val | ⏳ | |
 | C1-Step 3 | 组合最优 | ⏳ | |
 | C1-Step 4 | 多 seed 验证 | ⏳ | |
-| C2-Step 1 | 数据收集 | ⏳ | |
-| C2-Step 2 | 结构+对接 | ⏳ | |
-| C2-Step 3 | .pt 增量生成 | ⏳ | |
-| C2-Step 4 | 扩充数据重训练 | ⏳ | |
+| C2 Phase 0 | 审计ESIBank已有数据 | ✅ 已完成 | 12,329条确认可用, 367/389酶 |
+| C2 Phase 1-2 | 数据下载(A类+B类) | 🔜 进行中 | 68个数据库调研完成, ⭐P450Rdb/PlantP450DB/PCPD最高优先 |
+| C2 Phase 3 | 格式标准化 | ⏳ | |
+| C2 Phase 4 | 合并去重 | ⏳ | |
+| C2 Phase 5 | 负样本+4种Split | ⏳ | |
+| C2 Phase 6 | 结构+对接 | ⏳ | |
+| C2 Phase 7 | 特征+.pt缓存 | ⏳ | |
+| C2 Phase 8 | 4种场景Benchmark | ⏳ | |
