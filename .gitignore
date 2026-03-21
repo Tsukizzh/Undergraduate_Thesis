@@ -82,5 +82,6 @@ nul
 !毕业设计/**/results/**/checkpoints/**/pt-*-ep27-*.ckpt
 # Large train logs
 毕业设计/**/results/**/train.log
+毕业设计/**/logs/**/*.log
 __pycache__/
 tmp_*
