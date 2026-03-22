@@ -1,0 +1,280 @@
+cyp_name,species,reason,num_pairs_lost
+SbCYP51G1,Sorghum bicolor,no_sequence,1
+TaCYP51G1,Triticum aestivum,no_sequence,1
+CYP71AH44,Strychnos nux-vomica,no_substrate (needs_fulltext),0
+CYP71B35,Withania somnifera,no_substrate (no_info),0
+CYP71C113,Hordeum vulgare,no_sequence,1
+CYP71D4,Solanum tuberosum,no_substrate (no_info),0
+CYP71D174,Perilla frutescens,no_sequence,1
+CYP71D184,Solanum habrochaites,no_sequence,1
+CYP71D353,Lotus japonicus,no_sequence,1
+CYP71D365,Euphorbia peplus,no_substrate (needs_fulltext),0
+CYP71D381,Coleus forskohlii,no_sequence,1
+CYP71L1,Hordeum vulgare,no_sequence,1
+CYP71Z2,Oryza sativa,no_sequence,1
+CYP71Z19,Zea mays,no_sequence,1
+SbCYP71Z19,Sorghum bicolor,no_sequence,2
+CYP71Z21,Oryza sativa,no_sequence,1
+CYP71AR1,Fragaria ananassa,no_sequence,1
+CYP71AU87,Marrubium volgare,no_sequence,1
+CYP71AV15,Lactuca sativa,no_substrate (needs_fulltext),0
+CYP71AX30,Xanthium strumarium,no_sequence,1
+CYP71AX36,Helianthus annuus,no_sequence,1
+CYP71BE85,Tripterygium wilfordii,no_sequence,1
+CYP71BE86,Tripterygium wilfordii,no_sequence,1
+CYP71BE131,Camptotheca acuminata,no_sequence,1
+CYP71BE206,Camptotheca acuminata,no_sequence,2
+CYP71BE207,Camptotheca acuminata,no_sequence,1
+CYP71BE208,Camptotheca acuminata,no_sequence,1
+CYP71BL9,Helianthus annuus,no_sequence,1
+CYP71BL10,Cichorium intybus,no_sequence,1
+CYP71BL11,Cichorium intybus,no_sequence,1
+CYP71BN1,Solanum lycopersicum,no_sequence,1
+CYP71BZ1,Tanacetum cinerariifolium,no_sequence,1
+CYP71BZ25,Cichorium intybus,no_sequence,1
+CYP71BZ26,Cichorium intybus,no_sequence,1
+CYP71BZ27,Cichorium intybus,no_sequence,1
+CYP71CU1,Podophyllum hexandrum,no_substrate (needs_fulltext),0
+CYP71DD1,Xanthium strumarium,no_sequence,1
+Lg BX5,Lamium galeobdolon,no_sequence,1
+CYP726A4,Euphorbia peplus,no_substrate (needs_fulltext),0
+CYP73A2,Phaseolus aureus,no_substrate (no_info),0
+CYP73A10,Petroselium crispum,no_sequence,1
+CYP73A48,Physcomitrella patens,no_sequence,1
+CYP73A92,Brachypodium distachyon,no_sequence,1
+CYP73A93,Brachypodium distachyon,no_sequence,1
+CYP73A94,Brachypodium distachyon,no_sequence,1
+CYP73A107,Podophyllum hexandrum,no_substrate (needs_fulltext),0
+CYP73A260,Anthoceros agrestis,no_substrate (needs_fulltext),0
+PtrC4H1,Populus trichocarpa,no_sequence,1
+PtrC4H2,Populus trichocarpa,no_sequence,1
+CsC4Hc,Camellia sinensis,no_sequence,1
+CYP75A1,Petunia hybrida,no_substrate (needs_fulltext),0
+CYP75A3,Petunia hybrida,no_substrate (needs_fulltext),0
+CYP75A19v2,Verbena hybrid (Temari),no_substrate (needs_fulltext),0
+CYP75A24,Clitoria ternatea,no_substrate (needs_fulltext),0
+CYP75B10,Torenia hybrida,no_sequence,4
+PvCYP75B11,Panicum virgatum,no_sequence,1
+CYP75B23,Glycine max,no_substrate (no_info),0
+CYP75B81,Citrus clementina,no_sequence,1
+CYP75B97,Sorghum bicolor cv DK18,no_substrate (needs_fulltext),0
+GQ479805,Helichrysum bracteatum,no_sequence,2
+Bn F3'H-1,Brassica napus,no_sequence,1
+Gt F3'H,Gentiana triflora,no_sequence,4
+Eg F3H,Eustoma grandiflorum,no_substrate (needs_fulltext),0
+Rc MF3H'1,Rubus coreanus,no_substrate (no_info),0
+Sb F3'H1,Sorghum bicolor,no_sequence,2
+Sb F3'H2,Sorghum bicolor,no_sequence,2
+Os F3'H,Oryza sativa,no_sequence,2
+Mt FBH-1,Medicago truncatula,no_substrate (needs_fulltext),0
+Mt FBH-2,Medicago truncatula,no_substrate (needs_fulltext),0
+Mt FBH-4,Medicago truncatula,no_substrate (needs_fulltext),0
+Mt FBH-5,Medicago truncatula,no_substrate (needs_fulltext),0
+Ms FBH-4,Medicago sativa,no_substrate (needs_fulltext),0
+Ms FBH-10,Medicago sativa,no_substrate (needs_fulltext),0
+CYP76B100,Lithospermum erythrorhizon,no_sequence,1
+CYP76B101,Lithospermum erythrorhizon,no_sequence,1
+CYP76F12,Vitis vinifera,no_substrate (needs_fulltext),0
+CYP76M2,Oryza sativa,no_substrate (no_info),0
+CYP76M10,Oryza sativa,no_substrate (no_info),0
+CYP76S40,Origanum vulgare,no_sequence,2
+CYP76T21,Vitis vinifera,no_substrate (needs_fulltext),0
+CYP76AD15,Mirabilis jalapa,no_substrate (needs_fulltext),0
+CYP76AD27,Beta vulgaris var. cicla,no_sequence,1
+CYP76AH4,Rosmarinus officinalis,no_sequence,1
+CYP78A5,Arabidopsis thaliana,no_substrate (needs_fulltext),0
+CYP78A7,Arabidopsis thaliana,no_substrate (needs_fulltext),0
+CYP78A10,Arabidopsis thaliana,no_substrate (needs_fulltext),0
+CYP81A37,Zea mays,no_sequence,1
+CYP81A38,Zea mays,no_sequence,1
+CYP81A39,Zea mays,no_sequence,2
+CYP81Q19,Momordica charantia,no_sequence,1
+CYP81Q58,Cucumis sativus,no_substrate (needs_fulltext),0
+Cm180,Cucumis melo,no_sequence,1
+Cl180,Cucumis lanatus,no_sequence,1
+CYP81AM1,Tripterygium wilfordii,no_sequence,1
+SrKAH,Stevia rebaudiana,no_sequence,1
+As BX5,Aphelandra squarrosa,no_substrate (needs_fulltext),0
+CYP82A3,Glycine max,no_substrate (no_info),0
+Sbar CYP82D1,Scutellaria barbata,no_sequence,2
+Sbar CYP82D2,Scutellaria barbata,no_sequence,1
+Sbai CYP82D4,Scutellaria baicalensis,no_sequence,2
+Sbai CYP82D5,Scutellaria baicalensis,no_sequence,2
+Sbar CYP82D5,Scutellaria barbata,no_sequence,2
+Sbai CYP82D6,Scutellaria baicalensis,no_sequence,2
+Sbar CYP82D6,Scutellaria barbata,no_sequence,2
+Sbai CYP82D7,Scutellaria baicalensis,no_sequence,2
+Sbar CYP82D7,Scutellaria barbata,no_sequence,2
+Sbai CYP82D8,Scutellaria baicalensis,no_sequence,2
+Sbar CYP82D7,Scutellaria barbata,no_sequence,2
+Sbar CYP82D9,Scutellaria barbata,no_sequence,2
+CYP82D47,Camellia sinensis,no_sequence,1
+CYP82D64,Citrus paradisi and Citrus hystrix,no_sequence,1
+CYP82D109,Gossypium hirsutum,no_substrate (needs_fulltext),0
+CYP82D274,Tripterygium wilfordii,no_sequence,1
+CYP82D367,Strychnos nux-vomica,no_substrate (needs_fulltext),0
+CYP82E21,Nicotiana tabacum,no_sequence,1
+CYP82S18,Rauwolfia serpentina,no_sequence,2
+CYP82AR2,Lithospermum erythrorhizon,no_sequence,1
+OsF5HL1,Oryza sativa,no_substrate (needs_fulltext),0
+OsF5HL2,Oryza sativa,no_substrate (needs_fulltext),0
+As BX4,Aphelandra squarrosa,no_substrate (needs_fulltext),0
+Lg BX4,Lamium galeobdolon,no_sequence,1
+CYP92A46,Scoparia dulcis,no_substrate (needs_fulltext),0
+Wr BX4,Wrightia religiosa,no_sequence,1
+Ai BX4,Acanthus ilicifolius,no_sequence,1
+CYP93B3,Antirrhinum majus,no_sequence,1
+CYP93B10,Medicago truncatula,no_sequence,1
+CYP93B11,Medicago truncatula,no_sequence,1
+CYP93B13,Gentiana triflora,no_sequence,2
+CYP93C5,Glycine max,no_sequence,2
+CYP93C17,Lotus japonicus,no_sequence,1
+CYP93C18,Pisum sativum,no_substrate (needs_fulltext),0
+CYP93C20,Medicago truncatula,no_sequence,1
+IFS-Tp,Trifolium pratense,no_substrate (no_info),0
+LjCYP93E1,Lotus japonicus,no_sequence,1
+CYP93E3,Glycyrrhiza,no_substrate (needs_fulltext),0
+CYP93G3,Sorghum bicolor,no_sequence,2
+CYP93G5,Zea maize,no_sequence,2
+CYP93G7,Zea maize,no_sequence,2
+CYP93G10,Zea maize,no_sequence,1
+CYP93G15,Zea maize,no_sequence,2
+CYP98A4,Brachypodium distachyon,no_sequence,1
+CYP98A23,Populus trichocarpa,no_sequence,2
+CYP98A27,Populus trichocarpa,no_sequence,2
+CYP98A34,Physcomitrella patens,no_sequence,1
+CYP98A68,Podophyllum hexandrum,no_substrate (no_info),0
+CYP98A84,Amborella trichopoda,no_sequence,2
+CYP98A85,Amborella trichopoda,no_sequence,6
+CYP98A111,Phacelia campanularia,no_substrate (partial),0
+CYP98A112,Phacelia campanularia,no_substrate (partial),0
+CYP98A113,Phacelia campanularia,no_substrate (partial),0
+PtrC3H3,Populus trichocarpa,no_sequence,2
+CYP701A26,Zea mays,no_sequence,1
+TwKO,Tripterygium wilfordii,no_sequence,2
+KO75,na,no_sequence,1
+CYP706C2,Oryza sativa,no_sequence,1
+CYP706C37,Zea mays,no_sequence,2
+CYP706V2,Isodon rubescens,no_sequence,1
+CYP706V3,Isodon rubescens,no_sequence,1
+CYP706V4,Isodon rubescens,no_sequence,1
+CYP706V6,Isodon rubescens,no_sequence,1
+CYP706V7,Isodon rubescens,no_sequence,1
+CYP706V8,Isodon rubescens,no_sequence,1
+CYP706V9,Isodon rubescens,no_sequence,1
+CYP706V15,Isodon rubescens,no_sequence,1
+CYP706V16,Isodon rubescens,no_sequence,1
+EbCYP706X,Erigeron breviscapus,no_sequence,1
+CYP712G1,Solanum lycopersicum,no_sequence,1
+CYP705A12,Arabidopsis thaliana,no_substrate (partial),0
+CYP719A6,Aquilegia formosa,no_sequence,2
+CYP719A7,Aquilegia Formosa,no_sequence,2
+CYP719A20,Papaver somniferum,no_sequence,1
+CYP719A25,Papaver somniferum,no_sequence,1
+CYP719A26,Piper methysticum,no_substrate (needs_fulltext),0
+CYP719A38,Corydalis yanhusuo,no_sequence,2
+CYP719A39,Corydalis yanhusuo,no_sequence,2
+CYP719A40,Corydalis yanhusuo,no_sequence,1
+CYP719A41,Corydalis yanhusuo,no_sequence,2
+CYP719A42,Corydalis yanhusuo,no_sequence,2
+Sca-2,Sanguinaria canadensis,no_sequence,2
+Gfl-3,Glaucium flavum,no_sequence,2
+Cma-4,Chelidonium majus,no_substrate (needs_fulltext),0
+Sdi-4,Stylophorum diphyllum,no_substrate (needs_fulltext),0
+Pbr-3,Papaver bracteatum,no_substrate (needs_fulltext),0
+Sca-3,Sanguinaria canadensis,no_substrate (needs_fulltext),0
+Cma-3,Chelidonium majus,no_substrate (needs_fulltext),0
+Gfl-2,Glaucium flavum,no_substrate (needs_fulltext),0
+Ndo-6,Nandina bracteatum,no_substrate (needs_fulltext),0
+Cch-4,Corydalis cheilanthifolia,no_substrate (needs_fulltext),0
+Cch-2,Corydalis cheilanthifolia,no_substrate (needs_fulltext),0
+Cch-3,Corydalis cheilanthifolia,no_substrate (needs_fulltext),0
+Ndo-2,Nandina domestica,no_substrate (needs_fulltext),0
+Xsi-2,Xanthorhiza simplicissima,no_substrate (needs_fulltext),0
+Hca-1,Hydrastis canadensis,no_substrate (needs_fulltext),0
+Xsi-1,Xanthorhiza simplicissima,no_substrate (needs_fulltext),0
+Cch-1,Corydalis cheilanthifolia,no_substrate (needs_fulltext),0
+Ndo-4,Nandina domestica,no_substrate (needs_fulltext),0
+Gfl-1,Glaucium flavum,no_substrate (needs_fulltext),0
+Sca-1,Sanguinaria canadensis,no_sequence,1
+Sdi-1,Stylophorum diphyllum,no_sequence,3
+Sdi-2,Stylophorum diphyllum,no_sequence,2
+Cma-2,Chelidonium majus,no_sequence,2
+CYP736A2,Lotus japonicus,no_sequence,3
+CYP736A107,Sorbus aucuparia,no_sequence,1
+CYP736A300,Origanum vulgare,no_sequence,2
+CYP736A304,Nicotiana attenuata,no_sequence,1
+CYP736A305,Nicotiana attenuata,no_sequence,1
+CYP867E38,Ginkgo biloba,no_sequence,1
+CYP867K1,Ginkgo biloba,no_sequence,1
+NnCYP72A1,Nothapodytes nimmoniana,no_sequence,1
+CYP72A17,Oryza sativa,no_sequence,1
+CYP72A24,Oryza sativa,no_sequence,1
+CYP72A66v2,Madicago truncatula,no_sequence,1
+CYP72A135,Glycine max,no_sequence,4
+CYP72A151,Glycone max,no_sequence,1
+CYP72A186,"Solanum lycopersicum, Solanum tuberosum",no_substrate (needs_fulltext),0
+CYP72A262,Brassica rapa,no_sequence,4
+CYP72A272,Brassica rapa,no_sequence,3
+CYP72A484,Capsella rubella,no_sequence,3
+CYP72A485,Capsella rubella,no_sequence,1
+CYP72A567,Psammosilene tunicoides,no_sequence,1
+KAH82,na,no_sequence,1
+CYP74A1,Arabidopsis thaliana,no_sequence,2
+LeAOS,Lycopersicon esculentum,no_sequence,2
+CYP74B4,Medicago sativa,no_sequence,2
+CYP74C1,Cucumis sativus,no_sequence,1
+CYP74C2,Cucumis melo,no_sequence,1
+MtCYP74C3,Medicago truncatula,no_sequence,4
+CYP74C13,Medicago truncatula,no_sequence,3
+CYP74C31,Cucumis sativus,no_sequence,1
+CYP74H2,Asparagus officinalis,no_sequence,4
+CYP85A69,Withania somnifera,no_sequence,1
+CYP85A,Zea maize,no_sequence,2
+CYP87A103,Calotropis procera,no_sequence,3
+CYP87A106,Digitalis purpurea,no_sequence,3
+CYP87A106,Erysimum cheiranthoides,no_sequence,3
+CYP87D18,Siraitia grosvenorii,no_substrate (needs_fulltext),0
+CYP87D20,Cucumis sativus,no_sequence,1
+Cm890,Cucumis melo,no_sequence,1
+Cl890A,Citrullus lanatus,no_sequence,1
+Cl890B,Citrullus lanatus,no_sequence,1
+CYP88L2,Cucumis sativus,no_sequence,1
+CYP88L7,Momordica charantia,no_sequence,1
+CYP88L8,Momordica charantia,no_sequence,1
+CYP90B71,Dioscorea zingiberensis,no_sequence,1
+CYP90G6,Dioscorea zingiberensis,no_sequence,1
+CYP70815v2,Iberis amara,no_sequence,1
+CYP70816,Iberis amara,no_sequence,1
+CYP716A113v1,Aquilegia coerulea,no_substrate (no_info),0
+CYP716A175,Malus domestica,no_sequence,4
+CYP716A180,Betula platyphylla,no_sequence,1
+CYP716A254,Anemone flaccida,no_sequence,1
+CYP716A262,Psammosilene tunicoides,no_sequence,1
+HaCYPi3,Helicteres angustifolia,no_sequence,1
+CYP720B31,Ginkgo biloba,no_substrate (needs_fulltext),0
+CYP722C,Lotus japonicus,no_sequence,1
+VuCYP722C,Vigna unguiculata,no_sequence,1
+SlCYP722C,Solanum lycopersicum,no_sequence,1
+GaCYP722,Gossypium arboreum,no_sequence,1
+CYP728B35,Sorghum bicolor,no_sequence,1
+CYP728B70,Tripterygium wilfordii,no_sequence,1
+CYP7005C1,Ginkgo biloba,no_sequence,1
+CYP7005C3,Ginkgo biloba,no_sequence,1
+CYP86C3,Arabidopsis thaliana,no_substrate (needs_fulltext),0
+CYP94D143,Dioscorea zingiberensis,no_sequence,1
+CYP94D144,Dioscorea zingiberensis,no_substrate (needs_fulltext),0
+CYP94N8,Dioscorea zingiberensis,no_sequence,1
+CYP97A4,Oryza sativa,no_sequence,2
+CYP710A13,Physcomitrella patens,no_sequence,1
+CYP710A14,Physcomitrella patens,no_sequence,1
+CYP711A2,Oryza sativa,no_sequence,1
+CYP711A3,Oryza sativa,no_sequence,1
+CYP711A7,Populus trichocarpa,no_sequence,1
+CYP711A8,Populus trichocarpa,no_sequence,1
+SbCYP711A13,Sorghum bicolor,no_sequence,1
+SbCYP711A18,Sorghum bicolor,no_sequence,1
+CYP711A19,Zea mays,no_sequence,1
+SbCYP711A19,Sorghum bicolor,no_sequence,1
+CYP711A21,Solanum lycopersicum,no_sequence,1
+CYP711A31,Sorghum bicolor,no_sequence,1

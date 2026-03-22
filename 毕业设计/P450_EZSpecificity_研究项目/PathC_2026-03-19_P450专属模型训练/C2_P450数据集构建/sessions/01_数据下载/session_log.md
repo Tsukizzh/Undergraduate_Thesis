@@ -433,71 +433,233 @@ Figshare "Curated CYP450 Interaction Dataset"（article 26630515, Scientific Dat
 
 ### 8.1 数据来源
 
-Plant Cytochrome P450 Database，哥本哈根大学维护，托管在 ERDA（`erda.dk/public/vgrid/PlantP450/`）。收录"已知有内源底物的植物 P450"。
+Plant Cytochrome P450 Database，哥本哈根大学维护，托管在 ERDA（`erda.dk/public/vgrid/PlantP450/`）。收录"已知有内源底物的植物 P450"，是植物 P450 领域最权威的分类数据库。
 
 引用论文：Hansen et al. (2021) Molecular Plant 14:1244-1265
 
-### 8.2 提取过程
+数据库特点：
+- 913 个条目，每个条目 = 一个 CYP 基因（CYP名+物种+Clan/Family）
+- 详情页包含 Function、Compound class、Pathway、Accession、References、DOIs
+- 底物信息分散在文献中，不是结构化字段，需要从论文中提取
 
-**Step 1：爬取列表页**
+### 8.2 提取过程（多轮 agent 协作）
+
+整个提取过程分 8 步，历时多个会话，涉及 20+ 个子 agent 并行工作。
+
+#### Step 1：爬取列表页
 - 主页 table.html 有 913 个条目（CYP名+物种+Clan/Family）
 - 每个条目有详情页（`sub/{CYP名}.html`），包含 Function、Compound class、Pathway、Accession、References、DOIs
 
-**Step 2：爬取全部 910 个详情页**
+#### Step 2：爬取全部 910 个详情页
+- 3 个条目页面不存在，实际爬取 910 个
 - 数据完整度：72.2% 有 Compound class，27.7% 有 Function，99.7% 有 DOI
 - Function 字段含有底物信息的只有 252 条，其余需从论文确认
 
-**Step 3：获取 567 篇论文摘要**
-- 567 个唯一 DOI → PubMed 获取摘要
-- 成功 546 篇（PubMed），补充 20 篇（CrossRef），1 篇失败
+#### Step 3：获取 567 篇论文摘要
+- 910 条条目引用了 567 个唯一 DOI
+- PubMed 获取摘要成功 546 篇，CrossRef 补充 20 篇，1 篇失败
 - 保存在 `downloads/PlantP450DB/abstracts.jsonl`
 
-**Step 4：20 个子 agent 并行分析摘要**
-- 910 条分 20 组，每组 ~46 条，并行分析
-- 规则：只提取摘要中明确写了的底物，不确定的标记 needs_fulltext
-- 结果：589 条 found (64.7%)，310 条 needs_fulltext，11 条 no_info
+#### Step 4：20 个子 agent 并行分析摘要
+- 910 条分 20 组，每组 ~46 条，并行调用 agent 分析
+- 每个 agent 的任务：读取条目的 Function/Compound class 字段 + 对应论文摘要，判断能否确定底物
+- 规则：只提取摘要中明确写了的底物名称，不确定的标记 needs_fulltext
+- 结果统计：
+  - 589 条 found (64.7%) — 从摘要中找到了具体底物
+  - 310 条 needs_fulltext — 摘要信息不足，需要看全文
+  - 11 条 no_info — 完全没有底物相关信息
 
-**Step 5：获取 OA 全文**
-- Unpaywall 查询：125 篇论文中 76 篇有开放获取版本
-- PMC + HTML 方式下载成功 52 篇全文
+#### Step 5：获取开放获取全文
+- 310 条 needs_fulltext 涉及 125 篇唯一论文
+- Unpaywall API 查询：76 篇有开放获取版本
+- 下载方式：PMC XML + 期刊 HTML 两个通道
+- 最终成功下载 52 篇全文，覆盖 130 条 needs_fulltext 记录
+- 保存在 `downloads/PlantP450DB/track2_fulltext/fulltext.jsonl`
 
-**Step 6：9 个子 agent 分析全文**
-- 52 篇全文覆盖 130 条 needs_fulltext
-- 额外找到 92 条底物信息
+#### Step 6：9 个子 agent 分析全文
+- 52 篇全文分 9 组，并行分析
+- 每个 agent 读取全文内容，寻找 CYP 对应的底物名称和催化反应描述
+- 结果：额外找到 88 条底物信息（从 needs_fulltext → found）
+- 全文分析比摘要分析多找到约 68% 的底物信息
 
-**Step 7：质量验证**
-- 对 44 条疑似 agent 推断（非摘要直接证据）的条目，用 2 个子 agent 重新验证
-- 结果：4 条 verified，33 条 plausible（合理但非直接证据），7 条 rejected（改回 needs_fulltext）
+#### Step 7：用户手动下载 PDF + PDF 分析
+- 剩余 70 篇论文需要用户手动下载（付费期刊，无 OA 版本）
+- 用户实际下载了 61 篇 PDF（11 篇 Science/Nature 论文无法获取）
+- 10 个子 agent 并行分析 61 篇 PDF
+- 结果：额外找到 132 条底物信息
+- 部分论文虽有下载但内容与目标 CYP 不直接相关
 
-**Step 8：底物名称转 SMILES**
-- 432 个唯一底物名称 → PubChem + KEGG 查询
-- 4 轮查询（原始名 → 清洗名 → 括号内简称 → 缩写词）
-- 成功 336 个 (77.8%)，失败 96 个（57 个化合物类别 + 39 个专业中间产物）
+#### Step 8：质量验证（QC）
+- 对 44 条疑似 agent 推断（非文献直接证据）的条目进行复核
+- 2 个子 agent 重新审查，对照原始文献判断可靠性
+- 结果：
+  - 4 条 verified（确认正确）
+  - 33 条 plausible（合理推断但非直接证据，保留使用）
+  - 7 条 rejected（证据不足，改回 needs_fulltext）
+- 最终 plausible 条目保留为正样本（来源标记为 plausible）
 
-### 8.3 当前结果
+#### Step 9：底物名称转 SMILES（多轮查询）
+
+**第一阶段（Session 1, 2026-03-22）：4 轮查询**
+- 从 found 条目中提取 432 个唯一底物名称
+- 查询策略（4轮递进）：
+  1. 原始名称 → PubChem 精确匹配
+  2. 清洗名称（去除括号内修饰语、统一大小写）→ PubChem
+  3. 括号内简称单独查（如 "flavanone (naringenin)" → 查 naringenin）
+  4. 缩写词展开（如 GA12 → gibberellin A12）→ PubChem + KEGG
+- 结果：336 个成功 (77.8%)，96 个失败
+- 但只覆盖了 432/480 个底物名（PDF/全文提取的 127 个新名字未查询）
+
+**第二阶段（Session 2, 2026-03-23）：完整覆盖 + 3 轮重试**
+
+发现 smiles_cache.jsonl 只有 432 条，但 final_merged_results.jsonl 中有 480 个唯一底物名。缺 127 个（全文/PDF提取的新名字从未查过PubChem），另有 79 个 orphan（cache中有但results不再引用，名字格式变了）。
+
+完整重建 smiles_cache.jsonl：
+1. **精确匹配**：353 个名字在旧 cache 中精确匹配
+2. **模糊匹配**：11 个名字通过去除括号注释匹配到 orphan 的 SMILES（如 `(+)-abscisic acid` ← `(+)-abscisic acid (ABA)`）
+3. **PubChem Round 1**：116 个名字查 PubChem，找到 55 个
+4. **Codex 审核**：发现 3 个错误 SMILES（8-oxogeraniol 返回染料、compound 3 返回含卤素药物、13-HPOT 位置错误）+ 1 个需修正（zealexin A3 阴离子形式）
+5. **PubChem Round 2**：用替代名字重试（如 cheilanthifoline → (S)-cheilanthifoline），找到 29 个
+6. **PubChem Round 3**：最后一轮（如 furanocoumarins → psoralen 代表性化合物），找到 12 个
+7. **[O-] 质子化**：9 个 SMILES 中的 `[O-]` 改为 `O`（统一为中性形式）
+
+最终结果：**480 个底物名全部覆盖**
+- 有 SMILES：**422 个 (87.9%)**
+- 无 SMILES：**58 个**
+  - 46 个类别描述（如 "C12-C18 fatty acids"、"diterpene alcohol intermediates"），无法对应单一化合物
+  - 12 个冷门化合物（如 "beta-macrocarpene"、"cysteine-indole-3-acetonitrile"），PubChem/KEGG 均无收录
+
+### 8.3 数据来源分布
+
+按底物信息获取来源统计（806 条 found）：
+
+| 来源 | 条数 | 说明 |
+|------|------|------|
+| 摘要分析（Step 4） | 556 | 20 个 agent 从 567 篇摘要中提取 |
+| PDF 全文分析（Step 7） | 132 | 10 个 agent 从 61 篇用户下载 PDF 中提取 |
+| HTML 全文分析（Step 6） | 88 | 9 个 agent 从 52 篇 OA 全文中提取 |
+| plausible 推断（Step 8） | 27 | QC 复核后保留的合理推断 |
+| QC verified（Step 8） | 3 | QC 确认的条目 |
+
+### 8.4 最终结果（2026-03-23 更新）
+
+**910条原始记录的完整去向：**
 
 | 类别 | 数量 | 说明 |
 |------|------|------|
-| **可直接使用** | **898 条酶-底物对** | 557 个植物 P450 + 336 个底物（有 SMILES） |
-| 有底物名但缺 SMILES | 115 条 | 57 个是化合物类别需全文确认，47 个是专业中间产物 |
-| 缺底物信息 | 202 条 | 需下载 70 篇论文后用子 agent 分析 |
-| 部分信息 | 23 条 | 有线索但不完整 |
-| 无信息 | 11 条 | |
+| found | 818 条 | 从摘要/全文/PDF中找到了底物名称 |
+| needs_fulltext | 58 条 | 摘要无法确定，论文下不到 |
+| partial | 23 条 | 部分信息（19条有底物，4条无） |
+| no_info | 11 条 | 数据库条目本身无底物相关内容 |
+
+**837条有底物的记录展开为 1,357 条酶-底物对（一个酶可能催化多个底物）**
+
+**SMILES 查询结果（480个唯一底物名，全部已查询）：**
+- 有 SMILES：422 个底物名 → **1,277 条酶-底物对可用**
+- 无 SMILES：58 个底物名 → 80 条酶-底物对不可用
+  - 46 个类别描述（如 "C12-C18 fatty acids"）
+  - 12 个冷门化合物（PubChem/KEGG 无收录）
+
+| 指标 | 数值 |
+|------|------|
+| **最终可用酶-底物对** | **1,277 条** |
+| 唯一 CYP 名称 | ~656 个 |
+| 唯一底物（有 SMILES） | 422 个 |
+| 缺 UniProt 序列 | 全部（需查询） |
+
+**关键决策和问题：**
+
+1. **plausible 条目的处理**：33 条 plausible 标记的条目保留为正样本。理由是这些底物来自合理的文献推断（同一 CYP 家族的已知功能），且 P450 数据本身稀缺
+2. **化合物类别 vs 具体分子**：57 个 "底物" 实际是类别名（如 "terpenoids"），无法转为 SMILES。需要后续从全文中找到具体分子名
+3. **Science/Nature 论文**：11 篇高影响力论文用户无法下载，影响约 30-40 条 CYP 的底物信息。这些论文覆盖的 CYP 可能在其他来源中有重叠
+4. **植物 P450 的独特价值**：S8 带来 557 个植物 P450 酶，与 S1-S3 几乎不重叠（S1-S3 主要是微生物/动物/人类 P450）
 
 **关键文件（保存在 `downloads/PlantP450DB/`）：**
 - `all_entries.json` — 910 条原始爬取数据
-- `abstracts.jsonl` — 567 篇论文摘要
-- `final_merged_results.jsonl` — 最终分析结果（含 QC 标记）
-- `track1_output/smiles_cache.jsonl` — SMILES 查询缓存
-- `track2_fulltext/需要手动下载的论文_全部70篇.csv` — 待手动下载的论文列表
-- `track2_fulltext/fulltext.jsonl` — 已下载的 52 篇全文
+- `final_merged_results.jsonl` — 最终分析结果（含 QC 标记和底物名称）
+- `smiles_cache.jsonl` — SMILES 查询缓存（480 条全覆盖：422 有 SMILES + 58 无 SMILES）
+- `pdfs/` — 用户手动下载的 72 篇 PDF
 
-### 8.4 待办
+### 8.5 UniProt 蛋白序列查询（2026-03-23）
 
-1. **用户手动下载 70 篇论文**（优先前 10 篇，覆盖 80+ CYP）→ 放到 `track2_fulltext/pdfs/`
-2. 下载后用子 agent 分析全文提取底物
-3. 跑 UniProt 查询获取蛋白序列
-4. 生成 S8 最终提取文件（`data/sources/Source_PlantP450DB/`）
+#### 为什么需要查 UniProt
+
+Plant P450 DB 只记录了 CYP 名称和物种，没有蛋白序列。但我们的模型需要蛋白序列做 ESM-2 编码，所以必须获取每个酶的氨基酸序列。
+
+#### 植物 P450 的发现流程（为什么很多酶在 UniProt 里查不到）
+
+一个植物P450酶被发现和命名的典型流程如下：
+
+1. **克隆基因+测序**：研究者从植物的基因组或 mRNA 中找到一段 DNA 序列（核苷酸序列，ATGCTTGAC...），提交到 **GenBank**（NCBI 维护的核酸序列数据库），得到 accession 号（如 AK250744）
+2. **DNA 翻译成蛋白序列**：DNA 序列可以按遗传密码表直接翻译成蛋白质的氨基酸序列（每3个碱基对应1个氨基酸，如 ATG→M, CTT→L, GAC→D），所以 DNA 序列 = 蛋白序列，只是存储形式不同
+3. **CYP 命名**：Nelson 命名委员会拿到蛋白序列后，和所有已知 P450 做序列比对（逐个氨基酸位置对齐，计算相同位置的比例）。>40% 相同 → 同一家族（如 CYP71），>55% 相同 → 同一亚族（如 CYP71C），然后按发现顺序编号 → CYP71C113
+4. **功能验证**：在酵母/大肠杆菌中表达该蛋白，测试它能催化哪些底物 → 确定酶-底物关系
+5. **数据入库**：GenBank 有 DNA 序列 ✅，论文报道了功能 ✅，Plant P450 DB 收录了 CYP 名+底物 ✅，但 **UniProt 可能还没收录**（需要人工审核或批量导入，很多新发现的植物 P450 尤其是非模式植物的还没被导入）
+
+**这就是为什么 205 个酶在 UniProt 里查不到**——序列存在于 GenBank（DNA 形式），但 UniProt（蛋白形式数据库）还没收录。
+
+#### 查询过程
+
+**Round 1：按 CYP 名+物种搜索 UniProt（783 个酶）**
+- 3种策略：gene name 搜索、protein name 搜索、全文搜索
+- 结果：413/783 找到（52.7%）
+
+**Round 2：用 GenBank accession 交叉引用（370 个 misses）**
+- 从 all_entries.json 中获取 GenBank accession 号
+- 224 个 miss 有 accession，通过 UniProt 的 EMBL 交叉引用搜索
+- 另外尝试只用物种属名（genus）搜索
+- 结果：新找到 165 个（159 通过 xref + 6 通过 genus 搜索）
+
+**最终：578/783 有蛋白序列（73.8%），205 个没有**
+
+205 个查不到的原因分布：
+- 137 个：Plant P450 DB 中没有 GenBank accession 记录，无法进一步追溯
+- 65 个：有 GenBank accession 但 UniProt 未收录（序列只存在于 NCBI GenBank 的 DNA 形式）
+- 3 个：非标准命名（如 "Ai BX4"），无法匹配
+
+**可选的后续恢复方案**（暂不执行）：
+- 65 个有 GenBank accession 的可以从 NCBI Nucleotide API 下载 DNA 序列 → 翻译成蛋白序列
+- 137 个无 accession 的可以从论文 DOI 中提取 accession 号（需要 agent 读论文）
+
+#### 查询脚本
+- `scripts/01_数据下载/S8_uniprot_query.py` — Round 1
+- `scripts/01_数据下载/S8_uniprot_retry.py` — Round 2
+- 结果文件：`downloads/PlantP450DB/uniprot_results.jsonl`
+
+### 8.6 S8 标准化文件生成（2026-03-23）
+
+只保留**同时满足两个条件**的酶-底物对：酶有蛋白序列 + 底物有 SMILES。
+
+**完整损耗链：**
+```
+910 条原始记录
+  ↓ -73 条没有底物信息
+837 条有底物 → 展开为 1,357 条酶-底物对
+  ↓ -80 条底物没有 SMILES（46 类别描述 + 12 冷门 + 其他）
+1,277 条有 SMILES 的酶-底物对
+  ↓ -296 条酶没有蛋白序列（205 个酶在 UniProt 查不到）
+  ↓ -2 条内部去重（同酶同底物）
+979 条最终可用的酶-底物对
+```
+
+**输出文件（保存在 `data/sources/Source_PlantP450DB/`）：**
+
+| 文件 | 数量 | 说明 |
+|------|------|------|
+| enzymes.csv | 578 个酶 | 全部有蛋白序列，无 UniProt 的用 SEQHASH_ 前缀 |
+| compounds.csv | 295 个化合物 | 全部有 SMILES，按 SMILES 去重 |
+| interactions.csv | 979 条正样本对 | label=1, source=S8_PlantP450DB, quality_tier=B |
+| unresolved.csv | 279 条丢弃记录 | 205 个无序列 + 73 个无底物 |
+
+**列格式与 S1-S3 完全一致**，可直接接入合并管线。
+
+**提取脚本**: `scripts/01_数据下载/S8_generate_source_files.py`
+
+### 8.7 待办（时间允许时）
+
+1. 从 NCBI GenBank 恢复 65 个有 accession 的酶序列（翻译 DNA→蛋白）
+2. 从论文中提取 137 个无 accession 酶的序列信息
+3. 从 KEGG/MetaCyc 恢复部分缺失 SMILES
 
 ---
 
@@ -510,10 +672,10 @@ Plant Cytochrome P450 Database，哥本哈根大学维护，托管在 ERDA（`er
 | S1_RCSB | **272** | **103** | **220** | A (晶体结构) | ✅ 已提取 |
 | S2_ESIBank | **806** | **338** | **390** | B (文献验证) | ✅ 已提取 |
 | S3_P450Rdb | **2,798** | **857** | **1,492** | B (实验验证) | ✅ 已提取 |
-| S8_PlantP450DB | **898** | **557** | **336** | B (文献验证) | ✅ 部分可用（559条有SMILES） |
+| S8_PlantP450DB | **979** | **578** | **295** | B (文献验证) | ✅ 标准文件已生成 |
 
-**去重前总正样本**: 272 + 806 + 2,798 + 898 = 4,774条
-**预估唯一酶**: ~1,600+（S8 带来大量植物 P450，与 S1-S3 几乎不重叠）
+**去重前总正样本**: 272 + 806 + 2,798 + 979 = 4,855 条
+**预估唯一酶**: ~1,600+（S8 带来 578 个植物 P450，与 S1-S3 几乎不重叠）
 
 ### 辅助数据源（化合物池 + 生物学负样本）
 
@@ -525,10 +687,9 @@ Plant Cytochrome P450 Database，哥本哈根大学维护，托管在 ERDA（`er
 
 ## 10. 下一步
 
-1. **用户下载 70 篇论文** → 用子 agent 分析，可额外解锁 ~200 条数据
-2. **UniProt 查询**：获取所有酶的蛋白序列
-3. **S8 最终提取**：生成 `data/sources/Source_PlantP450DB/` 的标准文件
-4. **合并去重**：将 S1+S2+S3+S8 合并为主数据集
-5. **双向负样本生成**
-6. **4种Split生成**
-7. **对接与特征生成**（需要服务器）
+1. **继续搜集其他数据库**（用户尚未完成所有数据源调查）
+2. **合并去重**：将 S1+S2+S3+S8（+其他）合并为主数据集
+3. **双向负样本生成**
+4. **4种Split生成**
+5. **对接与特征生成**（需要服务器）
+6. **可选**：从 NCBI GenBank 恢复 S8 中 65 个缺失酶的序列
