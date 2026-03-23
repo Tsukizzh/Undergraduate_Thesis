@@ -920,11 +920,39 @@ PCPD的857张反应图片（底物→产物化学结构图）是区域选择性�
 
 ---
 
-## 11. 下一步
+## 11. Phase 4 合并去重 ✅ (2026-03-24)
 
-1. **继续搜集其他数据库**（用户尚未完成所有数据源调查）
-2. **合并去重**：将 S1+S2+S3+S8+S9（+其他）合并为主数据集
-3. **双向负样本生成**
-4. **4种Split生成**
-5. **对接与特征生成**（需要服务器）
-6. **可选**：从 NCBI GenBank 恢复 S8 中 65 个缺失酶的序列
+**脚本**: `scripts/02_合并去重/merge_dedup.py`
+**输出**: `data/combined/`
+
+### 与Codex 4轮讨论确定去重策略
+
+- **Round 1**: 去重key设计 — 酶用UniProt ID+序列hash fallback，化合物用InChIKey，交互用(enzyme,compound)对
+- **Round 2**: 边界情况审查 — PCPD 447无UniProt酶序列桥接策略、同UniProt不同序列处理、S6排除出主合并
+- **Round 3**: 代码实现review — Codex给出完整实现，我修复了InChIKey API bug (MolToInchiKey不存在，应为InchiToInchiKey)
+- **Round 4**: 结果验证 — 所有完整性检查通过，Codex确认21.6%去重率合理
+
+### 去重结果
+
+| 指标 | 去重前 | 去重后 | 减少率 |
+|------|--------|--------|--------|
+| 酶 | 2,694 | **1,622** | -39.8% |
+| 化合物 | 2,967 | **2,125** | -28.4% |
+| 交互对 | 6,064 | **4,751** | -21.6% |
+
+关键发现:
+- 282个PCPD无UniProt酶通过序列桥接成功继承UniProt
+- 11个同序列不同UniProt (0.7%) — 保持分开，split时按sequence_hash分组防泄露
+- 15个含通配符`*`的通用底物模板无法生成InChIKey
+- 47个序列冲突主要是RCSB vs P450Rdb (晶体序列 vs 数据库序列)
+- 530 species命名冲突是菌株名差异，非真实冲突
+
+---
+
+## 12. 下一步
+
+1. **Phase 5: 负样本生成 + Split** — 双向随机采样 + 4种split×4折CV
+2. **Phase 6: 对接** — AlphaFold预测结构 + Vina对接（需GPU服务器）
+3. **Phase 7: 特征生成** — ESM + GROVER + Morgan + 结构特征
+4. **可选**: 从NCBI GenBank恢复S8中65个缺失酶的序列
+5. **可选**: 抑制剂负样本提取(Path A 245条)
