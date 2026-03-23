@@ -347,12 +347,102 @@ PathA 已处理的数据（2026-01-08 ~ 01-21）：
 - **没有底物/化合物数据**，无法提供酶-底物配对
 - 决策：**跳过**（只有序列价值，无配对价值）
 
-### S5 PCPD (p450.biodesign.ac.cn) — 暂不可用
-- 181个植物P450，有序列、结构、功能信息
-- 网站是JavaScript SPA，难以自动提取
-- GitHub (JiangLab2020/PCPD) 只有配置文件
-- 181个酶规模小，提取成本高，收益不确定
-- 决策：**暂时跳过**，时间允许再考虑
+### S9 PCPD (p450.biodesign.ac.cn) — 数据已下载（2026-03-23）
+
+#### 9.1 数据库概述
+
+PCPD（Plant Cytochrome P450 Database），中国科学院天津工业生物技术研究所维护。原始论文描述181个植物P450，但当前网站已扩展到**1,427个P450**，覆盖所有生物界（不仅植物）。
+
+网站是React SPA，数据通过AWS API Gateway（需Cognito认证）和CloudFront CDN提供。
+
+#### 9.2 数据获取过程
+
+**找到数据入口**：
+- 通过浏览器DevTools的Network标签，发现网站加载 `resource_new.json`
+- 直接访问 `https://p450.biodesign.ac.cn/resource_new.json` 获取全部1,427条数据
+- 通过分析JS源码找到CDN路径：`https://d1en57qlwrlmqu.cloudfront.net/P450/20240612/`
+
+**Codex审核补充**：
+- 确认 `resource_new.json` 是主要公开数据文件
+- 找到PDB结构文件路径：`CDN/PDB/{CYP_ID}.pdb`
+- 确认不存在结构化的反应SMILES数据（SDF/MOL/RXN/JSON全部404）
+- 反应信息仅以图片形式存在
+
+**可下载的全部资源**：
+
+| 资源 | CDN路径 | 说明 |
+|------|---------|------|
+| 列表数据 | `p450.biodesign.ac.cn/resource_new.json` | 1,427条，含ID/Family/Kingdom/Function |
+| FASTA序列 | `CDN/FASTA/{ID}.fasta` | 含物种名、UniProt ID、PDB ID |
+| PDB结构 | `CDN/PDB/{ID}.pdb` | 预测结构（AlphaFold/Rosetta） |
+| 反应图片 | `CDN/img_reaction/{ID}.png` | 底物→产物反应方程式 |
+
+#### 9.3 下载结果
+
+| 类型 | 成功 | 失败 | 说明 |
+|------|------|------|------|
+| FASTA序列 | 1,425 | 2 | 几乎全部有序列 |
+| PDB结构 | 423 | 1,004 | 30%有结构（很多P450无预测结构） |
+| 反应图片 | 857 | 570 | 60%有反应图片（Function=none的无图） |
+
+#### 9.4 数据分布
+
+| Kingdom | 数量 | 占比 |
+|---------|------|------|
+| Viridiplantae（植物） | 578 | 40.5% |
+| Fungi（真菌） | 480 | 33.6% |
+| Bacteria（细菌） | 182 | 12.7% |
+| Metazoa（动物） | 175 | 12.3% |
+| OtherEukaryotes | 10 | 0.7% |
+| Archaea | 1 | 0.1% |
+| Virus | 1 | 0.1% |
+
+有Function描述（非none）：1,317个（92.3%）
+
+#### 9.5 FASTA header结构
+
+每个FASTA文件的header包含丰富信息（格式不完全统一）：
+```
+>Bacteria_CYP101A1 Bacteria P450cam;Camphor 5-monooxygenase pdb_id=2zwu_A [Pseudomonas putida]
+>Fungi_CYP652D1 sdnE;A0A1B4XBH0;sdnE like [Sordaria araneosa]
+>Viridiplantae_CYP71BN1 311_3_CYP71BN1;K4CI56;lycosantalene oxygenase [Solanum lycopersicum]
+```
+可解析出：Kingdom、CYP ID、UniProt ID（部分）、PDB ID（部分）、功能描述、物种名（[方括号]内）
+
+#### 9.6 反应图片的价值（Path D 区域选择性预测）
+
+857张反应图片包含**底物→产物**的化学结构转变图，是区域选择性预测的珍贵数据源。
+
+**区域选择性预测**需要知道底物分子上**哪个位置**被酶修饰（如C-5位羟基化）。通过对比底物SMILES和产物SMILES，可以用RDKit做原子映射（atom mapping）找到反应位点。
+
+**图片→结构化数据的转换方案（Path D启动时执行）**：
+1. 用 **RxnScribe**（MIT, 2023）识别反应图片 → 拆分底物图和产物图
+2. 用 **MolScribe/DECIMER** 把分子图转SMILES
+3. 用大模型做质量审核
+
+**与其他数据源的反应数据对比**：
+
+| 数据源 | 有产物SMILES？ | 物种覆盖 |
+|--------|---------------|---------|
+| S3_P450Rdb | ✅ 结构化SMILES | 跨物种（植物57%+微生物+动物） |
+| S9_PCPD | ✅ 图片形式 | 全覆盖（真菌34%是S3没有的） |
+
+PCPD的反应图片补充了S3没有的真菌P450反应数据。
+
+#### 9.7 待办
+
+1. **解析FASTA header** → 提取物种名、UniProt ID、PDB ID
+2. **从Function文本提取底物名** → PubChem查SMILES
+3. **生成 Source_PCPD/ 标准文件**
+4. **可选（Path D）**：反应图片→结构化反应SMILES
+
+**关键文件（保存在 `downloads/PCPD/`）：**
+- `resource_new.json` — 1,427条P450列表数据
+- `FASTA/` — 1,425个FASTA序列文件
+- `PDB/` — 423个PDB结构文件
+- `img_reaction/` — 857张反应方程式图片
+
+**提取脚本**: `scripts/01_数据下载/S9_PCPD_download.py`
 
 ### S7 P450 BM3 Variants DB — 不适用
 - >1,500个BM3突变体的反应数据
@@ -663,7 +753,137 @@ Plant P450 DB 只记录了 CYP 名称和物种，没有蛋白序列。但我们�
 
 ---
 
-## 9. 所有数据源最终汇总
+## 9. S9 PCPD 提取（2026-03-23）
+
+### 9.1 数据源发现
+
+PCPD（Plant Cytochrome P450 Database，http://p450.biodesign.ac.cn/）是天津工业生物技术研究所维护的数据库。虽然名字叫"Plant"，实际包含植物、真菌、细菌、动物等多个物种类群的P450。
+
+网站是React SPA，通过浏览器DevTools的Network面板发现数据加载自 `resource_new.json`。进一步在JS代码中找到CloudFront CDN地址，试出了FASTA/PDB/反应图片的下载路径。
+
+### 9.2 下载内容
+
+| 资源 | CDN路径 | 成功数 | 说明 |
+|------|---------|--------|------|
+| JSON列表 | `p450.biodesign.ac.cn/resource_new.json` | 1,427条 | ID, Family, Kingdom, Function |
+| FASTA序列 | `cloudfront.net/.../FASTA/{ID}.fasta` | 1,425 | 含物种名+序列+UniProt(部分)+PDB(部分) |
+| PDB结构 | `cloudfront.net/.../PDB/{ID}.pdb` | 423 | 很多P450没有预测结构 |
+| 反应图片 | `cloudfront.net/.../img_reaction/{ID}.png` | 857 | 底物→产物反应方程式图 |
+
+2个FASTA缺失：CYP113E1、CYP3A38（CDN上不存在）。
+
+反应图片（底物→产物化学结构图）**没有结构化数据**，只有图片格式。Codex确认CDN上无SDF/MOL/RXN文件，JS中SMILES/SDF仅用于用户提交查询。图片保存供Path D区域选择性预测使用（可用RxnScribe+MolScribe转换为SMILES）。
+
+### 9.3 FASTA解析
+
+FASTA header格式：`>Kingdom_ID description pdb_id=xxx [Species]`
+
+从1,425个header中提取：
+- 物种名（1,425个全有）
+- UniProt ID（664个）
+- PDB ID（152个）
+- 功能描述文本（比JSON的Function有时更详细）
+- 蛋白序列
+
+**因为FASTA已包含序列，不需要像S8那样单独查UniProt。**
+
+### 9.4 底物提取（三阶段）
+
+**第一阶段：规则提取**（7种正则模式）
+- "X monooxygenase/hydroxylase" → 底物X
+- "hydroxylation of X" → 底物X
+- "from X to Y" → 底物X
+- 管道符分隔的多底物
+- 等等
+- 结果：654 specific, 57 class_only, 582 unclear
+
+**第二阶段：10个opus agent并行处理582个unclear**
+- 每批~59条，10个agent同时跑
+- 结果：450 specific, 61 class_only, 71 no_substrate
+
+**第三阶段：Codex审核 + 清洗**
+Codex抽查发现系统性错误：
+- FASTA占位符污染（"An Organic Molecule"被当成底物）
+- 反应描述当底物（"regio- and stereoselective hydroxylation"）
+- 标识符混入（PDB ID、UniProt ID）
+- 底物名带多余文本（"the natural product compactin"→"compactin"）
+
+清洗脚本修复：移除110个错误底物，修正57个名字，修正61个状态标签。
+
+### 9.5 SMILES查询（三轮）
+
+**Round 1：PubChem查询**（866个唯一底物名）
+- 首次运行因字段名bug全部失败（PubChem返回"SMILES"不是"IsomericSMILES"）
+- 修复后：615/866找到（71.0%）
+
+**Round 2：清洗+重试**（Codex审核后）
+- 拆分多底物名（"nicotine and cotinine"→分别查）
+- 修复拼写（"aplpha"→"alpha"）
+- 去掉酶名后缀（"Mevastatin hydroxylase"→"Mevastatin"）
+- 展开缩写（VD3→Vitamin D3, OMST→O-methylsterigmatocystin）
+- 结果：恢复26个
+
+**Round 3：KEGG + PubChem变体查询**（252个仍缺SMILES的）
+- PubChem变体查询（去立体化学前缀、大小写变化等）：9个
+- KEGG化合物搜索：19个
+- 结果：恢复28个
+
+最终：**643个底物有SMILES**（866个中的74.2%），223个确实查不到（冷门天然产物中间体）。
+
+### 9.6 筛选漏斗
+
+```
+1,427 JSON条目
+  ↓ -2 无FASTA序列
+1,425 有序列
+  ↓ -108 Function="none"
+1,317 有功能描述
+  ↓ -276 (28基因名 + 131无法确定底物 + 119仅有类别名)
+1,041 提取到具体底物名
+  ↓ -223 底物无SMILES (PubChem+KEGG都查不到)
+  818 有底物+有SMILES+有序列
+  ↓ 展开为酶-底物对，去重
+1,209 条最终可用酶-底物对（818酶 × 570化合物）
+```
+
+### 9.7 最终标准文件
+
+输出到 `data/sources/Source_PCPD/`：
+
+| 文件 | 数量 | 说明 |
+|------|------|------|
+| enzymes.csv | 818个酶 | 全部有蛋白序列（来自FASTA） |
+| compounds.csv | 570个化合物 | 全部有SMILES，按SMILES去重 |
+| interactions.csv | 1,209条正样本对 | label=1, source=S9_PCPD, quality_tier=B |
+| unresolved.csv | 609条丢弃记录 | 原因分布见漏斗 |
+
+818个酶的物种分布：
+- 植物 (Viridiplantae): 380
+- 真菌 (Fungi): 216
+- 动物 (Metazoa): 117
+- 细菌 (Bacteria): 84
+- 其他: 2
+
+### 9.8 附加资源（Path D区域选择性预测）
+
+PCPD的857张反应图片（底物→产物化学结构图）是区域选择性预测的珍贵数据源。转换方案：
+1. **RxnScribe**：识别反应图片→拆分底物图和产物图
+2. **MolScribe/DECIMER**：单个分子图→SMILES
+3. **Claude/GPT-4o审核**：验证SMILES正确性
+
+这些专用化学图像识别工具比通用多模态LLM更精确（对计算机生成的清晰结构图准确率95%+）。
+
+### 9.9 关键脚本
+
+- `scripts/01_数据下载/S9_PCPD_download.py` — 批量下载FASTA+PDB+图片
+- `scripts/01_数据下载/S9_extract_substrates.py` — 规则提取底物名
+- `scripts/01_数据下载/S9_cleanup_substrates.py` — 清洗（Codex审核后修复）
+- `scripts/01_数据下载/S9_smiles_lookup.py` — PubChem SMILES查询
+- `scripts/01_数据下载/S9_generate_source_files.py` — 生成标准文件
+
+---
+
+## 10. 所有数据源最终汇总
 
 ### 主 benchmark 数据源（用于训练和4场景评估）
 
@@ -673,9 +893,10 @@ Plant P450 DB 只记录了 CYP 名称和物种，没有蛋白序列。但我们�
 | S2_ESIBank | **806** | **338** | **390** | B (文献验证) | ✅ 已提取 |
 | S3_P450Rdb | **2,798** | **857** | **1,492** | B (实验验证) | ✅ 已提取 |
 | S8_PlantP450DB | **979** | **578** | **295** | B (文献验证) | ✅ 标准文件已生成 |
+| S9_PCPD | **1,209** | **818** | **570** | B (跨物种) | ✅ 标准文件已生成 |
 
-**去重前总正样本**: 272 + 806 + 2,798 + 979 = 4,855 条
-**预估唯一酶**: ~1,600+（S8 带来 578 个植物 P450，与 S1-S3 几乎不重叠）
+**去重前总正样本**: 272 + 806 + 2,798 + 979 + 1,209 = **6,064条**
+**预估唯一酶**: ~2,200+（S9带来818个跨物种P450，含真菌/动物/细菌）
 
 ### 辅助数据源（化合物池 + 生物学负样本）
 
@@ -683,12 +904,19 @@ Plant P450 DB 只记录了 CYP 名称和物种，没有蛋白序列。但我们�
 |--------|--------|--------|-----------|------|
 | S6_Figshare | 3,610 | 11,395 | 3,258 | 化合物池扩展 + 确认负样本 |
 
+### 附加资源（Path D区域选择性预测）
+
+| 资源 | 来源 | 数量 | 说明 |
+|------|------|------|------|
+| 反应SMILES | S3_P450Rdb | 3,352条 | 结构化底物→产物 |
+| 反应图片 | S9_PCPD | 857张 | 需RxnScribe+MolScribe转换 |
+
 ---
 
-## 10. 下一步
+## 11. 下一步
 
 1. **继续搜集其他数据库**（用户尚未完成所有数据源调查）
-2. **合并去重**：将 S1+S2+S3+S8（+其他）合并为主数据集
+2. **合并去重**：将 S1+S2+S3+S8+S9（+其他）合并为主数据集
 3. **双向负样本生成**
 4. **4种Split生成**
 5. **对接与特征生成**（需要服务器）
