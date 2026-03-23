@@ -3,7 +3,7 @@
 Phase 5 v3: Paper-aligned one-global-data.csv + 4 split families.
 
 Design (matches EZSpecificity ESIBank):
-  1. Generate ONE global negative set (single-direction: fix substrate, swap enzyme)
+  1. Generate ONE global negative set (bidirectional: 5A swap enzyme + 5B swap substrate)
   2. Combine into ONE shared data.csv
   3. Split the SAME data.csv 4 ways:
      - random_split:   row-level random (strict)
@@ -135,24 +135,32 @@ def ec_difficulty(real_ec, fake_ec):
     return m
 
 # ---------------------------------------------------------------------------
-# Global negative generation (single-direction, NO component restriction)
+# Global negative generation (BIDIRECTIONAL, NO component restriction)
+#   Direction A: fix substrate, swap enzyme (5 per positive)
+#   Direction B: fix enzyme, swap substrate (5 per positive)
 # ---------------------------------------------------------------------------
-def generate_negatives(positives, enzymes, n_per_pos, max_retry=50):
+def generate_negatives(positives, enzymes, compounds, n_per_dir=5, max_retry=50):
     pos_pairs = {(p.enz_idx, p.sub_idx) for p in positives}
-    pos_by_sub = defaultdict(set)
-    for p in positives: pos_by_sub[p.sub_idx].add(p.enz_idx)
+    pos_by_sub = defaultdict(set)  # substrate → set of positive enzymes
+    pos_by_enz = defaultdict(set)  # enzyme → set of positive substrates
+    for p in positives:
+        pos_by_sub[p.sub_idx].add(p.enz_idx)
+        pos_by_enz[p.enz_idx].add(p.sub_idx)
 
-    all_enzyme_indices = list(range(len(enzymes)))
+    all_enz = list(range(len(enzymes)))
+    all_sub = list(range(len(compounds)))
     used, negs = set(), []
-    shortfall = 0
+    a_gen = b_gen = a_short = b_short = 0
 
     for p in sorted(positives, key=lambda x: x.gid):
         real_ec = enzymes[p.enz_idx].ec
         rng = make_rng("neg", p.gid)
+
+        # Direction A: fix substrate, swap enzyme
         got = 0
-        for _ in range(n_per_pos * max_retry):
-            if got >= n_per_pos: break
-            fe = rng.choice(all_enzyme_indices)
+        for _ in range(n_per_dir * max_retry):
+            if got >= n_per_dir: break
+            fe = rng.choice(all_enz)
             if fe == p.enz_idx: continue
             if fe in pos_by_sub[p.sub_idx]: continue
             pair = (fe, p.sub_idx)
@@ -162,12 +170,30 @@ def generate_negatives(positives, enzymes, n_per_pos, max_retry=50):
             negs.append(Row(enzyme=fe, reaction=p.sub_idx, label=0,
                             ecnumber=real_ec, difficulty=ec_difficulty(real_ec, fake_ec),
                             fake_ecnumber=fake_ec, structure_index=-1))
-            got += 1
-        if got < n_per_pos: shortfall += 1
+            got += 1; a_gen += 1
+        if got < n_per_dir: a_short += 1
 
-    stats = {"target": len(positives)*n_per_pos, "generated": len(negs),
-             "ratio": round(len(negs)/len(positives), 4) if positives else 0,
-             "shortfall_positives": shortfall}
+        # Direction B: fix enzyme, swap substrate
+        got = 0
+        for _ in range(n_per_dir * max_retry):
+            if got >= n_per_dir: break
+            fs = rng.choice(all_sub)
+            if fs == p.sub_idx: continue
+            if fs in pos_by_enz[p.enz_idx]: continue
+            pair = (p.enz_idx, fs)
+            if pair in used: continue
+            used.add(pair)
+            negs.append(Row(enzyme=p.enz_idx, reaction=fs, label=0,
+                            ecnumber=real_ec, difficulty=-1,
+                            fake_ecnumber="", structure_index=-1))
+            got += 1; b_gen += 1
+        if got < n_per_dir: b_short += 1
+
+    total = a_gen + b_gen
+    stats = {"target_per_dir": len(positives)*n_per_dir,
+             "a_generated": a_gen, "b_generated": b_gen, "total": total,
+             "ratio": round(total/len(positives), 4) if positives else 0,
+             "a_shortfall": a_short, "b_shortfall": b_short}
     return negs, stats
 
 # ---------------------------------------------------------------------------
@@ -337,9 +363,9 @@ def main():
                     fake_ecnumber="", structure_index=-1)
                 for p in sorted(positives, key=lambda x: x.gid)]
 
-    # Global negatives (single-direction, no component restriction)
-    neg_rows, neg_stats = generate_negatives(positives, enzymes, args.neg_ratio)
-    log(f"[negatives] {neg_stats['generated']}/{neg_stats['target']} (ratio={neg_stats['ratio']})")
+    # Global negatives (bidirectional: 5A swap enzyme + 5B swap substrate)
+    neg_rows, neg_stats = generate_negatives(positives, enzymes, compounds, n_per_dir=args.neg_ratio // 2)
+    log(f"[negatives] A={neg_stats['a_generated']} B={neg_stats['b_generated']} total={neg_stats['total']} (ratio={neg_stats['ratio']})")
 
     # ONE master data.csv
     master = sorted(pos_rows + neg_rows, key=lambda r: (r.reaction, r.enzyme, -r.label))
