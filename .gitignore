@@ -90,3 +90,5 @@ tmp_*
 毕业设计/**/downloads/P450Rdb/Reactions.csv
 毕业设计/**/downloads/EnzymeMap/*.csv.gz
 毕业设计/**/downloads/PlantP450DB/track2_fulltext/pdfs/*.pdf
+# PCPD PDB files (235MB, too large for git)
+毕业设计/P450_EZSpecificity_研究项目/PathC_2026-03-19_P450专属模型训练/C2_P450数据集构建/downloads/PCPD/PDB/
