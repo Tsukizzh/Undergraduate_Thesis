@@ -330,7 +330,7 @@ ESIBank 训练集中的 P450
 | │    | └─ Step 10 | ✅ 已完成 | .pt缓存v3 + legacy_bug基线(Cloud-2 DDP 32ep, **test AUC=0.7244**) |
 | **C** | P450专属模型训练 | 🔄 C2 Phase 5完成 | `PathC_2026-03-19_P450专属模型训练/` |
 | │    | └─ C1 模型架构优化 | 🔄 3/19-30 | C1-Step 1 ✅ → Step 2 dropout消融 ✅ (Val提升但**Test未迁移**) → 其他消融可与C2并行 |
-| │    | └─ C2 P450全面数据集构建 | 🔄 3/22- | Phase 4去重✅ + **Phase 5 Split✅**: 4种split×4折CV, 双向负样本1:10, all_split保留63.2%. 待: 对接→特征→训练 |
+| │    | └─ C2 P450全面数据集构建 | 🔄 3/22- | Phase 4去重✅ + Phase 5 Split✅. **待Phase 6**: AlphaFold+AlphaFill结构→AutoDock-GPU对接(论文方法) |
 | D | 区域选择性预测 | ⏳ 待定 | 数据源: S3反应SMILES(3,352条) + S9 PCPD反应图片(857张, RxnScribe+MolScribe转换) |
 
 **工作目录**: `毕业设计/P450_EZSpecificity_研究项目/PathC_2026-03-19_P450专属模型训练/`
