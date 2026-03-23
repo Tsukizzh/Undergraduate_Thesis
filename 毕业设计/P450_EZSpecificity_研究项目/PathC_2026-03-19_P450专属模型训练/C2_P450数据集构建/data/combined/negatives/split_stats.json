@@ -19,96 +19,80 @@
   "seed": 20260324,
   "splits": {
     "all_split": {
-      "assignment": {
-        "dropped_positives": 1748,
-        "neg": 28831,
-        "negatives_a": 15015,
-        "negatives_b": 13816,
-        "negatives_total": 28831,
-        "original_positives": 4751,
-        "per_fold_positives": [
-          759,
-          687,
-          788,
-          769
-        ],
-        "pos": 3003,
-        "ratio": 9.6007,
-        "retained_positives": 3003,
-        "retention_rate": 0.6321,
-        "total_rows": 31834
-      },
+      "dropped_rows": 34095,
       "folds": {
         "0": {
           "test": {
-            "neg": 6534,
-            "pos": 759,
-            "total": 7293
+            "neg": 4101,
+            "pos": 402,
+            "total": 4503
           },
           "train": {
-            "neg": 15570,
-            "pos": 1557,
-            "total": 17127
+            "neg": 8303,
+            "pos": 836,
+            "total": 9139
           },
           "val": {
-            "neg": 6727,
-            "pos": 687,
-            "total": 7414
+            "neg": 4132,
+            "pos": 385,
+            "total": 4517
           }
         },
         "1": {
           "test": {
-            "neg": 6727,
-            "pos": 687,
-            "total": 7414
+            "neg": 4132,
+            "pos": 385,
+            "total": 4517
           },
           "train": {
-            "neg": 14224,
-            "pos": 1528,
-            "total": 15752
+            "neg": 8319,
+            "pos": 785,
+            "total": 9104
           },
           "val": {
-            "neg": 7880,
-            "pos": 788,
-            "total": 8668
+            "neg": 4085,
+            "pos": 453,
+            "total": 4538
           }
         },
         "2": {
           "test": {
-            "neg": 7880,
-            "pos": 788,
-            "total": 8668
+            "neg": 4085,
+            "pos": 453,
+            "total": 4538
           },
           "train": {
-            "neg": 13261,
-            "pos": 1446,
-            "total": 14707
+            "neg": 8233,
+            "pos": 787,
+            "total": 9020
           },
           "val": {
-            "neg": 7690,
-            "pos": 769,
-            "total": 8459
+            "neg": 4218,
+            "pos": 383,
+            "total": 4601
           }
         },
         "3": {
           "test": {
-            "neg": 7690,
-            "pos": 769,
-            "total": 8459
+            "neg": 4218,
+            "pos": 383,
+            "total": 4601
           },
           "train": {
-            "neg": 14607,
-            "pos": 1475,
-            "total": 16082
+            "neg": 8217,
+            "pos": 838,
+            "total": 9055
           },
           "val": {
-            "neg": 6534,
-            "pos": 759,
-            "total": 7293
+            "neg": 4101,
+            "pos": 402,
+            "total": 4503
           }
         }
       },
       "leakage": [],
+      "retained_rows": 18159,
+      "retention_rate": 0.3475,
       "strict": true
     },
     "enzyme_split": {

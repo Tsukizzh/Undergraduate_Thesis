@@ -464,13 +464,52 @@ def main():
               [{"Substrate_SMILES": c.smiles} for c in compounds],
               ["Substrate_SMILES"])
 
-    # Assignments for shared splits
+    # Assignments for all splits (all use the same master data.csv)
     a_random = assign_random(master)
     a_reaction, s2f_reaction = assign_by_substrate(master)
     a_enzyme, g2f_enzyme = assign_by_enzyme_group(master, e2g)
 
+    # all_split: strict diagonal — only assign rows where enzyme_fold == substrate_fold
+    # Step 1: assign enzyme groups and substrates to folds independently
+    egw_all = defaultdict(int)
+    for r in master: egw_all[e2g[r.enzyme]] += 1
+    eg2f_all, _ = greedy_assign(dict(egw_all))
+
+    # Substrate follows enzyme: assign to fold with most interactions
+    sub_to_efold = defaultdict(Counter)
+    sub_total_all = defaultdict(int)
+    for r in master:
+        ef = eg2f_all[e2g[r.enzyme]]
+        sub_to_efold[r.reaction][ef] += 1
+        sub_total_all[r.reaction] += 1
+
+    target_all = len(master) / FOLDS
+    cap_all = max(int(target_all * 1.15), max(sub_total_all.values(), default=0))
+    s_loads_all = [0]*FOLDS
+    s2f_all = {}
+    for sidx, total in sorted(sub_total_all.items(), key=lambda x: (-x[1], x[0])):
+        counts = sub_to_efold[sidx]
+        candidates = [f for f in range(FOLDS) if s_loads_all[f] + total <= cap_all] or list(range(FOLDS))
+        best = max(candidates, key=lambda f: (counts.get(f, 0), -s_loads_all[f], -f))
+        s2f_all[sidx] = best
+        s_loads_all[best] += total
+
+    # Step 2: only assign rows where enzyme_fold == substrate_fold (strict diagonal)
+    a_all = {}
+    all_retained = all_dropped = 0
+    for i, r in enumerate(master):
+        ef = eg2f_all[e2g[r.enzyme]]
+        sf = s2f_all[r.reaction]
+        if ef == sf:
+            a_all[i] = ef
+            all_retained += 1
+        else:
+            all_dropped += 1  # row not assigned → won't appear in any fold file
+
+    log(f"\n[all_split] strict diagonal: retained {all_retained}/{len(master)} rows ({100*all_retained/len(master):.1f}%), dropped {all_dropped}")
+
     assigns = {"random_split": a_random, "reaction_split": a_reaction,
-               "enzyme_split": a_enzyme}
+               "enzyme_split": a_enzyme, "all_split": a_all}
 
     stats = {"seed": MASTER_SEED, "neg_ratio": args.neg_ratio,
              "input": {"enzymes": len(enzymes), "compounds": len(compounds),
@@ -478,42 +517,26 @@ def main():
                        "master_rows": len(master)},
              "negative_generation": neg_stats, "splits": {}}
 
-    # --- random/reaction/enzyme: shared data.csv ---
-    for stype in ("random_split", "reaction_split", "enzyme_split"):
+    # --- All 4 splits use the SAME master data.csv ---
+    for stype in ("random_split", "reaction_split", "enzyme_split", "all_split"):
         log(f"\n[{stype}]")
         parts = make_partitions(master, assigns[stype])
         issues = validate_strict(stype, parts, e2g)
         log(f"  leakage: {'PASS' if not issues else 'FAIL '+str(issues)}")
         fs = write_split(stype, master, parts, odir)
-        stats["splits"][stype] = {"leakage": issues, "folds": {str(k): v for k, v in fs.items()}}
 
-    # --- all_split: STRICT, separate data.csv ---
-    log(f"\n[all_split] (strict, separate dataset)")
-    all_rows, all_stats, all_eg2f, all_s2f = build_strict_all_split(
-        positives, enzymes, compounds, e2g, n_per_dir=args.neg_ratio // 2)
-    log(f"  retained {all_stats['retained_positives']}/{all_stats['original_positives']} positives ({all_stats['retention_rate']*100:.1f}%)")
-    log(f"  negatives: A={all_stats['negatives_a']} B={all_stats['negatives_b']} total={all_stats['negatives_total']}")
-    log(f"  total rows: {all_stats['total_rows']} (ratio={all_stats['ratio']})")
-    log(f"  per-fold positives: {all_stats['per_fold_positives']}")
-
-    # Assign all_split rows to folds (by enzyme group)
-    all_r2f = {}
-    for i, r in enumerate(all_rows):
-        all_r2f[i] = all_eg2f[e2g[r.enzyme]]
-    all_parts = make_partitions(all_rows, all_r2f)
-    all_issues = validate_strict("all_split", all_parts, e2g)
-    log(f"  leakage: {'PASS' if not all_issues else 'FAIL '+str(all_issues)}")
-    all_fs = write_split("all_split", all_rows, all_parts, odir)
-    stats["splits"]["all_split"] = {
-        "leakage": all_issues, "strict": True,
-        "assignment": all_stats,
-        "folds": {str(k): v for k, v in all_fs.items()},
-    }
+        split_info = {"leakage": issues, "folds": {str(k): v for k, v in fs.items()}}
+        if stype == "all_split":
+            split_info["strict"] = True
+            split_info["retained_rows"] = all_retained
+            split_info["dropped_rows"] = all_dropped
+            split_info["retention_rate"] = round(all_retained / len(master), 4)
+        stats["splits"][stype] = split_info
 
     write_json(cdir / "negatives" / "split_stats.json", stats)
     log(f"\n{'='*60}")
-    log(f"[DONE] shared data.csv: {len(master)} rows (random/reaction/enzyme)")
-    log(f"[DONE] all_split data.csv: {all_stats['total_rows']} rows (strict, {all_stats['retention_rate']*100:.1f}% retained)")
+    log(f"[DONE] shared data.csv: {len(master)} rows")
+    log(f"[DONE] all_split: {all_retained} rows in fold files (strict 0% overlap, {100*all_retained/len(master):.1f}% retained)")
     log(f"{'='*60}")
 
 if __name__ == "__main__":
