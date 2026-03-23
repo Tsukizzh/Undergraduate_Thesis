@@ -19,119 +19,97 @@
   "seed": 20260324,
   "splits": {
     "all_split": {
+      "assignment": {
+        "dropped_positives": 1748,
+        "neg": 28831,
+        "negatives_a": 15015,
+        "negatives_b": 13816,
+        "negatives_total": 28831,
+        "original_positives": 4751,
+        "per_fold_positives": [
+          759,
+          687,
+          788,
+          769
+        ],
+        "pos": 3003,
+        "ratio": 9.6007,
+        "retained_positives": 3003,
+        "retention_rate": 0.6321,
+        "total_rows": 31834
+      },
       "folds": {
         "0": {
           "test": {
-            "neg": 11840,
-            "pos": 1224,
-            "total": 13064
+            "neg": 6534,
+            "pos": 759,
+            "total": 7293
           },
           "train": {
-            "neg": 23762,
-            "pos": 2365,
-            "total": 26127
+            "neg": 15570,
+            "pos": 1557,
+            "total": 17127
           },
           "val": {
-            "neg": 11901,
-            "pos": 1162,
-            "total": 13063
+            "neg": 6727,
+            "pos": 687,
+            "total": 7414
           }
         },
         "1": {
           "test": {
-            "neg": 11901,
-            "pos": 1162,
-            "total": 13063
+            "neg": 6727,
+            "pos": 687,
+            "total": 7414
           },
           "train": {
-            "neg": 23681,
-            "pos": 2446,
-            "total": 26127
+            "neg": 14224,
+            "pos": 1528,
+            "total": 15752
           },
           "val": {
-            "neg": 11921,
-            "pos": 1143,
-            "total": 13064
+            "neg": 7880,
+            "pos": 788,
+            "total": 8668
           }
         },
         "2": {
           "test": {
-            "neg": 11921,
-            "pos": 1143,
-            "total": 13064
+            "neg": 7880,
+            "pos": 788,
+            "total": 8668
           },
           "train": {
-            "neg": 23741,
-            "pos": 2386,
-            "total": 26127
+            "neg": 13261,
+            "pos": 1446,
+            "total": 14707
           },
           "val": {
-            "neg": 11841,
-            "pos": 1222,
-            "total": 13063
+            "neg": 7690,
+            "pos": 769,
+            "total": 8459
           }
         },
         "3": {
           "test": {
-            "neg": 11841,
-            "pos": 1222,
-            "total": 13063
+            "neg": 7690,
+            "pos": 769,
+            "total": 8459
           },
           "train": {
-            "neg": 23822,
-            "pos": 2305,
-            "total": 26127
+            "neg": 14607,
+            "pos": 1475,
+            "total": 16082
           },
           "val": {
-            "neg": 11840,
-            "pos": 1224,
-            "total": 13064
+            "neg": 6534,
+            "pos": 759,
+            "total": 7293
           }
         }
       },
       "leakage": [],
-      "overlap_metrics": {
-        "0": {
-          "train_test_enzyme_overlap": 1376,
-          "train_test_enzyme_overlap_frac": 0.8557,
-          "train_test_enzyme_total": 1608,
-          "train_test_substrate_overlap": 2116,
-          "train_test_substrate_overlap_frac": 0.9958,
-          "train_test_substrate_total": 2125,
-          "train_val_enzyme_overlap": 1401,
-          "train_val_substrate_overlap": 2095
-        },
-        "1": {
-          "train_test_enzyme_overlap": 1394,
-          "train_test_enzyme_overlap_frac": 0.8675,
-          "train_test_enzyme_total": 1607,
-          "train_test_substrate_overlap": 2096,
-          "train_test_substrate_overlap_frac": 0.9864,
-          "train_test_substrate_total": 2125,
-          "train_val_enzyme_overlap": 1398,
-          "train_val_substrate_overlap": 2097
-        },
-        "2": {
-          "train_test_enzyme_overlap": 1406,
-          "train_test_enzyme_overlap_frac": 0.8766,
-          "train_test_enzyme_total": 1604,
-          "train_test_substrate_overlap": 2097,
-          "train_test_substrate_overlap_frac": 0.9868,
-          "train_test_substrate_total": 2125,
-          "train_val_enzyme_overlap": 1397,
-          "train_val_substrate_overlap": 2098
-        },
-        "3": {
-          "train_test_enzyme_overlap": 1389,
-          "train_test_enzyme_overlap_frac": 0.8633,
-          "train_test_enzyme_total": 1609,
-          "train_test_substrate_overlap": 2099,
-          "train_test_substrate_overlap_frac": 0.9878,
-          "train_test_substrate_total": 2125,
-          "train_val_enzyme_overlap": 1369,
-          "train_val_substrate_overlap": 2118
-        }
-      }
+      "strict": true
     },
     "enzyme_split": {
       "folds": {
