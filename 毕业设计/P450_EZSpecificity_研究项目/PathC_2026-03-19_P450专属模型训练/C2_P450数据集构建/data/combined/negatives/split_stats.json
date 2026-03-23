@@ -1,0 +1,567 @@
+{
+  "input": {
+    "compounds": 2125,
+    "enzymes": 1622,
+    "positives": 4751,
+    "seq_groups_multi": 11
+  },
+  "seed": 20260324,
+  "splits": {
+    "all_split": {
+      "assignment": {
+        "dropped": 1748,
+        "e_loads": [
+          1188,
+          1188,
+          1188,
+          1187
+        ],
+        "fraction": 0.6321,
+        "per_fold": [
+          759,
+          687,
+          788,
+          769
+        ],
+        "retained": 3003,
+        "s_loads": [
+          1219,
+          1131,
+          1203,
+          1198
+        ],
+        "total": 4751
+      },
+      "fold_stats": {
+        "0": {
+          "test": {
+            "a_gen": 3795,
+            "a_target": 3795,
+            "b_gen": 2740,
+            "b_target": 3795,
+            "enzymes": 287,
+            "neg": 6535,
+            "pos": 759,
+            "substrates": 576
+          },
+          "train": {
+            "a_gen": 7785,
+            "a_target": 7785,
+            "b_gen": 7785,
+            "b_target": 7785,
+            "enzymes": 583,
+            "neg": 15570,
+            "pos": 1557,
+            "substrates": 1091
+          },
+          "val": {
+            "a_gen": 3435,
+            "a_target": 3435,
+            "b_gen": 3293,
+            "b_target": 3435,
+            "enzymes": 277,
+            "neg": 6728,
+            "pos": 687,
+            "substrates": 458
+          }
+        },
+        "1": {
+          "test": {
+            "a_gen": 3435,
+            "a_target": 3435,
+            "b_gen": 3293,
+            "b_target": 3435,
+            "enzymes": 277,
+            "neg": 6728,
+            "pos": 687,
+            "substrates": 458
+          },
+          "train": {
+            "a_gen": 7640,
+            "a_target": 7640,
+            "b_gen": 7106,
+            "b_target": 7640,
+            "enzymes": 575,
+            "neg": 14746,
+            "pos": 1528,
+            "substrates": 1098
+          },
+          "val": {
+            "a_gen": 3940,
+            "a_target": 3940,
+            "b_gen": 3940,
+            "b_target": 3940,
+            "enzymes": 295,
+            "neg": 7880,
+            "pos": 788,
+            "substrates": 569
+          }
+        },
+        "2": {
+          "test": {
+            "a_gen": 3940,
+            "a_target": 3940,
+            "b_gen": 3940,
+            "b_target": 3940,
+            "enzymes": 295,
+            "neg": 7880,
+            "pos": 788,
+            "substrates": 569
+          },
+          "train": {
+            "a_gen": 7230,
+            "a_target": 7230,
+            "b_gen": 6568,
+            "b_target": 7230,
+            "enzymes": 564,
+            "neg": 13798,
+            "pos": 1446,
+            "substrates": 1034
+          },
+          "val": {
+            "a_gen": 3845,
+            "a_target": 3845,
+            "b_gen": 3845,
+            "b_target": 3845,
+            "enzymes": 288,
+            "neg": 7690,
+            "pos": 769,
+            "substrates": 522
+          }
+        },
+        "3": {
+          "test": {
+            "a_gen": 3845,
+            "a_target": 3845,
+            "b_gen": 3845,
+            "b_target": 3845,
+            "enzymes": 288,
+            "neg": 7690,
+            "pos": 769,
+            "substrates": 522
+          },
+          "train": {
+            "a_gen": 7375,
+            "a_target": 7375,
+            "b_gen": 7375,
+            "b_target": 7375,
+            "enzymes": 572,
+            "neg": 14750,
+            "pos": 1475,
+            "substrates": 1027
+          },
+          "val": {
+            "a_gen": 3795,
+            "a_target": 3795,
+            "b_gen": 2740,
+            "b_target": 3795,
+            "enzymes": 287,
+            "neg": 6535,
+            "pos": 759,
+            "substrates": 576
+          }
+        }
+      },
+      "leakage_issues": []
+    },
+    "enzyme_split": {
+      "fold_stats": {
+        "0": {
+          "test": {
+            "a_gen": 5940,
+            "a_target": 5940,
+            "b_gen": 4702,
+            "b_target": 5940,
+            "enzymes": 391,
+            "neg": 10642,
+            "pos": 1188,
+            "substrates": 854
+          },
+          "train": {
+            "a_gen": 11875,
+            "a_target": 11875,
+            "b_gen": 11875,
+            "b_target": 11875,
+            "enzymes": 822,
+            "neg": 23750,
+            "pos": 2375,
+            "substrates": 1299
+          },
+          "val": {
+            "a_gen": 5940,
+            "a_target": 5940,
+            "b_gen": 5768,
+            "b_target": 5940,
+            "enzymes": 409,
+            "neg": 11708,
+            "pos": 1188,
+            "substrates": 761
+          }
+        },
+        "1": {
+          "test": {
+            "a_gen": 5940,
+            "a_target": 5940,
+            "b_gen": 5771,
+            "b_target": 5940,
+            "enzymes": 409,
+            "neg": 11711,
+            "pos": 1188,
+            "substrates": 761
+          },
+          "train": {
+            "a_gen": 11875,
+            "a_target": 11875,
+            "b_gen": 11175,
+            "b_target": 11875,
+            "enzymes": 801,
+            "neg": 23050,
+            "pos": 2375,
+            "substrates": 1397
+          },
+          "val": {
+            "a_gen": 5940,
+            "a_target": 5940,
+            "b_gen": 5940,
+            "b_target": 5940,
+            "enzymes": 412,
+            "neg": 11880,
+            "pos": 1188,
+            "substrates": 793
+          }
+        },
+        "2": {
+          "test": {
+            "a_gen": 5940,
+            "a_target": 5940,
+            "b_gen": 5940,
+            "b_target": 5940,
+            "enzymes": 412,
+            "neg": 11880,
+            "pos": 1188,
+            "substrates": 793
+          },
+          "train": {
+            "a_gen": 11880,
+            "a_target": 11880,
+            "b_gen": 11080,
+            "b_target": 11880,
+            "enzymes": 800,
+            "neg": 22960,
+            "pos": 2376,
+            "substrates": 1296
+          },
+          "val": {
+            "a_gen": 5935,
+            "a_target": 5935,
+            "b_gen": 5935,
+            "b_target": 5935,
+            "enzymes": 410,
+            "neg": 11870,
+            "pos": 1187,
+            "substrates": 778
+          }
+        },
+        "3": {
+          "test": {
+            "a_gen": 5935,
+            "a_target": 5935,
+            "b_gen": 5935,
+            "b_target": 5935,
+            "enzymes": 410,
+            "neg": 11870,
+            "pos": 1187,
+            "substrates": 778
+          },
+          "train": {
+            "a_gen": 11880,
+            "a_target": 11880,
+            "b_gen": 11880,
+            "b_target": 11880,
+            "enzymes": 821,
+            "neg": 23760,
+            "pos": 2376,
+            "substrates": 1309
+          },
+          "val": {
+            "a_gen": 5940,
+            "a_target": 5940,
+            "b_gen": 4701,
+            "b_target": 5940,
+            "enzymes": 391,
+            "neg": 10641,
+            "pos": 1188,
+            "substrates": 854
+          }
+        }
+      },
+      "leakage_issues": []
+    },
+    "random_split": {
+      "fold_stats": {
+        "0": {
+          "test": {
+            "a_gen": 5940,
+            "a_target": 5940,
+            "b_gen": 5940,
+            "b_target": 5940,
+            "enzymes": 692,
+            "neg": 11880,
+            "pos": 1188,
+            "substrates": 791
+          },
+          "train": {
+            "a_gen": 11875,
+            "a_target": 11875,
+            "b_gen": 11875,
+            "b_target": 11875,
+            "enzymes": 1096,
+            "neg": 23750,
+            "pos": 2375,
+            "substrates": 1319
+          },
+          "val": {
+            "a_gen": 5940,
+            "a_target": 5940,
+            "b_gen": 5940,
+            "b_target": 5940,
+            "enzymes": 694,
+            "neg": 11880,
+            "pos": 1188,
+            "substrates": 793
+          }
+        },
+        "1": {
+          "test": {
+            "a_gen": 5940,
+            "a_target": 5940,
+            "b_gen": 5940,
+            "b_target": 5940,
+            "enzymes": 694,
+            "neg": 11880,
+            "pos": 1188,
+            "substrates": 793
+          },
+          "train": {
+            "a_gen": 11875,
+            "a_target": 11875,
+            "b_gen": 11875,
+            "b_target": 11875,
+            "enzymes": 1105,
+            "neg": 23750,
+            "pos": 2375,
+            "substrates": 1326
+          },
+          "val": {
+            "a_gen": 5940,
+            "a_target": 5940,
+            "b_gen": 5940,
+            "b_target": 5940,
+            "enzymes": 704,
+            "neg": 11880,
+            "pos": 1188,
+            "substrates": 779
+          }
+        },
+        "2": {
+          "test": {
+            "a_gen": 5940,
+            "a_target": 5940,
+            "b_gen": 5940,
+            "b_target": 5940,
+            "enzymes": 704,
+            "neg": 11880,
+            "pos": 1188,
+            "substrates": 779
+          },
+          "train": {
+            "a_gen": 11880,
+            "a_target": 11880,
+            "b_gen": 11880,
+            "b_target": 11880,
+            "enzymes": 1096,
+            "neg": 23760,
+            "pos": 2376,
+            "substrates": 1347
+          },
+          "val": {
+            "a_gen": 5935,
+            "a_target": 5935,
+            "b_gen": 5935,
+            "b_target": 5935,
+            "enzymes": 689,
+            "neg": 11870,
+            "pos": 1187,
+            "substrates": 804
+          }
+        },
+        "3": {
+          "test": {
+            "a_gen": 5935,
+            "a_target": 5935,
+            "b_gen": 5935,
+            "b_target": 5935,
+            "enzymes": 689,
+            "neg": 11870,
+            "pos": 1187,
+            "substrates": 804
+          },
+          "train": {
+            "a_gen": 11880,
+            "a_target": 11880,
+            "b_gen": 11880,
+            "b_target": 11880,
+            "enzymes": 1107,
+            "neg": 23760,
+            "pos": 2376,
+            "substrates": 1311
+          },
+          "val": {
+            "a_gen": 5940,
+            "a_target": 5940,
+            "b_gen": 5940,
+            "b_target": 5940,
+            "enzymes": 692,
+            "neg": 11880,
+            "pos": 1188,
+            "substrates": 791
+          }
+        }
+      },
+      "leakage_issues": []
+    },
+    "reaction_split": {
+      "fold_stats": {
+        "0": {
+          "test": {
+            "a_gen": 5940,
+            "a_target": 5940,
+            "b_gen": 5940,
+            "b_target": 5940,
+            "enzymes": 684,
+            "neg": 11880,
+            "pos": 1188,
+            "substrates": 531
+          },
+          "train": {
+            "a_gen": 11875,
+            "a_target": 11875,
+            "b_gen": 11872,
+            "b_target": 11875,
+            "enzymes": 1108,
+            "neg": 23747,
+            "pos": 2375,
+            "substrates": 1063
+          },
+          "val": {
+            "a_gen": 5940,
+            "a_target": 5940,
+            "b_gen": 5884,
+            "b_target": 5940,
+            "enzymes": 713,
+            "neg": 11824,
+            "pos": 1188,
+            "substrates": 531
+          }
+        },
+        "1": {
+          "test": {
+            "a_gen": 5940,
+            "a_target": 5940,
+            "b_gen": 5884,
+            "b_target": 5940,
+            "enzymes": 713,
+            "neg": 11824,
+            "pos": 1188,
+            "substrates": 531
+          },
+          "train": {
+            "a_gen": 11875,
+            "a_target": 11875,
+            "b_gen": 11875,
+            "b_target": 11875,
+            "enzymes": 1107,
+            "neg": 23750,
+            "pos": 2375,
+            "substrates": 1062
+          },
+          "val": {
+            "a_gen": 5940,
+            "a_target": 5940,
+            "b_gen": 5940,
+            "b_target": 5940,
+            "enzymes": 706,
+            "neg": 11880,
+            "pos": 1188,
+            "substrates": 532
+          }
+        },
+        "2": {
+          "test": {
+            "a_gen": 5940,
+            "a_target": 5940,
+            "b_gen": 5940,
+            "b_target": 5940,
+            "enzymes": 706,
+            "neg": 11880,
+            "pos": 1188,
+            "substrates": 532
+          },
+          "train": {
+            "a_gen": 11880,
+            "a_target": 11880,
+            "b_gen": 11880,
+            "b_target": 11880,
+            "enzymes": 1114,
+            "neg": 23760,
+            "pos": 2376,
+            "substrates": 1062
+          },
+          "val": {
+            "a_gen": 5935,
+            "a_target": 5935,
+            "b_gen": 5916,
+            "b_target": 5935,
+            "enzymes": 683,
+            "neg": 11851,
+            "pos": 1187,
+            "substrates": 531
+          }
+        },
+        "3": {
+          "test": {
+            "a_gen": 5935,
+            "a_target": 5935,
+            "b_gen": 5913,
+            "b_target": 5935,
+            "enzymes": 683,
+            "neg": 11848,
+            "pos": 1187,
+            "substrates": 531
+          },
+          "train": {
+            "a_gen": 11880,
+            "a_target": 11880,
+            "b_gen": 11843,
+            "b_target": 11880,
+            "enzymes": 1108,
+            "neg": 23723,
+            "pos": 2376,
+            "substrates": 1063
+          },
+          "val": {
+            "a_gen": 5940,
+            "a_target": 5940,
+            "b_gen": 5940,
+            "b_target": 5940,
+            "enzymes": 684,
+            "neg": 11880,
+            "pos": 1188,
+            "substrates": 531
+          }
+        }
+      },
+      "leakage_issues": []
+    }
+  }
+}
