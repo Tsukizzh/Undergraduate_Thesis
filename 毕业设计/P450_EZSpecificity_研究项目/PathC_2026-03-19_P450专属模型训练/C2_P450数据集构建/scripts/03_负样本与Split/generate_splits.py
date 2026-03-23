@@ -1,10 +1,15 @@
 #!/usr/bin/env python3
 """
-Generate EZSpecificity-formatted 4-way splits with bidirectional negatives.
+Phase 5 v3: Paper-aligned one-global-data.csv + 4 split families.
 
-Inputs:  data/combined/global_{enzymes,compounds,interactions}.csv
-Outputs: data/P450_Family/{Enzymes,Substrates}.csv + 4 split dirs
-         data/combined/negatives/split_stats.json
+Design (matches EZSpecificity ESIBank):
+  1. Generate ONE global negative set (single-direction: fix substrate, swap enzyme)
+  2. Combine into ONE shared data.csv
+  3. Split the SAME data.csv 4 ways:
+     - random_split:   row-level random (strict)
+     - reaction_split: substrate-group disjoint (strict)
+     - enzyme_split:   enzyme sequence-hash-group disjoint (strict)
+     - all_split:      soft joint-OOD (minimize enzyme+substrate overlap, report metrics)
 """
 from __future__ import annotations
 
@@ -16,9 +21,7 @@ from typing import Any, Iterable
 
 MASTER_SEED = 20260324
 FOLDS = 4
-NEG_PER_DIR = 5          # negatives per direction per positive
-MAX_RETRY = 50           # retries per single negative sample
-DOCK_PLACEHOLDER = -1
+DEFAULT_NEG_RATIO = 10
 
 SCRIPT = Path(__file__).resolve()
 PROJECT = SCRIPT.parents[2]
@@ -26,14 +29,12 @@ COMBINED = PROJECT / "data" / "combined"
 OUTPUT = PROJECT / "data" / "P450_Family"
 
 SPLITS = ("random_split", "reaction_split", "enzyme_split", "all_split")
-PARTS = ("train", "val", "test")
+FIELDS = ["enzyme", "reaction", "label", "ecnumber", "difficulty", "fake_ecnumber", "structure_index"]
 
-# ---------------------------------------------------------------------------
-# Data types
 # ---------------------------------------------------------------------------
 @dataclass(frozen=True)
 class Enzyme:
-    gid: str; seq: str; uniprot: str; seq_hash: str
+    gid: str; seq: str; uniprot: str; seq_hash: str; ec: str
 
 @dataclass(frozen=True)
 class Compound:
@@ -41,29 +42,24 @@ class Compound:
 
 @dataclass(frozen=True)
 class PosInt:
-    gid: str; enz_id: str; cmp_id: str; enz_idx: int; sub_idx: int
+    gid: str; enz_idx: int; sub_idx: int
 
 @dataclass(frozen=True)
 class Row:
-    sub: int; enz: int; label: int; dock: int; pos_rxn: int
+    enzyme: int; reaction: int; label: int
+    ecnumber: str; difficulty: int; fake_ecnumber: str; structure_index: int
     def to_dict(self):
-        return {"Substrate Index": self.sub, "Enzyme Index": self.enz,
-                "Label": self.label, "Dock Index": self.dock,
-                "positive_reactions": self.pos_rxn}
+        return {f: getattr(self, f) for f in FIELDS}
 
 # ---------------------------------------------------------------------------
-# Helpers
-# ---------------------------------------------------------------------------
-def log(msg): print(msg, file=sys.stderr, flush=True)
+def log(m): print(m, file=sys.stderr, flush=True)
 def norm(v):
     t = str(v).strip() if v is not None else ""
     return "" if t.lower() in {"","na","n/a","none","null"} else t
 
-def make_seed(*parts):
-    h = hashlib.sha256("|".join(str(p) for p in (MASTER_SEED, *parts)).encode()).hexdigest()
-    return int(h[:16], 16)
-
-def make_rng(*parts): return random.Random(make_seed(*parts))
+def make_seed(*p):
+    return int(hashlib.sha256("|".join(str(x) for x in (MASTER_SEED,*p)).encode()).hexdigest()[:16], 16)
+def make_rng(*p): return random.Random(make_seed(*p))
 
 def read_csv(path, req):
     with path.open("r", encoding="utf-8-sig", newline="", errors="replace") as f:
@@ -75,8 +71,7 @@ def read_csv(path, req):
 def write_csv(path, rows, fields):
     path.parent.mkdir(parents=True, exist_ok=True)
     with path.open("w", encoding="utf-8-sig", newline="") as f:
-        w = csv.DictWriter(f, fieldnames=fields)
-        w.writeheader()
+        w = csv.DictWriter(f, fieldnames=fields); w.writeheader()
         for r in rows: w.writerow(r)
 
 def write_json(path, data):
@@ -88,232 +83,230 @@ def write_json(path, data):
 # Load
 # ---------------------------------------------------------------------------
 def load_enzymes(path):
-    rows = read_csv(path, {"global_enzyme_id","canonical_sequence","canonical_uniprot_id","sequence_hash"})
-    enzymes, idx_map, seq_groups = [], {}, defaultdict(list)
+    rows = read_csv(path, {"global_enzyme_id","canonical_sequence","canonical_uniprot_id","sequence_hash","canonical_ec_number"})
+    enzymes, idx, sg = [], {}, defaultdict(list)
     for i, r in enumerate(rows):
         e = Enzyme(gid=norm(r["global_enzyme_id"]), seq=norm(r["canonical_sequence"]),
                    uniprot=norm(r["canonical_uniprot_id"]) or norm(r["global_enzyme_id"]),
-                   seq_hash=norm(r["sequence_hash"]))
-        enzymes.append(e); idx_map[e.gid] = i; seq_groups[e.seq_hash].append(i)
-    return enzymes, idx_map, dict(seq_groups)
+                   seq_hash=norm(r["sequence_hash"]) or f"missing_{i}",
+                   ec=norm(r["canonical_ec_number"]))
+        enzymes.append(e); idx[e.gid] = i; sg[e.seq_hash].append(i)
+    return enzymes, idx, dict(sg)
 
 def load_compounds(path):
     rows = read_csv(path, {"global_compound_id","canonical_smiles"})
-    compounds, idx_map = [], {}
+    compounds, idx = [], {}
     for i, r in enumerate(rows):
         c = Compound(gid=norm(r["global_compound_id"]), smiles=norm(r["canonical_smiles"]))
-        compounds.append(c); idx_map[c.gid] = i
-    return compounds, idx_map
+        compounds.append(c); idx[c.gid] = i
+    return compounds, idx
 
 def load_interactions(path, enz_idx, cmp_idx):
     rows = read_csv(path, {"global_interaction_id","global_enzyme_id","global_compound_id","label"})
     out = []
     for r in rows:
-        if norm(r["label"]) != "1":
-            raise ValueError(f"Non-positive label: {r}")
-        eid, cid = norm(r["global_enzyme_id"]), norm(r["global_compound_id"])
+        if norm(r["label"]) != "1": raise ValueError(f"Non-positive: {r}")
         out.append(PosInt(gid=norm(r["global_interaction_id"]),
-                          enz_id=eid, cmp_id=cid,
-                          enz_idx=enz_idx[eid], sub_idx=cmp_idx[cid]))
+                          enz_idx=enz_idx[norm(r["global_enzyme_id"])],
+                          sub_idx=cmp_idx[norm(r["global_compound_id"])]))
     return out
 
 # ---------------------------------------------------------------------------
-# Fold assignment
+# Enzyme grouping
 # ---------------------------------------------------------------------------
-def greedy_assign(group_weights: dict, n_folds=FOLDS):
-    """Greedy bin-packing: heaviest-first → lightest fold."""
-    assignments = {}
-    loads = [0]*n_folds
-    for gk, w in sorted(group_weights.items(), key=lambda x: (-x[1], str(x[0]))):
-        fold = min(range(n_folds), key=lambda f: (loads[f], f))
-        assignments[gk] = fold
-        loads[fold] += w
-    return assignments, loads
+def build_enzyme_groups(seq_groups, positives):
+    e2g = {}
+    for sh, idxs in seq_groups.items():
+        for i in idxs: e2g[i] = sh
+    return e2g
 
-def assign_random(interactions):
-    ids = sorted(p.gid for p in interactions)
-    rng = make_rng("random_split")
-    rng.shuffle(ids)
-    mapping = {}
-    for i, gid in enumerate(ids):
-        mapping[gid] = i % FOLDS
-    return mapping
+# ---------------------------------------------------------------------------
+# EC difficulty
+# ---------------------------------------------------------------------------
+def ec_difficulty(real_ec, fake_ec):
+    if not real_ec or not fake_ec: return -1
+    rp, fp = real_ec.split("."), fake_ec.split(".")
+    if len(rp) < 4 or len(fp) < 4: return -1
+    m = 0
+    for a, b in zip(rp[:4], fp[:4]):
+        if not a or not b or a == "-" or b == "-": break
+        if a != b: break
+        m += 1
+    return m
 
-def assign_enzyme(interactions, enz_to_group, group_weights):
-    g2f, loads = greedy_assign(group_weights)
-    return {p.gid: g2f[enz_to_group[p.enz_idx]] for p in interactions}, loads
+# ---------------------------------------------------------------------------
+# Global negative generation (single-direction, NO component restriction)
+# ---------------------------------------------------------------------------
+def generate_negatives(positives, enzymes, n_per_pos, max_retry=50):
+    pos_pairs = {(p.enz_idx, p.sub_idx) for p in positives}
+    pos_by_sub = defaultdict(set)
+    for p in positives: pos_by_sub[p.sub_idx].add(p.enz_idx)
 
-def assign_reaction(interactions):
-    sub_w = defaultdict(int)
-    for p in interactions: sub_w[p.sub_idx] += 1
-    s2f, loads = greedy_assign(dict(sub_w))
-    return {p.gid: s2f[p.sub_idx] for p in interactions}, loads
+    all_enzyme_indices = list(range(len(enzymes)))
+    used, negs = set(), []
+    shortfall = 0
 
-def assign_all_split(interactions, enz_to_group, group_weights):
-    """Optimized all_split: greedy enzyme assignment + substrate follows enzymes."""
-    g2f, e_loads = greedy_assign(group_weights)
+    for p in sorted(positives, key=lambda x: x.gid):
+        real_ec = enzymes[p.enz_idx].ec
+        rng = make_rng("neg", p.gid)
+        got = 0
+        for _ in range(n_per_pos * max_retry):
+            if got >= n_per_pos: break
+            fe = rng.choice(all_enzyme_indices)
+            if fe == p.enz_idx: continue
+            if fe in pos_by_sub[p.sub_idx]: continue
+            pair = (fe, p.sub_idx)
+            if pair in used: continue
+            used.add(pair)
+            fake_ec = enzymes[fe].ec
+            negs.append(Row(enzyme=fe, reaction=p.sub_idx, label=0,
+                            ecnumber=real_ec, difficulty=ec_difficulty(real_ec, fake_ec),
+                            fake_ecnumber=fake_ec, structure_index=-1))
+            got += 1
+        if got < n_per_pos: shortfall += 1
 
-    # For each substrate, count interactions per enzyme-fold
-    sub_to_efold = defaultdict(Counter)
-    sub_total = defaultdict(int)
-    for p in interactions:
-        ef = g2f[enz_to_group[p.enz_idx]]
-        sub_to_efold[p.sub_idx][ef] += 1
-        sub_total[p.sub_idx] += 1
+    stats = {"target": len(positives)*n_per_pos, "generated": len(negs),
+             "ratio": round(len(negs)/len(positives), 4) if positives else 0,
+             "shortfall_positives": shortfall}
+    return negs, stats
 
-    # Assign substrates: maximize same-fold interactions, respect balance
-    target = len(interactions) / FOLDS
-    cap = max(int(target * 1.15), max(sub_total.values(), default=0))
-    s_loads = [0]*FOLDS
-    s2f = {}
-    for sidx, total in sorted(sub_total.items(), key=lambda x: (-x[1], x[0])):
-        counts = sub_to_efold[sidx]
-        candidates = [f for f in range(FOLDS) if s_loads[f] + total <= cap] or list(range(FOLDS))
-        best = max(candidates, key=lambda f: (counts.get(f, 0), -s_loads[f], -f))
-        s2f[sidx] = best
-        s_loads[best] += total
+# ---------------------------------------------------------------------------
+# Greedy fold assignment
+# ---------------------------------------------------------------------------
+def greedy_assign(weights, n=FOLDS):
+    asgn, loads = {}, [0]*n
+    for k, w in sorted(weights.items(), key=lambda x: (-x[1], str(x[0]))):
+        f = min(range(n), key=lambda i: (loads[i], i))
+        asgn[k] = f; loads[f] += w
+    return asgn, loads
 
-    # Keep only interactions where enzyme_fold == substrate_fold
-    mapping = {}
-    retained, dropped = 0, 0
-    per_fold = [0]*FOLDS
-    for p in interactions:
-        ef = g2f[enz_to_group[p.enz_idx]]
-        sf = s2f[p.sub_idx]
+# ---------------------------------------------------------------------------
+# Split assignment functions
+# ---------------------------------------------------------------------------
+def assign_random(rows):
+    idxs = list(range(len(rows)))
+    make_rng("random_split").shuffle(idxs)
+    return {i: pos % FOLDS for pos, i in enumerate(idxs)}
+
+def assign_by_substrate(rows):
+    sw, sr = defaultdict(int), defaultdict(list)
+    for i, r in enumerate(rows): sw[r.reaction] += 1; sr[r.reaction].append(i)
+    s2f, _ = greedy_assign(dict(sw))
+    return {i: s2f[r.reaction] for i, r in enumerate(rows)}, s2f
+
+def assign_by_enzyme_group(rows, e2g):
+    gw, gr = defaultdict(int), defaultdict(list)
+    for i, r in enumerate(rows):
+        g = e2g[r.enzyme]; gw[g] += 1; gr[g].append(i)
+    g2f, _ = greedy_assign(dict(gw))
+    return {i: g2f[e2g[r.enzyme]] for i, r in enumerate(rows)}, g2f
+
+def assign_all_split_soft(rows, e2g):
+    """
+    Soft all_split: minimize enzyme+substrate overlap across folds.
+    1. Independently assign enzyme groups and substrates to folds (greedy balanced)
+    2. For each row, prefer fold matching both; if conflict, pick by penalty + balance
+    All rows retained, overlap minimized but NOT guaranteed zero.
+    """
+    # Independent entity fold preferences
+    egw = defaultdict(int)
+    for r in rows: egw[e2g[r.enzyme]] += 1
+    eg2f, _ = greedy_assign(dict(egw))
+
+    sw = defaultdict(int)
+    for r in rows: sw[r.reaction] += 1
+    s2f, _ = greedy_assign(dict(sw))
+
+    # Assign each row: prefer fold matching both, then one, then lightest
+    loads = [0]*FOLDS
+    r2f = {}
+    # Sort by descending row weight to assign heavy items first (greedy)
+    row_order = sorted(range(len(rows)), key=lambda i: (
+        -(1 if eg2f[e2g[rows[i].enzyme]] == s2f[rows[i].reaction] else 0),
+        i
+    ))
+
+    for i in row_order:
+        r = rows[i]
+        ef = eg2f[e2g[r.enzyme]]
+        sf = s2f[r.reaction]
         if ef == sf:
-            mapping[p.gid] = ef
-            retained += 1
-            per_fold[ef] += 1
+            best = ef
         else:
-            dropped += 1
+            # Prefer the fold with fewer rows among {ef, sf}
+            candidates = sorted([ef, sf], key=lambda f: (loads[f], f))
+            best = candidates[0]
+        r2f[i] = best
+        loads[best] += 1
 
-    stats = {"total": len(interactions), "retained": retained, "dropped": dropped,
-             "fraction": round(retained/len(interactions), 4),
-             "per_fold": per_fold, "e_loads": e_loads, "s_loads": s_loads}
-    log(f"[all_split] retained={retained}/{len(interactions)} ({stats['fraction']*100:.1f}%), dropped={dropped}")
-    return mapping, stats
+    return r2f, eg2f, s2f
 
 # ---------------------------------------------------------------------------
-# Split partitions
+# Partition + validation + overlap metrics
 # ---------------------------------------------------------------------------
-def make_partitions(interactions, fold_map):
+def make_partitions(rows, r2f):
     by_fold = defaultdict(list)
-    for p in interactions:
-        if p.gid in fold_map:
-            by_fold[fold_map[p.gid]].append(p)
+    for i, f in r2f.items(): by_fold[f].append(rows[i])
     parts = {}
     for k in range(FOLDS):
-        test_f, val_f = k, (k+1) % FOLDS
-        train_fs = [f for f in range(FOLDS) if f not in {test_f, val_f}]
+        te, va = k, (k+1)%FOLDS
+        tr_folds = [f for f in range(FOLDS) if f not in {te, va}]
         train = []
-        for f in train_fs: train.extend(by_fold.get(f, []))
-        parts[k] = {"train": sorted(train, key=lambda p: p.gid),
-                     "val": sorted(by_fold.get(val_f, []), key=lambda p: p.gid),
-                     "test": sorted(by_fold.get(test_f, []), key=lambda p: p.gid)}
+        for f in tr_folds: train.extend(by_fold.get(f, []))
+        srt = lambda rs: sorted(rs, key=lambda r: (r.reaction, r.enzyme, -r.label))
+        parts[k] = {"train": srt(train), "val": srt(by_fold.get(va,[])), "test": srt(by_fold.get(te,[]))}
     return parts
 
-# ---------------------------------------------------------------------------
-# Negative generation
-# ---------------------------------------------------------------------------
-def gen_negatives(positives, split_type, fold_k, part_name, all_pos_pairs):
-    if not positives:
-        return [], {"pos": 0, "neg": 0, "a_gen": 0, "b_gen": 0}
-    enz_set = sorted({p.enz_idx for p in positives})
-    sub_set = sorted({p.sub_idx for p in positives})
-    rng = make_rng(split_type, fold_k, part_name)
-    used = set()
-    negs = []
-    a_gen = b_gen = 0
-
-    for p in positives:
-        # Direction A: fix substrate, swap enzyme
-        if len(enz_set) > 1:
-            got = 0
-            for _ in range(NEG_PER_DIR * MAX_RETRY):
-                if got >= NEG_PER_DIR: break
-                e = rng.choice(enz_set)
-                if e == p.enz_idx: continue
-                pair = (e, p.sub_idx)
-                if pair in all_pos_pairs or pair in used: continue
-                used.add(pair)
-                negs.append(Row(sub=p.sub_idx, enz=e, label=0, dock=DOCK_PLACEHOLDER, pos_rxn=-1))
-                got += 1; a_gen += 1
-
-        # Direction B: fix enzyme, swap substrate
-        if len(sub_set) > 1:
-            got = 0
-            for _ in range(NEG_PER_DIR * MAX_RETRY):
-                if got >= NEG_PER_DIR: break
-                s = rng.choice(sub_set)
-                if s == p.sub_idx: continue
-                pair = (p.enz_idx, s)
-                if pair in all_pos_pairs or pair in used: continue
-                used.add(pair)
-                negs.append(Row(sub=s, enz=p.enz_idx, label=0, dock=DOCK_PLACEHOLDER, pos_rxn=-1))
-                got += 1; b_gen += 1
-
-    return negs, {"pos": len(positives), "neg": len(negs),
-                  "a_gen": a_gen, "b_gen": b_gen,
-                  "a_target": len(positives)*NEG_PER_DIR,
-                  "b_target": len(positives)*NEG_PER_DIR,
-                  "enzymes": len(enz_set), "substrates": len(sub_set)}
-
-# ---------------------------------------------------------------------------
-# Leakage validation
-# ---------------------------------------------------------------------------
-def validate_leakage(split_type, partitions, seq_groups):
-    idx2group = {}
-    for sh, idxs in seq_groups.items():
-        for i in idxs: idx2group[i] = sh
+def validate_strict(split_type, parts, e2g):
     issues = []
-    for k, parts in partitions.items():
-        train, val, test = parts["train"], parts["val"], parts["test"]
-        if split_type in ("enzyme_split", "all_split"):
-            tr_g = {idx2group[p.enz_idx] for p in train}
-            va_g = {idx2group[p.enz_idx] for p in val}
-            te_g = {idx2group[p.enz_idx] for p in test}
-            if tr_g & te_g: issues.append(f"fold{k}: train/test enzyme leak")
-            if tr_g & va_g: issues.append(f"fold{k}: train/val enzyme leak")
-        if split_type in ("reaction_split", "all_split"):
-            tr_s = {p.sub_idx for p in train}
-            va_s = {p.sub_idx for p in val}
-            te_s = {p.sub_idx for p in test}
-            if tr_s & te_s: issues.append(f"fold{k}: train/test substrate leak")
-            if tr_s & va_s: issues.append(f"fold{k}: train/val substrate leak")
+    for k, p in parts.items():
+        tr, va, te = p["train"], p["val"], p["test"]
+        if split_type in ("enzyme_split","all_split"):
+            trg = {e2g[r.enzyme] for r in tr}; vag = {e2g[r.enzyme] for r in va}; teg = {e2g[r.enzyme] for r in te}
+            if trg & teg: issues.append(f"fold{k}: train/test enzyme leak ({len(trg&teg)} groups)")
+            if trg & vag: issues.append(f"fold{k}: train/val enzyme leak ({len(trg&vag)} groups)")
+        if split_type in ("reaction_split","all_split"):
+            trs = {r.reaction for r in tr}; vas = {r.reaction for r in va}; tes = {r.reaction for r in te}
+            if trs & tes: issues.append(f"fold{k}: train/test substrate leak ({len(trs&tes)} substrates)")
+            if trs & vas: issues.append(f"fold{k}: train/val substrate leak ({len(trs&vas)} substrates)")
     return issues
 
-# ---------------------------------------------------------------------------
-# Write split files
-# ---------------------------------------------------------------------------
-FIELDS = ["Substrate Index", "Enzyme Index", "Label", "Dock Index", "positive_reactions"]
+def compute_overlap_metrics(parts, e2g):
+    """Compute enzyme/substrate overlap for all_split (soft)."""
+    metrics = {}
+    for k, p in parts.items():
+        tr, va, te = p["train"], p["val"], p["test"]
+        tr_eg = {e2g[r.enzyme] for r in tr}; va_eg = {e2g[r.enzyme] for r in va}; te_eg = {e2g[r.enzyme] for r in te}
+        tr_s = {r.reaction for r in tr}; va_s = {r.reaction for r in va}; te_s = {r.reaction for r in te}
+        metrics[str(k)] = {
+            "train_test_enzyme_overlap": len(tr_eg & te_eg),
+            "train_test_enzyme_total": len(tr_eg | te_eg),
+            "train_test_enzyme_overlap_frac": round(len(tr_eg & te_eg) / max(len(tr_eg | te_eg), 1), 4),
+            "train_test_substrate_overlap": len(tr_s & te_s),
+            "train_test_substrate_total": len(tr_s | te_s),
+            "train_test_substrate_overlap_frac": round(len(tr_s & te_s) / max(len(tr_s | te_s), 1), 4),
+            "train_val_enzyme_overlap": len(tr_eg & va_eg),
+            "train_val_substrate_overlap": len(tr_s & va_s),
+        }
+    return metrics
 
-def write_split(split_type, partitions, out_dir, pos_pairs):
-    split_dir = out_dir / split_type
-    all_rows = []
+# ---------------------------------------------------------------------------
+# Write
+# ---------------------------------------------------------------------------
+def write_split(split_type, rows, parts, out_dir):
+    sd = out_dir / split_type; sd.mkdir(parents=True, exist_ok=True)
+    write_csv(sd / "data.csv", [r.to_dict() for r in rows], FIELDS)
     fold_stats = {}
     for k in range(FOLDS):
         fold_stats[k] = {}
-        for part_name in PARTS:
-            positives = partitions[k][part_name]
-            pos_rows = [Row(sub=p.sub_idx, enz=p.enz_idx, label=1,
-                            dock=DOCK_PLACEHOLDER, pos_rxn=p.sub_idx) for p in positives]
-            neg_rows, ns = gen_negatives(positives, split_type, k, part_name, pos_pairs)
-            combined = sorted(pos_rows + neg_rows, key=lambda r: (r.sub, r.enz, -r.label))
-            all_rows.extend(combined)
-            fname = {"train": f"training_datas_{k}.csv",
-                     "val": f"val_datas_{k}.csv",
-                     "test": f"testing_datas_{k}.csv"}[part_name]
-            write_csv(split_dir / fname, [r.to_dict() for r in combined], FIELDS)
-            fold_stats[k][part_name] = ns
-            log(f"  [{split_type}] fold={k} {part_name}: {ns['pos']}+ {ns['neg']}-")
-
-    # data.csv = deduplicated union
-    unique = {}
-    for r in all_rows:
-        unique[(r.sub, r.enz, r.label)] = r
-    data_rows = sorted(unique.values(), key=lambda r: (r.sub, r.enz, -r.label))
-    write_csv(split_dir / "data.csv", [r.to_dict() for r in data_rows], FIELDS)
-    log(f"  [{split_type}] data.csv: {len(data_rows)} rows")
+        for pn in ("train","val","test"):
+            pr = parts[k][pn]
+            pos = sum(1 for r in pr if r.label==1)
+            neg = sum(1 for r in pr if r.label==0)
+            fn = {"train":f"training_datas_{k}.csv","val":f"val_datas_{k}.csv","test":f"testing_datas_{k}.csv"}[pn]
+            write_csv(sd / fn, [r.to_dict() for r in pr], FIELDS)
+            fold_stats[k][pn] = {"pos": pos, "neg": neg, "total": pos+neg}
+            log(f"  [{split_type}] fold={k} {pn}: {pos}+ {neg}-")
     return fold_stats
 
 # ---------------------------------------------------------------------------
@@ -325,71 +318,79 @@ def main():
     parser.add_argument("--combined-dir", type=Path, default=COMBINED)
     parser.add_argument("--output-dir", type=Path, default=OUTPUT)
     parser.add_argument("--seed", type=int, default=MASTER_SEED)
+    parser.add_argument("--neg-ratio", type=int, default=DEFAULT_NEG_RATIO)
     args = parser.parse_args()
     MASTER_SEED = args.seed
 
     cdir, odir = args.combined_dir.resolve(), args.output_dir.resolve()
-    log(f"[setup] combined={cdir}")
-    log(f"[setup] output={odir}")
+    log(f"[setup] seed={MASTER_SEED} neg_ratio={args.neg_ratio}")
 
-    enzymes, enz_idx, seq_groups = load_enzymes(cdir / "global_enzymes.csv")
-    compounds, cmp_idx = load_compounds(cdir / "global_compounds.csv")
-    positives = load_interactions(cdir / "global_interactions.csv", enz_idx, cmp_idx)
-    pos_pairs = {(p.enz_idx, p.sub_idx) for p in positives}
+    enzymes, ei, sg = load_enzymes(cdir / "global_enzymes.csv")
+    compounds, ci = load_compounds(cdir / "global_compounds.csv")
+    positives = load_interactions(cdir / "global_interactions.csv", ei, ci)
+    e2g = build_enzyme_groups(sg, positives)
     log(f"[data] {len(enzymes)} enzymes, {len(compounds)} compounds, {len(positives)} positives")
 
-    # Build enzyme sequence-hash groups
-    enz2group = {}
-    group_w = defaultdict(int)
-    for sh, idxs in seq_groups.items():
-        for i in idxs: enz2group[i] = sh
-    for p in positives: group_w[enz2group[p.enz_idx]] += 1
+    # Positive rows
+    pos_rows = [Row(enzyme=p.enz_idx, reaction=p.sub_idx, label=1,
+                    ecnumber=enzymes[p.enz_idx].ec, difficulty=0,
+                    fake_ecnumber="", structure_index=-1)
+                for p in sorted(positives, key=lambda x: x.gid)]
 
-    # Write shared entity files
+    # Global negatives (single-direction, no component restriction)
+    neg_rows, neg_stats = generate_negatives(positives, enzymes, args.neg_ratio)
+    log(f"[negatives] {neg_stats['generated']}/{neg_stats['target']} (ratio={neg_stats['ratio']})")
+
+    # ONE master data.csv
+    master = sorted(pos_rows + neg_rows, key=lambda r: (r.reaction, r.enzyme, -r.label))
+    log(f"[master] {len(master)} rows ({len(pos_rows)} pos + {len(neg_rows)} neg)")
+
+    # Shared entity files
     write_csv(odir / "Enzymes.csv",
               [{"Protein sequence": e.seq, "uniprots": e.uniprot} for e in enzymes],
               ["Protein sequence", "uniprots"])
     write_csv(odir / "Substrates.csv",
               [{"Substrate_SMILES": c.smiles} for c in compounds],
               ["Substrate_SMILES"])
-    log(f"[write] Enzymes.csv ({len(enzymes)}), Substrates.csv ({len(compounds)})")
 
-    # Assign folds
-    log("[splits] assigning folds...")
-    fold_maps = {}
-    all_stats = {}
+    # Assignments
+    a_random = assign_random(master)
+    a_reaction, s2f_reaction = assign_by_substrate(master)
+    a_enzyme, g2f_enzyme = assign_by_enzyme_group(master, e2g)
+    a_all, eg2f_all, s2f_all = assign_all_split_soft(master, e2g)
 
-    fold_maps["random_split"] = assign_random(positives)
-    fold_maps["enzyme_split"], e_loads = assign_enzyme(positives, enz2group, dict(group_w))
-    fold_maps["reaction_split"], r_loads = assign_reaction(positives)
-    fold_maps["all_split"], all_stats["all_split"] = assign_all_split(positives, enz2group, dict(group_w))
+    assigns = {"random_split": a_random, "reaction_split": a_reaction,
+               "enzyme_split": a_enzyme, "all_split": a_all}
 
-    # Build partitions and validate
-    stats = {"seed": MASTER_SEED, "input": {"enzymes": len(enzymes), "compounds": len(compounds),
-             "positives": len(positives), "seq_groups_multi": sum(1 for v in seq_groups.values() if len(v)>1)},
-             "splits": {}}
+    stats = {"seed": MASTER_SEED, "neg_ratio": args.neg_ratio,
+             "input": {"enzymes": len(enzymes), "compounds": len(compounds),
+                       "positives": len(pos_rows), "negatives": len(neg_rows),
+                       "master_rows": len(master)},
+             "negative_generation": neg_stats, "splits": {}}
 
     for stype in SPLITS:
-        log(f"\n[{stype}] building partitions...")
-        parts = make_partitions(positives, fold_maps[stype])
-        issues = validate_leakage(stype, parts, seq_groups)
-        if issues:
-            log(f"  WARNING: leakage detected: {issues}")
-        else:
-            log(f"  leakage check: PASS")
+        log(f"\n[{stype}]")
+        parts = make_partitions(master, assigns[stype])
 
-        fold_stats = write_split(stype, parts, odir, pos_pairs)
-        stats["splits"][stype] = {
-            "leakage_issues": issues,
-            "fold_stats": {str(k): v for k, v in fold_stats.items()},
-        }
         if stype == "all_split":
-            stats["splits"]["all_split"]["assignment"] = all_stats.get("all_split", {})
+            # Soft: report overlap metrics instead of strict validation
+            overlap = compute_overlap_metrics(parts, e2g)
+            log(f"  all_split overlap metrics:")
+            for k, m in overlap.items():
+                log(f"    fold{k}: enzyme overlap={m['train_test_enzyme_overlap_frac']*100:.1f}%, substrate overlap={m['train_test_substrate_overlap_frac']*100:.1f}%")
+            issues = []  # soft split, no strict leakage check
+            extra = {"overlap_metrics": overlap}
+        else:
+            issues = validate_strict(stype, parts, e2g)
+            log(f"  leakage: {'PASS' if not issues else 'FAIL '+str(issues)}")
+            extra = {}
+
+        fs = write_split(stype, master, parts, odir)
+        stats["splits"][stype] = {"leakage": issues, "folds": {str(k): v for k, v in fs.items()}, **extra}
 
     write_json(cdir / "negatives" / "split_stats.json", stats)
     log(f"\n{'='*60}")
-    log(f"[DONE] Output: {odir}")
-    log(f"[DONE] Stats: {cdir / 'negatives' / 'split_stats.json'}")
+    log(f"[DONE] {len(master)} rows x 4 splits (same data.csv)")
     log(f"{'='*60}")
 
 if __name__ == "__main__":
@@ -398,6 +399,4 @@ if __name__ == "__main__":
     except KeyboardInterrupt:
         log("Interrupted"); raise SystemExit(130)
     except Exception as e:
-        log(f"ERROR: {e}")
-        import traceback; traceback.print_exc()
-        raise SystemExit(1)
+        log(f"ERROR: {e}"); import traceback; traceback.print_exc(); raise SystemExit(1)
