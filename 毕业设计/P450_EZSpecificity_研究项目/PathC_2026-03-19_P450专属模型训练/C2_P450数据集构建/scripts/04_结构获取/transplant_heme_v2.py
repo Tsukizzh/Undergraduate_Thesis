@@ -413,7 +413,7 @@ def main():
     # Identify targets: all enzymes that need heme transplant
     targets = []
     for i, r in enumerate(manifest):
-        if r.get("status") not in ("alphafill_not_found", "no_heme", "heme_transplanted", "tier4_best", "heme_transplant_failed"):
+        if r.get("status") not in ("alphafill_not_found", "no_heme", "heme_transplanted", "tier4_best", "heme_transplant_failed", "alphafill_bad_rmsd"):
             continue
         uid = norm(r.get("canonical_uniprot_id",""))
         if not uid or not VALID_UNIPROT.match(uid): continue
