@@ -92,3 +92,17 @@ tmp_*
 毕业设计/**/downloads/PlantP450DB/track2_fulltext/pdfs/*.pdf
 # PCPD PDB files (235MB, too large for git)
 毕业设计/P450_EZSpecificity_研究项目/PathC_2026-03-19_P450专属模型训练/C2_P450数据集构建/downloads/PCPD/PDB/
+
+# C2 Phase 6: Large structure files (thousands of PDB/PDBQT/CIF/SDF files)
+**/C2_*/data/structures/alphafold/pdb/
+**/C2_*/data/structures/alphafill/cif/
+**/C2_*/data/structures/alphafill/json/
+**/C2_*/data/structures/heme_transplant/pdb/
+**/C2_*/data/structures/ligands/sdf/
+**/C2_*/data/structures/ligands_pdbqt/
+**/C2_*/data/structures/receptors_clean/
+**/C2_*/data/structures/receptors_pdbqt/
+**/C2_*/data/structures/complexes/
+**/C2_*/data/structures/colabfold_predict/
+**/C2_*/downloads/RCSB/PDB/
+**/C2_*/downloads/PCPD/PDB/

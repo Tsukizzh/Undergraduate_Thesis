@@ -330,7 +330,7 @@ ESIBank 训练集中的 P450
 | │    | └─ Step 10 | ✅ 已完成 | .pt缓存v3 + legacy_bug基线(Cloud-2 DDP 32ep, **test AUC=0.7244**) |
 | **C** | P450专属模型训练 | 🔄 C2 Phase 5完成 | `PathC_2026-03-19_P450专属模型训练/` |
 | │    | └─ C1 模型架构优化 | 🔄 3/19-30 | C1-Step 1 ✅ → Step 2 dropout消融 ✅ (Val提升但**Test未迁移**) → 其他消融可与C2并行 |
-| │    | └─ C2 P450全面数据集构建 | 🔄 3/22- | Phase 5✅ + **Phase 6进行中**: 1,403/1,622酶有结构(86.5%), 底物3D完成(2124/2125), 219酶待ColabFold |
+| │    | └─ C2 P450全面数据集构建 | 🔄 3/22- | Phase 5✅ + **Phase 6进行中**: 219酶ColabFold运行中. 阶段A(登记表)✅ 阶段B(底物PDBQT 2,118个)✅ 阶段C(受体准备)pilot待跑. Batch1=46,728对, Batch2=5,495对 |
 | D | 区域选择性预测 | ⏳ 待定 | 数据源: S3反应SMILES(3,352条) + S9 PCPD反应图片(857张, RxnScribe+MolScribe转换) |
 
 **工作目录**: `毕业设计/P450_EZSpecificity_研究项目/PathC_2026-03-19_P450专属模型训练/`
