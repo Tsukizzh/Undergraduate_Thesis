@@ -314,7 +314,7 @@ ESIBank 训练集中的 P450
 
 #### 当前研究阶段
 
-**阶段四十五**：C2 P450全面数据集构建已启动（68个数据库调研完成，Phase 0已验证ESIBank数据），C1消融可并行
+**阶段四十八**：C2 Phase 7.5 pt_cache构建完成 + Phase 8 EXP001训练中（4×RTX4090 DDP, random_split）
 
 | 路径 | 名称 | 状态 | 说明 |
 |------|------|------|------|
@@ -328,9 +328,9 @@ ESIBank 训练集中的 P450
 | │    | └─ Step 8 | ✅ 已完成 | E8v1+E8v2通道关闭消融 + E9废弃 |
 | │    | └─ Step 9 | ✅ 已完成 | AllSplit训练 ep27完成, **BEST=ep14 AUC=0.7667** |
 | │    | └─ Step 10 | ✅ 已完成 | .pt缓存v3 + legacy_bug基线(Cloud-2 DDP 32ep, **test AUC=0.7244**) |
-| **C** | P450专属模型训练 | 🔄 C2 Phase 5完成 | `PathC_2026-03-19_P450专属模型训练/` |
+| **C** | P450专属模型训练 | 🔄 **EXP001训练中** | `PathC_2026-03-19_P450专属模型训练/` |
 | │    | └─ C1 模型架构优化 | 🔄 3/19-30 | C1-Step 1 ✅ → Step 2 dropout消融 ✅ (Val提升但**Test未迁移**) → 其他消融可与C2并行 |
-| │    | └─ C2 P450全面数据集构建 | 🔄 3/22- | Phase 5✅ + **Phase 6进行中**: 219酶ColabFold运行中. 阶段A(登记表)✅ 阶段B(底物PDBQT 2,118个)✅ 阶段C(受体准备)pilot待跑. Batch1=46,728对, Batch2=5,495对 |
+| │    | └─ C2 P450全面数据集构建 | 🔄 3/22- | Phase 7✅ + **Phase 7.5✅**(pt_cache构建完成) + **Phase 8 EXP001训练中**(4×4090 DDP, random_split fold0, ~1.8 it/s, ~2min/ep, ep0 loss=0.451) |
 | D | 区域选择性预测 | ⏳ 待定 | 数据源: S3反应SMILES(3,352条) + S9 PCPD反应图片(857张, RxnScribe+MolScribe转换) |
 
 **工作目录**: `毕业设计/P450_EZSpecificity_研究项目/PathC_2026-03-19_P450专属模型训练/`
@@ -359,12 +359,20 @@ ESIBank 训练集中的 P450
   - 论文作者: 256GB+ RAM服务器, LMDB 60GB mmap完全驻留内存 = 随机读=内存速度
   - 我们: 32GB RAM < 60GB LMDB → mmap thrashing(pageout/pagein循环) → 2.09 it/s decay, 99% page cache换页
   - .pt方案: 仅160KB/样本随机读 → ~10GB工作集 → no thrashing → 7.56 it/s stable, 3.6倍提速
-- **P450数据扩增方案**（未来Phase 6, 使用.pt管线）:
-  1. 新增P450酶 → ESM-2 → append到enzymes.bin
-  2. 新增底物 → GROVER/Morgan → append到substrates_grover.bin
-  3. 新增酶-底物对 → AlphaFold+Vina对接 → build_pt_cache.py生成per-sample .pt
-  4. 合并 .pt文件, 更新index.pt
-  5. 优势: build_pt_cache.py已支持增量生成(resume/skip existing), 无需重新处理历史数据
+- **P450数据集已完成（C2 Phase 7, 2026-03-26）**: 47,510可用对(1,514酶×2,117底物), 全部LMDB特征已生成
+- **Phase 7.5 pt_cache构建完成（2026-03-26）**: LMDB→per-sample .pt转换
+  - all_split: 8,326 train + 4,023 val + 4,143 test = 16,492 samples
+  - random_split: 23,710 train + 11,878 val + 11,823 test = 47,411 samples
+  - 三步流程: main(graph shards) → convert-per-sample → convert-flatbin(enzymes.bin+substrates)
+  - 性能修复: --shard-size 2048→256 + OMP_NUM_THREADS=1, 从10+min→**30秒**
+  - 目录: P450/data/pt_cache/{shared/,random/,all/}, shared通过symlink共享到各split
+- **Phase 8 EXP001训练中（2026-03-26）**: P450 random_split fold0基线
+  - 服务器: Cloud-2 **4×RTX4090** (升级自2×4090), 360GB RAM, 28核(64 vCPU)
+  - 配置: bs=56/GPU, effective=224, 4 GPU DDP, num-workers=6/GPU(24 total), --preload(~149GB RAM), edge-mode=fixed
+  - 速度: ~1.8 it/s, ~2 min/epoch, GPU利用率92-100%
+  - 预计: 50 epochs ~1.5-2小时
+  - 早期结果: ep0 loss=0.451, ep2 val AUC=0.514
+  - 实验目录: P450/experiments/EXP001_random_baseline/
 - **Step 10 legacy_bug 已完成**: Cloud-2 DDP 32ep, test AUC=0.7244 > paper 0.7198
 - **Val Loss ↑ while AUC ↑（Codex深度分析，非Bug）**: BCE=逐点（outlier主导），AUC=成对排序（outlier鲁棒）。ep2→ep22: +26,500对正确排序但few dozen hard samples极端logit(z=5→loss=5.01)主导loss均值。三阶段: warmup(ep0-8)→divergence(ep8-22,排序↑过度自信↑)→true overfitting(ep22+)。ReduceLROnPlateau监控aupr（非auc/loss）不匹配。建议: 同AUC选低loss ckpt, warmup后加LR衰减, temperature scaling后校准。
 - **EZSpecificity-individual**: 论文中"仅目标家族数据从头训练"模式（85-5424对），我们的AllSplit方式类似此模式
@@ -376,7 +384,7 @@ ESIBank 训练集中的 P450
   - 结论: dropout改动不纳入C1-Step 3组合，需关注能改善Test泛化的改动
   - 数据泄露验证: all_split模式0%酶/底物重叠（per-family），跨家族ID重用: 酶3.2%/底物1.6%
   - 代码整合: run_test_eval.py合并到main_training_pt.py --test-only, start_ablation.sh已删除
-- **Cloud-2 服务器重构(2026-03-19)**: 从扁平结构→PathB/(归档legacy_bug) + PathC/(当前工作, scripts路径已修复) + allsplit_pt_cache/(项目根级共享)
+- **Cloud-2 服务器重构(2026-03-19→03-26)**: PathB/(归档) + PathC/P450/(自包含工作区) + PathC/ESIBank_baseline/(冻结) + allsplit_pt_cache/(ESIBank共享)
 
 **Path B 诊断阶段总结（Step 7-8）**:
 - **Step 7 核心发现**: 底物身份驱动评分（我们的P450）vs 配对交互信号（ESIBank P450）
@@ -442,6 +450,10 @@ ESIBank 训练集中的 P450
 **RDKit 解析失败**：
 - PDB 文件中的配体部分必须与 RDKit 兼容
 - 解决方案：检查键序和原子类型；确保正确的 PDB 格式
+
+**parse_smile ValueError（已修复）**：
+- `create_features.py` 中 `_smilesAtomOutputOrder` 解析使用 `[1:-2]` 会保留尾逗号导致 `int('')` 报错
+- 已修复为 `[1:-1]` + 空字符串过滤（Cloud-2 `src/Datasets/create_features.py` 已打补丁）
 
 ### 结构处理问题
 

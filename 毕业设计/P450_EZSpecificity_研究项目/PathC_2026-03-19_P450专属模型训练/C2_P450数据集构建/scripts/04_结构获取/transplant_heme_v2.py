@@ -413,16 +413,22 @@ def main():
     # Identify targets: all enzymes that need heme transplant
     targets = []
     for i, r in enumerate(manifest):
-        if r.get("status") not in ("alphafill_not_found", "no_heme", "heme_transplanted", "tier4_best", "heme_transplant_failed", "alphafill_bad_rmsd"):
+        if r.get("status") not in ("alphafill_not_found", "no_heme", "heme_transplanted", "tier4_best", "heme_transplant_failed", "alphafill_bad_rmsd", "needs_colabfold"):
             continue
         uid = norm(r.get("canonical_uniprot_id",""))
-        if not uid or not VALID_UNIPROT.match(uid): continue
-        # Must have AlphaFold PDB on disk
-        af_path = ALPHAFOLD_PDB_DIR / f"AF-{uid}-F1.pdb"
-        if not af_path.exists(): continue
-        seq = enzyme_seqs.get(r["global_enzyme_id"], "")
+        gid = norm(r.get("global_enzyme_id",""))
+        # Find target PDB: try AF-{uid}-F1.pdb first, then CF-{gid}.pdb
+        af_path = None
+        if uid and VALID_UNIPROT.match(uid):
+            af_path = ALPHAFOLD_PDB_DIR / f"AF-{uid}-F1.pdb"
+            if not af_path.exists(): af_path = None
+        if not af_path and gid:
+            cf_path = ALPHAFOLD_PDB_DIR / f"CF-{gid}.pdb"
+            if cf_path.exists(): af_path = cf_path
+        if not af_path: continue
+        seq = enzyme_seqs.get(gid, "")
         if not seq: continue
-        targets.append((i, r["global_enzyme_id"], uid, str(af_path), seq))
+        targets.append((i, gid, uid or gid, str(af_path), seq))
 
     if args.limit > 0:
         targets = targets[:args.limit]

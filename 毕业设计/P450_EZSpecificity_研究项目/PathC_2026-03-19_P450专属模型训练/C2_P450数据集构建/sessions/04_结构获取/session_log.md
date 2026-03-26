@@ -758,9 +758,101 @@ data/structures/ligands_pdbqt/     ← 2,118 个 .pdbqt 文件 + 2,118 个 .ok �
 4. PDBQT 中 Fe 是否保留且有电荷
 5. 对接盒子中心是否正确
 
-### 11.5 下一步
+### 11.5 Pilot 测试（5 轮迭代）
 
-1. 写 pilot 脚本（从 4 种来源各取 5 个）
-2. 跑 pilot → 验证上述 5 项
-3. pilot 通过 → 全量跑 1,403 个
-4. 同时等 ColabFold 跑完 → 处理 Batch 2 的 219 个
+先尝试用 **Meeko mk_prepare_receptor** 做 PDBQT 转换，4 种来源各 1 个酶。
+
+**第 1 轮**：直接跑
+- PDB 清理：4/4 通过（修了 AlphaFill CIF 76 条链问题 + PCPD Fe 元素识别）
+- Meeko PDBQT：仅 v2 通过（1/4），其他 3 种失败（HEM 模板匹配、元素 X、Se 原子）
+
+**第 2-4 轮**：尝试修复 Meeko（normalize_pdb 函数、HEM 原子排序、split-and-merge 方案）
+- 修了 MSE→MET、元素列修复、HEM 排序等问题
+- 最终 Meeko split-and-merge 方案：v2 + PCPD + AlphaFill 通过（3/4），实验 PDB 仍失败
+
+**第 5 轮（关键转折）**：查 Path B 文档发现**之前用的就是 MGLTools `prepare_receptor4.py`**，不是 Meeko！
+- MGLTools 就装在 `D:\autodock\MGLTools-1.5.7\`
+- 命令：`prepare_receptor4.py -r input.pdb -o output.pdbqt -A hydrogens -U nphs_lps_waters`
+- 注意：不能用 `-U nonstdres`（会删掉 HEM）
+- **4/4 全部通过！** HEM 和 Fe 全部保留
+
+### 11.6 全量执行 ✅（2026-03-25 04:15-04:25）
+
+脚本：`scripts/05_对接管线/batch_receptor_pdbqt.py`（6 workers 并行）
+
+处理流程（每个酶）：
+1. PDB 清理（BioPython 解析 → 保留蛋白+1个HEM → normalize_pdb 修复格式）
+2. 复制到英文临时目录（MGLTools = Python 2.7，不支持中文路径）
+3. 修复 altloc 列（col 17 → 空格，Path B 验证的 fix）
+4. MGLTools `prepare_receptor4.py` 转换
+5. 验证 Fe 在 PDBQT 中存在
+
+**结果**：
+
+| 状态 | 数量 | 说明 |
+|------|------|------|
+| 成功 | **1,397** | 99.6% |
+| 失败 | 6 | 5 个 MGLTools 报错 + 1 个无 HEM |
+| 总计 | 1,403 | |
+
+耗时：**6.3 分钟**（6 workers 并行）
+
+Fe 电荷在 PDBQT 中为 0.000（Gasteiger 不处理金属离子）。但后续确认使用 Vina 打分函数（忽略电荷），所以 Fe 电荷不影响对接结果。
+
+产出：`data/structures/receptors_pdbqt/`（1,397 个 .pdbqt + .ok 标记）
+产出：`data/structures/receptors_clean/`（1,397 个干净 PDB）
+
+### 11.7 对接工具选型（Codex + 文献调研）
+
+**决策：使用 Uni-Dock（Vina GPU 加速版）而非 AutoDock-GPU（AD4）**
+
+| 对比 | AutoDock-GPU (AD4) | Uni-Dock (Vina) |
+|------|-------------------|-----------------|
+| 精度（姿态 RMSD） | 1.42 Å | **1.30 Å**（更好） |
+| 成功率（RMSD<2Å） | 77% | **81%** |
+| 速度 | 快 | **更快（~1000x vs CPU Vina）** |
+| Fe 电荷 | 需要手动修补 | **不需要（Vina 忽略电荷）** |
+| 额外准备 | 需要 AutoGrid 格点图 | **不需要** |
+| 输入 | receptor.pdbqt + ligand.pdbqt + .maps.fld | **receptor.pdbqt + ligand.pdbqt** |
+
+选择 Vina 的理由：
+1. **姿态精度更高**（[JCIM 2020](https://pubs.acs.org/doi/10.1021/acs.jcim.9b00778)）
+2. **操作更简单**：不需要 AutoGrid 格点图，不需要修补 Fe 电荷
+3. **速度更快**：Uni-Dock GPU 比 CPU Vina 快 1000-2000 倍
+4. **我们从头训练自己的模型**：不需要和论文的 AD4 姿态分布一致
+5. **P450 柔性口袋问题**：[2024 ChemRxiv benchmark](https://chemrxiv.org/engage/chemrxiv/article-details/67470b577be152b1d00cfc8f) 表明 Vina 和 AD4 在 P450 上表现类似，Fe 电荷不是主要瓶颈
+
+### 11.8 Cloud-2 设置（2026-03-25 04:30）
+
+**Uni-Dock v1.1.3 已安装**（之前 conda env 已存在）
+
+**目录结构**：
+```
+/root/rivermind-data/EZSpecificity/PathC/docking/
+├── receptors_pdbqt/    ← 1,397 个受体（待传）
+├── receptors_clean/    ← 1,397 个干净 PDB（待传）
+├── ligands_pdbqt/      ← 2,118 个底物（待传）
+├── registries/         ← 登记表（待传）
+├── scripts/            ← 对接脚本
+├── results/            ← 对接原始输出
+├── complexes/          ← 最终复合物 PDB
+└── logs/               ← 日志
+```
+
+**磁盘**：删除 enzymes.bin（25.5GB）后，可用空间 43GB，足够对接使用。
+
+### 11.9 当前执行状态（2026-03-25 05:00）
+
+| 阶段 | 状态 | 说明 |
+|------|------|------|
+| A. 建登记表 | ✅ | 52,254行，Batch1=46,728 / Batch2=5,495 / Blocked=31 |
+| B. 底物 PDBQT | ✅ | 2,118/2,125 成功（含 11 个救回） |
+| C. 受体 PDBQT | ✅ | 1,397/1,403 成功（MGLTools，6.3 分钟） |
+| Cloud-2 设置 | ✅ | Uni-Dock 已装，目录已建，43GB 可用 |
+| ColabFold | 🔄 | ~53/219 完成（老师服务器运行中） |
+| D. 数据传输 | ⏳ | ~1GB 待传到 Cloud-2 |
+| E. Batch 1 对接 | ⏳ | 46,728 对，Uni-Dock GPU |
+| F. Batch 2 准备 | ⏳ | 待 ColabFold 完成 |
+| G. Batch 2 对接 | ⏳ | |
+| H. 复合物组装 | ⏳ | 对接结果 → EZSpecificity PDB 格式 |
+| I. 合并验证 | ⏳ | completed + failed + blocked = 52,254 |
