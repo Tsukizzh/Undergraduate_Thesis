@@ -314,7 +314,7 @@ ESIBank 训练集中的 P450
 
 #### 当前研究阶段
 
-**阶段四十八**：C2 Phase 7.5 pt_cache构建完成 + Phase 8 EXP001训练中（4×RTX4090 DDP, random_split）
+**阶段四十九**：C2 Phase 8 EXP001完成 — **Val AUC=0.7544, Test AUC=0.7730**（4×RTX4090 DDP, random_split, 89ep, best=ep73）
 
 | 路径 | 名称 | 状态 | 说明 |
 |------|------|------|------|
@@ -328,9 +328,9 @@ ESIBank 训练集中的 P450
 | │    | └─ Step 8 | ✅ 已完成 | E8v1+E8v2通道关闭消融 + E9废弃 |
 | │    | └─ Step 9 | ✅ 已完成 | AllSplit训练 ep27完成, **BEST=ep14 AUC=0.7667** |
 | │    | └─ Step 10 | ✅ 已完成 | .pt缓存v3 + legacy_bug基线(Cloud-2 DDP 32ep, **test AUC=0.7244**) |
-| **C** | P450专属模型训练 | 🔄 **EXP001训练中** | `PathC_2026-03-19_P450专属模型训练/` |
+| **C** | P450专属模型训练 | 🔄 **EXP001✅ Test AUC=0.7730** | `PathC_2026-03-19_P450专属模型训练/` |
 | │    | └─ C1 模型架构优化 | 🔄 3/19-30 | C1-Step 1 ✅ → Step 2 dropout消融 ✅ (Val提升但**Test未迁移**) → 其他消融可与C2并行 |
-| │    | └─ C2 P450全面数据集构建 | 🔄 3/22- | Phase 7✅ + **Phase 7.5✅**(pt_cache构建完成) + **Phase 8 EXP001训练中**(4×4090 DDP, random_split fold0, ~1.8 it/s, ~2min/ep, ep0 loss=0.451) |
+| │    | └─ C2 P450全面数据集构建 | ✅ 3/22-26 | Phase 7✅ + Phase 7.5✅ + **Phase 8 EXP001✅**(89ep, best=ep73, Val=0.7544, **Test=0.7730**, vs ESIBank P450=0.638→+0.135) |
 | D | 区域选择性预测 | ⏳ 待定 | 数据源: S3反应SMILES(3,352条) + S9 PCPD反应图片(857张, RxnScribe+MolScribe转换) |
 
 **工作目录**: `毕业设计/P450_EZSpecificity_研究项目/PathC_2026-03-19_P450专属模型训练/`
@@ -366,12 +366,14 @@ ESIBank 训练集中的 P450
   - 三步流程: main(graph shards) → convert-per-sample → convert-flatbin(enzymes.bin+substrates)
   - 性能修复: --shard-size 2048→256 + OMP_NUM_THREADS=1, 从10+min→**30秒**
   - 目录: P450/data/pt_cache/{shared/,random/,all/}, shared通过symlink共享到各split
-- **Phase 8 EXP001训练中（2026-03-26）**: P450 random_split fold0基线
+- **Phase 8 EXP001已完成（2026-03-26）**: P450 random_split fold0基线
+  - **Val AUC=0.7544, Test AUC=0.7730**（89 epochs, early stopped ep88, best=ep73）
+  - vs ESIBank P450 internal AUC=0.638 → **+0.135提升**，确认P450专属数据集构建成功
   - 服务器: Cloud-2 **4×RTX4090** (升级自2×4090), 360GB RAM, 28核(64 vCPU)
   - 配置: bs=56/GPU, effective=224, 4 GPU DDP, num-workers=6/GPU(24 total), --preload(~149GB RAM), edge-mode=fixed
-  - 速度: ~1.8 it/s, ~2 min/epoch, GPU利用率92-100%
-  - 预计: 50 epochs ~1.5-2小时
-  - 早期结果: ep0 loss=0.451, ep2 val AUC=0.514
+  - 速度: ~1.8 it/s, ~2 min/epoch, GPU利用率92-100%, **总耗时49分钟**
+  - main_training_pt.py模板重写（Codex 4轮review）: 输出路径扁平化、max-epochs=200、save_top_k=5、训练后自动测试、DDP test_epoch_end修复、自动关机、SRC_DIR fallback
+  - 实验管理: 每个实验含完整src/副本实现架构隔离
   - 实验目录: P450/experiments/EXP001_random_baseline/
 - **Step 10 legacy_bug 已完成**: Cloud-2 DDP 32ep, test AUC=0.7244 > paper 0.7198
 - **Val Loss ↑ while AUC ↑（Codex深度分析，非Bug）**: BCE=逐点（outlier主导），AUC=成对排序（outlier鲁棒）。ep2→ep22: +26,500对正确排序但few dozen hard samples极端logit(z=5→loss=5.01)主导loss均值。三阶段: warmup(ep0-8)→divergence(ep8-22,排序↑过度自信↑)→true overfitting(ep22+)。ReduceLROnPlateau监控aupr（非auc/loss）不匹配。建议: 同AUC选低loss ckpt, warmup后加LR衰减, temperature scaling后校准。
@@ -385,6 +387,7 @@ ESIBank 训练集中的 P450
   - 数据泄露验证: all_split模式0%酶/底物重叠（per-family），跨家族ID重用: 酶3.2%/底物1.6%
   - 代码整合: run_test_eval.py合并到main_training_pt.py --test-only, start_ablation.sh已删除
 - **Cloud-2 服务器重构(2026-03-19→03-26)**: PathB/(归档) + PathC/P450/(自包含工作区) + PathC/ESIBank_baseline/(冻结) + allsplit_pt_cache/(ESIBank共享)
+- **Cloud-2 服务器升级(2026-03-26)**: 2×RTX4090 → **4×RTX4090**, 360GB RAM, 28核(64 vCPU)
 
 **Path B 诊断阶段总结（Step 7-8）**:
 - **Step 7 核心发现**: 底物身份驱动评分（我们的P450）vs 配对交互信号（ESIBank P450）
