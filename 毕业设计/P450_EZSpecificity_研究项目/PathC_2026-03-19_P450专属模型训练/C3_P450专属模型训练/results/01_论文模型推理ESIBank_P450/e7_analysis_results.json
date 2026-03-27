@@ -1,0 +1,222 @@
+{
+  "E1_prime": {
+    "analysis_A": {
+      "esibank": {
+        "pos_mean": -4.541678321417924,
+        "pos_std": 8.342696512391138,
+        "neg_mean": -6.14665298045834,
+        "neg_std": 5.185302348875941,
+        "gap": 1.6049746590404155,
+        "n_pos": 106,
+        "n_neg": 1253
+      },
+      "ours": {
+        "pos_mean": -2.9368975487924525,
+        "pos_std": 2.8290120579776437,
+        "neg_mean": -3.2016870764846064,
+        "neg_std": 2.9739559167674545,
+        "gap": 0.2647895276921539,
+        "n_pos": 265,
+        "n_neg": 2501
+      },
+      "ks_pos_vs_pos": {
+        "statistic": 0.12830188679245283,
+        "pvalue": 0.15426754481826882
+      },
+      "ks_neg_vs_neg": {
+        "statistic": 0.2799770754108572,
+        "pvalue": 3.7600657393351675e-58
+      }
+    },
+    "analysis_B": {
+      "esibank_intra_tanimoto": 0.08943776537087654,
+      "ours_intra_tanimoto": 0.12069011729991581,
+      "cross_tanimoto": 0.0915413730553638,
+      "n_esibank_substrates": 1096,
+      "n_our_substrates": 217
+    }
+  },
+  "E2_prime": {
+    "analysis_A": {
+      "n_enzymes": 203,
+      "cosine_mean": 0.919352114200592,
+      "cosine_std": 0.06601584702730179,
+      "above_090": 0.7570111690972053,
+      "above_095": 0.3737501829000634
+    },
+    "analysis_B_pca": {
+      "n_dims_90pct": 12,
+      "n_dims_95pct": 22
+    },
+    "analysis_C_cross": {
+      "n_esibank": 203,
+      "n_ours": 282,
+      "cross_cosine_mean": 0.903639018535614,
+      "cross_cosine_std": 0.05373919755220413
+    }
+  },
+  "E3_prime": {
+    "per_substrate": {
+      "n_qualifying": 4,
+      "median_auc": 0.5,
+      "mean_auc": 0.4666666666666667,
+      "std_auc": 0.21081851067789198,
+      "above_075": 0.0,
+      "above_065": 0.25,
+      "below_035": 0.25
+    },
+    "per_enzyme": {
+      "n_qualifying": 49,
+      "median_auc": 0.625,
+      "mean_auc": 0.5984594184110833
+    },
+    "direction": {
+      "dir_a": 17,
+      "dir_b": 27,
+      "dir_a_pct": 38.63636363636363,
+      "dir_b_pct": 61.36363636363637
+    }
+  },
+  "E4_prime": {
+    "r2_enzyme": -0.17482886314560342,
+    "r2_substrate": 0.08305660220707434,
+    "r2_additive": -0.09481803412040679,
+    "auc_enzyme_only": 0.48723064644852354,
+    "auc_substrate_only": 0.5412142932433857,
+    "auc_additive": 0.5139890677468415,
+    "auc_residual": 0.6122061768736166,
+    "n_unique_enzymes": 203,
+    "n_unique_substrates": 1096
+  },
+  "E5_prime": {
+    "dir_a_approx_pct": 0.09124087591240876,
+    "LogisticRegression_StratifiedKFold": {
+      "auc_roc": 0.749797264621169,
+      "pr_auc": 0.18975270675691466
+    },
+    "LogisticRegression_StratifiedGroupKFold": {
+      "auc_roc": 0.765443893689312,
+      "pr_auc": 0.2170182007324042
+    },
+    "RandomForest_StratifiedKFold": {
+      "auc_roc": 0.7708245666683913,
+      "pr_auc": 0.18150035747566307
+    },
+    "RandomForest_StratifiedGroupKFold": {
+      "auc_roc": 0.7511606767734258,
+      "pr_auc": 0.21112487657669568
+    },
+    "random_baseline": {
+      "auc_roc": 0.5,
+      "pr_auc": 0.07799852832965416
+    }
+  },
+  "E6_prime": {
+    "analysis_1_attributes": {
+      "esibank_p450": {
+        "n_enzymes": 203,
+        "n_pairs": 1359,
+        "n_pos": 106,
+        "n_neg": 1253,
+        "auc_roc": 0.6381891008748815,
+        "auc_pr": 0.1525100423140745
+      },
+      "our_p450": {
+        "auc_roc": 0.517001501286278
+      }
+    },
+    "analysis_2_stratification": {
+      "low_promiscuity": {
+        "n_enzymes": 182,
+        "auc": 0.6591808135100137
+      },
+      "high_promiscuity": {
+        "n_enzymes": 21,
+        "auc": 0.6437847866419295
+      }
+    },
+    "analysis_3_score_gap": {
+      "esibank_p450_gap": 1.6049746590404155,
+      "esibank_pos_mean": -4.541678321417924,
+      "esibank_neg_mean": -6.14665298045834
+    },
+    "analysis_D_family_table": {
+      "Duf": {
+        "auc_roc": 0.7964288871210112,
+        "promiscuity_mean": 16.11764705882353,
+        "n_valid": 473,
+        "distribution": "in-dist"
+      },
+      "Esterase": {
+        "auc_roc": 0.934316314496507,
+        "promiscuity_mean": 34.561797752808985,
+        "n_valid": 2451,
+        "distribution": "in-dist"
+      },
+      "Gt_acceptor": {
+        "auc_roc": 0.8883471351546578,
+        "promiscuity_mean": 14.152777777777779,
+        "n_valid": 834,
+        "distribution": "in-dist"
+      },
+      "Nitrilase": {
+        "auc_roc": 0.8585298196948682,
+        "promiscuity_mean": 2.4285714285714284,
+        "n_valid": 117,
+        "distribution": "in-dist"
+      },
+      "Phosphatase": {
+        "auc_roc": 0.8773997260260263,
+        "promiscuity_mean": 32.872727272727275,
+        "n_valid": 6291,
+        "distribution": "in-dist"
+      },
+      "Thiolase": {
+        "auc_roc": 0.8801510989010989,
+        "promiscuity_mean": 39.285714285714285,
+        "n_valid": 187,
+        "distribution": "in-dist"
+      },
+      "P450_ESIBank": {
+        "auc_roc": 0.6381891008748815,
+        "promiscuity_mean": 1.5757575757575757,
+        "n_valid": 1359,
+        "distribution": "in-dist"
+      },
+      "P450_independent": {
+        "auc_roc": 0.517001501286278,
+        "promiscuity_mean": 1.0,
+        "n_valid": 2766,
+        "distribution": "enzyme-no-overlap+pipeline-mismatch"
+      }
+    },
+    "analysis_E_level1": {
+      "n_points": 8,
+      "spearman_rho": 0.7619047619047621,
+      "spearman_p": 0.028004939153071794,
+      "in_dist_only": {
+        "n_points": 7,
+        "spearman_rho": 0.642857142857143,
+        "spearman_p": 0.11939237342741094
+      }
+    },
+    "analysis_F_level2": [
+      {
+        "bin": "2",
+        "n_pos": 2,
+        "n_neg": 2,
+        "n_substrates": 1,
+        "auc": 0.0,
+        "confidence": "low"
+      },
+      {
+        "bin": "3-4",
+        "n_pos": 2,
+        "n_neg": 4,
+        "n_substrates": 1,
+        "auc": 0.25,
+        "confidence": "low"
+      }
+    ]
+  }
+}

@@ -1,7 +1,7 @@
 # Path C：P450 专属模型训练 — 计划与进度
 
 > **创建日期**: 2026-03-19
-> **当前状态**: C1 模型架构优化 — C1-Step 2 dropout消融已完成（Val提升但Test未迁移），下一步: 其他消融项
+> **当前状态**: C2 Phase 8 EXP001 ✅ (Test AUC=0.7730) | C3 底物分类验证进行中（~248个错误已发现，修正中）
 > **前置条件**: Path B Step 1-10 全部完成，legacy_bug 基线 Test AUC=0.7244 > 论文 0.7198
 
 ---
@@ -25,17 +25,23 @@
 
 ```
 Path C
-├── C1_模型架构优化（先做）
-│   ├── Step 1: fixed 基线训练（量化边修复贡献）
-│   ├── Step 2: 消融实验（逐个测试改动）
-│   ├── Step 3: 组合最优改动
-│   └── Step 4: 多 seed 验证
+├── C1_论文基线训练与参数调整 ✅
+│   ├── AllSplit 从头训练 (ESIBank) ✅ → Test AUC=0.7244 (超论文0.7198)
+│   ├── .pt 缓存管线 + Cloud-2 DDP ✅ → 7.56 it/s (解决LMDB thrashing)
+│   ├── fixed 基线训练 ✅ → Test AUC=0.7060 (边修复未提升)
+│   └── dropout 消融 ✅ → Val↑但Test未迁移，不纳入后续
 │
-└── C2_数据集扩建（后做）
-    ├── Step 1: P450 外部数据收集
-    ├── Step 2: 结构预测 + 对接
-    ├── Step 3: .pt 缓存增量生成
-    └── Step 4: 扩充数据重训练
+├── C2_P450全面数据集构建 ✅ Phase 1-8 全部完成
+│   ├── Phase 1-3: 5个数据库下载+标准化 → 4,751交互
+│   ├── Phase 4-5: 合并去重+4种Split → 52,254行
+│   ├── Phase 6-7: 对接+特征生成 → 47,510可用对
+│   └── Phase 8: EXP001 ✅ random_split Test AUC=0.7730
+│
+└── C3_P450专属模型训练 🔄 进行中
+    ├── Step 1: 底物分类 ✅ (NPClassifier 15类, 4工具验证)
+    ├── Step 2: 分类修正 🔄 (~248个错误已发现，修正中)
+    ├── Step 3: 按类别聚合预测 ⏳ (导师方向: 预测酶催化哪类底物)
+    └── Step 4: 其他split训练 + 评估 ⏳
 ```
 
 ---
@@ -210,4 +216,8 @@ Path C
 | C2 Phase 5 | 负样本+4种Split | ⏳ | |
 | C2 Phase 6 | 结构+对接 | ⏳ | |
 | C2 Phase 7 | 特征+.pt缓存 | ⏳ | |
-| C2 Phase 8 | 4种场景Benchmark | ⏳ | |
+| C2 Phase 8 | EXP001 random_split 基线 | ✅ 已完成 | **Val AUC=0.7544, Test AUC=0.7730** (4×4090 DDP, 89ep, best=ep73) vs ESIBank P450 internal 0.638 → +0.135 |
+| **C3-Step 1** | **底物分类** | ✅ 已完成 | NPClassifier → 15类, 2,125全部分类 |
+| **C3-Step 2** | **多轮验证** | 🔄 进行中 | 4工具验证(NPC+SMARTS+ClassyFire+Opus文献), ~248个错误已发现, 修正中 |
+| C3-Step 3 | 按类别聚合预测 | ⏳ | |
+| C3-Step 4 | 评估与分析 | ⏳ | |

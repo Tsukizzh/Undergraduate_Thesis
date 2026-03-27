@@ -1,0 +1,20 @@
+{
+  "checkpoint": "pt-EXP001_random_baseline-ep73-auc0.7544.ckpt",
+  "edge_mode": "fixed",
+  "dropout": null,
+  "epoch": 73,
+  "test_auc_roc": 0.773035,
+  "test_aupr": 0.361957,
+  "n_samples": 11823,
+  "n_positive": 1101,
+  "n_negative": 10722,
+  "per_family": {
+    "0": {
+      "name": "brenda",
+      "auc_roc": 0.7730346714700868,
+      "aupr": 0.36195739880474204,
+      "n_samples": 11823,
+      "n_positive": 1101
+    }
+  }
+}
