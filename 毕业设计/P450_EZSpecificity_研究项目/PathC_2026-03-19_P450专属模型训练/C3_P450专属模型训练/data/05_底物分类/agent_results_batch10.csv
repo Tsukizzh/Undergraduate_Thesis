@@ -1,0 +1,31 @@
+compound_id,old_label,verified_label,confidence,reason
+CMP_G002058,Phenylpropanoid,Phenylpropanoid,high,deoxypodophyllotoxin aryltetralin lignan
+CMP_G002088,Polyketide,Terpenoid_other,medium,chrodrimanin T meroterpenoid drimanane+PK
+CMP_G002094,Flavonoid,Flavonoid,high,daidzein isoflavone
+CMP_G002104,Sesquiterpenoid,Sesquiterpenoid,high,brasilane A C15 sesquiterpene glycoside
+CMP_G002114,Amino_acid,Unclassified,high,4-methylaminobenzoic acid not AA
+CMP_G002119,Polyketide,Polyketide,high,fonsecin B naphtho-gamma-pyrone PKS
+CMP_G002121,Flavonoid,Flavonoid,high,3-O-methylorobol isoflavone
+CMP_G002125,Phenylpropanoid,Phenylpropanoid,high,sesamolin furofuran lignan
+CMP_G000019,Alkaloid,Unclassified,high,erlotinib synthetic EGFR TKI drug
+CMP_G000035,Phenylpropanoid,Phenylpropanoid,high,4-methoxycinnamic acid C6-C3
+CMP_G000048,Alkaloid,Unclassified,high,synthetic chiral oxazoline catalyst ligand
+CMP_G000049,Phenylpropanoid,Phenylpropanoid,high,p-coumaroylagmatine HCAA
+CMP_G000060,Terpenoid_other,Terpenoid_other,high,C40 carotenoid tetraterpenoid
+CMP_G000061,Terpenoid_other,Terpenoid_other,high,alpha-carotene C40
+CMP_G000094,Polyketide,Polyketide,high,versicolorin B aflatoxin PKS intermediate
+CMP_G000101,Terpenoid_other,Terpenoid_other,high,apocarotenoid thioether derivative
+CMP_G000104,Phenylpropanoid,Unclassified,high,2-nitrocinnamic acid synthetic nitro
+CMP_G000124,Terpenoid_other,Terpenoid_other,high,beta-damascone C13 norisoprenoid
+CMP_G000136,Phenylpropanoid,Phenylpropanoid,high,3-5-dimethoxystilbene stilbenoid
+CMP_G000147,Phenylpropanoid,Phenylpropanoid,high,p-coumaroylquinate chlorogenic acid
+CMP_G000148,Phenylpropanoid,Phenylpropanoid,high,p-coumaroylquinate stereoisomer
+CMP_G000160,Alkaloid,Unclassified,high,thiomorpholine synthetic heterocycle
+CMP_G000161,Alkaloid,Alkaloid,medium,N-methyl-9-acridinamine borderline natural
+CMP_G000190,Alkaloid,Unclassified,high,synthetic triazole-macrolactone click chemistry
+CMP_G000204,Alkaloid,Unclassified,high,synthetic triazole-macrolactone click chemistry
+CMP_G000211,Phenylpropanoid,Phenylpropanoid,high,p-coumaraldehyde monolignol
+CMP_G000214,Terpenoid_other,Unclassified,high,C9 cyclohexadienone not isoprene-derived
+CMP_G000220,Phenylpropanoid,Phenylpropanoid,high,trimethoxystilbene stilbenoid
+CMP_G000225,Terpenoid_other,Terpenoid_other,high,beta-ionol C13 norisoprenoid
+CMP_G000277,Alkaloid,Alkaloid,high,fumitremorgin C indole DKP

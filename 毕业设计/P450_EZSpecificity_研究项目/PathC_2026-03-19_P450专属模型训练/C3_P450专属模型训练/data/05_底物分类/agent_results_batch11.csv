@@ -1,0 +1,31 @@
+compound_id,old_label,verified_label,confidence,reason
+CMP_G000278,Alkaloid,Alkaloid,high,fumitremorgin C prenylated indole DKP
+CMP_G000289,Alkaloid,Unclassified,high,synthetic sulfonamide dihydropyranone drug
+CMP_G000292,Alkaloid,Amino_acid,high,5-cyclopropyl-1-methyltryptophan AA derivative
+CMP_G000305,Terpenoid_other,Monoterpenoid,medium,N-hydroxygeranyl-glutamate C10 terpenoid
+CMP_G000312,Terpenoid_other,Terpenoid_other,high,menaquinone-4 vitamin K2 meroterpenoid
+CMP_G000315,Phenylpropanoid,Phenylpropanoid,high,coniferaldehyde core lignin pathway C6-C3
+CMP_G000327,Phenylpropanoid,Phenylpropanoid,high,caffeoyl-hydroxyphenyllactate rosmarinic acid
+CMP_G000350,Alkaloid,Unclassified,high,MeIQx food mutagen Maillard reaction not NP
+CMP_G000380,Terpenoid_other,Sesquiterpenoid,high,ABA analog C15 apocarotenoid
+CMP_G000383,Phenylpropanoid,Phenylpropanoid,high,2-methoxycinnamic acid C6-C3
+CMP_G000386,Phenylpropanoid,Unclassified,high,3-chlorocinnamic acid synthetic
+CMP_G000396,Alkaloid,Unclassified,high,N-propyl-9-acridinamine synthetic
+CMP_G000414,Terpenoid_other,Unclassified,high,difluorinated ABA analog synthetic
+CMP_G000446,Alkaloid,Unclassified,high,bispyribac sodium synthetic herbicide
+CMP_G000493,Alkaloid,Unclassified,high,thienopyridine antiplatelet synthetic
+CMP_G000525,Alkaloid,Alkaloid,high,dihydrocamalexate Arabidopsis indole phytoalexin
+CMP_G000530,Phenylpropanoid,Phenylpropanoid,high,p-coumaroylshikimate lignin pathway C3H
+CMP_G000531,Terpenoid_other,Terpenoid_other,high,alpha-tocopherol vitamin E meroterpenoid
+CMP_G000540,Terpenoid_other,Unclassified,high,monofluorinated ABA analog synthetic
+CMP_G000547,Terpenoid_other,Terpenoid_other,high,delta-tocotrienol-like vitamin E meroterpenoid
+CMP_G000557,Alkaloid,Unclassified,high,fenbendazole synthetic benzimidazole anthelmintic
+CMP_G000571,Polyketide,Polyketide,high,13-dihydrodaunorubicin anthracycline type II PKS
+CMP_G000572,Alkaloid,Unclassified,medium,macrolactone-triazole click chemistry synthetic
+CMP_G000597,Alkaloid,Unclassified,medium,macrolactone-triazole click chemistry synthetic
+CMP_G000600,Phenylpropanoid,Phenylpropanoid,high,polydatin resveratrol glucoside stilbenoid
+CMP_G000601,Alkaloid,Unclassified,high,dihydropyridine Ca-blocker synthetic drug
+CMP_G000612,Alkaloid,Unclassified,high,albendazole synthetic benzimidazole anthelmintic
+CMP_G000618,Phenylpropanoid,Polyketide,medium,polyporic acid fungal terphenylquinone NRPS/PKS
+CMP_G000619,Phenylpropanoid,Polyketide,medium,polyporic acid same reclassification
+CMP_G000656,Terpenoid_other,Unclassified,high,C8 compound not terpenoid

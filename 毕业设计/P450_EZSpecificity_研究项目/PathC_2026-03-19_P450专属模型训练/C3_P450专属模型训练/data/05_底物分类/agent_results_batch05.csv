@@ -1,0 +1,31 @@
+compound_id,old_label,verified_label,confidence,reason
+CMP_G000897,Phenylpropanoid,Unclassified,high,prenylated benzoic acid C6-C1 not C6-C3
+CMP_G000898,Monoterpenoid,Monoterpenoid,high,secoiridoid glycoside C10 monoterpene
+CMP_G000904,Terpenoid_other,Unclassified,high,synthetic azidosulfonyl compound
+CMP_G000913,Phenylpropanoid,Unclassified,high,guaiacol simple phenol C6-C1 not C6-C3
+CMP_G000920,Diterpenoid,Terpenoid_other,high,preasperterpenoid A C25 sesterterpenoid
+CMP_G000921,Diterpenoid,Terpenoid_other,high,preasperterpenoid A stereoisomer C25
+CMP_G000933,Alkaloid,Unclassified,high,flufenamic acid synthetic NSAID
+CMP_G000938,Phenylpropanoid,Unclassified,high,3-methoxycatechol simple phenol lignin degradation
+CMP_G000948,Alkaloid,Unclassified,high,N-phenylurea synthetic urea
+CMP_G000949,Polyketide,Terpenoid_other,medium,andrastin-type meroterpenoid PK-terpenoid hybrid
+CMP_G000953,Polyketide,Polyketide,medium,pyrone core polyketide-derived
+CMP_G000969,Phenylpropanoid,Phenylpropanoid,high,sinapyl alcohol canonical monolignol C6-C3
+CMP_G000970,Flavonoid,Flavonoid,high,pisatin pterocarpan isoflavonoid
+CMP_G000973,Phenylpropanoid,Phenylpropanoid,high,matairesinol lignan dimeric phenylpropanoid
+CMP_G000984,Phenylpropanoid,Unclassified,high,hydroxymethoxybiphenyl no C3 chain
+CMP_G000987,Diterpenoid,Terpenoid_other,high,preterpestacin I C25 sesterterpenoid ChEBI
+CMP_G000991,Polyketide,Polyketide,medium,polyene heterocyclic polyketide
+CMP_G000993,Polyketide,Terpenoid_other,medium,ilicicolin A meroterpenoid terpenoid dominant
+CMP_G000994,Polyketide,Polyketide,medium,4-pyrone polyketide bromophenyl
+CMP_G001006,Polyketide,Polyketide,medium,2-pyrone polyketide iodo modification
+CMP_G001012,Phenylpropanoid,Unclassified,high,guaethol 2-ethoxyphenol simple phenol
+CMP_G001013,Monoterpenoid,Monoterpenoid,high,secoxyloganin secoiridoid glycoside C10
+CMP_G001019,Phenylpropanoid,Unclassified,high,4-methoxysalicylic acid C6-C1 not C6-C3
+CMP_G001020,Polyketide,Polyketide,high,lovastatin acid form PKS
+CMP_G001022,Monoterpenoid,Monoterpenoid,medium,benzoylated iridoid C10 core
+CMP_G001030,Phenylpropanoid,Phenylpropanoid,high,vanillin from ferulic acid phenylpropanoid pathway
+CMP_G001037,Polyketide,Terpenoid_other,high,citreohybridonol andrastin meroterpenoid
+CMP_G001066,Polyketide,Unclassified,high,fluorene PAH coal tar xenobiotic
+CMP_G001082,Alkaloid,Unclassified,high,lidocaine synthetic local anesthetic 1942
+CMP_G001084,Alkaloid,Unclassified,high,synthetic pharmaceutical CF3 SO2 Br Cl

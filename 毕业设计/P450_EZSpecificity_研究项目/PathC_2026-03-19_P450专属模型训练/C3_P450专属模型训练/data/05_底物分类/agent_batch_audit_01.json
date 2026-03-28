@@ -1,0 +1,402 @@
+[
+ {
+  "id": "CMP_G001547",
+  "name": "jasmolone",
+  "smiles": "CC/C=C/CC1=C(C)C(O)CC1=O",
+  "final_label": "Monoterpenoid",
+  "verification_source": "structural_npc",
+  "npc_pathway": "Terpenoids",
+  "npc_superclass": "Monoterpenoids",
+  "npc_class": ""
+ },
+ {
+  "id": "CMP_G001780",
+  "name": "Cyclooctane",
+  "smiles": "C1CCCCCCC1",
+  "final_label": "Unclassified",
+  "verification_source": "agent_literature",
+  "npc_pathway": "Fatty acids",
+  "npc_superclass": "Fatty esters",
+  "npc_class": "Lactones"
+ },
+ {
+  "id": "CMP_G001600",
+  "name": "Paeonol",
+  "smiles": "COc1ccc(C(C)=O)c(O)c1",
+  "final_label": "Phenylpropanoid",
+  "verification_source": "double_checked",
+  "npc_pathway": "Shikimates and Phenylpropanoids",
+  "npc_superclass": "",
+  "npc_class": ""
+ },
+ {
+  "id": "CMP_G001241",
+  "name": "Cyclosporin A",
+  "smiles": "CC=CCC(C)C(O)C1C(=O)NC(CC)C(=O)N(C)CC(=O)N(C)C(CC(C)C)C(=O)NC(C(C)C)C(=O)N(C)C(C",
+  "final_label": "Unclassified",
+  "verification_source": "agent_literature",
+  "npc_pathway": "Amino acids and Peptides",
+  "npc_superclass": "Oligopeptides",
+  "npc_class": "Cyclic peptides|Peptaibols"
+ },
+ {
+  "id": "CMP_G001368",
+  "name": "3,17-didehydrostemmadenine",
+  "smiles": "CC=C1C[N+]2=CCC1C(C=O)(C(=O)OC)c1[nH]c3ccccc3c1CC2",
+  "final_label": "Alkaloid",
+  "verification_source": "structural_npc",
+  "npc_pathway": "Alkaloids",
+  "npc_superclass": "Tryptophan alkaloids",
+  "npc_class": "Corynanthe type"
+ },
+ {
+  "id": "CMP_G001725",
+  "name": "1,2-Dimethyl-7-(methylthio)tryptophan",
+  "smiles": "CSc1cccc2c(CC(N)C(=O)O)c(C)n(C)c12",
+  "final_label": "Alkaloid",
+  "verification_source": "structural_npc",
+  "npc_pathway": "Alkaloids",
+  "npc_superclass": "Tryptophan alkaloids",
+  "npc_class": ""
+ },
+ {
+  "id": "CMP_G000383",
+  "name": "",
+  "smiles": "COc1ccccc1/C=C/C(=O)O",
+  "final_label": "Phenylpropanoid",
+  "verification_source": "agent_literature",
+  "npc_pathway": "Shikimates and Phenylpropanoids",
+  "npc_superclass": "Phenylpropanoids (C6-C3)",
+  "npc_class": "Cinnamic acids and derivatives"
+ },
+ {
+  "id": "CMP_G002114",
+  "name": "",
+  "smiles": "CNc1ccc(C(=O)O)cc1",
+  "final_label": "Unclassified",
+  "verification_source": "agent_literature",
+  "npc_pathway": "Amino acids and Peptides|Shikimates and Phenylpropanoids",
+  "npc_superclass": "Small peptides",
+  "npc_class": "Aminoacids"
+ },
+ {
+  "id": "CMP_G001345",
+  "name": "",
+  "smiles": "CCCCC/C=C\\C/C=C\\C=C\\[C@@H](C/C=C\\CCCC(=O)O)OO",
+  "final_label": "Fatty_acid",
+  "verification_source": "structural_npc",
+  "npc_pathway": "Fatty acids",
+  "npc_superclass": "Eicosanoids",
+  "npc_class": "Hydroxy-hydroperoxyeicosatetraenoic acids"
+ },
+ {
+  "id": "CMP_G000016",
+  "name": "Thiocamphor",
+  "smiles": "CC12CCC(CC1=S)C2(C)C",
+  "final_label": "Monoterpenoid",
+  "verification_source": "structural_npc",
+  "npc_pathway": "Terpenoids",
+  "npc_superclass": "Monoterpenoids",
+  "npc_class": "Camphane monoterpenoids"
+ },
+ {
+  "id": "CMP_G002025",
+  "name": "secopenitrem D",
+  "smiles": "C=C1Cc2ccc3[nH]c4c(c3c2[C@H]2[C@@H]1C[C@@H]2C(C)(C)O)C[C@@H]1CC[C@@]2(O)C3=C[C@@",
+  "final_label": "Alkaloid",
+  "verification_source": "structural_npc",
+  "npc_pathway": "Alkaloids|Terpenoids",
+  "npc_superclass": "Tryptophan alkaloids",
+  "npc_class": "Indole-Diterpenoid alkaloids (Penitrems)"
+ },
+ {
+  "id": "CMP_G001390",
+  "name": "(-)-4��-Desmethyl-Deoxypodophyllotoxin",
+  "smiles": "COc1cc([C@@H]2c3cc4c(cc3C[C@H]3COC(=O)[C@@H]32)OCO4)cc(OC)c1O",
+  "final_label": "Phenylpropanoid",
+  "verification_source": "agent_literature",
+  "npc_pathway": "Shikimates and Phenylpropanoids",
+  "npc_superclass": "Lignans",
+  "npc_class": "Arylnaphthalene and aryltetralin lignans"
+ },
+ {
+  "id": "CMP_G000362",
+  "name": "10-Deoxymethymycin",
+  "smiles": "CC[C@H]1OC(=O)[C@H](C)[C@@H](O[C@@H]2O[C@H](C)C[C@H](N(C)C)[C@H]2O)[C@@H](C)C[C@",
+  "final_label": "Macrolide",
+  "verification_source": "structural_npc",
+  "npc_pathway": "Polyketides",
+  "npc_superclass": "Macrolides",
+  "npc_class": "Erythromycins"
+ },
+ {
+  "id": "CMP_G000629",
+  "name": "soppiline B",
+  "smiles": "C/C=C(\\C)CCCCCCC/C=C\\C=C\\C=C/Cc1cc(O)cc(O)c1",
+  "final_label": "Polyketide",
+  "verification_source": "agent_literature",
+  "npc_pathway": "Polyketides",
+  "npc_superclass": "Aromatic polyketides",
+  "npc_class": "Catechols with side chains"
+ },
+ {
+  "id": "CMP_G001811",
+  "name": "N-geranyl-L-glutamate",
+  "smiles": "CC(C)=CCCC(C)=CC[NH2+]C(CCC(=O)[O-])C(=O)[O-]",
+  "final_label": "Amino_acid",
+  "verification_source": "agent_literature",
+  "npc_pathway": "Terpenoids",
+  "npc_superclass": "",
+  "npc_class": ""
+ },
+ {
+  "id": "CMP_G001357",
+  "name": "",
+  "smiles": "CC(=O)[C@H]1CC[C@H]2C3=CC=C4C[C@@H](O)CC[C@]4(C)[C@H]3CC[C@]12C",
+  "final_label": "Steroid",
+  "verification_source": "structural_npc",
+  "npc_pathway": "Terpenoids",
+  "npc_superclass": "Steroids",
+  "npc_class": "Pregnane steroids"
+ },
+ {
+  "id": "CMP_G001015",
+  "name": "Tryptophan, 2,1,6-trimethyl- (ACI)",
+  "smiles": "Cc1ccc2c(CC(N)C(=O)O)c(C)n(C)c2c1",
+  "final_label": "Amino_acid",
+  "verification_source": "structural_npc",
+  "npc_pathway": "Alkaloids|Amino acids and Peptides|Shikimates and Phenylpropanoids",
+  "npc_superclass": "Small peptides",
+  "npc_class": "Aminoacids"
+ },
+ {
+  "id": "CMP_G000970",
+  "name": "Pisatin",
+  "smiles": "COc1ccc2c(c1)OC[C@]1(O)c3cc4c(cc3O[C@H]21)OCO4",
+  "final_label": "Flavonoid",
+  "verification_source": "agent_literature",
+  "npc_pathway": "Shikimates and Phenylpropanoids",
+  "npc_superclass": "Isoflavonoids",
+  "npc_class": "Pterocarpan"
+ },
+ {
+  "id": "CMP_G001572",
+  "name": "genistein",
+  "smiles": "O=c1c(-c2ccc(O)cc2)coc2cc(O)cc(O)c12",
+  "final_label": "Flavonoid",
+  "verification_source": "agent_literature",
+  "npc_pathway": "Shikimates and Phenylpropanoids",
+  "npc_superclass": "Isoflavonoids",
+  "npc_class": "Isoflavones"
+ },
+ {
+  "id": "CMP_G001401",
+  "name": "",
+  "smiles": "C/C=C(\\C)[C@H]1CC=C/C=C(\\C)CC[C@@H](O)[C@@](C)(O)C(=S)/C=C2\\N[C@@](C)(C3=N[C@@H]",
+  "final_label": "Macrolide",
+  "verification_source": "structural_npc",
+  "npc_pathway": "Amino acids and Peptides|Polyketides",
+  "npc_superclass": "Macrolides",
+  "npc_class": ""
+ },
+ {
+  "id": "CMP_G001942",
+  "name": "beta-Bisabolene",
+  "smiles": "C=C(CCC=C(C)C)[C@@H]1CC=C(C)CC1",
+  "final_label": "Sesquiterpenoid",
+  "verification_source": "structural_npc",
+  "npc_pathway": "Terpenoids",
+  "npc_superclass": "Sesquiterpenoids",
+  "npc_class": "Bisabolane sesquiterpenoids"
+ },
+ {
+  "id": "CMP_G001137",
+  "name": "Pentane",
+  "smiles": "CCCCC",
+  "final_label": "Unclassified",
+  "verification_source": "agent_literature",
+  "npc_pathway": "Fatty acids",
+  "npc_superclass": "Fatty acyls",
+  "npc_class": "Hydrocarbons"
+ },
+ {
+  "id": "CMP_G001126",
+  "name": "(3S,5R,8E,12R,13R,16S)-5,9,12,13,16-pentamethyl-4-oxatricycl",
+  "smiles": "C/C1=C\\CC[C@@]2(C)O[C@@H]2C(=O)C2=CC[C@@H](C)[C@@](C)(CC1)[C@@H]2C",
+  "final_label": "Diterpenoid",
+  "verification_source": "structural_npc",
+  "npc_pathway": "Terpenoids",
+  "npc_superclass": "Diterpenoids",
+  "npc_class": "Cembrane diterpenoids"
+ },
+ {
+  "id": "CMP_G001599",
+  "name": "cotinine",
+  "smiles": "CN1C(=O)CC[C@H]1c1cccnc1",
+  "final_label": "Alkaloid",
+  "verification_source": "structural_npc",
+  "npc_pathway": "Alkaloids",
+  "npc_superclass": "Nicotinic acid alkaloids|Ornithine alkaloids",
+  "npc_class": "Pyridine alkaloids|Pyrrolidine alkaloids"
+ },
+ {
+  "id": "CMP_G001174",
+  "name": "NMVT",
+  "smiles": "CN[C@H](C(=O)N[C@H](CO)Cc1c[nH]c2ccccc12)C(C)C",
+  "final_label": "Amino_acid",
+  "verification_source": "agent_literature",
+  "npc_pathway": "Amino acids and Peptides",
+  "npc_superclass": "Small peptides",
+  "npc_class": "Dipeptides"
+ },
+ {
+  "id": "CMP_G001158",
+  "name": "2-Methyl-7-(4-morpholinyl)tryptophan",
+  "smiles": "Cc1[nH]c2c(N3CCOCC3)cccc2c1CC(N)C(=O)O",
+  "final_label": "Alkaloid",
+  "verification_source": "structural_npc",
+  "npc_pathway": "Alkaloids",
+  "npc_superclass": "Tryptophan alkaloids",
+  "npc_class": ""
+ },
+ {
+  "id": "CMP_G000296",
+  "name": "4-Fluorotryptophan",
+  "smiles": "NC(Cc1c[nH]c2cccc(F)c12)C(=O)O",
+  "final_label": "Amino_acid",
+  "verification_source": "structural_npc",
+  "npc_pathway": "Amino acids and Peptides",
+  "npc_superclass": "Small peptides",
+  "npc_class": "Aminoacids"
+ },
+ {
+  "id": "CMP_G001504",
+  "name": "Indole",
+  "smiles": "c1ccc2[nH]ccc2c1",
+  "final_label": "Alkaloid",
+  "verification_source": "structural_npc",
+  "npc_pathway": "Alkaloids",
+  "npc_superclass": "Tryptophan alkaloids",
+  "npc_class": "Simple indole alkaloids"
+ },
+ {
+  "id": "CMP_G001320",
+  "name": "",
+  "smiles": "CC(C)CCCCCCCCC(=O)O",
+  "final_label": "Fatty_acid",
+  "verification_source": "structural_npc",
+  "npc_pathway": "Fatty acids",
+  "npc_superclass": "Fatty Acids and Conjugates",
+  "npc_class": "Branched fatty acids"
+ },
+ {
+  "id": "CMP_G001790",
+  "name": "N-Benzoyl-cis-2,6-dimethylpiperidine",
+  "smiles": "CC1CCCC(C)N1C(=O)c1ccccc1",
+  "final_label": "Alkaloid",
+  "verification_source": "structural_npc",
+  "npc_pathway": "Alkaloids",
+  "npc_superclass": "Lysine alkaloids",
+  "npc_class": "Piperidine alkaloids"
+ },
+ {
+  "id": "CMP_G001538",
+  "name": "",
+  "smiles": "CCc1cccc2cc(C(O)CNC(C)(C)C)oc12",
+  "final_label": "Unclassified",
+  "verification_source": "agent_literature",
+  "npc_pathway": "",
+  "npc_superclass": "",
+  "npc_class": ""
+ },
+ {
+  "id": "CMP_G001669",
+  "name": "syn-pimaradiene",
+  "smiles": "C=C[C@]1(C)CCC2C(=CCC3C(C)(C)CCC[C@]23C)C1",
+  "final_label": "Diterpenoid",
+  "verification_source": "structural_npc",
+  "npc_pathway": "Terpenoids",
+  "npc_superclass": "Diterpenoids",
+  "npc_class": "Pimarane and Isopimarane diterpenoids"
+ },
+ {
+  "id": "CMP_G000327",
+  "name": "4-coumaroyl-4'-hydroxyphenyllactic acid",
+  "smiles": "O=C(/C=C/c1ccc(O)c(O)c1)O[C@H](Cc1ccc(O)c(O)c1)C(=O)O",
+  "final_label": "Phenylpropanoid",
+  "verification_source": "agent_literature",
+  "npc_pathway": "Shikimates and Phenylpropanoids",
+  "npc_superclass": "Phenylpropanoids (C6-C3)",
+  "npc_class": "Cinnamic acids and derivatives"
+ },
+ {
+  "id": "CMP_G001496",
+  "name": "3-hydroxyindolin-2-one",
+  "smiles": "O=C1Nc2ccccc2C1O",
+  "final_label": "Alkaloid",
+  "verification_source": "structural_npc",
+  "npc_pathway": "Alkaloids",
+  "npc_superclass": "Tryptophan alkaloids",
+  "npc_class": "Simple oxindole alkaloids"
+ },
+ {
+  "id": "CMP_G000593",
+  "name": "6-Deoxyerythronolide B",
+  "smiles": "CC[C@H]1OC(=O)[C@H](C)[C@@H](O)[C@H](C)[C@@H](O)[C@@H](C)C[C@@H](C)C(=O)[C@H](C)",
+  "final_label": "Macrolide",
+  "verification_source": "structural_npc",
+  "npc_pathway": "Polyketides",
+  "npc_superclass": "Macrolides",
+  "npc_class": "Erythromycins"
+ },
+ {
+  "id": "CMP_G001361",
+  "name": "9-hydroperoxy-10(E),12(Z),15(Z)-octadecatrienoic acid (9-HPO",
+  "smiles": "CC/C=C\\C/C=C\\C/C=C(/CCCCCCCC(=O)O)OO",
+  "final_label": "Fatty_acid",
+  "verification_source": "structural_npc",
+  "npc_pathway": "Fatty acids",
+  "npc_superclass": "Octadecanoids",
+  "npc_class": "Other Octadecanoids"
+ },
+ {
+  "id": "CMP_G001290",
+  "name": "Androst-5-En-3Beta,17Beta-Diol",
+  "smiles": "C[C@]12CC[C@H]3[C@@H](CC=C4C[C@@H](O)CC[C@@]43C)[C@@H]1CC[C@@H]2O",
+  "final_label": "Steroid",
+  "verification_source": "structural_npc",
+  "npc_pathway": "Terpenoids",
+  "npc_superclass": "Steroids",
+  "npc_class": "Androstane steroids"
+ },
+ {
+  "id": "CMP_G001525",
+  "name": "8-hydroxy-7-keto-delta-cadinene",
+  "smiles": "CC1=C[C@@H]2C(=C(C)CC[C@H]2C(C)C)[C@H](O)C1=O",
+  "final_label": "Sesquiterpenoid",
+  "verification_source": "structural_npc",
+  "npc_pathway": "Terpenoids",
+  "npc_superclass": "Sesquiterpenoids",
+  "npc_class": "Cadinane sesquiterpenoids"
+ },
+ {
+  "id": "CMP_G001877",
+  "name": "2-Methyl-5-phenyltryptophan",
+  "smiles": "Cc1[nH]c2ccc(-c3ccccc3)cc2c1CC(N)C(=O)O",
+  "final_label": "Amino_acid",
+  "verification_source": "structural_npc",
+  "npc_pathway": "Amino acids and Peptides",
+  "npc_superclass": "Small peptides",
+  "npc_class": "Aminoacids"
+ },
+ {
+  "id": "CMP_G001058",
+  "name": "Cyclo(L-Tyrosyl-L-Tyrosyl)",
+  "smiles": "O=C1N[C@@H](Cc2ccc(O)cc2)C(=O)N[C@H]1Cc1ccc(O)cc1",
+  "final_label": "Alkaloid",
+  "verification_source": "structural_npc",
+  "npc_pathway": "Alkaloids|Amino acids and Peptides",
+  "npc_superclass": "Peptide alkaloids|Small peptides",
+  "npc_class": "Dipeptides|Simple diketopiperazine alkaloids"
+ }
+]

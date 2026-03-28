@@ -1,0 +1,31 @@
+compound_id,old_label,verified_label,confidence,reason
+CMP_G000659,Alkaloid,Unclassified,high,synthetic triazole-macrolactone click chemistry
+CMP_G000675,Phenylpropanoid,Unclassified,high,synthetic fluorinated cinnamic acid
+CMP_G000698,Alkaloid,Unclassified,high,synthetic dibromo-indole-carbonitrile
+CMP_G000734,Terpenoid_other,Unclassified,high,synthetic adamantyl-geranyl drug SQ109-like
+CMP_G000745,Alkaloid,Unclassified,high,synthetic pyrazolone drug aminopyrine
+CMP_G000750,Terpenoid_other,Sesquiterpenoid,high,abscisic acid C15 apocarotenoid
+CMP_G000751,Terpenoid_other,Sesquiterpenoid,high,ABA C15 apocarotenoid
+CMP_G000770,Alkaloid,Alkaloid,high,hancockiamide A piperazine alkaloid NRPS
+CMP_G000793,Terpenoid_other,Terpenoid_other,high,pseudoionone C13 apocarotenoid
+CMP_G000797,Phenylpropanoid,Phenylpropanoid,high,3-methylcinnamic acid C6-C3
+CMP_G000800,Terpenoid_other,Terpenoid_other,high,arnebinol A meroterpenoid
+CMP_G000824,Phenylpropanoid,Phenylpropanoid,high,caffeoyl-hydroxyphenyllactate rosmarinic acid
+CMP_G000829,Phenylpropanoid,Unclassified,high,synthetic 2-chlorocinnamic acid
+CMP_G000835,Phenylpropanoid,Phenylpropanoid,high,trans-3-hydroxycinnamic acid m-coumaric
+CMP_G000843,Alkaloid,Alkaloid,high,okaramine indole DKP alkaloid
+CMP_G000855,Alkaloid,Unclassified,high,7-methoxyresorufin synthetic phenoxazine dye
+CMP_G000865,Alkaloid,Unclassified,high,synthetic tosyl-pyrazole sulfonamide
+CMP_G000867,Phenylpropanoid,Phenylpropanoid,high,ferulate ferulic acid phenylpropanoid
+CMP_G000868,Phenylpropanoid,Phenylpropanoid,high,ferulic acid protonated form
+CMP_G000879,Terpenoid_other,Sesquiterpenoid,medium,C14 nor-ABA apocarotenoid
+CMP_G000884,Terpenoid_other,Terpenoid_other,high,sorgomol strigolactone C19
+CMP_G000893,Terpenoid_other,Terpenoid_other,medium,N-oxogeranyl-glutamate terpenoid conjugate
+CMP_G000909,Terpenoid_other,Terpenoid_other,high,19-oxocarlactone apocarotenoid C19
+CMP_G000922,Phenylpropanoid,Phenylpropanoid,high,p-coumaroyl shikimic acid lignin pathway
+CMP_G000927,Terpenoid_other,Polyketide,medium,ilicicolin A epoxide tetraketide meroterpenoid
+CMP_G000946,Terpenoid_other,Sesquiterpenoid,high,C15 ABA-family apocarotenoid epoxide
+CMP_G000951,Phenylpropanoid,Phenylpropanoid,high,resveratrol stilbenoid
+CMP_G000960,Phenylpropanoid,Phenylpropanoid,high,coumaroyl-hydroxyphenyllactate rosmarinic acid
+CMP_G000961,Alkaloid,Alkaloid,high,preechinulin indole DKP alkaloid
+CMP_G000962,Alkaloid,Alkaloid,high,preechinulin stereoisomer

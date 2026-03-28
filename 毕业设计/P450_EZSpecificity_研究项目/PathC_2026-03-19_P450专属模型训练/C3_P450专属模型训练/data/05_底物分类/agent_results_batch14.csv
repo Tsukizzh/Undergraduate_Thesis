@@ -1,0 +1,31 @@
+compound_id,old_label,verified_label,confidence,reason
+CMP_G001358,Terpenoid_other,Terpenoid_other,high,gamma-tocopherol meroterpenoid
+CMP_G001371,Terpenoid_other,Sesquiterpenoid,high,4-deoxyorobanchol strigolactone C15
+CMP_G001395,Phenylpropanoid,Unclassified,high,DES synthetic nonsteroidal estrogen 1938
+CMP_G001430,Phenylpropanoid,Unclassified,high,2-methylcinnamic acid synthetic not natural
+CMP_G001432,Alkaloid,Unclassified,high,nicosulfuron synthetic sulfonylurea herbicide
+CMP_G001434,Phenylpropanoid,Unclassified,high,3-fluorocinnamic acid synthetic fluorinated
+CMP_G001442,Alkaloid,Amino_acid,medium,tetramic acid pyrrolidine-2-4-dione AA derivative
+CMP_G001451,Phenylpropanoid,Phenylpropanoid,high,p-coumaroyltyramine HCAA
+CMP_G001455,Polyketide,Polyketide,high,averufin aflatoxin pathway anthraquinone
+CMP_G001506,Polyketide,Polyketide,high,versicolorin A aflatoxin PKS
+CMP_G001540,Polyketide,Polyketide,high,daunorubicin anthracycline type II PKS
+CMP_G001551,Alkaloid,Unclassified,high,penoxsulam synthetic triazolopyrimidine herbicide
+CMP_G001556,Alkaloid,Alkaloid,high,alpha-cyclopiazonate indole tetramic acid alkaloid
+CMP_G001569,Terpenoid_other,Unclassified,high,ethylthio-methylbenzene synthetic thioether
+CMP_G001577,Terpenoid_other,Terpenoid_other,medium,wigandol prenylated resorcinol meroterpenoid
+CMP_G001581,Alkaloid,Amino_acid,high,simple DKP cyclic dipeptide no alkaloid scaffold
+CMP_G001596,Polyketide,Polyketide,high,13-deoxycarminomycin anthracycline type II PKS
+CMP_G001613,Alkaloid,Unclassified,high,fluorescent chlorophyll catabolite tetrapyrrole
+CMP_G001614,Alkaloid,Unclassified,high,fluorescent chlorophyll catabolite tetrapyrrole
+CMP_G001647,Alkaloid,Unclassified,high,synthetic triazole macrolactone click chemistry
+CMP_G001649,Phenylpropanoid,Unclassified,high,2-ethoxycinnamic acid synthetic ethoxy
+CMP_G001659,Terpenoid_other,Terpenoid_other,high,alpha-ionone C13 norisoprenoid
+CMP_G001660,Terpenoid_other,Terpenoid_other,high,alpha-ionone stereoisomer
+CMP_G001672,Alkaloid,Alkaloid,high,cyclo-Trp-Ala indole DKP alkaloid
+CMP_G001676,Terpenoid_other,Terpenoid_other,medium,C15 apocarotenoid acid
+CMP_G001710,Alkaloid,Alkaloid,medium,HBOA benzoxazinoid anthranilic acid alkaloid
+CMP_G001732,Alkaloid,Alkaloid,high,UCS1025A pyrrolizidinone PKS-NRPS alkaloid
+CMP_G001735,Terpenoid_other,Unclassified,high,fluorinated ABA analog synthetic
+CMP_G001752,Phenylpropanoid,Phenylpropanoid,high,trans-cinnamate core phenylpropanoid
+CMP_G001753,Phenylpropanoid,Phenylpropanoid,high,trans-cinnamic acid PAL product

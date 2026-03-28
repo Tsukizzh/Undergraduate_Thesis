@@ -1,68 +1,69 @@
 # Step 5: 底物分类与多轮验证
 
-> **日期**: 2026-03-27 ~ 2026-03-28
-> **状态**: 分类完成 + 验证完成，~248 个错误已发现，修正待执行
+> **日期**: 2026-03-27 ~ 2026-03-29
+> **状态**: 多轮验证完成，审计准确率 88.5%，待合并 8 类+修正后重新审计
 
 ## 做了什么
 
-对 P450 数据集中 2,125 个底物进行化学类别分类，并通过 4 种工具多轮验证。
+对 P450 数据集中 2,125 个底物进行化学类别分类，经历 4 大阶段验证。
 
-## 为什么做
+## 四个阶段
 
-导师方向：给定一个 P450 酶，预测它催化哪类底物（萜类？黄酮？生物碱？）。前提是底物分类必须准确。
+### 阶段 1: NPClassifier + Codex 修正（3-27）
+- NPClassifier API 自动分 15 类
+- Codex 4 轮讨论设计修正规则（结构否决+重推导+救回）
+- 修正 275 个化合物
 
-## 分类方法
+### 阶段 2: 多源验证管线（3-28）
+- 结构 SMARTS 验证器（15 类）→ Tier 1-4 分层
+- ClassyFire 批量查询 → 855/2,110 命中
+- 共识引擎：Tier 1(541) + Tier 2(794) + Tier 3(512) + Tier 4(278)
 
-1. **NPClassifier**（神经网络）→ 2,125 全部分类为 15 类
-2. **SMARTS 结构规则** → 7 类共 936 个确认
-3. **ClassyFire**（规则分类器）→ 328 个有结果
-4. **11 个 Opus 文献 agent** → ~400 个逐一查 PubChem/ChEBI（~500 次 web 调用）
+### 阶段 3: Agent 文献验证（3-28~29）
+- **Round 1**: 15 Agent 并行验证 450 个高风险化合物，~480 次 web 搜索 → 190 个重分类
+- **Round 2**: 10 Agent 并行验证 341 个 Unclassified，~340 次 web 搜索 → 50 个救回
+- **二次验证**: 4 Agent 复查 106 个 medium confidence → 22 个分歧由 Codex 仲裁
 
-## 15 个最终类别
+### 阶段 4: 准确率审计（3-29）
+- 5 Agent 并行审计 200 个分层随机抽样
+- **结果：177/200 = 88.5%**
+- 23 个错误主要集中在 Alkaloid/Amino_acid 边界（7个）和 Unclassified 过于保守（9个）
 
-| 类别 | 中文 | 数量 |
-|------|------|------|
-| Alkaloid | 生物碱 | 320 |
-| Amino_acid | 氨基酸 | 292 |
-| Fatty_acid | 脂肪酸 | 287 |
-| Phenylpropanoid | 苯丙素 | 222 |
-| Steroid | 甾体 | 211 |
-| Diterpenoid | 二萜 | 144 |
-| Unclassified | 未分类 | 104 |
-| Triterpenoid | 三萜 | 97 |
-| Polyketide | 聚酮 | 93 |
-| Sesquiterpenoid | 倍半萜 | 93 |
-| Monoterpenoid | 单萜 | 79 |
-| Terpenoid_other | 其他萜类 | 67 |
-| Flavonoid | 黄酮 | 53 |
-| Macrolide | 大环内酯 | 38 |
-| Coumarin | 香豆素 | 25 |
+## 总工作量
 
-## 验证结果
+| 项目 | 数量 |
+|------|------|
+| Opus Agent | ~34 个 |
+| Web 搜索 | ~1,820 次 |
+| Codex 讨论 | ~8 轮 |
+| 覆盖率 | 2,125/2,125 = 100% |
 
-| 类别 | 抽检正确率 | 主要问题 |
-|------|-----------|---------|
-| 甾体/二萜/三萜/单萜 | **100%** | 无 |
-| 倍半萜 | 95% | 1 个 seco-甾体混入 |
-| 其他萜类 | 85% | 3 个合成物 |
-| 聚酮 | ~90% | 1 个 PAH |
-| **苯丙素** | **64%** | **67 个 pathway fallback 错误**（PAH/卤代苯/合成物） |
-| 脂肪酸 | ~52% | ~70 个烷烃/卤甲烷 |
-| 生物碱 | ~71% | 合成药/无氮化合物 |
-| 氨基酸 | ~74% | 环肽/合成物 |
-| 未分类 | — | 39 个应重分类 |
+## 当前 15 类分布
 
-**总计已发现 ~248 个明确错误，修正后预计可达 ~95%+。**
+| 类别 | 数量 | | 类别 | 数量 |
+|------|------|-|------|------|
+| Unclassified | 398 | | Sesquiterpenoid | 98 |
+| Alkaloid | 295 | | Triterpenoid | 97 |
+| Amino_acid | 261 | | Polyketide | 95 |
+| Steroid | 211 | | Monoterpenoid | 79 |
+| Fatty_acid | 203 | | Phenylpropanoid | 79 |
+| Diterpenoid | 137 | | Terpenoid_other | 66 |
+| | | | Flavonoid | 50 |
+| | | | Macrolide | 33 |
+| | | | Coumarin | 23 |
 
-## 输出文件
+## 审计发现的核心问题
 
-- `data/05_底物分类/substrate_classifications_final.csv` — 当前分类结果
-- `data/05_底物分类/npclassifier_cache.json` — NPClassifier API 缓存
-- `data/05_底物分类/classyfire_cache.json` — ClassyFire API 缓存
-- `scripts/05_底物分类/classify_substrates.py` — NPClassifier 批量分类
-- `scripts/05_底物分类/cross_validate_smarts.py` — SMARTS 验证
-- `scripts/05_底物分类/classify_classyfire_parallel.py` — ClassyFire 并行查询
+**问题不是"分类太细"，而是"边界规则不统一"**——从未正式定义每个类别的精确边界。
 
-## 下一步
+## 待做
 
-与 Codex 多轮讨论修正方案 → 执行修正 → 达到 99%+ 准确率
+1. 合并到 8 类（甾体/萜类/生物碱/氨基酸/脂肪酸/苯丙素广义/聚酮广义/其他）
+2. 按正式分类手册修正 + 重新审计
+3. 进入阶段 1 模型训练（酶序列→底物类别预测）
+
+## 文件
+
+- 最终分类: `data/05_底物分类/substrate_classifications_FINAL.csv`
+- 分类手册: Codex 制定，见 session_log 第十九节
+- 创新性分析: `C3_创新性分析.md`

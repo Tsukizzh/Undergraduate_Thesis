@@ -1,0 +1,31 @@
+compound_id,old_label,verified_label,confidence,reason
+CMP_G001731,Phenylpropanoid,Unclassified,high,C6-C2 nitrophenethyl not C6-C3
+CMP_G001734,Sesquiterpenoid,Sesquiterpenoid,high,FPP C15 sesquiterpenoid precursor
+CMP_G001742,Alkaloid,Unclassified,high,dopamine biogenic amine not alkaloid
+CMP_G001749,Phenylpropanoid,Unclassified,high,4-allyltoluene synthetic hydrocarbon no O
+CMP_G001773,Polyketide,Polyketide,high,proatranorin lichen depside NR-PKS
+CMP_G001786,Phenylpropanoid,Unclassified,high,phenylacetate C6-C2 not C6-C3
+CMP_G001798,Alkaloid,Unclassified,high,methylbenzyl cyanide synthetic no alkaloid
+CMP_G001814,Polyketide,Polyketide,high,methyldihydrosterigmatocystin aflatoxin PKS
+CMP_G001819,Alkaloid,Amino_acid,high,L-DOPA aromatic amino acid not alkaloid
+CMP_G001823,Flavonoid,Flavonoid,high,biochanin A isoflavone
+CMP_G001824,Phenylpropanoid,Unclassified,high,dimethoxyphenylacetic acid C6-C2
+CMP_G001853,Monoterpenoid,Monoterpenoid,high,iridoid glycoside C10 core
+CMP_G001864,Phenylpropanoid,Unclassified,high,3-methoxybenzoic acid C6-C1
+CMP_G001876,Flavonoid,Flavonoid,high,2-hydroxyformononetin isoflavone
+CMP_G001878,Alkaloid,Unclassified,high,linuron synthetic phenylurea herbicide
+CMP_G001893,Alkaloid,Unclassified,high,diuron synthetic phenylurea herbicide
+CMP_G001896,Polyketide,Polyketide,high,flaviolin type III PKS RppA
+CMP_G001899,Polyketide,Polyketide,high,maclurin BPS type III PKS
+CMP_G001915,Monoterpenoid,Monoterpenoid,high,oleoside methyl ester secoiridoid C10
+CMP_G001933,Polyketide,Polyketide,high,lovastatin-type statin iterative PKS
+CMP_G001936,Diterpenoid,Terpenoid_other,high,quiannulatic acid C25 sesterterpenoid
+CMP_G001958,Polyketide,Polyketide,high,piericidin-type modular type I PKS
+CMP_G001966,Phenylpropanoid,Unclassified,high,hydroxyphenylacetaldehyde oxime C6-C2
+CMP_G001999,Polyketide,Polyketide,high,betaenone C 8-acetate PKS
+CMP_G002001,Polyketide,Polyketide,high,acyl tetramic acid PKS-NRPS hybrid
+CMP_G002002,Polyketide,Polyketide,high,acyl tetramic acid PKS-NRPS hybrid
+CMP_G002009,Phenylpropanoid,Phenylpropanoid,high,demethylepipodophyllotoxin lignan
+CMP_G002034,Amino_acid,Unclassified,high,3-methylaminobenzoic acid no AA backbone synthetic
+CMP_G002054,Phenylpropanoid,Unclassified,medium,p-anisic acid C6-C1 benzoic acid
+CMP_G002055,Polyketide,Phenylpropanoid,medium,4-methylsyringol lignin-derived syringyl

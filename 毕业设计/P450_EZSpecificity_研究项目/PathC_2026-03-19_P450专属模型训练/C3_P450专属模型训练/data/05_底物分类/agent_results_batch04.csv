@@ -1,0 +1,31 @@
+compound_id,old_label,verified_label,confidence,reason
+CMP_G000686,Monoterpenoid,Diterpenoid,high,C20 acyclic geranyllinalool-type diterpenoid
+CMP_G000699,Diterpenoid,Terpenoid_other,high,asperterpenoid A C25 sesterterpenoid
+CMP_G000700,Diterpenoid,Terpenoid_other,high,asperterpenoid A stereoisomer C25
+CMP_G000704,Phenylpropanoid,Unclassified,medium,3-5-dimethoxybenzoic acid C6-C1 not C6-C3
+CMP_G000709,Phenylpropanoid,Phenylpropanoid,high,bursehernin lignan phenylpropanoid dimer
+CMP_G000736,Diterpenoid,Terpenoid_other,high,stellata-2-6-19-triene C25 sesterterpene
+CMP_G000744,Triterpenoid,Triterpenoid,high,isomotiol fernane C30 triterpenoid
+CMP_G000748,Polyketide,Polyketide,high,8-O-methylsterigmatocystin aflatoxin PKS
+CMP_G000749,Phenylpropanoid,Unclassified,high,4-methylstyrene industrial hydrocarbon
+CMP_G000752,Phenylpropanoid,Phenylpropanoid,high,coniferyl alcohol monolignol C6-C3
+CMP_G000755,Monoterpenoid,Monoterpenoid,high,loganic acid iridoid C10 glycoside
+CMP_G000782,Amino_acid,Amino_acid,medium,dipeptide benzothiophene amino acid derived
+CMP_G000783,Phenylpropanoid,Unclassified,medium,m-allyltoluene no phenylpropanoid features
+CMP_G000806,Polyketide,Alkaloid,high,decaturin E indole diterpenoid alkaloid
+CMP_G000811,Polyketide,Polyketide,high,cordypyrone A HR-PKS 2-pyrone
+CMP_G000812,Polyketide,Polyketide,high,cordypyrone A stereoisomer
+CMP_G000826,Polyketide,Unclassified,medium,1-naphthol simple aromatic no PKS provenance
+CMP_G000836,Polyketide,Polyketide,high,dialkylresorcinol type III PKS
+CMP_G000839,Phenylpropanoid,Phenylpropanoid,medium,syringol lignin degradation from sinapyl
+CMP_G000841,Phenylpropanoid,Unclassified,medium,4-propylphenol simple alkylphenol
+CMP_G000844,Monoterpenoid,Monoterpenoid,high,iridoid glycoside C10 core
+CMP_G000845,Alkaloid,Phenylpropanoid,high,triferuloylspermidine HCAA phenylpropanoid
+CMP_G000852,Flavonoid,Flavonoid,high,pseudobaptigenin isoflavone
+CMP_G000862,Phenylpropanoid,Phenylpropanoid,high,sesaminol furofuran lignan
+CMP_G000869,Polyketide,Polyketide,high,verruculide A meroterpenoid PKS
+CMP_G000870,Diterpenoid,Terpenoid_other,high,variecoladiene C25 sesterterpene
+CMP_G000875,Macrolide,Polyketide,high,ansamycin macrolactam not macrolactone
+CMP_G000883,Amino_acid,Amino_acid,high,dipeptide Phe-Trp derivative
+CMP_G000892,Diterpenoid,Terpenoid_other,high,quiannulatene C25 sesterterpene
+CMP_G000896,Phenylpropanoid,Unclassified,medium,isovanillic acid C6-C1 not C6-C3

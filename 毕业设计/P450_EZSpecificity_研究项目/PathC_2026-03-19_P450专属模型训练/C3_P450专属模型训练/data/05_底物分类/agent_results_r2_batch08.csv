@@ -1,0 +1,36 @@
+compound_id,old_label,verified_label,confidence,reason
+CMP_G001541,Unclassified,Unclassified,high,bromoethyl methylbenzene synthetic
+CMP_G001542,Unclassified,Unclassified,high,phenylacetonitrile nitrile not phenylpropanoid
+CMP_G001546,Unclassified,Unclassified,medium,cyclotetradecyl desosamine PikC probe
+CMP_G001549,Unclassified,Unclassified,high,cyclodecanone ketone not lactone
+CMP_G001550,Unclassified,Unclassified,high,cyclododecanone musk precursor ketone
+CMP_G001552,Unclassified,Unclassified,medium,Z-methylpropanal oxime valine-derived too small
+CMP_G001553,Unclassified,Unclassified,medium,E-methylpropanal oxime valine-derived too small
+CMP_G001555,Unclassified,Unclassified,high,flurbiprofen synthetic NSAID
+CMP_G001562,Unclassified,Unclassified,high,octane simple alkane
+CMP_G001567,Unclassified,Unclassified,high,chloroethyl methylbenzene synthetic
+CMP_G001568,Unclassified,Fatty_acid,medium,jasmonoyl-isoleucine oxylipin CYP94 substrate
+CMP_G001575,Unclassified,Fatty_acid,high,N-decanoyl-HSL C10 AHL fatty acyl
+CMP_G001582,Unclassified,Unclassified,high,montelukast-like synthetic pharmaceutical
+CMP_G001587,Unclassified,Unclassified,high,naphthalene PAH
+CMP_G001623,Unclassified,Unclassified,high,2-naphthoic acid not phenylpropanoid
+CMP_G001628,Unclassified,Unclassified,high,cycloundecanone cyclic ketone
+CMP_G001648,Unclassified,Unclassified,high,azidosulfonyl cyclohexylbenzoate P450 probe
+CMP_G001651,Unclassified,Macrolide,high,griseoviridin streptogramin A macrolactone
+CMP_G001658,Unclassified,Unclassified,medium,chlorophenylpentanoic acid xenobiotic
+CMP_G001666,Unclassified,Unclassified,high,cyclooctyl acetate ester
+CMP_G001680,Unclassified,Unclassified,medium,methoxyphenylpentanoic acid borderline
+CMP_G001686,Unclassified,Unclassified,high,methyl tolyl sulfide P450 substrate
+CMP_G001695,Unclassified,Unclassified,high,2-nonanone methyl ketone no COOH
+CMP_G001700,Unclassified,Unclassified,high,5-methyl-1-naphthoate naphthalene
+CMP_G001701,Unclassified,Unclassified,high,5-methyl-1-naphthoic acid naphthalene
+CMP_G001703,Unclassified,Unclassified,high,hexane C6 alkane
+CMP_G001712,Unclassified,Unclassified,high,methane CH4
+CMP_G001729,Unclassified,Unclassified,high,4-heptylbenzoic acid no ArOH
+CMP_G001730,Unclassified,Unclassified,high,4-isobutylbenzoic acid ibuprofen-related
+CMP_G001746,Unclassified,Unclassified,high,cyclohexyl butanoate ester
+CMP_G001757,Unclassified,Unclassified,high,pyrenyl desosamine PikC probe
+CMP_G001766,Unclassified,Unclassified,high,glycopeptide fragment vancomycin-like
+CMP_G001769,Unclassified,Unclassified,high,bromo chloroethyl benzene synthetic
+CMP_G001775,Unclassified,Fatty_acid,high,N-dodecanoyl-HSL C12 AHL
+CMP_G001780,Unclassified,Unclassified,high,cyclooctane cycloalkane

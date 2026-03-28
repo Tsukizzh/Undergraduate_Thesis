@@ -1,0 +1,27 @@
+compound_id,old_label,verified_label,confidence,reason
+CMP_G001987,Unclassified,Unclassified,high,ibuprofen methyl ester synthetic NSAID
+CMP_G001997,Unclassified,Unclassified,high,disconnected methane+formate invalid
+CMP_G001998,Unclassified,Unclassified,high,ethyl diazopropanoate synthetic diazo
+CMP_G002004,Unclassified,Unclassified,high,butyl chlorobenzeneacetate synthetic
+CMP_G002011,Unclassified,Unclassified,high,ethyl diazoacetate synthetic
+CMP_G002019,Unclassified,Unclassified,high,toluene petrochemical xenobiotic
+CMP_G002032,Unclassified,Unclassified,high,ethyl cyclohexylacetate synthetic
+CMP_G002033,Unclassified,Unclassified,high,4-bromotoluene xenobiotic
+CMP_G002041,Unclassified,Diterpenoid,medium,atisane diterpenoid NPC confirmed C20
+CMP_G002043,Unclassified,Unclassified,high,dibromo aromatic xenobiotic
+CMP_G002053,Unclassified,Phenylpropanoid,high,p-anisic acid natural in anise vanilla ArOMe
+CMP_G002074,Unclassified,Unclassified,high,ethyl methylbenzene petrochemical
+CMP_G002077,Unclassified,Unclassified,high,1-ethylnaphthalene PAH fossil fuel
+CMP_G002084,Unclassified,Unclassified,high,geranyl benzoic acid meroterpenoid no class
+CMP_G002087,Unclassified,Unclassified,high,trans-3-hexene simple alkene
+CMP_G002095,Unclassified,Unclassified,high,4-ethylbenzoic acid synthetic no ArOH
+CMP_G002096,Unclassified,Unclassified,high,bromo ethylbenzene xenobiotic
+CMP_G002097,Unclassified,Unclassified,high,cyclopentylpropanoic acid not true fatty acid
+CMP_G002101,Unclassified,Fatty_acid,medium,1-hexanol natural fatty alcohol from fruits
+CMP_G002102,Unclassified,Unclassified,high,CF3 cyclopropylbenzene synthetic
+CMP_G002112,Unclassified,Unclassified,high,2-methyloctane branched alkane
+CMP_G002113,Unclassified,Unclassified,high,biphenyl coal tar not NP
+CMP_G002116,Unclassified,Unclassified,high,o-toluic acid synthetic no ArOH
+CMP_G002117,Unclassified,Fatty_acid,medium,1-nonanol natural fatty alcohol citrus oils
+CMP_G002120,Unclassified,Monoterpenoid,high,1-methylnorcamphor bicyclic monoterpenoid
+CMP_G002124,Unclassified,Unclassified,high,4-methylbiphenyl synthetic

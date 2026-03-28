@@ -1,0 +1,31 @@
+compound_id,old_label,verified_label,confidence,reason
+CMP_G001515,Diterpenoid,Terpenoid_other,high,sesterfisheric acid C25 sesterterpenoid not C20
+CMP_G001521,Coumarin,Polyketide,high,7-methylmellein isocoumarin from PKS not coumarin
+CMP_G001535,Triterpenoid,Triterpenoid,high,oleanolic acid derivative pentacyclic triterpenoid
+CMP_G001545,Phenylpropanoid,Unclassified,high,simple alkenylbenzene no phenylpropanoid O-function
+CMP_G001564,Phenylpropanoid,Amino_acid,high,4-hydroxyphenylacetaldehyde oxime tyrosine-derived CYP79A1
+CMP_G001565,Phenylpropanoid,Amino_acid,high,Z-isomer same tyrosine-derived oxime
+CMP_G001572,Flavonoid,Flavonoid,high,genistein isoflavone confirmed
+CMP_G001573,Coumarin,Unclassified,high,chlorzoxazone synthetic benzoxazolone not coumarin
+CMP_G001583,Amino_acid,Amino_acid,high,beta-alanine naturally occurring beta-amino acid
+CMP_G001591,Polyketide,Polyketide,high,pretenellin A PKS-NRPS hybrid
+CMP_G001592,Polyketide,Polyketide,high,virensol B aromatic polyketide Trichoderma
+CMP_G001600,Phenylpropanoid,Unclassified,medium,paeonol acetophenone C6-C2 not C6-C3
+CMP_G001604,Polyketide,Polyketide,high,blennolide B chromanone PKS
+CMP_G001605,Polyketide,Polyketide,high,blennolide A chromanone PKS
+CMP_G001621,Macrolide,Polyketide,high,PTM macrolactam not macrolactone PKS-NRPS
+CMP_G001644,Polyketide,Polyketide,high,fumonisin polyketide mycotoxin FUM1 PKS
+CMP_G001661,Monoterpenoid,Unclassified,high,dimethylcyclopentenone 7C not terpenoid
+CMP_G001663,Phenylpropanoid,Phenylpropanoid,high,piperitol furofuran lignan
+CMP_G001664,Phenylpropanoid,Phenylpropanoid,high,piperitol stereoisomer lignan
+CMP_G001665,Phenylpropanoid,Unclassified,medium,ethoxyhydroxyacetophenone C6-C2
+CMP_G001675,Phenylpropanoid,Unclassified,medium,piperonylic acid C6-C1 not C6-C3
+CMP_G001681,Flavonoid,Flavonoid,high,phloretin dihydrochalcone flavonoid
+CMP_G001682,Polyketide,Polyketide,high,dihydrobacillaene PKS-NRPS Bacillus
+CMP_G001683,Phenylpropanoid,Amino_acid,medium,hydroxyphenylacetaldehyde oxime tyrosine-derived
+CMP_G001687,Phenylpropanoid,Polyketide,high,3-methylorsellinic acid NR-PKS
+CMP_G001693,Phenylpropanoid,Phenylpropanoid,high,aryltetralin lignan glycoside
+CMP_G001696,Polyketide,Unclassified,high,fluorinated pyranone synthetic
+CMP_G001717,Polyketide,Polyketide,medium,prenylated naphthoquinone polyketide core
+CMP_G001722,Diterpenoid,Terpenoid_other,high,sesterfisherol C25 sesterterpenoid
+CMP_G001724,Polyketide,Unclassified,medium,dimethoxyacetophenone simple synthetic

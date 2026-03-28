@@ -1,0 +1,36 @@
+compound_id,prev_label,recheck_label,confidence,agree,reason
+CMP_G001600,Unclassified,Phenylpropanoid,medium,no,paeonol shikimate-derived acetophenone
+CMP_G001665,Unclassified,Phenylpropanoid,medium,no,ethoxyhydroxyacetophenone shikimate-derived
+CMP_G001675,Unclassified,Phenylpropanoid,high,no,piperonylic acid C6-C1 shikimate phenylpropanoid
+CMP_G001683,Amino_acid,Alkaloid,high,no,hydroxyphenylacetaldehyde oxime cyanogenic glucoside
+CMP_G001717,Polyketide,Polyketide,high,yes,prenylated naphthoquinone PKS confirmed
+CMP_G001724,Unclassified,Polyketide,medium,no,dimethoxyacetophenone phloroglucinol type III PKS
+CMP_G002054,Unclassified,Phenylpropanoid,high,no,p-anisic acid C6-C1 shikimate phenylpropanoid
+CMP_G002055,Phenylpropanoid,Phenylpropanoid,high,yes,4-methylsyringol lignin S-unit
+CMP_G002088,Terpenoid_other,Terpenoid_other,high,yes,chrodrimanin T meroterpenoid
+CMP_G000161,Alkaloid,Alkaloid,high,yes,N-methyl-9-acridinamine acridone alkaloid Rutaceae
+CMP_G000305,Monoterpenoid,Monoterpenoid,high,yes,N-hydroxygeranyl-glutamate C10 mono
+CMP_G000572,Unclassified,Unclassified,high,yes,macrolactone-triazole synthetic
+CMP_G000597,Unclassified,Unclassified,high,yes,macrolactone-triazole synthetic
+CMP_G000618,Polyketide,Phenylpropanoid,medium,no,polyporic acid from phenylpyruvate shikimate
+CMP_G000619,Polyketide,Phenylpropanoid,medium,no,polyporic acid same
+CMP_G000879,Sesquiterpenoid,Terpenoid_other,medium,no,C14 nor-ABA apocarotenoid not true sesqui
+CMP_G000893,Terpenoid_other,Terpenoid_other,high,yes,geranyl-glutamate terpenoid conjugate
+CMP_G000927,Polyketide,Terpenoid_other,medium,no,ilicicolin A epoxide meroterpenoid not pure PKS
+CMP_G001442,Amino_acid,Alkaloid,medium,no,tetramic acid pyrrocidine alkaloid NP literature
+CMP_G001577,Terpenoid_other,Terpenoid_other,high,yes,wigandol prenylated resorcinol meroterpenoid
+CMP_G001676,Terpenoid_other,Terpenoid_other,high,yes,C15 apocarotenoid
+CMP_G001710,Alkaloid,Alkaloid,high,yes,HBOA benzoxazinoid anthranilic acid alkaloid
+CMP_G001833,Alkaloid,Alkaloid,high,yes,cyclo-Tyr-Tyr DKP alkaloid
+CMP_G000096,Fatty_acid,Fatty_acid,high,yes,N-palmitoyl-Phe C16 acyl AA
+CMP_G000163,Unclassified,Fatty_acid,medium,no,trimethyldecanone insect pheromone fatty-derived
+CMP_G000167,Unclassified,Unclassified,high,yes,WS9326A cyclodepsipeptide NRP
+CMP_G000175,Unclassified,Unclassified,high,yes,DKP with sugar no alkaloid evidence
+CMP_G000452,Unclassified,Polyketide,low,no,branched polyene thioester PKS-like
+CMP_G000543,Fatty_acid,Fatty_acid,high,yes,N-palmitoyl-homoserine C16
+CMP_G000559,Unclassified,Unclassified,high,yes,7-methyl-2-naphthalenemethanol
+CMP_G000560,Fatty_acid,Fatty_acid,high,yes,myristoyl-CoA C14 acyl-CoA
+CMP_G000578,Fatty_acid,Fatty_acid,high,yes,1-tetradecanol C14 fatty alcohol
+CMP_G000582,Phenylpropanoid,Unclassified,medium,no,3-ethylphenol C6-C2 too simple
+CMP_G000640,Unclassified,Unclassified,high,yes,C7 unsaturated alcohol too short
+CMP_G000644,Fatty_acid,Fatty_acid,high,yes,methyl tetramethyldecanoate branched FA

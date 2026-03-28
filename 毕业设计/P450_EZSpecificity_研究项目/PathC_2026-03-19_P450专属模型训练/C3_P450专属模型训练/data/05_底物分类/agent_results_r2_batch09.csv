@@ -1,0 +1,36 @@
+compound_id,old_label,verified_label,confidence,reason
+CMP_G001791,Unclassified,Unclassified,high,synthetic aromatic nitrile
+CMP_G001792,Unclassified,Unclassified,high,2-bromoethylbenzene synthetic
+CMP_G001795,Unclassified,Unclassified,high,benzenesulfonyl azide synthetic
+CMP_G001803,Unclassified,Unclassified,high,benzoate C6-C1 no ArOH
+CMP_G001804,Unclassified,Unclassified,high,benzoic acid C6-C1 no ArOH
+CMP_G001808,Unclassified,Amino_acid,medium,4-morpholinyl-L-tryptophan single modified AA
+CMP_G001809,Unclassified,Unclassified,high,data error SMILES glucose name hydroperoxides
+CMP_G001812,Unclassified,Unclassified,high,data error SMILES I3- name glucosinolate
+CMP_G001834,Unclassified,Unclassified,high,methylhexahydroindanone simple ketone
+CMP_G001835,Unclassified,Unclassified,high,ustiloxin F cyclopeptide mycotoxin
+CMP_G001838,Unclassified,Unclassified,high,lysophosphatidylglycerophosphate lipid
+CMP_G001844,Unclassified,Unclassified,high,cyclohexane petrochemical
+CMP_G001845,Unclassified,Unclassified,high,oleoyl-CoA already counted in R2B1
+CMP_G001849,Unclassified,Polyketide,medium,1-3-5-trihydroxyxanthone mixed PKS
+CMP_G001854,Unclassified,Unclassified,high,4-fluorophenyl methyl sulfide synthetic
+CMP_G001863,Unclassified,Unclassified,high,3-methoxybenzoate meta-OMe not typical
+CMP_G001875,Unclassified,Unclassified,high,1-3-5-trichlorobenzene xenobiotic
+CMP_G001886,Unclassified,Unclassified,high,jasmone no COOH no matching class
+CMP_G001897,Unclassified,Alkaloid,high,tryprostatin A indole DKP alkaloid A.fumigatus
+CMP_G001898,Unclassified,Alkaloid,high,tryprostatin A racemic same
+CMP_G001900,Unclassified,Unclassified,high,7-benzyloxyresorufin synthetic CYP probe
+CMP_G001906,Unclassified,Unclassified,high,cyclic peptide multi-residue
+CMP_G001909,Unclassified,Unclassified,high,4-chlorobenzoic acid xenobiotic
+CMP_G001913,Unclassified,Unclassified,high,phorate sulfoxide organophosphate
+CMP_G001919,Unclassified,Unclassified,high,2-dodecanol fatty alcohol no COOH
+CMP_G001944,Unclassified,Unclassified,high,bromoethyl chlorobenzene synthetic
+CMP_G001945,Unclassified,Unclassified,high,lyso-PC oleoyl phospholipid
+CMP_G001947,Unclassified,Unclassified,high,indene petrochemical
+CMP_G001948,Unclassified,Unclassified,high,dihydrojasmone no COOH
+CMP_G001951,Unclassified,Unclassified,high,diazo diethylacetamide synthetic
+CMP_G001954,Unclassified,Unclassified,high,linoleoyl-CoA fatty acyl-CoA
+CMP_G001957,Unclassified,Unclassified,high,4-bromothioanisole synthetic
+CMP_G001961,Unclassified,Phenylpropanoid,medium,salicylate ArO- is phenolate PAL pathway
+CMP_G001984,Unclassified,Unclassified,high,phenanthrene PAH
+CMP_G001985,Unclassified,Unclassified,high,ethylbenzene petrochemical

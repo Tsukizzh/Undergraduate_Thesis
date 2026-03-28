@@ -1,0 +1,36 @@
+compound_id,old_label,verified_label,confidence,reason
+CMP_G000660,Unclassified,Unclassified,high,heptane alkane petrochemical
+CMP_G000663,Unclassified,Unclassified,high,methyl cyclohexylacetate synthetic ester
+CMP_G000672,Unclassified,Unclassified,high,methyl iodide halomethane
+CMP_G000673,Unclassified,Unclassified,high,ethylcyclopropylbenzene synthetic
+CMP_G000693,Unclassified,Unclassified,high,4-vinylbenzoic acid synthetic monomer
+CMP_G000701,Unclassified,Unclassified,high,m-xylene petrochemical
+CMP_G000702,Unclassified,Unclassified,medium,p-cresol simple phenol C6-C1 too simple
+CMP_G000703,Unclassified,Unclassified,high,synthetic trialkylamine macrocyclic ether
+CMP_G000711,Unclassified,Unclassified,high,amiodarone synthetic antiarrhythmic
+CMP_G000712,Unclassified,Unclassified,high,adamantanone diamondoid not terpenoid
+CMP_G000714,Unclassified,Unclassified,high,cyclohexyl methylpropanoate synthetic ester
+CMP_G000719,Unclassified,Amino_acid,medium,3-methylbutyraldoxime leucine-derived CYP79D
+CMP_G000735,Unclassified,Unclassified,high,4-butylbenzoic acid synthetic no ArOH
+CMP_G000746,Unclassified,Polyketide,high,1-3-7-trihydroxyxanthone type III PKS
+CMP_G000756,Unclassified,Unclassified,high,cresyl phosphate synthetic organophosphate
+CMP_G000762,Unclassified,Unclassified,high,1-azidoadamantane synthetic
+CMP_G000771,Unclassified,Unclassified,high,4-ethyltoluene petrochemical
+CMP_G000785,Unclassified,Unclassified,high,2-naphthol industrial synthetic
+CMP_G000791,Unclassified,Unclassified,high,chlortoluron synthetic herbicide
+CMP_G000799,Unclassified,Unclassified,high,6-hydroxy-2-naphthoic acid synthetic
+CMP_G000801,Unclassified,Phenylpropanoid,medium,dihydroanethole C6-C3 ArOMe natural
+CMP_G000803,Unclassified,Fatty_acid,medium,1-octanol C8 fatty alcohol natural
+CMP_G000807,Unclassified,Unclassified,high,4-tert-butylbenzoic acid synthetic
+CMP_G000823,Unclassified,Unclassified,high,clomazone synthetic herbicide
+CMP_G000825,Unclassified,Unclassified,high,chloro methylthiobenzene synthetic
+CMP_G000828,Unclassified,Unclassified,high,fluorinated pharmaceutical intermediate
+CMP_G000831,Unclassified,Unclassified,medium,hydroxy-methyl-naphthoate no clear origin
+CMP_G000848,Unclassified,Unclassified,high,dichlorinated aromatic synthetic
+CMP_G000859,Unclassified,Monoterpenoid,high,norcamphor bicyclic monoterpenoid ClassyFire
+CMP_G000860,Unclassified,Monoterpenoid,high,norcamphor enantiomer P450cam substrate
+CMP_G000866,Unclassified,Unclassified,medium,trimethyloctanol no isoprene rule
+CMP_G000874,Unclassified,Unclassified,high,4-chlorostyrene synthetic
+CMP_G000878,Unclassified,Fatty_acid,high,N-palmitoylglycine C16 acylglycine LIPID MAPS
+CMP_G000882,Unclassified,Unclassified,high,methylthiobenzoic acid synthetic thioether
+CMP_G000885,Unclassified,Fatty_acid,medium,2-undecanone C11 fatty ketone natural
