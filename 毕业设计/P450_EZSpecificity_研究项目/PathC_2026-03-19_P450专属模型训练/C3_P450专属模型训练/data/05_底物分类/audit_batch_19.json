@@ -1,0 +1,202 @@
+[
+  {
+    "id": "CMP_G001123",
+    "name": "Cirramycin A1, 12,13-deepoxy-12,13-didehydro-4-deoxy-, (12E)- (9CI, ACI)",
+    "smiles": "CCC1OC(=O)CC(O)C(C)C(OC2OC(C)CC(N(C)C)C2O)C(CC=O)CC(C)C(=O)C=CC(C)=CC1C",
+    "our_labels": [
+      "Polyketide"
+    ],
+    "confidence": "high",
+    "reason": "Polyketide=macrocyclic lactone (type I PKS indicator)"
+  },
+  {
+    "id": "CMP_G001924",
+    "name": "mycinamicin VIII",
+    "smiles": "CC[C@H]1OC(=O)/C=C/[C@@H](C)[C@H](O[C@H]2O[C@@H](C)C[C@@H](N(C)C)[C@@H]2O)[C@H](C)C[C@@H](C)C(=O)/C=",
+    "our_labels": [
+      "Polyketide"
+    ],
+    "confidence": "high",
+    "reason": "Polyketide=macrocyclic lactone (type I PKS indicator)"
+  },
+  {
+    "id": "CMP_G000168",
+    "name": "2-hydroxymethyl-3-pentylphenol",
+    "smiles": "CCCCCc1cccc(O)c1CO",
+    "our_labels": [
+      "Polyketide"
+    ],
+    "confidence": "high",
+    "reason": "Polyketide=NPC polyketide: polyketides"
+  },
+  {
+    "id": "CMP_G000038",
+    "name": "previridicatumtoxin",
+    "smiles": "COc1cc(O)c2c(O)c3c(c(C/C=C(\\C)CCC=C(C)C)c2c1)[C@H](O)[C@@]1(O)CC(=O)C(C(N)=O)=C(O)[C@@]1(O)C3=O",
+    "our_labels": [
+      "Polyketide"
+    ],
+    "confidence": "high",
+    "reason": "Polyketide=NPC polyketide: polyketides"
+  },
+  {
+    "id": "CMP_G001505",
+    "name": "1-Hydroxy-2-naphthoic acid",
+    "smiles": "O=C(O)c1ccc2ccccc2c1O",
+    "our_labels": [
+      "Polyketide"
+    ],
+    "confidence": "high",
+    "reason": "Polyketide=NPC polyketide: polyketides"
+  },
+  {
+    "id": "CMP_G001766",
+    "name": "N-Methyl-D-leucyl-D-tyrosyl-L-asparaginyl-(2R)-2-(4-hydroxyphenyl)glycyl-(2R)-2-",
+    "smiles": "CNC(CC(C)C)C(=O)NC(Cc1ccc(O)cc1)C(=O)NC(CC(N)=O)C(=O)NC(C(=O)NC(C(=O)NC(Cc1ccc(O)cc1)C(=O)S)c1ccc(O)",
+    "our_labels": [
+      "Amino_acid"
+    ],
+    "confidence": "high",
+    "reason": "Amino_acid=peptide (6 amide bonds) + NPC support"
+  },
+  {
+    "id": "CMP_G000330",
+    "name": "4-Methyl-L-phenylalanine",
+    "smiles": "Cc1ccc(CC(N)C(=O)O)cc1",
+    "our_labels": [
+      "Amino_acid"
+    ],
+    "confidence": "high",
+    "reason": "Amino_acid=intact alpha-amino-acid backbone"
+  },
+  {
+    "id": "CMP_G000228",
+    "name": "L-Phenylalanine",
+    "smiles": "N[C@@H](Cc1ccccc1)C(=O)O",
+    "our_labels": [
+      "Amino_acid"
+    ],
+    "confidence": "high",
+    "reason": "Amino_acid=intact alpha-amino-acid backbone"
+  },
+  {
+    "id": "CMP_G001638",
+    "name": "1-Methyl-7-phenyltryptophan",
+    "smiles": "Cn1cc(CC(N)C(=O)O)c2cccc(-c3ccccc3)c21",
+    "our_labels": [
+      "Amino_acid"
+    ],
+    "confidence": "high",
+    "reason": "Amino_acid=intact alpha-amino-acid backbone"
+  },
+  {
+    "id": "CMP_G000717",
+    "name": "6-Cyclopropyl-2-methyltryptophan",
+    "smiles": "Cc1[nH]c2cc(C3CC3)ccc2c1CC(N)C(=O)O",
+    "our_labels": [
+      "Amino_acid"
+    ],
+    "confidence": "high",
+    "reason": "Amino_acid=intact alpha-amino-acid backbone"
+  },
+  {
+    "id": "CMP_G001574",
+    "name": "2-amino-3-(5-bromo-1-methylindol-3-yl)propanoic acid",
+    "smiles": "Cn1cc(CC(N)C(=O)O)c2cc(Br)ccc21",
+    "our_labels": [
+      "Amino_acid"
+    ],
+    "confidence": "high",
+    "reason": "Amino_acid=intact alpha-amino-acid backbone"
+  },
+  {
+    "id": "CMP_G000928",
+    "name": "6-(4-Morpholinyl)-L-tryptophan",
+    "smiles": "NC(Cc1c[nH]c2cc(N3CCOCC3)ccc12)C(=O)O",
+    "our_labels": [
+      "Amino_acid"
+    ],
+    "confidence": "high",
+    "reason": "Amino_acid=intact alpha-amino-acid backbone"
+  },
+  {
+    "id": "CMP_G000404",
+    "name": "2-amino-3-(5-ethynyl-1H-indol-3-yl)propanoic acid",
+    "smiles": "C#Cc1ccc2[nH]cc(CC(N)C(=O)O)c2c1",
+    "our_labels": [
+      "Amino_acid"
+    ],
+    "confidence": "high",
+    "reason": "Amino_acid=intact alpha-amino-acid backbone"
+  },
+  {
+    "id": "CMP_G001189",
+    "name": "L-Tyrosine",
+    "smiles": "N[C@@H](Cc1ccc(O)cc1)C(=O)O",
+    "our_labels": [
+      "Amino_acid"
+    ],
+    "confidence": "high",
+    "reason": "Amino_acid=intact alpha-amino-acid backbone"
+  },
+  {
+    "id": "CMP_G000224",
+    "name": "N-hydroxy-L-tyrosine",
+    "smiles": "O=C(O)[C@H](Cc1ccc(O)cc1)NO",
+    "our_labels": [
+      "Amino_acid"
+    ],
+    "confidence": "high",
+    "reason": "Amino_acid=intact alpha-amino-acid backbone"
+  },
+  {
+    "id": "CMP_G000876",
+    "name": "(2S)-2-amino-3-(5-methoxy-1H-indol-3-yl)propanoic acid",
+    "smiles": "COc1ccc2[nH]cc(C[C@H](N)C(=O)O)c2c1",
+    "our_labels": [
+      "Amino_acid"
+    ],
+    "confidence": "high",
+    "reason": "Amino_acid=intact alpha-amino-acid backbone"
+  },
+  {
+    "id": "CMP_G001233",
+    "name": "6-Ethenyl-1-methyltryptophan",
+    "smiles": "C=Cc1ccc2c(CC(N)C(=O)O)cn(C)c2c1",
+    "our_labels": [
+      "Amino_acid"
+    ],
+    "confidence": "high",
+    "reason": "Amino_acid=intact alpha-amino-acid backbone"
+  },
+  {
+    "id": "CMP_G001032",
+    "name": "Tryptophan, 6-chloro-1-methyl-",
+    "smiles": "Cn1c(CC(N)C(=O)O)cc2ccc(Cl)cc21",
+    "our_labels": [
+      "Amino_acid"
+    ],
+    "confidence": "high",
+    "reason": "Amino_acid=intact alpha-amino-acid backbone"
+  },
+  {
+    "id": "CMP_G000505",
+    "name": "2,5-Dimethyl-tryptophan",
+    "smiles": "Cc1ccc2[nH]c(C)c(CC(N)C(=O)O)c2c1",
+    "our_labels": [
+      "Amino_acid"
+    ],
+    "confidence": "high",
+    "reason": "Amino_acid=intact alpha-amino-acid backbone"
+  },
+  {
+    "id": "CMP_G001379",
+    "name": "6-Phenyl-L-tryptophan",
+    "smiles": "N[C@@H](Cc1c[nH]c2cc(-c3ccccc3)ccc12)C(=O)O",
+    "our_labels": [
+      "Amino_acid"
+    ],
+    "confidence": "high",
+    "reason": "Amino_acid=intact alpha-amino-acid backbone"
+  }
+]

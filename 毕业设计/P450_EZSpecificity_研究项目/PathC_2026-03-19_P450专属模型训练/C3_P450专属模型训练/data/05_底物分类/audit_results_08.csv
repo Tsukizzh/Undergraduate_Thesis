@@ -1,0 +1,41 @@
+id,name,our_labels,verdict,correct_labels,source,notes
+CMP_G000394,2-amino-3-(6-chloro-1H-indol-3-yl)propanoic acid,"Alkaloid,Amino_acid",CORRECT,"Alkaloid,Amino_acid",ChemicalBook/PubChem,6-chloro-L-tryptophan: non-proteinogenic amino acid with indole ring. Dual label correct.
+CMP_G001206,prochaetoglobosin I,Alkaloid,WRONG,"Alkaloid,Polyketide",PubMed/Nature/ChEBI,Cytochalasan alkaloid from PKS-NRPS hybrid biosynthesis. Should also be labeled Polyketide.
+CMP_G000469,6-Methyl-DL-tryptophan,"Alkaloid,Amino_acid",CORRECT,"Alkaloid,Amino_acid",ChEBI/PubChem,Methylated tryptophan derivative; retains alpha-amino acid backbone + indole ring.
+CMP_G000723,5-Ethenyl-L-tryptophan,"Alkaloid,Amino_acid",CORRECT,"Alkaloid,Amino_acid",PubChem,Vinyl-substituted tryptophan; intact amino acid backbone + indole.
+CMP_G001299,5-Ethynyl-1.2-dimethyltryptophan,"Alkaloid,Amino_acid",CORRECT,"Alkaloid,Amino_acid",PubChem,Alkynyl dimethyl tryptophan analog; amino acid backbone + N-methylated indole.
+CMP_G000612,Albendazole,Alkaloid,WRONG,Other,Wikipedia/PubChem/DrugBank,Synthetic benzimidazole anthelmintic drug (methyl 5-(propylthio)-2-benzimidazolecarbamate). Not a natural product alkaloid.
+CMP_G000204,"1H-1,2,3-Triazole-1-acetic acid macrolactone","Alkaloid,Polyketide",WRONG,Other,PubChem/RSC,"Synthetic compound with 1,2,3-triazole (click chemistry product) + macrolactone. Triazoles are not natural products. Not a true alkaloid or polyketide."
+CMP_G001239,2-amino-3-(7-chloro-2-methyl-1H-indol-3-yl)propanoic acid,"Alkaloid,Amino_acid",CORRECT,"Alkaloid,Amino_acid",ChemicalBook,7-chloro-2-methyltryptophan: non-proteinogenic amino acid with indole ring.
+CMP_G001590,4.4'-dipyridyl disulfide,Alkaloid,WRONG,Other,PubChem/ChEBI,Synthetic disulfide reagent (Aldrithiol-4) used for thiol detection. Not a natural alkaloid.
+CMP_G000286,alpha-Amino-7-chloro-1.2-dimethyl-1H-indole-3-propanal,Alkaloid,CORRECT,Alkaloid,PubChem,Synthetic chlorinated dimethylindole propanal; indole alkaloid scaffold classification is reasonable for this N-containing heterocycle.
+CMP_G000138,EAS,Alkaloid,WRONG,Other,structural analysis,Synthetic chloroindole-piperidine compound (bis-chloroindole linked via piperidine + amino acid fragment). Designed pharmaceutical; not a natural alkaloid.
+CMP_G001846,2-Methyl-6-(4-morpholinyl)tryptophan,"Alkaloid,Amino_acid",CORRECT,"Alkaloid,Amino_acid",PubChem,Morpholine-substituted methyltryptophan; retains amino acid backbone + indole ring.
+CMP_G001561,alpha-4-Diamino-1.2-dimethyl-1H-indole-3-propanal,Alkaloid,CORRECT,Alkaloid,PubChem,Aminoindole propanal derivative; indole alkaloid scaffold.
+CMP_G000050,alpha-Amino-4-fluoro-1.2-dimethyl-1H-indole-3-propanal,Alkaloid,CORRECT,Alkaloid,PubChem,Fluorinated dimethylindole propanal; indole alkaloid scaffold.
+CMP_G000277,Fumitremorgin C,"Alkaloid,Amino_acid",CORRECT,"Alkaloid,Amino_acid",ScienceDirect/Wikipedia/PubMed,Prenylated indole diketopiperazine alkaloid from L-Trp + L-Pro. Dual label correct.
+CMP_G000591,4-(aminobutylamino)pyridine,Alkaloid,WRONG,Other,PubChem,Simple synthetic pyridine with aminobutyl chain. Not a recognized natural alkaloid.
+CMP_G000449,(R)-norreticuline,Alkaloid,CORRECT,Alkaloid,PNAS/Nature,Benzylisoquinoline alkaloid; key intermediate in BIA biosynthesis pathway.
+CMP_G001141,4-Bromotryptophan,"Alkaloid,Amino_acid",CORRECT,"Alkaloid,Amino_acid",Springer/MDPI/PubChem,Halogenated tryptophan found in marine natural products. Amino acid + indole ring.
+CMP_G001363,Buspirone,Alkaloid,WRONG,Other,Wikipedia/StatPearls/DrugBank,Synthetic azapirone anxiolytic drug. Not a natural product alkaloid.
+CMP_G001348,tropinone,Alkaloid,CORRECT,Alkaloid,Wikipedia/PMC/Nature,Tropane alkaloid; central intermediate in tropane alkaloid biosynthesis from ornithine.
+CMP_G000538,synthetic benzimidazolone-piperidine,Alkaloid,WRONG,Other,Patent literature,Synthetic pharmaceutical compound with benzimidazolone-guanidine-piperidine scaffold. Not a natural alkaloid.
+CMP_G001124,campesine B,Alkaloid,CORRECT,Alkaloid,RSC/Nature Chemistry,Fungal indole piperazine alkaloid from genome mining. Novel 8-ring scaffold.
+CMP_G000152,(R)-N-Methylcoclaurine,Alkaloid,CORRECT,Alkaloid,PNAS/Nature/Frontiers,Benzylisoquinoline alkaloid; key intermediate in BIA pathway to reticuline and morphine.
+CMP_G000446,bispyribac sodium,Alkaloid,WRONG,Other,PubChem/EPA,Synthetic pyrimidinylthiobenzoate herbicide (ALS inhibitor). Not a natural product.
+CMP_G001053,Benzoic acid triazolyl macrolactone,Alkaloid,WRONG,Other,PubChem,Synthetic compound with 1.2.3-triazole (click chemistry) + macrolactone + benzoate. Not a natural alkaloid.
+CMP_G000022,4-fluoro-2.1-dimethyltryptophan,"Alkaloid,Amino_acid",CORRECT,"Alkaloid,Amino_acid",PubChem,Fluorinated dimethyltryptophan; retains amino acid backbone + indole ring.
+CMP_G001082,Lidocaine,Alkaloid,WRONG,Other,Wikipedia/PubChem/DrugBank,Synthetic amide local anesthetic (2-diethylamino-N-(2.6-dimethylphenyl)acetamide). First synthesized 1935. Not a natural alkaloid.
+CMP_G000661,synthetic benzoxazine,Alkaloid,WRONG,Other,structural analysis,Efavirenz-like synthetic benzoxazine with trifluoromethyl and cyclopropylalkynyl groups. Synthetic HIV drug scaffold. Not a natural alkaloid.
+CMP_G001287,alpha-Amino-4-hydroxy-1.2-dimethyl-1H-indole-3-propanal,Alkaloid,CORRECT,Alkaloid,PubChem,Hydroxylated dimethylindole propanal; indole alkaloid scaffold.
+CMP_G000784,campesine C,Alkaloid,CORRECT,Alkaloid,RSC/Nature Chemistry,Fungal indole piperazine alkaloid; N-acetylated campesine variant.
+CMP_G001941,cyclo(Tyr-Phe) DKP,"Alkaloid,Amino_acid",CORRECT,"Alkaloid,Amino_acid",ScienceDirect/Wiley,Diketopiperazine cyclic dipeptide from Tyr + Phe. Natural product from Bacillus spp. DKP alkaloid + amino acid origin.
+CMP_G002075,(E)-(Indol-3-yl)acetaldehyde oxime,Alkaloid,CORRECT,Alkaloid,PNAS/PMC,Indole-3-acetaldoxime; tryptophan-derived plant metabolite in auxin/glucosinolate biosynthesis. Indole alkaloid pathway intermediate.
+CMP_G001599,cotinine,Alkaloid,CORRECT,Alkaloid,Wikipedia/PMC,Pyridine alkaloid; major metabolite of nicotine. Found naturally in tobacco.
+CMP_G001872,Agroclavine,Alkaloid,CORRECT,Alkaloid,Wikipedia/PMC/RSC,Clavine-type ergot alkaloid with ergoline tetracyclic nucleus. Fungal natural product.
+CMP_G002028,6-Fluoro-2-methyl-tryptophan,"Alkaloid,Amino_acid",CORRECT,"Alkaloid,Amino_acid",PubChem,Fluorinated methyltryptophan; retains amino acid backbone + indole ring.
+CMP_G001365,Phenyl 7-azabicyclo[2.2.1]heptane-7-carboxylate,Alkaloid,WRONG,Other,PubChem/Patents,Synthetic nortropane (azanorbornane) carbamate derivative. Pharmaceutical scaffold not a natural alkaloid.
+CMP_G000415,tabersonine,Alkaloid,CORRECT,Alkaloid,PNAS/ScienceDirect/Nature,Aspidosperma-type monoterpenoid indole alkaloid; precursor to vindoline/vinblastine.
+CMP_G000486,hydroxylated tabersonine analog,Alkaloid,CORRECT,Alkaloid,structural analysis,Aspidosperma indole alkaloid scaffold (vindoline pathway intermediate with C-19 hydroxyl).
+CMP_G000832,4-Nitro-L-tryptophan,"Alkaloid,Amino_acid",CORRECT,"Alkaloid,Amino_acid",PubChem,Nitro-substituted tryptophan; non-proteinogenic amino acid with indole ring.
+CMP_G000554,alpha-Amino-1.2-dimethyl-5-phenyl-1H-indole-3-propanal,Alkaloid,CORRECT,Alkaloid,PubChem,Phenyl-substituted dimethylindole propanal; indole alkaloid scaffold.

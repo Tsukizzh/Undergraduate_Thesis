@@ -1,0 +1,202 @@
+[
+  {
+    "id": "CMP_G001475",
+    "name": "4��-O-Methylnorbelladine",
+    "smiles": "COc1ccc(CNCCc2ccc(O)cc2)cc1O",
+    "auto_labels": [],
+    "review_candidates": [
+      "Alkaloid"
+    ],
+    "reason": "Alkaloid=REVIEW: NPC alkaloid without high-precision scaffold"
+  },
+  {
+    "id": "CMP_G001481",
+    "name": "",
+    "smiles": "CCC(C)/C=N/O",
+    "auto_labels": [],
+    "review_candidates": [
+      "Fatty_acid"
+    ],
+    "reason": "Fatty_acid=REVIEW: fatty evidence but no acyl group"
+  },
+  {
+    "id": "CMP_G001482",
+    "name": "2-Methylbutanal Oxime",
+    "smiles": "CCC(C)C=NO",
+    "auto_labels": [],
+    "review_candidates": [
+      "Fatty_acid"
+    ],
+    "reason": "Fatty_acid=REVIEW: fatty evidence but no acyl group"
+  },
+  {
+    "id": "CMP_G001483",
+    "name": "(1E,2S)-2-Methylbutanal Oxime",
+    "smiles": "CC[C@H](C)/C=N/O",
+    "auto_labels": [],
+    "review_candidates": [
+      "Fatty_acid"
+    ],
+    "reason": "Fatty_acid=REVIEW: fatty evidence but no acyl group"
+  },
+  {
+    "id": "CMP_G001484",
+    "name": "",
+    "smiles": "CCC(C)/C=N\\O",
+    "auto_labels": [],
+    "review_candidates": [
+      "Fatty_acid"
+    ],
+    "reason": "Fatty_acid=REVIEW: fatty evidence but no acyl group"
+  },
+  {
+    "id": "CMP_G001489",
+    "name": "cyclododecanol",
+    "smiles": "OC1CCCCCCCCCCC1",
+    "auto_labels": [],
+    "review_candidates": [
+      "Fatty_acid"
+    ],
+    "reason": "Fatty_acid=REVIEW: fatty evidence but no acyl group"
+  },
+  {
+    "id": "CMP_G001496",
+    "name": "3-hydroxyindolin-2-one",
+    "smiles": "O=C1Nc2ccccc2C1O",
+    "auto_labels": [],
+    "review_candidates": [
+      "Alkaloid"
+    ],
+    "reason": "Alkaloid=REVIEW: generic N-heterocycle + NPC alkaloid"
+  },
+  {
+    "id": "CMP_G001502",
+    "name": "4-ethoxybenzoic acid",
+    "smiles": "CCOc1ccc(C(=O)O)cc1",
+    "auto_labels": [],
+    "review_candidates": [
+      "Phenylpropanoid"
+    ],
+    "reason": "Phenylpropanoid=REVIEW: NPC broad phenylpropanoid/pathway"
+  },
+  {
+    "id": "CMP_G001505",
+    "name": "1-Hydroxy-2-naphthoic acid",
+    "smiles": "O=C(O)c1ccc2ccccc2c1O",
+    "auto_labels": [],
+    "review_candidates": [
+      "Polyketide"
+    ],
+    "reason": "Polyketide=REVIEW: NPC pathway-level polyketide"
+  },
+  {
+    "id": "CMP_G001512",
+    "name": "2-Octanol",
+    "smiles": "CCCCCCC(C)O",
+    "auto_labels": [],
+    "review_candidates": [
+      "Fatty_acid"
+    ],
+    "reason": "Fatty_acid=REVIEW: fatty evidence but no acyl group"
+  },
+  {
+    "id": "CMP_G001517",
+    "name": "Ethyl 3-chlorobenzeneacetate",
+    "smiles": "CCOC(=O)Cc1cccc(Cl)c1",
+    "auto_labels": [],
+    "review_candidates": [
+      "Phenylpropanoid"
+    ],
+    "reason": "Phenylpropanoid=REVIEW: NPC broad phenylpropanoid/pathway"
+  },
+  {
+    "id": "CMP_G001519",
+    "name": "",
+    "smiles": "CN1CCCCC1CCN1c2ccccc2Sc2ccc(S(C)=O)cc21",
+    "auto_labels": [],
+    "review_candidates": [
+      "Alkaloid"
+    ],
+    "reason": "Alkaloid=REVIEW: generic N-heterocycle + NPC alkaloid"
+  },
+  {
+    "id": "CMP_G001527",
+    "name": "nicotine",
+    "smiles": "CN1CCC[C@H]1c1cccnc1",
+    "auto_labels": [],
+    "review_candidates": [
+      "Alkaloid"
+    ],
+    "reason": "Alkaloid=REVIEW: generic N-heterocycle + NPC alkaloid"
+  },
+  {
+    "id": "CMP_G001528",
+    "name": "",
+    "smiles": "CN1CCC[C@@H]1c1cccnc1",
+    "auto_labels": [],
+    "review_candidates": [
+      "Alkaloid"
+    ],
+    "reason": "Alkaloid=REVIEW: generic N-heterocycle + NPC alkaloid"
+  },
+  {
+    "id": "CMP_G001529",
+    "name": "(S)-nicotine",
+    "smiles": "CN1CCCC1c1cccnc1",
+    "auto_labels": [],
+    "review_candidates": [
+      "Alkaloid"
+    ],
+    "reason": "Alkaloid=REVIEW: generic N-heterocycle + NPC alkaloid"
+  },
+  {
+    "id": "CMP_G001542",
+    "name": "phenylacetonitrile",
+    "smiles": "N#CCc1ccccc1",
+    "auto_labels": [],
+    "review_candidates": [
+      "Phenylpropanoid"
+    ],
+    "reason": "Phenylpropanoid=REVIEW: NPC broad phenylpropanoid/pathway"
+  },
+  {
+    "id": "CMP_G001546",
+    "name": "Cyclotetradecyl 3,4,6-trideoxy-3-(dimethylamino)-beta-D-xylo-hexopyranoside",
+    "smiles": "CC1CC(N(C)C)C(O)C(OC2CCCCCCCCCCCCC2)O1",
+    "auto_labels": [],
+    "review_candidates": [
+      "Fatty_acid"
+    ],
+    "reason": "Fatty_acid=REVIEW: fatty evidence but no acyl group"
+  },
+  {
+    "id": "CMP_G001549",
+    "name": "cyclodecanone",
+    "smiles": "O=C1CCCCCCCCC1",
+    "auto_labels": [],
+    "review_candidates": [
+      "Fatty_acid"
+    ],
+    "reason": "Fatty_acid=REVIEW: fatty evidence but no acyl group"
+  },
+  {
+    "id": "CMP_G001550",
+    "name": "cyclododecanone",
+    "smiles": "O=C1CCCCCCCCCCC1",
+    "auto_labels": [],
+    "review_candidates": [
+      "Fatty_acid"
+    ],
+    "reason": "Fatty_acid=REVIEW: fatty evidence but no acyl group"
+  },
+  {
+    "id": "CMP_G001551",
+    "name": "penoxsulam",
+    "smiles": "COc1cnc(OC)n2nc(NS(=O)(=O)c3c(OCC(F)F)cccc3C(F)(F)F)nc12",
+    "auto_labels": [],
+    "review_candidates": [
+      "Alkaloid"
+    ],
+    "reason": "Alkaloid=REVIEW: generic N-heterocycle + NPC alkaloid"
+  }
+]

@@ -1,0 +1,41 @@
+id,name,final_labels,confidence,source,reasoning
+CMP_G000680,"alpha-Amino-1,2,4-trimethyl-1H-indole-3-propanal",Amino_acid,0.85,PubChem/literature,Tryptophan derivative: indole ring with alpha-amino aldehyde side chain (Trp oxidation product). Has NH2 and CHO groups characteristic of amino acid metabolism.
+CMP_G000684,alpha-6-Diamino-1-methyl-1H-indole-3-propanal,Amino_acid,0.85,PubChem/literature,Tryptophan derivative: indole-3-propanal with alpha-amino group. Product of tryptophan metabolism by P450 enzymes.
+CMP_G000688,glandicolin A,Alkaloid,0.95,PubMed/MDPI,Prenylated indole diketopiperazine alkaloid from fungus Eurotium. Well-characterized natural product alkaloid class.
+CMP_G000691,"alpha-Amino-5-chloro-1,2-dimethyl-1H-indole-3-propanal",Amino_acid,0.85,PubChem/literature,Halogenated tryptophan derivative: indole-3-propanal with alpha-amino group. Tryptophan metabolite.
+CMP_G000693,4-vinylbenzoic acid,Other,0.90,PubChem,Synthetic styrene-4-carboxylic acid (C6-C2 not C6-C3). Used as monomer in polymer chemistry. Not a natural phenylpropanoid.
+CMP_G000703,,Other,0.90,PubChem,Long-chain alkyl ether with dimethylamino group. No acyl/carboxyl group so not fatty acid. Synthetic compound.
+CMP_G000704,"3,5-Dimethoxybenzoic acid",Other,0.80,PubChem/FooDB,Plant metabolite (isolated from Melia azedarach) but C6-C1 skeleton (benzoic acid not cinnamic acid). Not C6-C3 phenylpropanoid by strict PAL pathway definition.
+CMP_G000709,(-)-Bursehernin,Phenylpropanoid,0.95,PubMed/ChEBI,Dibenzylbutyrolactone lignan from Bursera spp. Lignans are dimers of C6-C3 monolignol units from the phenylpropanoid pathway.
+CMP_G000714,cyclohexyl 2-methylpropanoate,Other,0.95,PubChem,Simple synthetic ester of isobutyric acid and cyclohexanol. No natural product classification. Short branched chain not fatty acid.
+CMP_G000718,L-Tyr-L-Tyr,Amino_acid,0.95,PubChem/Wikipedia,Homodipeptide of L-tyrosine. Clearly amino acid derived.
+CMP_G000734,,Other,0.80,PubChem,Geranyl/citronellyl fragment (C10 terpenoid moiety) conjugated to adamantane via diamine linker. Adamantane is synthetic scaffold. Overall a synthetic hybrid not a natural terpenoid.
+CMP_G000735,,Other,0.90,PubChem,4-Butylbenzoic acid. Synthetic aromatic acid. Not a natural product; C6-C4 skeleton does not match phenylpropanoid C6-C3.
+CMP_G000745,4-aminoantipyrine,Other,0.95,PubChem/ChEBI,Fully synthetic pyrazolone drug (ampyrone). Metabolite of aminophenazone. Not a natural product alkaloid.
+CMP_G000746,"1,3,7-trihydroxyxanthone",Polyketide,0.85,PubMed/Nature,Plant xanthone from mixed shikimate-polyketide biosynthetic pathway. CYP81AA enzymes catalyze regioselective phenol coupling of benzophenone precursor. Polyketide (type III PKS) origin.
+CMP_G000766,"1H-Indole-3-propanal alpha-amino-1,2-dimethyl-4-(methylthio)-",Amino_acid,0.85,PubChem/literature,Methylthio-substituted tryptophan derivative: indole-3-propanal with alpha-amino group. Methionine-like sulfur on tryptophan scaffold.
+CMP_G000782,,Other,0.80,PubChem,Synthetic dipeptide-like compound with benzothiophene side chain. Contains peptide bond but benzothiophene is not a standard amino acid. Likely synthetic peptidomimetic.
+CMP_G000785,2-Naphthalenol,Other,0.95,Wikipedia/PubChem,Beta-naphthol. Synthetic compound manufactured from naphthalene sulfonation. Not a natural product.
+CMP_G000795,indolin-2-one,Other,0.80,ScienceDirect/PubChem,Oxindole bare scaffold. While oxindole alkaloids exist in nature (Uncaria) the unsubstituted indolin-2-one is a simple synthetic building block not itself a natural alkaloid.
+CMP_G000799,6-Hydroxy-2-naphthoic acid,Other,0.90,PubChem,Synthetic hydroxynaphthoic acid used in engineering plastics and organic pigments. Not a known natural product.
+CMP_G000803,1-Octanol,Fatty_acid,0.85,PubChem/USDA,Natural C8 fatty alcohol found in plant and animal waxes. Fatty acid pathway derivative (fatty alcohol from fatty acid reduction).
+CMP_G000805,(S)-tetrahydrocolumbamine,Alkaloid,0.98,PubMed/Nature,Benzylisoquinoline alkaloid. Intermediate in berberine biosynthesis formed by O-methylation of (S)-scoulerine. Well-established plant alkaloid.
+CMP_G000807,,Other,0.90,PubChem,4-tert-Butylbenzoic acid. Synthetic aromatic acid. tert-Butyl group is not natural phenylpropanoid substitution.
+CMP_G000821,"alpha-7-Diamino-1,2-dimethyl-1H-indole-3-propanal",Amino_acid,0.85,PubChem/literature,Tryptophan derivative: indole-3-propanal with alpha-amino group and ring amino substitution. Product of tryptophan metabolism.
+CMP_G000823,clomazone,Other,0.95,Wikipedia/ChEBI,Synthetic isoxazolidinone herbicide (released 1986). Not a natural product.
+CMP_G000825,1-Chloro-4-(methylthio)benzene,Other,0.95,PubChem,Synthetic chlorinated thioether. Not a natural product.
+CMP_G000826,1-Naphthalenol,Other,0.95,Wikipedia/PubChem,Alpha-naphthol. Synthetic compound from coal tar naphthalene. Not a natural product.
+CMP_G000831,2-Hydroxy-5-Methyl-1-Naphthoate,Other,0.85,PubChem,Substituted naphthoic acid. Primarily synthetic. While related structures occur in some microbial metabolites the specific compound is not a well-known natural product.
+CMP_G000836,2-hexyl-5-heptylresorcinol,Polyketide,0.90,PubMed/ChEBI,Dialkylresorcinol produced by type III polyketide synthases in bacteria (Pseudomonas). Well-characterized PKS product from fatty acid-derived precursors.
+CMP_G000837,,Other,0.95,Wikipedia/DrugBank,Thioridazine-like phenothiazine antipsychotic (synthetic). Contains piperidine and phenothiazine ring system. Not a natural product.
+CMP_G000839,,Phenylpropanoid,0.85,Wikipedia/ACS,"Syringol (2,6-dimethoxyphenol). Lignin degradation product derived from sinapyl alcohol (a monolignol). Sinapyl alcohol is a phenylpropanoid pathway product."
+CMP_G000840,,Alkaloid,0.92,PubMed/Nature,Vincadifformine. Aspidosperma-type monoterpene indole alkaloid from Vinca minor and Catharanthus roseus. Natural plant alkaloid.
+CMP_G000841,Phenol 4-propyl-,Phenylpropanoid,0.75,FooDB/PubChem,4-Propylphenol (dihydrochavicol). C6-C3 skeleton found naturally in Piper betle (betel leaf). Reduced phenylpropene related to chavicol.
+CMP_G000848,1-chloro-4-(2-chloroethyl)benzene,Other,0.95,PubChem,Synthetic dichlorinated aromatic compound. Not a natural product.
+CMP_G000850,"alpha-6-Diamino-1,2-dimethyl-1H-indole-3-propanal",Amino_acid,0.85,PubChem/literature,Tryptophan derivative: indole-3-propanal with alpha-amino group. Product of tryptophan metabolism.
+CMP_G000853,(S)-Scoulerine,Alkaloid,0.98,Wikipedia/Nature,Protoberberine alkaloid. Key intermediate in benzylisoquinoline alkaloid biosynthesis formed from (S)-reticuline by berberine bridge enzyme. Found in opium poppy and other plants.
+CMP_G000854,scoulerine,Alkaloid,0.98,Wikipedia/Nature,Racemic scoulerine. Same protoberberine alkaloid class as (S)-scoulerine. Natural plant alkaloid.
+CMP_G000855,7-Methoxyresorufin,Other,0.95,Abcam/MedChemExpress,Synthetic fluorogenic P450 probe substrate (CYP1A2 selective). Resorufin methyl ether is a laboratory reagent not a natural product.
+CMP_G000859,,Other,0.85,PubChem,Bicyclo[2.2.1]heptan-2-one derivative. C7 compound lacking methyl groups of natural camphor. Synthetic norcamphor analog not a natural terpenoid.
+CMP_G000860,(-)-Norcamphor,Other,0.85,Wikipedia,Synthetic bicyclic ketone. Analog of camphor without three methyl groups. C7 skeleton (not C10 monoterpene). Used as monoterpene model but itself is synthetic.
+CMP_G000861,,Alkaloid,0.75,PubMed/literature,Complex polycyclic indole alkaloid with triazatetracyclic skeleton styryl group and multiple N atoms. Resembles rutaecarpine/fumiquinazoline-type fungal or plant alkaloid. Natural product alkaloid.

@@ -1,0 +1,182 @@
+[
+  {
+    "id": "CMP_G002033",
+    "name": "",
+    "smiles": "Cc1ccc(Br)cc1",
+    "auto_labels": [],
+    "review_candidates": [
+      "Phenylpropanoid"
+    ],
+    "reason": "Phenylpropanoid=REVIEW: NPC broad phenylpropanoid/pathway"
+  },
+  {
+    "id": "CMP_G002043",
+    "name": "1-bromo-3-(2-bromoethyl)benzene",
+    "smiles": "BrCCc1cccc(Br)c1",
+    "auto_labels": [],
+    "review_candidates": [
+      "Phenylpropanoid"
+    ],
+    "reason": "Phenylpropanoid=REVIEW: NPC broad phenylpropanoid/pathway"
+  },
+  {
+    "id": "CMP_G002053",
+    "name": "4-Methoxybenzoate",
+    "smiles": "COc1ccc(C(=O)[O-])cc1",
+    "auto_labels": [],
+    "review_candidates": [
+      "Phenylpropanoid"
+    ],
+    "reason": "Phenylpropanoid=REVIEW: NPC broad phenylpropanoid/pathway"
+  },
+  {
+    "id": "CMP_G002054",
+    "name": "4-Methoxybenzoic Acid",
+    "smiles": "COc1ccc(C(=O)O)cc1",
+    "auto_labels": [],
+    "review_candidates": [
+      "Phenylpropanoid"
+    ],
+    "reason": "Phenylpropanoid=REVIEW: NPC broad phenylpropanoid/pathway"
+  },
+  {
+    "id": "CMP_G002055",
+    "name": "",
+    "smiles": "COc1cc(C)cc(OC)c1O",
+    "auto_labels": [],
+    "review_candidates": [
+      "Polyketide"
+    ],
+    "reason": "Polyketide=REVIEW: NPC pathway-level polyketide"
+  },
+  {
+    "id": "CMP_G002058",
+    "name": "(-)-deoxypodophyllotoxin",
+    "smiles": "COc1cc([C@@H]2c3cc4c(cc3C[C@H]3COC(=O)[C@@H]32)OCO4)cc(OC)c1OC",
+    "auto_labels": [],
+    "review_candidates": [
+      "Phenylpropanoid"
+    ],
+    "reason": "Phenylpropanoid=REVIEW: hydrocinnamate pattern only"
+  },
+  {
+    "id": "CMP_G002077",
+    "name": "Naphthalene, 1-ethyl- (6CI, 8CI, 9CI, ACI)",
+    "smiles": "CCc1cccc2ccccc12",
+    "auto_labels": [],
+    "review_candidates": [
+      "Phenylpropanoid"
+    ],
+    "reason": "Phenylpropanoid=REVIEW: NPC broad phenylpropanoid/pathway"
+  },
+  {
+    "id": "CMP_G002095",
+    "name": "4-Ethylbenzoic Acid",
+    "smiles": "CCc1ccc(C(=O)O)cc1",
+    "auto_labels": [],
+    "review_candidates": [
+      "Phenylpropanoid"
+    ],
+    "reason": "Phenylpropanoid=REVIEW: NPC broad phenylpropanoid/pathway"
+  },
+  {
+    "id": "CMP_G002096",
+    "name": "1-bromo-3-ethylbenzene",
+    "smiles": "CCc1cccc(Br)c1",
+    "auto_labels": [],
+    "review_candidates": [
+      "Phenylpropanoid"
+    ],
+    "reason": "Phenylpropanoid=REVIEW: NPC broad phenylpropanoid/pathway"
+  },
+  {
+    "id": "CMP_G002097",
+    "name": "3-cyclopentylpropanoic acid",
+    "smiles": "O=C(O)CCC1CCCC1",
+    "auto_labels": [],
+    "review_candidates": [
+      "Fatty_acid"
+    ],
+    "reason": "Fatty_acid=REVIEW: fatty evidence but chain <4C"
+  },
+  {
+    "id": "CMP_G002101",
+    "name": "Hexanol",
+    "smiles": "CCCCCCO",
+    "auto_labels": [],
+    "review_candidates": [
+      "Fatty_acid"
+    ],
+    "reason": "Fatty_acid=REVIEW: fatty evidence but no acyl group"
+  },
+  {
+    "id": "CMP_G002113",
+    "name": "1,1��-Biphenyl (9CI, ACI)",
+    "smiles": "c1ccc(-c2ccccc2)cc1",
+    "auto_labels": [],
+    "review_candidates": [
+      "Phenylpropanoid"
+    ],
+    "reason": "Phenylpropanoid=REVIEW: NPC broad phenylpropanoid/pathway"
+  },
+  {
+    "id": "CMP_G002114",
+    "name": "",
+    "smiles": "CNc1ccc(C(=O)O)cc1",
+    "auto_labels": [],
+    "review_candidates": [
+      "Phenylpropanoid"
+    ],
+    "reason": "Phenylpropanoid=REVIEW: NPC broad phenylpropanoid/pathway"
+  },
+  {
+    "id": "CMP_G002116",
+    "name": "",
+    "smiles": "Cc1ccccc1C(=O)[O-]",
+    "auto_labels": [],
+    "review_candidates": [
+      "Phenylpropanoid"
+    ],
+    "reason": "Phenylpropanoid=REVIEW: NPC broad phenylpropanoid/pathway"
+  },
+  {
+    "id": "CMP_G002117",
+    "name": "Nonanol",
+    "smiles": "CCCCCCCCCO",
+    "auto_labels": [],
+    "review_candidates": [
+      "Fatty_acid"
+    ],
+    "reason": "Fatty_acid=REVIEW: fatty evidence but no acyl group"
+  },
+  {
+    "id": "CMP_G002119",
+    "name": "Fonsecin B",
+    "smiles": "COc1cc(OC)c2c(O)c3c(cc2c1)OC(C)(O)CC3=O",
+    "auto_labels": [],
+    "review_candidates": [
+      "Polyketide"
+    ],
+    "reason": "Polyketide=REVIEW: NPC pathway-level polyketide"
+  },
+  {
+    "id": "CMP_G002120",
+    "name": "(1R,4S)-1-Methylbicyclo[2.2.1]heptan-2-one",
+    "smiles": "CC12CCC(CC1=O)C2",
+    "auto_labels": [],
+    "review_candidates": [
+      "Terpenoid"
+    ],
+    "reason": "Terpenoid=REVIEW: ClassyFire terpenoid only"
+  },
+  {
+    "id": "CMP_G002124",
+    "name": "1,1��-Biphenyl, 4-methyl- (9CI, ACI)",
+    "smiles": "Cc1ccc(-c2ccccc2)cc1",
+    "auto_labels": [],
+    "review_candidates": [
+      "Phenylpropanoid"
+    ],
+    "reason": "Phenylpropanoid=REVIEW: NPC broad phenylpropanoid/pathway"
+  }
+]

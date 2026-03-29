@@ -1,0 +1,41 @@
+id,name,our_labels,verdict,correct_labels,source,notes
+CMP_G000151,(S)-N-Methylcoclaurine,Alkaloid,CORRECT,Alkaloid,PubChem CID 440584; ChEBI:38818,Tetrahydroisoquinoline alkaloid; benzylisoquinoline alkaloid pathway intermediate
+CMP_G001673,"Tryptophan, 2,1-dimethyl-4-(4-morpholinyl)-","Alkaloid;Amino_acid",CORRECT,"Alkaloid;Amino_acid",PubChem (tryptophan derivatives),Modified tryptophan with intact alpha-amino acid backbone + indole ring nitrogen; dual-label justified
+CMP_G002079,"Tryptophan, 6-methoxy-1-methyl-","Alkaloid;Amino_acid",CORRECT,"Alkaloid;Amino_acid",PubChem (tryptophan derivatives),Modified tryptophan with methoxy and methyl substituents; intact AA backbone + indole ring
+CMP_G001570,"Tryptophan, 7-chloro-2,1-dimethyl-","Alkaloid;Amino_acid",CORRECT,"Alkaloid;Amino_acid",PubChem (tryptophan derivatives),Halogenated dimethyltryptophan; intact AA backbone + indole ring
+CMP_G000160,Thiomorpholine,Alkaloid,WRONG,Other,PubChem CID 67164,Simple synthetic heterocycle (thia-analog of morpholine); NOT a natural product alkaloid
+CMP_G000854,scoulerine,Alkaloid,CORRECT,Alkaloid,Wikipedia Scoulerine; ChEBI:17129; PubChem CID 22955,Benzylisoquinoline alkaloid; precursor of berberine and sanguinarine
+CMP_G001679,norfluorocurarine,Alkaloid,CORRECT,Alkaloid,PubChem CID 5581319; Wikipedia Indole alkaloid,Indole alkaloid (Strychnos-type); curare-related monoterpene indole alkaloid
+CMP_G001335,Cyclo(L-Phe-L-Leu),"Alkaloid;Amino_acid",CORRECT,"Alkaloid;Amino_acid",PubChem CID 562691; Wikipedia Diketopiperazine,2,5-Diketopiperazine (cyclic dipeptide); DKP natural products are classified as both
+CMP_G001456,"(3S,8aS)-hexahydropyrrolo[1,2-a]pyrazine-1,4-dione (cyclo-Trp-Pro)","Alkaloid;Amino_acid",CORRECT,"Alkaloid;Amino_acid",Wikipedia Diketopiperazine,Cyclic dipeptide (Trp-Pro DKP); indole-containing DKP; dual-label appropriate
+CMP_G001529,(S)-nicotine,Alkaloid,CORRECT,Alkaloid,PubChem CID 89594; ChEBI:17688; Wikipedia Nicotine,Pyridine-pyrrolidine alkaloid from Nicotiana; classical alkaloid
+CMP_G000416,(-)-Tabersonine,Alkaloid,CORRECT,Alkaloid,PubChem CID 20485; ChEBI:16776; Wikipedia Tabersonine,Terpene indole alkaloid (aspidosperma type) from Catharanthus roseus
+CMP_G001460,fluometuron,Alkaloid,WRONG,Other,PubChem CID 16562; ChEBI:82012; Wikipedia Fluometuron,Synthetic phenylurea herbicide; NOT a natural product or alkaloid
+CMP_G000231,phenacetin (CCOc1ccc(NC(C)=O)cc1),Alkaloid,WRONG,Other,PubChem CID 4754; Wikipedia Phenacetin,Synthetic analgesic/antipyretic drug (prodrug of acetaminophen); NOT an alkaloid
+CMP_G000484,(+)-Vincadifformine,Alkaloid,CORRECT,Alkaloid,PubChem CID 811594; ChEBI:142834,Aspidosperma-type indole alkaloid (vinca alkaloid); from Apocynaceae plants
+CMP_G000178,Cyclo(L-leucyl-L-tryptophyl),"Alkaloid;Amino_acid",CORRECT,"Alkaloid;Amino_acid",Wikipedia Diketopiperazine,2,5-DKP (cyclo-Leu-Trp); indole-containing cyclic dipeptide; dual-label appropriate
+CMP_G001710,HBOA,Alkaloid,WRONG,Other,PubChem CID 322636; Wikipedia Benzoxazinoid,Benzoxazinoid (2-hydroxy-1,4-benzoxazin-3-one); plant defense metabolite from Poaceae; NOT classified as alkaloid
+CMP_G000171,reticuline-like isoquinoline (no name),Alkaloid,CORRECT,Alkaloid,Wikipedia Benzylisoquinoline alkaloids,SMILES consistent with tetrahydroisoquinoline scaffold; benzylisoquinoline alkaloid
+CMP_G001898,tryprostatin A,"Alkaloid;Amino_acid",CORRECT,"Alkaloid;Amino_acid",PubChem CID 9929833; Wikipedia Spirotryprostatin,Prenylated indole DKP from Aspergillus fumigatus; PKS-NRPS/DKP origin; dual-label justified
+CMP_G000590,"Tryptophan, 5-hydroxy-2-methyl-","Alkaloid;Amino_acid",CORRECT,"Alkaloid;Amino_acid",PubChem (5-HTP analogs); Wikipedia 5-Hydroxytryptophan,Modified tryptophan (5-OH + 2-Me); intact AA backbone + indole ring; dual-label appropriate
+CMP_G001132,3-geranylgeranyl-2-methylquinolin-4-one,Alkaloid,CORRECT,Alkaloid,PubChem (quinolone alkaloids),Prenylated quinolone alkaloid; quinoline ring with geranylgeranyl terpenoid chain; alkaloid core confirmed
+CMP_G000323,Glucobrassicin,Alkaloid,WRONG,Other,PubChem CID 656506; Wikipedia Glucobrassicin; Wikipedia Glucosinolate,Indole glucosinolate derived from tryptophan; classified as glucosinolate NOT alkaloid
+CMP_G001633,2-amino-3-(7-fluoro-2-methyl-1H-indol-3-yl)propanoic acid,"Alkaloid;Amino_acid",CORRECT,"Alkaloid;Amino_acid",PubChem (fluorinated tryptophan analogs),Fluorinated methyltryptophan with intact AA backbone; indole ring; dual-label appropriate
+CMP_G000611,PhIP,Alkaloid,WRONG,Other,PubChem CID 1530; Wikipedia PhIP,Heterocyclic amine formed in cooked meat (Maillard reaction product); synthetic/cooking byproduct NOT natural alkaloid
+CMP_G000114,alpha-Amino-5-bromo-1,2-dimethyl-1H-indole-3-propanal,Alkaloid,WRONG,"Alkaloid;Amino_acid",PubChem (indole amino acid derivatives),Brominated indole with alpha-amino group + aldehyde (amino acid-like backbone); should also be Amino_acid
+CMP_G001761,prochaetoglobosin IV,Alkaloid,CORRECT,"Alkaloid;Polyketide",PubChem CID 6442362; Wikipedia Chaetoglobosin A,Cytochalasan alkaloid from PKS-NRPS hybrid pathway; Alkaloid label correct but could also add Polyketide
+CMP_G001162,7-Ethenyltryptophan,"Alkaloid;Amino_acid",CORRECT,"Alkaloid;Amino_acid",PubChem (tryptophan derivatives),Vinyl-substituted tryptophan; intact AA backbone + indole ring; dual-label appropriate
+CMP_G001868,alpha-Amino-5-methoxy-1,2-dimethyl-1H-indole-3-propanal,Alkaloid,WRONG,"Alkaloid;Amino_acid",PubChem (indole amino acid derivatives),Methoxylated indole with alpha-amino group + aldehyde; has amino acid-like backbone; should also be Amino_acid
+CMP_G001424,hydroxylated anthraquinone (no name),Polyketide,CORRECT,Polyketide,ChEBI (anthraquinones); Wikipedia Polyketide,Hydroxylated anthraquinone/naphthoquinone scaffold; classic type II PKS product
+CMP_G001418,Monacolin L Carboxylate,Polyketide,CORRECT,Polyketide,PubChem CID 86289735; Wikipedia Lovastatin,Lovastatin precursor; biosynthesized by iterative type I PKS (LovB/LovC) in Aspergillus terreus
+CMP_G001194,macrolide antibiotic (erythromycin-like),Polyketide,CORRECT,Polyketide,PubChem (macrolide antibiotics),Macrocyclic lactone with aminosugar; classic type I PKS product
+CMP_G000662,filipin,Polyketide,CORRECT,Polyketide,Wikipedia Filipin; Wikipedia Polyene antimycotic,Polyene macrolide from Streptomyces filipinensis; polyketide synthase product
+CMP_G000593,6-Deoxyerythronolide B,Polyketide,CORRECT,Polyketide,PubChem CID 121904; ChEBI:16089; Wikipedia Erythronolide synthase,Macrolide aglycone; product of DEBS (type I modular PKS); erythromycin precursor
+CMP_G000424,macrolide with aminosugar (no name),Polyketide,CORRECT,Polyketide,Wikipedia Macrolide,Macrocyclic lactone with dimethylamino sugar; classic type I PKS macrolide
+CMP_G001644,fumonisin,Polyketide,CORRECT,Polyketide,PubChem CID 2733487; Wikipedia Fumonisin; PubMed FUM1 PKS,Mycotoxin from Fusarium; linear polyketide backbone synthesized by FUM1 PKS
+CMP_G001773,proatranorin IV,Polyketide,CORRECT,Polyketide,PubMed PMC8262933; Wikipedia (lichen depsides),Lichen depside; biosynthesized by non-reducing PKS (NR-PKS); polyketide origin confirmed
+CMP_G000562,Rubrofusarin B,Polyketide,CORRECT,Polyketide,PubChem CID 72537; ChEBI:64542 (naphtho-gamma-pyrone),Naphtho-gamma-pyrone; fungal polyketide pigment
+CMP_G000994,brominated alpha-pyrone polyketide,Polyketide,CORRECT,Polyketide,PubChem (alpha-pyrone PKS); literature on aureothin analogs,Alpha-pyrone with polyene sidechain; alpha-pyrones are classic PKS products
+CMP_G000251,Probetaenone I,Polyketide,CORRECT,Polyketide,Wikipedia Betaenone B; PubMed (betaenone biosynthesis),Polyketide-derived phytotoxin precursor (betaenone B pathway); from Phoma betae; 8 acetate units via PKS
+CMP_G001591,pretenellin A,Polyketide,CORRECT,Polyketide,PubMed (JACS 2009); literature on PKS-NRPS hybrids,PKS-NRPS hybrid product from Beauveria bassiana; acyltetramic acid intermediate to tenellin
+CMP_G000636,macrolide with two sugars (no name),Polyketide,CORRECT,Polyketide,Wikipedia Macrolide,Complex macrolide with deoxy sugars; classic type I PKS macrolide product

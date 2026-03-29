@@ -1,0 +1,202 @@
+[
+  {
+    "id": "CMP_G001944",
+    "name": "1-(2-bromoethyl)-4-chlorobenzene",
+    "smiles": "Clc1ccc(CCBr)cc1",
+    "auto_labels": [],
+    "review_candidates": [
+      "Phenylpropanoid"
+    ],
+    "reason": "Phenylpropanoid=REVIEW: NPC broad phenylpropanoid/pathway"
+  },
+  {
+    "id": "CMP_G001947",
+    "name": "Indene",
+    "smiles": "C1=Cc2ccccc2C1",
+    "auto_labels": [],
+    "review_candidates": [
+      "Phenylpropanoid"
+    ],
+    "reason": "Phenylpropanoid=REVIEW: NPC broad phenylpropanoid/pathway"
+  },
+  {
+    "id": "CMP_G001957",
+    "name": "4-Bromothioanisole",
+    "smiles": "CSc1ccc(Br)cc1",
+    "auto_labels": [],
+    "review_candidates": [
+      "Phenylpropanoid"
+    ],
+    "reason": "Phenylpropanoid=REVIEW: NPC broad phenylpropanoid/pathway"
+  },
+  {
+    "id": "CMP_G001961",
+    "name": "",
+    "smiles": "O=C(O)c1ccccc1[O-]",
+    "auto_labels": [],
+    "review_candidates": [
+      "Phenylpropanoid"
+    ],
+    "reason": "Phenylpropanoid=REVIEW: NPC broad phenylpropanoid/pathway"
+  },
+  {
+    "id": "CMP_G001972",
+    "name": "",
+    "smiles": "CC1(C)SCCN(S(=O)(=O)c2ccc(Oc3ccncc3)cc2)[C@H]1C(=O)NO",
+    "auto_labels": [],
+    "review_candidates": [
+      "Alkaloid"
+    ],
+    "reason": "Alkaloid=REVIEW: generic N-heterocycle + NPC alkaloid"
+  },
+  {
+    "id": "CMP_G001974",
+    "name": "pre-flavunoidine",
+    "smiles": "CC1CCC2C13CCC1(C)OC2(C)C([NH2+]CCCCC[NH+](C)C)C1C3",
+    "auto_labels": [],
+    "review_candidates": [
+      "Terpenoid"
+    ],
+    "reason": "Terpenoid=REVIEW: NPC pathway-level terpenoid only"
+  },
+  {
+    "id": "CMP_G001982",
+    "name": "Morpholine",
+    "smiles": "C1COCCN1",
+    "auto_labels": [],
+    "review_candidates": [
+      "Alkaloid"
+    ],
+    "reason": "Alkaloid=REVIEW: generic N-heterocycle + NPC alkaloid"
+  },
+  {
+    "id": "CMP_G001984",
+    "name": "phenanthrene",
+    "smiles": "c1ccc2c(c1)ccc1ccccc12",
+    "auto_labels": [],
+    "review_candidates": [
+      "Phenylpropanoid"
+    ],
+    "reason": "Phenylpropanoid=REVIEW: NPC broad phenylpropanoid/pathway"
+  },
+  {
+    "id": "CMP_G001985",
+    "name": "Ethyl-1-dbenzene",
+    "smiles": "CCc1ccccc1",
+    "auto_labels": [],
+    "review_candidates": [
+      "Phenylpropanoid"
+    ],
+    "reason": "Phenylpropanoid=REVIEW: NPC broad phenylpropanoid/pathway"
+  },
+  {
+    "id": "CMP_G001987",
+    "name": "Ibuprofen methyl ester",
+    "smiles": "COC(=O)C(C)c1ccc(CC(C)C)cc1",
+    "auto_labels": [],
+    "review_candidates": [
+      "Terpenoid"
+    ],
+    "reason": "Terpenoid=REVIEW: ClassyFire terpenoid only"
+  },
+  {
+    "id": "CMP_G001998",
+    "name": "Ethyl 2-diazopropanoate",
+    "smiles": "CCOC(=O)C(C)=[N+]=[N-]",
+    "auto_labels": [],
+    "review_candidates": [
+      "Fatty_acid"
+    ],
+    "reason": "Fatty_acid=REVIEW: fatty evidence but chain <4C"
+  },
+  {
+    "id": "CMP_G002003",
+    "name": "BX5",
+    "smiles": "[NH3+]NC(=O)CCCc1nn[nH]n1",
+    "auto_labels": [],
+    "review_candidates": [
+      "Alkaloid"
+    ],
+    "reason": "Alkaloid=REVIEW: generic N-heterocycle + NPC alkaloid"
+  },
+  {
+    "id": "CMP_G002004",
+    "name": "Butyl 3-chlorobenzeneacetate",
+    "smiles": "CCCCOC(=O)Cc1cccc(Cl)c1",
+    "auto_labels": [],
+    "review_candidates": [
+      "Fatty_acid"
+    ],
+    "reason": "Fatty_acid=REVIEW: fatty evidence but chain <4C"
+  },
+  {
+    "id": "CMP_G002009",
+    "name": "Demethylepipodophyllotoxin",
+    "smiles": "COc1cc([C@@H]2c3cc4c(cc3[C@@H](O)[C@H]3COC(=O)[C@H]23)OCO4)cc(OC)c1O",
+    "auto_labels": [],
+    "review_candidates": [
+      "Phenylpropanoid"
+    ],
+    "reason": "Phenylpropanoid=REVIEW: hydrocinnamate pattern only"
+  },
+  {
+    "id": "CMP_G002011",
+    "name": "Ethyl diazoacetate",
+    "smiles": "CCOC(=O)C=[N+]=[N-]",
+    "auto_labels": [],
+    "review_candidates": [
+      "Fatty_acid"
+    ],
+    "reason": "Fatty_acid=REVIEW: fatty evidence but chain <4C"
+  },
+  {
+    "id": "CMP_G002015",
+    "name": "imidacloprid",
+    "smiles": "O=[N+]([O-])/N=C1\\NCCN1Cc1ccc(Cl)nc1",
+    "auto_labels": [],
+    "review_candidates": [
+      "Alkaloid"
+    ],
+    "reason": "Alkaloid=REVIEW: generic N-heterocycle + NPC alkaloid"
+  },
+  {
+    "id": "CMP_G002019",
+    "name": "Toluene",
+    "smiles": "Cc1ccccc1",
+    "auto_labels": [],
+    "review_candidates": [
+      "Phenylpropanoid"
+    ],
+    "reason": "Phenylpropanoid=REVIEW: NPC broad phenylpropanoid/pathway"
+  },
+  {
+    "id": "CMP_G002020",
+    "name": "Lirinidine",
+    "smiles": "COc1cc2c3c(c1O)-c1ccccc1C[C@@H]3N(C)CC2",
+    "auto_labels": [],
+    "review_candidates": [
+      "Alkaloid"
+    ],
+    "reason": "Alkaloid=REVIEW: generic N-heterocycle + NPC alkaloid"
+  },
+  {
+    "id": "CMP_G002030",
+    "name": "",
+    "smiles": "COc1ccc(CC2=[N+](C)CCc3cc(OC)c(O)cc32)cc1O",
+    "auto_labels": [],
+    "review_candidates": [
+      "Alkaloid"
+    ],
+    "reason": "Alkaloid=REVIEW: generic N-heterocycle + NPC alkaloid"
+  },
+  {
+    "id": "CMP_G002032",
+    "name": "ethyl 2-cyclohexylacetate",
+    "smiles": "CCOC(=O)CC1CCCCC1",
+    "auto_labels": [],
+    "review_candidates": [
+      "Fatty_acid"
+    ],
+    "reason": "Fatty_acid=REVIEW: fatty evidence but chain <4C"
+  }
+]

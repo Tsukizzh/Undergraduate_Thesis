@@ -1,0 +1,173 @@
+[
+  {
+    "id": "CMP_G001674",
+    "name": "presphingofungin",
+    "smiles": "CCCCCCCC=CCCCCC=CC(O)CC(O)C([NH3+])C(=O)[O-]",
+    "our_labels": [
+      "Amino_acid"
+    ],
+    "confidence": "high",
+    "reason": "Amino_acid=intact alpha-amino-acid backbone"
+  },
+  {
+    "id": "CMP_G001065",
+    "name": "4-Chloro-DL-phenylalanine",
+    "smiles": "NC(Cc1ccc(Cl)cc1)C(=O)O",
+    "our_labels": [
+      "Amino_acid"
+    ],
+    "confidence": "high",
+    "reason": "Amino_acid=intact alpha-amino-acid backbone"
+  },
+  {
+    "id": "CMP_G001895",
+    "name": "2-amino-3-(1,7-dimethylindol-3-yl)propanoic acid",
+    "smiles": "Cc1cccc2c(CC(N)C(=O)O)cn(C)c12",
+    "our_labels": [
+      "Amino_acid"
+    ],
+    "confidence": "high",
+    "reason": "Amino_acid=intact alpha-amino-acid backbone"
+  },
+  {
+    "id": "CMP_G001621",
+    "name": "",
+    "smiles": "CC[C@@H]1C[C@@H]2C[C@@H]3C/C=C/CC(=O)NCCC[C@@H]4NC(=O)/C(=C(O)/C=C/C=C/[C@H](O)[C@H]3[C@@H]2[C@H]1C)",
+    "our_labels": [
+      "Amino_acid",
+      "Polyketide"
+    ],
+    "confidence": "high",
+    "reason": "Amino_acid=peptide (2 amide bonds) + NPC support; Polyketide=NPC polyketide: macrolides"
+  },
+  {
+    "id": "CMP_G000039",
+    "name": "L-Isoleucine",
+    "smiles": "CC[C@H](C)[C@H](N)C(=O)O",
+    "our_labels": [
+      "Amino_acid"
+    ],
+    "confidence": "high",
+    "reason": "Amino_acid=intact alpha-amino-acid backbone"
+  },
+  {
+    "id": "CMP_G001736",
+    "name": "3-Fluorophenylalanine",
+    "smiles": "NC(Cc1cccc(F)c1)C(=O)O",
+    "our_labels": [
+      "Amino_acid"
+    ],
+    "confidence": "high",
+    "reason": "Amino_acid=intact alpha-amino-acid backbone"
+  },
+  {
+    "id": "CMP_G001062",
+    "name": "Tryptophan, 5-amino-2,1-dimethyl- (ACI)",
+    "smiles": "Cc1c(CC(N)C(=O)O)c2cc(N)ccc2n1C",
+    "our_labels": [
+      "Amino_acid"
+    ],
+    "confidence": "high",
+    "reason": "Amino_acid=intact alpha-amino-acid backbone"
+  },
+  {
+    "id": "CMP_G000342",
+    "name": "5-Cyclopropyl-2-methyltryptophan",
+    "smiles": "Cc1[nH]c2ccc(C3CC3)cc2c1CC(N)C(=O)O",
+    "our_labels": [
+      "Amino_acid"
+    ],
+    "confidence": "high",
+    "reason": "Amino_acid=intact alpha-amino-acid backbone"
+  },
+  {
+    "id": "CMP_G000426",
+    "name": "4-Methyl-L-tryptophan",
+    "smiles": "Cc1cccc2[nH]cc(CC(N)C(=O)O)c12",
+    "our_labels": [
+      "Amino_acid"
+    ],
+    "confidence": "high",
+    "reason": "Amino_acid=intact alpha-amino-acid backbone"
+  },
+  {
+    "id": "CMP_G002029",
+    "name": "2-amino-3-(5-bromo-2-methyl-1H-indol-3-yl)propanoic acid",
+    "smiles": "Cc1[nH]c2ccc(Br)cc2c1CC(N)C(=O)O",
+    "our_labels": [
+      "Amino_acid"
+    ],
+    "confidence": "high",
+    "reason": "Amino_acid=intact alpha-amino-acid backbone"
+  },
+  {
+    "id": "CMP_G000360",
+    "name": "6-Amino-2-methyltryptophan",
+    "smiles": "Cc1[nH]c2cc(N)ccc2c1CC(N)C(=O)O",
+    "our_labels": [
+      "Amino_acid"
+    ],
+    "confidence": "high",
+    "reason": "Amino_acid=intact alpha-amino-acid backbone"
+  },
+  {
+    "id": "CMP_G000356",
+    "name": "3-Methyl-O-(methyl-d3)-D-tyrosine",
+    "smiles": "COc1ccc(CC(N)C(=O)O)cc1C",
+    "our_labels": [
+      "Amino_acid"
+    ],
+    "confidence": "high",
+    "reason": "Amino_acid=intact alpha-amino-acid backbone"
+  },
+  {
+    "id": "CMP_G001932",
+    "name": "p-Fluorophenylalanine",
+    "smiles": "NC(Cc1ccc(F)cc1)C(=O)O",
+    "our_labels": [
+      "Amino_acid"
+    ],
+    "confidence": "high",
+    "reason": "Amino_acid=intact alpha-amino-acid backbone"
+  },
+  {
+    "id": "CMP_G000501",
+    "name": "5-Cyclopropyl-L-tryptophan",
+    "smiles": "NC(Cc1c[nH]c2ccc(C3CC3)cc12)C(=O)O",
+    "our_labels": [
+      "Amino_acid"
+    ],
+    "confidence": "high",
+    "reason": "Amino_acid=intact alpha-amino-acid backbone"
+  },
+  {
+    "id": "CMP_G000983",
+    "name": "S-Adenosyl-L-methionine",
+    "smiles": "C[S+](CCC(N)C(=O)[O-])CC1OC(n2cnc3c(N)ncnc32)C(O)C1O",
+    "our_labels": [
+      "Amino_acid"
+    ],
+    "confidence": "high",
+    "reason": "Amino_acid=intact alpha-amino-acid backbone"
+  },
+  {
+    "id": "CMP_G001983",
+    "name": "5-Amino-L-tryptophan",
+    "smiles": "Nc1ccc2[nH]cc(CC(N)C(=O)O)c2c1",
+    "our_labels": [
+      "Amino_acid"
+    ],
+    "confidence": "high",
+    "reason": "Amino_acid=intact alpha-amino-acid backbone"
+  },
+  {
+    "id": "CMP_G000705",
+    "name": "1-Methyl-4-phenyltryptophan",
+    "smiles": "Cn1cc(CC(N)C(=O)O)c2c(-c3ccccc3)cccc21",
+    "our_labels": [
+      "Amino_acid"
+    ],
+    "confidence": "high",
+    "reason": "Amino_acid=intact alpha-amino-acid backbone"
+  }
+]

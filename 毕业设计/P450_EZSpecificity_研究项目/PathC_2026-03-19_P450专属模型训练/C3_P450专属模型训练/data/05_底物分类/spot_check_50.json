@@ -1,0 +1,453 @@
+[
+  {
+    "id": "CMP_G000769",
+    "name": "Ent-Cassa-12,15-Diene",
+    "smiles": "C=CC1=CC[C@@H]2[C@H](CC[C@@H]3C(C)(C)CCC[C@@]23C)[C@@H]1C",
+    "our_labels": [
+      "Terpenoid"
+    ],
+    "tier": "auto"
+  },
+  {
+    "id": "CMP_G002050",
+    "name": "confertifolin",
+    "smiles": "CC1(C)CCC[C@]2(C)C3=C(CC[C@@H]12)C(=O)OC3",
+    "our_labels": [
+      "Terpenoid"
+    ],
+    "tier": "auto"
+  },
+  {
+    "id": "CMP_G001098",
+    "name": "",
+    "smiles": "CCCCC[C@H](O)C=C[C@@H]1[C@@H](CCCCCCC(=O)O)[C@@H]2C[C@H]1OO2",
+    "our_labels": [
+      "Fatty_acid"
+    ],
+    "tier": "auto"
+  },
+  {
+    "id": "CMP_G001780",
+    "name": "Cyclooctane",
+    "smiles": "C1CCCCCCC1",
+    "our_labels": [
+      "Other"
+    ],
+    "tier": "other"
+  },
+  {
+    "id": "CMP_G001244",
+    "name": "",
+    "smiles": "O=C(O)/C=C/c1ccccc1O",
+    "our_labels": [
+      "Phenylpropanoid"
+    ],
+    "tier": "auto"
+  },
+  {
+    "id": "CMP_G001591",
+    "name": "pretenellin A",
+    "smiles": "CC[C@@H](C)/C=C(C)/C=C/C(O)=C1C(=O)N[C@@H](Cc2ccc(O)cc2)C1=O",
+    "our_labels": [
+      "Polyketide"
+    ],
+    "tier": "auto"
+  },
+  {
+    "id": "CMP_G000717",
+    "name": "6-Cyclopropyl-2-methyltryptophan",
+    "smiles": "Cc1[nH]c2cc(C3CC3)ccc2c1CC(N)C(=O)O",
+    "our_labels": [
+      "Amino_acid"
+    ],
+    "tier": "auto"
+  },
+  {
+    "id": "CMP_G000988",
+    "name": "thymol",
+    "smiles": "Cc1ccc(C(C)C)c(O)c1",
+    "our_labels": [
+      "Terpenoid"
+    ],
+    "tier": "auto"
+  },
+  {
+    "id": "CMP_G000773",
+    "name": "beta-farnesene",
+    "smiles": "C=CC(=C)CC/C=C(\\C)CCC=C(C)C",
+    "our_labels": [
+      "Terpenoid"
+    ],
+    "tier": "auto"
+  },
+  {
+    "id": "CMP_G001170",
+    "name": "",
+    "smiles": "C=C[C@]1(C)CC[C@@H](C(=C)C)C[C@H]1C(=C)C",
+    "our_labels": [
+      "Terpenoid"
+    ],
+    "tier": "auto"
+  },
+  {
+    "id": "CMP_G001325",
+    "name": "Cyclopentadecyl 3,4,6-trideoxy-3-(dimethylamino)-beta-D-xylo-hexopyranoside",
+    "smiles": "CC1CC(N(C)C)C(O)C(OC2CCCCCCCCCCCCCC2)O1",
+    "our_labels": [
+      "Other"
+    ],
+    "tier": "reviewed"
+  },
+  {
+    "id": "CMP_G001875",
+    "name": "1,3,5-Trichlorobenzene",
+    "smiles": "Clc1cc(Cl)cc(Cl)c1",
+    "our_labels": [
+      "Other"
+    ],
+    "tier": "reviewed"
+  },
+  {
+    "id": "CMP_G001968",
+    "name": "11-Keto-beta-boswellic acid",
+    "smiles": "C[C@H]1[C@H](C)CC[C@]2(C)CC[C@]3(C)C(=CC(=O)[C@@H]4[C@@]5(C)CC[C@@H](O)[C@](C)(C(=O)O)[C@@H]5CC[C@]43C)[C@H]12",
+    "our_labels": [
+      "Terpenoid"
+    ],
+    "tier": "auto"
+  },
+  {
+    "id": "CMP_G001595",
+    "name": "",
+    "smiles": "C=C1C(O)C/C(=C\\C=C2/CCC[C@@]3(C)C2CC[C@@H]3[C@@H](C)CCCC(C)(C)O)C[C@H]1O",
+    "our_labels": [
+      "Steroid"
+    ],
+    "tier": "auto"
+  },
+  {
+    "id": "CMP_G000119",
+    "name": "(25R)-3-Oxocholest-4-En-26-Al",
+    "smiles": "C[C@H](CCC[C@@H](C)C=O)[C@H]1CC[C@H]2[C@@H]3CCC4=CC(=O)CC[C@]4(C)[C@H]3CC[C@]12C",
+    "our_labels": [
+      "Steroid"
+    ],
+    "tier": "auto"
+  },
+  {
+    "id": "CMP_G000385",
+    "name": "20-Oxo-5-O-Beta-D-Mycaminosyltylonolide",
+    "smiles": "CC[C@H]1OC(=O)C[C@@H](O)[C@H](C)[C@@H](O[C@@H]2O[C@H](C)[C@@H](O)[C@H](N(C)C)[C@H]2O)[C@@H](CC=O)C[C@@H](C)C(=O)/C=C/C(C",
+    "our_labels": [
+      "Polyketide"
+    ],
+    "tier": "auto"
+  },
+  {
+    "id": "CMP_G001985",
+    "name": "Ethyl-1-dbenzene",
+    "smiles": "CCc1ccccc1",
+    "our_labels": [
+      "Other"
+    ],
+    "tier": "reviewed"
+  },
+  {
+    "id": "CMP_G000161",
+    "name": "N-Methyl-9-acridinamine",
+    "smiles": "CNc1c2ccccc2nc2ccccc12",
+    "our_labels": [
+      "Alkaloid"
+    ],
+    "tier": "auto"
+  },
+  {
+    "id": "CMP_G000972",
+    "name": "",
+    "smiles": "COc1cccc(/C=C/C(=O)O)c1",
+    "our_labels": [
+      "Phenylpropanoid"
+    ],
+    "tier": "auto"
+  },
+  {
+    "id": "CMP_G000915",
+    "name": "5alpha-acetoxy-10beta-hydroxy taxadiene",
+    "smiles": "CC(=O)O[C@@]12CO[C@@H]1C[C@H](O)[C@@]1(C)C(=O)[C@H](O)C3=C(C)[C@@H](O)C[C@@](O)([C@@H](O)[C@H]21)C3(C)C",
+    "our_labels": [
+      "Terpenoid"
+    ],
+    "tier": "auto"
+  },
+  {
+    "id": "CMP_G000968",
+    "name": "apigenin 4��,7-dimethyl ether",
+    "smiles": "COc1ccc(-c2cc(=O)c3c(O)cc(OC)cc3o2)cc1",
+    "our_labels": [
+      "Phenylpropanoid"
+    ],
+    "tier": "auto"
+  },
+  {
+    "id": "CMP_G000672",
+    "name": "Methyl iodide",
+    "smiles": "CI",
+    "our_labels": [
+      "Other"
+    ],
+    "tier": "other"
+  },
+  {
+    "id": "CMP_G001516",
+    "name": "1-Methyl-5-(4-morpholinyl)tryptophan",
+    "smiles": "Cn1cc(CC(N)C(=O)O)c2cc(N3CCOCC3)ccc21",
+    "our_labels": [
+      "Amino_acid"
+    ],
+    "tier": "auto"
+  },
+  {
+    "id": "CMP_G000004",
+    "name": "A 14alpha-hydroxymethyl steroid",
+    "smiles": "*C1CC[C@@]2(CO)C3CCC4CCCCC4(C)C3CCC12C",
+    "our_labels": [
+      "Steroid"
+    ],
+    "tier": "auto"
+  },
+  {
+    "id": "CMP_G000980",
+    "name": "2Beta-Hydroxyoleanolic Acid",
+    "smiles": "CC1(C)CC[C@]2(C(=O)O)CC[C@]3(C)C(=CC[C@@H]4[C@@]5(C)C[C@H](O)[C@H](O)C(C)(C)[C@@H]5CC[C@]43C)[C@@H]2C1",
+    "our_labels": [
+      "Terpenoid"
+    ],
+    "tier": "auto"
+  },
+  {
+    "id": "CMP_G000580",
+    "name": "alpha-Amino-1,2-dimethyl-4-(4-morpholinyl)-1H-indole-3-propanal",
+    "smiles": "Cc1c(CC(N)C=O)c2c(N3CCOCC3)cccc2n1C",
+    "our_labels": [
+      "Other"
+    ],
+    "tier": "reviewed"
+  },
+  {
+    "id": "CMP_G000405",
+    "name": "5Alpha-cholest-7-en-3-one",
+    "smiles": "CC(C)CCC[C@@H](C)[C@H]1CC[C@H]2C3=CC[C@H]4CC(=O)CC[C@]4(C)[C@H]3CC[C@]12C",
+    "our_labels": [
+      "Steroid"
+    ],
+    "tier": "auto"
+  },
+  {
+    "id": "CMP_G000315",
+    "name": "coniferaldehyde",
+    "smiles": "COc1cc(/C=C/C=O)ccc1O",
+    "our_labels": [
+      "Phenylpropanoid"
+    ],
+    "tier": "auto"
+  },
+  {
+    "id": "CMP_G001071",
+    "name": "Cordycol",
+    "smiles": "C=C1CC[C@@H](O)C[C@@H]1[C@@]1(C)O[C@@H]1CC=C(C)C",
+    "our_labels": [
+      "Terpenoid"
+    ],
+    "tier": "reviewed"
+  },
+  {
+    "id": "CMP_G001690",
+    "name": "3-Fluoro-D-tyrosine",
+    "smiles": "NC(Cc1ccc(O)c(F)c1)C(=O)O",
+    "our_labels": [
+      "Amino_acid"
+    ],
+    "tier": "auto"
+  },
+  {
+    "id": "CMP_G000079",
+    "name": "",
+    "smiles": "CCCc1ccc(C(=O)O)cc1",
+    "our_labels": [
+      "Other"
+    ],
+    "tier": "reviewed"
+  },
+  {
+    "id": "CMP_G000264",
+    "name": "2-[(3E,5E)-6-(4-Chlorophenyl)-3,5-dimethyl-3,5-hexadien-1-yl]-6-methoxy-3,5-dime",
+    "smiles": "COc1oc(CCC(C)=CC(C)=Cc2ccc(Cl)cc2)c(C)c(=O)c1C",
+    "our_labels": [
+      "Polyketide"
+    ],
+    "tier": "auto"
+  },
+  {
+    "id": "CMP_G000629",
+    "name": "soppiline B",
+    "smiles": "C/C=C(\\C)CCCCCCC/C=C\\C=C\\C=C/Cc1cc(O)cc(O)c1",
+    "our_labels": [
+      "Polyketide"
+    ],
+    "tier": "reviewed"
+  },
+  {
+    "id": "CMP_G000265",
+    "name": "Epi-Isozizaene",
+    "smiles": "CC1=C2CC[C@H](C)[C@]23CC[C@@H](C3)C1(C)C",
+    "our_labels": [
+      "Terpenoid"
+    ],
+    "tier": "auto"
+  },
+  {
+    "id": "CMP_G000215",
+    "name": "Cumic acid",
+    "smiles": "CC(C)c1ccc(C(=O)O)cc1",
+    "our_labels": [
+      "Terpenoid"
+    ],
+    "tier": "auto"
+  },
+  {
+    "id": "CMP_G001053",
+    "name": "Benzoic acid, 4-[4-[(dimethylamino)methyl]-1H-1,2,3-triazol-1-yl]-, (5S,6S)-6-me",
+    "smiles": "C=C1CCOC(=O)CCCCC(C)C1OC(=O)c1ccc(-n2cc(CN(C)C)nn2)cc1",
+    "our_labels": [
+      "Other"
+    ],
+    "tier": "reviewed"
+  },
+  {
+    "id": "CMP_G000302",
+    "name": "(+)-exo-beta-bergamotene",
+    "smiles": "C=C1CC[C@H]2C[C@@H]1[C@]2(C)CCC=C(C)C",
+    "our_labels": [
+      "Terpenoid"
+    ],
+    "tier": "auto"
+  },
+  {
+    "id": "CMP_G001876",
+    "name": "2'-hydroxyformononetin",
+    "smiles": "COc1ccc(-c2coc3cc(O)ccc3c2=O)c(O)c1",
+    "our_labels": [
+      "Phenylpropanoid"
+    ],
+    "tier": "auto"
+  },
+  {
+    "id": "CMP_G000028",
+    "name": "7-Fluoro-L-tryptophan",
+    "smiles": "N[C@@H](Cc1c[nH]c2c(F)cccc12)C(=O)O",
+    "our_labels": [
+      "Amino_acid"
+    ],
+    "tier": "auto"
+  },
+  {
+    "id": "CMP_G000134",
+    "name": "Dehydroprobetaenone I",
+    "smiles": "CC[C@@H](C)[C@H]1C(C)=C[C@H]2C[C@@H](C)C[C@@H](C)[C@@H]2[C@@]1(C)C(=O)/C=C\\O",
+    "our_labels": [
+      "Polyketide"
+    ],
+    "tier": "auto"
+  },
+  {
+    "id": "CMP_G001094",
+    "name": "preaspterpenacid acid I",
+    "smiles": "CC(C)C1CCC2(C)CC3C(C)CCC45C(C)CCC4C5(C)C3(O)CC12",
+    "our_labels": [
+      "Terpenoid"
+    ],
+    "tier": "auto"
+  },
+  {
+    "id": "CMP_G000162",
+    "name": "2-Amino-3-(7-hydroxy-2-methyl-1H-indol-3-yl)propanoic acid",
+    "smiles": "Cc1[nH]c2c(O)cccc2c1CC(N)C(=O)O",
+    "our_labels": [
+      "Amino_acid"
+    ],
+    "tier": "auto"
+  },
+  {
+    "id": "CMP_G000469",
+    "name": "6-Methyl-DL-tryptophan",
+    "smiles": "Cc1ccc2c(CC(N)C(=O)O)c[nH]c2c1",
+    "our_labels": [
+      "Amino_acid"
+    ],
+    "tier": "auto"
+  },
+  {
+    "id": "CMP_G000365",
+    "name": "Caulophyllogenin",
+    "smiles": "CC1(C)CC[C@]2(C(=O)O)[C@H](O)C[C@]3(C)C(=CC[C@@H]4[C@@]5(C)CC[C@H](O)[C@@](C)(CO)[C@@H]5CC[C@]43C)[C@@H]2C1",
+    "our_labels": [
+      "Terpenoid"
+    ],
+    "tier": "auto"
+  },
+  {
+    "id": "CMP_G000711",
+    "name": "",
+    "smiles": "CCCCc1oc2ccccc2c1C(=O)c1cc(I)c(OCCN(CC)CC)c(I)c1",
+    "our_labels": [
+      "Other"
+    ],
+    "tier": "other"
+  },
+  {
+    "id": "CMP_G000952",
+    "name": "",
+    "smiles": "O=C([O-])c1cccc(Cl)c1",
+    "our_labels": [
+      "Other"
+    ],
+    "tier": "reviewed"
+  },
+  {
+    "id": "CMP_G000033",
+    "name": "16-methoxytabersonine",
+    "smiles": "CC[C@]12C=CCN3CC[C@]4(C(=C(C(=O)OC)C1)Nc1cc(OC)ccc14)[C@@H]32",
+    "our_labels": [
+      "Terpenoid",
+      "Alkaloid"
+    ],
+    "tier": "reviewed"
+  },
+  {
+    "id": "CMP_G000456",
+    "name": "",
+    "smiles": "COc1cc2c(cc1O)C1Cc3ccc4c(c3CN1CC2)OCO4",
+    "our_labels": [
+      "Steroid"
+    ],
+    "tier": "auto"
+  },
+  {
+    "id": "CMP_G001276",
+    "name": "",
+    "smiles": "CC/C=C\\C[C@H](O)/C=C/[C@@H]1[C@@H](C/C=C\\CCCC(=O)O)[C@@H]2C[C@H]1OO2",
+    "our_labels": [
+      "Fatty_acid"
+    ],
+    "tier": "auto"
+  },
+  {
+    "id": "CMP_G000276",
+    "name": "Elymoclavin",
+    "smiles": "CN1CC(CO)=CC2c3cccc4[nH]cc(c34)CC21",
+    "our_labels": [
+      "Alkaloid"
+    ],
+    "tier": "auto"
+  }
+]

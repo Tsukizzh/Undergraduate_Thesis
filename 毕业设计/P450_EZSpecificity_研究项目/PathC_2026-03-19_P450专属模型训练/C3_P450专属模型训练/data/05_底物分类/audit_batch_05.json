@@ -1,0 +1,205 @@
+[
+  {
+    "id": "CMP_G000169",
+    "name": "(1S)-1,25-Dihydroxy-24-Oxocalciol",
+    "smiles": "C=C1/C(=C\\C=C2/CCC[C@]3(C)[C@@H]([C@H](C)CCC(=O)C(C)(C)O)CC[C@@H]23)C[C@@H](O)C[C@@H]1O",
+    "our_labels": [
+      "Steroid"
+    ],
+    "confidence": "high",
+    "reason": "Steroid=NPClassifier steroid"
+  },
+  {
+    "id": "CMP_G000779",
+    "name": "(25R)-3Beta-Hydroxy-5-Cholesten-26-Al",
+    "smiles": "C[C@H](CCC[C@@H](C)C=O)[C@H]1CC[C@H]2[C@@H]3CC=C4C[C@@H](O)CC[C@]4(C)[C@H]3CC[C@]12C",
+    "our_labels": [
+      "Steroid"
+    ],
+    "confidence": "high",
+    "reason": "Steroid=NPClassifier steroid"
+  },
+  {
+    "id": "CMP_G001025",
+    "name": "Testosterone",
+    "smiles": "CC12CCC(=O)C=C1CCC1C2CCC2(C)C(O)CCC12",
+    "our_labels": [
+      "Steroid"
+    ],
+    "confidence": "high",
+    "reason": "Steroid=NPClassifier steroid"
+  },
+  {
+    "id": "CMP_G000271",
+    "name": "",
+    "smiles": "C[C@]12CC[C@H](OS(=O)(=O)O)CC1=CC[C@@H]1[C@@H]2CC[C@]2(C)C(=O)CC[C@@H]12",
+    "our_labels": [
+      "Steroid"
+    ],
+    "confidence": "high",
+    "reason": "Steroid=NPClassifier steroid"
+  },
+  {
+    "id": "CMP_G000788",
+    "name": "Calcidiol",
+    "smiles": "C=C1CC[C@H](O)C/C1=C/C=C1\\CCC[C@]2(C)[C@@H]([C@H](C)CCCC(C)(C)O)CC[C@@H]12",
+    "our_labels": [
+      "Steroid"
+    ],
+    "confidence": "high",
+    "reason": "Steroid=NPClassifier steroid"
+  },
+  {
+    "id": "CMP_G000332",
+    "name": "ent-isokaurene",
+    "smiles": "CC1=C[C@@]23CC[C@@H]4C(C)(C)CCC[C@@]4(C)[C@@H]2CC[C@@H]1C3",
+    "our_labels": [
+      "Steroid"
+    ],
+    "confidence": "high",
+    "reason": "Steroid=6-6-6-5 fused ring topology"
+  },
+  {
+    "id": "CMP_G001374",
+    "name": "",
+    "smiles": "C=C1CC[C@H](O)CC1=CC=C1CCC[C@]2(C)[C@@H]([C@H](C)CCCC(C)C)CC[C@@H]12",
+    "our_labels": [
+      "Steroid"
+    ],
+    "confidence": "high",
+    "reason": "Steroid=NPClassifier steroid"
+  },
+  {
+    "id": "CMP_G000985",
+    "name": "Cortisone",
+    "smiles": "C[C@]12CCC(=O)C=C1CC[C@@H]1[C@@H]2C(=O)C[C@@]2(C)[C@H]1CC[C@]2(O)C(=O)CO",
+    "our_labels": [
+      "Steroid"
+    ],
+    "confidence": "high",
+    "reason": "Steroid=NPClassifier steroid"
+  },
+  {
+    "id": "CMP_G001618",
+    "name": "dihydroniloticin",
+    "smiles": "CC(CC(O)C1OC1(C)C)C1CCC2(C)C3=CCC4C(C)(C)C(O)CCC4(C)C3CCC12C",
+    "our_labels": [
+      "Steroid"
+    ],
+    "confidence": "high",
+    "reason": "Steroid=6-6-6-5 fused ring topology"
+  },
+  {
+    "id": "CMP_G001327",
+    "name": "strychnine",
+    "smiles": "O=C1C[C@@H]2OCC=C3CN4CC[C@]56c7ccccc7N1[C@H]5[C@H]2[C@H]3C[C@H]46",
+    "our_labels": [
+      "Steroid",
+      "Alkaloid"
+    ],
+    "confidence": "high",
+    "reason": "Steroid=6-6-6-5 fused ring topology; Alkaloid=known alkaloid scaffold without AA backbone"
+  },
+  {
+    "id": "CMP_G000516",
+    "name": "tetrahydroalstonine",
+    "smiles": "COC(=O)C1=COC(C)C2CN3CCc4c([nH]c5ccccc45)C3CC12",
+    "our_labels": [
+      "Steroid",
+      "Alkaloid"
+    ],
+    "confidence": "high",
+    "reason": "Steroid=6-6-6-5 fused ring topology; Alkaloid=known alkaloid scaffold without AA backbone"
+  },
+  {
+    "id": "CMP_G001342",
+    "name": "6alpha-hydroxytyphasterol",
+    "smiles": "CC(C)C(C)C(O)C(O)C(C)C1CCC2C3CC(O)C4CC(O)CCC4(C)C3CCC12C",
+    "our_labels": [
+      "Steroid"
+    ],
+    "confidence": "high",
+    "reason": "Steroid=NPClassifier steroid"
+  },
+  {
+    "id": "CMP_G001293",
+    "name": "(1S,4S,5R,9S,10S,13S)-13-hydroxy-5,9-dimethyl-14-methylidene-2-oxotetracyclo[11.",
+    "smiles": "C=C1C[C@]23C[C@@]1(O)CC[C@H]2[C@]1(C)CCC[C@@](C)(C(=O)O)[C@H]1CC3=O",
+    "our_labels": [
+      "Steroid"
+    ],
+    "confidence": "high",
+    "reason": "Steroid=6-6-6-5 fused ring topology"
+  },
+  {
+    "id": "CMP_G000733",
+    "name": "17Alpha-Hydroxypregnenolone",
+    "smiles": "CC(=O)[C@@]1(O)CC[C@H]2[C@@H]3CC=C4C[C@@H](O)CC[C@]4(C)[C@H]3CC[C@@]21C",
+    "our_labels": [
+      "Steroid"
+    ],
+    "confidence": "high",
+    "reason": "Steroid=NPClassifier steroid"
+  },
+  {
+    "id": "CMP_G000954",
+    "name": "isomotiol",
+    "smiles": "CC(C)C1CCC2C1(C)CCC1(C)C3=C(CCC21C)C1(C)CCC(O)C(C)(C)C1CC3",
+    "our_labels": [
+      "Steroid"
+    ],
+    "confidence": "high",
+    "reason": "Steroid=6-6-6-5 fused ring topology"
+  },
+  {
+    "id": "CMP_G000260",
+    "name": "(25R)-3-Oxocholest-4-En-26-Ol",
+    "smiles": "C[C@@H](CO)CCC[C@@H](C)[C@H]1CC[C@H]2[C@@H]3CCC4=CC(=O)CC[C@]4(C)[C@H]3CC[C@]12C",
+    "our_labels": [
+      "Steroid"
+    ],
+    "confidence": "high",
+    "reason": "Steroid=NPClassifier steroid"
+  },
+  {
+    "id": "CMP_G000544",
+    "name": "13-desoxypaxilline",
+    "smiles": "CC(C)(O)[C@H]1O[C@H]2CC[C@@]3(C)[C@@H](CC[C@H]4Cc5c([nH]c6ccccc56)[C@@]43C)C2=CC1=O",
+    "our_labels": [
+      "Steroid",
+      "Alkaloid"
+    ],
+    "confidence": "high",
+    "reason": "Steroid=6-6-6-5 fused ring topology; Alkaloid=known alkaloid scaffold without AA backbone"
+  },
+  {
+    "id": "CMP_G001858",
+    "name": "22(S)-Hydroxy-5Alpha-Campestan-3-One",
+    "smiles": "CC(C)[C@H](C)C[C@H](O)[C@@H](C)[C@H]1CC[C@H]2[C@@H]3CC[C@H]4CC(=O)CC[C@]4(C)[C@H]3CC[C@]12C",
+    "our_labels": [
+      "Steroid"
+    ],
+    "confidence": "high",
+    "reason": "Steroid=NPClassifier steroid"
+  },
+  {
+    "id": "CMP_G000849",
+    "name": "kauralexin A1",
+    "smiles": "CC1(C)CCCC2(C)C1CCC13CC(CCC12)C(C(=O)[O-])C3",
+    "our_labels": [
+      "Steroid"
+    ],
+    "confidence": "high",
+    "reason": "Steroid=6-6-6-5 fused ring topology"
+  },
+  {
+    "id": "CMP_G001627",
+    "name": "",
+    "smiles": "C[C@@H](C1CC[C@@]2(O)C3=CC(=O)C4C[C@@H](O)[C@@H](O)C[C@]4(C)C3CC[C@]12C)[C@H](O)CCC(C)(C)O",
+    "our_labels": [
+      "Steroid"
+    ],
+    "confidence": "high",
+    "reason": "Steroid=NPClassifier steroid"
+  }
+]

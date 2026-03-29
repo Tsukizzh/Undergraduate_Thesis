@@ -1,0 +1,41 @@
+id,name,our_labels,verdict,correct_labels,source,notes
+CMP_G001986,28-Norcastasterone,Steroid,CORRECT,Steroid,PubMed PMC3295382,Cholesterol-derived brassinosteroid (C27-BR); confirmed steroid
+CMP_G001865,a C27-steroid,Steroid,CORRECT,Steroid,SMILES structure analysis,Cholestane skeleton with 6-6-6-5 fused rings; canonical steroid
+CMP_G000943,23S-Hydroxycampesterol,Steroid,CORRECT,Steroid,Frontiers Plant Sci 2020,Phytosterol intermediate in brassinosteroid biosynthesis; steroid
+CMP_G002062,3-epi-6-deoxocathasterone,Steroid,CORRECT,Steroid,PubChem CID 45480560,C28 brassinosteroid intermediate (C28H50O2); steroid
+CMP_G001510,32-hydroxy-24_25-dihydrolanosterol,Steroid,CORRECT,Steroid,JBC S0021-9258(19)75777-9,Lanosterol derivative; intermediate in sterol 14alpha-demethylation by CYP51; steroid
+CMP_G002061,3-epi-6-deoxocathasterone,Steroid,CORRECT,Steroid,PMC1693957,Brassinosteroid biosynthesis intermediate; steroid (stereoisomer of CMP_G002062)
+CMP_G001437,Chenodeoxycholate,Steroid,CORRECT,Steroid,ChEBI:16755 + Wikipedia,Primary bile acid derived from cholesterol; steroid classification confirmed
+CMP_G000455,(S)-Cheilanthifoline,Steroid;Alkaloid,WRONG,Alkaloid,PubChem CID 440582 + Wikipedia,Benzylisoquinoline alkaloid (C19H19NO4); NOT a steroid - has methylenedioxy+isoquinoline rings not steroid 6-6-6-5 skeleton. Remove Steroid label.
+CMP_G001771,11-Deoxycortisol,Steroid,CORRECT,Steroid,PubChem CID 440707 + Wikipedia,Endogenous glucocorticoid steroid hormone; precursor to cortisol
+CMP_G001738,6-deoxocastasterone,Steroid,CORRECT,Steroid,PubMed 11382232,Brassinosteroid precursor to castasterone; confirmed steroid
+CMP_G000294,25-Hydroxy-24-Oxocalciol,Steroid,CORRECT,Steroid,Wikipedia (Vitamin D) + ChEBI:27300,Secosteroid (vitamin D metabolite); secosteroids are classified under steroids
+CMP_G001657,13-hydroperoxides of linolenic acid (13-HPOT),Fatty_acid,CORRECT,Fatty_acid,PMC61011 + multiple oxylipin refs,Oxylipin derived from linolenic acid (C18:3); hydroperoxy fatty acid
+CMP_G000108,Azelaic acid,Fatty_acid,CORRECT,Fatty_acid,PubChem CID 2266 + ChEBI:48131,Dicarboxylic fatty acid (C9); nonanedioic acid; confirmed fatty acid
+CMP_G001953,2-Hydroxydodecanoate,Fatty_acid,CORRECT,Fatty_acid,PubChem CID 97783,2-Hydroxy fatty acid (alpha-hydroxylauric acid C12); confirmed fatty acid
+CMP_G000210,(2r_4r_6r_8r)-2_4_6_8-Tetramethyldecan-1-ol,Fatty_acid,WRONG,Other,LIPID MAPS isoprenoid refs,Branched-chain alcohol with isoprenoid-like 2_4_6_8-tetramethyl pattern; not a fatty acid (no COOH group). Closer to isoprenoid/terpenoid alcohol.
+CMP_G000374,9_10-Epoxy-(12Z)-Octadecenoate,Fatty_acid,CORRECT,Fatty_acid,PubChem CID 5283018 + Wikipedia (Coronaric acid),Epoxy fatty acid derived from linoleic acid by CYP epoxygenase; C18 epoxy fatty acid
+CMP_G001425,Undecane,Fatty_acid,WRONG,Other,PubChem CID 14257 + Wikipedia,Straight-chain alkane (C11H24); no carboxylic acid group. Hydrocarbon not a fatty acid.
+CMP_G000375,Nonanoic acid,Fatty_acid,CORRECT,Fatty_acid,PubChem CID 8158 + ChEBI:29019,Pelargonic acid; medium-chain saturated fatty acid (C9); confirmed
+CMP_G001716,6-Trans-Leukotriene B4,Fatty_acid,CORRECT,Fatty_acid,LIPID MAPS LMFA03020001 + Wikipedia,Eicosanoid (dihydroxy fatty acid) derived from arachidonic acid; C20 fatty acid derivative
+CMP_G001550,cyclododecanone,Fatty_acid,WRONG,Other,PubChem CID 13246 + Wikipedia,Cyclic ketone (C12H22O); not a fatty acid - no carboxylic acid group. Industrial chemical.
+CMP_G000925,(unnamed branched acid),Fatty_acid,CORRECT,Fatty_acid,SMILES analysis,Branched-chain carboxylic acid (C10H20O2); medium-chain fatty acid with methyl branches
+CMP_G001362,(unnamed C18 hydroperoxy acid),Fatty_acid,CORRECT,Fatty_acid,SMILES analysis,Hydroperoxy octadecatrienoic acid; C18 oxylipin/fatty acid hydroperoxide
+CMP_G000121,Tetradecane,Fatty_acid,WRONG,Other,PubChem CID 12389 + Wikipedia,Straight-chain alkane (C14H30); no carboxylic acid group. Hydrocarbon not a fatty acid.
+CMP_G000822,9-Decenoic acid,Fatty_acid,CORRECT,Fatty_acid,Larodan + PubChem,Monounsaturated medium-chain fatty acid (C10:1); caproleic acid; confirmed
+CMP_G000817,5-Hydroxy-(6E_8Z_11Z_14Z)-Eicosatetraenoate,Fatty_acid,CORRECT,Fatty_acid,Wikipedia (5-HETE),5-HETE; eicosanoid/hydroxy fatty acid derived from arachidonic acid; confirmed fatty acid
+CMP_G002066,Hydroperoxyeicosatetraenoate,Fatty_acid,CORRECT,Fatty_acid,LIPID MAPS eicosanoid refs,HPETE; hydroperoxy eicosatetraenoic acid; C20 oxylipin/fatty acid
+CMP_G001076,8-Hydroxy-(5Z_9E_11Z_14Z)-Eicosatetraenoate,Fatty_acid,CORRECT,Fatty_acid,Wikipedia (HETE refs),8-HETE; hydroxy eicosatetraenoic acid; C20 fatty acid derivative
+CMP_G001247,3-Hydroxyoctadecanoate,Fatty_acid,CORRECT,Fatty_acid,SMILES analysis + hydroxy FA refs,3-Hydroxy stearic acid (C18); long-chain hydroxy fatty acid
+CMP_G000632,jasmonoyl-L-isoleucine (JA-Ile),Fatty_acid,CORRECT,Fatty_acid,Nature Chem Biol nchembio.161,Lipid-derived plant hormone; jasmonate (from linolenic acid) conjugated to Ile; fatty acid derivative
+CMP_G001272,(10R)-hydroperoxy-(8E_12Z_15Z)-octadecatrienoate,Fatty_acid,CORRECT,Fatty_acid,Oxylipin pathway refs,C18 hydroperoxy fatty acid; oxylipin from linolenic acid
+CMP_G002097,3-cyclopentylpropanoic acid,Fatty_acid,WRONG,Other,PubChem CID 8818,Simple cyclopentyl-substituted propanoic acid; not a natural fatty acid. Synthetic building block.
+CMP_G000040,(unnamed C20:3 acid),Fatty_acid,CORRECT,Fatty_acid,SMILES analysis,Eicosatrienoic acid (C20:3 n-6/n-9); long-chain polyunsaturated fatty acid
+CMP_G002078,12-Hydroxy-(5Z_8Z_10E_14Z)-Eicosatetraenoate,Fatty_acid,CORRECT,Fatty_acid,LIPID MAPS HETE refs,12-HETE; hydroxy eicosatetraenoic acid; C20 fatty acid derivative
+CMP_G001612,12-Hydroxyoctadecanoate,Fatty_acid,CORRECT,Fatty_acid,PubChem CID 5312335 + ChemicalBook,12-Hydroxystearic acid (C18); hydroxy fatty acid; confirmed
+CMP_G000223,(12R)-12-Hydroxytetradecanoic acid,Fatty_acid,CORRECT,Fatty_acid,Hydroxy FA classification,12-Hydroxy myristic acid (C14); medium-chain hydroxy fatty acid
+CMP_G002004,Butyl 3-chlorobenzeneacetate,Fatty_acid,WRONG,Other,GoodScentsCompany + PubChem search,Synthetic aromatic ester (chlorinated phenylacetate ester); not a fatty acid. Used in fragrance industry.
+CMP_G001249,Dodecanoate,Fatty_acid,CORRECT,Fatty_acid,PubChem CID 3893 + ChEBI:30805,Lauric acid (C12); medium-chain saturated fatty acid; confirmed
+CMP_G001656,(13S)-hydroperoxy-(9Z_11E_15Z)-octadecatrienoate,Fatty_acid,CORRECT,Fatty_acid,Oxylipin pathway refs (13-HPOT),C18 hydroperoxy fatty acid (13-HPOT isomer); oxylipin from linolenic acid
+CMP_G000651,Tridecane,Fatty_acid,WRONG,Other,PubChem CID 12388 + Wikipedia,Straight-chain alkane (C13H28); no carboxylic acid group. Hydrocarbon not a fatty acid.
+CMP_G001680,5-(3-methoxyphenyl)pentanoic acid,Fatty_acid,WRONG,Other,PubChem CID 10584485,Arylalkanoic acid with methoxyphenyl group; not a typical fatty acid. Natural product from fern but better classified as Other (phenolic/aromatic acid).

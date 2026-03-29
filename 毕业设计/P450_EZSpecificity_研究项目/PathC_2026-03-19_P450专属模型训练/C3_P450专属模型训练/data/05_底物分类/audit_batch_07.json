@@ -1,0 +1,203 @@
+[
+  {
+    "id": "CMP_G001986",
+    "name": "28-Norcastasterone",
+    "smiles": "CC(C)C[C@@H](O)[C@H](O)[C@@H](C)[C@H]1CC[C@H]2[C@@H]3CC(=O)[C@H]4C[C@H](O)[C@H](O)C[C@]4(C)[C@H]3CC[",
+    "our_labels": [
+      "Steroid"
+    ],
+    "confidence": "high",
+    "reason": "Steroid=NPClassifier steroid"
+  },
+  {
+    "id": "CMP_G001865",
+    "name": "a C27-steroid",
+    "smiles": "CC(C)CCCC(C)C1CCC2C3CCC4CCCCC4(C)C3CCC12C",
+    "our_labels": [
+      "Steroid"
+    ],
+    "confidence": "high",
+    "reason": "Steroid=NPClassifier steroid"
+  },
+  {
+    "id": "CMP_G000943",
+    "name": "23S-Hydroxycampesterol",
+    "smiles": "CC(C)[C@H](C)C[C@H](O)[C@@H](C)[C@H]1CC[C@H]2[C@@H]3CC=C4C[C@@H](O)CC[C@]4(C)[C@H]3CC[C@]12C",
+    "our_labels": [
+      "Steroid"
+    ],
+    "confidence": "high",
+    "reason": "Steroid=NPClassifier steroid"
+  },
+  {
+    "id": "CMP_G002062",
+    "name": "3-epi-6-deoxocathasterone",
+    "smiles": "CC(C)C(C)CC(O)C(C)C1CCC2C3CCC4CC(O)CCC4(C)C3CCC12C",
+    "our_labels": [
+      "Steroid"
+    ],
+    "confidence": "high",
+    "reason": "Steroid=NPClassifier steroid"
+  },
+  {
+    "id": "CMP_G001510",
+    "name": "32-hydroxy-24,25-dihydrolanosterol",
+    "smiles": "CC(C)CCC[C@@H](C)[C@H]1CC[C@@]2(CO)C3=C(CC[C@]12C)[C@@]1(C)CC[C@H](O)C(C)(C)C1CC3",
+    "our_labels": [
+      "Steroid"
+    ],
+    "confidence": "high",
+    "reason": "Steroid=6-6-6-5 fused ring topology"
+  },
+  {
+    "id": "CMP_G002061",
+    "name": "3-epi-6-deoxocathasterone",
+    "smiles": "CC(C)[C@H](C)C[C@H](O)[C@@H](C)[C@H]1CC[C@H]2[C@@H]3CC[C@H]4C[C@H](O)CC[C@]4(C)[C@H]3CC[C@]12C",
+    "our_labels": [
+      "Steroid"
+    ],
+    "confidence": "high",
+    "reason": "Steroid=NPClassifier steroid"
+  },
+  {
+    "id": "CMP_G001437",
+    "name": "Chenodeoxycholate",
+    "smiles": "C[C@H](CCC(=O)O)[C@H]1CC[C@H]2[C@@H]3[C@H](O)C[C@@H]4C[C@H](O)CC[C@]4(C)[C@H]3CC[C@]12C",
+    "our_labels": [
+      "Steroid"
+    ],
+    "confidence": "high",
+    "reason": "Steroid=NPClassifier steroid"
+  },
+  {
+    "id": "CMP_G000455",
+    "name": "(S)-Cheilanthifoline",
+    "smiles": "COc1cc2c(cc1O)[C@@H]1Cc3ccc4c(c3CN1CC2)OCO4",
+    "our_labels": [
+      "Steroid",
+      "Alkaloid"
+    ],
+    "confidence": "high",
+    "reason": "Steroid=6-6-6-5 fused ring topology; Alkaloid=ring nitrogen + NPC alkaloid"
+  },
+  {
+    "id": "CMP_G001771",
+    "name": "11-Deoxycortisol",
+    "smiles": "C[C@]12CCC(=O)C=C1CC[C@@H]1[C@@H]2CC[C@@]2(C)[C@H]1CC[C@]2(O)C(=O)CO",
+    "our_labels": [
+      "Steroid"
+    ],
+    "confidence": "high",
+    "reason": "Steroid=NPClassifier steroid"
+  },
+  {
+    "id": "CMP_G001738",
+    "name": "6-deoxocastasterone",
+    "smiles": "CC(C)[C@H](C)[C@@H](O)[C@H](O)[C@@H](C)[C@H]1CC[C@H]2[C@@H]3CC[C@H]4C[C@H](O)[C@H](O)C[C@]4(C)[C@H]3",
+    "our_labels": [
+      "Steroid"
+    ],
+    "confidence": "high",
+    "reason": "Steroid=NPClassifier steroid"
+  },
+  {
+    "id": "CMP_G000294",
+    "name": "25-Hydroxy-24-Oxocalciol",
+    "smiles": "C=C1CC[C@H](O)C/C1=C/C=C1\\CCC[C@]2(C)[C@@H]([C@H](C)CCC(=O)C(C)(C)O)CC[C@@H]12",
+    "our_labels": [
+      "Steroid"
+    ],
+    "confidence": "high",
+    "reason": "Steroid=NPClassifier steroid"
+  },
+  {
+    "id": "CMP_G001657",
+    "name": "13-hydroperoxides of linolenic acid (13-HPOT)",
+    "smiles": "CC/C=C/CC(/C=C/C=C/CCCCCCCC(=O)O)OO",
+    "our_labels": [
+      "Fatty_acid"
+    ],
+    "confidence": "high",
+    "reason": "Fatty_acid=fatty free acid chain=17"
+  },
+  {
+    "id": "CMP_G000108",
+    "name": "Azelaic acid",
+    "smiles": "O=C(O)CCCCCCCC(=O)O",
+    "our_labels": [
+      "Fatty_acid"
+    ],
+    "confidence": "high",
+    "reason": "Fatty_acid=fatty free acid chain=8"
+  },
+  {
+    "id": "CMP_G001953",
+    "name": "2-Hydroxydodecanoate",
+    "smiles": "CCCCCCCCCCC(O)C(=O)[O-]",
+    "our_labels": [
+      "Fatty_acid"
+    ],
+    "confidence": "high",
+    "reason": "Fatty_acid=fatty free acid chain=11"
+  },
+  {
+    "id": "CMP_G000210",
+    "name": "(2r,4r,6r,8r)-2,4,6,8-Tetramethyldecan-1-ol",
+    "smiles": "CCC(C)CC(C)CC(C)CC(C)CO",
+    "our_labels": [
+      "Fatty_acid"
+    ],
+    "confidence": "high",
+    "reason": "Fatty_acid=NPC fatty acyl: fatty acyls"
+  },
+  {
+    "id": "CMP_G000374",
+    "name": "9,10-Epoxy-(12Z)-Octadecenoate",
+    "smiles": "CCCCC/C=C\\CC1OC1CCCCCCCC(=O)[O-]",
+    "our_labels": [
+      "Fatty_acid"
+    ],
+    "confidence": "high",
+    "reason": "Fatty_acid=fatty free acid chain=7"
+  },
+  {
+    "id": "CMP_G001425",
+    "name": "Undecane",
+    "smiles": "CCCCCCCCCCC",
+    "our_labels": [
+      "Fatty_acid"
+    ],
+    "confidence": "high",
+    "reason": "Fatty_acid=NPC fatty acyl: fatty acyls"
+  },
+  {
+    "id": "CMP_G000375",
+    "name": "Nonanoic acid",
+    "smiles": "CCCCCCCCC(=O)O",
+    "our_labels": [
+      "Fatty_acid"
+    ],
+    "confidence": "high",
+    "reason": "Fatty_acid=fatty free acid chain=8"
+  },
+  {
+    "id": "CMP_G001716",
+    "name": "6-Trans-Leukotriene B4",
+    "smiles": "CCCCC/C=C\\C[C@@H](O)/C=C/C=C/C=C/[C@@H](O)CCCC(=O)O",
+    "our_labels": [
+      "Fatty_acid"
+    ],
+    "confidence": "high",
+    "reason": "Fatty_acid=fatty free acid chain=19"
+  },
+  {
+    "id": "CMP_G001550",
+    "name": "cyclododecanone",
+    "smiles": "O=C1CCCCCCCCCCC1",
+    "our_labels": [
+      "Fatty_acid"
+    ],
+    "confidence": "high",
+    "reason": "Fatty_acid=NPC fatty acyl: fatty esters"
+  }
+]

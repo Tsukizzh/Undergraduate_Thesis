@@ -1,0 +1,204 @@
+[
+  {
+    "id": "CMP_G001053",
+    "name": "Benzoic acid, 4-[4-[(dimethylamino)methyl]-1H-1,2,3-triazol-1-yl]-, (5S,6S)-6-methyl-4-methylene-11-",
+    "smiles": "C=C1CCOC(=O)CCCCC(C)C1OC(=O)c1ccc(-n2cc(CN(C)C)nn2)cc1",
+    "auto_labels": [],
+    "review_candidates": [
+      "Alkaloid"
+    ],
+    "reason": "Alkaloid=REVIEW: generic N-heterocycle + NPC alkaloid"
+  },
+  {
+    "id": "CMP_G001055",
+    "name": "cyclooctyl 2-methylpropanoate",
+    "smiles": "CC(C)C(=O)OC1CCCCCCC1",
+    "auto_labels": [],
+    "review_candidates": [
+      "Fatty_acid"
+    ],
+    "reason": "Fatty_acid=REVIEW: fatty evidence but chain <4C"
+  },
+  {
+    "id": "CMP_G001057",
+    "name": "Nefiracetam",
+    "smiles": "Cc1cccc(C)c1NC(=O)CN1CCCC1=O",
+    "auto_labels": [],
+    "review_candidates": [
+      "Alkaloid"
+    ],
+    "reason": "Alkaloid=REVIEW: generic N-heterocycle + NPC alkaloid"
+  },
+  {
+    "id": "CMP_G001066",
+    "name": "9H-fluorene",
+    "smiles": "c1ccc2c(c1)Cc1ccccc1-2",
+    "auto_labels": [],
+    "review_candidates": [
+      "Polyketide"
+    ],
+    "reason": "Polyketide=REVIEW: NPC pathway-level polyketide"
+  },
+  {
+    "id": "CMP_G001071",
+    "name": "Cordycol",
+    "smiles": "C=C1CC[C@@H](O)C[C@@H]1[C@@]1(C)O[C@@H]1CC=C(C)C",
+    "auto_labels": [],
+    "review_candidates": [
+      "Terpenoid"
+    ],
+    "reason": "Terpenoid=REVIEW: NPC pathway-level terpenoid only"
+  },
+  {
+    "id": "CMP_G001078",
+    "name": "Octanol",
+    "smiles": "CCCCCC(O)CC",
+    "auto_labels": [],
+    "review_candidates": [
+      "Fatty_acid"
+    ],
+    "reason": "Fatty_acid=REVIEW: fatty evidence but no acyl group"
+  },
+  {
+    "id": "CMP_G001081",
+    "name": "",
+    "smiles": "O=C(O)c1ccc(-c2ccccc2)cc1",
+    "auto_labels": [],
+    "review_candidates": [
+      "Phenylpropanoid"
+    ],
+    "reason": "Phenylpropanoid=REVIEW: NPC broad phenylpropanoid/pathway"
+  },
+  {
+    "id": "CMP_G001082",
+    "name": "Lidocaine",
+    "smiles": "CCN(CC)CC(=O)Nc1c(C)cccc1C",
+    "auto_labels": [],
+    "review_candidates": [
+      "Alkaloid"
+    ],
+    "reason": "Alkaloid=REVIEW: NPC alkaloid without high-precision scaffold"
+  },
+  {
+    "id": "CMP_G001084",
+    "name": "",
+    "smiles": "C[C@@](O)(C(=O)Nc1ccc(S(=O)(=O)c2cccc(Br)c2)cc1Cl)C(F)(F)F",
+    "auto_labels": [],
+    "review_candidates": [
+      "Alkaloid",
+      "Phenylpropanoid"
+    ],
+    "reason": "Alkaloid=REVIEW: NPC alkaloid without high-precision scaffold; Phenylpropanoid=REVIEW: NPC broad phenylpropanoid/pathway"
+  },
+  {
+    "id": "CMP_G001085",
+    "name": "",
+    "smiles": "Cc1ccc(Cl)cc1",
+    "auto_labels": [],
+    "review_candidates": [
+      "Phenylpropanoid"
+    ],
+    "reason": "Phenylpropanoid=REVIEW: NPC broad phenylpropanoid/pathway"
+  },
+  {
+    "id": "CMP_G001086",
+    "name": "1,1��-Biphenyl, 3-methyl- (9CI, ACI)",
+    "smiles": "Cc1cccc(-c2ccccc2)c1",
+    "auto_labels": [],
+    "review_candidates": [
+      "Phenylpropanoid"
+    ],
+    "reason": "Phenylpropanoid=REVIEW: NPC broad phenylpropanoid/pathway"
+  },
+  {
+    "id": "CMP_G001088",
+    "name": "1-Methoxynaphthalene",
+    "smiles": "COc1cccc2ccccc12",
+    "auto_labels": [],
+    "review_candidates": [
+      "Phenylpropanoid",
+      "Polyketide"
+    ],
+    "reason": "Phenylpropanoid=REVIEW: NPC broad phenylpropanoid/pathway; Polyketide=REVIEW: NPC pathway-level polyketide"
+  },
+  {
+    "id": "CMP_G001090",
+    "name": "deoxyaspergillic acid",
+    "smiles": "CC[C@H](C)c1cnc(CC(C)C)c(=O)[nH]1",
+    "auto_labels": [],
+    "review_candidates": [
+      "Alkaloid"
+    ],
+    "reason": "Alkaloid=REVIEW: generic N-heterocycle + NPC alkaloid"
+  },
+  {
+    "id": "CMP_G001091",
+    "name": "(-)-Arctigenin",
+    "smiles": "COc1cc(CC2C(=O)OCC2Cc2ccc(OC)c(OC)c2)ccc1O",
+    "auto_labels": [],
+    "review_candidates": [
+      "Phenylpropanoid"
+    ],
+    "reason": "Phenylpropanoid=REVIEW: hydrocinnamate pattern only"
+  },
+  {
+    "id": "CMP_G001097",
+    "name": "",
+    "smiles": "O=C([O-])c1ccccc1F",
+    "auto_labels": [],
+    "review_candidates": [
+      "Phenylpropanoid"
+    ],
+    "reason": "Phenylpropanoid=REVIEW: NPC broad phenylpropanoid/pathway"
+  },
+  {
+    "id": "CMP_G001104",
+    "name": "4��-Methoxyacetophenone",
+    "smiles": "COc1ccc(C(C)=O)cc1",
+    "auto_labels": [],
+    "review_candidates": [
+      "Phenylpropanoid"
+    ],
+    "reason": "Phenylpropanoid=REVIEW: NPC broad phenylpropanoid/pathway"
+  },
+  {
+    "id": "CMP_G001107",
+    "name": "6-Methoxynicotinic acid",
+    "smiles": "COc1ccc(C(=O)O)cn1",
+    "auto_labels": [],
+    "review_candidates": [
+      "Alkaloid"
+    ],
+    "reason": "Alkaloid=REVIEW: generic N-heterocycle + NPC alkaloid"
+  },
+  {
+    "id": "CMP_G001109",
+    "name": "(2R,4R,6R,8R)-4,6,8-Trimethyl-2-decanol",
+    "smiles": "CCC(C)CC(C)CC(C)CC(C)O",
+    "auto_labels": [],
+    "review_candidates": [
+      "Fatty_acid"
+    ],
+    "reason": "Fatty_acid=REVIEW: fatty evidence but no acyl group"
+  },
+  {
+    "id": "CMP_G001119",
+    "name": "",
+    "smiles": "COc1cccc(-c2ccc(C(=O)O)cc2)c1",
+    "auto_labels": [],
+    "review_candidates": [
+      "Phenylpropanoid"
+    ],
+    "reason": "Phenylpropanoid=REVIEW: NPC broad phenylpropanoid/pathway"
+  },
+  {
+    "id": "CMP_G001125",
+    "name": "pdb",
+    "smiles": "Clc1ccc(Cl)cc1",
+    "auto_labels": [],
+    "review_candidates": [
+      "Phenylpropanoid"
+    ],
+    "reason": "Phenylpropanoid=REVIEW: NPC broad phenylpropanoid/pathway"
+  }
+]

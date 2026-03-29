@@ -1,0 +1,204 @@
+[
+  {
+    "id": "CMP_G000005",
+    "name": "A 1,2-Saturated Fatty Acid",
+    "smiles": "*CC(=O)[O-]",
+    "auto_labels": [],
+    "review_candidates": [
+      "Fatty_acid"
+    ],
+    "reason": "Fatty_acid=REVIEW: fatty evidence without structure"
+  },
+  {
+    "id": "CMP_G000006",
+    "name": "2,3-Saturated Fatty Acid",
+    "smiles": "*CCC(=O)[O-]",
+    "auto_labels": [],
+    "review_candidates": [
+      "Fatty_acid"
+    ],
+    "reason": "Fatty_acid=REVIEW: fatty evidence without structure"
+  },
+  {
+    "id": "CMP_G000007",
+    "name": "A Jasmonyl-L-Amino Acid",
+    "smiles": "*[C@H](NC(=O)CC1CCC(=O)C1C/C=C\\CC)C(=O)[O-]",
+    "auto_labels": [],
+    "review_candidates": [
+      "Terpenoid",
+      "Fatty_acid"
+    ],
+    "reason": "Terpenoid=REVIEW: NPC pathway-level terpenoid only; Fatty_acid=REVIEW: jasmonoid/fatty-derived evidence"
+  },
+  {
+    "id": "CMP_G000008",
+    "name": "A 12-Hydroxyjasmonyl-L-Alpha-Amino Acid",
+    "smiles": "*[C@H](NC(=O)CC1CCC(=O)C1C/C=C\\CCO)C(=O)[O-]",
+    "auto_labels": [],
+    "review_candidates": [
+      "Terpenoid",
+      "Fatty_acid"
+    ],
+    "reason": "Terpenoid=REVIEW: NPC pathway-level terpenoid only; Fatty_acid=REVIEW: jasmonoid/fatty-derived evidence"
+  },
+  {
+    "id": "CMP_G000010",
+    "name": "A Flavanone",
+    "smiles": "*c1c(*)c(*)c(C2Oc3c(*)c(*)c(*)c(*)c3C(=O)C2*)c(*)c1*",
+    "auto_labels": [],
+    "review_candidates": [
+      "Phenylpropanoid"
+    ],
+    "reason": "Phenylpropanoid=REVIEW: phenylpropanoid evidence without structure"
+  },
+  {
+    "id": "CMP_G000014",
+    "name": "An Omega-Methyl-Long-Chain Fatty Acid",
+    "smiles": "C*C(=O)[O-]",
+    "auto_labels": [],
+    "review_candidates": [
+      "Fatty_acid"
+    ],
+    "reason": "Fatty_acid=REVIEW: fatty evidence without structure"
+  },
+  {
+    "id": "CMP_G000015",
+    "name": "An (Omega-1)-Ethyl Fatty Acid",
+    "smiles": "CC*C(=O)[O-]",
+    "auto_labels": [],
+    "review_candidates": [
+      "Fatty_acid"
+    ],
+    "reason": "Fatty_acid=REVIEW: fatty evidence without structure"
+  },
+  {
+    "id": "CMP_G000019",
+    "name": "",
+    "smiles": "C#Cc1cccc(Nc2ncnc3cc(OCCOC)c(OCCOC)cc23)c1",
+    "auto_labels": [],
+    "review_candidates": [
+      "Alkaloid"
+    ],
+    "reason": "Alkaloid=REVIEW: generic N-heterocycle + NPC alkaloid"
+  },
+  {
+    "id": "CMP_G000024",
+    "name": "",
+    "smiles": "N=C(O)C1=CN([C@@H]2O[C@H](COP(=O)(O)OP(=O)(O)OC[C@H]3O[C@@H](n4cnc5c(N)ncnc54)[C@H](OP(=O)(O)O)[C@@H]3O)[C@@H](O)[C@H]2O)C=CC1",
+    "auto_labels": [],
+    "review_candidates": [
+      "Alkaloid"
+    ],
+    "reason": "Alkaloid=REVIEW: generic N-heterocycle only"
+  },
+  {
+    "id": "CMP_G000029",
+    "name": "Ethyl phenyl sulfide",
+    "smiles": "CCSc1ccccc1",
+    "auto_labels": [],
+    "review_candidates": [
+      "Phenylpropanoid"
+    ],
+    "reason": "Phenylpropanoid=REVIEW: NPC broad phenylpropanoid/pathway"
+  },
+  {
+    "id": "CMP_G000033",
+    "name": "16-methoxytabersonine",
+    "smiles": "CC[C@]12C=CCN3CC[C@]4(C(=C(C(=O)OC)C1)Nc1cc(OC)ccc14)[C@@H]32",
+    "auto_labels": [],
+    "review_candidates": [
+      "Alkaloid"
+    ],
+    "reason": "Alkaloid=REVIEW: generic N-heterocycle + NPC alkaloid"
+  },
+  {
+    "id": "CMP_G000037",
+    "name": "alpha-Amino-6-bromo-1,2-dimethyl-1H-indole-3-propanal",
+    "smiles": "Cc1c(CC(N)C=O)c2ccc(Br)cc2n1C",
+    "auto_labels": [],
+    "review_candidates": [
+      "Alkaloid"
+    ],
+    "reason": "Alkaloid=REVIEW: generic N-heterocycle + NPC alkaloid"
+  },
+  {
+    "id": "CMP_G000048",
+    "name": "4-(methoxymethyl)-2-methyl 5-phenyl-4,5-dihydrooxazole",
+    "smiles": "COCC1N=C(C)OC1c1ccccc1",
+    "auto_labels": [],
+    "review_candidates": [
+      "Alkaloid"
+    ],
+    "reason": "Alkaloid=REVIEW: generic N-heterocycle + NPC alkaloid"
+  },
+  {
+    "id": "CMP_G000050",
+    "name": "alpha-Amino-4-fluoro-1,2-dimethyl-1H-indole-3-propanal",
+    "smiles": "Cc1c(CC(N)C=O)c2c(F)cccc2n1C",
+    "auto_labels": [],
+    "review_candidates": [
+      "Alkaloid"
+    ],
+    "reason": "Alkaloid=REVIEW: generic N-heterocycle + NPC alkaloid"
+  },
+  {
+    "id": "CMP_G000051",
+    "name": "3-Hydroxy-2-naphthoic acid",
+    "smiles": "O=C(O)c1cc2ccccc2cc1O",
+    "auto_labels": [],
+    "review_candidates": [
+      "Phenylpropanoid"
+    ],
+    "reason": "Phenylpropanoid=REVIEW: NPC broad phenylpropanoid/pathway"
+  },
+  {
+    "id": "CMP_G000052",
+    "name": "1,1��-Biphenyl, 2-methyl- (9CI, ACI)",
+    "smiles": "Cc1ccccc1-c1ccccc1",
+    "auto_labels": [],
+    "review_candidates": [
+      "Phenylpropanoid"
+    ],
+    "reason": "Phenylpropanoid=REVIEW: NPC broad phenylpropanoid/pathway"
+  },
+  {
+    "id": "CMP_G000056",
+    "name": "2-Methylpropanal",
+    "smiles": "CC(C)C=O",
+    "auto_labels": [],
+    "review_candidates": [
+      "Fatty_acid"
+    ],
+    "reason": "Fatty_acid=REVIEW: fatty evidence but no acyl group"
+  },
+  {
+    "id": "CMP_G000057",
+    "name": "orsellinic acid",
+    "smiles": "Cc1cc(O)cc(O)c1C(=O)O",
+    "auto_labels": [],
+    "review_candidates": [
+      "Phenylpropanoid"
+    ],
+    "reason": "Phenylpropanoid=REVIEW: NPC broad phenylpropanoid/pathway"
+  },
+  {
+    "id": "CMP_G000079",
+    "name": "",
+    "smiles": "CCCc1ccc(C(=O)O)cc1",
+    "auto_labels": [],
+    "review_candidates": [
+      "Phenylpropanoid"
+    ],
+    "reason": "Phenylpropanoid=REVIEW: NPC broad phenylpropanoid/pathway"
+  },
+  {
+    "id": "CMP_G000082",
+    "name": "Lochnericine",
+    "smiles": "CC[C@@]12CC(C(=O)OC)=C3Nc4ccccc4[C@@]34CCN(C[C@@H]3O[C@@H]31)[C@@H]24",
+    "auto_labels": [],
+    "review_candidates": [
+      "Alkaloid"
+    ],
+    "reason": "Alkaloid=REVIEW: generic N-heterocycle + NPC alkaloid"
+  }
+]

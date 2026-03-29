@@ -1,0 +1,204 @@
+[
+  {
+    "id": "CMP_G000952",
+    "name": "",
+    "smiles": "O=C([O-])c1cccc(Cl)c1",
+    "auto_labels": [],
+    "review_candidates": [
+      "Phenylpropanoid"
+    ],
+    "reason": "Phenylpropanoid=REVIEW: NPC broad phenylpropanoid/pathway"
+  },
+  {
+    "id": "CMP_G000955",
+    "name": "itaconate",
+    "smiles": "C=C(CC(=O)O)C(=O)O",
+    "auto_labels": [],
+    "review_candidates": [
+      "Fatty_acid"
+    ],
+    "reason": "Fatty_acid=REVIEW: fatty evidence but chain <4C"
+  },
+  {
+    "id": "CMP_G000956",
+    "name": "(3-Chlorophenyl)acetic acid propyl ester",
+    "smiles": "CCCOC(=O)Cc1cccc(Cl)c1",
+    "auto_labels": [],
+    "review_candidates": [
+      "Fatty_acid"
+    ],
+    "reason": "Fatty_acid=REVIEW: fatty evidence but chain <4C"
+  },
+  {
+    "id": "CMP_G000963",
+    "name": "",
+    "smiles": "COc1cc2c(cc1O)[C@H](Cc1ccc(O)cc1)NCC2",
+    "auto_labels": [],
+    "review_candidates": [
+      "Alkaloid"
+    ],
+    "reason": "Alkaloid=REVIEW: generic N-heterocycle + NPC alkaloid"
+  },
+  {
+    "id": "CMP_G000964",
+    "name": "",
+    "smiles": "COc1cc2c(cc1O)[C@@H](Cc1ccc(O)cc1)NCC2",
+    "auto_labels": [],
+    "review_candidates": [
+      "Alkaloid"
+    ],
+    "reason": "Alkaloid=REVIEW: generic N-heterocycle + NPC alkaloid"
+  },
+  {
+    "id": "CMP_G000973",
+    "name": "(-)-matairesinol",
+    "smiles": "COc1cc(C[C@H]2COC(=O)[C@@H]2Cc2ccc(O)c(OC)c2)ccc1O",
+    "auto_labels": [],
+    "review_candidates": [
+      "Phenylpropanoid"
+    ],
+    "reason": "Phenylpropanoid=REVIEW: hydrocinnamate pattern only"
+  },
+  {
+    "id": "CMP_G000984",
+    "name": "3-hydroxy-5-methoxybiphenyl",
+    "smiles": "COc1cc(O)cc(-c2ccccc2)c1",
+    "auto_labels": [],
+    "review_candidates": [
+      "Phenylpropanoid"
+    ],
+    "reason": "Phenylpropanoid=REVIEW: NPC broad phenylpropanoid/pathway"
+  },
+  {
+    "id": "CMP_G001000",
+    "name": "",
+    "smiles": "CC(C)(C)c1ccc(C(=O)CCCN2CCC(OC(c3ccccc3)c3ccccc3)CC2)cc1",
+    "auto_labels": [],
+    "review_candidates": [
+      "Terpenoid",
+      "Alkaloid"
+    ],
+    "reason": "Terpenoid=REVIEW: NPC pathway-level terpenoid only; Alkaloid=REVIEW: generic N-heterocycle only"
+  },
+  {
+    "id": "CMP_G001004",
+    "name": "Dextromethorphan",
+    "smiles": "COc1ccc2c(c1)[C@]13CCCC[C@@H]1[C@H](C2)N(C)CC3",
+    "auto_labels": [],
+    "review_candidates": [
+      "Alkaloid"
+    ],
+    "reason": "Alkaloid=REVIEW: generic N-heterocycle + NPC alkaloid"
+  },
+  {
+    "id": "CMP_G001009",
+    "name": "2-chloroethylbenzene",
+    "smiles": "ClCCc1ccccc1",
+    "auto_labels": [],
+    "review_candidates": [
+      "Phenylpropanoid"
+    ],
+    "reason": "Phenylpropanoid=REVIEW: NPC broad phenylpropanoid/pathway"
+  },
+  {
+    "id": "CMP_G001018",
+    "name": "",
+    "smiles": "CCC(=O)c1ccc(C(=O)O)cc1",
+    "auto_labels": [],
+    "review_candidates": [
+      "Phenylpropanoid"
+    ],
+    "reason": "Phenylpropanoid=REVIEW: NPC broad phenylpropanoid/pathway"
+  },
+  {
+    "id": "CMP_G001019",
+    "name": "4-Methoxysalicylic acid",
+    "smiles": "COc1ccc(C(=O)O)c(O)c1",
+    "auto_labels": [],
+    "review_candidates": [
+      "Phenylpropanoid"
+    ],
+    "reason": "Phenylpropanoid=REVIEW: NPC broad phenylpropanoid/pathway"
+  },
+  {
+    "id": "CMP_G001023",
+    "name": "alpha-Amino-4-methoxy-1,2-dimethyl-1H-indole-3-propanal",
+    "smiles": "COc1cccc2c1c(CC(N)C=O)c(C)n2C",
+    "auto_labels": [],
+    "review_candidates": [
+      "Alkaloid"
+    ],
+    "reason": "Alkaloid=REVIEW: generic N-heterocycle + NPC alkaloid"
+  },
+  {
+    "id": "CMP_G001029",
+    "name": "Decanol",
+    "smiles": "CCCCCCCCCCO",
+    "auto_labels": [],
+    "review_candidates": [
+      "Fatty_acid"
+    ],
+    "reason": "Fatty_acid=REVIEW: fatty evidence but no acyl group"
+  },
+  {
+    "id": "CMP_G001031",
+    "name": "anthracene",
+    "smiles": "c1ccc2cc3ccccc3cc2c1",
+    "auto_labels": [],
+    "review_candidates": [
+      "Phenylpropanoid"
+    ],
+    "reason": "Phenylpropanoid=REVIEW: NPC broad phenylpropanoid/pathway"
+  },
+  {
+    "id": "CMP_G001034",
+    "name": "",
+    "smiles": "O=C([O-])c1cccc(F)c1",
+    "auto_labels": [],
+    "review_candidates": [
+      "Phenylpropanoid"
+    ],
+    "reason": "Phenylpropanoid=REVIEW: NPC broad phenylpropanoid/pathway"
+  },
+  {
+    "id": "CMP_G001035",
+    "name": "(2E,4E)-5-(benzo[d][1,3]dioxol-5-yl)-1-(hexahydropyridin-1-yl)penta-2,4-dien-1-one",
+    "smiles": "O=C(/C=C/C=C/c1ccc2c(c1)OCO2)N1CCCCC1",
+    "auto_labels": [],
+    "review_candidates": [
+      "Alkaloid",
+      "Fatty_acid"
+    ],
+    "reason": "Alkaloid=REVIEW: generic N-heterocycle + NPC alkaloid; Fatty_acid=REVIEW: fatty amide chain=4 but aromatic"
+  },
+  {
+    "id": "CMP_G001038",
+    "name": "(4R,6R,8R)-4,6,8-Trimethyl-2-undecanone",
+    "smiles": "CCCC(C)CC(C)CC(C)CC(C)=O",
+    "auto_labels": [],
+    "review_candidates": [
+      "Fatty_acid"
+    ],
+    "reason": "Fatty_acid=REVIEW: fatty evidence but no acyl group"
+  },
+  {
+    "id": "CMP_G001039",
+    "name": "alpha-Amino-6-hydroxy-1,2-dimethyl-1H-indole-3-propanal",
+    "smiles": "Cc1c(CC(N)C=O)c2ccc(O)cc2n1C",
+    "auto_labels": [],
+    "review_candidates": [
+      "Alkaloid"
+    ],
+    "reason": "Alkaloid=REVIEW: generic N-heterocycle + NPC alkaloid"
+  },
+  {
+    "id": "CMP_G001051",
+    "name": "",
+    "smiles": "CCC1(c2ccccc2)C(O)=NC(=O)N1C",
+    "auto_labels": [],
+    "review_candidates": [
+      "Alkaloid"
+    ],
+    "reason": "Alkaloid=REVIEW: generic N-heterocycle + NPC alkaloid"
+  }
+]

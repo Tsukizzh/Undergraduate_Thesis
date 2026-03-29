@@ -1,0 +1,212 @@
+[
+  {
+    "id": "CMP_G000005",
+    "name": "A 1,2-Saturated Fatty Acid",
+    "smiles": "*CC(=O)[O-]",
+    "our_labels": [
+      "Fatty_acid"
+    ],
+    "confidence": "low",
+    "reason": "Fatty_acid=NPC fatty acyl"
+  },
+  {
+    "id": "CMP_G000006",
+    "name": "2,3-Saturated Fatty Acid",
+    "smiles": "*CCC(=O)[O-]",
+    "our_labels": [
+      "Fatty_acid"
+    ],
+    "confidence": "low",
+    "reason": "Fatty_acid=NPC fatty acyl"
+  },
+  {
+    "id": "CMP_G000014",
+    "name": "An Omega-Methyl-Long-Chain Fatty Acid",
+    "smiles": "C*C(=O)[O-]",
+    "our_labels": [
+      "Fatty_acid"
+    ],
+    "confidence": "low",
+    "reason": "Fatty_acid=NPC fatty acyl"
+  },
+  {
+    "id": "CMP_G000015",
+    "name": "An (Omega-1)-Ethyl Fatty Acid",
+    "smiles": "CC*C(=O)[O-]",
+    "our_labels": [
+      "Fatty_acid"
+    ],
+    "confidence": "low",
+    "reason": "Fatty_acid=NPC fatty acyl"
+  },
+  {
+    "id": "CMP_G000049",
+    "name": "p-coumaroylagmatine",
+    "smiles": "NC(N)=NCCCCNC(=O)C=Cc1ccc(O)cc1",
+    "our_labels": [
+      "Amino_acid",
+      "Phenylpropanoid"
+    ],
+    "confidence": "low",
+    "reason": "Amino_acid=amino-acid derivative + NPC support; Phenylpropanoid=phenylpropanoid/flavonoid/coumarin scaffold"
+  },
+  {
+    "id": "CMP_G000087",
+    "name": "andrastin C",
+    "smiles": "COC(=O)[C@@]12C(=O)C(C)=C(O)[C@]1(C)C(C)=C[C@H]1[C@]3(C)CC[C@H](OC(C)=O)C(C)(C)[C@H]3CC[C@@]12C",
+    "our_labels": [
+      "Steroid",
+      "Polyketide"
+    ],
+    "confidence": "low",
+    "reason": "Steroid=ClassyFire steroid; Polyketide=NPC polyketide: polyketides"
+  },
+  {
+    "id": "CMP_G000174",
+    "name": "11-Hydroxycucurbitadienol",
+    "smiles": "CC(C)=CCC[C@@H](C)[C@H]1CC[C@@]2(C)[C@@H]3CC=C4[C@@H](CC[C@H](O)C4(C)C)[C@]3(C)[C@H](O)C[C@]12C",
+    "our_labels": [
+      "Steroid"
+    ],
+    "confidence": "low",
+    "reason": "Steroid=ClassyFire steroid"
+  },
+  {
+    "id": "CMP_G000202",
+    "name": "2-amino-3-(5-hydroxy-1-methylindol-3-yl)propanoic acid",
+    "smiles": "Cn1cc(CC(N)C(=O)O)c2cc(O)ccc21",
+    "our_labels": [
+      "Alkaloid",
+      "Amino_acid"
+    ],
+    "confidence": "low",
+    "reason": "Alkaloid=ClassyFire alkaloid + ring N (multi-label with AA); Amino_acid=intact alpha-amino-acid backbone"
+  },
+  {
+    "id": "CMP_G000316",
+    "name": "",
+    "smiles": "CC(C)Cc1ccc([C@H](C)C(=O)N[C@@H](Cc2ccccc2)C(=O)O)cc1",
+    "our_labels": [
+      "Amino_acid"
+    ],
+    "confidence": "low",
+    "reason": "Amino_acid=amino-acid derivative + NPC support"
+  },
+  {
+    "id": "CMP_G000364",
+    "name": "N-acetyltryptophan",
+    "smiles": "CC(=O)NC(Cc1c[nH]c2ccccc12)C(=O)O",
+    "our_labels": [
+      "Amino_acid"
+    ],
+    "confidence": "low",
+    "reason": "Amino_acid=amino-acid derivative + NPC support"
+  },
+  {
+    "id": "CMP_G000389",
+    "name": "Betaenone A",
+    "smiles": "CCC(C)C1C2(C)C(=O)/C(=C\\O)C(O)(C3CC(C)(O)CC(C)C32)C1(C)O",
+    "our_labels": [
+      "Terpenoid",
+      "Polyketide"
+    ],
+    "confidence": "low",
+    "reason": "Terpenoid=ClassyFire terpenoid; Polyketide=NPC polyketide: cyclic polyketides"
+  },
+  {
+    "id": "CMP_G000539",
+    "name": "",
+    "smiles": "CC[C@@H]1C[C@@H]2C[C@@H]3[C@H]4C/C=C\\C(=O)NCC[C@H](O)[C@@H]5NC(=O)/C(=C(O)/C=C/[C@@H]4CC(=O)[C@H]3[C",
+    "our_labels": [
+      "Terpenoid",
+      "Amino_acid",
+      "Polyketide"
+    ],
+    "confidence": "low",
+    "reason": "Terpenoid=ClassyFire terpenoid; Amino_acid=peptide (2 amide bonds) + NPC support; Polyketide=NPC polyketide: macrolides"
+  },
+  {
+    "id": "CMP_G000570",
+    "name": "geranyl acetate",
+    "smiles": "CC(=O)OC/C=C(\\C)CCC=C(C)C",
+    "our_labels": [
+      "Terpenoid",
+      "Fatty_acid"
+    ],
+    "confidence": "low",
+    "reason": "Terpenoid=NPC terpenoid superclass: monoterpenoids; Fatty_acid=ClassyFire fatty acid (no chain confirmation)"
+  },
+  {
+    "id": "CMP_G000631",
+    "name": "L-Isoleucine-(+)-7-Isojasmonate",
+    "smiles": "CC/C=C\\C[C@@H]1C(=O)CC[C@@H]1CC(=O)N[C@H](C(=O)[O-])[C@@H](C)CC",
+    "our_labels": [
+      "Amino_acid"
+    ],
+    "confidence": "low",
+    "reason": "Amino_acid=amino-acid derivative + NPC support"
+  },
+  {
+    "id": "CMP_G000718",
+    "name": "L-Tyr-L-Tyr",
+    "smiles": "N[C@@H](Cc1ccc(O)cc1)C(=O)N[C@@H](Cc1ccc(O)cc1)C(=O)O",
+    "our_labels": [
+      "Amino_acid"
+    ],
+    "confidence": "low",
+    "reason": "Amino_acid=amino-acid derivative + NPC support"
+  },
+  {
+    "id": "CMP_G000763",
+    "name": "3,7-dimethyloct-6-enyl acetate",
+    "smiles": "CC(=O)OCCC(C)CCC=C(C)C",
+    "our_labels": [
+      "Terpenoid",
+      "Fatty_acid"
+    ],
+    "confidence": "low",
+    "reason": "Terpenoid=NPC terpenoid superclass: monoterpenoids; Fatty_acid=ClassyFire fatty acid (no chain confirmation)"
+  },
+  {
+    "id": "CMP_G000765",
+    "name": "1H-Indole-3-propanoic acid, alpha-amino-6-hydroxy-1-methyl- (ACI)",
+    "smiles": "Cn1cc(CC(N)C(=O)O)c2ccc(O)cc21",
+    "our_labels": [
+      "Alkaloid",
+      "Amino_acid"
+    ],
+    "confidence": "low",
+    "reason": "Alkaloid=ClassyFire alkaloid + ring N (multi-label with AA); Amino_acid=intact alpha-amino-acid backbone"
+  },
+  {
+    "id": "CMP_G000782",
+    "name": "",
+    "smiles": "CN[C@H](C(=O)N[C@H](CO)Cc1csc2ccccc12)C(C)C",
+    "our_labels": [
+      "Amino_acid"
+    ],
+    "confidence": "low",
+    "reason": "Amino_acid=amino-acid derivative + NPC support"
+  },
+  {
+    "id": "CMP_G000883",
+    "name": "",
+    "smiles": "CN[C@@H](Cc1ccccc1)C(=O)N[C@H](CO)Cc1c[nH]c2ccccc12",
+    "our_labels": [
+      "Amino_acid"
+    ],
+    "confidence": "low",
+    "reason": "Amino_acid=amino-acid derivative + NPC support"
+  },
+  {
+    "id": "CMP_G001133",
+    "name": "",
+    "smiles": "CC(C)=C[C@H](O)C/C(C)=C/CC/C(C)=C/Cc1c(C)[nH]c2ccccc2c1=O",
+    "our_labels": [
+      "Terpenoid",
+      "Alkaloid"
+    ],
+    "confidence": "low",
+    "reason": "Terpenoid=ClassyFire terpenoid; Alkaloid=known alkaloid scaffold without AA backbone"
+  }
+]

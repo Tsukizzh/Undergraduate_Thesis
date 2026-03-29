@@ -1,0 +1,41 @@
+id,name,our_labels,verdict,correct_labels,source,notes
+CMP_G000217,"(2E,6E,10E)-Geranylgeraniol",Terpenoid,CORRECT,Terpenoid,PubChem CID 5281365; Wikipedia,Diterpenoid alcohol (C20); naturally occurring diterpene alcohol; confirmed terpenoid
+CMP_G000099,"Triterpenoid acetate (truncated name)",Terpenoid,CORRECT,Terpenoid,NPClassifier; structural analysis,Complex triterpenoid skeleton with acetate esters; consistent with triterpenoid classification
+CMP_G000904,"Methyl 3-(azidosulfonyl)-4-(1-methylethyl)benzoate",Terpenoid,WRONG,Other,PubChem search; structural analysis,Synthetic aromatic sulfonyl azide with methyl ester. Not a natural terpenoid despite isopropyl group. Azidosulfonyl group is synthetic.
+CMP_G001307,"Taxa-4(20),11-Dien-5Alpha-Ol",Terpenoid,CORRECT,Terpenoid,PubMed 11396929; PubMed 15123267,Key diterpenoid intermediate in Taxol biosynthesis from Taxus; confirmed diterpenoid
+CMP_G000707,Gibberellin,Terpenoid,CORRECT,Terpenoid,Wikipedia; PMC 4118669,Tetracyclic diterpenoid plant hormone; well-established terpenoid classification
+CMP_G000793,"unnamed (CC(=O)/C=C/C=C(\C)CCC=C(C)C)",Terpenoid,CORRECT,Terpenoid,NPClassifier; structural analysis,Apocarotenoid structure (C13 ketone from carotenoid cleavage); terpenoid-derived
+CMP_G001764,"(-)-Vetispiradiene",Terpenoid,CORRECT,Terpenoid,Wikipedia; PMC 6589726,Sesquiterpenoid (C15) produced by vetispiradiene synthase from FPP; confirmed terpenoid
+CMP_G001222,"(+)-epi-beta-santalene",Terpenoid,CORRECT,Terpenoid,PMC 3093818; Nature srep10095,Bicyclic sesquiterpene (C15) from sandalwood; confirmed terpenoid
+CMP_G000633,medicagenic acid,Terpenoid,CORRECT,Terpenoid,PMC 8172297; Nature ncomms14153,Pentacyclic triterpenoid sapogenin from Medicago species; confirmed terpenoid
+CMP_G000388,solavetivone,Terpenoid,CORRECT,Terpenoid,PMC 6589726; Tandfonline 2019,Sesquiterpenoid phytoalexin from Solanum (potato); confirmed terpenoid
+CMP_G001890,"(+)-(R)-germacrene A",Terpenoid,CORRECT,Terpenoid,Wikipedia; ChemEurJ 2020,Macrocyclic sesquiterpene (C15); central intermediate in sesquiterpene biosynthesis; confirmed terpenoid
+CMP_G001485,Asperaculane G,Terpenoid,CORRECT,Terpenoid,PMC 6272214; MDPI Molecules,Sesquiterpenoid from Aspergillus aculeatus (ent-daucane type); confirmed terpenoid
+CMP_G001499,Retinoate,Terpenoid,CORRECT,Terpenoid,Wikipedia (Retinoic acid); PubChem CID 444795,Retinoid = diterpenoid (C20) from four isoprene units; confirmed terpenoid
+CMP_G001208,"unnamed diterpenoid",Terpenoid,CORRECT,Terpenoid,Structural analysis,C20 skeleton with multiple rings; consistent with diterpenoid classification
+CMP_G000724,"30-Hydroxy-11-Oxo-Beta-Amyrin",Terpenoid,CORRECT,Terpenoid,PubChem CID 12310283; ChEBI 71576,Oleanane-type pentacyclic triterpenoid; intermediate in glycyrrhizin biosynthesis; confirmed terpenoid
+CMP_G002036,3-dehydroxy-andrographoide,Terpenoid,CORRECT,Terpenoid,PubMed 29408515; ScienceDirect,Andrographolide derivative = diterpenoid lactone from Andrographis paniculata; confirmed terpenoid
+CMP_G002098,"(5R)-albaflavenol",Terpenoid,CORRECT,Terpenoid,Nature ja2014138; PMC 2276382,Sesquiterpenoid from Streptomyces; intermediate in albaflavenone biosynthesis; confirmed terpenoid
+CMP_G001050,"unnamed monoterpene (C=C1CC[C@@]2(C(C)C)C[C@@H]12)",Terpenoid,CORRECT,Terpenoid,Structural analysis,Bicyclic C10 skeleton consistent with monoterpenoid (sabinene-like skeleton)
+CMP_G000563,P-Cymene,Terpenoid,CORRECT,Terpenoid,Wikipedia; PubChem CID 7463; ChEBI 28768,Monocyclic monoterpene (C10); aromatic but biosynthetically terpenoid; confirmed
+CMP_G000302,"(+)-exo-beta-bergamotene",Terpenoid,CORRECT,Terpenoid,Wikipedia (Bergamotene); PMC 3093818,Bicyclic sesquiterpene (C15); confirmed terpenoid
+CMP_G000305,"N-(8-hydroxygeranyl)-L-glutamate",Terpenoid;Amino_acid,CORRECT,Terpenoid;Amino_acid,Wikipedia (8-Hydroxygeraniol); PMC 6508077,Conjugate of 8-hydroxygeranyl (monoterpenoid) and L-glutamate (amino acid); dual classification correct
+CMP_G001741,Conidiogenone,Terpenoid,CORRECT,Terpenoid,PubMed 12455699; PMC 126740,Cyclopiane-type diterpenoid from Penicillium cyclopium; 6/5/5/5 ring system; confirmed terpenoid
+CMP_G001096,"unnamed monoterpenoid (C=CC(C)(O)CC/C=C(\C)CO)",Terpenoid,CORRECT,Terpenoid,Structural analysis,Acyclic C10 skeleton with hydroxyl groups; consistent with monoterpenoid (linalool-like)
+CMP_G000979,"15,16-Epoxydolabrene",Terpenoid,CORRECT,Terpenoid,PMC 5884620; Plant Physiology,Dolabrane-type diterpenoid from maize; biosynthesized from GGPP via dolabradiene; confirmed terpenoid
+CMP_G001056,Dehydroabietic Acid,Terpenoid,CORRECT,Terpenoid,Wikipedia; PMC 3709773,Abietane-type diterpenoid resin acid from conifer resin; confirmed terpenoid
+CMP_G001188,"unnamed brominated monoterpene",Terpenoid,CORRECT,Terpenoid,Structural analysis,Bicyclic C10 skeleton (pinane/bornane-type) with bromine substituent; terpenoid scaffold confirmed
+CMP_G000192,"(-)-( R)-linalool",Terpenoid,CORRECT,Terpenoid,Wikipedia; PubChem CID 6549,Acyclic monoterpenoid alcohol (C10); well-known terpenoid from essential oils; confirmed
+CMP_G001777,"(2E,6E)-Farnesoate",Terpenoid,CORRECT,Terpenoid,Wikipedia (Farnesyl pyrophosphate); ScienceDirect,Sesquiterpenoid (C15); carboxylate form of farnesol; confirmed terpenoid
+CMP_G001734,"(2E,6E)-Farnesyl Diphosphate",Terpenoid,CORRECT,Terpenoid,Wikipedia; PubChem,Sesquiterpenoid (C15) diphosphate; universal precursor to sesquiterpenes; confirmed terpenoid
+CMP_G001707,Maniladiol,Terpenoid,CORRECT,Terpenoid,Nature 1641090a0; structural analysis,Pentacyclic triterpenoid (beta-amyrin derivative); oleanane-type; confirmed terpenoid
+CMP_G000311,7-Deoxyloganetic Acid,Terpenoid,CORRECT,Terpenoid,PubMed 24594312; Wikipedia,Iridoid monoterpenoid; key intermediate in seco-iridoid pathway; confirmed terpenoid
+CMP_G000197,lubimin,Terpenoid,CORRECT,Terpenoid,RSC 1974; PMC 6589726,Spirovetivane-type sesquiterpenoid phytoalexin from Solanum; confirmed terpenoid
+CMP_G001048,"(+)-Sabinene",Terpenoid,CORRECT,Terpenoid,Wikipedia; ScienceDirect,Bicyclic monoterpene (C10); from geranyl pyrophosphate via sabinene synthase; confirmed terpenoid
+CMP_G001902,emindole SB,Terpenoid;Alkaloid,CORRECT,Terpenoid;Alkaloid,JACS 2022; PMC 3884952; ResearchGate,Indole diterpene alkaloid from Aspergillus; contains both terpenoid (diterpene) and alkaloid (indole) moieties; dual classification correct
+CMP_G002070,"(-)-casbene",Terpenoid,CORRECT,Terpenoid,PMC 1075336; Plant Physiology,Macrocyclic diterpene phytoalexin from Ricinus communis; biosynthesized from GGPP; confirmed terpenoid
+CMP_G000338,7-Deoxyloganate,Terpenoid,CORRECT,Terpenoid,PubMed 24594312; Wikipedia (7-Deoxyloganetic acid),Iridoid monoterpenoid glucoside; glycosylated form of 7-deoxyloganetic acid; confirmed terpenoid
+CMP_G000732,cyclooctat-9-en-7-ol,Terpenoid,CORRECT,Terpenoid,ChEBI 78352; ACS ChemBio 2017,Fusicoccane-type diterpenoid (5-8-5 ring) from Streptomyces; confirmed terpenoid
+CMP_G000579,"(cis/trans)-iridodial",Terpenoid,CORRECT,Terpenoid,PMC 5739345; ScienceDirect (Iridodial),Iridoid monoterpenoid; intermediate in nepetalactone biosynthesis; confirmed terpenoid
+CMP_G001389,carvacrol,Terpenoid,CORRECT,Terpenoid,Wikipedia; PubChem; PMC 10215463,Monoterpenoid phenol (C10) from oregano/thyme; confirmed terpenoid
+CMP_G001274,"nicotinic acid (SMILES mismatch with name MPMOB)",Alkaloid,WRONG,Other,Wikipedia (Nicotinic acid); PubChem CID 938,"SMILES O=C(O)c1cccnc1 = nicotinic acid (niacin/vitamin B3), NOT an alkaloid. Name-SMILES mismatch. Nicotinic acid is a pyridine carboxylic acid vitamin, not alkaloid."
