@@ -311,6 +311,9 @@ def has_macrolactone(mol: Chem.Mol, min_ring_size: int = 12) -> bool:
     return False
 
 def has_steroid_topology(mol: Chem.Mol) -> bool:
+    """Check for 6-6-6-5 fused ring system with ALL-CARBON core (no N in ring system).
+    Real steroid gonane skeleton is pure C/H. Alkaloids and polyketides with similar
+    ring topology are excluded by checking for heteroatoms in the fused core."""
     rings = [set(r) for r in mol.GetRingInfo().AtomRings()]
     six = [r for r in rings if len(r)==6]; five = [r for r in rings if len(r)==5]
     if len(six)<3 or len(five)<1: return False
@@ -318,7 +321,24 @@ def has_steroid_topology(mol: Chem.Mol) -> bool:
         fused = [six[j] for j in range(len(six)) if j!=i and len(six[i]&six[j])>=2]
         if len(fused)<2: continue
         core = six[i]|fused[0]|fused[1]
-        if any(len(fr&core)>=2 for fr in five): return True
+        for fr in five:
+            if len(fr&core)>=2:
+                full_core = core | fr
+                # Steroid core must be all-carbon: reject if N found in ring system
+                has_N_in_core = any(
+                    mol.GetAtomWithIdx(idx).GetAtomicNum() == 7
+                    for idx in full_core
+                )
+                if has_N_in_core:
+                    continue  # Not a steroid — likely alkaloid
+                # Reject if core has aromatic rings (real steroids are saturated/partially saturated)
+                aromatic_in_core = sum(
+                    1 for idx in full_core
+                    if mol.GetAtomWithIdx(idx).GetIsAromatic()
+                )
+                if aromatic_in_core >= 4:
+                    continue  # Likely anthraquinone/xanthone polyketide, not steroid
+                return True
     return False
 
 
