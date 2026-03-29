@@ -62,6 +62,7 @@ def _smarts(pattern: str) -> Chem.Mol:
 PAT_ALPHA_AA = _smarts("[NX3,NX4+;!$(NC=O)][CH1,CH2][CX3](=O)[OX2H1,OX1-,OX2]")
 PAT_ALPHA_AA_AR = _smarts("[NX3,NX4+;!$(NC=O)][CH]([#6])[CX3](=O)[OX2H1,OX1-,OX2]")
 PAT_PEPTIDE_BOND = _smarts("[NX3,NX4+][CX3](=O)[#6]")
+PAT_OXIME = _smarts("[CX3]=[NX2][OX2H,OX1-]")
 PAT_DKP = _smarts("O=C1NCC(=O)NC1")
 PAT_ADENOSINE = _smarts("n1cnc2c1ncn2[C@@H]1O[C@H](CO)[C@@H](O)[C@H]1O")
 
@@ -107,7 +108,7 @@ PAT_PIPERIDINE = _smarts("N1CCCCC1")
 PAT_QUINOLINE = _smarts("c1ccc2ncccc2c1")
 
 HIGH_PRECISION_ALKALOID_SCAFFOLDS = (
-    PAT_INDOLE, PAT_TETRAHYDROISOQUINOLINE, PAT_ISOQUINOLINE,
+    PAT_TETRAHYDROISOQUINOLINE, PAT_ISOQUINOLINE,
     PAT_TROPANE, PAT_PURINE,
 )
 GENERIC_ALKALOID_SCAFFOLDS = (
@@ -120,6 +121,7 @@ PAT_SULFONAMIDE = _smarts("[#16X4](=[OX1])(=[OX1])[NX3]")
 PAT_AZO = _smarts("[NX2]=[NX2]")
 PAT_TRIAZOLE_1 = _smarts("n1ccnn1")
 PAT_TRIAZOLE_2 = _smarts("n1nccn1")
+PAT_FLUORINE = _smarts("[F]")
 
 
 # --- NPClassifier vocab ---
@@ -253,6 +255,38 @@ def has_nitrogen(mol: Chem.Mol) -> bool:
 def has_ring_nitrogen(mol: Chem.Mol) -> bool:
     return any(a.GetAtomicNum() == 7 and a.IsInRing() for a in mol.GetAtoms())
 
+def has_fluorine(mol):
+    return mol is not None and mol.HasSubstructMatch(PAT_FLUORINE)
+
+def has_valid_alpha_amino_acid_backbone(mol):
+    """Reject oximes and require sp3 alpha carbon with single bonds."""
+    if mol.HasSubstructMatch(PAT_OXIME):
+        return False
+    for pat in (PAT_ALPHA_AA, PAT_ALPHA_AA_AR):
+        for match in mol.GetSubstructMatches(pat):
+            if len(match) < 3: continue
+            n_idx, alpha_idx, carbonyl_idx = match[:3]
+            n_atom = mol.GetAtomWithIdx(n_idx)
+            alpha_atom = mol.GetAtomWithIdx(alpha_idx)
+            bond_na = mol.GetBondBetweenAtoms(n_idx, alpha_idx)
+            bond_ac = mol.GetBondBetweenAtoms(alpha_idx, carbonyl_idx)
+            if bond_na is None or bond_ac is None: continue
+            if bond_na.GetBondType() != Chem.BondType.SINGLE: continue
+            if bond_ac.GetBondType() != Chem.BondType.SINGLE: continue
+            if alpha_atom.GetHybridization() != Chem.HybridizationType.SP3: continue
+            if n_atom.GetIsAromatic(): continue
+            return True
+    return False
+
+def has_indole_alkaloid_complexity(mol, npc):
+    """Bare indole is not enough. Require additional ring complexity."""
+    if not mol.HasSubstructMatch(PAT_INDOLE): return False
+    s = summarize_mol(mol)
+    if s["rings"] >= 3 and s["carbons"] >= 11: return True
+    indole_npc = {"tryptophan alkaloids", "terpenoid alkaloids", "indole diketopiperazine alkaloids"}
+    if s["rings"] >= 3 and (npc & indole_npc): return True
+    return False
+
 def summarize_mol(mol: Optional[Chem.Mol]) -> Dict[str, int]:
     if mol is None:
         return {"carbons":0,"nitrogens":0,"oxygens":0,"halogens":0,"heavy_atoms":0,"rings":0,"aromatic_rings":0}
@@ -270,7 +304,8 @@ def summarize_mol(mol: Optional[Chem.Mol]) -> Dict[str, int]:
 def get_carbon_flags(mol: Optional[Chem.Mol]) -> Dict[str, bool]:
     s = summarize_mol(mol)
     return {"c18_c29": 18 <= s["carbons"] <= 29, "contains_oxygen": s["oxygens"] > 0,
-            "contains_nitrogen": s["nitrogens"] > 0, "aromatic_present": s["aromatic_rings"] > 0}
+            "contains_nitrogen": s["nitrogens"] > 0, "aromatic_present": s["aromatic_rings"] > 0,
+            "terpenoid_plausible": s["carbons"] >= 10}
 
 def is_probably_synthetic_xenobiotic(mol: Optional[Chem.Mol]) -> bool:
     if mol is None: return False
@@ -358,7 +393,15 @@ def detect_steroid(mol, npc, cf_labels, cflags):
 def detect_terpenoid(mol, npc, cf_labels, steroid_auto):
     if steroid_auto: return Decision()
     ta = sorted(npc & NPC_TERPENOID_AUTO)
-    if ta: return Decision(auto=True, reason=f"NPC terpenoid superclass/class: {ta[0]}")
+    if ta:
+        s = summarize_mol(mol)
+        if s["carbons"] < 10:
+            return Decision(review=True, reason=f"NPC terpenoid {ta[0]} but C<10")
+        if mol is not None and mol.HasSubstructMatch(PAT_FREE_ACID):
+            chain = longest_acyl_chain(mol, PAT_FREE_ACID)
+            if chain >= 8 and s["rings"] == 0:
+                return Decision(review=True, reason=f"NPC terpenoid {ta[0]} but free acid chain={chain} no rings (likely fatty acid)")
+        return Decision(auto=True, reason=f"NPC terpenoid superclass/class: {ta[0]}")
     if npc & NPC_TERPENOID_REVIEW:
         return Decision(review=True, reason="NPC pathway-level terpenoid only")
     if "Terpenoid" in cf_labels:
@@ -372,7 +415,7 @@ def detect_alkaloid(mol, npc, cf_labels, amino_auto):
         return Decision()
     if not has_nitrogen(mol): return Decision()
     syn = is_probably_synthetic_xenobiotic(mol)
-    hp = has_any(mol, HIGH_PRECISION_ALKALOID_SCAFFOLDS)
+    hp = has_any(mol, HIGH_PRECISION_ALKALOID_SCAFFOLDS) or has_indole_alkaloid_complexity(mol, npc)
     gs = has_any(mol, GENERIC_ALKALOID_SCAFFOLDS) or has_ring_nitrogen(mol)
     if amino_auto:
         if hp or npc & NPC_ALKALOID or "Alkaloid" in cf_labels:
@@ -380,6 +423,10 @@ def detect_alkaloid(mol, npc, cf_labels, amino_auto):
         return Decision()
     if hp and not syn: return Decision(auto=True, reason="high-precision natural-product alkaloid scaffold")
     if hp and syn: return Decision(review=True, reason="high-precision alkaloid scaffold but synthetic-like")
+    if mol.HasSubstructMatch(PAT_INDOLE):
+        if npc & NPC_ALKALOID or "Alkaloid" in cf_labels:
+            return Decision(review=True, reason="simple indole + alkaloid classifier evidence")
+        return Decision(review=True, reason="simple indole only")
     if gs:
         if npc & NPC_ALKALOID: return Decision(review=True, reason="generic N-heterocycle + NPC alkaloid")
         if "Alkaloid" in cf_labels: return Decision(review=True, reason="generic N-heterocycle + ClassyFire alkaloid")
@@ -393,14 +440,17 @@ def detect_amino_acid(mol, npc, cf_labels):
         if npc & NPC_AMINO or "Amino_acid" in cf_labels:
             return Decision(review=True, reason="amino-acid evidence without structure")
         return Decision()
-    ha = mol.HasSubstructMatch(PAT_ALPHA_AA) or mol.HasSubstructMatch(PAT_ALPHA_AA_AR)
+    ha = has_valid_alpha_amino_acid_backbone(mol)
     hd = mol.HasSubstructMatch(PAT_DKP)
     pb = count_matches(mol, PAT_PEPTIDE_BOND)
     ad = mol.HasSubstructMatch(PAT_ADENOSINE)
     if ha:
         if ad: return Decision(review=True, reason="alpha-AA backbone but adenosine/cofactor-like")
         return Decision(auto=True, reason="intact alpha-amino-acid backbone")
-    if hd: return Decision(auto=True, reason="diketopiperazine")
+    if hd:
+        if has_fluorine(mol) or is_probably_synthetic_xenobiotic(mol):
+            return Decision(review=True, reason="diketopiperazine but fluorinated/synthetic-like")
+        return Decision(auto=True, reason="diketopiperazine")
     if pb >= 2 and (npc & NPC_AMINO): return Decision(auto=True, reason=f"peptide ({pb} amide bonds) + NPC")
     if pb >= 2 and "Amino_acid" in cf_labels: return Decision(review=True, reason=f"peptide ({pb} amide bonds) + CF")
     if pb >= 1 and (npc & NPC_AMINO or "Amino_acid" in cf_labels):
@@ -481,6 +531,9 @@ def detect_fatty_acid(mol, npc, cf_labels, steroid_auto, terpenoid_auto, polyket
             return Decision(review=True, reason="fatty evidence but chain <4C")
         return Decision()
     occ = steroid_auto or terpenoid_auto or polyketide_auto
+    s = summarize_mol(mol)
+    if bn == "free acid" and bc >= 8 and s["rings"] == 0:
+        return Decision(auto=True, reason=f"strong free fatty acid chain={bc} no rings")
     if occ and not fs:
         return Decision(review=True, reason=f"fatty {bn} chain={bc} but occupied by another class")
     if cf["aromatic_present"] and not fs:
