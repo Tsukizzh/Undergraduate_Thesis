@@ -6,7 +6,7 @@
 
 EZSpecificity 是一个基于交叉注意力机制的 SE(3)-等变图神经网络，用于预测酶-底物特异性（Nature 2025）。本项目专注于 P450 细胞色素酶家族的特异性研究，系统性地评估、诊断并改进模型在 P450 家族上的表现。
 
-## 最新进展（2026-03-28）
+## 最新进展（2026-03-29）
 
 ### 路径C：P450专属模型训练
 
@@ -15,7 +15,7 @@ EZSpecificity 是一个基于交叉注意力机制的 SE(3)-等变图神经网�
 - 50,180 对接、47,510 可用对（特征完整）
 - **EXP001 random_split: Val AUC=0.7544, Test AUC=0.7730**（4×RTX4090 DDP, 49分钟）
 
-**C3 P450专属模型训练** 🔄 进行中：
+**C3 P450专属模型训练**：
 
 | Step | 内容 | 结果 | 状态 |
 |------|------|------|------|
@@ -23,8 +23,15 @@ EZSpecificity 是一个基于交叉注意力机制的 SE(3)-等变图神经网�
 | 2 | ESIBank AllSplit 从头训练 | **Test AUC=0.7244**（> 论文 0.7198） | ✅ |
 | 3 | fixed 基线 + dropout 消融 | Test AUC=0.7060，dropout 未迁移 | ✅ |
 | 4 | P450 数据集从头训练 EXP001 | **Test AUC=0.7730**（vs ESIBank 0.638 → +0.135） | ✅ |
-| 5 | 底物分类与验证 | 2,125 底物→15 类，4 工具验证，~248 错误待修正 | 🔄 |
-| 6 | 按类别聚合预测 | 导师方向：预测酶催化哪类底物 | ⏳ |
+| 5 | 底物多标签分类 | 2,125 底物→7+1类多标签，文献定义+RDKit+NPC+ClassyFire+Agent验证，**50抽检96%** | ✅ |
+| 6 | 阶段1模型训练（酶序列→底物类别） | 酶序列→ESM→MLP→7-sigmoid→BCEWithLogitsLoss | ⏳ |
+
+**Step 5 底物分类详情**：
+- 采用 NPClassifier 论文的多标签方案（sigmoid + BCE + 0.5 阈值 + DAG 结构）
+- 7个Agent并行调研文献定义（IUPAC/Dewick/LIPID MAPS/Pelletier/Vogt/Hertweck）
+- 三档分类：auto(1,554, 73.1%) + review(458, 21.6%) + other(113, 5.3%)
+- ~40个Agent总计~2000+次web搜索验证
+- **最终分布**：Terpenoid 483, Other 415, Amino_acid 377, Fatty_acid 244, Steroid 237, Phenylpropanoid 169, Alkaloid 131, Polyketide 125, Multi-label 54
 
 **性能提升路径**：
 ```
@@ -82,7 +89,7 @@ EZSpecificity_Project/
 │   │   ├── PathC_2026-03-19_P450专属模型训练/
 │   │   │   ├── C1_论文基线训练与参数调整/     # ✅ AllSplit/fixed/dropout
 │   │   │   ├── C2_P450数据集构建/             # ✅ Phase 1-8, EXP001 Test=0.7730
-│   │   │   ├── C3_P450专属模型训练/           # 🔄 底物分类验证中
+│   │   │   ├── C3_P450专属模型训练/           # ✅ 底物分类完成(96%), 模型训练待启动
 │   │   │   │   ├── sessions/01~05/           # 5个实验的summary
 │   │   │   │   ├── results/01~04/            # 各实验结果+checkpoints
 │   │   │   │   ├── data/05_底物分类/          # 分类CSV+API缓存
@@ -121,7 +128,7 @@ EZSpecificity_Project/
 |------|------|:----:|----------|
 | **A** | 用PDB实验结构评估模型 | ✅ 已完成 | AUC-ROC 0.6636 |
 | **B** | P450数据集构建+基线训练 | ✅ 全部完成 | **Test AUC=0.7244** > 论文 0.7198 |
-| **C** | P450专属模型训练 | 🔄 C3 底物分类验证中 | C2 EXP001 **Test AUC=0.7730**, C3 底物15类分类+修正中 |
+| **C** | P450专属模型训练 | 🔄 C3 底物分类 ✅, 模型训练待启动 | C2 EXP001 **Test AUC=0.7730**, C3 底物7+1类多标签(96%准确率) |
 | D | 区域选择性预测 | ⏳ 待定 | 数据源: S3反应SMILES(3,352条) + S9反应图片(857张) |
 
 ## 路径B详细进展（Step 1-9）
