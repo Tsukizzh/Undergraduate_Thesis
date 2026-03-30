@@ -6,7 +6,7 @@
 
 EZSpecificity 是一个基于交叉注意力机制的 SE(3)-等变图神经网络，用于预测酶-底物特异性（Nature 2025）。本项目专注于 P450 细胞色素酶家族的特异性研究，系统性地评估、诊断并改进模型在 P450 家族上的表现。
 
-## 最新进展（2026-03-29）
+## 最新进展（2026-03-31）
 
 ### 路径C：P450专属模型训练
 
@@ -23,15 +23,15 @@ EZSpecificity 是一个基于交叉注意力机制的 SE(3)-等变图神经网�
 | 2 | ESIBank AllSplit 从头训练 | **Test AUC=0.7244**（> 论文 0.7198） | ✅ |
 | 3 | fixed 基线 + dropout 消融 | Test AUC=0.7060，dropout 未迁移 | ✅ |
 | 4 | P450 数据集从头训练 EXP001 | **Test AUC=0.7730**（vs ESIBank 0.638 → +0.135） | ✅ |
-| 5 | 底物多标签分类 | 2,125 底物→7+1类多标签，文献定义+RDKit+NPC+ClassyFire+Agent验证，**50抽检96%** | ✅ |
+| 5 | 底物多标签分类 v6 FINAL | 2,125→1,870 confirmed(88.0%)+255 other(12.0%), P1-P5管线+9校正+352 Agent文献review, **~89%准确率** | ✅ |
 | 6 | 阶段1模型训练（酶序列→底物类别） | 酶序列→ESM→MLP→7-sigmoid→BCEWithLogitsLoss | ⏳ |
 
-**Step 5 底物分类详情**：
+**Step 5 底物分类详情 (v6 FINAL)**：
 - 采用 NPClassifier 论文的多标签方案（sigmoid + BCE + 0.5 阈值 + DAG 结构）
-- 7个Agent并行调研文献定义（IUPAC/Dewick/LIPID MAPS/Pelletier/Vogt/Hertweck）
-- 三档分类：auto(1,554, 73.1%) + review(458, 21.6%) + other(113, 5.3%)
-- ~40个Agent总计~2000+次web搜索验证
-- **最终分布**：Terpenoid 483, Other 415, Amino_acid 377, Fatty_acid 244, Steroid 237, Phenylpropanoid 169, Alkaloid 131, Polyketide 125, Multi-label 54
+- P1-P5 五优先级管线 + 9条校正规则 + 352化合物 Agent 全量文献 review
+- **最终**: 2,125 化合物 → 1,870 confirmed (88.0%) + 255 other (12.0%) + 0 review
+- 150抽检 ~89% 准确率 + 352化合物 Agent 文献验证
+- **最终分布**：Terpenoid 484, Amino_acid 388, Fatty_acid 278, Alkaloid 251, Steroid 211, Phenylpropanoid 176, Polyketide 137, Multi-label 63
 
 **性能提升路径**：
 ```
@@ -89,7 +89,7 @@ EZSpecificity_Project/
 │   │   ├── PathC_2026-03-19_P450专属模型训练/
 │   │   │   ├── C1_论文基线训练与参数调整/     # ✅ AllSplit/fixed/dropout
 │   │   │   ├── C2_P450数据集构建/             # ✅ Phase 1-8, EXP001 Test=0.7730
-│   │   │   ├── C3_P450专属模型训练/           # ✅ 底物分类完成(96%), 模型训练待启动
+│   │   │   ├── C3_P450专属模型训练/           # ✅ 底物分类v6 FINAL(88.0%), 模型训练待启动
 │   │   │   │   ├── sessions/01~05/           # 5个实验的summary
 │   │   │   │   ├── results/01~04/            # 各实验结果+checkpoints
 │   │   │   │   ├── data/05_底物分类/          # 分类CSV+API缓存
@@ -128,7 +128,7 @@ EZSpecificity_Project/
 |------|------|:----:|----------|
 | **A** | 用PDB实验结构评估模型 | ✅ 已完成 | AUC-ROC 0.6636 |
 | **B** | P450数据集构建+基线训练 | ✅ 全部完成 | **Test AUC=0.7244** > 论文 0.7198 |
-| **C** | P450专属模型训练 | 🔄 C3 底物分类 ✅, 模型训练待启动 | C2 EXP001 **Test AUC=0.7730**, C3 底物7+1类多标签(96%准确率) |
+| **C** | P450专属模型训练 | 🔄 C3 底物分类 ✅ v6 FINAL, 模型训练待启动 | C2 EXP001 **Test AUC=0.7730**, C3 底物7类多标签(88.0% confirmed, ~89%准确率) |
 | D | 区域选择性预测 | ⏳ 待定 | 数据源: S3反应SMILES(3,352条) + S9反应图片(857张) |
 
 ## 路径B详细进展（Step 1-9）
