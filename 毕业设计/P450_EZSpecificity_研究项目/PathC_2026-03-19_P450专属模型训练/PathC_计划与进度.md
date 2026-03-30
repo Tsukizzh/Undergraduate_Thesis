@@ -1,7 +1,7 @@
 # Path C：P450 专属模型训练 — 计划与进度
 
 > **创建日期**: 2026-03-19
-> **当前状态**: C2 Phase 8 EXP001 ✅ (Test AUC=0.7730) | C3 底物分类验证进行中（~248个错误已发现，修正中）
+> **当前状态**: C2 Phase 8 EXP001 ✅ (Test AUC=0.7730) | C3 底物分类 ✅ v6 FINAL (352 review全量Agent验证, 1870确认88.0%/255 other 12.0%/0 review) → 模型训练待启动
 > **前置条件**: Path B Step 1-10 全部完成，legacy_bug 基线 Test AUC=0.7244 > 论文 0.7198
 
 ---
@@ -37,11 +37,12 @@ Path C
 │   ├── Phase 6-7: 对接+特征生成 → 47,510可用对
 │   └── Phase 8: EXP001 ✅ random_split Test AUC=0.7730
 │
-└── C3_P450专属模型训练 🔄 进行中
-    ├── Step 1: 底物分类 ✅ (NPClassifier 15类, 4工具验证)
-    ├── Step 2: 分类修正 🔄 (~248个错误已发现，修正中)
-    ├── Step 3: 按类别聚合预测 ⏳ (导师方向: 预测酶催化哪类底物)
-    └── Step 4: 其他split训练 + 评估 ⏳
+└── C3_P450专属模型训练 🔄 模型训练待启动
+    ├── Step 1: 底物分类 ✅ (NPClassifier 15类→7+1类多标签)
+    ├── Step 2: 多轮验证+修正 ✅ (v5, 5优先级管线, 150抽检~89%, Codex 8轮)
+    ├── Step 3: 352 review/other 全量Agent验证 ✅ (v6 FINAL, 20批Sonnet Agent文献搜索+Codex审核, 97升级+255确认OTHER, review→0)
+    ├── Step 4: 按类别聚合预测 ⏳ (酶序列→ESM→MLP→7-sigmoid→BCEWithLogitsLoss)
+    └── Step 5: 其他split训练 + 评估 ⏳
 ```
 
 ---
@@ -218,6 +219,7 @@ Path C
 | C2 Phase 7 | 特征+.pt缓存 | ⏳ | |
 | C2 Phase 8 | EXP001 random_split 基线 | ✅ 已完成 | **Val AUC=0.7544, Test AUC=0.7730** (4×4090 DDP, 89ep, best=ep73) vs ESIBank P450 internal 0.638 → +0.135 |
 | **C3-Step 1** | **底物分类** | ✅ 已完成 | NPClassifier → 15类, 2,125全部分类 |
-| **C3-Step 2** | **多轮验证** | 🔄 进行中 | 4工具验证(NPC+SMARTS+ClassyFire+Opus文献), ~248个错误已发现, 修正中 |
-| C3-Step 3 | 按类别聚合预测 | ⏳ | |
-| C3-Step 4 | 评估与分析 | ⏳ | |
+| **C3-Step 2** | **多轮验证+修正** | ✅ 已完成 | v5: 5优先级管线(P1 Gold+P2 NPC Superclass+P4 AA SMARTS), confirmed 1,773(83.4%)/review 262(12.3%)/other 90(4.2%), 60多标签(2.8%), 150抽检~89%, Codex 8轮+3轮抽检 |
+| **C3-Step 3** | **352 review/other 全量Agent验证** | ✅ 已完成 | v6 FINAL: 20批Sonnet Agent文献搜索+Codex审核, 97升级confirmed+255确认OTHER, review 262→0, confirmed 1,773→1,870(88.0%), other 90→255(12.0%), 多标签60→63 |
+| C3-Step 4 | 按类别聚合预测 | ⏳ | 酶序列 → ESM → MLP → 7-sigmoid → BCEWithLogitsLoss |
+| C3-Step 5 | 评估与分析 | ⏳ | |

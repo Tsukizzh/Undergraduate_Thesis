@@ -1,7 +1,7 @@
 # Session Log: C3-Step 5 底物分类与多轮验证
 
-> **日期**: 2026-03-27 ~ 2026-03-29
-> **状态**: ✅ 完成。2,125 化合物 → 7+1 类多标签分类，三档系统（auto/review/other），50 抽检 **96% 准确率**
+> **日期**: 2026-03-27 ~ 2026-03-31
+> **状态**: ✅ v6 FINAL。2,125 化合物 → 7+1 类多标签分类，352 review/other 全量 Agent 文献验证 → confirmed 1,870 (88.0%) / other 255 (12.0%) / review 0
 > **最终文件**: `data/05_底物分类/substrate_multilabel_FINAL.csv`
 
 ---
@@ -590,3 +590,150 @@ Codex 判断 87-90% 是纯自动化天花板。建议改为严格 auto + review 
 | `scripts/05_底物分类/classify_multilabel.py` | 三档分类脚本（auto/review/other，Codex 7 轮审核） |
 | `sessions/05_底物分类与验证/literature_definitions/` | 7 类文献定义（01_steroid ~ 07_polyketide） |
 | `sessions/05_底物分类与验证/literature_survey.md` | P450 底物类别预测文献调研综述（60 篇） |
+
+---
+
+## 十、最终版本 v5（2026-03-30）
+
+> 经 8 轮 Codex 审核 + 3 轮 150 样本抽检后的最终定稿。
+
+### 10.1 最终分类管线（5 优先级层）
+
+| 优先级 | 名称 | 方法 | 说明 |
+|--------|------|------|------|
+| **P1 Gold** | 精确 SMILES 匹配 | NPClassifier 训练集（78K 化合物）精确命中，通过 **Superclass**（非 Pathway）映射 | Superclass 70 类 vs Pathway 7 类，映射更精确 |
+| **P2 NPC Superclass** | NPC Superclass 映射 | `SUPERCLASS_TO_LABELS` 字典覆盖全部 70 个 NPC superclass | 主力分类层，76.5% 标签来自此层 |
+| **P3 NPC Pathway** | NPC Pathway fallback | 有 pathway 但无 superclass → 降级为 review | 极少数情况 |
+| **P4 Amino_acid SMARTS** | 氨基酸骨架检测 | 检测完整 α-氨基酸骨架（NH2-CH-COOH） | 其他 SMARTS 检测器因 75% 错误率已移除 |
+| **P5 Other** | 默认 | 无任何分类证据 | — |
+
+### 10.2 关键修正规则（v5 新增/修改，含文献/Codex 验证）
+
+| # | 修正 | 原因 |
+|---|------|------|
+| 1 | NPC "Tryptophan alkaloid" + 完整 AA 骨架 → 重分类为 Amino_acid | P450 作用于底物时应按实际骨架分类，而非最终产物 |
+| 2 | NPC "Tryptophan alkaloid" + 肟基 → review | CYP79 中间体，尚非生物碱 |
+| 3 | NPC "Tryptophan alkaloid" + 极简分子（≤12 重原子, ≤2 环）→ review | 防止简单色氨酸衍生物被误标 |
+| 4 | NPC "Phenolic acids (C6-C1)" → review | C6-C1 ≠ C6-C3 苯丙素 |
+| 5 | NPC "Phenanthrenoids" → 从 Phenylpropanoid 映射中移除 | PAH，非苯丙素来源 |
+| 6 | NPC "Phenylpropanoids (C6-C3)" + 测量芳基链 <3C → review | 捕获 C6-C2 误分类 |
+| 7 | NPC "Naphthalenes" + Terpenoid 共标签 → 降级 Polyketide 为 review | 丹参酮类是二萜醌，非聚酮；纯萘类聚酮（如 Fonsecin B）保留（Codex 确认） |
+| 8 | NPC "Fatty acyl/ester" + 总碳数 <6 → review | 短链脂肪酸衍生物置信度不足 |
+| 9 | NPC "Terphenyls" → 映射到 Polyketide | 联苯合酶是 III 型 PKS |
+
+### 10.3 最终结果
+
+**总计**: 2,125 化合物
+
+| 指标 | 数值 |
+|------|------|
+| Confirmed labels (gold+auto) | 1,773 (83.4%) |
+| Review | 262 (12.3%) |
+| Other | 90 (4.2%) |
+| Multi-label | 60 (2.8%) |
+
+**类别分布**:
+
+| 类别 | 数量 |
+|------|------|
+| Terpenoid | 479 |
+| Amino_acid | 364 |
+| Fatty_acid | 266 |
+| Alkaloid | 235 |
+| Steroid | 211 |
+| Phenylpropanoid | 143 |
+| Polyketide | 127 |
+
+**标签来源占比**: P1 Gold 20.2%, P2 NPC Superclass 76.5%, P4 Amino_acid SMARTS 3.3%
+
+### 10.4 验证结果
+
+150 样本分 3 轮抽检，每轮独立 web/文献搜索并引用来源：
+
+| 轮次 | 结果 | 备注 |
+|------|------|------|
+| Round 1 | ~82-92% | 初始抽检 |
+| Round 2 | ~82-92% | 独立验证 |
+| Round 3 | ~82-92% | 最终确认 |
+| **综合** | **~89%** | 对比 NPC 论文 Superclass mAP=0.95（标准天然产物），我们在更难的 P450 底物（中间体/合成物/边界化合物）上达到 89% 可比 |
+
+### 10.5 关键文件
+
+| 文件 | 说明 |
+|------|------|
+| `scripts/05_底物分类/classify_multilabel.py` | 最终分类脚本（5 优先级层，Codex 8 轮审核） |
+| `data/05_底物分类/substrate_multilabel_FINAL.csv` | 最终输出（7+1 类多标签，2,125 条） |
+| `D:\EZSpecificity_Project\NPClassifier_dataset.tsv` | Gold standard（78,336 化合物 NPC 训练集） |
+
+### 10.6 下一步
+
+进入 Stage 1 模型训练：酶序列 → ESM-2 嵌入 → MLP → 7-sigmoid → BCEWithLogitsLoss
+
+---
+
+## 十一、352 review/other 全量 Agent 验证 → v6 FINAL（2026-03-31）
+
+### 11.1 背景
+
+v5 遗留 262 个 review + 90 个 other = 352 个未确认化合物。决定通过全量 Agent 文献验证彻底消除 review。
+
+### 11.2 方法
+
+- **20 批 Sonnet Agent**，每批 ~18 个化合物
+- 每个化合物由 Agent 执行 WebSearch 搜索 PubChem/ChEBI/Wikipedia/文献，确认生物合成来源和化学分类
+- Agent 结果提交 Codex 审核，确保一致性
+- 结果保存：`data/05_底物分类/review_agent_results_v2.json`
+
+### 11.3 红线规则
+
+| 规则 | 说明 |
+|------|------|
+| PAH → OTHER | 多环芳烃无天然产物来源 |
+| 合成药 → OTHER | 纯合成药物（非天然产物衍生） |
+| 卤代苯 → OTHER | 工业卤化产物 |
+| 核苷/糖 → OTHER | 初级代谢物，不属于 7 类天然产物 |
+| CYP79 醛肟 → Amino_acid | 生物合成来源原则 |
+| 奥赛林酸家族 → Polyketide | III 型 PKS 来源 |
+| 茉莉酰-氨基酸偶联物 → Fatty_acid,Amino_acid | 双标签 |
+
+### 11.4 结果
+
+- **97 个化合物**从 review/other 升级为 confirmed 标签
+- **255 个化合物**确认为 OTHER（合成药、卤代苯、PAH、简单分子、核苷、糖等）
+- **Review 262 → 0**（全部解决）
+
+### 11.5 v6 最终数据集
+
+**总计**: 2,125 化合物
+
+| 指标 | v5 | v6 | 变化 |
+|------|-----|-----|------|
+| Confirmed (gold+auto) | 1,773 (83.4%) | **1,870 (88.0%)** | +97 |
+| Review | 262 (12.3%) | **0 (0%)** | -262 |
+| Other | 90 (4.2%) | **255 (12.0%)** | +165 |
+| Multi-label | 60 (2.8%) | **63** | +3 |
+
+**类别分布（v6）**:
+
+| 类别 | v5 | v6 | 变化 |
+|------|-----|-----|------|
+| Terpenoid | 479 | **484** | +5 |
+| Amino_acid | 364 | **388** | +24 |
+| Fatty_acid | 266 | **278** | +12 |
+| Alkaloid | 235 | **251** | +16 |
+| Steroid | 211 | **211** | 0 |
+| Phenylpropanoid | 143 | **176** | +33 |
+| Polyketide | 127 | **137** | +10 |
+
+### 11.6 工作量
+
+| 项目 | 数量 |
+|------|------|
+| Agent 批次 | 20 批 |
+| 化合物覆盖 | 352/352 = 100% |
+| Codex 审核 | 每批 1 轮 |
+| Web 搜索 | ~700+ 次 |
+
+### 11.7 下一步
+
+进入 Stage 1 模型训练：酶序列 → ESM-2 嵌入 → MLP → 7-sigmoid → BCEWithLogitsLoss
