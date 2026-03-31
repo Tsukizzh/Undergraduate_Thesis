@@ -1,3 +1,9 @@
+# Claude Code 配置文件（不上传）
+/CLAUDE.md
+
+# NPClassifier 参考数据（大文件，不上传）
+**/05_底物分类/reference/
+
 # 大文件目录（不上传）- 只匹配根目录
 /data/
 /saved_model/
