@@ -1,7 +1,7 @@
 # Path C：P450 专属模型训练 — 计划与进度
 
 > **创建日期**: 2026-03-19
-> **当前状态**: C2 Phase 8 EXP001 ✅ (Test AUC=0.7730) | C3 底物分类 ✅ v6 FINAL (352 review全量Agent验证, 1870确认88.0%/255 other 12.0%/0 review) → 模型训练待启动
+> **当前状态**: C2 Phase 8 EXP001 ✅ (Test AUC=0.7730) | C3 底物分类 ✅ v6 FINAL | **Step 06 EXP002a Fe/HEM ✅ (Test AUC=0.782, +0.009)**
 > **前置条件**: Path B Step 1-10 全部完成，legacy_bug 基线 Test AUC=0.7244 > 论文 0.7198
 
 ---
@@ -37,12 +37,14 @@ Path C
 │   ├── Phase 6-7: 对接+特征生成 → 47,510可用对
 │   └── Phase 8: EXP001 ✅ random_split Test AUC=0.7730
 │
-└── C3_P450专属模型训练 🔄 模型训练待启动
-    ├── Step 1: 底物分类 ✅ (NPClassifier 15类→7+1类多标签)
-    ├── Step 2: 多轮验证+修正 ✅ (v5, 5优先级管线, 150抽检~89%, Codex 8轮)
-    ├── Step 3: 352 review/other 全量Agent验证 ✅ (v6 FINAL, 20批Sonnet Agent文献搜索+Codex审核, 97升级+255确认OTHER, review→0)
-    ├── Step 4: 按类别聚合预测 ⏳ (酶序列→ESM→MLP→7-sigmoid→BCEWithLogitsLoss)
-    └── Step 5: 其他split训练 + 评估 ⏳
+└── C3_P450专属模型训练 🔄
+    ├── Step 05: 底物分类 ✅ v6 FINAL (2125化合物, 1870确认/255 other)
+    ├── Step 06: Fe/血红素编码 ✅ EXP002a (Test AUC=0.782, vs EXP001=0.773, +0.009)
+    ├── Step 07: 15Å口袋消融 ⏳
+    ├── Step 08: 6A15模板重预测结构 ⏳
+    ├── Step 09: 底物类别辅助MLP ⏳
+    ├── Step 10: 序列<40%相似度划分 ⏳
+    └── Step 11-12: 负样本验证 + 距离选构象 ⏳
 ```
 
 ---

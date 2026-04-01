@@ -6,7 +6,7 @@
 
 EZSpecificity 是一个基于交叉注意力机制的 SE(3)-等变图神经网络，用于预测酶-底物特异性（Nature 2025）。本项目专注于 P450 细胞色素酶家族的特异性研究，系统性地评估、诊断并改进模型在 P450 家族上的表现。
 
-## 最新进展（2026-03-31）
+## 最新进展（2026-04-01）
 
 ### 路径C：P450专属模型训练
 
@@ -14,6 +14,7 @@ EZSpecificity 是一个基于交叉注意力机制的 SE(3)-等变图神经网�
 - 5个数据库（RCSB + ESIBank + P450Rdb + PlantP450DB + PCPD）→ 4,751 正样本、1,622 酶、2,125 化合物
 - 50,180 对接、47,510 可用对（特征完整）
 - **EXP001 random_split: Val AUC=0.7544, Test AUC=0.7730**（4×RTX4090 DDP, 49分钟）
+- **EXP002a Fe/HEM编码: Val AUC=0.7784, Test AUC=0.7816**（加入血红素Fe原子, feature_dim 28→31, +0.009）
 
 **C3 P450专属模型训练**：
 
@@ -24,7 +25,10 @@ EZSpecificity 是一个基于交叉注意力机制的 SE(3)-等变图神经网�
 | 3 | fixed 基线 + dropout 消融 | Test AUC=0.7060，dropout 未迁移 | ✅ |
 | 4 | P450 数据集从头训练 EXP001 | **Test AUC=0.7730**（vs ESIBank 0.638 → +0.135） | ✅ |
 | 5 | 底物多标签分类 v6 FINAL | 2,125→1,870 confirmed(88.0%)+255 other(12.0%), P1-P5管线+9校正+352 Agent文献review, **~89%准确率** | ✅ |
-| 6 | 阶段1模型训练（酶序列→底物类别） | 酶序列→ESM→MLP→7-sigmoid→BCEWithLogitsLoss | ⏳ |
+| 6 | Fe/血红素编码 EXP002a | **Test AUC=0.7816**（vs EXP001=0.7730, +0.009）, feature_dim 28→31 | ✅ |
+| 7 | 15Å口袋消融 | 口袋截距 10Å → 15Å | ⏳ |
+| 8 | 6A15模板重预测结构 | AF2+P450模板 | ⏳ |
+| 9 | 底物类别辅助MLP | 酶序列→底物化学类别预测 | ⏳ |
 
 **Step 5 底物分类详情 (v6 FINAL)**：
 - 采用 NPClassifier 论文的多标签方案（sigmoid + BCE + 0.5 阈值 + DAG 结构）
@@ -38,6 +42,7 @@ EZSpecificity 是一个基于交叉注意力机制的 SE(3)-等变图神经网�
 0.638 (论文模型, ESIBank P450 内部)
   → +0.086 → 0.7244 (ESIBank AllSplit 从头训练)
     → +0.049 → 0.7730 (P450 专属数据集从头训练)
+      → +0.009 → 0.7816 (Fe/血红素编码 EXP002a)
 ```
 
 ### 路径A：模型评估 ✅ 已完成
@@ -89,9 +94,9 @@ EZSpecificity_Project/
 │   │   ├── PathC_2026-03-19_P450专属模型训练/
 │   │   │   ├── C1_论文基线训练与参数调整/     # ✅ AllSplit/fixed/dropout
 │   │   │   ├── C2_P450数据集构建/             # ✅ Phase 1-8, EXP001 Test=0.7730
-│   │   │   ├── C3_P450专属模型训练/           # ✅ 底物分类v6 FINAL(88.0%), 模型训练待启动
-│   │   │   │   ├── sessions/01~05/           # 5个实验的summary
-│   │   │   │   ├── results/01~04/            # 各实验结果+checkpoints
+│   │   │   ├── C3_P450专属模型训练/           # Step 06 Fe/HEM ✅ (Test AUC=0.782)
+│   │   │   │   ├── sessions/01~06/           # 6个实验的summary
+│   │   │   │   ├── results/04~06/            # 各实验结果+checkpoints
 │   │   │   │   ├── data/05_底物分类/          # 分类CSV+API缓存
 │   │   │   │   └── scripts/05_底物分类/       # 分类脚本
 │   │   │   └── PathC_计划与进度.md
@@ -128,7 +133,7 @@ EZSpecificity_Project/
 |------|------|:----:|----------|
 | **A** | 用PDB实验结构评估模型 | ✅ 已完成 | AUC-ROC 0.6636 |
 | **B** | P450数据集构建+基线训练 | ✅ 全部完成 | **Test AUC=0.7244** > 论文 0.7198 |
-| **C** | P450专属模型训练 | 🔄 C3 底物分类 ✅ v6 FINAL, 模型训练待启动 | C2 EXP001 **Test AUC=0.7730**, C3 底物7类多标签(88.0% confirmed, ~89%准确率) |
+| **C** | P450专属模型训练 | 🔄 C3 Step 06 ✅ | EXP001 Test=0.7730 → **EXP002a Fe/HEM Test=0.7816 (+0.009)**, 底物分类v6 FINAL(88.0%) |
 | D | 区域选择性预测 | ⏳ 待定 | 数据源: S3反应SMILES(3,352条) + S9反应图片(857张) |
 
 ## 路径B详细进展（Step 1-9）
