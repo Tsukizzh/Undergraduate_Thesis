@@ -15,6 +15,8 @@ EZSpecificity 是一个基于交叉注意力机制的 SE(3)-等变图神经网�
 - 50,180 对接、47,510 可用对（特征完整）
 - **EXP001 random_split: Val AUC=0.7544, Test AUC=0.7730**（4×RTX4090 DDP, 49分钟）
 - **EXP002a Fe/HEM编码: Val AUC=0.7784, Test AUC=0.7816**（加入血红素Fe原子, feature_dim 28→31, +0.009）
+- **EXP002b 调参: Test AUC=0.7889**（lr=4e-4, warmup=12, wd=1e-5）
+- **EXP003 残基几何特征: Test AUC=0.7914**（φ/ψ/χ1角度→EGNN, feature_dim 31→37, +0.0025, EnzymeCAGE启发）
 
 **C3 P450专属模型训练**：
 
@@ -26,9 +28,9 @@ EZSpecificity 是一个基于交叉注意力机制的 SE(3)-等变图神经网�
 | 4 | P450 数据集从头训练 EXP001 | **Test AUC=0.7730**（vs ESIBank 0.638 → +0.135） | ✅ |
 | 5 | 底物多标签分类 v6 FINAL | 2,125→1,870 confirmed(88.0%)+255 other(12.0%), ~89%准确率 | ✅ |
 | 6 | Fe/血红素编码 EXP002a | **Test AUC=0.7816**（+0.009）, feature_dim 28→31 | ✅ |
-| EXP002b | 调参(lr=4e-4, warmup=12, wd=1e-5) | 训练中 | 🔄 |
-| **13** | **⭐残基级几何特征(φ/ψ/χ1→EGNN)** | **feature_dim 31→37, EnzymeCAGE启发** | ⏳ |
-| **14** | **⭐双尺度结构编码(残基级GNN)** | **预测头7→8向量, 依赖Step 13** | ⏳ |
+| EXP002b | 调参(lr=4e-4, warmup=12, wd=1e-5) | **Test AUC=0.7889** | ✅ |
+| **EXP003** | **⭐残基几何特征 φ/ψ/χ1 (Step 13)** | **Test AUC=0.7914** (+0.0025), AUPR=0.3814, EnzymeCAGE启发 | ✅ |
+| **14** | **⭐双尺度结构编码(残基级GNN)** | Step 13已验证有效, 预测头7→8向量 | ⏳ |
 
 **架构创新方向（EnzymeCAGE启发）**：
 - **Step 13**：从口袋PDB提取残基级几何特征（骨架二面角φ/ψ + 侧链扭转角χ1），sin/cos编码后拼接到EGNN节点特征。EGNN代码不动，改动模式与Fe/HEM编码一致
