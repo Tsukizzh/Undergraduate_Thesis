@@ -6,7 +6,27 @@
 
 EZSpecificity 是一个基于交叉注意力机制的 SE(3)-等变图神经网络，用于预测酶-底物特异性（Nature 2025）。本项目专注于 P450 细胞色素酶家族的特异性研究，系统性地评估、诊断并改进模型在 P450 家族上的表现。
 
-## 最新进展（2026-04-13）
+## 最新进展（2026-04-14）
+
+### 🔄 Fixed 基线系列重跑中（三个实验单变量 ablation）
+
+用户决定放弃 EXP002b 的 lr tuning 变体（因为 EXP003 训练配方已包含），只跑 EXP001_fixed 和 EXP002a_fixed，**全部用 EXP003_fixed 的训练配方**，这样三个实验构成极干净的 feature_dim 单变量对比：
+
+| 实验 | feature_dim | 状态 | 训练配方 |
+|---|---|---|---|
+| EXP001_fixed | **28**（bare baseline） | ⏳ 待启动 | lr=4e-4, warmup=12, wd=1e-5, bs=88, 4×5090 |
+| EXP002a_fixed | **31**（+Fe/HEM/is_hetero） | 🔄 训练中 (2026-04-14 01:51) | 同上 |
+| EXP003_fixed | **37**（+φ/ψ/χ1 残基几何） | ✅ Test AUC=**0.8943** | 同上 |
+
+**准备工作**：
+- `pt_cache_fixed/`（1.1M overlay）和 `pt_cache_heme_fixed/`（808K overlay）构建完成，单脚本 `fix_cache_overlay.py` 支持两种布局（per-sample + shard-only）
+- 5 项端到端数据验证全部通过（orphan 过滤正确、LMDB remap 字节相等、flatbin 匹配 fixed LMDB）
+- PL 1.x → PL 2.x 代码迁移：11 个补丁点（`validation_epoch_end`→`on_validation_epoch_end`、`optimizer_step` 签名、`precision="16-mixed"` 等），codex 两轮审查通过
+- 用户明确要求严格复用 EXP003_fixed 的训练参数（bs=88, devices=4, workers=6），不做任何"优化"
+
+---
+
+## 上一阶段（2026-04-13）
 
 ### ⚠️ LMDB 对齐 Bug 修复 + EXP003_fixed
 

@@ -1,8 +1,10 @@
 # Path C：P450 专属模型训练 — 计划与进度
 
 > **创建日期**: 2026-03-19
-> **当前状态**: C2 EXP001 ✅ (0.7730) | C3 底物分类 ✅ | EXP002a ✅ (0.782) | EXP002b ✅ (0.7889) | EXP003 ✅ (0.7914) | **⚠️ EXP003_fixed ✅ Test AUC=0.8943（LMDB对齐bug修复后，2026-04-13）**
-> **重要**: EXP001 起所有实验均在 LMDB 对齐 bug 下跑出，绝对数值仅供横向对比。EXP003_fixed 是首个正确对齐的基线，详见 `C3_.../sessions/09_双尺度结构编码_EXP004/session_log.md` 第六节
+> **当前状态**: EXP003_fixed ✅ (0.8943) | **EXP002a_fixed 🔄 训练中 (2026-04-14)** | EXP001_fixed ⏳ 待启动
+> **完整修复后基线 ablation**: EXP001_fixed (28) → EXP002a_fixed (31 +Fe/HEM) → EXP003_fixed (37 +残基几何), 统一训练配方 (lr=4e-4, warmup=12, wd=1e-5)
+> **EXP002b_fixed 已废弃**: EXP003 配方已包含 EXP002b 同款 lr tuning
+> **重要**: EXP001/002a/002b/003 原版都在 LMDB 对齐 bug 下跑出, 绝对数值仅供横向对比。fixed 系列是首套正确对齐的基线。详见 `C3_.../sessions/09_双尺度结构编码_EXP004/session_log.md` 第六/七节
 > **前置条件**: Path B Step 1-10 全部完成，legacy_bug 基线 Test AUC=0.7244 > 论文 0.7198
 
 ---
