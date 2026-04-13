@@ -112,3 +112,9 @@ tmp_*
 **/C2_*/data/structures/colabfold_predict/
 **/C2_*/downloads/RCSB/PDB/
 **/C2_*/downloads/PCPD/PDB/
+
+# External cloned repository (EnzymeCAGE reference)
+毕业设计/EnzymeCAGE/
+
+# Local project backup archive (17GB)
+/EZSpecificity_backup.tar.gz

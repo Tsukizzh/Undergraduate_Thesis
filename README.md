@@ -6,17 +6,32 @@
 
 EZSpecificity 是一个基于交叉注意力机制的 SE(3)-等变图神经网络，用于预测酶-底物特异性（Nature 2025）。本项目专注于 P450 细胞色素酶家族的特异性研究，系统性地评估、诊断并改进模型在 P450 家族上的表现。
 
-## 最新进展（2026-04-03）
+## 最新进展（2026-04-13）
+
+### ⚠️ LMDB 对齐 Bug 修复 + EXP003_fixed
+
+进入 EXP004 阶段 1 审查 `pt_cache_geom` 构建流程时，发现 `phase7_step2_esm.py` 内的严重 bug：
+`enzymes.lmdb` 的 key 被压缩为"第 N 个通过过滤的酶"而非 CSV 行号，导致 ~95.8% 样本拿到错配的酶特征。EXP001/EXP002a/EXP002b/EXP003 全部在此 bug 下运行。
+
+**非破坏性修复**（fix_enzyme_lmdb → fix_flatbin_build → fix_geom_cache 三阶段新建 `*_fixed` 文件）后：
+
+| 指标 | EXP003 (原) | **EXP003_fixed** | Δ |
+|---|---|---|---|
+| Test AUC-ROC | 0.7914 | **0.8943** | **+0.1029** |
+| Test AUPR | 0.3814 | 0.5358 | +0.1544 |
+
+一次训练就从 0.7914 跳到 0.8943，远超之前全部优化叠加的幅度。EXP001→EXP003 的提升曲线需要在 fixed cache 上重建才能作为论文结果。详见 `C3_.../sessions/09_双尺度结构编码_EXP004/session_log.md` 第六节。
 
 ### 路径C：P450专属模型训练
 
 **C2 P450全面数据集构建** ✅ Phase 1-8 全部完成：
 - 5个数据库（RCSB + ESIBank + P450Rdb + PlantP450DB + PCPD）→ 4,751 正样本、1,622 酶、2,125 化合物
 - 50,180 对接、47,510 可用对（特征完整）
-- **EXP001 random_split: Val AUC=0.7544, Test AUC=0.7730**（4×RTX4090 DDP, 49分钟）
-- **EXP002a Fe/HEM编码: Val AUC=0.7784, Test AUC=0.7816**（加入血红素Fe原子, feature_dim 28→31, +0.009）
-- **EXP002b 调参: Test AUC=0.7889**（lr=4e-4, warmup=12, wd=1e-5）
-- **EXP003 残基几何特征: Test AUC=0.7914**（φ/ψ/χ1角度→EGNN, feature_dim 31→37, +0.0025, EnzymeCAGE启发）
+- **EXP001 random_split: Val AUC=0.7544, Test AUC=0.7730**（4×RTX4090 DDP, 49分钟；⚠️ LMDB bug 未修）
+- **EXP002a Fe/HEM编码: Val AUC=0.7784, Test AUC=0.7816**（⚠️ LMDB bug 未修）
+- **EXP002b 调参: Test AUC=0.7889**（⚠️ LMDB bug 未修）
+- **EXP003 残基几何特征: Test AUC=0.7914**（⚠️ LMDB bug 未修）
+- **⭐ EXP003_fixed: Test AUC=0.8943**（LMDB 对齐 bug 修复后，2026-04-13，首个正确基线）
 
 **C3 P450专属模型训练**：
 
@@ -41,10 +56,11 @@ EZSpecificity 是一个基于交叉注意力机制的 SE(3)-等变图神经网�
 ```
 0.638 (论文模型, ESIBank P450 内部)
   → +0.086 → 0.7244 (ESIBank AllSplit 从头训练)
-    → +0.049 → 0.7730 (P450 专属数据集从头训练)
-      → +0.009 → 0.7816 (Fe/血红素编码 EXP002a)
-        → ??? → EXP002b 调参 (训练中)
-        → ??? → Step 13 残基级几何特征 (待启动)
+    → +0.049 → 0.7730 (P450 专属数据集从头训练, ⚠️ LMDB bug)
+      → +0.009 → 0.7816 (Fe/血红素编码 EXP002a, ⚠️)
+        → +0.007 → 0.7889 (EXP002b 调参, ⚠️)
+          → +0.003 → 0.7914 (EXP003 残基几何, ⚠️)
+            → +0.103 → 0.8943 (⭐ EXP003_fixed, LMDB bug 修复后真实基线)
 ```
 
 ### 路径A：模型评估 ✅ 已完成

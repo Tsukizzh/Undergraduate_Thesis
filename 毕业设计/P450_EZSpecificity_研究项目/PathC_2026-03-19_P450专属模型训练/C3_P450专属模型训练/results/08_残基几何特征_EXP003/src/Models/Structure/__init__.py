@@ -1,0 +1,1 @@
+from Models.Structure.structure import Graph

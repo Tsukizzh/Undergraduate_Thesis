@@ -1,0 +1,71 @@
+# EXP003: Residue-level geometric features (phi/psi/chi1)
+# Based on EXP002b (Test AUC=0.7889), adding 6-D angle features:
+#   feature_dim: 31 -> 37 (sin/cos of phi, psi, chi1)
+# Training hyperparameters: same as EXP002b (lr=4e-4, warmup=12, wd=1e-5)
+
+num_cpus: 0
+num_gpus: 1
+root_dir: /root/autodl-tmp/EZSpecificity
+log: True
+seed: 3407
+n_runs: 1
+
+data:
+  tag: EXP003-residue-geometry
+  representer: structure_sequence
+  full_data: False
+  fake_sequence_ratio: 0
+  sample_weight:
+    - 1.0
+    - 1.0
+  batch_size: 48
+  max_substrate_length: 280
+  max_enzyme_length: 1450
+  features:
+    - 'morgan'
+    - 1024
+    - 'grover_mean'
+    - 4885
+  atom_features:
+    - 'grover'
+    - 2400
+
+transform:
+  dist_noise: True
+  cutoff: 10
+  num_r_gaussian: 32
+  k: 48
+
+model:
+  name: 'structure_sequence'
+  use_gnn: True
+  hidden_dim: 128
+  feature_norm: False
+  header:
+    act_fn: 'relu'
+    norm: True
+    num_layers: 3
+  graph:
+    name: egnn
+    hidden_dim: 128
+    act_fn: relu
+    num_layers: 3
+    attention: True
+    residual: True
+    norm: layer
+    mode: complex
+  cross_attention:
+    n_head: 8
+    dropout: 0.9
+
+training:
+  gradient_clip_val: 8
+  optimizer: 'adamW'
+  warmup_epochs: 12
+  lr: 4.0e-04
+  weight_decay: 1.0e-05
+  min_lr: 5.0e-06
+  sched_factor: 0.5
+  sched_patience: 8
+  val_frequency: 1
+  accumulate_grad_batches: 1

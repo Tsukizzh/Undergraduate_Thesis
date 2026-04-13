@@ -1,0 +1,33 @@
+{
+  "checkpoint": "pt-EXP003_fixed-ep57-auc0.8891.ckpt",
+  "edge_mode": "fixed",
+  "dropout": 0.9,
+  "test_auc_roc": 0.894273,
+  "test_aupr": 0.535826,
+  "n_samples": 11108,
+  "n_positive": 993,
+  "n_negative": 10115,
+  "per_family": {
+    "0": {
+      "name": "brenda",
+      "auc_roc": 0.8942732593303894,
+      "aupr": 0.535826237494482,
+      "n_samples": 11108,
+      "n_positive": 993
+    },
+    "0-complex": {
+      "name": "0-complex",
+      "auc_roc": 0.8942732593303894,
+      "aupr": 0.535826237494482,
+      "n_samples": 11108,
+      "n_positive": 993
+    },
+    "complex": {
+      "name": "complex",
+      "auc_roc": 0.8942732593303894,
+      "aupr": 0.535826237494482,
+      "n_samples": 11108,
+      "n_positive": 993
+    }
+  }
+}

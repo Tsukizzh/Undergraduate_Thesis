@@ -1,0 +1,33 @@
+{
+  "checkpoint": "pt-EXP003_residue_geometry-ep58-auc0.7850.ckpt",
+  "edge_mode": "fixed",
+  "dropout": 0.9,
+  "test_auc_roc": 0.791387,
+  "test_aupr": 0.381387,
+  "n_samples": 11924,
+  "n_positive": 1109,
+  "n_negative": 10815,
+  "per_family": {
+    "0": {
+      "name": "brenda",
+      "auc_roc": 0.7913871167979216,
+      "aupr": 0.3813867321538828,
+      "n_samples": 11924,
+      "n_positive": 1109
+    },
+    "0-complex": {
+      "name": "0-complex",
+      "auc_roc": 0.7913871167979216,
+      "aupr": 0.3813867321538828,
+      "n_samples": 11924,
+      "n_positive": 1109
+    },
+    "complex": {
+      "name": "complex",
+      "auc_roc": 0.7913871167979216,
+      "aupr": 0.3813867321538828,
+      "n_samples": 11924,
+      "n_positive": 1109
+    }
+  }
+}
