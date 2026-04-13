@@ -1,0 +1,33 @@
+{
+  "checkpoint": "pt-lr_tuning-ep70-auc0.7809.ckpt",
+  "edge_mode": "fixed",
+  "dropout": 0.9,
+  "test_auc_roc": 0.788873,
+  "test_aupr": 0.357483,
+  "n_samples": 11924,
+  "n_positive": 1109,
+  "n_negative": 10815,
+  "per_family": {
+    "0": {
+      "name": "brenda",
+      "auc_roc": 0.788873200273307,
+      "aupr": 0.35748275082259784,
+      "n_samples": 11924,
+      "n_positive": 1109
+    },
+    "0-complex": {
+      "name": "0-complex",
+      "auc_roc": 0.788873200273307,
+      "aupr": 0.35748275082259784,
+      "n_samples": 11924,
+      "n_positive": 1109
+    },
+    "complex": {
+      "name": "complex",
+      "auc_roc": 0.788873200273307,
+      "aupr": 0.35748275082259784,
+      "n_samples": 11924,
+      "n_positive": 1109
+    }
+  }
+}
