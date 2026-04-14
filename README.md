@@ -6,23 +6,40 @@
 
 EZSpecificity 是一个基于交叉注意力机制的 SE(3)-等变图神经网络，用于预测酶-底物特异性（Nature 2025）。本项目专注于 P450 细胞色素酶家族的特异性研究，系统性地评估、诊断并改进模型在 P450 家族上的表现。
 
-## 最新进展（2026-04-14）
+## 最新进展（2026-04-15）
 
-### 🔄 Fixed 基线系列重跑中（三个实验单变量 ablation）
+### 🎉 AllFix 系列：GROVER+ESM 双 bug 修复后的真实基线
 
-用户决定放弃 EXP002b 的 lr tuning 变体（因为 EXP003 训练配方已包含），只跑 EXP001_fixed 和 EXP002a_fixed，**全部用 EXP003_fixed 的训练配方**，这样三个实验构成极干净的 feature_dim 单变量对比：
+继 2026-04-13 发现 ESM LMDB 对齐 bug 后，2026-04-14 深夜进一步发现 **GROVER LMDB 同类错位 bug**（`*[H]` 崩溃后 `grover_substrates.csv` 直接删行未补位，GROVER 顺序计数器 key 从 Substrate Index 8 起全部错位 1 格，99.6% 底物训练时拿到邻位的 GROVER 嵌入）。
 
-| 实验 | feature_dim | 状态 | 训练配方 |
-|---|---|---|---|
-| EXP001_fixed | **28**（bare baseline） | ⏳ 待启动 | lr=4e-4, warmup=12, wd=1e-5, bs=88, 4×5090 |
-| EXP002a_fixed | **31**（+Fe/HEM/is_hetero） | 🔄 训练中 (2026-04-14 01:51) | 同上 |
-| EXP003_fixed | **37**（+φ/ψ/χ1 残基几何） | ✅ Test AUC=**0.8943** | 同上 |
+**修复策略**（非破坏性）：
+- GROVER：纯文件层面 rekey LMDB（`fix_grover_lmdb.py`，秒级完成，无需重跑 GROVER 模型）
+- 全链路重建 `pt_cache_bare_allfix / pt_cache_heme_allfix / pt_cache_geom_allfix`（每套两版：natural 保留各自 orphan 过滤；**unified** 取三套 sample_id 交集，支持严格 feature_dim 单变量消融）
+- Unified 样本集：train 22,083 / val 11,008 / test 11,000（三套缓存完全对齐，sample_id 一一对应）
+- 5 阶段 × 多轮 codex 深度验证 + 实际字节级比对（raw LMDB / flatbin / 运行时 PtCacheDataset 全部零 mismatch）
 
-**准备工作**：
-- `pt_cache_fixed/`（1.1M overlay）和 `pt_cache_heme_fixed/`（808K overlay）构建完成，单脚本 `fix_cache_overlay.py` 支持两种布局（per-sample + shard-only）
-- 5 项端到端数据验证全部通过（orphan 过滤正确、LMDB remap 字节相等、flatbin 匹配 fixed LMDB）
-- PL 1.x → PL 2.x 代码迁移：11 个补丁点（`validation_epoch_end`→`on_validation_epoch_end`、`optimizer_step` 签名、`precision="16-mixed"` 等），codex 两轮审查通过
-- 用户明确要求严格复用 EXP003_fixed 的训练参数（bs=88, devices=4, workers=6），不做任何"优化"
+**AllFix Unified 三实验结果**（北京服务器 4×RTX4090 DDP, bs=88, lr=4e-4, warmup=12, wd=1e-5, dropout=0.9）：
+
+| 实验 | feature_dim | 创新点 | **Test AUC** | Test AUPR | 状态 |
+|---|---|---|---|---|---|
+| EXP001_allfix_unified | **28** | bare baseline | **0.9320** | **0.6749** | ✅ ep43 best |
+| EXP002a_allfix_unified | **31** | +Fe/HEM/is_hetero | **0.9270** | 0.6300 | ✅ ep59 best |
+| EXP003_allfix_unified | **37** | +φ/ψ/χ1 残基几何 | 🔄 训练中 ep74+ | — | best Val=0.9183@ep62 |
+
+**关键发现（震撼）**：
+1. **bare baseline Test AUC 从 ~0.77 跳到 0.9320**，GROVER bug 的真实影响远大于 ESM bug（后者单独修复仅到 0.8943）
+2. **Fe/HEM 在修复后的干净数据上反而拉低 AUC 0.005**，此前 EXP002a > EXP001 的优势是 GROVER bug 在错位嵌入下对 Fe/HEM 特征的偶然补偿
+3. 残基几何（37 维）当前 Val AUC 低于 31 维和 28 维，结论待训练结束后定论
+4. **所有 EXP001-003 的原始 ablation 曲线全部作废**，feature_dim 单变量对比结论被反转
+
+**影响范围**：
+- 之前 EXP001(0.7730) → EXP002a(0.7816) → EXP002b(0.7889) → EXP003(0.7914) → EXP003_fixed(0.8943) 的全部数字仅能作 bug 污染下的相对参考
+- 真实基线从 bare 28 维开始即达 0.9320，后续 Step 13（残基几何）/ Step 14（双尺度结构编码）等创新方向需基于 allfix baseline 重新评估是否有增益空间
+- 3 套 natural（非 unified）变体的实验尚未启动，可作为最大数据量对比
+
+**详见**：
+- `毕业设计/P450_EZSpecificity_研究项目/PathC_2026-03-19_P450专属模型训练/C3_P450专属模型训练/sessions/09_双尺度结构编码_EXP004/GROVER对齐bug发现_2026-04-14.md`
+- `毕业设计/P450_EZSpecificity_研究项目/PathC_2026-03-19_P450专属模型训练/C3_P450专属模型训练/sessions/09_双尺度结构编码_EXP004/session_log.md`（allfix 5 阶段修复全记录）
 
 ---
 
@@ -76,11 +93,12 @@ EZSpecificity 是一个基于交叉注意力机制的 SE(3)-等变图神经网�
 ```
 0.638 (论文模型, ESIBank P450 内部)
   → +0.086 → 0.7244 (ESIBank AllSplit 从头训练)
-    → +0.049 → 0.7730 (P450 专属数据集从头训练, ⚠️ LMDB bug)
-      → +0.009 → 0.7816 (Fe/血红素编码 EXP002a, ⚠️)
+    → +0.049 → 0.7730 (P450 专属数据集从头训练, ⚠️ 双 LMDB bug)
+      → +0.009 → 0.7816 (Fe/HEM EXP002a, ⚠️)
         → +0.007 → 0.7889 (EXP002b 调参, ⚠️)
           → +0.003 → 0.7914 (EXP003 残基几何, ⚠️)
-            → +0.103 → 0.8943 (⭐ EXP003_fixed, LMDB bug 修复后真实基线)
+            → +0.103 → 0.8943 (EXP003_fixed, ESM bug 修)
+              → +0.038 → 0.9320 (⭐ EXP001_allfix_unified, ESM+GROVER 双修, bare 28 维)
 ```
 
 ### 路径A：模型评估 ✅ 已完成

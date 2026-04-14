@@ -624,3 +624,97 @@ PathC/P450/data/
 4. 更新所有文档（session log / MEMORY / README / 项目进度日志）
 5. git commit + push
 6. 回到 EXP004 Step 14 规划（双尺度结构编码）
+
+---
+
+## 八、GROVER 对齐 Bug 发现（2026-04-14 深夜）
+
+**⚠️ 重大中断**：EXP002a_fixed 训练过程中，用户追问"EXP003 的角度是否是对的酶"，深挖全链路审计意外发现 **GROVER LMDB 存在与 ESM 同类的对齐 bug**。
+
+### 8.1 触发
+
+用户关注点原本只是角度特征。我第一轮回答"只有 ESM 错位，结构通道（含角度）正确"——但用户要求实证验证。Codex 第一轮读代码时已基本定性，我随后用原子数做硬实证：**100% 的 LMDB key 原子数匹配 `grover_substrates.csv[N]`，精确断点落在 k=8**（`*[H]` 被删位置），Codex 二次复核判为 "effectively airtight"。
+
+### 8.2 Bug 本质
+
+`phase7_step5_grover.sh` 预处理时 `.dropna(subset=['Substrate_SMILES'])` 本应保留全部 2125 行，但实际 `grover_substrates.csv` 只有 2124 行——当时因 GROVER 在 `*[H]`（Substrate Index 8）上崩溃（MEMORY 里的 "Fixed `*[H]` index-out-of-bounds"），处理方式是**直接删行未补位**。GROVER 的 LMDB 用顺序计数器作 key，导致：
+
+```
+key 0..7       → Substrate Index 0..7      ✓
+key 8..2123    → Substrate Index 9..2124   ✗（错位 1 格）
+(key 2124 缺失)
+```
+
+**99.6% 的底物加载了错误的 GROVER 嵌入。**
+
+### 8.3 受影响实验
+
+| 实验 | ESM | GROVER |
+|---|---|---|
+| EXP001/002a/002b/003 | ❌ Bug 1 | ❌ Bug 2 |
+| EXP003_fixed (Test=0.8943) | ✅ | ❌ **未修** |
+| EXP002a_fixed (训练中) | ✅ | ❌ **未修** |
+
+**EXP003_fixed 的绝对数值仍带 GROVER 污染**。但 EXP003→EXP003_fixed 的 +0.1029 增量确实只是 ESM 修复贡献。
+
+### 8.4 完整记录
+
+详见独立文档：[GROVER对齐bug发现_2026-04-14.md](GROVER对齐bug发现_2026-04-14.md)
+
+该文档包含：
+- 完整数据链路（三份 CSV 词汇表 + 5 条特征管线 + pt_cache 装配）
+- 两次 Bug 的共同根源（压缩计数器 key 模式）
+- GROVER Bug 的硬证据（CSV 对齐 + 原子数 100% 匹配实证）
+- 修复方案 A/B（推荐 B：纯 rekey）
+- pt_cache 连锁重建计划
+- 教训与规则（禁用压缩计数器 key、Morgan 填零模式推广）
+
+### 8.5 待决策
+
+1. 是否立即停 EXP002a_fixed
+2. 方案 A 重跑 vs 方案 B rekey
+3. 修复后重跑顺序：EXP001_fixed → EXP002a_fixed → EXP003_fixed
+
+---
+
+## 九、AllFix 系列修复与执行（2026-04-15）
+
+### 9.1 决策
+
+- 方案 B（纯文件 rekey）执行
+- 中断 EXP002a_fixed，废弃 fixed 系列，改走 allfix 命名
+- 同时构建 natural（各自 orphan 过滤）和 unified（三套 sample_id 交集）两套 cache，natural 跑最大数据量，unified 跑严格 feature_dim ablation
+
+### 9.2 五阶段修复（每步多轮 codex + 字节级实证）
+
+1. **Phase 1 rekey LMDB** (`scratch/fix_grover_lmdb.py`)：规则 `new_int = old_int if old_int < 8 else old_int + 1`。Codex 关键点：`txn.put(overwrite=False)` 返回 False 不抛异常，必须 `assert ok`。字节级全扫 0/2116 + 0/8 mismatch。
+2. **Phase 2 rebuild flatbin** (`scratch/build_allfix_substrates.py`)：复用 `build_substrate_shards + convert_substrate_shards_to_flatbin`。Config 陷阱（codex 纠正）：`grover_path` / `morgan_path` 必须是 list 不是 str。全扫 2124×3 字节 0 mismatch。
+3. **Phase 3 indices** (`scratch/build_allfix_indices.py`)：生成 6 套 index.pt。Natural 保留各自 orphan 过滤（bare 22178 / heme 22384 / geom 22312 train），0 samples dropped（无样本用 Substrate Index 8）。Unified 取三套 sample_id 交集：train 22083 / val 11008 / test 11000。事先用 `check_sample_id_consistency.py` 验证三套 cache 的 sample_id 含义完全一致（0 disagreements）。
+4. **Phase 4 symlink dirs** (`scratch/build_allfix_dirs.py`)：建 6 个目录。Symlink 策略依 layout：bare（per-sample）symlink `samples/`；heme/geom（shard-only）symlink 所有 `graph_*.pt`。所有目录含 manifest 副本 + `enzymes/` 共享 symlink + `substrates/` 指向新 allfix flatbin。
+5. **Phase 5 端到端验证**：`verify_phase5_v3.py` 通过真实 `PtCacheDataset` 加载，确认 `protein_x.shape[-1]` 匹配预期 feature_dim（28/31/37）；`verify_final_sub9.py` 对 sub_id in [100, 1000] 验证 `sample == fixed_lmdb[sub_id] == True` 且 `sample == old_lmdb[sub_id] == False`。6 caches × 2 sub_ids 全通过。
+
+### 9.3 数据传输与实验骨架
+
+- 260MB 新文件通过 rsync 从 西北→北京（反向 pull，因 西北→北京 SSH 被阻）
+- `scratch/setup_allfix_experiments.py` 从 `_fixed` 实验 `cp -a` 派生 6 个 `_allfix{,_unified}` 目录，regex patch `run_train.sh` 路径与 `config.yml` data.tag
+
+### 9.4 结果（4×RTX4090 DDP, bs=88 eff=352, lr=4e-4, warmup=12, wd=1e-5, dropout=0.9）
+
+| 实验 | feature_dim | Best ep | **Test AUC** | Test AUPR | 备注 |
+|---|---|---|---|---|---|
+| EXP001_allfix_unified | 28 (bare) | ep43 | **0.9320** | **0.6749** | ✅ |
+| EXP002a_allfix_unified | 31 (+Fe/HEM) | ep59 | **0.9270** | 0.6300 | ✅ **-0.005** |
+| EXP003_allfix_unified | 37 (+φ/ψ/χ1) | 🔄 ep74+ | — | — | best Val=0.9183@ep62 |
+
+### 9.5 震撼发现
+
+1. **bare baseline 从 ~0.77 跳到 0.9320**，GROVER bug 单独贡献 +0.04（相对 EXP003_fixed=0.8943）。两个 LMDB bug 合计影响 +0.16。
+2. **Fe/HEM 在干净数据上反而掉点**。此前 EXP002a > EXP001 的优势完全是 GROVER 错位嵌入对 Fe 特征的偶然补偿；bug 修复后真实效果反转。
+3. **残基几何 37 维当前 Val AUC 低于 28/31 维**，EXP003 的 "+0.0025 增量" 也是 bug 污染产物，Step 13/14 的双尺度结构编码方向严重存疑。
+4. **EXP001-003 + EXP003_fixed 的整条 ablation 链全部作废**，feature_dim 单变量消融结论在干净数据上不成立。
+
+### 9.6 后续
+
+- 等 EXP003_allfix_unified 完成
+- 3 套 natural 变体（最大数据量）训练
+- 视最终结论决定 Step 14 是否继续，还是转向其他创新方向（dropout 扫、增广、Stage 2 多标签）

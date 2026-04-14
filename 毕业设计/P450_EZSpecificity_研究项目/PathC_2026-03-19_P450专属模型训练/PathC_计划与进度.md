@@ -1,10 +1,14 @@
 # Path C：P450 专属模型训练 — 计划与进度
 
 > **创建日期**: 2026-03-19
-> **当前状态**: EXP003_fixed ✅ (0.8943) | **EXP002a_fixed 🔄 训练中 (2026-04-14)** | EXP001_fixed ⏳ 待启动
-> **完整修复后基线 ablation**: EXP001_fixed (28) → EXP002a_fixed (31 +Fe/HEM) → EXP003_fixed (37 +残基几何), 统一训练配方 (lr=4e-4, warmup=12, wd=1e-5)
-> **EXP002b_fixed 已废弃**: EXP003 配方已包含 EXP002b 同款 lr tuning
-> **重要**: EXP001/002a/002b/003 原版都在 LMDB 对齐 bug 下跑出, 绝对数值仅供横向对比。fixed 系列是首套正确对齐的基线。详见 `C3_.../sessions/09_双尺度结构编码_EXP004/session_log.md` 第六/七节
+> **当前状态**: 🎉 **2026-04-15：AllFix 系列完成 2/3 — EXP001_allfix_unified Test=0.9320 / EXP002a_allfix_unified Test=0.9270 / EXP003_allfix_unified 🔄 训练中**
+> **AllFix 基线 ablation**（ESM+GROVER 双修后真实基线）：EXP001_allfix_unified (28 bare) → EXP002a_allfix_unified (31 +Fe/HEM) → EXP003_allfix_unified (37 +残基几何), 统一训练配方 (lr=4e-4, warmup=12, wd=1e-5, bs=88, dropout=0.9, 4×RTX4090 DDP)
+> **⚠️ 两层 LMDB Bug（均已修）**:
+> - **Bug 1 (ESM)**: 95.8% 样本错配酶特征，EXP003_fixed 首次修复（Test 0.7914→0.8943）
+> - **Bug 2 (GROVER)**: 99.6% 样本错配底物特征，2026-04-14 发现，2026-04-15 通过 `scratch/fix_grover_lmdb.py` 纯文件 rekey 修复
+> - **fixed 系列已废弃，allfix_unified 是首套可发表基线**
+> - **震撼反转**：bare baseline 0.9320 > Fe/HEM 0.9270，EXP001-003 的 feature_dim 单变量 ablation 结论全部作废
+> - 完整记录: [session_log.md 第九节](C3_P450专属模型训练/sessions/09_双尺度结构编码_EXP004/session_log.md) + [GROVER对齐bug发现_2026-04-14.md](C3_P450专属模型训练/sessions/09_双尺度结构编码_EXP004/GROVER对齐bug发现_2026-04-14.md)
 > **前置条件**: Path B Step 1-10 全部完成，legacy_bug 基线 Test AUC=0.7244 > 论文 0.7198
 
 ---
