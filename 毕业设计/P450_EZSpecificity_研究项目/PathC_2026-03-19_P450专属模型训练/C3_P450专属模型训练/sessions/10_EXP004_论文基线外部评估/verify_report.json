@@ -1,0 +1,414 @@
+{
+  "A_enzyme_mapping": {
+    "checks": [
+      {
+        "enzyme_id": 0,
+        "status": "OK",
+        "csv_len": 534,
+        "bin_len": 534
+      },
+      {
+        "enzyme_id": 1,
+        "status": "OK",
+        "csv_len": 523,
+        "bin_len": 523
+      },
+      {
+        "enzyme_id": 5,
+        "status": "OK",
+        "csv_len": 491,
+        "bin_len": 491
+      },
+      {
+        "enzyme_id": 10,
+        "status": "OK",
+        "csv_len": 629,
+        "bin_len": 629
+      },
+      {
+        "enzyme_id": 100,
+        "status": "OK",
+        "csv_len": 500,
+        "bin_len": 500
+      },
+      {
+        "enzyme_id": 500,
+        "status": "OK",
+        "csv_len": 511,
+        "bin_len": 511
+      },
+      {
+        "enzyme_id": 800,
+        "status": "OK",
+        "csv_len": 503,
+        "bin_len": 503
+      },
+      {
+        "enzyme_id": 1000,
+        "status": "OK",
+        "csv_len": 407,
+        "bin_len": 407
+      },
+      {
+        "enzyme_id": 1200,
+        "status": "OK",
+        "csv_len": 506,
+        "bin_len": 506
+      },
+      {
+        "enzyme_id": 1500,
+        "status": "OK",
+        "csv_len": 387,
+        "bin_len": 387
+      },
+      {
+        "enzyme_id": 1600,
+        "status": "OK",
+        "csv_len": 500,
+        "bin_len": 500
+      },
+      {
+        "enzyme_id": 1621,
+        "status": "OK",
+        "csv_len": 496,
+        "bin_len": 496
+      }
+    ],
+    "all_ok": true,
+    "sample_count": 12
+  },
+  "B_index_consistency": {
+    "array_lengths": {
+      "sample_ids": 7963,
+      "enzyme_ids": 7963,
+      "substrate_ids": 7963,
+      "graph_shards": 7963,
+      "graph_rows": 7963
+    },
+    "all_arrays_same_length": true,
+    "n_samples": 7963,
+    "leaked_blacklisted_enzyme_ids": 0,
+    "dtype_preserved": {
+      "sample_ids": true,
+      "enzyme_ids": true,
+      "substrate_ids": true,
+      "graph_shards": true,
+      "graph_rows": true
+    },
+    "unique_enzyme_ids_in_test": 1125,
+    "missing_enzyme_lookups": 0,
+    "unique_substrate_ids_in_test": 1991,
+    "missing_substrate_lookups": 0
+  },
+  "C_pt_dataset_load": {
+    "n_samples": 7963,
+    "tested": 17,
+    "all_ok": true,
+    "results": [
+      {
+        "idx": 0,
+        "enzyme_id": 93,
+        "in_blacklist": false,
+        "label": 0,
+        "nan_emb": false,
+        "nan_grover": false,
+        "nan_protein_x": false,
+        "protein_x_shape": [
+          356,
+          28
+        ],
+        "complex_edge_index_shape": [
+          2,
+          17088
+        ]
+      },
+      {
+        "idx": 1,
+        "enzyme_id": 437,
+        "in_blacklist": false,
+        "label": 0,
+        "nan_emb": false,
+        "nan_grover": false,
+        "nan_protein_x": false,
+        "protein_x_shape": [
+          358,
+          28
+        ],
+        "complex_edge_index_shape": [
+          2,
+          17184
+        ]
+      },
+      {
+        "idx": 2,
+        "enzyme_id": 477,
+        "in_blacklist": false,
+        "label": 0,
+        "nan_emb": false,
+        "nan_grover": false,
+        "nan_protein_x": false,
+        "protein_x_shape": [
+          209,
+          28
+        ],
+        "complex_edge_index_shape": [
+          2,
+          10032
+        ]
+      },
+      {
+        "idx": 204,
+        "enzyme_id": 996,
+        "in_blacklist": false,
+        "label": 1,
+        "nan_emb": false,
+        "nan_grover": false,
+        "nan_protein_x": false,
+        "protein_x_shape": [
+          330,
+          28
+        ],
+        "complex_edge_index_shape": [
+          2,
+          15840
+        ]
+      },
+      {
+        "idx": 912,
+        "enzyme_id": 275,
+        "in_blacklist": false,
+        "label": 0,
+        "nan_emb": false,
+        "nan_grover": false,
+        "nan_protein_x": false,
+        "protein_x_shape": [
+          231,
+          28
+        ],
+        "complex_edge_index_shape": [
+          2,
+          11092
+        ]
+      },
+      {
+        "idx": 1143,
+        "enzyme_id": 1211,
+        "in_blacklist": false,
+        "label": 0,
+        "nan_emb": false,
+        "nan_grover": false,
+        "nan_protein_x": false,
+        "protein_x_shape": [
+          230,
+          28
+        ],
+        "complex_edge_index_shape": [
+          2,
+          11046
+        ]
+      },
+      {
+        "idx": 1828,
+        "enzyme_id": 827,
+        "in_blacklist": false,
+        "label": 0,
+        "nan_emb": false,
+        "nan_grover": false,
+        "nan_protein_x": false,
+        "protein_x_shape": [
+          401,
+          28
+        ],
+        "complex_edge_index_shape": [
+          2,
+          19252
+        ]
+      },
+      {
+        "idx": 1990,
+        "enzyme_id": 1062,
+        "in_blacklist": false,
+        "label": 0,
+        "nan_emb": false,
+        "nan_grover": false,
+        "nan_protein_x": false,
+        "protein_x_shape": [
+          395,
+          28
+        ],
+        "complex_edge_index_shape": [
+          2,
+          18966
+        ]
+      },
+      {
+        "idx": 2006,
+        "enzyme_id": 1303,
+        "in_blacklist": false,
+        "label": 0,
+        "nan_emb": false,
+        "nan_grover": false,
+        "nan_protein_x": false,
+        "protein_x_shape": [
+          326,
+          28
+        ],
+        "complex_edge_index_shape": [
+          2,
+          15652
+        ]
+      },
+      {
+        "idx": 2253,
+        "enzyme_id": 843,
+        "in_blacklist": false,
+        "label": 0,
+        "nan_emb": false,
+        "nan_grover": false,
+        "nan_protein_x": false,
+        "protein_x_shape": [
+          373,
+          28
+        ],
+        "complex_edge_index_shape": [
+          2,
+          17909
+        ]
+      },
+      {
+        "idx": 3981,
+        "enzyme_id": 1389,
+        "in_blacklist": false,
+        "label": 1,
+        "nan_emb": false,
+        "nan_grover": false,
+        "nan_protein_x": false,
+        "protein_x_shape": [
+          420,
+          28
+        ],
+        "complex_edge_index_shape": [
+          2,
+          20160
+        ]
+      },
+      {
+        "idx": 5238,
+        "enzyme_id": 932,
+        "in_blacklist": false,
+        "label": 0,
+        "nan_emb": false,
+        "nan_grover": false,
+        "nan_protein_x": false,
+        "protein_x_shape": [
+          326,
+          28
+        ],
+        "complex_edge_index_shape": [
+          2,
+          15648
+        ]
+      },
+      {
+        "idx": 5972,
+        "enzyme_id": 277,
+        "in_blacklist": false,
+        "label": 0,
+        "nan_emb": false,
+        "nan_grover": false,
+        "nan_protein_x": false,
+        "protein_x_shape": [
+          270,
+          28
+        ],
+        "complex_edge_index_shape": [
+          2,
+          12963
+        ]
+      },
+      {
+        "idx": 6074,
+        "enzyme_id": 1389,
+        "in_blacklist": false,
+        "label": 0,
+        "nan_emb": false,
+        "nan_grover": false,
+        "nan_protein_x": false,
+        "protein_x_shape": [
+          277,
+          28
+        ],
+        "complex_edge_index_shape": [
+          2,
+          13296
+        ]
+      },
+      {
+        "idx": 7960,
+        "enzyme_id": 539,
+        "in_blacklist": false,
+        "label": 0,
+        "nan_emb": false,
+        "nan_grover": false,
+        "nan_protein_x": false,
+        "protein_x_shape": [
+          369,
+          28
+        ],
+        "complex_edge_index_shape": [
+          2,
+          17712
+        ]
+      },
+      {
+        "idx": 7961,
+        "enzyme_id": 777,
+        "in_blacklist": false,
+        "label": 0,
+        "nan_emb": false,
+        "nan_grover": false,
+        "nan_protein_x": false,
+        "protein_x_shape": [
+          371,
+          28
+        ],
+        "complex_edge_index_shape": [
+          2,
+          17808
+        ]
+      },
+      {
+        "idx": 7962,
+        "enzyme_id": 1290,
+        "in_blacklist": false,
+        "label": 0,
+        "nan_emb": false,
+        "nan_grover": false,
+        "nan_protein_x": false,
+        "protein_x_shape": [
+          522,
+          28
+        ],
+        "complex_edge_index_shape": [
+          2,
+          25060
+        ]
+      }
+    ]
+  },
+  "D_provenance": {
+    "overlay_entries": {
+      "enzymes": "symlink",
+      "substrates": "symlink",
+      "manifest.pt": "symlink",
+      "train": "symlink",
+      "val": "symlink",
+      "test/samples": "symlink",
+      "test/index.pt": "new_file"
+    },
+    "all_expected": true,
+    "src_enzymes_bin_mtime": 1776025051.0,
+    "src_test_index_mtime": 1776174522.941917
+  },
+  "OVERALL_OK": true
+}

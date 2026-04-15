@@ -1,0 +1,26 @@
+{
+  "src_cache": "/root/autodl-tmp/EZSpecificity/PathC/P450/data/pt_cache_allfix_unified/random",
+  "dst_cache": "/root/autodl-tmp/EZSpecificity/PathC/P450/data/pt_cache_allfix_unified_paperfilter/random",
+  "blacklist_enzyme_count": 356,
+  "src_test_samples": 10999,
+  "dropped_samples": 3036,
+  "kept_samples": 7963,
+  "dropped_fraction": 0.276,
+  "src_unique_enzymes_in_test": 1473,
+  "dropped_unique_enzymes": 348,
+  "kept_unique_enzymes": 1125,
+  "index_keys_verified": [
+    "sample_ids",
+    "enzyme_ids",
+    "substrate_ids",
+    "graph_shards",
+    "graph_rows"
+  ],
+  "new_index_array_lengths": {
+    "sample_ids": 7963,
+    "enzyme_ids": 7963,
+    "substrate_ids": 7963,
+    "graph_shards": 7963,
+    "graph_rows": 7963
+  }
+}
