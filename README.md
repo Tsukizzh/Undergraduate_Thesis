@@ -24,13 +24,15 @@ EZSpecificity 是一个基于交叉注意力机制的 SE(3)-等变图神经网�
 |---|---|---|---|---|---|
 | EXP001_allfix_unified | **28** | bare baseline | **0.9320** | **0.6749** | ✅ ep43 best |
 | EXP002a_allfix_unified | **31** | +Fe/HEM/is_hetero | **0.9270** | 0.6300 | ✅ ep59 best |
-| EXP003_allfix_unified | **37** | +φ/ψ/χ1 残基几何 | 🔄 训练中 ep74+ | — | best Val=0.9183@ep62 |
+| EXP003_allfix_unified | **37** | +φ/ψ/χ1 残基几何 | **0.9300** | 0.6426 | ✅ ep62 best |
 
-**关键发现（震撼）**：
+**关键发现（全部反转）**：
 1. **bare baseline Test AUC 从 ~0.77 跳到 0.9320**，GROVER bug 的真实影响远大于 ESM bug（后者单独修复仅到 0.8943）
 2. **Fe/HEM 在修复后的干净数据上反而拉低 AUC 0.005**，此前 EXP002a > EXP001 的优势是 GROVER bug 在错位嵌入下对 Fe/HEM 特征的偶然补偿
-3. 残基几何（37 维）当前 Val AUC 低于 31 维和 28 维，结论待训练结束后定论
-4. **所有 EXP001-003 的原始 ablation 曲线全部作废**，feature_dim 单变量对比结论被反转
+3. **残基几何 37 维 Test=0.9300，相对 Fe/HEM 小幅回升 +0.003，但仍不如 bare -0.002**
+4. **feature_dim 单变量 ablation 彻底失败**：28→31→37 没有任何新结构特征带来稳定增益
+5. **EXP001-003 的整条原始 ablation 链（0.7730→0.7816→0.7889→0.7914）全部是 GROVER bug 的偶然产物**
+6. **Step 13（残基几何注入）和 Step 14（双尺度结构编码）严重存疑**，在干净数据上原子级 EGNN 已吃完结构信号
 
 **影响范围**：
 - 之前 EXP001(0.7730) → EXP002a(0.7816) → EXP002b(0.7889) → EXP003(0.7914) → EXP003_fixed(0.8943) 的全部数字仅能作 bug 污染下的相对参考

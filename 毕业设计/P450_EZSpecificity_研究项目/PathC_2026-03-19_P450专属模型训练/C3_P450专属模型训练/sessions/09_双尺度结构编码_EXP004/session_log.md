@@ -704,13 +704,13 @@ key 8..2123    → Substrate Index 9..2124   ✗（错位 1 格）
 |---|---|---|---|---|---|
 | EXP001_allfix_unified | 28 (bare) | ep43 | **0.9320** | **0.6749** | ✅ |
 | EXP002a_allfix_unified | 31 (+Fe/HEM) | ep59 | **0.9270** | 0.6300 | ✅ **-0.005** |
-| EXP003_allfix_unified | 37 (+φ/ψ/χ1) | 🔄 ep74+ | — | — | best Val=0.9183@ep62 |
+| EXP003_allfix_unified | 37 (+φ/ψ/χ1) | ep62 | **0.9300** | 0.6426 | ✅ +0.003 vs Fe/HEM, -0.002 vs bare |
 
 ### 9.5 震撼发现
 
 1. **bare baseline 从 ~0.77 跳到 0.9320**，GROVER bug 单独贡献 +0.04（相对 EXP003_fixed=0.8943）。两个 LMDB bug 合计影响 +0.16。
 2. **Fe/HEM 在干净数据上反而掉点**。此前 EXP002a > EXP001 的优势完全是 GROVER 错位嵌入对 Fe 特征的偶然补偿；bug 修复后真实效果反转。
-3. **残基几何 37 维当前 Val AUC 低于 28/31 维**，EXP003 的 "+0.0025 增量" 也是 bug 污染产物，Step 13/14 的双尺度结构编码方向严重存疑。
+3. **残基几何 37 维 Test=0.9300**（相对 Fe/HEM +0.003，相对 bare -0.002），EXP003 的 "+0.0025 增量" 也是 bug 污染产物，feature_dim 单变量 ablation 彻底失败——三者都在 0.927-0.932 窄区间内，bare 最优。Step 13/14 的双尺度结构编码方向严重存疑。
 4. **EXP001-003 + EXP003_fixed 的整条 ablation 链全部作废**，feature_dim 单变量消融结论在干净数据上不成立。
 
 ### 9.6 后续

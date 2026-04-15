@@ -1,7 +1,7 @@
 # Path C：P450 专属模型训练 — 计划与进度
 
 > **创建日期**: 2026-03-19
-> **当前状态**: 🎉 **2026-04-15：AllFix 系列完成 2/3 — EXP001_allfix_unified Test=0.9320 / EXP002a_allfix_unified Test=0.9270 / EXP003_allfix_unified 🔄 训练中**
+> **当前状态**: 🎉 **2026-04-15：AllFix Unified 三实验全部完成 — EXP001=0.9320 (bare) / EXP002a=0.9270 (Fe/HEM) / EXP003=0.9300 (+残基几何)，bare 最优**
 > **AllFix 基线 ablation**（ESM+GROVER 双修后真实基线）：EXP001_allfix_unified (28 bare) → EXP002a_allfix_unified (31 +Fe/HEM) → EXP003_allfix_unified (37 +残基几何), 统一训练配方 (lr=4e-4, warmup=12, wd=1e-5, bs=88, dropout=0.9, 4×RTX4090 DDP)
 > **⚠️ 两层 LMDB Bug（均已修）**:
 > - **Bug 1 (ESM)**: 95.8% 样本错配酶特征，EXP003_fixed 首次修复（Test 0.7914→0.8943）
