@@ -1,0 +1,80 @@
+# EXP005: P450 dualgraph 2+ (residue backfill + g_res bypass)
+# 4x RTX5090 DDP, SSDualgraph = SS + GVP residue channel
+# Baseline: EXP001_allfix_unified Test AUC = 0.9320
+
+num_cpus: 0
+num_gpus: 1
+root_dir: /root/rivermind-data/EZSpecificity
+log: True
+seed: 3407
+n_runs: 1
+
+data:
+  tag: EXP005-dualgraph-2plus-allfix-unified
+  representer: structure_sequence
+  full_data: False
+  fake_sequence_ratio: 0
+  sample_weight:
+    - 1.0
+    - 1.0
+  batch_size: 48
+  max_substrate_length: 280
+  max_enzyme_length: 1450
+  features:
+    - 'morgan'
+    - 1024
+    - 'grover_mean'
+    - 4885
+  atom_features:
+    - 'grover'
+    - 2400
+
+transform:
+  dist_noise: True
+  cutoff: 10
+  num_r_gaussian: 32
+  k: 48
+
+model:
+  name: 'structure_sequence'
+  use_gnn: True
+  hidden_dim: 128
+  feature_norm: False
+  header:
+    act_fn: 'relu'
+    norm: True
+    num_layers: 3
+  graph:
+    name: egnn
+    hidden_dim: 128
+    act_fn: relu
+    num_layers: 3
+    attention: True
+    residual: True
+    norm: layer
+    mode: complex
+  cross_attention:
+    n_head: 8
+    dropout: 0.9
+  # EXP005 dualgraph 2+ residue-level GVP channel
+  gvp:
+    num_layers: 3
+    drop_rate: 0.1
+    node_h_scalar: 128   # GVP_embedding produces [N, 2*node_h_scalar] = [N, 256]
+    node_h_vector: 16
+    edge_h_scalar: 32
+    edge_h_vector: 1
+    seq_in: true         # add AA type embedding (20 dim) to node scalars
+    alpha_logit_init: -2.2   # sigmoid(-2.2) ≈ 0.10, learnable gate
+
+training:
+  gradient_clip_val: 8
+  optimizer: 'adamW'
+  warmup_epochs: 12
+  lr: 4.0e-04
+  weight_decay: 1.0e-05
+  min_lr: 5.0e-06
+  sched_factor: 0.5
+  sched_patience: 8
+  val_frequency: 1
+  accumulate_grad_batches: 1
