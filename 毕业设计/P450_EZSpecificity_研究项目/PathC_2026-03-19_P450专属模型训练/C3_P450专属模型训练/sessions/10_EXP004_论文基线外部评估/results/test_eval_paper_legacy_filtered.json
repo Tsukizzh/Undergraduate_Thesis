@@ -1,0 +1,20 @@
+{
+  "checkpoint": "paper_best-checkpoint.ckpt",
+  "edge_mode": "legacy_bug",
+  "dropout": null,
+  "epoch": 106,
+  "test_auc_roc": 0.558632,
+  "test_aupr": 0.100447,
+  "n_samples": 7963,
+  "n_positive": 680,
+  "n_negative": 7283,
+  "per_family": {
+    "0": {
+      "name": "brenda",
+      "auc_roc": 0.5586315028551583,
+      "aupr": 0.10044721394212783,
+      "n_samples": 7963,
+      "n_positive": 680
+    }
+  }
+}

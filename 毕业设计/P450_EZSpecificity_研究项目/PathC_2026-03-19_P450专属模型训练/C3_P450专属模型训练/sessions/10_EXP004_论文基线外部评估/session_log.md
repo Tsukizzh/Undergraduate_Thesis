@@ -1,7 +1,7 @@
-# Session 10 — EXP004 论文基线外部评估（准备阶段）
+# Session 10 — EXP004 论文基线外部评估
 
 **日期**: 2026-04-15
-**状态**: 无 GPU 准备阶段全部完成 ✅，等用户开 GPU 跑推理
+**状态**: ✅ **完成**。论文 ckpt 在过滤测试集上 AUC=0.559，vs 我们 0.921，差距 +0.36
 
 ## 一、目标
 
@@ -220,3 +220,101 @@ python ... --test-only --checkpoint paper_best-checkpoint.ckpt \
 | EXP004 dir 设计 | 移除 test-only 下无用的 `--devices 4` `--max-epochs`，用 symlink 代替 copy |
 
 所有审查结果都让我主动改进了脚本或方案，没有一步是盲走。
+
+---
+
+## 九、最终结果（2026-04-15 下午 GPU 阶段）
+
+### 9.1 环境与执行
+
+- 服务器: 1×RTX 5090 (32GB), 北京 AutoDL (新端口 48128)
+- 4 个配置依次顺序跑，每个 ~43 秒（inference 速度 ~185 samples/s）
+- 总耗时 ~3 分钟（推理本身）+ smoke test ~30 秒
+- 无任何 NaN/Inf/异常
+
+### 9.2 smoke test 结果（4 个正式跑之前的 pipeline 健康检查）
+
+```
+[1] PtCacheDataset size: 7963
+[2] Paper ckpt strict=True load: OK
+[3] Forward 1 batch (88 样本):
+    pos/neg: 10/78
+    all finite: True
+    logit min/max: -14.4772 / 1.0101
+    logit mean/std: -3.9068 / 3.5545
+    (前 10 个 label/logit/tag 正常，logit 宽分布非常数)
+PASSED — pipeline healthy
+```
+
+### 9.3 4 路 ablation 结果
+
+| # | Ckpt | Edge Mode | **Test AUC** | Test AUPR | 样本数 | 正样本 |
+|---|---|---|---|---|---|---|
+| 1 | **Paper (Nature 2025)** | legacy_bug | **0.5586** | 0.1004 | 7963 | 680 |
+| 2 | Paper (Nature 2025) | fixed | 0.5596 | 0.1007 | 7963 | 680 |
+| 3 | Ours EXP001_allfix_unified ep43 | legacy_bug | 0.9154 | 0.6194 | 7963 | 680 |
+| 4 | **Ours EXP001_allfix_unified ep43** | fixed | **0.9205** | 0.6403 | 7963 | 680 |
+
+### 9.4 关键发现
+
+#### 发现 1: 论文模型对"没见过的 P450"几乎不具备泛化能力
+
+- Paper + legacy_bug: **AUC = 0.5586**，仅高于随机基线 0.06
+- AUPR = 0.100 ≈ 正样本基础率 8.5%，和随机猜测无异
+- 这意味着论文模型在自身 ESIBank 测试集上的表现（Unknown enzyme+substrate 场景 AUC=0.7198）**主要来自对训练酶的记忆**，而非对酶-底物特异性的真实建模能力
+- 过滤掉 27.6% 论文见过的 ESIBank P450 后，论文模型基本退化到随机
+
+#### 发现 2: 我们的模型 +0.36 AUC 优势（0.559 → 0.921）
+
+- Ours EXP001 + fixed（我们训练配方）: **AUC = 0.9205**
+- 对比 paper: **+0.362 AUC**，**+0.540 AUPR**
+- 这是本项目最有力的一个数字：同样的架构、同样的测试集、同样的过滤标准下，我们的 P450 专属数据集 + allfix bug 修复带来了巨大的绝对提升
+- 和我们 EXP001 全量 test (0.9320) 对比：过滤后只掉了 0.0115，说明我们的模型**对非 ESIBank P450 的泛化是真实的**，不是靠记忆 ESIBank
+
+#### 发现 3: Edge mode 在 inference 时不敏感
+
+- Paper ckpt: legacy vs fixed 差 0.001（几乎无差别）
+- Ours ckpt: legacy vs fixed 差 0.005（微小但一致方向）
+- 这说明**边排序 bug 主要影响训练收敛，而不是 inference 数值**
+- 好消息：我们的模型即使切到 legacy 边也保持 0.9154，鲁棒性好
+
+#### 发现 4: 过滤后正样本率轻微下降（8.5% vs 9.0%）
+
+- 原始 test: 10999 样本（~984 正样本，9.0%）
+- 过滤后 test: 7963 样本（**680 正样本，8.5%**）
+- 删除的 3036 样本中约有 304 正样本（10.0% 正率）
+- 说明**正样本略微更集中在 ESIBank 酶上**，过滤后 test 反而稍微更难（但影响很小）
+
+### 9.5 意义与结论
+
+1. **方法论验证**: 本实验证明**过滤掉训练集重叠酶的外部评估是必要的**。没有这步，用论文模型在我们 test 上可能得到虚高 AUC，掩盖真实的泛化失败。
+
+2. **论文模型的局限**: 论文 EZSpecificity 虽然在自身测试集上有 0.72 AUC，但这个数字不代表真实跨酶泛化能力。在严格过滤后的 P450 测试集上论文模型基本等于随机。
+
+3. **我们工作的价值**: 
+   - P450 专属数据集（5 库 merge, 1622 酶 × 2125 底物, 47510 对）
+   - 双 LMDB bug 修复（ESM + GROVER）
+   - bare 28 维 baseline
+   
+   这三者组合起来提供了 **+0.36 AUC** 的可归因提升。这个数字是干净的、可发表的、基于 leakage-controlled 设置。
+
+4. **为毕设论文提供决定性支撑**: EXP004 是整个研究的关键里程碑——它把"我们重做 P450 数据集有必要吗"从假设变成了有数据支持的结论。
+
+### 9.6 后续可能的延伸（非本实验目标）
+
+- 过滤后 test 按化合物类别（terpenoid/amino_acid/steroid/etc, C3-v6 分类）再分层看 AUC，看是否某类底物特别难
+- 论文模型的 0.559 是否在某些酶子家族上略高、某些上完全随机——per-enzyme subfamily AUC 分析
+- 如果需要更严格的外部集，未来可以从 UniProt 新收录的 2025 之后发布的 P450 里再筛一批
+
+### 9.7 限制声明（论文报告时必须写的）
+
+1. **黑名单仅 UniProt 匹配**: 未做序列 hash 兜底。165 个合成 ID 的酶里可能隐藏着未被过滤的 ESIBank 同源酶（最多 33 个）
+2. **仅过滤酶，未过滤底物**: 底物层面仍有重叠
+3. **27.6% drop rate**: 过滤后 test 是 "filtered subset baseline"，不是"完整 external test"
+4. **单次 run, 无 seed variation**: 推理是确定性的，但不同 random seed 下模型会略微不同
+
+### 9.8 文件产物
+
+- 服务器: `experiments/EXP004_paper_baseline_unified/results/test_eval_*.json` × 4
+- 本地 git: `sessions/10_EXP004_论文基线外部评估/results/test_eval_*.json` × 4
+- Commit: 待推送

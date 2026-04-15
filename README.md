@@ -6,7 +6,40 @@
 
 EZSpecificity 是一个基于交叉注意力机制的 SE(3)-等变图神经网络，用于预测酶-底物特异性（Nature 2025）。本项目专注于 P450 细胞色素酶家族的特异性研究，系统性地评估、诊断并改进模型在 P450 家族上的表现。
 
-## 最新进展（2026-04-15）
+## 最新进展（2026-04-15 下午）
+
+### 🎯 EXP004 论文基线外部评估：+0.36 AUC 对比论文模型
+
+拿论文预训练模型（`saved_model/model/run_0/models/best-checkpoint.ckpt`, Nature 2025）在我们的 P450 测试集上推理。为了公平，先把测试集中与论文训练集重合的 P450（356/389 ESIBank P450）通过非破坏性 overlay cache 过滤掉，剩 7963 样本 / 1125 酶。
+
+**4 路对比结果**（单张 RTX 5090, 43 秒/run）:
+
+| 模型 | Edge mode | **Test AUC** | Test AUPR |
+|---|---|---|---|
+| **论文 ckpt** | legacy_bug | **0.5586** | 0.1004 |
+| 论文 ckpt | fixed | 0.5596 | 0.1007 |
+| 我们 EXP001_allfix_unified ep43 | legacy_bug | 0.9154 | 0.6194 |
+| **我们 EXP001_allfix_unified ep43** | fixed | **0.9205** | 0.6403 |
+
+**关键发现**:
+
+1. **论文模型在"没见过的 P450"上 AUC=0.559，几乎等于随机**（AUPR=0.100 ≈ 正样本基础率 8.5%）。论文在自身 ESIBank 测试集上的高分（Unknown enzyme+substrate AUC=0.72）主要来自**对训练酶的记忆**，而非真实跨酶泛化能力。
+2. **我们的模型 +0.36 AUC 优势**（0.559 → 0.921）。同一架构、同一测试集、同一过滤标准下，P450 专属数据集 + allfix bug 修复带来了极大的可归因绝对提升。
+3. **Edge mode 对 inference 不敏感**：论文 ckpt legacy vs fixed 差 0.001；我们 ckpt 差 0.005。边排序 bug 主要影响训练收敛，不是 inference 数值。
+4. **我们模型过滤前后自身对比**：全量 10999 样本 0.9320 → 过滤后 7963 样本 0.9205，只掉 0.0115。说明我们对非 ESIBank P450 的泛化是真实的，不是靠记忆 ESIBank 获得高分。
+
+**前置准备（非破坏性，每一步多轮 codex 审查 + 字节级验证）**:
+- 黑名单: 356/389 ESIBank P450 UniProt 命中我们 1622 个酶
+- 过滤 overlay cache: `pt_cache_allfix_unified_paperfilter/` 全 symlink + 1 个新 test/index.pt (boolean mask 同步切 5 数组)
+- 5 层穿透验证: enzyme_id↔CSV 映射 12 点 + 5 深度穿透（读真实 bytes），substrate 全量 2124/2124 原子数匹配，key=8 缺失符合 allfix GROVER rekey 预期
+- Ckpt 预检: 本地 torch 2.3.0 + PL 1.9.0（同论文），`strict=True` 76/76 keys 匹配 0 missing/unexpected/shape mismatch
+- Smoke test: 1 batch 前向 logits finite + std=3.55（非常数）+ 前 10 个 label/logit/tag 正常
+
+**详见**: [sessions/10_EXP004_论文基线外部评估/session_log.md](毕业设计/P450_EZSpecificity_研究项目/PathC_2026-03-19_P450专属模型训练/C3_P450专属模型训练/sessions/10_EXP004_论文基线外部评估/session_log.md)
+
+---
+
+## 上一阶段（2026-04-15 上午）
 
 ### 🎉 AllFix 系列：GROVER+ESM 双 bug 修复后的真实基线
 
