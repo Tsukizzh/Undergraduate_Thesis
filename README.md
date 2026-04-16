@@ -6,7 +6,39 @@
 
 EZSpecificity 是一个基于交叉注意力机制的 SE(3)-等变图神经网络，用于预测酶-底物特异性（Nature 2025）。本项目专注于 P450 细胞色素酶家族的特异性研究，系统性地评估、诊断并改进模型在 P450 家族上的表现。
 
-## 最新进展（2026-04-15 下午）
+## 最新进展（2026-04-16）
+
+### ✅ EXP005 双图架构 Dualgraph 2+ — 结构通道饱和性第三次验证
+
+在 EXP001_allfix_unified（Test AUC=0.9320，当前最强基线）基础上新增**残基级 GVP-GNN 通路**（Geometric Vector Perceptron，从 EnzymeCAGE 移植），采用**双出口融合**：
+
+- **出口 1（residue backfill）**：`h_res` 按 `pocket_residue_idx` 注入回 `x_pro` 对应 UniProt 位置 → **深融合**到交叉注意力
+- **出口 2（g_res bypass）**：`scatter_mean(h_res)` → 作为末端预测头第 8 个向量 → **浅旁路**，header 输入 896→1024
+
+**关键设计**：`h_res_proj` 末层 + `specificity_header` new 128 列块**双零初始化**，step 0 严格等价基线 SS，step 1 延迟解冻激活 GVP 分支（需 DDP `find_unused_parameters=True`）。
+
+**最终结果**：
+
+| 指标 | EXP001_allfix_unified (baseline) | **EXP005 dualgraph 2+** | Δ |
+|---|---|---|---|
+| **Test AUC-ROC** | **0.9320** | **0.9253** | **-0.0067** |
+| Test AUPR | 0.6749 | 0.6174 | -0.0575 |
+| Best epoch | ep43 | ep41 | — |
+| Val AUC (best) | — | 0.9262 | — |
+| 训练时长 | ~50 min | 56.8 min | +14% |
+| 参数量 | 1,846,660 | 2,684,654 | +45% |
+
+**结论**：残基级 GVP 通路（深融合 + 浅旁路）**未能超越纯原子级 EGNN 基线**，小幅退步。
+
+**科学意义**：继 EXP002a (Fe/HEM, -0.005) 和 EXP003 (残基二面角, -0.002) 之后**第三次**验证——在 AllFix 干净数据 + 1479 酶 44k 样本规模下，给 bare 28 维基线添加任何结构侧增补特征（标量或方向向量、浅融合或深融合）都不带来增益。**原子级 EGNN + 双向交叉注意力已经吃完结构通道能提供的信号**。
+
+**后续方向**：架构创新应转向**数据侧**（更多酶家族、更难的同家族配对负样本）或**交叉注意力容量**（更深 head、替换 ESM-1b 为 ESM-2 更大变体），而非继续在结构通道做特征工程。
+
+**详见**：[sessions/11_EXP005_双图架构_dualgraph/session_log.md](毕业设计/P450_EZSpecificity_研究项目/PathC_2026-03-19_P450专属模型训练/C3_P450专属模型训练/sessions/11_EXP005_双图架构_dualgraph/session_log.md)
+
+---
+
+## 上一阶段（2026-04-15 下午）
 
 ### 🎯 EXP004 论文基线外部评估：+0.36 AUC 对比论文模型
 
@@ -122,10 +154,19 @@ EZSpecificity 是一个基于交叉注意力机制的 SE(3)-等变图神经网�
 | **EXP003** | **⭐残基几何特征 φ/ψ/χ1 (Step 13)** | **Test AUC=0.7914** (+0.0025), AUPR=0.3814, EnzymeCAGE启发 | ✅ |
 | **14** | **⭐双尺度结构编码(残基级GNN)** | Step 13已验证有效, 预测头7→8向量 | ⏳ |
 
-**架构创新方向（EnzymeCAGE启发）**：
-- **Step 13**：从口袋PDB提取残基级几何特征（骨架二面角φ/ψ + 侧链扭转角χ1），sin/cos编码后拼接到EGNN节点特征。EGNN代码不动，改动模式与Fe/HEM编码一致
-- **Step 14**：新增残基级GNN通道，与现有原子级EGNN互补（原子级看精细接触，残基级看口袋几何形状）
-- **最终阶段**：最优配置确定后在4种split(random/enzyme/reaction/all)上完整benchmark
+**AllFix 系列架构创新验证（✅ 已完成）**：
+- **EXP001_allfix_unified (bare 28)** ✅ **Test=0.9320**（当前最优）
+- **EXP002a_allfix_unified (Fe/HEM 31)** ✅ Test=0.9270 (-0.005)，Fe/HEM 在干净数据上反而掉点
+- **EXP003_allfix_unified (残基几何 37)** ✅ Test=0.9300 (-0.002 vs bare)，φ/ψ/χ1 二面角标量无增益
+- **EXP005_dualgraph_2plus (双图架构)** ✅ Test=0.9253 (-0.0067 vs bare)，残基级 GVP 真 3D 方向向量 + 双出口融合仍无增益
+
+**"结构通道饱和性"三组证据**：连续三次在 bare baseline 基础上添加结构侧增补特征（标量 → 残基标量角度 → 残基级真 3D 方向向量 + SE(3) 等变 GVP + 深浅双融合），**三次都是负增益**。在 AllFix 干净数据 + 1479 酶 44k 样本规模下，原子级 EGNN + 双向交叉注意力已吃完结构通道能提供的信号。
+
+**后续方向**：
+- ❌ **不再**在结构通道做特征工程
+- ✅ **优先**数据侧扩展（更多家族、更难同家族负样本、跨物种 P450）
+- ✅ **可选**交叉注意力容量扩展（更深 head、ESM-1b → ESM-2 更大变体）
+- ✅ **最终阶段**：最优配置在 4 种 split（random/enzyme/reaction/all）完整 benchmark
 
 **性能提升路径**：
 ```
@@ -137,6 +178,10 @@ EZSpecificity 是一个基于交叉注意力机制的 SE(3)-等变图神经网�
           → +0.003 → 0.7914 (EXP003 残基几何, ⚠️)
             → +0.103 → 0.8943 (EXP003_fixed, ESM bug 修)
               → +0.038 → 0.9320 (⭐ EXP001_allfix_unified, ESM+GROVER 双修, bare 28 维)
+                → -0.005 → 0.9270 (EXP002a_allfix_unified, Fe/HEM)
+                → -0.002 → 0.9300 (EXP003_allfix_unified, 残基几何)
+                → -0.007 → 0.9253 (EXP005 dualgraph 2+, 残基 GVP 双图)
+                ▼ 结构通道饱和，后续转数据侧 / 容量侧
 ```
 
 ### 路径A：模型评估 ✅ 已完成
@@ -227,7 +272,7 @@ EZSpecificity_Project/
 |------|------|:----:|----------|
 | **A** | 用PDB实验结构评估模型 | ✅ 已完成 | AUC-ROC 0.6636 |
 | **B** | P450数据集构建+基线训练 | ✅ 全部完成 | **Test AUC=0.7244** > 论文 0.7198 |
-| **C** | P450专属模型训练 | 🔄 C3 Step 06✅ → Step 13⏳ | EXP002a Test=0.7816, EXP002b调参中, **Step 13/14架构创新(EnzymeCAGE启发)** |
+| **C** | P450专属模型训练 | ✅ AllFix 系列完成 | **EXP001_allfix_unified Test=0.9320 (最优)** + EXP002a/003/005 三次负结果验证结构通道饱和性 |
 | D | 区域选择性预测 | ⏳ 待定 | 数据源: S3反应SMILES(3,352条) + S9反应图片(857张) |
 
 ## 路径B详细进展（Step 1-9）
@@ -283,12 +328,16 @@ EZSpecificity_Project/
   - 训练使用修复后的 `fixed` 模式
 
 ### 创新点
-1. **边特征对齐Bug修复**：论文原始代码中EGNN边属性与边索引不匹配
-2. **Fe/血红素编码** ✅：将Fe(26)加入蛋白原子词汇表 + HEM残基类型 + is_hetero标志位，feature_dim 28→31，Test AUC +0.009
-3. **残基级几何特征注入**（Step 13）：φ/ψ/χ1二面角→EGNN节点，捕获口袋腔体形状信息
-4. **双尺度结构编码**（Step 14）：原子级EGNN + 残基级GNN双通道，EnzymeCAGE启发
-5. **系统性P450诊断框架**：5层因果DAG + 11个实验 + 7家族对比
-6. **最大P450专属数据集**：47,510对，5个数据库整合，4种划分方式
+1. **双层 LMDB 对齐 Bug 发现与修复**（2026-04-13/14）：
+   - ESM bug：phase7_step2_esm.py 用顺序压缩计数器作 key，~95.8% 样本拿到错配的酶特征
+   - GROVER bug：`*[H]` 触发崩溃后 `grover_substrates.csv` 删行未补位，99.6% 底物从 Substrate Index 8 起错位 1 格
+   - 非破坏性 5 阶段修复：秒级 rekey LMDB + 重建 flatbin + 6 套 pt_cache overlay，每步多轮 codex 审查 + 字节级验证
+   - **Test AUC 从 0.7730 跳到 0.9320**（+0.159 绝对增益）
+2. **最大 P450 专属数据集**：47,510 对，5 个数据库整合（RCSB+ESIBank+P450Rdb+PlantP450DB+PCPD），4 种划分方式
+3. **结构通道饱和性系统论证**：EXP002a（Fe/HEM）、EXP003（残基二面角）、EXP005（GVP 双图架构）三组连续负结果，证明当前数据 + 架构下结构信号已饱和
+4. **边特征对齐 Bug 修复**：论文原始代码中 EGNN 边属性与边索引不匹配，发现并修复
+5. **系统性 P450 诊断框架**：5 层因果 DAG + 11 个实验 + 7 家族对比，确认 P450 为 7 家族中唯一崩溃的家族
+6. **论文基线外部评估**：非破坏性 overlay filter cache 过滤 356/389 ESIBank 重合酶，得到公平对比：**我们 +0.36 AUC 优势**（论文 0.559 vs 我们 0.921）
 
 ## 相关文档
 

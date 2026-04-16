@@ -4,7 +4,25 @@
 **方案代号**：dualgraph 2+（residue backfill + g_res bypass）
 **基线**：EXP001_allfix_unified Test AUC = **0.9320**
 **起始日期**：2026-04-16
+**完成日期**：2026-04-16
 **完整计划文档**：[../../EXP005_双图架构完整计划.md](../../EXP005_双图架构完整计划.md)
+
+---
+
+## 🎯 最终结论（TL;DR）
+
+| 指标 | EXP001_allfix_unified (baseline) | **EXP005 dualgraph 2+** | Δ |
+|---|---|---|---|
+| **Test AUC-ROC** | **0.9320** | **0.9253** | **-0.0067** |
+| Test AUPR | 0.6749 | 0.6174 | -0.0575 |
+| Best checkpoint | ep43 | ep41 | — |
+| Val AUC (best) | — | 0.9262 | — |
+| 训练时长 | ~50 min | 56.8 min | +14% |
+| Epochs (early stop) | — | 57 | — |
+
+**结论**：**残基级 GVP 通路（h_res 深融合 + g_res 浅旁路）未能超越纯原子级 EGNN 基线**，反而小幅退步。
+
+**科学意义**：这是继 EXP002a (Fe/HEM, -0.005) 和 EXP003 (残基几何, -0.002) 之后**第三次**验证"干净数据下给 bare 28 维基线添加任何结构侧特征都没有增益"的反转结论。这次 EXP005 把"残基级方向向量 + SE(3) 等变 GVP"这一更强的几何信号也验证了——在当前架构+数据+训练配方下，**原子级 EGNN + 双向交叉注意力已经吃完了结构通道能提供的信号**，残基级方向向量的独立贡献几乎为零（甚至略负）。
 
 ---
 
@@ -224,9 +242,9 @@ class SSDualgraph(SS):
 
 ---
 
-## 六、Phase 4：正式训练（进行中）
+## 六、Phase 4：正式训练 ✅
 
-### 第一次尝试 — `--preload` + 4 卡 → OOM
+### 第一次尝试 — `--preload` + 4 卡 → OOM（失败记录）
 
 配置：bs=88 × devices=4 × workers=6 × `--preload`
 
@@ -239,7 +257,7 @@ class SSDualgraph(SS):
 4. 同时 DataLoader prefetch_factor=4 × bs=88 × PyG Batch 入 /dev/shm 队列 → 225 GB shared tmpfs 超过 180 GB /dev/shm 限
 5. cgroup 360 GB 限被击穿 → OOM killer
 
-### 第二次尝试 — 去掉 `--preload`，严格对标 EXP001_allfix_unified → 🟢 运行中
+### 第二次尝试 — 去掉 `--preload`，严格对标 EXP001_allfix_unified → ✅ 成功完成
 
 ```bash
 python main_training_pt.py \
@@ -260,35 +278,60 @@ python main_training_pt.py \
 
 L6 发现的延迟解冻效应在 DDP 下会触发 `RuntimeError: It looks like your LightningModule has parameters that were not used in producing the loss`。修复：`DDPStrategy(find_unused_parameters=True, gradient_as_bucket_view=True)`。代价约 5-10% 速度，但不可避免。
 
-### 运行状态（2026-04-16 06:05 UTC，训练中）
+### 训练过程完整指标
+
+| Epoch | train_loss | val_loss | **val_auc** | val_aupr |
+|---|---|---|---|---|
+| 1 | 0.324 | 0.293 | — | — |
+| 5 | 0.302 | 0.285 | 0.591 | — |
+| 8 | 0.261 | 0.254 | 0.711 | — |
+| 10 | 0.218 | 0.233 | 0.800 | — |
+| 12 | 0.199 | 0.215 | 0.842 | — |
+| 14 | 0.171 | 0.209 | 0.874 | 0.456 |
+| 28 | 0.093 | 0.194 | 0.914 | 0.592 |
+| 33 | 0.079 | 0.219 | 0.922 | 0.621 |
+| **41** | 0.054 | 0.214 | **0.9262 ★best** | 0.603 |
+| 43 | 0.063 | 0.243 | 0.9226 | 0.627 |
+| 50 | 0.038 | 0.280 | 0.9218 | 0.636 |
+| 56 | 0.033 | 0.279 | 0.9191 | 0.596 |
+
+- **Best ckpt**：`pt-EXP005_dualgraph_2plus_allfix_unified-ep41-auc0.9262.ckpt`
+- **Early stop**：ep56（patience 15 用尽，ep57 到达后退出）
+- 训练时长：**56.8 min**（63 batch/ep × 57 ep × 0.949 s/batch ≈ 3407 s）
+- 速度：~62 s/epoch（34 train + 14 val + 14 overhead）
+- GPU util：99-100% × 4 卡，GPU mem 26-27 GB / 32 GB
+
+### Auto-test 结果（ep41 best ckpt）
 
 ```
-Epoch 14 完成:
-  train_loss: 0.171, val_loss: 0.209
-  val_auc: 0.874, val_aupr: 0.456
-  
-Loss / AUC 曲线:
-  ep1:  tl=0.324  vl=0.293  
-  ep5:  tl=0.302  vl=0.285  auc=0.591
-  ep8:  tl=0.261  vl=0.254  auc=0.711
-  ep10: tl=0.218  vl=0.233  auc=0.800
-  ep12: tl=0.199  vl=0.215  auc=0.842
-  ep14: tl=0.171  vl=0.209  auc=0.874
-
-速度:       ~62 s / epoch (warmup 后 ~50 s / epoch)
-  Train:     63 batch × ~1.85 it/s = 34 s
-  Val:       29 batch × ~2.00 it/s = 14 s
-  overhead:  checkpoint + metric + init ~14 s
-GPU util:   99-100% × 4 卡
-GPU mem:    26-27 GB / 32 GB per 5090
-RAM:        165 GB used, 144 shared, 479 available (健康)
+Test AUC-ROC : 0.9253
+Test AUPR    : 0.6174
+Samples      : 11000 (pos=984, neg=10016)
 ```
 
-### 预计
+完整 test_eval.json（服务器路径 `/root/autodl-tmp/.../results/test_eval.json`）：
 
-- 早停 epoch：对标 EXP001 约 ~43-58 epoch
-- 总训练时长：**~45-60 min**
-- 加 auto-test + shutdown：**~50-70 min 总**
+```json
+{
+  "checkpoint": "pt-EXP005_dualgraph_2plus_allfix_unified-ep41-auc0.9262.ckpt",
+  "edge_mode": "fixed",
+  "dropout": 0.9,
+  "test_auc_roc": 0.925269,
+  "test_aupr": 0.617367,
+  "n_samples": 11000,
+  "n_positive": 984,
+  "n_negative": 10016
+}
+```
+
+### 与 allfix 三实验的完整对比
+
+| 实验 | feature_dim | 新增结构特征 | Test AUC | Test AUPR | vs bare |
+|---|---|---|---|---|---|
+| **EXP001_allfix_unified** | 28 | bare baseline | **0.9320** | **0.6749** | — |
+| EXP002a_allfix_unified | 31 | + Fe/HEM 原子 + is_hetero | 0.9270 | 0.6300 | -0.005 |
+| EXP003_allfix_unified | 37 | + φ/ψ/χ1 残基几何（sin/cos）| 0.9300 | 0.6426 | -0.002 |
+| **EXP005_dualgraph_2plus** | **28 + 残基 GVP 通路** | + residue-level GVP（真 3D 方向向量）+ 双出口融合 | **0.9253** | 0.6174 | **-0.0067** |
 
 ---
 
@@ -326,13 +369,91 @@ RAM:        165 GB used, 144 shared, 479 available (健康)
 
 ---
 
-## 八、下一步
+## 八、最终结果分析
 
-等训练完成后：
-1. 下载 `results/checkpoints/` + `metrics.csv` + `test_eval.json` + `train_live.log`
-2. 对比 EXP005 Test AUC vs 基线 0.9320
-3. 画图：训练曲线 + val AUC 比对
-4. 分析 GVP 分支是否真的贡献了信号（可选消融：关掉 h_res 注入或 g_res 旁路）
-5. 写入 MEMORY.md 和项目进度日志
+### 8.1 结果判读
 
-Auto-shutdown 会在 test 完成后 30 秒关机，实例停止计费。
+| 维度 | 观察 | 解读 |
+|---|---|---|
+| Test AUC | -0.0067 vs 基线 | 小幅退步，**未超越基线** |
+| Test AUPR | -0.0575 vs 基线 | 正样本识别更弱，训练对少数类适配稍差 |
+| Val-Test gap | Val=0.9262, Test=0.9253 差 0.001 | 无明显过拟合迹象，泛化正常 |
+| 训练收敛 | loss 稳定下降，AUC 早期快速上升后期平台 | 训练本身健康，不是"没训够"或"崩了" |
+| 延迟解冻 | L6 实测 step 0→step 1 顺利激活 | GVP 分支确实参与了训练 |
+| 参数量增长 | +838K（+45% 相对基线）| 新增容量没换来性能 |
+
+### 8.2 为什么 GVP 通路没带来增益
+
+候选解释（按可能性排序）：
+
+1. **结构信号已饱和**：原子级 EGNN 在 10 Å 口袋上做 3 层消息传递，已经把残基级几何隐式编码到原子表示里。残基级 GVP 的"独立新信息"其实被旧通路覆盖，重复输入反而稀释信号。这个假说在 EXP002a/EXP003 也成立（Fe/HEM、二面角都没增益）。
+2. **P450 家族同质性**：1479 酶里大部分是同家族变体，口袋骨架几何差异小，残基级方向向量的区分度有限。
+3. **残基级表达"降维过粗"**：GVP encoder 把一个口袋（平均 37 残基 × 30 邻居）压成 128 维 `g_res`，再做 scatter_mean，粒度比原子级 EGNN 的 pooled str_mean 粗，信息密度更低。
+4. **dropout=0.9 在新通路上过强**：header 里新加的 128 列同样经 dropout=0.9 砍掉 90%，GVP 信号在末端融合时被高度稀释（但这个假说和 EXP001 用同样 dropout 却能拿 0.9320 的事实冲突，次要因素）。
+5. **正则化对齐差异**：新增的 `h_res_proj` / `g_res_proj` / `alpha_logit` 权重 decay 和学习率调度是和基线共享的，可能需要分组优化器（ParamGroup）才能让新通路找到更优解空间。
+
+### 8.3 本次实验的科学价值
+
+虽然是"负结果"，但**并非无价值**：
+
+1. **强化了 AllFix 系列的主结论**：在干净数据 + 修复过的两层 LMDB bug + allfix_unified 样本集上，**bare 28 维原子级 EGNN baseline 已经是当前架构 + 当前 P450 数据量下的最优配置**。
+2. **否证了"残基级几何补充能带来增益"的假设**：此前 EXP003 (二面角标量) 没拉开差距，可能是"标量信息量不够"；EXP005 用"真 3D 方向向量 + SE(3) 等变消息传递 + 双通路融合"都没拉开差距，说明瓶颈不在"几何表达强度"。
+3. **毕设答辩材料**：可以把 EXP002a/EXP003/EXP005 三次负结果做成"系统性的结构通道饱和性分析"，比单一增益实验更体现研究完整性。
+4. **为下一阶段指明方向**：如果想继续提升，应该从**数据**（更多酶、更多家族、合成负样本策略）或**模型容量**（更深交叉注意力、替换 ESM-1b 为 ESM-2 更大变体）入手，而不是继续在结构通道做"特征工程"。
+
+### 8.4 可选后续（未立即执行）
+
+如果时间允许，可以做的验证性实验：
+
+1. **消融 1**：关掉 h_res 注入只留 g_res bypass（对比深融合 vs 浅融合谁主导）
+2. **消融 2**：关掉 g_res bypass 只留 h_res 注入（反之）
+3. **消融 3**：all_split / enzyme_split / reaction_split 三种 split 跑 EXP005，看 Test AUC 的 gap 是否和 baseline 保持一致（如果在更难的 split 上 dualgraph 反而占优，说明它只在难样本有价值）
+4. **数据侧**：给训练集加 20% 更难的负样本（同家族配对），看 baseline 和 dualgraph 的增益是否出现分化
+
+---
+
+## 九、最终产物
+
+### 9.1 服务器产物（已验证）
+
+```
+/root/autodl-tmp/EZSpecificity/PathC/P450/experiments/EXP005_dualgraph_2plus_allfix_unified/
+├── results/
+│   ├── test_eval.json                                                      ← 最终 Test AUC/AUPR
+│   ├── metrics.csv                                                         ← 逐 epoch train/val metrics
+│   ├── fig1_training_dynamics.png                                          ← loss / AUC / AUPR 训练曲线
+│   ├── fig2_family_performance.png                                         ← 按 family 拆分的 AUC
+│   └── checkpoints/
+│       └── pt-EXP005_dualgraph_2plus_allfix_unified-ep41-auc0.9262.ckpt    ← best ckpt
+└── logs/
+    ├── train_live.log                                                       ← 完整训练 + test 输出
+    └── events.out.tfevents.*                                                ← TensorBoard
+```
+
+### 9.2 本地产物（session 目录只留 session_log.md，不冗余下载）
+
+如需下载做更深入分析（消融、作图），可从服务器拉：
+
+```bash
+# SSH 服务器别名 autodl-4x5090-bj（连接时端口可能变，见 ~/.ssh/config）
+scp autodl-4x5090-bj:/root/autodl-tmp/.../results/test_eval.json ./
+scp autodl-4x5090-bj:/root/autodl-tmp/.../results/metrics.csv ./
+scp autodl-4x5090-bj:/root/autodl-tmp/.../logs/train_live.log ./
+```
+
+### 9.3 整个实验的代码产物（已 commit）
+
+- `experiments/EXP005_dualgraph_2plus_allfix_unified/src/Models/Structure/gvp.py`（335 行）
+- `experiments/EXP005_dualgraph_2plus_allfix_unified/src/Models/ss_dualgraph.py`（180 行）
+- `experiments/EXP005_dualgraph_2plus_allfix_unified/scripts/pt_dataset_dualgraph.py`（290 行）
+- `experiments/EXP005_dualgraph_2plus_allfix_unified/scripts/main_training_pt.py`（9 处改动）
+- `experiments/EXP005_dualgraph_2plus_allfix_unified/configs/config.yml`（+model.gvp）
+- `experiments/EXP005_dualgraph_2plus_allfix_unified/scripts/run_train.sh`
+
+### 9.4 下一步决策
+
+- ✅ Session 11 完整归档，不再更新训练产物
+- ⏳ Path C C3 阶段是否需要继续探索其他方向（更深模型 / 更多数据 / split 泛化）由后续会话决定
+- ⏳ 毕设论文/答辩材料整理时，**把 EXP005 作为"结构通道饱和性"三组证据之一**（EXP002a / EXP003 / EXP005）
+
+Auto-shutdown 已在 test 完成 30 秒后触发，实例关机，不再计费。
