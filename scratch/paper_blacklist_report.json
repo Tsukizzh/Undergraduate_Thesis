@@ -1,0 +1,81 @@
+{
+  "source_files": {
+    "our_enzymes_csv": "P450_Enzymes_server.csv",
+    "esibank_p450_csv": "389个P450的PDB映射_完整版.csv"
+  },
+  "esibank_p450_count": 389,
+  "our_enzymes_count": 1622,
+  "our_real_uniprot_count": 1457,
+  "our_fake_id_count": 165,
+  "blacklist_count": 356,
+  "blacklist_fraction_of_ours": 0.2195,
+  "blacklist_fraction_of_esibank": 0.9152,
+  "esibank_not_in_our_dataset_count": 33,
+  "esibank_not_in_our_dataset_ids": [
+    "A0A0E4B3I0",
+    "A0A1B1IHZ1",
+    "A0A1U7Q8W9",
+    "A0A1W6S9Y7",
+    "A0A2Z4I2V7",
+    "A0A653FHY2",
+    "A6P663",
+    "B8RBV1",
+    "C5IWL6",
+    "C7B608",
+    "D3K2N2",
+    "E3T9X1",
+    "F4YRL2",
+    "K7ZPJ9",
+    "K7ZR99",
+    "L7TF20",
+    "Q0Q5Z4",
+    "Q12599",
+    "Q17UC0",
+    "Q2EPZ0"
+  ],
+  "matched_pairs_first5": [
+    {
+      "enzyme_global_id": 3,
+      "uniprot": "A0A059WMF6",
+      "seq_len": 494,
+      "seq_sha256_8": "f4b4b1ff"
+    },
+    {
+      "enzyme_global_id": 15,
+      "uniprot": "A0A068Q609",
+      "seq_len": 526,
+      "seq_sha256_8": "f67d9b36"
+    },
+    {
+      "enzyme_global_id": 17,
+      "uniprot": "A0A072UPL5",
+      "seq_len": 522,
+      "seq_sha256_8": "2e26dd6a"
+    },
+    {
+      "enzyme_global_id": 34,
+      "uniprot": "A0A097HUX0",
+      "seq_len": 505,
+      "seq_sha256_8": "9504b948"
+    },
+    {
+      "enzyme_global_id": 39,
+      "uniprot": "A0A0A0K2U8",
+      "seq_len": 478,
+      "seq_sha256_8": "5378921d"
+    }
+  ],
+  "fake_id_rows_first10": [
+    1457,
+    1458,
+    1459,
+    1460,
+    1461,
+    1462,
+    1463,
+    1464,
+    1465,
+    1466
+  ],
+  "unmatched_real_count": 1101
+}

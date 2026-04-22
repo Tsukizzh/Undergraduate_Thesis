@@ -1,0 +1,67 @@
+{
+  "versions": {
+    "python": "3.12.5",
+    "torch": "2.3.0",
+    "pytorch_lightning": "1.9.0"
+  },
+  "config_top_keys": [
+    "num_cpus",
+    "num_gpus",
+    "root_dir",
+    "log",
+    "seed",
+    "n_runs",
+    "data",
+    "transform",
+    "model",
+    "training"
+  ],
+  "ckpt_top_keys": [
+    "epoch",
+    "global_step",
+    "pytorch-lightning_version",
+    "state_dict",
+    "loops",
+    "callbacks",
+    "optimizer_states",
+    "lr_schedulers"
+  ],
+  "ckpt_epoch": 106,
+  "ckpt_global_step": 263307,
+  "ckpt_pl_version": "1.9.0",
+  "ckpt_state_dict_keys": 76,
+  "ckpt_sample_keys": [
+    "graph_net.protein_atom_emb.weight",
+    "graph_net.protein_atom_emb.bias",
+    "graph_net.ligand_atom_emb.weight",
+    "graph_net.ligand_atom_emb.bias",
+    "graph_net.encoder_complex.net.0.edge_mlp.net.0.weight",
+    "graph_net.encoder_complex.net.0.edge_mlp.net.0.bias",
+    "graph_net.encoder_complex.net.0.edge_mlp.net.1.weight",
+    "graph_net.encoder_complex.net.0.edge_mlp.net.1.bias",
+    "graph_net.encoder_complex.net.0.edge_mlp.net.3.weight",
+    "graph_net.encoder_complex.net.0.edge_mlp.net.3.bias"
+  ],
+  "model_state_dict_keys": 76,
+  "model_sample_keys": [
+    "graph_net.protein_atom_emb.weight",
+    "graph_net.protein_atom_emb.bias",
+    "graph_net.ligand_atom_emb.weight",
+    "graph_net.ligand_atom_emb.bias",
+    "graph_net.encoder_complex.net.0.edge_mlp.net.0.weight",
+    "graph_net.encoder_complex.net.0.edge_mlp.net.0.bias",
+    "graph_net.encoder_complex.net.0.edge_mlp.net.1.weight",
+    "graph_net.encoder_complex.net.0.edge_mlp.net.1.bias",
+    "graph_net.encoder_complex.net.0.edge_mlp.net.3.weight",
+    "graph_net.encoder_complex.net.0.edge_mlp.net.3.bias"
+  ],
+  "matched_keys": 76,
+  "missing_keys_count": 0,
+  "unexpected_keys_count": 0,
+  "missing_keys_first20": [],
+  "unexpected_keys_first20": [],
+  "shape_mismatches_count": 0,
+  "shape_mismatches_first5": [],
+  "strict_load": "PASSED",
+  "result": "PASS_CLEAN"
+}
