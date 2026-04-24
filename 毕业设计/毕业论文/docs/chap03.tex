@@ -1,125 +1,205 @@
-\chapter{\LaTeX 模板配置与使用}
+%%
+% 第三章 P450 专属基准数据集构建
+% 本论文最扎实的一章。具体、可审计、不修辞。
+%%
 
+\chapter{P450 专属基准数据集构建}
+\label{cha:dataset}
 
-\label{cha:sysu-thesis-latex-install-guide}
+本章系统阐述 P450 专属基准数据集的构建过程。如第一章所述，P450 超家族在现有酶--底物特异性预测基准（以 ESIBank 为代表）中覆盖稀缺、数据零散地分布于若干互补的公共资源之间，因此需要以统一的字段、去重和切分协议对多源数据进行整合。本章依次介绍五个数据源的获取与字段整理策略、酶与底物的跨源去重方法、双向随机负样本的构造、数据切分与外部公平对比测试集的生成、分子对接与复合物结构生成流程，以及面向深度学习模型训练的特征生成与数据质量控制。最终得到的基准数据集为后续章节的模型训练、公平评估与架构改进提供统一的数据基础。
 
-本部分内容将让你能够通过本\LaTeX 模板生成一份可用的pdf，并为后面修改源码撰写毕设做准备。
+\section{多源数据获取与整合策略}
+\label{sec:multisource}
 
-首先，我们会展示最简单的方法：直接使用overleaf进行编写。然后，我们整理了不同环境下\LaTeX 环境的配置指南与不同写作工具的配置技巧，方便各位同学使用本\LaTeX 模板。最后，我们说明了如何开始编写自己的毕业论文（设计）。
+\subsection{五个互补数据源及其规模}
 
+P450 酶及其底物的高质量配对信息并未集中于单一数据库，而是分散于晶体结构数据库、反应数据库、家族专属数据库与参考文献之中。为尽可能覆盖已确定的 P450 催化关系，本研究从以下五个互补来源整合原始记录。
 
-\section{使用Overleaf编写毕设}
+\textbf{RCSB Protein Data Bank}\cite{Burley2025,Berman2000}。该来源提供经 X 射线晶体学或冷冻电镜解析的 P450 复合物，是酶--底物配对证据中等级最高的一类。本研究复用自独立测试集构建阶段获得的 682 条经三方人工智能代理（Claude、Codex、Gemini）逐条复核的 P450--配体记录，从中保留经文献与结构证据一致判定为底物而非抑制剂或产物的配对，最终纳入 272 条正样本、103 个唯一酶、220 个唯一底物。
 
-Overleaf\footnote{网址可见\url{https://www.overleaf.com/}}是一个在线的Latex文档协作平台。我们不需要配置任何环境，便能够在上面直接使用本模板进行写作。操作步骤如下：
+\textbf{ESIBank}\cite{EZSpec2025}。该来源为 EZSpecificity 论文公开的原始训练数据中涉及 P450 的子集。本研究从 EZSpecificity 作者提供的数据包中提取 12{,}329 条 P450 记录，首先在索引层面对酶--反应索引关系进行完整校验以避免数据集内部错配，随后过滤 10 种常见的辅因子与溶剂分子（如分子氧及其多种表示形式 \texttt{O}、\texttt{O=O}、\texttt{[O][O]}、过氧化物 \texttt{OO} 等），由原始 884 条实质配对缩减为 806 条。该子集提供 389 个唯一酶与 390 个唯一底物，代表 ESIBank 训练集中真正通过 InterPro\cite{Blum2025} 功能域严格验证的 P450 条目。
 
-第一步，下载本项目压缩包（从\url{https://github.com/SYSU-SCC/sysu-thesis/releases}处下载即可），注意需要下载zip格式的压缩包。
-然后，我们在Overleaf上新建项目，并上传该压缩包，可参考\autoref{fig:overleaf-new-proj}。
+\textbf{P450Rdb}（成都中医药大学）。该数据库提供以反应为中心的 P450 条目。本研究从官方网站下载全部四个数据文件（其中 \texttt{Reactions.csv} 约 84~MB），识别出 132{,}000 余条原始记录实际上由两张子表拼接而成，遂仅保留其中标记为 Experimentally validated 的 3{,}753 条实验验证条目。对条目中合并写入的多个 UniProt 编号进行拆分，并对序列信息缺失的条目通过 UniProt\cite{UniProt2025} 序列 API 与序列 SHA 哈希桥接补全（共为 7 条记录回填序列）。该来源最终贡献 2{,}798 条正样本、857 个唯一酶与 1{,}492 个唯一底物。
 
+\textbf{PlantP450DB}（哥本哈根大学植物 P450 数据库）。该数据库聚焦植物细胞色素 P450，其命名体系由 Nelson 等的植物 P450 系统命名工作奠定\cite{Nelson2004}。本研究自该数据库爬取 910 个酶条目详情页，通过 PubMed 与 CrossRef 检索获取相关文献 566 篇摘要，对开放获取的 52 篇文献通过 Unpaywall 下载全文，并补充 61 篇非开放获取文献的 PDF，在对应摘要与全文中自动化抽取酶--底物对关系、并经多轮质量复核；底物 SMILES 通过 PubChem 与 KEGG 的化学标识符交叉查询补齐，酶序列通过 UniProt 补齐。该来源最终贡献 979 条正样本、578 个唯一酶与 295 个唯一底物。
 
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=0.2\textwidth]{image/chap03/overleaf-create-proj.jpg}
-	\includegraphics[width=0.7\textwidth]{image/chap03/overleaf-upload-proj.jpg}
-	\caption{在Overleaf上创建并上传压缩包。}
-	\label{fig:overleaf-new-proj}
+\textbf{PCPD}（中科院天津植物 P450 综合数据库）\cite{Wang2021PCPD}。该数据库通过前端 JavaScript 动态加载记录。本研究通过浏览器开发者工具逆向分析定位其静态资源 CDN，批量下载全部 1{,}427 条酶 JSON、1{,}425 条 FASTA 序列、423 个 PDB 结构与 857 张反应示意图片，通过 7 条正则规则与多轮人工复核提取 582 条表达不清晰的反应条目，并对初次抽取结果中 228 处字段错误做针对性清洗；底物 SMILES 通过三轮 PubChem 与 KEGG 查询补齐。该来源最终贡献 1{,}209 条正样本、818 个唯一酶与 570 个唯一底物。
+
+\begin{table}[htbp]
+  \centering
+  \caption{五个 P450 数据源的正样本、酶与底物统计}
+  \label{tab:ch3-sources}
+  \begin{tabular}{lrrrl}
+    \toprule
+    数据源 & 正样本 & 唯一酶 & 唯一底物 & 主要证据等级 \\
+    \midrule
+    RCSB PDB            & 272   & 103 & 220  & 晶体结构 \\
+    ESIBank             & 806   & 389 & 390  & 文献 + 对接结构 \\
+    P450Rdb             & 2{,}798 & 857 & 1{,}492 & 文献验证 \\
+    PlantP450DB         & 979   & 578 & 295  & 文献抽取 \\
+    PCPD                & 1{,}209 & 818 & 570  & 文献抽取 \\
+    \midrule
+    合计（去重前）       & 6{,}064 & 2{,}694 & 2{,}967 & --- \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\begin{figure}[htbp]
+  \centering
+  \fbox{\parbox[c][3.5cm][c]{0.85\textwidth}{\centering 图 3-1 占位：五源数据整合流程示意图\\[0.5em] （原始源 $\to$ 字段标准化 $\to$ 去重合并 $\to$ 正样本对 $\to$ 负样本与切分）\\[0.5em] 手绘待插入：\texttt{image/fig3-1-multisource.png}}}
+  \caption{五源 P450 数据整合流程示意}
+  \label{fig:ch3-multisource}
 \end{figure}
 
-第二步，在Overleaf的菜单中调整编译工具为\texttt{xelatex}，可参考\autoref{fig:overleaf-config}。
+\subsection{RCSB 来源的分级漏斗筛选}
 
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=0.6\textwidth]{image/chap03/overleaf-config.jpg}
-	\caption{在Overleaf上调整编译工具}
-	\label{fig:overleaf-config}
+由于晶体结构数据中混杂有抑制剂、产物与辅因子等非底物配体，本研究对 RCSB 来源单独设计了五级漏斗筛选流程（见表~\ref{tab:ch3-rcsb-funnel}），以在尽可能保留真实酶--底物对的同时去除与 ESIBank 重合的条目和已知错误标注。漏斗起点为 Pfam PF00067 对 P450 超家族的全局搜索，共 1{,}591 条候选晶体结构；经分辨率与序列长度筛选保留 1{,}426 条；经配体展开与辅因子/溶剂过滤保留 3{,}510 条配体配对中的 1{,}370 对；经 UniProt 与配体 CCD 去冗余保留分辨率最优代表 930 对；剔除与 ESIBank 训练集重合的 P450 对应 PDB 保留 740 对；最终剔除误标注为 P450 的 Photosystem I 蛋白 58 对后，得到 682 条高质量 P450--底物配对，对应 627 个唯一 PDB 条目与 153 个唯一 UniProt 酶。
+
+\begin{table}[htbp]
+  \centering
+  \caption{RCSB PDB 来源的五级漏斗筛选明细}
+  \label{tab:ch3-rcsb-funnel}
+  \begin{tabular}{lrl}
+    \toprule
+    阶段 & 保留条目 & 筛选标准 \\
+    \midrule
+    起点        & 1{,}591 & Pfam PF00067 全局搜索 P450 晶体结构 \\
+    ① 质量筛选   & 1{,}426 & 分辨率 $\leq 3.0$\,\AA{}、序列 300--1{,}200 aa、X-ray/EM \\
+    ② 辅因子过滤 & 1{,}370 & 配体展开后排除 88 种辅因子与溶剂 \\
+    ③ 去冗余     & 930   & 按 (UniProt, 配体 CCD) 分组保留分辨率最优 \\
+    ④ 排除泄漏   & 740   & 剔除 ESIBank 训练集中 389 个 P450 对应 PDB \\
+    ⑤ 质控       & 682   & 剔除误标注为 P450 的 Photosystem I \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\begin{figure}[htbp]
+  \centering
+  \fbox{\parbox[c][3.5cm][c]{0.85\textwidth}{\centering 图 3-2 占位：RCSB 五级漏斗筛选示意\\[0.5em] 1{,}591 $\to$ 1{,}426 $\to$ 1{,}370 $\to$ 930 $\to$ 740 $\to$ 682\\[0.5em] 手绘待插入：\texttt{image/fig3-2-rcsb-funnel.png}}}
+  \caption{RCSB PDB 来源五级漏斗筛选示意图}
+  \label{fig:ch3-funnel}
 \end{figure}
 
+\section{酶与底物的跨源去重与对齐}
+\label{sec:dedup}
 
-第三步，点击编译，得到本pdf，可以开始修改pdf了！最终可见\autoref{fig:overleaf-example}。
+不同数据源在酶标识、序列长度、底物 SMILES 规范化程度等字段上存在差异。为保证合并后的基准数据集内酶与底物的身份唯一性，本研究采用分层去重策略：在酶的层面，以 UniProt 登录号为主键，对缺失 UniProt 的条目通过酶序列的 SHA 哈希与 UniProt 序列 API 双向桥接后再行合并；在底物的层面，统一以 IUPAC 国际化学标识符 InChIKey\cite{InChI2015} 作为唯一键，先将源条目中的 SMILES 表达式\cite{SMILES1988} 经 RDKit\cite{RDKit} 规范化为标准 SMILES 与 InChI，随后以 InChIKey 作为去重键；对同一 InChIKey 对应多条 SMILES 的情况，保留最短规范化 SMILES 作为代表，其余保留为同义项以便后续回溯。
 
+跨源合并后，数据集规模由去重前的 6{,}064 条正样本、2{,}694 个酶、2{,}967 个化合物，收敛至去重后的 4{,}751 条正样本（$-21.6\%$）、1{,}622 个酶（$-39.8\%$）与 2{,}125 个化合物（$-28.4\%$）。去重过程经多轮人工复核以确认跨源同义酶的合并不引入假阳性。
 
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=0.9\textwidth]{image/chap03/overleaf-example.jpg}
-	\caption{Overleaf使用例子}
-	\label{fig:overleaf-example}
+\begin{table}[htbp]
+  \centering
+  \caption{跨源去重前后的基准数据集规模}
+  \label{tab:ch3-dedup}
+  \begin{tabular}{lrrr}
+    \toprule
+    维度 & 去重前 & 去重后 & 变化 \\
+    \midrule
+    唯一酶       & 2{,}694 & 1{,}622 & $-39.8\%$ \\
+    唯一化合物   & 2{,}967 & 2{,}125 & $-28.4\%$ \\
+    正样本对     & 6{,}064 & 4{,}751 & $-21.6\%$ \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\section{双向负样本构造与风险讨论}
+\label{sec:negatives}
+
+底物特异性预测在本研究中采用二分类建模：输入为一对酶--化合物，输出该酶是否催化该底物。正样本即上节得到的 4{,}751 条去重后的实验或文献验证的 P450--底物对。负样本的构造遵循 EZSpecificity 提出的双向随机配对策略\cite{EZSpec2025}，分为两个方向：方向 A 固定底物、从 1{,}622 个酶中随机挑选非已知催化该底物的 P450 作为负酶配对；方向 B 固定酶、从 2{,}125 个底物中随机挑选非已知被该酶催化的化合物作为负底物配对。两个方向的负样本以大致相近的比例生成，最终使正负样本比约为 $1:10$，较 EZSpecificity 原始论文报告的 $1:9.36$ 略稀疏。
+
+该负样本构造方法的核心假设是：在我们的酶与底物样本空间中，随机配对出的酶--底物对以高概率为非催化关系。该假设在绝大多数情况下成立，但存在以下已知风险。第一，P450 超家族内酶之间的序列与结构相似性较高，随机负样本可能无意中选中与正样本同家族的近缘酶对，使该对实际上也能催化该底物但在现有数据库中尚未被记录，从而引入假阴性；第二，BRENDA\cite{Chang2021} 等文献数据库仅记录被实验验证的反应，大量合理存在但未被测定的 P450--底物对可能散落在负样本空间中；第三，与同一底物适配的不同 P450 酶常常在代谢通路中共享，进一步加剧同家族难负样本的潜在污染。上述风险在本研究中作为既定限制被坦诚接受，对应的系统性评估（例如同家族难负样本的受控构造与模型在其上的表现）留待未来工作，并在第六章局限性中如实标注。
+
+\section{数据切分与测试集构造}
+\label{sec:splits}
+
+为与 EZSpecificity 参考框架保持评估协议的一致性，本研究在合并数据集上按照 EZSpecificity 的 random split 标准流程进行切分，得到训练集 22{,}083 条、验证集 11{,}008 条、测试集 10{,}999 条（正负样本按前述双向构造产生，详见表~\ref{tab:ch3-splits}）\footnote{本研究预先生成了 random split、reaction split、enzyme split 与 all split 四种切分策略的索引文件以便未来扩展，但本论文仅报告 random split 第一折（fold~0）的训练与评估结果，不声称交叉验证或多切分稳健性结论。}。切分比例接近 2:1:1，兼顾了训练样本规模与独立验证/测试的稳健性需求。
+
+\begin{table}[htbp]
+  \centering
+  \caption{随机切分第一折（random split fold~0）的样本分布}
+  \label{tab:ch3-splits}
+  \begin{tabular}{lrrr}
+    \toprule
+    子集 & 总样本 & 正样本 & 负样本 \\
+    \midrule
+    训练集 train      & 22{,}083 & 2{,}017 & 20{,}066 \\
+    验证集 val        & 11{,}008 & 1{,}008 & 10{,}000 \\
+    测试集 test       & 10{,}999 & 984   & 10{,}015 \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+在上述测试集基础上，为开展与 EZSpecificity 公开 checkpoint 的泄漏控制外部公平对比，本研究进一步构造了过滤后测试集。具体做法：对 ESIBank 原始 25{,}225 条酶记录以 InterPro\cite{Blum2025} 功能域（IPR001128、IPR036396、IPR002401 等 P450 特征域）严格验证识别出 389 个 P450 酶；将本研究测试集中与上述 389 个 P450 在酶层面存在重合的 3{,}036 条样本剔除，保留酶层面确认不与 EZSpecificity 原始训练集重合的 7{,}963 条样本作为过滤后测试集。该过滤后测试集的结果将在第四章中与未过滤测试集的结果并列报告。
+
+\begin{figure}[htbp]
+  \centering
+  \fbox{\parbox[c][3.5cm][c]{0.85\textwidth}{\centering 图 3-3 占位：外部过滤测试集构造流程\\[0.5em] 全 test 10{,}999 $\to$ 剔除与 ESIBank 重合的 P450 酶 $\to$ 保留 7{,}963 条\\[0.5em] 手绘待插入：\texttt{image/fig3-3-external-filter.png}}}
+  \caption{泄漏控制外部公平对比测试集构造}
+  \label{fig:ch3-filter}
 \end{figure}
 
+\begin{table}[htbp]
+  \centering
+  \caption{外部公平对比测试集的构造与规模}
+  \label{tab:ch3-filter}
+  \begin{tabular}{lrrr}
+    \toprule
+    测试集 & 总样本 & 正样本 & 负样本 \\
+    \midrule
+    未过滤     & 10{,}999 & 984  & 10{,}015 \\
+    过滤后     & 7{,}963  & 715  & 7{,}248  \\
+    剔除数量   & 3{,}036  & 269  & 2{,}767  \\
+    \bottomrule
+  \end{tabular}
+\end{table}
 
+\section{分子对接与结构复合物生成}
+\label{sec:docking}
 
-\section{编译环境配置}
+EZSpecificity 参考框架在结构通道上依赖酶--底物对接复合物的三维坐标输入。对于本研究合并得到的 1{,}622 个酶与 2{,}125 个底物所构成的约 47{,}510 条酶--底物配对，本研究建立了统一的分子对接流程，逐对生成对接复合物结构。
 
-编译环境配置相对来说比较简单，下载Tex Live2020并如同一般的程序一样安装即可。
+\textbf{蛋白结构准备}。对拥有实验晶体结构的酶优先采用晶体结构；若实验结构缺失，使用 AlphaFold 数据库\cite{Varadi2024} 中对应 UniProt 的预测结构；由于 P450 催化活性依赖血红素辅因子，而 AlphaFold 的预测结构不包含辅因子，本研究进一步采用 AlphaFill\cite{AlphaFill2023} 将血红素从同源晶体结构中迁移回填至预测结构的活性口袋，以保证对接计算时活性位点几何的完整性。蛋白侧的 PDB 经标准化处理确保符合后续口袋提取的格式要求（详见附录 A）。
 
-\subsection{编译环境配置：Window篇}
+\textbf{配体结构准备}。底物 SMILES 经 RDKit\cite{RDKit} 转换为三维坐标，Meeko\cite{Meeko2025} 工具包负责添加极性氢、分配 Gasteiger 电荷、处理旋转键柔性，并输出对接所需的 PDBQT 格式。
 
-在\url{https://mirrors.tuna.tsinghua.edu.cn/CTAN/systems/texlive/Images/}上下载Tex Live2020并参考教程\footnote{可以参考\url{https://zhuanlan.zhihu.com/p/58811994}}安装即可。
+\textbf{对接流程}。采用 Uni-Dock\cite{UniDock2023} 作为对接引擎，该引擎基于 AutoDock Vina 2\cite{Vina2010,Vina2021} 评分函数并经 GPU 并行化大幅提速。对接盒按活性位点中心（以血红素铁为参考点）外扩 $20~\mathrm{\AA}$ 设置，采用快速模式以兼顾规模与精度；对每条酶--底物配对保留最佳打分对接姿态。
 
-\subsection{编译环境配置：Linux篇}
+\textbf{复合物组装}。蛋白 PDB 与配体 PDBQT 经格式转换与对接姿态回贴后拼接为单一复合物 PDB，并按 EZSpecificity 模型要求的分隔符与原子排序规范组织。最终共 50{,}180 对成功生成对接复合物（成功率 96.1\%）；对接失败的 1{,}930 对主要源于 Uni-Dock 对某些特殊原子或键型的处理限制，在后续特征生成阶段自动剔除。
 
-在\url{https://mirrors.tuna.tsinghua.edu.cn/CTAN/systems/texlive/Images/}上下载Tex Live2020并参考教程\footnote{可以参考\url{https://zhuanlan.zhihu.com/p/55894177}}安装即可。
+\section{特征生成与数据质量控制}
+\label{sec:features}
 
+从复合物 PDB 与酶/底物基本信息出发，本研究按 EZSpecificity 参考框架生成四类模型输入特征，分别写入 LMDB 或二进制存储以便训练时高效读取。
 
-\subsection{编译环境配置：MacOS篇}
+\textbf{酶序列嵌入}。采用 ESM-2\cite{ESM2023} 预训练蛋白语言模型对酶序列计算残基级嵌入向量（维度 1{,}280），仅保留长度不超过 1{,}000 个标准氨基酸的蛋白。该特征写入 \texttt{enzymes.lmdb}。
 
-在MacOS上配置Latex的环境，这里我们使用的是MacTex。
+\textbf{底物分子嵌入}。采用 GROVER\cite{GROVER2020} 预训练分子图变换器模型对底物计算原子级与分子级嵌入（原子级 2{,}400 维、整分子级 4{,}885 维），与 Morgan 扩展连接指纹\cite{ECFP2010}（1{,}024 位）共同构成底物的分子通道输入。仅保留 RDKit 解析成功且原子数不超过 275 的底物。该特征写入 \texttt{substrates.lmdb} 与 \texttt{morgan\_fingerprint.npy}。
 
-\begin{enumerate}
-	\item \url{https://www.tug.org/mactex/}下载MacTex安装。
-	\item 安装步骤：不详细展开，按照图形界面点击即可, 傻瓜式安装。
-\end{enumerate}
+\textbf{结构通道特征}。从对接复合物 PDB 中抽取以血红素铁或配体重原子为参考的 $10~\mathrm{\AA}$ 范围内口袋残基与配体原子，构造用于 SE(3)-等变图神经网络的节点与边特征：节点侧包含原子种类 one-hot、残基类型、氨基酸骨架标志等 28 维特征；边侧包含化学键与空间最近邻两类连接，边特征含键类型、距离径向基展开 32 维、跨分子标志 1 维，共 39 维。解析工具链基于 BioPython\cite{Biopython2009} 与 RDKit。该特征写入 \texttt{structure.lmdb}。
 
-TIPS：MacTex文件比较大，有2G多，介意的话可以选择MacTex\_Basic包，只有100M以内，但是如果安装MacTex\_Basic，后期可能会遇到各种缺包的问题。
+\textbf{数据质量控制}。在特征生成流水线的迭代过程中，本研究对 LMDB 索引与原始 CSV 行号之间的对齐建立了字节级一致性核验协议，以排除索引错位对训练结果的系统性影响。核验以每条样本的酶序列 SHA 哈希与底物规范化 SMILES 为校验键，对全量样本进行往返比对并记录不一致条目；初版流水线中发现的对齐问题经修复后数据集通过全链路核验，并在每次特征重建时自动执行核验脚本。最终得到的可用酶--底物配对共 47{,}510 条，其中正样本 4{,}362 条、负样本 43{,}148 条，正负比约 $1:9.9$；未能通过核验或特征生成失败的样本（主要为超长蛋白、非标准氨基酸、超大底物与对接失败）未纳入训练评估。
 
+\begin{table}[htbp]
+  \centering
+  \caption{模型输入特征与存储}
+  \label{tab:ch3-features}
+  \begin{tabular}{llrll}
+    \toprule
+    特征类型 & 来源 & 维度 & 存储格式 & 生成工具 \\
+    \midrule
+    酶序列嵌入     & 酶氨基酸序列    & 1{,}280 & LMDB (\texttt{enzymes}) & ESM-2\cite{ESM2023} \\
+    原子级分子嵌入 & 底物 SMILES     & 2{,}400 & LMDB (\texttt{substrates}) & GROVER\cite{GROVER2020} \\
+    分子级分子嵌入 & 底物 SMILES     & 4{,}885 & LMDB (\texttt{substrates}) & GROVER\cite{GROVER2020} \\
+    分子指纹       & 底物 SMILES     & 1{,}024 & NumPy (\texttt{morgan})   & Morgan/ECFP\cite{ECFP2010} \\
+    结构节点特征   & 对接复合物 PDB  & 28     & LMDB (\texttt{structure}) & BioPython + 自研 \\
+    结构边特征     & 对接复合物 PDB  & 39     & LMDB (\texttt{structure}) & BioPython + 自研 \\
+    \bottomrule
+  \end{tabular}
+\end{table}
 
-安装完成之后，可以简单测试一下安装是否成功。如可以查看Texshop应用是否安装好，或者在命令行测试一下\texttt{xelatex}命令是否可用。
+\section{基准数据统计}
+\label{sec:stats}
 
-\section{写作环境配置}
+综合前述各节的构建与筛选，本研究得到的 P450 专属基准数据集最终规模为：1{,}622 个唯一酶、2{,}125 个唯一底物、4{,}751 条跨源合并去重后的正样本对；配合双向随机负样本与特征生成流水线，最终可供模型训练与评估的样本共 47{,}510 条，其中正样本 4{,}362 条、负样本 43{,}148 条，正负比约 $1:9.9$；按 random split 第一折切分为训练集 22{,}083 条、验证集 11{,}008 条、测试集 10{,}999 条。针对与 EZSpecificity 公开 checkpoint 的泄漏控制公平对比，进一步过滤测试集中与原始训练集重合的 P450 酶得到 7{,}963 条过滤后测试集。
 
-不同的写作工具对应不同的写作环境。这里我们给出几个工具的配置例子以供参考。
-
-\subsection{模板编译流程}
-
-由于\LaTeX 的限制，本模板需要经过四次编译才能生成完整的论文：
-
-\begin{enumerate}
-	\item 先使用xelatex编译一次
-	\item 再使用bibtex编译一次
-	\item 然后使用xelatex编译两次
-\end{enumerate}
-
-本编译流程已经写在Makefile中，修改模板源码后只需要执行\texttt{make main}即可按照该流程进行编译并生成最终的pdf。
-
-
-
-\subsection{写作环境配置：Visual Studio Code}
-
-Visual Studio Code是微软公司推出的轻量代码编辑器，我们可以做一些简单的配置，便可以用该编辑器修改我们的\LaTeX 模板，并实现一键编译。
-
-\begin{enumerate}
-	\item 安装 Visual Studio Code。
-	\item 安装 LaTeX Workshop 插件。
-\end{enumerate}
-
-本项目的\texttt{.vscode/setting.json}下已经包含了与前面所述编译流程相同的配置。正常配置下，每次修改模板源码后按下保存（Ctrl+S），就能够自动进行编译产生pdf。效果图如\autoref{fig:vscode-example}所示。
-
-
-\begin{figure}[h]
-	\centering
-	\includegraphics[width=\linewidth]{image/chap03/vscode-example.png}
-	\caption{vscode配置好后的样例}
-	\label{fig:vscode-example}
-\end{figure}
-
-
-\section{如何开始写毕业论文（设计）}
-
-首先将所有个人信息，包括学号、姓名、专业、论文题目等，在\texttt{./docs/info.tex}中逐项进行更新。
-
-然后我们再编辑\texttt{./docs/abstract.tex}补充论文摘要。
-
-到了论文主体部分，我们可以自行编辑\texttt{./docs/chap01.tex}，\texttt{./docs/chap02.tex}等文件进行编辑。如果章数不够，可以自行修改\texttt{main.tex}增加新的章节。
-
-当论文主体编写完成后，我们再编辑\texttt{./docs/ack.tex}作为论文致谢。
-
-
-% 首先将个人信息写到\texttt{./docs/info.tex}中。
+相对于 ESIBank 原始训练集仅包含 389 个 P450 酶（在 25{,}225 条酶中占 1.5\%）的覆盖规模，本基准数据集将唯一 P450 酶的数量扩大约 4 倍，将正样本对扩大约 6 倍，尤其显著扩展了植物 P450 的覆盖——PlantP450DB 与 PCPD 合计贡献 2{,}188 条正样本与 1{,}396 个唯一酶，是先前以人源与微生物 P450 为主的深度学习基准中相对稀见的植物来源数据。上述数据资产为后续章节的模型训练、公平评估与架构改进提供统一的实验基础。
