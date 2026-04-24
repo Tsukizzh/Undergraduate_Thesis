@@ -1,68 +1,94 @@
 % !TeX root = ../main.tex
+%%
+% 附录A 补充数据与脚本
+% 按中山大学规范二（六）8 附录内容要求
+%%
 
-\chapter{补充材料}
+\chapter{补充数据与脚本}
+\label{app:supplementary}
 
+本附录汇总与正文互补的实现细节，包括各数据源的字段对照与获取参数、数据一致性校验协议的技术细节，以及基线与双图架构两模型的完整训练超参数表。
 
-\section{补充章节}
+\section{数据源字段对照}
+\label{app:data-sources}
 
-\subsection{补充图}
+本研究所采用的五个数据源在原始字段与获取通道上存在差异，表~\ref{tab:app-sources} 汇总了各源提供的核心字段、获取方式与关键过滤标准，以便后续社群复用。
 
-这是附录内容，应该用宋体小四号字体。
+\begin{table}[htbp]
+  \centering
+  \caption{五个数据源的核心字段与获取方式}
+  \label{tab:app-sources}
+  \begin{tabular}{llp{0.35\textwidth}l}
+    \toprule
+    来源 & 访问通道 & 关键字段与处理 & 代表性过滤 \\
+    \midrule
+    RCSB PDB & REST API / FTP      & UniProt 登录号、PDB ID、配体 CCD 码、分辨率、序列长度                               & 分辨率 $\leq 3.0~\mathrm{\AA}$；序列 300--1{,}200 aa \\
+    ESIBank  & EZSpecificity 数据包 & 酶序列、反应 SMILES、正样本标签、索引                                              & 过滤 10 种辅因子与溶剂 \\
+    P450Rdb  & 官网文件下载         & UniProt 登录号、反应描述、文献标签、实验证据等级                                     & Experimentally validated 条目 \\
+    PlantP450DB & 爬虫 + 文献自动抽取 & 酶名、家族、物种、底物描述、文献 DOI                                                 & 需经 PubMed/CrossRef 文献补齐 \\
+    PCPD     & CDN JSON 批量下载    & 酶 JSON、FASTA 序列、PDB 结构、反应示意图片                                          & 正则抽取 + 多智能体协作清洗 \\
+    \bottomrule
+  \end{tabular}
+\end{table}
 
-\begin{figure}[h!]
-	\centering
-	\makebox[0.16\textwidth]{\scriptsize 图像}
-	\makebox[0.16\textwidth]{\scriptsize 真值}
-	\makebox[0.16\textwidth]{\scriptsize Grid-5LSTM1}
-	\makebox[0.16\textwidth]{\scriptsize Grid-5LSTM3}
-	\makebox[0.16\textwidth]{\scriptsize Grid-5LSTM5} \\
-	\includegraphics[width=0.16\textwidth]{image/appendix1/2007_000042.jpg}
-	\includegraphics[width=0.16\textwidth]{image/appendix1/2007_000042.png}
-	\includegraphics[width=0.16\textwidth]{image/appendix1/1/2007_000042.png}
-	\includegraphics[width=0.16\textwidth]{image/appendix1/3/2007_000042.png}
-	\includegraphics[width=0.16\textwidth]{image/appendix1/5/2007_000042.png} \\
+\section{数据一致性校验方法与脚本说明}
+\label{app:qc-protocol}
 
-	\includegraphics[width=0.16\textwidth]{image/appendix1/2011_003256.jpg}
-	\includegraphics[width=0.16\textwidth]{image/appendix1/2011_003256.png}
-	\includegraphics[width=0.16\textwidth]{image/appendix1/1/2011_003256.png}
-	\includegraphics[width=0.16\textwidth]{image/appendix1/3/2011_003256.png}
-	\includegraphics[width=0.16\textwidth]{image/appendix1/5/2011_003256.png} \\
-	\includegraphics[width=0.16\textwidth]{image/appendix1/2011_001159.jpg}
-	\includegraphics[width=0.16\textwidth]{image/appendix1/2011_001159.png}
-	\includegraphics[width=0.16\textwidth]{image/appendix1/1/2011_001159.png}
-	\includegraphics[width=0.16\textwidth]{image/appendix1/3/2011_001159.png}
-	\includegraphics[width=0.16\textwidth]{image/appendix1/5/2011_001159.png} \\
-	\includegraphics[width=0.16\textwidth]{image/appendix1/2011_000813.jpg}
-	\includegraphics[width=0.16\textwidth]{image/appendix1/2011_000813.png}
-	\includegraphics[width=0.16\textwidth]{image/appendix1/1/2011_000813.png}
-	\includegraphics[width=0.16\textwidth]{image/appendix1/3/2011_000813.png}
-	\includegraphics[width=0.16\textwidth]{image/appendix1/5/2011_000813.png} \\
-	\includegraphics[width=0.16\textwidth]{image/appendix1/2011_003145.jpg}
-	\includegraphics[width=0.16\textwidth]{image/appendix1/2011_003145.png}
-	\includegraphics[width=0.16\textwidth]{image/appendix1/1/2011_003145.png}
-	\includegraphics[width=0.16\textwidth]{image/appendix1/3/2011_003145.png}
-	\includegraphics[width=0.16\textwidth]{image/appendix1/5/2011_003145.png} \\
-	\includegraphics[width=0.16\textwidth]{image/appendix1/2009_004579.jpg}
-	\includegraphics[width=0.16\textwidth]{image/appendix1/2009_004579.png}
-	\includegraphics[width=0.16\textwidth]{image/appendix1/1/2009_004579.png}
-	\includegraphics[width=0.16\textwidth]{image/appendix1/3/2009_004579.png}
-	\includegraphics[width=0.16\textwidth]{image/appendix1/5/2009_004579.png} \\
-	\color[rgb]{0.9,0.9,0.9}\bfseries
-	\begin{tabular}{*{7}{>{\centering\arraybackslash}p{0.10\textwidth}}}
-		\hline
-		\cellcolor[rgb]{0,0,0}  背景                 & \cellcolor[rgb]{0.5020,0,0} 飞机         & \cellcolor[rgb]{0,0.5020,0} 自行车 & \cellcolor[rgb]{0.5020,0.5020,0} 鸟 & \cellcolor[rgb]{0,0,0.5020} 船        & \cellcolor[rgb]{0.5020,0,0.5020} 瓶子 & \cellcolor[rgb]{0,0.5020,0.5020} 大巴
-		\\
-		\hline
-		\cellcolor[rgb]{0.5020,0.5020,0.5020} 汽车   & \cellcolor[rgb]{0.2510,0,0} 猫           & \cellcolor[rgb]{0.7529,0,0} 椅子   & \cellcolor[rgb]{0.2510,0.5020,0} 牛 & \cellcolor[rgb]{0.7529,0.5020,0} 桌子 & \cellcolor[rgb]{0.2510,0,0.5020} 狗   & \cellcolor[rgb]{0.7529,0,0.5020} 马   \\
-		\hline
-		\cellcolor[rgb]{0.2510,0.5020,0.5020} 摩托车 & \cellcolor[rgb]{0.7529,0.5020,0.5020} 人 & \cellcolor[rgb]{0,0.2510,0} 盆栽   & \cellcolor[rgb]{0.5020,0.2510,0} 羊 & \cellcolor[rgb]{0,0.7529,0} 沙发      & \cellcolor[rgb]{0.5020,0.7529,0} 火车 & \cellcolor[rgb]{0,0.2510,0.5020} 电视 \\
-		\hline
-	\end{tabular}
+本研究的数据一致性校验由两部分组成：索引对齐核验协议与多智能体协作证据判定的工具栈。
 
-	\caption{一个配有彩色表格的插图}
-\end{figure}
+\textbf{索引对齐核验协议}。LMDB 存储与原始 CSV 行号之间的对齐使用酶序列 SHA 哈希与底物规范化 SMILES 作为校验键，对全量样本进行往返比对。具体流程：首先按训练集、验证集、测试集分别读取切分索引文件中的 \texttt{(enzyme\_id, substrate\_id)} 对；然后从 LMDB 中读取对应的酶序列与底物 SMILES，计算 SHA-256 哈希与经 RDKit 规范化后的标准 SMILES；再与原始 \texttt{Enzymes.csv} 与 \texttt{Substrates.csv} 中对应行号的字段做逐条比对，记录任何键值不一致的条目并写入 \texttt{qc\_report.csv}。初版流水线中识别出的索引错位问题经修复后，完整数据集通过全链路一致性核验。
 
-\endinput
+\textbf{多智能体协作工具栈}。第 \ref{sec:multiagent} 节所述证据级联判定流程在 Claude Code 命令行环境下运行，外部的 OpenAI Codex 与 Google Gemini 模型通过模型上下文协议（Model Context Protocol，MCP）封装接入：Codex 侧通过 \texttt{codex-mcp} 开源组件、Gemini 侧通过 \texttt{gemini-mcp} 开源组件实现函数级调用。主代理（Claude）在每条判定任务上分别向文献代理（Gemini）与结构代理（Codex）派发独立查询，两代理相互不可见以避免证据耦合。在 12 个并行窗口上每条记录约 15 分钟的处理节奏下，RCSB 的 682 条 P450--配体配对约在 $57$ 条每窗口的负载下完成全量复核。
 
+\section{训练超参数完整表}
+\label{app:hyperparameters}
 
+表~\ref{tab:app-hparams} 汇总了原架构基线模型 M0 与双图架构模型 M1 在本研究中的完整训练超参数。两模型的共享超参数保持完全一致以确保单变量消融，仅在与 GVP 分支相关的架构超参数与 DDP 的 \texttt{find\_unused\_parameters} 选项上存在差异。
 
+\begin{table}[htbp]
+  \centering
+  \caption{两模型训练超参数对照}
+  \label{tab:app-hparams}
+  \begin{tabular}{lll}
+    \toprule
+    超参数项 & M0（原架构）& M1（双图架构）\\
+    \midrule
+    GPU 数量            & 4 $\times$ RTX 5090 & 4 $\times$ RTX 5090 \\
+    并行策略            & DDP                  & DDP \\
+    \texttt{find\_unused\_params} & False      & \textbf{True}（延迟解冻所需）\\
+    单卡批大小          & 88                   & 88 \\
+    有效全局批大小      & 352                  & 352 \\
+    混合精度            & 启用                 & 启用 \\
+    优化器              & AdamW                & AdamW \\
+    初始学习率          & $5 \times 10^{-4}$   & $5 \times 10^{-4}$ \\
+    权重衰减            & $1 \times 10^{-5}$   & $1 \times 10^{-5}$ \\
+    $\beta_1$, $\beta_2$ & $0.9, 0.999$        & $0.9, 0.999$ \\
+    学习率调度          & ReduceLROnPlateau    & ReduceLROnPlateau \\
+    最大 epoch          & 200                  & 200 \\
+    早停监控            & val AUPR             & val AUPR \\
+    早停耐心            & 15 epoch             & 15 epoch \\
+    损失函数            & 加权 BCEWithLogits   & 加权 BCEWithLogits \\
+    \midrule
+    隐藏维度            & 128                  & 128 \\
+    EGNN 层数           & 3                    & 3 \\
+    EGNN 近邻 $k$       & 48                   & 48 \\
+    GVP 层数            & ---                  & 3 \\
+    GVP 残基近邻 $k$    & ---                  & 30 \\
+    残基标量维度        & ---                  & 6（$\varphi$、$\psi$、$\omega$ 的 $\sin/\cos$）\\
+    残基向量维度        & ---                  & $3 \times 3$（$\mathrm{C}\alpha \to \mathrm{N}/\mathrm{C}/\mathrm{C}\beta$）\\
+    交叉注意力头数      & 8                    & 8 \\
+    注意力 dropout      & $0.9$                & $0.9$ \\
+    预测头综合向量维度  & 896                  & 1024 \\
+    参数量              & $\sim 1.85~\mathrm{M}$ & $\sim 2.68~\mathrm{M}$ \\
+    \midrule
+    训练实际 epoch      & 57（早停）           & 57（早停）\\
+    最佳 checkpoint     & ep43                 & ep41 \\
+    训练总耗时          & $\sim 56.8$ min      & $\sim 56.8$ min \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\section{其他内部探索实验}
+\label{app:other-experiments}
+
+除本论文正文报告的原架构基线（M0）与双图架构（M1）两组实验外，本研究团队在数据集构建与基础模型探索阶段曾开展若干内部诊断与结构特征增强实验，包括早期版本的 LMDB 索引对齐问题诊断复现与基于血红素铁原子编码、残基主链--侧链二面角扩维等方向的结构特征增强尝试。上述内部探索的测试结果因污染期数据或单变量显著性不充分而未纳入本论文的正式结果报告；相关原始日志与检查点保留于实验服务器归档目录，作为后续稳健性验证的基础参考。
