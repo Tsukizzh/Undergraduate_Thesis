@@ -11,11 +11,11 @@
 \section{实验配置训练流程与指标计算}
 \label{sec:ch4-config}
 
-\textbf{硬件与训练框架}。模型训练在 4 块 NVIDIA RTX 5090 显卡上采用分布式数据并行（Distributed Data Parallel，DDP）策略进行。训练框架基于 PyTorch Lightning，模型与数据管线完全复用 EZSpecificity 官方实现\cite{EZSpec2025}，仅将数据加载器替换为第三章特征管线生成的 LMDB 与二进制存储以充分发挥 DDP 吞吐。
+\textbf{硬件与训练框架}。模型训练在 4 块 NVIDIA RTX 5090 显卡上采用分布式数据并行（Distributed Data Parallel，DDP）策略进行。训练框架基于 PyTorch Lightning\cite{Lightning2019}，模型与数据管线完全复用 EZSpecificity 官方实现\cite{EZSpec2025}，仅将数据加载器替换为第三章特征管线生成的 LMDB 与二进制存储以充分发挥 DDP 吞吐。
 
-\textbf{训练超参数}。单卡批大小为 88、有效全局批大小为 352（88 × 4 卡）；优化器采用 AdamW，一次训练至多 200 个 epoch，并以验证集 AUPR 为监控指标、耐心（patience）15 epoch 的早停策略；学习率调度采用 ReduceLROnPlateau，在验证指标连续多轮停滞后按固定比例衰减；混合精度训练以节省显存。损失函数为带类别权重的二元交叉熵（binary cross-entropy with logits），以缓解第三章所述 $1:9.9$ 的正负样本不均衡。
+\textbf{训练超参数}。单卡批大小为 88、有效全局批大小为 352（88 × 4 卡）；优化器采用 AdamW\cite{AdamW2019}，一次训练至多 200 个 epoch，并以验证集 AUPR 为监控指标、耐心（patience）15 epoch 的早停策略；学习率调度采用 ReduceLROnPlateau，在验证指标连续多轮停滞后按固定比例衰减；混合精度训练以节省显存。损失函数为带类别权重的二元交叉熵（binary cross-entropy with logits），以缓解第三章所述 $1:9.9$ 的正负样本不均衡。
 
-\textbf{评估指标}。报告两个指标。AUC-ROC（area under the receiver operating characteristic curve，受试者工作特征曲线下面积）是成对排序意义下的稳健指标，对正负样本的不平衡不敏感；AUPR（area under the precision--recall curve，精确率--召回率曲线下面积）则在极度不平衡数据下对稀有正样本的打分分布更敏感，其绝对数值往往远低于 AUC，两者互补。由于本研究测试集正负比约为 $1:10.2$，AUC 与 AUPR 并列报告可避免单一指标掩盖模型在稀有类上的真实表现。
+\textbf{评估指标}。报告两个指标。AUC-ROC（area under the receiver operating characteristic curve，受试者工作特征曲线下面积）是成对排序意义下的稳健指标，对正负样本的不平衡不敏感；AUPR（area under the precision--recall curve，精确率--召回率曲线下面积）则在极度不平衡数据下对稀有正样本的打分分布更敏感，其绝对数值往往远低于 AUC，两者互补\cite{Saito2015}。由于本研究测试集正负比约为 $1:10.2$，AUC 与 AUPR 并列报告可避免单一指标掩盖模型在稀有类上的真实表现。
 
 \begin{table}[htbp]
   \centering
