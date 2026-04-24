@@ -1,93 +1,8 @@
 %%
 % 参考文献
-% 参考文献是毕业设计(论文)不可缺少的组成部分,它反映毕业设计(论文)的取材来源、材料的广博程度和材料的可靠程度,也是作者对他人知识成果的承认和尊重。一份完整的参考文献可向读者提供一份有价值的信息资料,列入的文献应在 10 篇以上,其中外文文献在 2 篇以上。
+% 基于 sysu-thesis LaTeX 模板，模板示例条目已全部移除
+% 2026-04-25 清理：chap01-06 正文完全以本研究实际引用的真实文献为准
 %%
-
-@program{sysu-thesis,
-  title  = {中山大学毕业论文Latex模板},
-  author = {Songguang Chen and Junjie Huang  and Yongfeng, Wang},
-  url    = {https://github.com/SYSU-SCC/sysu-thesis},
-  year   = {2020}
-}
-
-@article{liu2011sift,
-  title     = {Sift flow: Dense correspondence across scenes and its applications},
-  author    = {Liu, Ce and Yuen, Jenny and Torralba, Antonio},
-  journal   = {Pattern Analysis and Machine Intelligence, IEEE Transactions on},
-  volume    = {33},
-  number    = {5},
-  pages     = {978--994},
-  year      = {2011},
-  publisher = {IEEE}
-}
-@inproceedings{tighe2013finding,
-  title     = {Finding things: Image parsing with regions and per-exemplar detectors},
-  author    = {Tighe, Joseph and Lazebnik, Svetlana},
-  booktitle = {Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition},
-  pages     = {3001--3008},
-  year      = {2013}
-}
-@inproceedings{long2015fully,
-  title     = {Fully convolutional networks for semantic segmentation},
-  author    = {Long, Jonathan and Shelhamer, Evan and Darrell, Trevor},
-  booktitle = {Proceedings of the IEEE Conference on Computer Vision and Pattern Recognition},
-  pages     = {3431--3440},
-  year      = {2015}
-}
-@inproceedings{chen14semantic,
-  title     = {Semantic Image Segmentation with Deep Convolutional Nets and Fully Connected CRFs},
-  author    = {Liang-Chieh Chen and George Papandreou and Iasonas Kokkinos and Kevin Murphy and Alan L Yuille},
-  booktitle = {ICLR},
-  url       = {http://arxiv.org/abs/1412.7062},
-  year      = {2015}
-}
-@incollection{hariharan2014simultaneous,
-  title     = {Simultaneous detection and segmentation},
-  author    = {Hariharan, Bharath and Arbel{\'a}ez, Pablo and Girshick, Ross and Malik, Jitendra},
-  booktitle = {Computer vision--ECCV 2014},
-  pages     = {297--312},
-  year      = {2014},
-  publisher = {Springer}
-}
-
-@book{knuth1997,
-  author    = {Knuth, Donald Ervin},
-  title     = {The Art of Computer Programming},
-  publisher = {Addison--Wesley},
-  year      = {1997},
-  edition   = {3},
-  volume    = {1},
-  pages     = {435--452},
-  language  = {english},
-}
-@book{scargall2020,
-  author    = {Steve Scargall},
-  title     = {{Programming Persistent Memory: A Comprehensive Guide for Developers}},
-  address   = {Santa Clara, USA},
-  publisher = {Apress},
-  year      = {2020},
-  edition   = {1},
-  pages     = {207--259},
-  language  = {english},
-}
-@book{scargall2021,
-  author     = {Steve Scargall},
-  title      = {持久内存编程},
-  translator = {吴国安 and 魏剑 and 杨锦文},
-  address    = {北京},
-  publisher  = {机械工业出版社},
-  year       = {2021},
-  edition    = {第1版},
-  pages      = {141--179},
-  language   = {chinese},
-}
-@book{peng2024,
-  author    = {彭成寒 and 李灵 and 戴贤泽 and 王志磊 and 俞佳嘉},
-  title     = {深入理解LLVM：代码生成},
-  address   = {北京},
-  publisher = {机械工业出版社},
-  year      = {2024},
-}
 
 % =============================================================
 % Batch 1 (P450 论文 Ch3 引文) — 2026-04-25 收敛
@@ -422,4 +337,123 @@
   number  = {3},
   pages   = {e0118432},
   doi     = {10.1371/journal.pone.0118432}
+}
+
+% =============================================================
+% Batch 3 (Ch2 related work + Ch1 biology retrofits) — 2026-04-25
+% =============================================================
+
+@article{Guengerich2008,
+  author  = {Guengerich, F. Peter},
+  title   = {{Cytochrome P450 and Chemical Toxicology}},
+  journal = {Chemical Research in Toxicology},
+  year    = {2008},
+  volume  = {21},
+  number  = {1},
+  pages   = {70--83},
+  doi     = {10.1021/tx700079z}
+}
+
+@article{Bak2011,
+  author  = {Bak, S{\o}ren and Beisson, Fred and Bishop, Gerard and Hamberger, Bj{\"o}rn and H{\"o}fer, Ren{\'e} and Paquette, Suzanne and Werck-Reichhart, Dani{\`e}le},
+  title   = {{Cytochromes P450}},
+  journal = {The Arabidopsis Book},
+  year    = {2011},
+  volume  = {9},
+  pages   = {e0144},
+  doi     = {10.1199/tab.0144}
+}
+
+@article{Ma2020,
+  author  = {马莹 and 蔡媛 and 马晓晶 and 崔光红 and 唐金富 and 曾雯 and 张水寒 and 郭娟 and 黄璐琦},
+  title   = {药用植物活性成分生物合成中{P450}的研究进展},
+  journal = {药学学报},
+  year    = {2020},
+  volume  = {55},
+  number  = {7},
+  pages   = {1573--1589}
+}
+
+@article{Zanger2013,
+  author  = {Zanger, Ulrich M. and Schwab, Matthias},
+  title   = {{Cytochrome P450 enzymes in drug metabolism: regulation of gene expression, enzyme activities, and impact of genetic variation}},
+  journal = {Pharmacology \& Therapeutics},
+  year    = {2013},
+  volume  = {138},
+  number  = {1},
+  pages   = {103--141},
+  doi     = {10.1016/j.pharmthera.2012.12.007}
+}
+
+@article{CLEAN2023,
+  author  = {Yu, Tianhao and Cui, Haiyang and Li, Jianan Canal and Luo, Yunan and Jiang, Guangde and Zhao, Huimin},
+  title   = {{Enzyme function prediction using contrastive learning}},
+  journal = {Science},
+  year    = {2023},
+  volume  = {379},
+  number  = {6639},
+  pages   = {1358--1363},
+  doi     = {10.1126/science.adf2465}
+}
+
+@article{ESP2023,
+  author  = {Kroll, Alexander and Ranjan, Sahasra and Engqvist, Martin K. M. and Lercher, Martin J.},
+  title   = {{A general model to predict small molecule substrates of enzymes based on machine and deep learning}},
+  journal = {Nature Communications},
+  year    = {2023},
+  volume  = {14},
+  pages   = {2787},
+  doi     = {10.1038/s41467-023-38347-2}
+}
+
+@article{CPI2019,
+  author  = {Tsubaki, Masashi and Tomii, Kentaro and Sese, Jun},
+  title   = {{Compound--protein interaction prediction with end-to-end learning of neural networks for graphs and sequences}},
+  journal = {Bioinformatics},
+  year    = {2019},
+  volume  = {35},
+  number  = {2},
+  pages   = {309--318},
+  doi     = {10.1093/bioinformatics/bty535}
+}
+
+@article{DeepEC2019,
+  author  = {Ryu, Jae Yong and Kim, Hyun Uk and Lee, Sang Yup},
+  title   = {{Deep learning enables high-quality and high-throughput prediction of enzyme commission numbers}},
+  journal = {Proceedings of the National Academy of Sciences},
+  year    = {2019},
+  volume  = {116},
+  number  = {28},
+  pages   = {13996--14001},
+  doi     = {10.1073/pnas.1821905116}
+}
+
+@article{AlphaFold2,
+  author  = {Jumper, John and Evans, Richard and Pritzel, Alexander and Green, Tim and Figurnov, Michael and Ronneberger, Olaf and Tunyasuvunakool, Kathryn and Bates, Russ and {\v{Z}}{\'\i}dek, Augustin and others},
+  title   = {{Highly accurate protein structure prediction with AlphaFold}},
+  journal = {Nature},
+  year    = {2021},
+  volume  = {596},
+  number  = {7873},
+  pages   = {583--589},
+  doi     = {10.1038/s41586-021-03819-2}
+}
+
+@article{DLKcat2022,
+  author  = {Li, Feiran and Yuan, Le and Lu, Hongzhong and Li, Gang and Chen, Yu and Engqvist, Martin K. M. and Kerkhoven, Eduard J. and Nielsen, Jens},
+  title   = {{Deep learning-based kcat prediction enables improved enzyme-constrained model reconstruction}},
+  journal = {Nature Catalysis},
+  year    = {2022},
+  volume  = {5},
+  pages   = {662--672},
+  doi     = {10.1038/s41929-022-00798-z}
+}
+
+@inproceedings{Bahdanau2015,
+  author    = {Bahdanau, Dzmitry and Cho, Kyunghyun and Bengio, Yoshua},
+  title     = {{Neural Machine Translation by Jointly Learning to Align and Translate}},
+  booktitle = {3rd International Conference on Learning Representations (ICLR)},
+  year      = {2015},
+  url       = {https://arxiv.org/abs/1409.0473},
+  doi       = {10.48550/arXiv.1409.0473}
 }
