@@ -46,13 +46,6 @@
 
 模型在 4 块 RTX 5090 上完成 57 个 epoch 即因早停策略终止，总训练时长约 56.8 分钟；验证集最佳 checkpoint 出现在第 43 轮，对应 Val AUC $= 0.9250$。以该 checkpoint 在随机切分第一折测试集（10{,}999 条样本、984 正 / 10{,}015 负）上评估，得到 \textbf{Test AUC $= 0.9302$、Test AUPR $= 0.6749$}（见表~\ref{tab:ch4-baseline}）。Test AUC 数值上与 Val AUC 差距极小，表明原架构模型在本数据集上的训练并未出现明显的过拟合或分布偏移问题。
 
-\begin{figure}[htbp]
-  \centering
-  \fbox{\parbox[c][3.5cm][c]{0.85\textwidth}{\centering 图 4-1 占位：原架构基线模型训练动态曲线\\[0.5em] （train/val loss、val AUC、val AUPR 随 epoch 变化）\\[0.5em] 待插入：\texttt{image/fig4-1-training-dynamics.png}}}
-  \caption{原架构基线模型（M0）训练动态曲线}
-  \label{fig:ch4-training}
-\end{figure}
-
 \begin{table}[htbp]
   \centering
   \caption{原架构基线模型（M0）在 random split fold 0 测试集上的结果}
@@ -131,9 +124,9 @@
 
 \begin{figure}[htbp]
   \centering
-  \fbox{\parbox[c][4cm][c]{0.85\textwidth}{\centering 图 4-2 占位：公平对比柱状图\\[0.5em] 四条柱对比：参考论文模型未过滤 / 过滤后 vs 本研究 M0 未过滤 / 过滤后\\[0.5em] 左轴 AUC，右轴 AUPR\\[0.5em] 脚本待运行：\texttt{image/fig4-2-fair-comparison.png}}}
-  \caption{泄漏控制外部公平对比可视化}
-  \label{fig:ch4-bar}
+  \fbox{\parbox[c][5cm][c]{0.85\textwidth}{\centering \textbf{图 4-1 占位：泄漏控制外部公平对比可视化}\\[0.5em] 左面板：四条柱对比 AUC--AUPR\\ （参考 ckpt 未过滤 / 过滤后 \,vs\, 本研究 M0 未过滤 / 过滤后）\\[0.3em] 右面板：ROC + PR 曲线（过滤后测试集，参考 ckpt vs M0）\\[0.3em] 用以同时展示性能差距与稀有类打分塌缩\\[0.5em] 待插入：\texttt{image/fig4-1-fair-comparison.png}（matplotlib 自动生成）}}
+  \caption{泄漏控制条件下参考 ckpt 与本研究 M0 的公平对比：柱状指标 + ROC/PR 曲线}
+  \label{fig:ch4-fair}
 \end{figure}
 
 \section{结果分析与应用意义}

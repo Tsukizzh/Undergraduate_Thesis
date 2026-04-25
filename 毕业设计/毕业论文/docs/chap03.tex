@@ -46,8 +46,8 @@ P450 酶及其底物的高质量配对信息并未集中于单一数据库，而
 
 \begin{figure}[htbp]
   \centering
-  \fbox{\parbox[c][3.5cm][c]{0.85\textwidth}{\centering 图 3-1 占位：五源数据整合流程示意图\\[0.5em] （原始源 $\to$ 字段标准化 $\to$ 去重合并 $\to$ 正样本对 $\to$ 负样本与切分）\\[0.5em] 手绘待插入：\texttt{image/fig3-1-multisource.png}}}
-  \caption{五源 P450 数据整合流程示意}
+  \fbox{\parbox[c][4.5cm][c]{0.85\textwidth}{\centering \textbf{图 3-1 占位：五源数据整合 $\to$ 最终基准数据集}\\[0.5em] 五个互补来源（RCSB PDB / ESIBank / P450Rdb / PlantP450DB / PCPD）$\to$\\ 字段标准化与多智能体证据复核 $\to$ UniProt + InChIKey 跨源去重 $\to$\\ 1{,}622 酶 $\times$ 2{,}125 底物 $\times$ 4{,}751 正样本对 $\to$ 双向负样本 + 切分\\[0.5em] 待插入：\texttt{image/fig3-1-multisource.png}}}
+  \caption{五源 P450 数据整合流程：从原始数据库到最终领域专属基准}
   \label{fig:ch3-multisource}
 \end{figure}
 
@@ -73,13 +73,6 @@ P450 酶及其底物的高质量配对信息并未集中于单一数据库，而
   \end{tabular}
 \end{table}
 
-\begin{figure}[htbp]
-  \centering
-  \fbox{\parbox[c][3.5cm][c]{0.85\textwidth}{\centering 图 3-2 占位：RCSB 五级漏斗筛选示意\\[0.5em] 1{,}591 $\to$ 1{,}426 $\to$ 1{,}370 $\to$ 930 $\to$ 740 $\to$ 682\\[0.5em] 手绘待插入：\texttt{image/fig3-2-rcsb-funnel.png}}}
-  \caption{RCSB PDB 来源五级漏斗筛选示意图}
-  \label{fig:ch3-funnel}
-\end{figure}
-
 \subsection{基于多智能体协作的证据级联判定流程}
 \label{sec:multiagent}
 
@@ -88,6 +81,13 @@ P450 酶及其底物的高质量配对信息并未集中于单一数据库，而
 流程由三个代理角色构成。\textbf{文献代理}（基于 Gemini 2.5 Pro 大语言模型）负责通过 PubMed 与 CrossRef 检索与待判定酶--配体对相关的文献条目，自动抽取 PMID、动力学参数（$K_i$、$\mathrm{IC}_{50}$、$K_m$）与实验结论段落，输出文献依据下的分类（底物 / 抑制剂 / 产物 / 辅因子）与证据等级。\textbf{结构代理}（基于 OpenAI Codex 大语言模型）负责解析 PDB 晶体结构，度量血红素铁（Fe）到配体重原子的距离、配位关系与修饰特征（如是否存在与 Fe 形成六配位的杂原子、是否为共价修饰等），输出结构依据下的分类与 Fe--配体距离数值。两代理并行独立查询，互不共享中间结果，以避免信息耦合。\textbf{主代理}（Claude Code）在两方独立判定完成后整合证据字段，以一致性作为最终置信度的主要来源：文献与结构判定一致时标记为 HIGH；两者冲突时按证据强度判定为 MEDIUM 或 LOW，并进入多轮对比讨论或人工复核。
 
 该流程最终写入每条判定的完整证据链（JSONL 记录，包含分类标签、置信度与来自文献或结构的原始证据段），以便随时追溯。在 RCSB 来源的 682 条 P450--配体配对上，按约 15 分钟/条的处理节奏、12 个并行窗口、每窗口约 57 条的负载完成了全量复核；同一流程在 PlantP450DB 的 566 篇文献摘要自动抽取与 61 篇非开放获取 PDF 的全文复核中、以及在 PCPD 的 582 条表达不清晰反应条目清洗中，亦作为证据抽取与质控的核心方法被重复使用。三方代理协作在本研究中的集成由模型上下文协议（Model Context Protocol，MCP）在 Claude Code 命令行环境下完成，外部 Codex 与 Gemini CLI 通过开源 MCP 封装接入主代理；实现细节与模型版本的完整清单列于附录 A。
+
+\begin{figure}[htbp]
+  \centering
+  \fbox{\parbox[c][5cm][c]{0.85\textwidth}{\centering \textbf{图 3-2 占位：多智能体协作证据级联判定流程}\\[0.5em] 主代理（Claude Code）派发酶--配体对 $\to$ 文献代理（Gemini）查 PubMed/CrossRef 抽取 $K_i/\mathrm{IC}_{50}/K_m$ 等动力学证据 $\parallel$ 结构代理（Codex）解析 PDB 测 Fe--配体距离与配位关系 $\to$ 主代理整合两方证据 $\to$ 一致 = HIGH 直接采纳；冲突 = MEDIUM/LOW 进入多轮验证或人工复核 $\to$ 写入 JSONL 完整证据链\\[0.5em] 待插入：\texttt{image/fig3-2-multiagent.png}（可由组会 PPT slide 10 直接导出）}}
+  \caption{多智能体协作的证据级联判定流程：文献代理与结构代理并行独立取证，主代理整合并以一致性给出置信度}
+  \label{fig:ch3-multiagent}
+\end{figure}
 
 \section{酶与底物的跨源去重与对齐}
 \label{sec:dedup}
@@ -140,13 +140,6 @@ P450 酶及其底物的高质量配对信息并未集中于单一数据库，而
 
 在上述测试集基础上，为开展与 EZSpecificity 公开 checkpoint 的泄漏控制外部公平对比，本研究进一步构造了过滤后测试集。具体做法：对 ESIBank 原始 25{,}225 条酶记录以 InterPro\cite{Blum2025} 功能域（IPR001128、IPR036396、IPR002401 等 P450 特征域）严格验证识别出 389 个 P450 酶；将本研究测试集中与上述 389 个 P450 在酶层面存在重合的 3{,}036 条样本剔除，保留酶层面确认不与 EZSpecificity 原始训练集重合的 7{,}963 条样本作为过滤后测试集。该过滤后测试集的结果将在第四章中与未过滤测试集的结果并列报告。
 
-\begin{figure}[htbp]
-  \centering
-  \fbox{\parbox[c][3.5cm][c]{0.85\textwidth}{\centering 图 3-3 占位：外部过滤测试集构造流程\\[0.5em] 全 test 10{,}999 $\to$ 剔除与 ESIBank 重合的 P450 酶 $\to$ 保留 7{,}963 条\\[0.5em] 手绘待插入：\texttt{image/fig3-3-external-filter.png}}}
-  \caption{泄漏控制外部公平对比测试集构造}
-  \label{fig:ch3-filter}
-\end{figure}
-
 \begin{table}[htbp]
   \centering
   \caption{外部公平对比测试集的构造与规模}
@@ -174,6 +167,13 @@ EZSpecificity 参考框架在结构通道上依赖酶--底物对接复合物的�
 \textbf{对接流程}。采用 Uni-Dock\cite{UniDock2023} 作为对接引擎，该引擎基于 AutoDock Vina\cite{Vina2010,Vina2021}（Trott 与 Olson 提出，Eberhardt 等在 1.2.0 版本中扩展）的评分函数并经 GPU 并行化大幅提速。对接盒按活性位点中心（以血红素铁为参考点）外扩 $20~\mathrm{\AA}$ 设置，采用快速模式以兼顾规模与精度；对每条酶--底物配对保留最佳打分对接姿态。
 
 \textbf{复合物组装}。蛋白 PDB 与配体 PDBQT 经格式转换与对接姿态回贴后拼接为单一复合物 PDB，并按 EZSpecificity 模型要求的分隔符与原子排序规范组织。最终共 50{,}180 对成功生成对接复合物（成功率 96.1\%）；对接失败的 1{,}930 对主要源于 Uni-Dock 对某些特殊原子或键型的处理限制，在后续特征生成阶段自动剔除。
+
+\begin{figure}[htbp]
+  \centering
+  \fbox{\parbox[c][5cm][c]{0.85\textwidth}{\centering \textbf{图 3-3 占位：P450--底物对接复合物渲染示例}\\[0.5em] 选取一例 P450--底物典型对接姿态（PDB ID 待选定，建议 CYP3A4 或 CYP2D6 临床代表）：\\ 蛋白以卡通模式显示活性口袋区域 + 血红素辅因子棒状 + 中心铁球 +\\ 底物棒状（按元素着色）+ Fe--底物重原子距离标注 + $10~\mathrm{\AA}$ 口袋透明球范围\\[0.5em] 待插入：\texttt{image/fig3-3-docking.png}（PyMOL 自动渲染）}}
+  \caption{P450--底物对接复合物结构示例：血红素铁、口袋残基与对接姿态}
+  \label{fig:ch3-docking}
+\end{figure}
 
 \section{特征生成与数据质量控制}
 \label{sec:features}

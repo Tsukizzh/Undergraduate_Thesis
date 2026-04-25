@@ -27,8 +27,8 @@
 
 \begin{figure}[htbp]
   \centering
-  \fbox{\parbox[c][5cm][c]{0.85\textwidth}{\centering 图 5-1 占位：双图架构示意图\\[0.5em] 左：原架构三通道（序列 / 结构原子级 EGNN / 分子）+ 双向交叉注意力\\[0.5em] 右：新增残基级 GVP 分支（标量 $\varphi/\psi/\omega$ 三面角 + 向量 $\mathrm{C}\alpha\to\mathrm{N/C/C}\beta$）\\[0.5em] 双出口融合：深融合回灌序列 + 浅旁路进入预测头\\[0.5em] 896 $\to$ 1024 维综合向量\\[0.5em] 手绘待插入：\texttt{image/fig5-1-dualgraph.png}}}
-  \caption{双图架构模型（M1）示意图}
+  \fbox{\parbox[c][5.5cm][c]{0.85\textwidth}{\centering \textbf{图 5-1 占位：双图架构示意图（包含原架构三通道）}\\[0.5em] 左侧原架构三通道：\\ 序列通道 ESM-2 \,$\big|\big|$\, 结构通道原子级 EGNN \,$\big|\big|$\, 分子通道 GROVER + Morgan\\ + 双向交叉注意力（8 头，残基 $\rightleftarrows$ 原子）\\[0.4em] 右侧新增残基级 GVP 分支：\\ 标量 = $\varphi/\psi/\omega$ 三面角 sin/cos（6 维）\,$+$\, 向量 = $\mathrm{C}\alpha\to\mathrm{N/C/C}\beta$（3$\times$3 维）\\[0.4em] 双出口融合：深融合回灌序列 \,$\big|\big|$\, 浅旁路进入预测头\\[0.3em] 综合向量 896 $\to$ 1024 维 $\to$ MLP $\to$ 二分类\\[0.5em] 待插入：\texttt{image/fig5-1-dualgraph.png}（可由组会 PPT slide 15 直接导出）}}
+  \caption{双图架构示意图：在原架构三通道基础上并行引入残基级 GVP 通路，零初始化保证基线等价}
   \label{fig:ch5-arch}
 \end{figure}
 
@@ -68,16 +68,9 @@
 
 \begin{figure}[htbp]
   \centering
-  \fbox{\parbox[c][3.5cm][c]{0.85\textwidth}{\centering 图 5-2 占位：M0 与 M1 训练动态对比曲线\\[0.5em] val AUC、val AUPR 随 epoch 变化对比\\[0.5em] 待拼图：\texttt{image/fig5-2-dynamics-dualgraph.png}}}
-  \caption{原架构 M0 与双图架构 M1 的训练动态对比}
-  \label{fig:ch5-dynamics}
-\end{figure}
-
-\begin{figure}[htbp]
-  \centering
-  \fbox{\parbox[c][3.5cm][c]{0.85\textwidth}{\centering 图 5-3 占位：M0 与 M1 测试结果柱状图\\[0.5em] 左：Test AUC 对比（0.9302 vs 0.9310）\\[0.5em] 右：Test AUPR 对比（0.6749 vs 0.6474）\\[0.5em] 脚本待运行：\texttt{image/fig5-3-bar-dualgraph.png}}}
-  \caption{双模型测试结果对称可视化}
-  \label{fig:ch5-bar}
+  \fbox{\parbox[c][5cm][c]{0.85\textwidth}{\centering \textbf{图 5-2 占位：M0 vs M1 训练动态与测试结果对比}\\[0.5em] 左面板：训练动态对比\\ val AUC / val AUPR 随 epoch 变化（M0 ep43 best / M1 ep41 best 标注）\\[0.4em] 右面板：测试结果柱状\\ Test AUC：0.9302 (M0) vs 0.9310 (M1)，$\Delta = +0.0008$\\ Test AUPR：0.6749 (M0) vs 0.6474 (M1)，$\Delta = -0.0275$\\[0.5em] 待插入：\texttt{image/fig5-2-m0-m1-comparison.png}（matplotlib 自动生成）}}
+  \caption{原架构 M0 与双图架构 M1 在训练动态与测试指标上的完整对比}
+  \label{fig:ch5-results}
 \end{figure}
 
 \section{结果讨论与方法学启示}
