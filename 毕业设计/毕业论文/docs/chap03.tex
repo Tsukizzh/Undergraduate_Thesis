@@ -171,7 +171,7 @@ EZSpecificity 参考框架在结构通道上依赖酶--底物对接复合物的�
 
 \textbf{配体结构准备}。底物 SMILES 经 RDKit\cite{RDKit} 转换为三维坐标，Meeko\cite{Meeko2025} 工具包负责添加极性氢、分配 Gasteiger 电荷、处理旋转键柔性，并输出对接所需的 PDBQT 格式。
 
-\textbf{对接流程}。采用 Uni-Dock\cite{UniDock2023} 作为对接引擎，该引擎基于 AutoDock Vina 2\cite{Vina2010,Vina2021} 评分函数并经 GPU 并行化大幅提速。对接盒按活性位点中心（以血红素铁为参考点）外扩 $20~\mathrm{\AA}$ 设置，采用快速模式以兼顾规模与精度；对每条酶--底物配对保留最佳打分对接姿态。
+\textbf{对接流程}。采用 Uni-Dock\cite{UniDock2023} 作为对接引擎，该引擎基于 AutoDock Vina\cite{Vina2010,Vina2021}（Trott 与 Olson 提出，Eberhardt 等在 1.2.0 版本中扩展）的评分函数并经 GPU 并行化大幅提速。对接盒按活性位点中心（以血红素铁为参考点）外扩 $20~\mathrm{\AA}$ 设置，采用快速模式以兼顾规模与精度；对每条酶--底物配对保留最佳打分对接姿态。
 
 \textbf{复合物组装}。蛋白 PDB 与配体 PDBQT 经格式转换与对接姿态回贴后拼接为单一复合物 PDB，并按 EZSpecificity 模型要求的分隔符与原子排序规范组织。最终共 50{,}180 对成功生成对接复合物（成功率 96.1\%）；对接失败的 1{,}930 对主要源于 Uni-Dock 对某些特殊原子或键型的处理限制，在后续特征生成阶段自动剔除。
 
