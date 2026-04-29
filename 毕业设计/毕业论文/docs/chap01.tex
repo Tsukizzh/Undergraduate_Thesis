@@ -36,10 +36,19 @@
 
 针对上述问题，本研究在 P450 超家族上以 EZSpecificity 框架为基础，开展以下三方面工作。
 
-\textbf{第一，构建 P450 专属基准数据集}。从 RCSB Protein Data Bank\cite{Burley2025,Berman2000}、ESIBank\cite{EZSpec2025}、P450Rdb\cite{P450Rdb2024}、PlantP450DB\cite{Nelson2004} 与 PCPD\cite{Wang2021PCPD} 五个互补来源整合 P450 酶、底物与催化关系记录；针对现有 P450 数据库多数仅提供酶序列、或配体类型记录不明的普遍局限，通过文献检索、PDB 结构分析与多轮人工审核，辅以多智能体协作流程，对每条酶--配体记录严格复核与分类；以 UniProt\cite{UniProt2025} 序列桥接与 InChIKey（IUPAC 国际化学标识符 InChI 的固定长度哈希\cite{InChI2015}）完成跨源去重，得到一个可复用的领域专属基准。
+\subsection{构建 P450 专属基准数据集}
+\label{subsec:goal-dataset}
 
-\textbf{第二，建立泄漏控制的公平评估协议}。以 InterPro\cite{Blum2025} 功能域严格识别 ESIBank 训练集中的 389 个 P450 并据此构造过滤后外部测试集，与 EZSpecificity 公开发布的模型权重检查点在统一测试条件下做对比，量化通用模型在 P450 家族上对未见酶的实际泛化能力，并在此基础上评估领域专属重训对该泛化瓶颈的改善效应。
+从 RCSB Protein Data Bank\cite{Burley2025,Berman2000}、ESIBank\cite{EZSpec2025}、P450Rdb\cite{P450Rdb2024}、PlantP450DB\cite{Nelson2004} 与 PCPD\cite{Wang2021PCPD} 五个互补来源整合 P450 酶、底物与催化关系记录；针对现有 P450 数据库多数仅提供酶序列、或配体类型记录不明的普遍局限，通过文献检索、PDB 结构分析与多轮人工审核，辅以多智能体协作流程，对每条酶--配体记录严格复核与分类；以 UniProt\cite{UniProt2025} 序列桥接与 InChIKey（IUPAC 国际化学标识符 InChI 的固定长度哈希\cite{InChI2015}）完成跨源去重，得到一个可复用的领域专属基准。
 
-\textbf{第三，探索方向感知的架构改进}。基于 P450 催化对底物三维取向敏感的物理特点，在原架构基础上并行引入残基级几何向量感知（Geometric Vector Perceptron，GVP）\cite{GVP2021} 通路构成双图架构，初步检验方向信息编码对 P450 特异性预测的可行性。
+\subsection{建立泄漏控制的公平评估协议}
+\label{subsec:goal-protocol}
+
+以 InterPro\cite{Blum2025} 功能域严格识别 ESIBank 训练集中的 389 个 P450 并据此构造过滤后外部测试集，与 EZSpecificity 公开发布的模型权重检查点在统一测试条件下做对比，量化通用模型在 P450 家族上对未见酶的实际泛化能力，并在此基础上评估领域专属重训对该泛化瓶颈的改善效应。
+
+\subsection{探索方向感知的架构改进}
+\label{subsec:goal-arch}
+
+基于 P450 催化对底物三维取向敏感的物理特点，在原架构基础上并行引入残基级几何向量感知（Geometric Vector Perceptron，GVP）\cite{GVP2021} 通路构成双图架构，初步检验方向信息编码对 P450 特异性预测的可行性。
 
 本研究在公开数据与算力约束下采用固定的数据划分方案进行训练与评估，并通过独立外部测试集与酶层面的泄漏过滤提高结论的可信度。预期结果为：通用预训练模型在领域专属外部测试集上将展现出显著的泛化瓶颈；领域专属重训可获得性能的实质改善；所提出的双图架构在初步评估下展现对方向感知设计的可行性。

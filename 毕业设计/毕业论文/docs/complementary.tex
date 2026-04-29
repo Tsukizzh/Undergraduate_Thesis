@@ -36,9 +36,15 @@
 
 本研究的数据一致性校验由两部分组成：索引对齐核验协议与多智能体协作证据判定的工具栈。
 
-\textbf{索引对齐核验协议}。LMDB 存储与原始 CSV 行号之间的对齐使用酶序列 SHA 哈希与底物规范化 SMILES 作为校验键，对全量样本进行往返比对。具体流程：首先按训练集、验证集、测试集分别读取切分索引文件中的 \texttt{(enzyme\_id, substrate\_id)} 对；然后从 LMDB 中读取对应的酶序列与底物 SMILES，计算 SHA-256 哈希与经 RDKit 规范化后的标准 SMILES；再与原始 \texttt{Enzymes.csv} 与 \texttt{Substrates.csv} 中对应行号的字段做逐条比对，记录任何键值不一致的条目并写入 \texttt{qc\_report.csv}。初版流水线中识别出的索引错位问题经修复后，完整数据集通过全链路一致性核验。
+\subsection{索引对齐核验协议}
+\label{subsec:qc-index}
 
-\textbf{多智能体协作工具栈}。第 \ref{sec:multiagent} 节所述证据级联判定流程在 Claude Code 命令行环境下运行，外部的 OpenAI Codex 与 Google Gemini 模型通过模型上下文协议（Model Context Protocol，MCP）封装接入：Codex 侧通过 \texttt{codex-mcp} 开源组件、Gemini 侧通过 \texttt{gemini-mcp} 开源组件实现函数级调用。主代理（Claude）在每条判定任务上分别向文献代理（Gemini）与结构代理（Codex）派发独立查询，两代理相互不可见以避免证据耦合。在 12 个并行窗口上每条记录约 15 分钟的处理节奏下，RCSB 的 682 条 P450--配体配对约在 $57$ 条每窗口的负载下完成全量复核。
+LMDB 存储与原始 CSV 行号之间的对齐使用酶序列 SHA 哈希与底物规范化 SMILES 作为校验键，对全量样本进行往返比对。具体流程：首先按训练集、验证集、测试集分别读取切分索引文件中的 \texttt{(enzyme\_id, substrate\_id)} 对；然后从 LMDB 中读取对应的酶序列与底物 SMILES，计算 SHA-256 哈希与经 RDKit 规范化后的标准 SMILES；再与原始 \texttt{Enzymes.csv} 与 \texttt{Substrates.csv} 中对应行号的字段做逐条比对，记录任何键值不一致的条目并写入 \texttt{qc\_report.csv}。初版流水线中识别出的索引错位问题经修复后，完整数据集通过全链路一致性核验。
+
+\subsection{多智能体协作工具栈}
+\label{subsec:qc-multiagent}
+
+第 \ref{sec:multiagent} 节所述证据级联判定流程在 Claude Code 命令行环境下运行，外部的 OpenAI Codex 与 Google Gemini 模型通过模型上下文协议（Model Context Protocol，MCP）封装接入：Codex 侧通过 \texttt{codex-mcp} 开源组件、Gemini 侧通过 \texttt{gemini-mcp} 开源组件实现函数级调用。主代理（Claude）在每条判定任务上分别向文献代理（Gemini）与结构代理（Codex）派发独立查询，两代理相互不可见以避免证据耦合。在 12 个并行窗口上每条记录约 15 分钟的处理节奏下，RCSB 的 682 条 P450--配体配对约在 $57$ 条每窗口的负载下完成全量复核。
 
 \section{训练超参数完整表}
 \label{app:hyperparameters}
