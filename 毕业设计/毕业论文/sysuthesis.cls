@@ -2140,9 +2140,9 @@
 	\vskip 2.4cm%
 	
 	\begin{flushright}
-		\makebox[2.1cm][s]{作者签名：} \makebox[5cm]{\hspace{1cm}} \\
+		\makebox[2.1cm][s]{作者签名：} \makebox[5cm][l]{\raisebox{-0.5em}{\includegraphics[height=1.7cm]{./image/电子签名.jpg}}} \\
 		\vspace{\baselineskip}
-		\makebox[2.1cm][s]{日期：} \makebox[5cm]{\hspace{1cm}年\hspace{1cm}月\hspace{1cm}日} \\
+		\makebox[2.1cm][s]{日期：} \makebox[5cm]{\makebox[1cm]{2026}年\makebox[1cm]{04}月\makebox[1cm]{25}日} \\
 	\end{flushright}
 
   \end{titlepage}%
@@ -2365,7 +2365,7 @@
   \let\clearpage\relax
   \sysu@chapter{摘\hspace{2em}要}%
   \else
-  \sysu@chapter{【摘\hspace{\ccwd}要】}%
+  \sysu@chapter{摘\hspace{\ccwd}要}%
   \fi
 }{
   \par\null\par\noindent\hangindent=4em\relax
@@ -2406,7 +2406,7 @@
     \begingroup
       % 本科生的英文摘要使用三号衬线体
       \ctexset{chapter/format=\centering\bfseries\fontsize{16bp}{33bp}\selectfont}%
-      \sysu@chapter{[ABSTRACT]}%
+      \sysu@chapter{ABSTRACT}%
     \endgroup
   \fi
 }{
