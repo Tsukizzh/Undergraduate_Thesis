@@ -43,7 +43,7 @@
     学习率调度   & ReduceLROnPlateau \\
     损失函数     & 带类别权重的 BCEWithLogits \\
     混合精度     & 启用 \\
-    切分         & random split fold 0 \\
+    切分         & 随机切分第一折 \\
     \bottomrule
   \end{tabular}
 \end{table}
@@ -57,7 +57,7 @@
 
 \begin{table}[htbp]
   \centering
-  \caption{原架构基线模型（M0）在 random split fold 0 测试集上的结果}
+  \caption{原架构基线模型（M0）在随机切分第一折测试集上的结果}
   \label{tab:ch4-baseline}
   \begin{tabular}{lc}
     \toprule
@@ -115,7 +115,7 @@
 
 \begin{table}[htbp]
   \centering
-  \caption{泄漏控制条件下的公平对比完整结果（random split fold 0）}
+  \caption{泄漏控制条件下的公平对比完整结果（随机切分第一折）}
   \label{tab:ch4-fair}
   \begin{tabular}{llrrr}
     \toprule
