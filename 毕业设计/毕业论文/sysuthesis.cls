@@ -2200,15 +2200,15 @@
 
 % 用 \pkg{ctex} 的接口设置全部章节标题格式。
 
-% 各章标题，例如：“第1章  引言”。
-% 章序号采用阿拉伯数字，章序号与标题之间空一个汉字符，采用黑体三号字，居中书写，单倍行距，段前24磅，段后18磅。
+% 各章标题，例如：“第一章  绪论”。
+% 章序号采用中文数字（节/图/表编号仍用阿拉伯数字），章序号与标题之间空一个汉字符，采用黑体三号字，居中书写，单倍行距，段前24磅，段后18磅。
 % 摘要、目录和列于目录中与章平级的其它部分的标题（如参考文献、附录、致谢等）也用这同一种格式。
 \ctexset{
   chapter = {
     format      = \centering\heiti\fontsize{16bp}{21.8bp}\selectfont,
     nameformat  = {},
     titleformat = {},
-    number      = \thechapter,
+    number      = \chinese{chapter},
     aftername   = \quad,
     beforeskip  = 24bp,
     afterskip   = 18bp,
