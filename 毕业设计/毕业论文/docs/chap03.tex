@@ -15,7 +15,7 @@
 
 P450 酶及其底物的高质量配对信息并未集中于单一数据库，而是分散于晶体结构数据库、反应数据库、家族专属数据库与参考文献之中。为尽可能覆盖已确定的 P450 催化关系，本研究从以下五个互补来源整合原始记录。
 
-\textbf{RCSB Protein Data Bank}\cite{Burley2025,Berman2000}。该来源提供经 X 射线晶体学或冷冻电镜解析的 P450 复合物，是酶--底物配对证据中等级最高的一类。本研究复用自独立测试集构建阶段获得的 682 条经三方人工智能代理（Claude、Codex、Gemini）逐条复核的 P450--配体记录，从中保留经文献与结构证据一致判定为底物而非抑制剂或产物的配对，最终纳入 272 条正样本、103 个唯一酶、220 个唯一底物。
+\textbf{RCSB Protein Data Bank}\cite{Burley2025,Berman2000}。该来源提供经 X 射线晶体学或冷冻电镜解析的 P450 复合物，是酶--底物配对证据中等级最高的一类。本研究复用自独立测试集构建阶段获得的 682 条经多模型辅助证据复核与人工确认的 P450--配体记录，从中保留经文献与结构证据一致判定为底物而非抑制剂或产物的配对，最终纳入 272 条正样本、103 个唯一酶、220 个唯一底物。
 
 \textbf{ESIBank}\cite{EZSpec2025}。该来源为 EZSpecificity 论文公开的原始训练数据中涉及 P450 的子集。本研究从 EZSpecificity 作者提供的数据包中提取 12{,}329 条 P450 记录，首先在索引层面对酶--反应索引关系进行完整校验以避免数据集内部错配，随后过滤 10 种常见的辅因子与溶剂分子（如分子氧及其多种表示形式 \texttt{O}、\texttt{O=O}、\texttt{[O][O]}、过氧化物 \texttt{OO} 等），由原始 884 条实质配对缩减为 806 条。该子集提供 389 个唯一酶与 390 个唯一底物，代表 ESIBank 训练集中真正通过 InterPro\cite{Blum2025} 功能域严格验证的 P450 条目。
 
@@ -23,7 +23,7 @@ P450 酶及其底物的高质量配对信息并未集中于单一数据库，而
 
 \textbf{PlantP450DB}\cite{Nelson2004}。该数据库聚焦植物细胞色素 P450，其命名体系由 Nelson 等的植物 P450 系统命名工作奠定。本研究自该数据库爬取 910 个酶条目详情页，通过 PubMed 与 CrossRef 检索获取相关文献 566 篇摘要，对开放获取的 52 篇文献通过 Unpaywall 下载全文，并补充 61 篇非开放获取文献的 PDF，在对应摘要与全文中自动化抽取酶--底物对关系、并经多轮质量复核；底物 SMILES 通过 PubChem\cite{PubChem2025} 与 KEGG\cite{KEGG2025} 的化学标识符交叉查询补齐，酶序列通过 UniProt 补齐。该来源最终贡献 979 条正样本、578 个唯一酶与 295 个唯一底物。
 
-\textbf{PCPD}\cite{Wang2021PCPD}。该数据库通过前端 JavaScript 动态加载记录。本研究通过浏览器开发者工具逆向分析定位其静态资源 CDN，批量下载全部 1{,}427 条酶 JSON、1{,}425 条 FASTA 序列、423 个 PDB 结构与 857 张反应示意图片，通过 7 条正则规则结合第 \ref{sec:multiagent} 节所述多智能体协作复核流程提取 582 条表达不清晰的反应条目，并对初次抽取结果中 228 处字段错误做针对性清洗；底物 SMILES 通过三轮 PubChem 与 KEGG 查询补齐。该来源最终贡献 1{,}209 条正样本、818 个唯一酶与 570 个唯一底物。
+\textbf{PCPD}\cite{Wang2021PCPD}。该数据库通过前端 JavaScript 动态加载记录。本研究通过浏览器开发者工具解析其前端加载逻辑并定位公开静态资源地址，批量下载全部 1{,}427 条酶 JSON、1{,}425 条 FASTA 序列、423 个 PDB 结构与 857 张反应示意图片，通过 7 条正则规则结合第 \ref{sec:multiagent} 节所述多智能体协作复核流程提取 582 条表达不清晰的反应条目，并对初次抽取结果中 228 处字段错误做针对性清洗；底物 SMILES 通过三轮 PubChem 与 KEGG 查询补齐。该来源最终贡献 1{,}209 条正样本、818 个唯一酶与 570 个唯一底物。
 
 \begin{table}[htbp]
   \centering
@@ -44,9 +44,9 @@ P450 酶及其底物的高质量配对信息并未集中于单一数据库，而
   \end{tabular}
 \end{table}
 
-\begin{figure}[htbp]
+\begin{figure}[!htbp]
   \centering
-  \fbox{\parbox[c][4.5cm][c]{0.85\textwidth}{\centering \textbf{图 3-1 占位：五源数据整合 $\to$ 最终基准数据集}\\[0.5em] 五个互补来源（RCSB PDB / ESIBank / P450Rdb / PlantP450DB / PCPD）$\to$\\ 字段标准化与多智能体证据复核 $\to$ UniProt + InChIKey 跨源去重 $\to$\\ 1{,}622 酶 $\times$ 2{,}125 底物 $\times$ 4{,}751 正样本对 $\to$ 双向负样本 + 切分\\[0.5em] 待插入：\texttt{image/fig3-1-multisource.png}}}
+  \includegraphics[width=\textwidth]{./image/数据库.png}
   \caption{五源 P450 数据整合流程：从原始数据库到最终领域专属基准}
   \label{fig:ch3-multisource}
 \end{figure}
@@ -78,13 +78,13 @@ P450 酶及其底物的高质量配对信息并未集中于单一数据库，而
 
 前述五个数据源在清洗过程中共同面临一个本质性困难：蛋白数据库中与 P450 共结晶的配体、或文献中被描述为与 P450 相关的化合物，并非全部是酶的真实催化底物，其中相当比例是竞争性抑制剂、反应产物或辅因子类似物，直接将其计入正样本会引入系统性假阳性。传统基于单一规则的自动判定（如 EC 号筛选、Fe--配体距离阈值、关键词匹配）在 P450 的多样底物上均存在显著误判率。为解决该困难，本研究建立了一套\textbf{基于多智能体协作的证据级联判定流程}，以两个相互独立的大语言模型代理分别在文献侧与结构侧并行取证，再由主代理整合证据并给出带置信度标注的最终判定。
 
-流程由三个代理角色构成。\textbf{文献代理}（基于 Gemini 2.5 Pro 大语言模型）负责通过 PubMed 与 CrossRef 检索与待判定酶--配体对相关的文献条目，自动抽取 PMID、动力学参数（$K_i$、$\mathrm{IC}_{50}$、$K_m$）与实验结论段落，输出文献依据下的分类（底物 / 抑制剂 / 产物 / 辅因子）与证据等级。\textbf{结构代理}（基于 OpenAI Codex 大语言模型）负责解析 PDB 晶体结构，度量血红素铁（Fe）到配体重原子的距离、配位关系与修饰特征（如是否存在与 Fe 形成六配位的杂原子、是否为共价修饰等），输出结构依据下的分类与 Fe--配体距离数值。两代理并行独立查询，互不共享中间结果，以避免信息耦合。\textbf{主代理}（Claude Code）在两方独立判定完成后整合证据字段，以一致性作为最终置信度的主要来源：文献与结构判定一致时标记为 HIGH；两者冲突时按证据强度判定为 MEDIUM 或 LOW，并进入多轮对比讨论或人工复核。
+流程由三个代理角色构成。\textbf{文献代理}（基于 Gemini）负责通过 PubMed 与 CrossRef 检索与待判定酶--配体对相关的文献条目，自动抽取 PMID、动力学参数（$K_i$、$\mathrm{IC}_{50}$、$K_m$）与实验结论段落，输出文献依据下的分类（底物 / 抑制剂 / 产物 / 辅因子）与证据等级。\textbf{结构代理}（基于 Codex）负责解析 PDB 晶体结构，度量血红素铁（Fe）到配体重原子的距离、配位关系与修饰特征（如是否存在与 Fe 形成六配位的杂原子、是否为共价修饰等），输出结构依据下的分类与 Fe--配体距离数值。两代理并行独立查询，互不共享中间结果，以避免信息耦合。\textbf{主代理}（基于 Claude）在两方独立判定完成后整合证据字段，以一致性作为最终置信度的主要来源：文献与结构判定一致时标记为 HIGH；两者冲突时按证据强度判定为 MEDIUM 或 LOW，并进入多轮对比讨论或人工复核。
 
-该流程最终写入每条判定的完整证据链（JSONL 记录，包含分类标签、置信度与来自文献或结构的原始证据段），以便随时追溯。在 RCSB 来源的 682 条 P450--配体配对上，按约 15 分钟/条的处理节奏、12 个并行窗口、每窗口约 57 条的负载完成了全量复核；同一流程在 PlantP450DB 的 566 篇文献摘要自动抽取与 61 篇非开放获取 PDF 的全文复核中、以及在 PCPD 的 582 条表达不清晰反应条目清洗中，亦作为证据抽取与质控的核心方法被重复使用。三方代理协作在本研究中的集成由模型上下文协议（Model Context Protocol，MCP）在 Claude Code 命令行环境下完成，外部 Codex 与 Gemini CLI 通过开源 MCP 封装接入主代理；实现细节与模型版本的完整清单列于附录 A。
+该流程最终写入每条判定的完整证据链（JSONL 记录，包含分类标签、置信度与来自文献或结构的原始证据段），以便随时追溯。在 RCSB 来源的 682 条 P450--配体配对上，按约 15 分钟/条的处理节奏、12 个并行窗口、每窗口约 57 条的负载完成了全量复核；同一流程在 PlantP450DB 的 566 篇文献摘要自动抽取与 61 篇非开放获取 PDF 的全文复核中、以及在 PCPD 的 582 条表达不清晰反应条目清洗中，亦作为证据抽取与质控的核心方法被重复使用。三方代理协作通过模型上下文协议（Model Context Protocol，MCP）集成于统一命令行环境，由主代理统一调度文献代理与结构代理。
 
-\begin{figure}[htbp]
+\begin{figure}[!htbp]
   \centering
-  \fbox{\parbox[c][5cm][c]{0.85\textwidth}{\centering \textbf{图 3-2 占位：多智能体协作证据级联判定流程}\\[0.5em] 主代理（Claude Code）派发酶--配体对 $\to$ 文献代理（Gemini）查 PubMed/CrossRef 抽取 $K_i/\mathrm{IC}_{50}/K_m$ 等动力学证据 $\parallel$ 结构代理（Codex）解析 PDB 测 Fe--配体距离与配位关系 $\to$ 主代理整合两方证据 $\to$ 一致 = HIGH 直接采纳；冲突 = MEDIUM/LOW 进入多轮验证或人工复核 $\to$ 写入 JSONL 完整证据链\\[0.5em] 待插入：\texttt{image/fig3-2-multiagent.png}（可由组会 PPT slide 10 直接导出）}}
+  \includegraphics[width=\textwidth]{./image/多智能体协作.png}
   \caption{多智能体协作的证据级联判定流程：文献代理与结构代理并行独立取证，主代理整合并以一致性给出置信度}
   \label{fig:ch3-multiagent}
 \end{figure}
@@ -121,7 +121,7 @@ P450 酶及其底物的高质量配对信息并未集中于单一数据库，而
 \section{数据切分与测试集构造}
 \label{sec:splits}
 
-为与 EZSpecificity 参考框架保持评估协议的一致性，本研究在合并数据集上按照 EZSpecificity 的 random split 标准流程进行切分，得到训练集 22{,}083 条、验证集 11{,}008 条、测试集 10{,}999 条（正负样本按前述双向构造产生，详见表~\ref{tab:ch3-splits}）\footnote{本研究预先生成了 random split、reaction split、enzyme split 与 all split 四种切分策略的索引文件以便未来扩展，但本论文仅报告 random split 第一折（fold~0）的训练与评估结果，不声称交叉验证或多切分稳健性结论。}。切分比例接近 2:1:1，兼顾了训练样本规模与独立验证/测试的稳健性需求。
+为与 EZSpecificity 参考框架保持评估协议的一致性，本研究在合并数据集上按照 EZSpecificity 的 random split 标准流程进行切分，得到训练集 22{,}083 条、验证集 11{,}008 条、测试集 10{,}999 条（正负样本按前述双向构造产生，详见表~\ref{tab:ch3-splits}）。切分比例接近 2:1:1，兼顾了训练样本规模与独立验证/测试的稳健性需求。
 
 \begin{table}[htbp]
   \centering
@@ -168,10 +168,10 @@ EZSpecificity 参考框架在结构通道上依赖酶--底物对接复合物的�
 
 \textbf{复合物组装}。蛋白 PDB 与配体 PDBQT 经格式转换与对接姿态回贴后拼接为单一复合物 PDB，并按 EZSpecificity 模型要求的分隔符与原子排序规范组织。最终共 50{,}180 对成功生成对接复合物（成功率 96.1\%）；对接失败的 1{,}930 对主要源于 Uni-Dock 对某些特殊原子或键型的处理限制，在后续特征生成阶段自动剔除。
 
-\begin{figure}[htbp]
+\begin{figure}[!htbp]
   \centering
-  \fbox{\parbox[c][5cm][c]{0.85\textwidth}{\centering \textbf{图 3-3 占位：P450--底物对接复合物渲染示例}\\[0.5em] 选取一例 P450--底物典型对接姿态（PDB ID 待选定，建议 CYP3A4 或 CYP2D6 临床代表）：\\ 蛋白以卡通模式显示活性口袋区域 + 血红素辅因子棒状 + 中心铁球 +\\ 底物棒状（按元素着色）+ Fe--底物重原子距离标注 + $10~\mathrm{\AA}$ 口袋透明球范围\\[0.5em] 待插入：\texttt{image/fig3-3-docking.png}（PyMOL 自动渲染）}}
-  \caption{P450--底物对接复合物结构示例：血红素铁、口袋残基与对接姿态}
+  \includegraphics[width=0.78\textwidth]{./image/对接复合物.png}
+  \caption{P450--底物对接复合物结构示例（PDB 2HI4，CYP1A2 + $\alpha$-萘黄酮）：(a) 整体蛋白卡通；(b) 活性口袋放大，灰色棒为血红素，橙色球为中心铁原子，黄色棒为底物 $\alpha$-萘黄酮，青色细棒为 $10~\mathrm{\AA}$ 口袋内代表残基侧链，黑色虚线为 Fe 至底物重原子距离}
   \label{fig:ch3-docking}
 \end{figure}
 
@@ -192,23 +192,24 @@ EZSpecificity 参考框架在结构通道上依赖酶--底物对接复合物的�
   \centering
   \caption{模型输入特征与存储}
   \label{tab:ch3-features}
-  \begin{tabular}{llrll}
+  \small
+  \begin{tabular*}{\textwidth}{@{\extracolsep{\fill}}llrll}
     \toprule
     特征类型 & 来源 & 维度 & 存储格式 & 生成工具 \\
     \midrule
-    酶序列嵌入     & 酶氨基酸序列    & 1{,}280 & LMDB (\texttt{enzymes}) & ESM-2\cite{ESM2023} \\
-    原子级分子嵌入 & 底物 SMILES     & 2{,}400 & LMDB (\texttt{substrates}) & GROVER\cite{GROVER2020} \\
-    分子级分子嵌入 & 底物 SMILES     & 4{,}885 & LMDB (\texttt{substrates}) & GROVER\cite{GROVER2020} \\
-    分子指纹       & 底物 SMILES     & 1{,}024 & NumPy (\texttt{morgan})   & Morgan/ECFP\cite{ECFP2010} \\
-    结构节点特征   & 对接复合物 PDB  & 28     & LMDB (\texttt{structure}) & BioPython + 自研 \\
-    结构边特征     & 对接复合物 PDB  & 39     & LMDB (\texttt{structure}) & BioPython + 自研 \\
+    酶序列嵌入     & 氨基酸序列     & 1{,}280 & LMDB \texttt{enzymes}    & ESM-2\cite{ESM2023} \\
+    原子级分子嵌入 & 底物 SMILES    & 2{,}400 & LMDB \texttt{substrates} & GROVER\cite{GROVER2020} \\
+    分子级分子嵌入 & 底物 SMILES    & 4{,}885 & LMDB \texttt{substrates} & GROVER\cite{GROVER2020} \\
+    分子指纹       & 底物 SMILES    & 1{,}024 & NumPy \texttt{morgan}    & Morgan\cite{ECFP2010} \\
+    结构节点特征   & 对接复合物 PDB & 28      & LMDB \texttt{structure}  & BioPython \\
+    结构边特征     & 对接复合物 PDB & 39      & LMDB \texttt{structure}  & BioPython \\
     \bottomrule
-  \end{tabular}
+  \end{tabular*}
 \end{table}
 
 \section{基准数据统计}
 \label{sec:stats}
 
-综合前述各节的构建与筛选，本研究得到的 P450 专属基准数据集最终规模为：1{,}622 个唯一酶、2{,}125 个唯一底物、4{,}751 条跨源合并去重后的正样本对；配合双向随机负样本与特征生成流水线，最终可供模型训练与评估的样本共 47{,}510 条，其中正样本 4{,}362 条、负样本 43{,}148 条，正负比约 $1:9.9$；按 random split 第一折切分为训练集 22{,}083 条、验证集 11{,}008 条、测试集 10{,}999 条。针对与 EZSpecificity 公开 checkpoint 的泄漏控制公平对比，进一步过滤测试集中与原始训练集重合的 P450 酶得到 7{,}963 条过滤后测试集。
+综合前述各节的构建与筛选，本研究得到的 P450 专属基准数据集最终规模为：1{,}622 个唯一酶、2{,}125 个唯一底物、4{,}751 条跨源合并去重后的正样本对；配合双向随机负样本与特征生成流水线（其中部分酶--底物对因蛋白序列超长、含非标准氨基酸或底物原子数超限被流水线剔除），最终可供模型训练与评估的样本共 47{,}510 条，其中正样本 4{,}362 条、负样本 43{,}148 条，正负比约 $1:9.9$；按 random split 第一折切分为训练集 22{,}083 条、验证集 11{,}008 条、测试集 10{,}999 条。针对与 EZSpecificity 公开 checkpoint 的泄漏控制公平对比，进一步过滤测试集中与原始训练集重合的 P450 酶得到 7{,}963 条过滤后测试集。
 
 相对于 ESIBank 原始训练集仅包含 389 个 P450 酶（在 25{,}225 条酶中占 1.5\%）的覆盖规模，本基准数据集将唯一 P450 酶的数量扩大约 4 倍，将正样本对扩大约 6 倍，尤其显著扩展了植物 P450 的覆盖——PlantP450DB 与 PCPD 合计贡献 2{,}188 条正样本与 1{,}396 个唯一酶，是先前以人源与微生物 P450 为主的深度学习基准中相对稀见的植物来源数据。上述数据资产为后续章节的模型训练、公平评估与架构改进提供统一的实验基础。

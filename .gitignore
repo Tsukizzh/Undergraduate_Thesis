@@ -74,6 +74,10 @@ P450_EZSpecificity完整研究手册_终极整合版.md
 .vscode/
 !毕业设计/毕业论文/.vscode/
 
+# LaTeX 编译产物（latexmk -outdir 输出）
+毕业设计/毕业论文/build_pdf/
+毕业设计/毕业论文/build_print/
+
 # 系统文件
 .DS_Store
 Thumbs.db
