@@ -18,7 +18,7 @@
 
 \begin{figure}[!htbp]
   \centering
-  \includegraphics[width=\textwidth]{./image/原始架构.pdf}
+  \makebox[\textwidth][c]{\includegraphics[width=1.25\textwidth]{./image/原始架构.pdf}}
   \caption{原架构 M0 总体示意：序列、结构与分子三通道并行编码，经双向交叉注意力使酶残基与底物原子互相参考，最终拼接 7 个 128 维向量送入预测头 MLP 输出二分类 logits}
   \label{fig:ch5-baseline}
 \end{figure}
@@ -40,7 +40,7 @@ GVP 通路的输出（每残基 256 维，记为 $\mathbf{h}_{\mathrm{res}}$）�
 
 \begin{figure}[!htbp]
   \centering
-  \includegraphics[width=\textwidth]{./image/双图架构.pdf}
+  \makebox[\textwidth][c]{\includegraphics[width=1.25\textwidth]{./image/双图架构.pdf}}
   \caption{双图架构示意图：在原架构三通道基础上并行引入残基级 GVP 通路（右侧新增分支），输出经"出口一深融合"回灌序列通道、"出口二浅旁路"接入末端综合向量；零初始化与延迟解冻保证训练第 0 步与 M0 严格等价}
   \label{fig:ch5-arch}
 \end{figure}
@@ -93,7 +93,7 @@ GVP 编码器由 3 层 GVP 构成，每层交替执行标量更新与向量更�
 
 \begin{figure}[!htbp]
   \centering
-  \includegraphics[width=\textwidth]{./image/M0_M1对比.png}
+  \makebox[\textwidth][c]{\includegraphics[width=1.15\textwidth]{./image/M0_M1对比.png}}
   \caption{原架构 M0 与双图架构 M1 对比：(a) Val AUC--ROC 训练曲线，M0 best ep43 = 0.9250，M1 best ep41 = 0.9262；(b) 测试集 AUC--ROC，M0 = 0.9302，M1 = 0.9310，$\Delta = +0.0008$}
   \label{fig:ch5-results}
 \end{figure}

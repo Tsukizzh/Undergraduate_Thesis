@@ -60,6 +60,9 @@
 
 # 其他不需要上传的文件
 *.pdf
+# 但论文图片用的矢量 PDF 必须入库
+!毕业设计/毕业论文/image/*.pdf
+
 .claude/
 .serena/
 草稿/
@@ -77,6 +80,25 @@ P450_EZSpecificity完整研究手册_终极整合版.md
 # LaTeX 编译产物（latexmk -outdir 输出）
 毕业设计/毕业论文/build_pdf/
 毕业设计/毕业论文/build_print/
+
+# 临时预览/中间文件
+/preview*.png
+/orig_arch_*.png
+/数据库_*.pdf
+/双图架构_*.pdf
+毕业设计/毕业论文/_preview*.html
+毕业设计/毕业论文/_inline*.html
+毕业设计/毕业论文/_hires*.html
+毕业设计/毕业论文/_print*.html
+毕业设计/毕业论文/P450_Benchmark_Schematic_backup.svg
+毕业设计/毕业论文/P450_Benchmark_Schematic (1).svg
+毕业设计/毕业论文/P450_Benchmark_Schematic (2).svg
+毕业设计/毕业论文/P450_Benchmark_Schematic (3).svg
+毕业设计/毕业论文/P450_Benchmark_Schematic (4).svg
+毕业设计/毕业论文/image/*_backup*.png
+毕业设计/毕业论文/image/*_backup*.pdf
+毕业设计/毕业论文/image/*_step1*.pdf
+毕业设计/毕业论文/image/*_原版备份*.png
 
 # 系统文件
 .DS_Store

@@ -1,0 +1,501 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg viewBox="0 0 1600 900" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="P450 specificity benchmark schematic">
+
+  <defs>
+    <linearGradient id="cylSide" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#C8C8D4"></stop><stop offset="0.5" stop-color="#9097A6"></stop><stop offset="1" stop-color="#6B7585"></stop>
+    </linearGradient>
+    <linearGradient id="cylTop" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#DDE1EA"></stop><stop offset="1" stop-color="#A6ADBC"></stop>
+    </linearGradient>
+    <linearGradient id="bigSide" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#4A90B5"></stop><stop offset="0.55" stop-color="#356A8C"></stop><stop offset="1" stop-color="#2C5F7C"></stop>
+    </linearGradient>
+    <linearGradient id="bigTop" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#6CA6C9"></stop><stop offset="1" stop-color="#3E7898"></stop>
+    </linearGradient>
+    <linearGradient id="satSide" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#D6DAE2"></stop><stop offset="1" stop-color="#9CA4B3"></stop>
+    </linearGradient>
+    <linearGradient id="satTop" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#E5E8EE"></stop><stop offset="1" stop-color="#B7BDC9"></stop>
+    </linearGradient>
+    <linearGradient id="clip" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#F5F7FB"></stop><stop offset="1" stop-color="#DDE3EC"></stop>
+    </linearGradient>
+    <linearGradient id="laptopBezel" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#3A4356"></stop><stop offset="1" stop-color="#2D3748"></stop>
+    </linearGradient>
+    <linearGradient id="laptopScreen" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#E9F3FA"></stop><stop offset="1" stop-color="#CFE3F1"></stop>
+    </linearGradient>
+    <linearGradient id="paperEdge" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#FFFFFF"></stop><stop offset="1" stop-color="#F2F4F8"></stop>
+    </linearGradient>
+    <linearGradient id="zone" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#F0F7FA"></stop><stop offset="1" stop-color="#E7F1F6"></stop>
+    </linearGradient>
+
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#4A90E2"></path>
+    </marker>
+    <marker id="arrowSm" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#4A90E2"></path>
+    </marker>
+    <marker id="arrowDk" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#2C5F7C"></path>
+    </marker>
+
+    <symbol id="srcCyl" viewBox="0 0 160 70">
+      <path d="M10,12 L10,58 a70,12 0 0 0 140,0 L150,12 a70,12 0 0 0 -140,0 z" fill="url(#cylSide)" stroke="#5A6373" stroke-width="0.8"></path>
+      <path d="M10,26 a70,12 0 0 0 140,0" fill="none" stroke="#5A6373" stroke-width="0.6" opacity="0.55"></path>
+      <path d="M10,40 a70,12 0 0 0 140,0" fill="none" stroke="#5A6373" stroke-width="0.6" opacity="0.55"></path>
+      <ellipse cx="80" cy="12" rx="70" ry="12" fill="url(#cylTop)" stroke="#5A6373" stroke-width="0.8"></ellipse>
+      <circle cx="40" cy="20" r="1.6" fill="#6FBF73"></circle><circle cx="62" cy="34" r="1.6" fill="#6FBF73"></circle>
+      <circle cx="100" cy="22" r="1.6" fill="#6FBF73"></circle><circle cx="118" cy="44" r="1.6" fill="#6FBF73"></circle>
+      <circle cx="78" cy="50" r="1.6" fill="#6FBF73"></circle>
+    </symbol>
+
+    <symbol id="bigCyl" viewBox="0 0 240 360">
+      <path d="M10,28 L10,332 a110,28 0 0 0 220,0 L230,28 a110,28 0 0 0 -220,0 z" fill="url(#bigSide)" stroke="#1E445A" stroke-width="1"></path>
+      <path d="M10,90 a110,28 0 0 0 220,0" fill="none" stroke="#1E445A" stroke-width="0.8" opacity="0.55"></path>
+      <path d="M10,165 a110,28 0 0 0 220,0" fill="none" stroke="#1E445A" stroke-width="0.8" opacity="0.55"></path>
+      <path d="M10,240 a110,28 0 0 0 220,0" fill="none" stroke="#1E445A" stroke-width="0.8" opacity="0.55"></path>
+      <ellipse cx="120" cy="28" rx="110" ry="28" fill="url(#bigTop)" stroke="#1E445A" stroke-width="1"></ellipse>
+      <g fill="#6FBF73">
+        <circle cx="55" cy="55" r="2.6"></circle><circle cx="92" cy="78" r="2.6"></circle>
+        <circle cx="160" cy="60" r="2.6"></circle><circle cx="195" cy="118" r="2.6"></circle>
+        <circle cx="68" cy="138" r="2.6"></circle><circle cx="135" cy="148" r="2.6"></circle>
+        <circle cx="178" cy="200" r="2.6"></circle><circle cx="60" cy="218" r="2.6"></circle>
+        <circle cx="118" cy="232" r="2.6"></circle><circle cx="200" cy="270" r="2.6"></circle>
+        <circle cx="80" cy="295" r="2.6"></circle><circle cx="155" cy="310" r="2.6"></circle>
+      </g>
+    </symbol>
+
+    <symbol id="satCyl" viewBox="0 0 110 80">
+      <path d="M8,16 L8,64 a47,10 0 0 0 94,0 L102,16 a47,10 0 0 0 -94,0 z" fill="url(#satSide)" stroke="#6F7787" stroke-width="0.8"></path>
+      <path d="M8,34 a47,10 0 0 0 94,0" fill="none" stroke="#6F7787" stroke-width="0.5" opacity="0.5"></path>
+      <path d="M8,50 a47,10 0 0 0 94,0" fill="none" stroke="#6F7787" stroke-width="0.5" opacity="0.5"></path>
+      <ellipse cx="55" cy="16" rx="47" ry="10" fill="url(#satTop)" stroke="#6F7787" stroke-width="0.8"></ellipse>
+      <circle cx="32" cy="28" r="1.4" fill="#6FBF73"></circle><circle cx="74" cy="42" r="1.4" fill="#6FBF73"></circle>
+      <circle cx="50" cy="58" r="1.4" fill="#6FBF73"></circle>
+    </symbol>
+
+    <symbol id="litStack" viewBox="0 0 180 160">
+      <g transform="translate(20,28)"><rect x="0" y="0" width="130" height="118" rx="3" fill="#EFF3F8" stroke="#A8B2C0" stroke-width="0.8"></rect></g>
+      <g transform="translate(14,16)"><rect x="0" y="0" width="130" height="118" rx="3" fill="#F6F8FC" stroke="#A8B2C0" stroke-width="0.8"></rect></g>
+      <g transform="translate(8,4)">
+        <rect x="0" y="0" width="130" height="118" rx="3" fill="url(#paperEdge)" stroke="#7A8595" stroke-width="0.9"></rect>
+        <rect x="10" y="10" width="62" height="6" fill="#2C5F7C"></rect>
+        <rect x="10" y="20" width="40" height="3" fill="#9AA3B2"></rect>
+        <g stroke="#9AA3B2" stroke-width="0.7">
+          <line x1="10" y1="34" x2="62" y2="34"></line><line x1="10" y1="40" x2="62" y2="40"></line>
+          <line x1="10" y1="46" x2="62" y2="46"></line><line x1="10" y1="52" x2="58" y2="52"></line>
+          <line x1="10" y1="62" x2="62" y2="62"></line><line x1="10" y1="68" x2="62" y2="68"></line>
+          <line x1="10" y1="74" x2="62" y2="74"></line><line x1="10" y1="80" x2="62" y2="80"></line>
+          <line x1="10" y1="86" x2="60" y2="86"></line><line x1="10" y1="92" x2="62" y2="92"></line>
+          <line x1="10" y1="98" x2="50" y2="98"></line>
+          <line x1="68" y1="34" x2="120" y2="34"></line><line x1="68" y1="40" x2="120" y2="40"></line>
+          <line x1="68" y1="46" x2="120" y2="46"></line><line x1="68" y1="52" x2="116" y2="52"></line>
+          <line x1="68" y1="62" x2="120" y2="62"></line><line x1="68" y1="68" x2="120" y2="68"></line>
+          <line x1="68" y1="74" x2="118" y2="74"></line>
+        </g>
+        <rect x="68" y="80" width="52" height="20" fill="#E2EAF3" stroke="#9AA3B2" stroke-width="0.7"></rect>
+        <line x1="68" y1="80" x2="120" y2="100" stroke="#C0CCDA" stroke-width="0.5"></line>
+        <line x1="10" y1="106" x2="120" y2="106" stroke="#9AA3B2" stroke-width="0.7"></line>
+        <line x1="10" y1="111" x2="100" y2="111" stroke="#9AA3B2" stroke-width="0.7"></line>
+      </g>
+    </symbol>
+
+    <symbol id="clipboard" viewBox="0 0 130 160">
+      <rect x="6" y="14" width="118" height="142" rx="6" fill="#0F2030" opacity="0.06"></rect>
+      <rect x="4" y="12" width="118" height="142" rx="6" fill="url(#clip)" stroke="#A4ADBC" stroke-width="0.9"></rect>
+      <rect x="44" y="2" width="38" height="22" rx="4" fill="#B6BFCD" stroke="#8A95A6" stroke-width="0.8"></rect>
+      <rect x="50" y="7" width="26" height="12" rx="2" fill="#E5E9F0"></rect>
+      <g stroke="#9AA3B2" stroke-width="0.8" fill="none">
+        <line x1="30" y1="42" x2="110" y2="42"></line><line x1="30" y1="58" x2="104" y2="58"></line>
+        <line x1="30" y1="74" x2="110" y2="74"></line><line x1="30" y1="90" x2="96" y2="90"></line>
+        <line x1="30" y1="106" x2="110" y2="106"></line><line x1="30" y1="122" x2="102" y2="122"></line>
+        <line x1="30" y1="138" x2="86" y2="138"></line>
+      </g>
+      <g>
+        <rect x="18" y="38" width="8" height="8" fill="#fff" stroke="#4A90E2" stroke-width="0.9"></rect>
+        <path d="M19,42.5 L21.5,44.7 L25,40.4" fill="none" stroke="#4A90E2" stroke-width="1.2" stroke-linecap="round"></path>
+        <rect x="18" y="70" width="8" height="8" fill="#fff" stroke="#4A90E2" stroke-width="0.9"></rect>
+        <path d="M19,74.5 L21.5,76.7 L25,72.4" fill="none" stroke="#4A90E2" stroke-width="1.2" stroke-linecap="round"></path>
+        <rect x="18" y="102" width="8" height="8" fill="#fff" stroke="#4A90E2" stroke-width="0.9"></rect>
+        <path d="M19,106.5 L21.5,108.7 L25,104.4" fill="none" stroke="#4A90E2" stroke-width="1.2" stroke-linecap="round"></path>
+        <rect x="18" y="54" width="8" height="8" fill="#fff" stroke="#A4ADBC" stroke-width="0.9"></rect>
+        <rect x="18" y="86" width="8" height="8" fill="#fff" stroke="#A4ADBC" stroke-width="0.9"></rect>
+        <rect x="18" y="118" width="8" height="8" fill="#fff" stroke="#A4ADBC" stroke-width="0.9"></rect>
+        <rect x="18" y="134" width="8" height="8" fill="#fff" stroke="#A4ADBC" stroke-width="0.9"></rect>
+      </g>
+    </symbol>
+
+    <symbol id="laptop" viewBox="0 0 220 150">
+      <g transform="translate(20,4)">
+        <rect x="0" y="0" width="180" height="116" rx="6" fill="url(#laptopBezel)" stroke="#1A2230" stroke-width="0.9"></rect>
+        <rect x="6" y="6" width="168" height="104" rx="2" fill="url(#laptopScreen)"></rect>
+        <text x="90" y="40" text-anchor="middle" class="t-zh" font-size="19" font-weight="700" fill="#1F4F70">UniProt 序列</text>
+        <line x1="24" y1="58" x2="156" y2="58" stroke="#7FB1D2" stroke-width="0.8"></line>
+        <text x="90" y="86" text-anchor="middle" class="t-zh" font-size="19" font-weight="700" fill="#1F4F70">InChIKey 化学键</text>
+      </g>
+      <path d="M4,120 L216,120 L208,138 L12,138 z" fill="#3A4356" stroke="#1A2230" stroke-width="0.9"></path>
+      <rect x="92" y="120" width="36" height="3.5" rx="1.5" fill="#222B3A"></rect>
+    </symbol>
+
+    <symbol id="protein" viewBox="0 0 120 120">
+      
+      <defs>
+        <linearGradient id="helixA" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#5BA9E0"></stop><stop offset="1" stop-color="#2C6FA8"></stop></linearGradient>
+        <linearGradient id="helixB" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#7FC58C"></stop><stop offset="1" stop-color="#3E8F55"></stop></linearGradient>
+        <linearGradient id="helixC" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F0B860"></stop><stop offset="1" stop-color="#C68A2E"></stop></linearGradient>
+        <linearGradient id="helixD" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#D67878"></stop><stop offset="1" stop-color="#A03A3A"></stop></linearGradient>
+        <linearGradient id="helixE" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#A78BC9"></stop><stop offset="1" stop-color="#6E4F93"></stop></linearGradient>
+      </defs>
+      
+      <g fill="none" stroke="#9AA3B2" stroke-width="1.2" stroke-linecap="round">
+        <path d="M14,68 q6,-22 24,-18 q14,4 6,22 q-10,18 8,28"></path>
+        <path d="M88,22 q14,8 12,26 q-2,16 14,18"></path>
+        <path d="M30,98 q14,-6 30,4 q14,8 32,-2"></path>
+      </g>
+      
+      <path d="M16,34 L42,28 L42,24 L52,32 L42,40 L42,36 L16,42 z" fill="#E2A33C" stroke="#8C5E1B" stroke-width="0.8" opacity="0.92"></path>
+      
+      
+      <g transform="translate(28,18) rotate(-8)">
+        <rect x="0" y="0" width="14" height="60" rx="7" fill="url(#helixA)" stroke="#1E445A" stroke-width="0.6"></rect>
+        <g fill="none" stroke="#FFFFFF" stroke-width="1.1" opacity="0.55">
+          <path d="M1,8 q6,-3 12,0"></path><path d="M1,18 q6,-3 12,0"></path>
+          <path d="M1,28 q6,-3 12,0"></path><path d="M1,38 q6,-3 12,0"></path>
+          <path d="M1,48 q6,-3 12,0"></path>
+        </g>
+      </g>
+      
+      <g transform="translate(62,12) rotate(28)">
+        <rect x="0" y="0" width="13" height="50" rx="6.5" fill="url(#helixB)" stroke="#1E5530" stroke-width="0.6"></rect>
+        <g fill="none" stroke="#FFFFFF" stroke-width="1.1" opacity="0.55">
+          <path d="M1,8 q5.5,-3 11,0"></path><path d="M1,18 q5.5,-3 11,0"></path>
+          <path d="M1,28 q5.5,-3 11,0"></path><path d="M1,38 q5.5,-3 11,0"></path>
+        </g>
+      </g>
+      
+      <g transform="translate(82,52) rotate(72)">
+        <rect x="0" y="0" width="13" height="42" rx="6.5" fill="url(#helixC)" stroke="#7A4F12" stroke-width="0.6"></rect>
+        <g fill="none" stroke="#FFFFFF" stroke-width="1.1" opacity="0.55">
+          <path d="M1,8 q5.5,-3 11,0"></path><path d="M1,18 q5.5,-3 11,0"></path>
+          <path d="M1,28 q5.5,-3 11,0"></path>
+        </g>
+      </g>
+      
+      <g transform="translate(22,72) rotate(58)">
+        <rect x="0" y="0" width="12" height="38" rx="6" fill="url(#helixD)" stroke="#5C1F1F" stroke-width="0.6"></rect>
+        <g fill="none" stroke="#FFFFFF" stroke-width="1" opacity="0.55">
+          <path d="M1,8 q5,-3 10,0"></path><path d="M1,18 q5,-3 10,0"></path>
+          <path d="M1,28 q5,-3 10,0"></path>
+        </g>
+      </g>
+      
+      <g transform="translate(72,82) rotate(20)">
+        <rect x="0" y="0" width="12" height="32" rx="6" fill="url(#helixE)" stroke="#3E2956" stroke-width="0.6"></rect>
+        <g fill="none" stroke="#FFFFFF" stroke-width="1" opacity="0.55">
+          <path d="M1,8 q5,-3 10,0"></path><path d="M1,18 q5,-3 10,0"></path>
+        </g>
+      </g>
+      
+      <g transform="translate(60,60)">
+        <polygon points="0,-10 9,-3 6,9 -6,9 -9,-3" fill="#E27A3F" stroke="#7A2E0F" stroke-width="0.9" opacity="0.95"></polygon>
+        <circle cx="0" cy="2" r="3" fill="#C0392B" stroke="#5C1F1F" stroke-width="0.6"></circle>
+      </g>
+    </symbol>
+
+    <symbol id="substrate" viewBox="0 0 160 80">
+      <g fill="none" stroke="#1F2937" stroke-width="1.3" stroke-linecap="round">
+        <polygon points="60,18 84,18 96,40 84,62 60,62 48,40" fill="#fff"></polygon>
+        <line x1="62" y1="22" x2="82" y2="22"></line>
+        <line x1="86" y1="42" x2="80" y2="56"></line>
+        <line x1="58" y1="42" x2="64" y2="56"></line>
+        <line x1="96" y1="40" x2="116" y2="40"></line>
+        <line x1="48" y1="40" x2="28" y2="40"></line>
+      </g>
+      <text x="118" y="44" class="t-en" font-size="13" font-weight="700" fill="#C0392B">OH</text>
+      <text x="6" y="44" class="t-en" font-size="13" font-weight="700" fill="#2980B9">H₂N</text>
+    </symbol>
+
+    <symbol id="docking" viewBox="20 20 90 90">
+      <path d="M30,50 q-4,18 8,30 q14,14 32,8 q22,-6 24,-26 q3,-22 -16,-30 q-22,-10 -38,2 q-8,6 -10,16 z" fill="#F4E3B6" stroke="#B58A38" stroke-width="0.9"></path>
+      <path d="M50,58 q4,-8 14,-6 q12,2 14,12 q2,12 -10,16 q-12,4 -18,-6 q-4,-8 0,-16 z" fill="#FBF1D2" stroke="#B58A38" stroke-width="0.7"></path>
+      <g transform="translate(55,58)">
+        <polygon points="2,4 12,4 17,12 12,20 2,20 -3,12" fill="#fff" stroke="#1F2937" stroke-width="0.8"></polygon>
+        <circle cx="17" cy="12" r="1.6" fill="#C0392B"></circle>
+        <circle cx="-3" cy="12" r="1.6" fill="#2980B9"></circle>
+      </g>
+      <g stroke="#9AA3B2" stroke-width="0.5" stroke-dasharray="1.5,1.5">
+        <line x1="55" y1="60" x2="48" y2="52"></line>
+        <line x1="68" y1="58" x2="74" y2="50"></line>
+        <line x1="62" y1="76" x2="68" y2="84"></line>
+      </g>
+    </symbol>
+
+    <symbol id="agent" viewBox="0 0 40 40">
+      <circle cx="20" cy="20" r="18" fill="var(--agentFill,#4A90E2)" stroke="#fff" stroke-width="2"></circle>
+      <circle cx="20" cy="16" r="5" fill="#fff" opacity="0.92"></circle>
+      <path d="M9,30 q4,-8 11,-8 q7,0 11,8" fill="#fff" opacity="0.92"></path>
+    </symbol>
+  </defs>
+
+  <rect x="0" y="0" width="1600" height="900" fill="#FFFFFF"></rect>
+
+  
+  <g>
+    <rect x="40" y="40" width="430" height="820" rx="10" fill="url(#zone)"></rect>
+    <rect x="486" y="40" width="610" height="820" rx="10" fill="url(#zone)"></rect>
+    <rect x="1112" y="40" width="448" height="820" rx="10" fill="url(#zone)"></rect>
+  </g>
+
+  
+  
+  <g transform="translate(110,70)">
+    <use href="#litStack" width="240" height="212"></use>
+    <text x="120" y="244" text-anchor="middle" class="t-zh" font-size="22" font-weight="700" fill="#1F2937">文献库</text>
+    <text x="120" y="272" text-anchor="middle" class="t-zh" font-size="16" fill="#6B7280">PlantP450DB · PCPD 文献挖掘</text>
+  </g>
+
+  <line x1="80" y1="370" x2="430" y2="370" stroke="#CDD8E2" stroke-width="0.8" stroke-dasharray="3,3"></line>
+
+  <text x="80" y="398" class="t-zh" font-size="20" font-weight="700" fill="#2C5F7C">公开数据库</text>
+
+  
+  <g transform="translate(74,420)">
+    <g transform="translate(0,0)">
+      <use href="#srcCyl" width="160" height="68"></use>
+      <text x="176" y="28" class="t-zh" font-size="22" font-weight="700" fill="#1F2937">RCSB PDB</text>
+      <text x="176" y="54" class="t-zh" font-size="17" fill="#6B7280">晶体结构</text>
+    </g>
+    <g transform="translate(0,82)">
+      <use href="#srcCyl" width="160" height="68"></use>
+      <text x="176" y="28" class="t-zh" font-size="22" font-weight="700" fill="#1F2937">ESIBank</text>
+      <text x="176" y="54" class="t-zh" font-size="17" fill="#6B7280">EZSpecificity 训练子集</text>
+    </g>
+    <g transform="translate(0,164)">
+      <use href="#srcCyl" width="160" height="68"></use>
+      <text x="176" y="28" class="t-zh" font-size="22" font-weight="700" fill="#1F2937">P450Rdb</text>
+      <text x="176" y="54" class="t-zh" font-size="17" fill="#6B7280">反应数据库</text>
+    </g>
+    <g transform="translate(0,246)">
+      <use href="#srcCyl" width="160" height="68"></use>
+      <text x="176" y="28" class="t-zh" font-size="22" font-weight="700" fill="#1F2937">PlantP450DB</text>
+      <text x="176" y="54" class="t-zh" font-size="17" fill="#6B7280">植物 P450 数据库</text>
+    </g>
+    <g transform="translate(0,328)">
+      <use href="#srcCyl" width="160" height="68"></use>
+      <text x="176" y="28" class="t-zh" font-size="22" font-weight="700" fill="#1F2937">PCPD</text>
+      <text x="176" y="54" class="t-zh" font-size="17" fill="#6B7280">综合数据库</text>
+    </g>
+  </g>
+
+  
+  <g fill="none" stroke="#4A90E2" stroke-width="2" stroke-linecap="square">
+    <line x1="350" y1="200" x2="450" y2="200"></line>
+    <line x1="234" y1="454" x2="450" y2="454"></line>
+    <line x1="234" y1="536" x2="450" y2="536"></line>
+    <line x1="234" y1="618" x2="450" y2="618"></line>
+    <line x1="234" y1="700" x2="450" y2="700"></line>
+    <line x1="234" y1="782" x2="450" y2="782"></line>
+    <line x1="450" y1="200" x2="450" y2="782"></line>
+    <line x1="450" y1="170" x2="450" y2="200"></line>
+    <line x1="450" y1="170" x2="618" y2="170" marker-end="url(#arrow)"></line>
+  </g>
+
+  
+
+  
+  <g transform="translate(620,68)">
+    <rect x="0" y="0" width="350" height="200" rx="10" fill="#FFFFFF" stroke="#D6E2EC" stroke-width="1"></rect>
+    
+    <path d="M70,42 L280,42 L175,108 z" fill="none" stroke="#B6CCE0" stroke-width="1" stroke-dasharray="4,3" opacity="0.85"></path>
+    
+    <g transform="translate(48,20)">
+      <circle cx="22" cy="22" r="22" fill="#4A90E2" stroke="#fff" stroke-width="2"></circle>
+      <g transform="translate(11,12)">
+        <path d="M2,3 L2,18 L11,16 L20,18 L20,3 L11,5 z" fill="#fff" opacity="0.95"></path>
+        <line x1="11" y1="5" x2="11" y2="16" stroke="#4A90E2" stroke-width="1.4"></line>
+      </g>
+    </g>
+    <text x="70" y="78" text-anchor="middle" class="t-zh" font-size="13" font-weight="700" fill="#1F2937">文献代理</text>
+    
+    <g transform="translate(258,20)">
+      <circle cx="22" cy="22" r="22" fill="#E2914A" stroke="#fff" stroke-width="2"></circle>
+      <g transform="translate(13,10)">
+        <rect x="4" y="0" width="11" height="22" rx="5.5" fill="#fff" opacity="0.95"></rect>
+        <g fill="none" stroke="#E2914A" stroke-width="1.3">
+          <path d="M6,4.5 q5,-2 10,0"></path><path d="M6,11 q5,-2 10,0"></path><path d="M6,17.5 q5,-2 10,0"></path>
+        </g>
+      </g>
+    </g>
+    <text x="280" y="78" text-anchor="middle" class="t-zh" font-size="13" font-weight="700" fill="#1F2937">结构代理</text>
+    
+    <g transform="translate(153,86)">
+      <circle cx="22" cy="22" r="22" fill="#A284C9" stroke="#fff" stroke-width="2"></circle>
+      <g transform="translate(22,22)" stroke="#fff" stroke-width="2.2" stroke-linecap="round" fill="none">
+        <circle r="3.5" fill="#fff" stroke="none"></circle>
+        <line x1="0" y1="-10" x2="0" y2="-6.5"></line>
+        <line x1="0" y1="10" x2="0" y2="6.5"></line>
+        <line x1="-10" y1="0" x2="-6.5" y2="0"></line>
+        <line x1="10" y1="0" x2="6.5" y2="0"></line>
+        <line x1="-7" y1="-7" x2="-4.6" y2="-4.6"></line>
+        <line x1="7" y1="7" x2="4.6" y2="4.6"></line>
+        <line x1="-7" y1="7" x2="-4.6" y2="4.6"></line>
+        <line x1="7" y1="-7" x2="4.6" y2="-4.6"></line>
+      </g>
+    </g>
+    <text x="175" y="144" text-anchor="middle" class="t-zh" font-size="13" font-weight="700" fill="#1F2937">主整合代理</text>
+    <text x="175" y="180" text-anchor="middle" class="t-zh" font-size="17" font-weight="700" fill="#1F2937">多智能体证据复核</text>
+  </g>
+
+  
+  <g transform="translate(540,300)">
+    <rect x="0" y="0" width="510" height="220" rx="10" fill="#FFFFFF" stroke="#D6E2EC" stroke-width="1"></rect>
+    
+    <g transform="translate(28,22)">
+      <text x="95" y="14" text-anchor="middle" class="t-zh" font-size="15" font-weight="700" fill="#2C5F7C">跨源去重</text>
+      
+      <g transform="translate(0,24)">
+        <g fill="#4A90E2">
+          <circle cx="10" cy="6" r="5"></circle><circle cx="30" cy="6" r="5"></circle><circle cx="50" cy="6" r="5" opacity="0.5"></circle>
+          <circle cx="70" cy="6" r="5"></circle><circle cx="90" cy="6" r="5" opacity="0.5"></circle>
+          <circle cx="110" cy="6" r="5"></circle><circle cx="130" cy="6" r="5"></circle><circle cx="150" cy="6" r="5" opacity="0.5"></circle>
+          <circle cx="170" cy="6" r="5"></circle>
+        </g>
+        <g fill="#E2914A">
+          <circle cx="20" cy="22" r="5"></circle><circle cx="40" cy="22" r="5" opacity="0.5"></circle>
+          <circle cx="60" cy="22" r="5"></circle><circle cx="80" cy="22" r="5"></circle><circle cx="100" cy="22" r="5" opacity="0.5"></circle>
+          <circle cx="120" cy="22" r="5"></circle><circle cx="140" cy="22" r="5"></circle><circle cx="160" cy="22" r="5"></circle>
+        </g>
+      </g>
+      
+      <path d="M10,62 L180,62 L120,108 L120,150 L70,150 L70,108 z" fill="#EAF2FB" stroke="#4A90E2" stroke-width="1.6"></path>
+      
+      <text x="95" y="82" text-anchor="middle" class="t-zh" font-size="12" font-weight="600" fill="#1F4F70">UniProt 序列</text>
+      <text x="95" y="100" text-anchor="middle" class="t-zh" font-size="12" font-weight="600" fill="#1F4F70">+ InChIKey</text>
+      
+      <g transform="translate(80,160)">
+        <circle cx="0" cy="6" r="5" fill="#4A90E2"></circle>
+        <circle cx="15" cy="6" r="5" fill="#E2914A"></circle>
+        <circle cx="30" cy="6" r="5" fill="#4A90E2"></circle>
+      </g>
+    </g>
+    <line x1="248" y1="22" x2="248" y2="200" stroke="#E1E7EE" stroke-width="1" stroke-dasharray="3,3"></line>
+    <text x="378" y="36" text-anchor="middle" class="t-zh" font-size="15" font-weight="700" fill="#2C5F7C">特征对齐</text>
+    <g transform="translate(258,42)">
+      <use href="#protein" width="112" height="112"></use>
+      <text x="56" y="132" text-anchor="middle" class="t-zh" font-size="15" font-weight="600" fill="#1F2937">蛋白结构</text>
+    </g>
+    <g transform="translate(382,70)">
+      <use href="#substrate" width="130" height="64"></use>
+      <text x="65" y="104" text-anchor="middle" class="t-zh" font-size="15" font-weight="600" fill="#1F2937">底物分子</text>
+    </g>
+    <text x="255" y="210" text-anchor="middle" class="t-zh" font-size="19" font-weight="700" fill="#1F2937">跨源去重 · 特征对齐</text>
+  </g>
+
+  
+  <g transform="translate(530,580)">
+    <rect x="0" y="0" width="220" height="58" rx="29" fill="#fff" stroke="#5DAE6B" stroke-width="1.5"></rect>
+    <circle cx="34" cy="29" r="15" fill="#5DAE6B"></circle>
+    <path d="M26,29 L31,34 L42,21" fill="none" stroke="#fff" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></path>
+    <text x="110" y="38" text-anchor="middle" class="t-zh" font-size="20" font-weight="700" fill="#1F2937">正样本</text>
+  </g>
+  <g transform="translate(800,580)">
+    <rect x="0" y="0" width="280" height="58" rx="29" fill="#fff" stroke="#4A90E2" stroke-width="1.5"></rect>
+    <circle cx="34" cy="29" r="15" fill="#4A90E2"></circle>
+    <path d="M25,25 L42,25 M39,21 L44,25 L39,29 M26,33 L42,33 M26,33 L30,29 M26,33 L30,37" fill="none" stroke="#fff" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"></path>
+    <text x="140" y="38" text-anchor="middle" class="t-zh" font-size="20" font-weight="700" fill="#1F2937">双向负采样</text>
+    <g transform="translate(228,18)">
+      <rect x="0" y="0" width="40" height="22" rx="4" fill="#EAF2FB" stroke="#4A90E2" stroke-width="0.9"></rect>
+      <text x="20" y="16" text-anchor="middle" class="t-en" font-size="12" font-weight="700" fill="#2C5F7C">1:10</text>
+    </g>
+  </g>
+
+  
+  <g transform="translate(740,710)">
+    <use href="#docking" width="100" height="100"></use>
+    <text x="50" y="124" text-anchor="middle" class="t-zh" font-size="19" font-weight="700" fill="#1F2937">对接复合物</text>
+  </g>
+
+  
+  <g fill="none" stroke="#4A90E2" stroke-width="2" stroke-linecap="square">
+    <line x1="795" y1="268" x2="795" y2="300" marker-end="url(#arrow)"></line>
+    <line x1="795" y1="520" x2="795" y2="556"></line>
+    <line x1="640" y1="556" x2="940" y2="556"></line>
+    <line x1="640" y1="556" x2="640" y2="578" marker-end="url(#arrowSm)"></line>
+    <line x1="940" y1="556" x2="940" y2="578" marker-end="url(#arrowSm)"></line>
+    <line x1="640" y1="638" x2="640" y2="680"></line>
+    <line x1="940" y1="638" x2="940" y2="680"></line>
+    <line x1="640" y1="680" x2="940" y2="680"></line>
+    <line x1="790" y1="680" x2="790" y2="708" marker-end="url(#arrow)"></line>
+  </g>
+
+  
+  <g transform="translate(1132,70)">
+    <text x="208" y="38" text-anchor="middle" class="t-zh" font-size="30" font-weight="700" fill="#1F3A56">P450 特异性基准</text>
+    <text x="208" y="72" text-anchor="middle" class="t-zh" font-size="15" fill="#6B7280">多源整合　·　多智能体复核　·　最大公开 P450 基准</text>
+  </g>
+
+  <g transform="translate(1220,170)">
+    <use href="#bigCyl" width="240" height="360"></use>
+    <g transform="translate(120,178)" text-anchor="middle">
+      <text y="0" class="t-zh" font-size="24" font-weight="700" fill="#FFFFFF" letter-spacing="0.4">综合 P450 数据集</text>
+      <text y="30" class="t-en" font-size="18" font-weight="600" fill="#CFE3F1" letter-spacing="0.5">P450-Bench</text>
+    </g>
+  </g>
+
+  <g fill="none" stroke="#2C5F7C" stroke-width="2.4" stroke-linecap="square">
+    <line x1="840" y1="755" x2="1095" y2="755"></line>
+    <line x1="1095" y1="755" x2="1095" y2="350"></line>
+    <line x1="1095" y1="350" x2="1218" y2="350" marker-end="url(#arrowDk)"></line>
+  </g>
+
+  
+  <g transform="translate(1156,560)">
+    <g fill="none" stroke="#4A90E2" stroke-width="1.8" stroke-linecap="square">
+      <line x1="180" y1="0" x2="180" y2="22"></line>
+      <line x1="44" y1="22" x2="316" y2="22"></line>
+      <line x1="44" y1="22" x2="44" y2="48" marker-end="url(#arrowSm)"></line>
+      <line x1="180" y1="22" x2="180" y2="48" marker-end="url(#arrowSm)"></line>
+      <line x1="316" y1="22" x2="316" y2="48" marker-end="url(#arrowSm)"></line>
+    </g>
+    <g transform="translate(0,48)">
+      <use href="#satCyl" width="88" height="64"></use>
+      <text x="44" y="88" text-anchor="middle" class="t-zh" font-size="18" font-weight="700" fill="#1F2937">训练</text>
+      <text x="44" y="108" text-anchor="middle" class="t-zh" font-size="14" fill="#6B7280">80%</text>
+    </g>
+    <g transform="translate(136,48)">
+      <use href="#satCyl" width="88" height="64"></use>
+      <text x="44" y="88" text-anchor="middle" class="t-zh" font-size="18" font-weight="700" fill="#1F2937">验证</text>
+      <text x="44" y="108" text-anchor="middle" class="t-zh" font-size="14" fill="#6B7280">10%</text>
+    </g>
+    <g transform="translate(272,48)">
+      <use href="#satCyl" width="88" height="64"></use>
+      <text x="44" y="88" text-anchor="middle" class="t-zh" font-size="18" font-weight="700" fill="#1F2937">测试</text>
+      <text x="44" y="108" text-anchor="middle" class="t-zh" font-size="14" fill="#6B7280">10%</text>
+    </g>
+  </g>
+
+  
+  <g transform="translate(1130,838)">
+    <rect x="0" y="-100" width="412" height="110" rx="6" fill="#FFFFFF" stroke="#CFE0EA" stroke-width="1"></rect>
+    <g class="t-en" font-size="28" font-weight="700" fill="#1F3A56">
+      <text x="68" y="-50" text-anchor="middle">1,622</text>
+      <text x="206" y="-50" text-anchor="middle">2,125</text>
+      <text x="344" y="-50" text-anchor="middle">47,510</text>
+    </g>
+    <g class="t-zh" font-size="22" font-weight="500" fill="#4A5568">
+      <text x="68" y="-14" text-anchor="middle">酶</text>
+      <text x="206" y="-14" text-anchor="middle">底物</text>
+      <text x="344" y="-14" text-anchor="middle">样本</text>
+    </g>
+    <line x1="137" y1="-86" x2="137" y2="-6" stroke="#E1E7EE"></line>
+    <line x1="275" y1="-86" x2="275" y2="-6" stroke="#E1E7EE"></line>
+  </g>
+
+</svg>
