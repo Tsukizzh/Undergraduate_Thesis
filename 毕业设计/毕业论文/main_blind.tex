@@ -1,6 +1,9 @@
 % !TeX encoding = UTF-8
 % !TeX program = xelatex
 % !TeX spellcheck = en_US
+%
+% 盲审版：在 main.tex 基础上去除封面、扉页、学术诚信声明、致谢。
+% 其余内容与最终版 main.tex 保持一致。
 
 \documentclass[
     fontset=fandol,
@@ -18,10 +21,32 @@
 % 将超链接（含目录）颜色统一改为黑色，覆盖 sysuthesis.cls 中 pdf 选项下的默认 green
 \hypersetup{allcolors=black}
 
+% 盲审版：去除每页页眉的"中山大学本科毕业论文"标识及其上下横线
+% 覆盖 sysuthesis.cls 中 plain 页面样式（line 1594-1604）以满足匿名要求
+\makeatletter
+\fancypagestyle{plain}{%
+  \fancyhf{}%
+  \fancyfoot[C]{\fontsize{9bp}{12bp}\selectfont\thepage}%
+  \renewcommand\headrulewidth{0pt}%
+  \let\@mkboth\@gobbletwo
+  \let\chaptermark\@gobble
+  \let\sectionmark\@gobble
+}
+\makeatother
+\pagestyle{plain}
+
+% 盲审版：覆盖 hyperref 的 PDF 元数据，清除作者姓名以满足匿名要求。
+% sysuthesis 类在 \AtBeginDocument 中将 pdfauthor 设为 \sysu@author，
+% 这里再注册一个 \AtBeginDocument 钩子以保证在其之后生效。
+\AtBeginDocument{%
+  \hypersetup{pdfauthor={},pdfsubject={},pdfkeywords={}}%
+}
+
 \begin{document}
 
-\maketitle
-\copyrightpage
+% 盲审版：以下两行已注释，移除封面、扉页和学术诚信声明
+% \maketitle
+% \copyrightpage
 
 \frontmatter
 \input{docs/abstract.tex}
@@ -49,7 +74,8 @@
 % \input{docs/complementary.tex}
 
 \backmatter
-\input{docs/acknowledgements.tex}
+% 盲审版：以下一行已注释，移除致谢
+% \input{docs/acknowledgements.tex}
 % 本科期间无与毕业论文相关的已发表科研成果，按规范二（八）省略"相关科研成果目录"
 % \input{docs/achievements.tex}
 
