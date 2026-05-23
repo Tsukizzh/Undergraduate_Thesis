@@ -57,6 +57,10 @@
 /tmp_lmdb/
 /e2_exp_tmp.py
 {fname}
+/.codex/
+/.exp004_gdtable/
+/.q2_gpu_profile/
+/.tmp_pathd_*/
 
 # 其他不需要上传的文件
 *.pdf
