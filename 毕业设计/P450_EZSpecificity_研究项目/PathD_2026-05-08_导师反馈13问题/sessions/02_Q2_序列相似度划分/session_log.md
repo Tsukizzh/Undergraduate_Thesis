@@ -2342,3 +2342,532 @@ Saved: /root/autodl-tmp/EZSpecificity/PathD/P450/experiments/q02_sequence_simila
 - 子智能体 Pasteur 已做最终只读复核，判断 EXP005 goal 可以完成。
 - 复核认为：strict NN60 审计、训练完成、EXP004 参数继承、自动测试、`test_eval.json` 保存和 `--shutdown` 触发都有直接证据。
 - 复核提醒：EXP005 test AUC 低于 EXP004 不影响“实验完成”判定；它影响的是后续结果解释。当前更保守的表述应为：在 strict NN60 条件下，模型泛化性能下降，test AUC-ROC 为 0.6708，AUPR 为 0.2186。
+
+## 2026-05-23 EXP006 / EXP007 strict NN40 和 strict NN80 完成
+
+用户决定在 EXP005 strict NN60 的基础上继续扩展两个阈值：
+
+- EXP006：strict NN40
+- EXP007：strict NN80
+
+本轮只改变序列相似度阈值，其他流程沿用 EXP005：
+
+1. 使用 `actual_used_baseline` 范围，也就是 baseline 实际训练/验证/测试用过的 1479 个 enzyme 和 44090 条样本。
+2. 用 MMseqs2 做 enzyme 序列两两相似性搜索，覆盖度要求保持 80%。
+3. 根据阈值构造 enzyme 冲突图；两个 enzyme 只要相似度达到阈值，就不能分到 train 与 val/test 两侧。
+4. 按连通分量分配 train / val / test。
+5. 审计通过后生成新的 `pt_cache`。
+6. 复制 EXP005/EXP004 的 GDTable 训练代码和配置，只替换缓存路径。
+7. 单卡正式训练，batch size 88，max epochs 200，num workers 6。
+8. 本轮不启用自动关机；run script 中 `SHUTDOWN=${SHUTDOWN:-false}`，启动时没有传 `--shutdown`。
+
+本轮新增脚本：
+
+```text
+本地：
+D:\EZSpecificity_Project\毕业设计\P450_EZSpecificity_研究项目\PathD_2026-05-08_导师反馈13问题\scripts\q02_create_strict_nn_split_20260523.py
+
+服务器：
+/root/autodl-tmp/EZSpecificity/PathD/P450/scripts/q02_create_strict_nn_split_20260523.py
+```
+
+### EXP006 strict NN40 数据划分
+
+数据目录：
+
+```text
+/root/autodl-tmp/EZSpecificity/PathD/P450/data/q02_sequence_similarity_split/exp006_strict_nn40
+```
+
+核心产物：
+
+```text
+splits/strict_nn40_candidate_001/split_summary.json
+splits/strict_nn40_candidate_001/audits/strict_nn40_validation.json
+splits/strict_nn40_candidate_001/train_samples_strict_nn40.csv
+splits/strict_nn40_candidate_001/val_samples_strict_nn40.csv
+splits/strict_nn40_candidate_001/test_samples_strict_nn40.csv
+pt_cache/strict_nn40_main/
+```
+
+审计结果：
+
+| 项目 | 结果 |
+|---|---:|
+| enzyme 总数 | 1479 |
+| sample 总数 | 44090 |
+| test vs train `>=40%` 命中 | 0 |
+| val vs train `>=40%` 命中 | 0 |
+| 重复序列组跨 split | 0 |
+| validation all_passes | true |
+
+划分结果：
+
+| split | samples | enzymes | positives | negatives | positive rate |
+|---|---:|---:|---:|---:|---:|
+| train | 21412 | 693 | 1964 | 19448 | 0.091724 |
+| val | 10923 | 341 | 1050 | 9873 | 0.096127 |
+| test | 11755 | 445 | 899 | 10856 | 0.076478 |
+
+训练目录：
+
+```text
+/root/autodl-tmp/EZSpecificity/PathD/P450/experiments/q02_sequence_similarity_split/EXP006_strict_nn40_gdtable
+```
+
+正式 run：
+
+```text
+Q2_EXP006_strict_nn40_gdtable_b88_full_20260523_170859
+```
+
+训练完成证据：
+
+- 训练结束：2026-05-23 17:48:11
+- 总耗时：2346 秒，约 39.1 分钟
+- 总 epoch：32
+- 最佳 checkpoint：`pt-Q2_EXP006_strict_nn40_gdtable_b88_full_20260523_170859-ep16-auc0.7426.ckpt`
+- 最佳验证 AUC：0.742593
+- 自动测试已保存：`results/test_eval.json`
+
+测试集结果：
+
+| 指标 | 数值 |
+|---|---:|
+| test AUC | 0.638403 |
+| test AUPR | 0.102411 |
+| test samples | 11755 |
+| test positives | 899 |
+| test negatives | 10856 |
+
+说明：
+
+- EXP006 第一次启动时因为实验目录缺少 `src/`，日志中出现 `ModuleNotFoundError: No module named 'Datasets'` 后立即失败。
+- 之后补齐 `src/` 并重新正式启动，正式结果以上面的 run 为准。
+- 失败日志保留在 `logs/` 中，用于追溯；它没有产生可用训练结果，也没有覆盖正式结果。
+
+### EXP007 strict NN80 数据划分
+
+数据目录：
+
+```text
+/root/autodl-tmp/EZSpecificity/PathD/P450/data/q02_sequence_similarity_split/exp007_strict_nn80
+```
+
+核心产物：
+
+```text
+splits/strict_nn80_candidate_001/split_summary.json
+splits/strict_nn80_candidate_001/audits/strict_nn80_validation.json
+splits/strict_nn80_candidate_001/train_samples_strict_nn80.csv
+splits/strict_nn80_candidate_001/val_samples_strict_nn80.csv
+splits/strict_nn80_candidate_001/test_samples_strict_nn80.csv
+pt_cache/strict_nn80_main/
+```
+
+审计结果：
+
+| 项目 | 结果 |
+|---|---:|
+| enzyme 总数 | 1479 |
+| sample 总数 | 44090 |
+| test vs train `>=80%` 命中 | 0 |
+| val vs train `>=80%` 命中 | 0 |
+| 重复序列组跨 split | 0 |
+| validation all_passes | true |
+
+划分结果：
+
+| split | samples | enzymes | positives | negatives | positive rate |
+|---|---:|---:|---:|---:|---:|
+| train | 22073 | 818 | 1700 | 20373 | 0.077017 |
+| val | 10894 | 324 | 1053 | 9841 | 0.096659 |
+| test | 11123 | 337 | 1160 | 9963 | 0.104288 |
+
+训练目录：
+
+```text
+/root/autodl-tmp/EZSpecificity/PathD/P450/experiments/q02_sequence_similarity_split/EXP007_strict_nn80_gdtable
+```
+
+正式 run：
+
+```text
+Q2_EXP007_strict_nn80_gdtable_b88_full_20260523_175257
+```
+
+训练完成证据：
+
+- 训练结束：2026-05-23 18:53:50
+- 总耗时：3648 秒，约 60.8 分钟
+- 总 epoch：49
+- 最佳 checkpoint：`pt-Q2_EXP007_strict_nn80_gdtable_b88_full_20260523_175257-ep33-auc0.8352.ckpt`
+- 最佳验证 AUC：0.835152
+- 自动测试已保存：`results/test_eval.json`
+
+测试集结果：
+
+| 指标 | 数值 |
+|---|---:|
+| test AUC | 0.819789 |
+| test AUPR | 0.383128 |
+| test samples | 11123 |
+| test positives | 1160 |
+| test negatives | 9963 |
+
+### 本轮结果对比
+
+| 实验 | 划分含义 | test AUC | test AUPR | test samples |
+|---|---|---:|---:|---:|
+| EXP004 | id60 cluster-held-out，不能保证 train/test 任意两酶都低于 60% | 0.807786 | 0.321236 | 11107 |
+| EXP005 | strict NN60 | 0.670801 | 0.218569 | 11091 |
+| EXP006 | strict NN40 | 0.638403 | 0.102411 | 11755 |
+| EXP007 | strict NN80 | 0.819789 | 0.383128 | 11123 |
+
+当前可以汇报的结论：
+
+- EXP006 和 EXP007 都完成了数据划分、审计、缓存构建、正式训练和自动测试。
+- 三个 strict NN 实验形成了 40、60、80 三个阈值梯度。
+- strict NN40 最严格，测试表现最低。
+- strict NN80 更宽松，测试表现最高。
+- EXP004 与 EXP005/EXP006/EXP007 的约束含义不同；EXP004 是按 MMseqs2 聚类组隔离，后面三个是按 train/val/test 跨集合近邻阈值隔离。
+
+### 无 shutdown 和进程状态
+
+EXP006 与 EXP007 的 run script 均显示：
+
+```text
+SHUTDOWN=${SHUTDOWN:-false}
+```
+
+脚本只有在 `SHUTDOWN=true` 时才会追加 `--shutdown`。本轮正式启动没有启用该参数。
+
+2026-05-23 晚间复查服务器状态：
+
+- 没有 `EXP006_strict_nn40_gdtable` 训练进程。
+- 没有 `EXP007_strict_nn80_gdtable` 训练进程。
+- 没有残留 `main_training_gdtable` 或 GPU 监控进程。
+- GPU 0 利用率为 0%，显存占用 0 MiB / 32607 MiB。
+
+当前判断：
+
+- 用户提出的 EXP006 strict NN40 和 EXP007 strict NN80 目标已完成。
+- 服务器没有因为本轮训练自动关机。
+- 后续若继续 Q2，下一个新实验编号应从 EXP008 开始。
+
+## 2026-05-25：EXP008 到 EXP010，补齐 PathD random 对照与 strict NN60 分布敏感性实验
+
+### 本轮目标
+
+这轮继续 Q2，不再只看 2:1:1 的 strict NN60 结果。目标分三步：
+
+1. 补一个 PathD 内部的 random split GDTable 对照，避免继续只拿 PathC 历史随机结果比较。
+2. 生成多套 strict NN60 候选划分，观察 train/val/test 比例改变后能否得到更合适的分布。
+3. 只挑一个最值得训练的候选做 EXP010，并把它定位为 strict NN60 的分布敏感性补充实验。
+
+本轮仍只在 PathD 目录内新增文件，不删除、不覆盖已有实验目录。服务器没有启用自动关机。
+
+### EXP008：PathD random split GDTable 对照
+
+第一版 EXP008 使用 batch size 88：
+
+```text
+/root/autodl-tmp/EZSpecificity/PathD/P450/experiments/q02_sequence_similarity_split/EXP008_random_gdtable
+```
+
+该 run 在 epoch 3 发生 CUDA OOM：
+
+```text
+torch.OutOfMemoryError: CUDA out of memory. Tried to allocate 1.07 GiB.
+```
+
+它只写到 epoch 2，没有生成 `test_eval.json`，所以不能作为正式结果。这个失败目录保留为显存诊断证据。
+
+随后新增 b80 retry 目录：
+
+```text
+/root/autodl-tmp/EZSpecificity/PathD/P450/experiments/q02_sequence_similarity_split/EXP008_random_gdtable_b80_retry_20260525
+```
+
+配套数据审计目录：
+
+```text
+/root/autodl-tmp/EZSpecificity/PathD/P450/data/q02_sequence_similarity_split/exp008_random_baseline_b80_retry_20260525
+```
+
+训练设置：
+
+| 项目 | 数值 |
+|---|---:|
+| batch size | 80 |
+| max epochs | 200 |
+| num workers | 6 |
+| devices | 1 |
+| GDTable | fp16 dense + graph fp16 |
+| shutdown | false |
+
+random split 样本分布：
+
+| split | samples | enzymes | positives | negatives | positive rate |
+|---|---:|---:|---:|---:|---:|
+| train | 22083 | 1479 | 1971 | 20112 | 0.089254 |
+| val | 11008 | 1473 | 958 | 10050 | 0.087028 |
+| test | 10999 | 1473 | 984 | 10015 | 0.089463 |
+
+正式 run：
+
+```text
+Q2_EXP008_random_gdtable_b80_retry_full_20260525_174150
+```
+
+训练完成证据：
+
+- 最佳 checkpoint：`pt-Q2_EXP008_random_gdtable_b80_retry_full_20260525_174150-ep79-auc0.9316.ckpt`
+- 最佳验证 AUC：0.931586
+- 自动测试结果：`results/test_eval.json`
+
+测试集结果：
+
+| 指标 | 数值 |
+|---|---:|
+| test AUC | 0.934206 |
+| test AUPR | 0.686618 |
+| test samples | 10999 |
+| test positives | 984 |
+| test negatives | 10015 |
+
+判断：
+
+- EXP008 b80 是本轮可用的 PathD random split 对照。
+- 它的测试结果接近 PathC 随机基线，说明 PathD 训练脚本和 GDTable 管线没有明显性能回退。
+- random split 的分数明显高于 strict NN 实验，继续支持“随机划分偏乐观”的解释。
+
+### EXP009：strict NN60 多比例候选划分
+
+EXP009 不训练模型，只生成和审计候选 split。
+
+数据目录：
+
+```text
+/root/autodl-tmp/EZSpecificity/PathD/P450/data/q02_sequence_similarity_split/exp009_strict_nn60_candidates
+```
+
+输入约束：
+
+| 项目 | 数值 |
+|---|---:|
+| enzyme 总数 | 1479 |
+| sample 总数 | 44090 |
+| 序列相似度阈值 | 60% |
+| 覆盖度要求 | 80% |
+| MMseqs2 all-vs-all 来源 | EXP005 的 `all_vs_all_nn60.m8` |
+
+所有候选均通过审计：
+
+| 检查项 | 结果 |
+|---|---:|
+| test vs train `>=60%` 命中 | 0 |
+| val vs train `>=60%` 命中 | 0 |
+| 重复序列组跨 split | 0 |
+| all_passes | true |
+
+候选排名：
+
+| candidate | 比例 | test samples | test positives | test positive rate | test 与 EXP005 Jaccard | 备注 |
+|---|---|---:|---:|---:|---:|---|
+| strict_nn60_ratio211_rank01_seed0000 | 2:1:1 | 11022 | 1011 | 0.091726 | 0.664303 | 测试集大，但与 EXP005 重叠较高 |
+| strict_nn60_ratio71515_rank01_seed0000 | 7:1.5:1.5 | 6621 | 632 | 0.095454 | 0.085149 | 训练集更大，测试集与 EXP005 重叠低 |
+| strict_nn60_ratio811_rank01_seed0000 | 8:1:1 | 4466 | 435 | 0.097403 | 0.080899 | 测试集偏小 |
+
+子智能体复核过程：
+
+- 第一轮出现分歧：一个建议 2:1:1，因为测试集更大；另一个建议 7:1.5:1.5，因为它更能回答分布问题。
+- 第二轮把 EXP010 明确定义为“strict NN60 分布敏感性实验”后，两个子智能体都接受 `strict_nn60_ratio71515_rank01_seed0000`。
+- 主助手核对原始 ranking 和 split summary 后采用该候选。
+
+### EXP010：strict NN60 7:1.5:1.5 分布敏感性训练
+
+选中候选：
+
+```text
+strict_nn60_ratio71515_rank01_seed0000
+```
+
+数据目录：
+
+```text
+/root/autodl-tmp/EZSpecificity/PathD/P450/data/q02_sequence_similarity_split/exp010_strict_nn60_best
+```
+
+pt cache：
+
+```text
+/root/autodl-tmp/EZSpecificity/PathD/P450/data/q02_sequence_similarity_split/exp010_strict_nn60_best/pt_cache/strict_nn60_best_main
+```
+
+训练目录：
+
+```text
+/root/autodl-tmp/EZSpecificity/PathD/P450/experiments/q02_sequence_similarity_split/EXP010_strict_nn60_best_gdtable
+```
+
+cache 构建说明：
+
+- 使用 `q02_build_pt_cache_overlay_20260522.py`。
+- 文件模式为 hardlink。
+- 没有重算 ESM、GROVER、Morgan、对接图或 kNN 特征。
+- `build_report.json` 已抽样核对 `index.pt` 与样本文件中的 enzyme/substrate ID，一致。
+
+划分结果：
+
+| split | samples | enzymes | positives | negatives | positive rate |
+|---|---:|---:|---:|---:|---:|
+| train | 30837 | 1080 | 2661 | 28176 | 0.086292 |
+| val | 6632 | 203 | 620 | 6012 | 0.093486 |
+| test | 6621 | 196 | 632 | 5989 | 0.095454 |
+
+正式 run：
+
+```text
+Q2_EXP010_strict_nn60_best_gdtable_b80_full_20260525_194815
+```
+
+训练设置：
+
+| 项目 | 数值 |
+|---|---:|
+| batch size | 80 |
+| max epochs | 200 |
+| num workers | 6 |
+| devices | 1 |
+| GDTable | fp16 dense + graph fp16 |
+| shutdown | false |
+
+训练完成证据：
+
+- 最佳 checkpoint：`pt-Q2_EXP010_strict_nn60_best_gdtable_b80_full_20260525_194815-ep23-auc0.8370.ckpt`
+- 最佳验证 AUC：0.836954
+- 自动测试结果：`results/test_eval.json`
+
+测试集结果：
+
+| 指标 | 数值 |
+|---|---:|
+| test AUC | 0.733258 |
+| test AUPR | 0.225581 |
+| test samples | 6621 |
+| test positives | 632 |
+| test negatives | 5989 |
+
+### 本轮新增结果对比
+
+| 实验 | 划分含义 | train/val/test 比例 | test AUC | test AUPR | test samples | test positives |
+|---|---|---|---:|---:|---:|---:|
+| EXP008 | PathD random split 对照 | 约 2:1:1 | 0.934206 | 0.686618 | 10999 | 984 |
+| EXP005 | strict NN60 主结果 | 约 2:1:1 | 0.670801 | 0.218569 | 11091 | 939 |
+| EXP010 | strict NN60 分布敏感性补充 | 约 7:1.5:1.5 | 0.733258 | 0.225581 | 6621 | 632 |
+
+本轮可以汇报的结论：
+
+- EXP008 补上了 PathD 内部 random split 对照，结果与历史随机基线接近。
+- EXP010 在 strict NN60 条件下增加训练集比例后，test AUC 相比 EXP005 上升，但仍明显低于 random split。
+- EXP010 的 AUPR 只比 EXP005 略高，且 test 正样本更少，解释 AUPR 时必须报告 test positives。
+- EXP010 不能替代 EXP005。EXP005 仍是 strict NN60 的 2:1:1 主结果；EXP010 是分布比例改变后的敏感性补充。
+- 如果汇报给老师，建议把 EXP010 讲成“训练集比例增加后，严格序列泛化结果是否恢复”的检验。
+
+### 本轮结束时服务器状态
+
+2026-05-25 晚间复查：
+
+- 没有 `EXP008_random_gdtable_b80_retry_20260525` 训练进程。
+- 没有 `EXP010_strict_nn60_best_gdtable` 训练进程。
+- GPU 0 利用率为 0%，显存占用 0 MiB / 32607 MiB。
+- `EXP009` 生成任务也已结束。
+
+当前判断：
+
+- EXP008、EXP009、EXP010 已完成。
+- Q2 现在已有 random 对照、strict NN40/60/80 阈值梯度，以及 strict NN60 分布敏感性补充。
+
+### Q2 结果应该如何互相比
+
+下面这几张表是给后续汇报和自己回看用的版本。这里把 test AUC 放在最重要的位置，同时保留 test AUPR 和样本数，避免只看单个指标。
+
+#### 总览表
+
+| 实验 | 做了什么 | Test AUC | Test AUPR | 适合说明什么 |
+|---|---|---:|---:|---|
+| PathC EXP001 | 历史 random split 原架构基线 | 0.9320 | 0.6749 | 旧的随机划分高分基线 |
+| EXP008 | PathD random split 对照 | 0.934206 | 0.686618 | PathD 管线正常，random split 仍然很高 |
+| EXP004 | id60 聚类簇划分 | 0.807786 | 0.321236 | 聚类隔离后性能下降 |
+| EXP007 | strict NN80 | 0.819789 | 0.383128 | 80% 阈值较宽松，性能较高 |
+| EXP010 | strict NN60，7:1.5:1.5 | 0.733258 | 0.225581 | strict NN60 下增加训练集比例后的补充实验 |
+| EXP005 | strict NN60，约 2:1:1 | 0.670801 | 0.218569 | 回答老师“test 与 train <60%”的主实验 |
+| EXP006 | strict NN40 | 0.638403 | 0.102411 | 最严格远缘泛化，性能最低 |
+
+#### 对比 1：EXP008 vs EXP005，random split 和 strict NN60 主结果
+
+| 对比 | Test AUC |
+|---|---:|
+| EXP008 random | 0.934206 |
+| EXP005 strict NN60 | 0.670801 |
+| 差值 | -0.263405 |
+
+这组最关键。它说明同一批 PathD 实验里，从随机划分变成“test/val 到 train 没有 60% 以上近邻”后，AUC 从 0.934 掉到 0.671。random split 的高分很可能包含近缘酶带来的乐观成分。
+
+#### 对比 2：EXP005、EXP006、EXP007，strict NN 阈值梯度
+
+| 实验 | 阈值 | Test AUC |
+|---|---:|---:|
+| EXP006 | 40% | 0.638403 |
+| EXP005 | 60% | 0.670801 |
+| EXP007 | 80% | 0.819789 |
+
+这组三个适合讲“任务难度随阈值变化”。阈值越严格，测试酶和训练酶越不像，AUC 越低。40% 最难，80% 最宽松，60% 正好回答老师提到的相似度要求。
+
+#### 对比 3：EXP004 vs EXP005，聚类簇划分和严格最近邻划分
+
+| 对比 | Test AUC |
+|---|---:|
+| EXP004 id60 聚类簇划分 | 0.807786 |
+| EXP005 strict NN60 | 0.670801 |
+| 差值 | -0.136985 |
+
+EXP004 是“同一个 id60 聚类簇不跨 train/val/test”。EXP005 更严格，直接检查 test/val 里的酶到 train 里有没有 60% 以上近邻。AUC 从 0.808 掉到 0.671，说明只按聚类簇隔离还不够严格。
+
+#### 对比 4：EXP005 vs EXP010，同为 strict NN60 但比例不同
+
+| 对比 | train/val/test | Test AUC |
+|---|---|---:|
+| EXP005 | 约 2:1:1 | 0.670801 |
+| EXP010 | 约 7:1.5:1.5 | 0.733258 |
+| 差值 |  | +0.062457 |
+
+EXP010 回答的是分布问题：在保持 strict NN60 约束的前提下，把训练集比例提高到约 70%，结果会不会恢复一些。答案是 AUC 确实回升到 0.733，但仍远低于 random 的 0.934。
+
+这组不能简单写成“EXP010 比 EXP005 更好”。它同时改变了训练样本数量和测试集组成。更稳妥的表述是：增加训练集比例后，strict NN60 表现有所恢复，但严格序列泛化难度仍明显存在。
+
+#### 对比 5：PathC EXP001 vs EXP008，两个 random 基线
+
+| 对比 | Test AUC |
+|---|---:|
+| PathC EXP001 random | 0.9320 |
+| EXP008 PathD random | 0.934206 |
+
+这两个很接近。它说明 PathD 现在的训练管线、GDTable 脚本和 cache 组织没有明显把 random baseline 跑坏。后续拿 EXP008 当 Q2 内部 random 对照更合适。
+
+#### EXP009 的位置
+
+EXP009 没有 Test AUC，因为它没有训练。它只做了三套 strict NN60 候选划分：
+
+| 候选比例 | test samples | test positives | 用途 |
+|---|---:|---:|---|
+| 2:1:1 | 11022 | 1011 | 更接近 EXP005，但重叠较高 |
+| 7:1.5:1.5 | 6621 | 632 | 最后选给 EXP010 |
+| 8:1:1 | 4466 | 435 | 测试集偏小，没训 |
+
+所以汇报时 EXP009 放在“方法和候选选择”里，不放在性能结果表里。
+
+#### 目前最清楚的主线
+
+random split 能到 0.934；按序列相似度严格隔离后，strict NN60 主实验掉到 0.671；放宽到 NN80 能回到 0.820，收紧到 NN40 掉到 0.638；把 strict NN60 的训练集比例加大后，EXP010 回到 0.733，但仍明显低于 random。
