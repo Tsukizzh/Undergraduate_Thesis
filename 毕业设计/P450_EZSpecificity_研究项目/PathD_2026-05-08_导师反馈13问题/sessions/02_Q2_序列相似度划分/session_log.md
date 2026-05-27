@@ -3120,3 +3120,81 @@ EXP009 没有训练结果。它只生成 strict NN60 的多比例候选 split，
 3. strict NN40、strict NN60、strict NN80 构成阈值梯度，阈值越严格，整体表现越低。
 4. EXP004 说明只按 id60 聚类簇隔离还不够严格；EXP005 更贴近老师提出的 `<60%` 要求。
 5. EXP010 和 EXP011 说明在 strict NN60 条件下，train/val/test 比例和测试集组成会影响最终指标。EXP010 有一定恢复，EXP011 下降，因此这两组应作为分布敏感性补充，不替代 EXP005 主结果。
+
+### 2026-05-25 strict NN60 不同比例 test 集差异审计
+
+用户提出疑问：为什么 strict NN60 只是把 train/val/test 比例从约 2:1:1 改成 7:1.5:1.5、8:1:1，Test AUC 会变化这么大。
+
+本次只读检查服务器原始 split CSV、component assignment、`test_eval.json` 和训练日志，没有修改原始数据、缓存、checkpoint 或训练结果。详细审计已整理到本地文件：
+
+```text
+D:\EZSpecificity_Project\毕业设计\P450_EZSpecificity_研究项目\PathD_2026-05-08_导师反馈13问题\sessions\02_Q2_序列相似度划分\Q2_EXP005_EXP010_EXP011_test集差异审计_2026-05-25.md
+```
+
+#### 完整性核查
+
+三组 split 都覆盖同一批 actual-used baseline 数据，没有发现样本丢失、重复或 enzyme 跨 split：
+
+| 实验 | total samples | unique source keys | duplicate source keys | total enzymes | enzymes cross split |
+|---|---:|---:|---:|---:|---:|
+| EXP005 | 44090 | 44090 | 0 | 1479 | 0 |
+| EXP010 | 44090 | 44090 | 0 | 1479 | 0 |
+| EXP011 | 44090 | 44090 | 0 | 1479 | 0 |
+
+#### test 集规模和组件数
+
+| 实验 | test samples | test positives | test enzymes | test strict NN60 组件 | test clusters |
+|---|---:|---:|---:|---:|---:|
+| EXP005，约 2:1:1 | 11091 | 1006 | 355 | 162 | 168 |
+| EXP010，约 7:1.5:1.5 | 6621 | 632 | 196 | 19 | 27 |
+| EXP011，约 8:1:1 | 4466 | 435 | 129 | 9 | 15 |
+
+这里是目前最关键的证据。比例变大以后，test 不是简单少了一点样本，而是从 162 个 strict NN60 组件缩到 19 个、再缩到 9 个。由于 strict NN60 按 enzyme 组件整体分配，组件不能拆开，所以比例变化会导致 test 酶集合成批改变。
+
+#### test 集重叠
+
+Jaccard 是“交集 / 并集”，越接近 0，说明两个集合越不像。
+
+| 对比 | test sample Jaccard | test enzyme Jaccard | test 组件签名 Jaccard |
+|---|---:|---:|---:|
+| EXP005 vs EXP010 | 0.070406 | 0.024164 | 0.011173 |
+| EXP005 vs EXP011 | 0.221019 | 0.169082 | 0.030120 |
+| EXP010 vs EXP011 | 0.182487 | 0.124567 | 0.120000 |
+
+这说明三组 test 集不是同一批测试对象。组件签名按组件包含的 enzyme 集合计算，不直接比较 `component_id` 字符串。EXP005 和 EXP010 的 test 酶交集只有 13 个，EXP010 和 EXP011 的 test 酶交集也只有 36 个。
+
+#### test 集集中度
+
+| 实验 | top 5 组件样本占比 | top 5 组件正样本占比 | top enzyme 样本占比 | top positive enzyme 正样本占比 |
+|---|---:|---:|---:|---:|
+| EXP005 | 26.1% | 31.3% | 8.2% | 14.6% |
+| EXP010 | 74.5% | 87.8% | 13.7% | 23.3% |
+| EXP011 | 71.2% | 80.0% | 20.3% | 33.8% |
+
+EXP010 和 EXP011 的 test 集高度集中在少数组件里。EXP011 里一个 enzyme 258 贡献 908 条 test 样本和 147 个 test 正样本，占全部 test 正样本的 33.8%。这会让评估更容易受少数组件影响。
+
+#### 工程一致性
+
+三组核心代码和配置哈希一致：
+
+| 文件 | EXP005 | EXP010 | EXP011 |
+|---|---|---|---|
+| `scripts/main_training_gdtable.py` | `98f9d6491cbf9cc3` | `98f9d6491cbf9cc3` | `98f9d6491cbf9cc3` |
+| `scripts/pt_dataset_gdtable.py` | `8967fff489d74157` | `8967fff489d74157` | `8967fff489d74157` |
+| `configs/config.yml` | `c25ea21d82e4cc01` | `c25ea21d82e4cc01` | `c25ea21d82e4cc01` |
+
+训练参数里有一个差别：EXP005 batch size 为 88，EXP010/EXP011 为 80。这个差异需要记录，但当前最大证据仍然是 test 集组成差异。
+
+#### 当前判断
+
+已验证事实：
+
+1. 三组数据完整性没有发现问题。
+2. 三组 test 集的 enzyme、样本和组件差异很大。
+3. EXP011 的 test 集比 EXP005/EXP010 小很多，并且更集中。
+
+基于证据的判断：
+
+1. Test AUC 的大幅变化很可能与 test 集组成变化有关；当前还没有证明 test 组成是唯一原因。
+2. EXP010 不能简单写成“比例更好”，EXP011 也不能写成“8:1:1 一定更差”。目前只能说这两个候选在各自 test 集上的表现不同。
+3. 如果后续要讨论比例本身的影响，需要做多 seed 或多候选重复，并保存逐样本预测分数，按 enzyme/组件分层分析。

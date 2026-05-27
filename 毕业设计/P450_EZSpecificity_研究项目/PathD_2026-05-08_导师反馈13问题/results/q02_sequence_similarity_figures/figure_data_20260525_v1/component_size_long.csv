@@ -1,0 +1,2644 @@
+exp,label,unit_cn,group_id,split,n_enzymes,n_samples,n_positive
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0001,train,1,26,2
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0002,train,6,131,10
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0003,test,8,198,15
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0004,train,2,39,2
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0005,train,2,44,4
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0006,train,3,68,5
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0007,train,1,19,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0008,train,3,74,5
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0009,train,4,88,6
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0010,val,1,23,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0011,val,1,22,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0012,train,6,149,9
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0013,train,1,104,16
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0014,val,1,21,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0015,train,2,81,9
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0016,val,13,385,35
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0017,test,11,233,14
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0018,test,10,295,26
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0019,train,4,62,3
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0020,train,3,59,3
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0021,train,2,94,11
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0022,test,3,193,26
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0023,train,1,26,2
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0024,test,3,161,19
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0025,train,1,43,5
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0026,test,10,268,20
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0027,val,30,1079,118
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0028,train,2,48,3
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0029,train,1,24,2
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0030,test,2,53,2
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0031,train,3,91,9
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0032,train,1,19,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0033,val,1,22,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0034,train,2,51,2
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0035,val,11,354,33
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0036,train,6,130,10
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0037,train,1,19,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0038,train,1,34,4
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0039,train,1,35,3
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0040,train,3,74,6
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0041,val,1,21,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0042,test,11,274,22
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0043,train,2,63,5
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0044,test,1,25,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0045,train,4,139,14
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0046,train,5,107,7
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0047,train,1,24,2
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0048,test,2,40,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0049,train,7,130,9
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0050,val,1,22,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0051,train,3,59,4
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0052,train,4,86,5
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0053,train,2,47,4
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0054,train,1,26,2
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0055,val,1,20,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0056,train,1,36,4
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0057,train,3,129,16
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0058,val,10,374,40
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0059,test,8,232,18
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0060,train,5,140,10
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0061,train,1,18,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0062,train,1,25,2
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0063,train,1,13,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0064,test,1,25,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0065,train,6,143,10
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0066,train,1,16,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0067,train,2,39,2
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0068,train,1,28,2
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0069,test,1,12,0
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0070,train,1,20,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0071,train,1,19,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0072,train,1,17,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0073,val,37,1173,101
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0074,train,1,24,2
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0075,train,1,28,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0076,train,5,122,10
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0077,train,1,39,4
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0078,train,2,115,14
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0079,train,5,96,6
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0080,train,2,86,10
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0081,train,1,19,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0082,train,1,20,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0083,train,2,49,5
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0084,train,1,37,4
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0085,train,1,17,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0086,val,1,22,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0087,val,1,21,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0088,val,1,22,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0089,val,1,23,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0090,test,8,222,17
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0091,train,1,48,6
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0092,train,1,15,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0093,test,13,305,20
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0094,train,4,114,10
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0095,train,4,103,8
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0096,train,1,46,4
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0097,train,1,25,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0098,train,1,16,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0099,train,2,58,4
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0100,test,1,24,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0101,train,2,59,5
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0102,train,3,100,9
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0103,train,3,85,7
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0104,train,2,60,6
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0105,train,2,60,5
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0106,train,1,44,5
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0107,train,1,30,2
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0108,train,1,26,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0109,train,1,32,3
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0110,val,1,20,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0111,train,1,21,2
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0112,train,1,12,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0113,val,1,22,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0114,train,3,50,3
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0115,train,1,19,2
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0116,train,1,14,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0117,train,1,11,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0118,train,1,24,2
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0119,test,1,24,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0120,train,1,32,3
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0121,test,3,155,20
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0122,val,12,462,51
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0123,train,2,41,2
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0124,train,3,86,6
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0125,test,10,206,12
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0126,val,16,423,24
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0127,test,8,201,14
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0128,val,1,22,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0129,train,2,53,4
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0130,train,2,41,2
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0131,train,1,25,2
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0132,val,1,23,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0133,train,1,25,2
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0134,train,3,77,4
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0135,train,2,43,3
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0136,train,1,19,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0137,test,1,25,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0138,train,1,18,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0139,train,1,23,2
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0140,val,1,21,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0141,train,1,3,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0142,train,1,29,3
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0143,val,25,498,29
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0144,val,1,23,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0145,train,1,20,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0146,train,1,18,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0147,test,11,295,25
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0148,train,1,19,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0149,test,6,156,12
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0150,val,1,22,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0151,train,1,30,3
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0152,val,1,21,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0153,train,1,25,2
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0154,train,1,25,2
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0155,test,1,25,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0156,train,2,54,3
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0157,train,1,13,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0158,test,9,299,27
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0159,train,1,18,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0160,train,2,25,2
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0161,train,1,23,2
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0162,train,1,23,2
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0163,test,1,18,0
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0164,val,1,20,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0165,val,1,22,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0166,train,1,29,3
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0167,val,8,143,3
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0168,train,1,19,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0169,val,1,20,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0170,val,2,932,148
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0171,train,4,112,11
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0172,train,3,76,7
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0173,train,1,16,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0174,train,1,31,2
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0175,test,1,24,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0176,val,1,23,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0177,test,1,35,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0178,train,2,56,3
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0179,train,2,44,4
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0180,train,1,36,4
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0181,train,1,17,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0182,test,4,162,19
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0183,val,1,21,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0184,val,1,22,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0185,train,1,14,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0186,train,1,36,4
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0187,train,1,36,4
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0188,val,1,23,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0189,train,3,142,17
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0190,train,1,18,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0191,val,1,20,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0192,train,1,18,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0193,train,2,59,3
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0194,train,1,36,3
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0195,train,1,16,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0196,val,1,20,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0197,test,7,190,14
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0198,train,2,50,5
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0199,test,10,299,28
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0200,train,1,24,2
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0201,train,6,141,9
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0202,train,1,41,4
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0203,train,1,29,3
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0204,train,1,16,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0205,val,1,21,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0206,val,1,23,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0207,train,1,26,2
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0208,train,5,145,16
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0209,train,1,17,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0210,train,1,46,4
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0211,val,1,21,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0212,test,10,284,24
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0213,test,7,232,22
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0214,train,1,18,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0215,test,7,271,29
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0216,train,1,23,2
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0217,train,1,32,3
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0218,test,14,302,19
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0219,train,1,30,3
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0220,train,1,19,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0221,train,1,18,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0222,train,4,78,4
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0223,val,1,20,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0224,train,1,17,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0225,train,1,29,3
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0226,train,4,125,13
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0227,train,1,19,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0228,train,2,50,4
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0229,test,1,7,0
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0230,val,1,23,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0231,train,1,16,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0232,train,2,37,2
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0233,train,1,26,2
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0234,train,2,57,4
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0235,train,2,96,12
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0236,train,4,75,4
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0237,train,1,15,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0238,train,1,26,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0239,train,1,35,4
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0240,val,1,24,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0241,train,6,110,6
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0242,train,1,12,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0243,train,2,42,2
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0244,train,1,22,2
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0245,train,1,29,4
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0246,train,1,47,5
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0247,train,4,138,12
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0248,train,3,63,4
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0249,train,6,132,6
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0250,val,14,323,19
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0251,test,13,277,19
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0252,train,1,22,2
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0253,train,1,16,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0254,train,4,127,12
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0255,test,7,160,12
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0256,train,2,64,5
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0257,train,1,31,2
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0258,train,1,29,2
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0259,test,6,158,13
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0260,test,1,15,0
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0261,train,2,97,13
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0262,train,4,89,5
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0263,train,1,24,2
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0264,train,2,34,2
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0265,train,1,73,11
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0266,train,1,19,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0267,train,2,45,3
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0268,val,12,841,114
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0269,train,1,52,6
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0270,val,1,21,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0271,train,1,28,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0272,train,1,13,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0273,train,4,86,4
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0274,train,1,25,2
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0275,train,1,29,3
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0276,train,1,32,3
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0277,train,1,20,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0278,train,1,18,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0279,train,1,18,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0280,train,5,112,4
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0281,val,1,24,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0282,train,1,36,4
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0283,train,1,23,2
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0284,train,1,26,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0285,train,2,89,10
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0286,train,1,31,3
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0287,train,1,35,3
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0288,test,6,230,21
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0289,val,1,20,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0290,train,4,92,8
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0291,train,1,22,2
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0292,train,1,32,3
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0293,train,4,121,9
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0294,train,1,13,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0295,train,4,82,4
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0296,train,1,19,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0297,train,1,27,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0298,train,1,19,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0299,train,1,14,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0300,train,1,15,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0301,test,1,32,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0302,val,1,20,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0303,train,1,51,6
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0304,train,2,45,5
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0305,train,1,79,11
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0306,train,3,62,3
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0307,train,2,35,2
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0308,train,4,106,9
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0309,train,1,27,2
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0310,train,1,51,7
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0311,train,2,43,3
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0312,train,1,54,7
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0313,train,2,69,5
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0314,train,1,13,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0315,train,1,26,2
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0316,test,4,240,29
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0317,train,1,17,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0318,train,2,44,2
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0319,test,1,24,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0320,train,1,19,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0321,test,5,192,20
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0322,train,1,33,3
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0323,train,1,37,3
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0324,val,1,23,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0325,train,2,52,4
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0326,train,1,25,2
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0327,train,1,20,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0328,val,1,22,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0329,test,3,152,19
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0330,train,1,16,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0331,val,1,24,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0332,train,1,31,2
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0333,val,1,21,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0334,train,3,73,7
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0335,train,1,18,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0336,train,1,26,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0337,test,1,2,0
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0338,train,1,27,2
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0339,train,1,53,6
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0340,train,1,35,4
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0341,train,1,19,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0342,train,1,43,6
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0343,train,1,13,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0344,train,2,40,2
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0345,train,2,40,3
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0346,train,1,28,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0347,train,1,15,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0348,train,1,27,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0349,val,17,548,49
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0350,test,6,259,31
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0351,train,1,21,2
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0352,test,2,41,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0353,train,1,15,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0354,train,1,17,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0355,train,2,41,2
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0356,train,2,42,2
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0357,train,1,12,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0358,val,1,20,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0359,train,1,16,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0360,train,1,17,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0361,train,1,25,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0362,train,1,19,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0363,val,1,21,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0364,val,1,21,0
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0365,train,2,60,5
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0366,val,1,21,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0367,train,1,23,2
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0368,train,1,18,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0369,test,1,25,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0370,train,1,37,4
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0371,train,1,46,6
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0372,train,1,34,3
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0373,train,1,27,2
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0374,train,3,118,12
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0375,train,1,23,2
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0376,val,1,24,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0377,train,1,26,2
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0378,val,1,24,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0379,test,1,20,0
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0380,train,1,15,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0381,train,1,28,2
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0382,test,1,25,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0383,train,1,17,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0384,train,6,133,10
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0385,val,1,21,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0386,train,1,19,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0387,train,2,39,2
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0388,train,2,48,4
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0389,train,1,29,3
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0390,train,1,31,2
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0391,test,6,347,44
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0392,train,3,136,16
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0393,train,2,59,6
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0394,test,1,31,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0395,train,2,50,4
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0396,train,1,40,5
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0397,test,1,24,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0398,train,1,23,2
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0399,train,1,18,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0400,train,1,25,2
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0401,train,1,15,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0402,train,2,36,2
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0403,val,1,23,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0404,train,1,22,2
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0405,val,1,23,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0406,train,2,49,2
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0407,test,1,18,0
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0408,val,1,23,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0409,train,1,43,4
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0410,train,1,19,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0411,train,1,30,2
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0412,val,1,23,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0413,train,1,33,4
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0414,train,2,33,2
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0415,train,1,93,14
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0416,val,5,370,50
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0417,train,2,50,3
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0418,val,1,20,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0419,test,4,153,17
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0420,train,1,26,2
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0421,train,1,65,8
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0422,train,1,57,8
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0423,test,1,227,36
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0424,train,1,29,3
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0425,train,4,90,5
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0426,train,2,70,6
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0427,train,1,38,5
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0428,train,4,96,5
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0429,train,2,51,4
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0430,train,3,93,7
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0431,train,1,31,3
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0432,train,3,90,8
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0433,train,2,121,15
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0434,test,4,230,29
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0435,train,1,17,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0436,val,1,21,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0437,train,3,117,12
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0438,train,3,61,3
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0439,train,1,28,3
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0440,train,1,143,23
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0441,train,1,28,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0442,test,5,245,29
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0443,test,2,177,25
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0444,val,7,390,44
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0445,train,5,126,10
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0446,test,4,151,16
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0447,train,1,41,5
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0448,val,13,409,42
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0449,train,2,79,8
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0450,val,1,24,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0451,val,1,20,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0452,train,2,56,5
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0453,train,2,36,2
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0454,train,1,32,2
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0455,train,1,26,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0456,train,1,24,2
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0457,train,1,22,2
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0458,train,1,35,4
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0459,train,4,135,13
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0460,test,4,81,0
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0461,test,12,251,15
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0462,test,1,26,0
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0463,test,3,150,19
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0464,train,3,132,13
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0465,train,1,27,2
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0466,train,2,67,6
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0467,train,1,25,2
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0468,test,6,184,19
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0469,train,2,29,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0470,train,2,43,2
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0471,train,1,37,4
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0472,train,1,33,3
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0473,val,1,23,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0474,train,1,21,2
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0475,train,2,145,21
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0476,train,1,28,3
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0477,train,1,18,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0478,test,5,174,17
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0479,train,1,44,3
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0480,train,1,55,7
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0481,train,1,30,3
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0482,val,1,23,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0483,val,1,23,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0484,test,1,29,0
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0485,train,1,18,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0486,train,1,28,2
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0487,train,2,53,3
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0488,train,1,15,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0489,train,1,27,2
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0490,train,1,40,4
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0491,test,2,35,0
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0492,train,1,24,2
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0493,train,2,49,2
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0494,train,2,51,3
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0495,train,1,30,3
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0496,train,1,20,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0497,train,2,45,2
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0498,train,1,35,3
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0499,test,4,257,34
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0500,val,1,23,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0501,train,2,69,7
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0502,train,2,47,3
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0503,train,3,115,11
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0504,train,2,47,2
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0505,train,1,28,2
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0506,train,1,43,5
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0507,train,1,19,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0508,train,1,36,3
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0509,train,1,35,3
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0510,train,2,51,3
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0511,val,1,21,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0512,train,1,37,4
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0513,val,1,21,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0514,train,1,20,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0515,test,3,158,17
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0516,train,1,31,2
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0517,test,4,200,23
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0518,train,1,30,3
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0519,train,1,15,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0520,train,3,69,5
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0521,train,1,17,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0522,train,1,133,21
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0523,train,3,91,8
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0524,val,1,23,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0525,val,2,365,58
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0526,train,1,26,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0527,val,1,22,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0528,val,1,20,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0529,val,1,20,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0530,train,1,70,10
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0531,test,1,16,0
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0532,train,1,17,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0533,train,1,16,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0534,train,1,26,2
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0535,train,1,18,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0536,train,1,14,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0537,train,1,23,2
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0538,train,1,15,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0539,val,1,22,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0540,train,1,26,2
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0541,train,2,47,4
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0542,train,3,120,13
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0543,train,1,26,2
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0544,test,1,25,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0545,train,1,23,2
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0546,train,1,26,2
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0547,train,1,20,2
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0548,val,1,23,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0549,train,1,27,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0550,train,1,26,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0551,train,1,31,4
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0552,train,1,25,2
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0553,train,1,23,2
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0554,train,4,148,15
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0555,train,1,16,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0556,train,1,17,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0557,test,6,184,17
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0558,train,2,39,3
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0559,val,1,23,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0560,train,2,49,2
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0561,test,1,24,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0562,train,2,69,7
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0563,train,1,18,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0564,train,1,69,10
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0565,train,1,80,10
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0566,train,3,73,4
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0567,train,1,34,3
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0568,train,2,51,3
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0569,train,1,31,3
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0570,train,2,37,2
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0571,train,1,17,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0572,train,2,42,2
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0573,val,1,21,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0574,train,1,17,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0575,train,1,34,3
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0576,train,1,19,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0577,train,1,64,7
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0578,train,1,18,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0579,train,1,63,9
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0580,train,1,24,2
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0581,train,1,26,2
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0582,train,2,61,6
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0583,train,1,60,8
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0584,train,1,26,2
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0585,train,3,92,10
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0586,train,1,18,2
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0587,val,1,21,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0588,train,1,23,2
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0589,train,1,29,2
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0590,train,2,37,2
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0591,train,2,90,10
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0592,train,2,71,7
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0593,train,1,19,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0594,val,1,23,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0595,train,1,43,4
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0596,train,2,44,2
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0597,val,1,24,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0598,train,2,57,4
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0599,train,1,18,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0600,train,2,39,3
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0601,train,1,20,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0602,train,2,73,8
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0603,train,2,48,3
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0604,train,1,40,4
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0605,train,1,23,2
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0606,train,1,24,2
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0607,train,1,48,5
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0608,train,1,46,5
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0609,train,2,49,3
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0610,train,1,31,3
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0611,train,2,57,4
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0612,train,2,53,5
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0613,train,1,60,6
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0614,train,2,77,8
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0615,train,2,37,2
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0616,train,1,17,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0617,train,1,91,14
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0618,train,1,33,3
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0619,train,1,27,2
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0620,train,1,31,2
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0621,train,1,27,3
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0622,val,1,23,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0623,train,1,19,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0624,train,1,19,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0625,val,1,23,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0626,train,1,44,5
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0627,train,1,19,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0628,train,1,17,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0629,test,1,25,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0630,train,1,20,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0631,train,1,20,2
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0632,train,1,28,3
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0633,train,1,30,3
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0634,train,1,33,3
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0635,train,1,30,3
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0636,train,1,30,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0637,train,1,27,2
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0638,train,1,109,16
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0639,train,1,36,3
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0640,val,1,20,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0641,train,1,27,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0642,train,1,24,2
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0643,train,1,28,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0644,train,1,21,2
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0645,train,1,17,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0646,val,1,21,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0647,val,1,21,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0648,val,1,23,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0649,train,1,15,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0650,train,1,16,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0651,train,1,72,10
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0652,val,1,21,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0653,train,1,34,3
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0654,train,1,28,3
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0655,train,1,19,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0656,train,2,42,2
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0657,val,1,22,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0658,val,1,20,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0659,train,2,41,2
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0660,train,1,18,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0661,val,1,22,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0662,train,1,15,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0663,train,1,25,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0664,train,1,17,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0665,train,1,26,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0666,val,1,21,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0667,val,1,23,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0668,train,1,13,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0669,val,1,21,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0670,train,1,19,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0671,test,1,25,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0672,train,2,35,2
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0673,train,1,27,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0674,train,1,26,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0675,train,2,41,2
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0676,train,1,33,4
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0677,train,1,26,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0678,train,1,29,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0679,train,1,26,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0680,train,1,19,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0681,train,3,54,3
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0682,val,1,22,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0683,train,1,12,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0684,train,1,23,2
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0685,train,1,19,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0686,test,1,13,0
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0687,val,1,20,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0688,train,1,16,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0689,test,1,25,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0690,train,1,17,1
+EXP004,id60 cluster,id60聚类簇,id60_actual_c0691,train,1,19,1
+EXP006,NN40,NN40组件,nn40_comp_0001,test,433,11481,874
+EXP006,NN40,NN40组件,nn40_comp_0002,val,69,1786,142
+EXP006,NN40,NN40组件,nn40_comp_0003,val,57,1839,183
+EXP006,NN40,NN40组件,nn40_comp_0004,val,50,1311,107
+EXP006,NN40,NN40组件,nn40_comp_0005,val,40,1533,162
+EXP006,NN40,NN40组件,nn40_comp_0006,val,37,1117,105
+EXP006,NN40,NN40组件,nn40_comp_0007,val,32,955,84
+EXP006,NN40,NN40组件,nn40_comp_0008,val,30,1436,169
+EXP006,NN40,NN40组件,nn40_comp_0009,val,26,946,98
+EXP006,NN40,NN40组件,nn40_comp_0010,train,26,649,49
+EXP006,NN40,NN40组件,nn40_comp_0011,train,25,805,81
+EXP006,NN40,NN40组件,nn40_comp_0012,train,25,498,29
+EXP006,NN40,NN40组件,nn40_comp_0013,train,17,597,57
+EXP006,NN40,NN40组件,nn40_comp_0014,train,16,470,45
+EXP006,NN40,NN40组件,nn40_comp_0015,train,15,500,50
+EXP006,NN40,NN40组件,nn40_comp_0016,train,15,397,30
+EXP006,NN40,NN40组件,nn40_comp_0017,train,14,395,32
+EXP006,NN40,NN40组件,nn40_comp_0018,train,13,348,27
+EXP006,NN40,NN40组件,nn40_comp_0019,train,13,361,30
+EXP006,NN40,NN40组件,nn40_comp_0020,train,13,403,36
+EXP006,NN40,NN40组件,nn40_comp_0021,train,12,431,43
+EXP006,NN40,NN40组件,nn40_comp_0022,train,11,240,15
+EXP006,NN40,NN40组件,nn40_comp_0023,train,11,560,62
+EXP006,NN40,NN40组件,nn40_comp_0024,train,11,389,40
+EXP006,NN40,NN40组件,nn40_comp_0025,train,10,189,8
+EXP006,NN40,NN40组件,nn40_comp_0026,train,9,184,8
+EXP006,NN40,NN40组件,nn40_comp_0027,train,9,219,18
+EXP006,NN40,NN40组件,nn40_comp_0028,train,8,556,77
+EXP006,NN40,NN40组件,nn40_comp_0029,train,8,251,27
+EXP006,NN40,NN40组件,nn40_comp_0030,train,8,216,17
+EXP006,NN40,NN40组件,nn40_comp_0031,train,8,529,71
+EXP006,NN40,NN40组件,nn40_comp_0032,train,7,156,12
+EXP006,NN40,NN40组件,nn40_comp_0033,train,6,128,6
+EXP006,NN40,NN40组件,nn40_comp_0034,train,6,149,11
+EXP006,NN40,NN40组件,nn40_comp_0035,train,6,134,8
+EXP006,NN40,NN40组件,nn40_comp_0036,train,6,164,13
+EXP006,NN40,NN40组件,nn40_comp_0037,train,6,347,44
+EXP006,NN40,NN40组件,nn40_comp_0038,train,6,170,15
+EXP006,NN40,NN40组件,nn40_comp_0039,train,6,184,19
+EXP006,NN40,NN40组件,nn40_comp_0040,train,5,123,8
+EXP006,NN40,NN40组件,nn40_comp_0041,train,5,122,5
+EXP006,NN40,NN40组件,nn40_comp_0042,train,5,154,15
+EXP006,NN40,NN40组件,nn40_comp_0043,train,5,107,7
+EXP006,NN40,NN40组件,nn40_comp_0044,train,5,253,30
+EXP006,NN40,NN40组件,nn40_comp_0045,train,5,99,7
+EXP006,NN40,NN40组件,nn40_comp_0046,train,5,102,5
+EXP006,NN40,NN40组件,nn40_comp_0047,train,5,188,21
+EXP006,NN40,NN40组件,nn40_comp_0048,train,5,130,7
+EXP006,NN40,NN40组件,nn40_comp_0049,train,5,370,50
+EXP006,NN40,NN40组件,nn40_comp_0050,train,5,106,8
+EXP006,NN40,NN40组件,nn40_comp_0051,train,4,85,5
+EXP006,NN40,NN40组件,nn40_comp_0052,train,4,120,10
+EXP006,NN40,NN40组件,nn40_comp_0053,train,4,63,4
+EXP006,NN40,NN40组件,nn40_comp_0054,train,4,90,6
+EXP006,NN40,NN40组件,nn40_comp_0055,train,4,88,5
+EXP006,NN40,NN40组件,nn40_comp_0056,train,4,104,6
+EXP006,NN40,NN40组件,nn40_comp_0057,train,4,85,7
+EXP006,NN40,NN40组件,nn40_comp_0058,train,4,127,12
+EXP006,NN40,NN40组件,nn40_comp_0059,train,4,89,5
+EXP006,NN40,NN40组件,nn40_comp_0060,train,4,97,6
+EXP006,NN40,NN40组件,nn40_comp_0061,train,4,120,11
+EXP006,NN40,NN40组件,nn40_comp_0062,train,4,151,16
+EXP006,NN40,NN40组件,nn40_comp_0063,train,4,257,34
+EXP006,NN40,NN40组件,nn40_comp_0064,train,4,96,8
+EXP006,NN40,NN40组件,nn40_comp_0065,train,3,130,14
+EXP006,NN40,NN40组件,nn40_comp_0066,train,3,86,7
+EXP006,NN40,NN40组件,nn40_comp_0067,train,3,91,9
+EXP006,NN40,NN40组件,nn40_comp_0068,train,3,74,6
+EXP006,NN40,NN40组件,nn40_comp_0069,train,3,137,15
+EXP006,NN40,NN40组件,nn40_comp_0070,train,3,41,1
+EXP006,NN40,NN40组件,nn40_comp_0071,train,3,49,3
+EXP006,NN40,NN40组件,nn40_comp_0072,train,3,50,3
+EXP006,NN40,NN40组件,nn40_comp_0073,train,3,62,5
+EXP006,NN40,NN40组件,nn40_comp_0074,train,3,67,4
+EXP006,NN40,NN40组件,nn40_comp_0075,train,3,54,3
+EXP006,NN40,NN40组件,nn40_comp_0076,train,3,142,17
+EXP006,NN40,NN40组件,nn40_comp_0077,train,3,92,7
+EXP006,NN40,NN40组件,nn40_comp_0078,train,3,114,14
+EXP006,NN40,NN40组件,nn40_comp_0079,train,3,52,2
+EXP006,NN40,NN40组件,nn40_comp_0080,train,3,118,12
+EXP006,NN40,NN40组件,nn40_comp_0081,train,3,61,0
+EXP006,NN40,NN40组件,nn40_comp_0082,train,3,401,61
+EXP006,NN40,NN40组件,nn40_comp_0083,train,3,120,13
+EXP006,NN40,NN40组件,nn40_comp_0084,train,3,60,3
+EXP006,NN40,NN40组件,nn40_comp_0085,train,2,51,2
+EXP006,NN40,NN40组件,nn40_comp_0086,train,2,63,5
+EXP006,NN40,NN40组件,nn40_comp_0087,train,2,49,5
+EXP006,NN40,NN40组件,nn40_comp_0088,train,2,35,2
+EXP006,NN40,NN40组件,nn40_comp_0089,train,2,40,2
+EXP006,NN40,NN40组件,nn40_comp_0090,train,2,932,148
+EXP006,NN40,NN40组件,nn40_comp_0091,train,2,50,4
+EXP006,NN40,NN40组件,nn40_comp_0092,train,2,38,2
+EXP006,NN40,NN40组件,nn40_comp_0093,train,2,45,3
+EXP006,NN40,NN40组件,nn40_comp_0094,train,2,41,2
+EXP006,NN40,NN40组件,nn40_comp_0095,train,2,44,2
+EXP006,NN40,NN40组件,nn40_comp_0096,train,2,52,4
+EXP006,NN40,NN40组件,nn40_comp_0097,train,2,41,1
+EXP006,NN40,NN40组件,nn40_comp_0098,train,2,41,2
+EXP006,NN40,NN40组件,nn40_comp_0099,train,2,42,2
+EXP006,NN40,NN40组件,nn40_comp_0100,train,2,42,2
+EXP006,NN40,NN40组件,nn40_comp_0101,train,2,60,5
+EXP006,NN40,NN40组件,nn40_comp_0102,train,2,44,2
+EXP006,NN40,NN40组件,nn40_comp_0103,train,2,49,1
+EXP006,NN40,NN40组件,nn40_comp_0104,train,2,53,3
+EXP006,NN40,NN40组件,nn40_comp_0105,train,2,51,3
+EXP006,NN40,NN40组件,nn40_comp_0106,train,2,69,7
+EXP006,NN40,NN40组件,nn40_comp_0107,train,2,47,4
+EXP006,NN40,NN40组件,nn40_comp_0108,train,2,49,2
+EXP006,NN40,NN40组件,nn40_comp_0109,train,2,61,6
+EXP006,NN40,NN40组件,nn40_comp_0110,train,2,39,3
+EXP006,NN40,NN40组件,nn40_comp_0111,train,2,48,3
+EXP006,NN40,NN40组件,nn40_comp_0112,train,2,53,5
+EXP006,NN40,NN40组件,nn40_comp_0113,train,1,104,16
+EXP006,NN40,NN40组件,nn40_comp_0114,train,1,25,1
+EXP006,NN40,NN40组件,nn40_comp_0115,train,1,18,1
+EXP006,NN40,NN40组件,nn40_comp_0116,train,1,25,1
+EXP006,NN40,NN40组件,nn40_comp_0117,train,1,28,1
+EXP006,NN40,NN40组件,nn40_comp_0118,train,1,22,1
+EXP006,NN40,NN40组件,nn40_comp_0119,train,1,23,1
+EXP006,NN40,NN40组件,nn40_comp_0120,train,1,25,1
+EXP006,NN40,NN40组件,nn40_comp_0121,train,1,24,1
+EXP006,NN40,NN40组件,nn40_comp_0122,train,1,32,3
+EXP006,NN40,NN40组件,nn40_comp_0123,train,1,20,1
+EXP006,NN40,NN40组件,nn40_comp_0124,test,1,24,2
+EXP006,NN40,NN40组件,nn40_comp_0125,train,1,24,1
+EXP006,NN40,NN40组件,nn40_comp_0126,train,1,25,2
+EXP006,NN40,NN40组件,nn40_comp_0127,train,1,23,1
+EXP006,NN40,NN40组件,nn40_comp_0128,train,1,25,2
+EXP006,NN40,NN40组件,nn40_comp_0129,train,1,25,1
+EXP006,NN40,NN40组件,nn40_comp_0130,train,1,18,1
+EXP006,NN40,NN40组件,nn40_comp_0131,test,1,23,2
+EXP006,NN40,NN40组件,nn40_comp_0132,train,1,23,1
+EXP006,NN40,NN40组件,nn40_comp_0133,train,1,25,2
+EXP006,NN40,NN40组件,nn40_comp_0134,train,1,25,2
+EXP006,NN40,NN40组件,nn40_comp_0135,train,1,25,1
+EXP006,NN40,NN40组件,nn40_comp_0136,train,1,13,1
+EXP006,NN40,NN40组件,nn40_comp_0137,test,1,23,2
+EXP006,NN40,NN40组件,nn40_comp_0138,train,1,18,0
+EXP006,NN40,NN40组件,nn40_comp_0139,train,1,20,1
+EXP006,NN40,NN40组件,nn40_comp_0140,train,1,19,1
+EXP006,NN40,NN40组件,nn40_comp_0141,train,1,16,1
+EXP006,NN40,NN40组件,nn40_comp_0142,train,1,23,1
+EXP006,NN40,NN40组件,nn40_comp_0143,train,1,36,4
+EXP006,NN40,NN40组件,nn40_comp_0144,train,1,36,4
+EXP006,NN40,NN40组件,nn40_comp_0145,train,1,36,4
+EXP006,NN40,NN40组件,nn40_comp_0146,train,1,23,1
+EXP006,NN40,NN40组件,nn40_comp_0147,train,1,23,1
+EXP006,NN40,NN40组件,nn40_comp_0148,train,1,20,1
+EXP006,NN40,NN40组件,nn40_comp_0149,train,1,29,3
+EXP006,NN40,NN40组件,nn40_comp_0150,train,1,23,1
+EXP006,NN40,NN40组件,nn40_comp_0151,train,1,35,4
+EXP006,NN40,NN40组件,nn40_comp_0152,train,1,24,1
+EXP006,NN40,NN40组件,nn40_comp_0153,train,1,29,2
+EXP006,NN40,NN40组件,nn40_comp_0154,train,1,73,11
+EXP006,NN40,NN40组件,nn40_comp_0155,train,1,29,3
+EXP006,NN40,NN40组件,nn40_comp_0156,train,1,32,3
+EXP006,NN40,NN40组件,nn40_comp_0157,train,1,20,1
+EXP006,NN40,NN40组件,nn40_comp_0158,train,1,24,1
+EXP006,NN40,NN40组件,nn40_comp_0159,train,1,26,1
+EXP006,NN40,NN40组件,nn40_comp_0160,train,1,20,1
+EXP006,NN40,NN40组件,nn40_comp_0161,test,1,22,2
+EXP006,NN40,NN40组件,nn40_comp_0162,train,1,13,1
+EXP006,NN40,NN40组件,nn40_comp_0163,train,1,19,1
+EXP006,NN40,NN40组件,nn40_comp_0164,train,1,19,1
+EXP006,NN40,NN40组件,nn40_comp_0165,train,1,15,1
+EXP006,NN40,NN40组件,nn40_comp_0166,train,1,20,1
+EXP006,NN40,NN40组件,nn40_comp_0167,train,1,26,2
+EXP006,NN40,NN40组件,nn40_comp_0168,train,1,17,1
+EXP006,NN40,NN40组件,nn40_comp_0169,train,1,24,1
+EXP006,NN40,NN40组件,nn40_comp_0170,train,1,25,2
+EXP006,NN40,NN40组件,nn40_comp_0171,train,1,20,1
+EXP006,NN40,NN40组件,nn40_comp_0172,train,1,31,2
+EXP006,NN40,NN40组件,nn40_comp_0173,train,1,26,1
+EXP006,NN40,NN40组件,nn40_comp_0174,train,1,27,2
+EXP006,NN40,NN40组件,nn40_comp_0175,train,1,13,1
+EXP006,NN40,NN40组件,nn40_comp_0176,train,1,15,1
+EXP006,NN40,NN40组件,nn40_comp_0177,train,1,20,1
+EXP006,NN40,NN40组件,nn40_comp_0178,train,1,18,1
+EXP006,NN40,NN40组件,nn40_comp_0179,train,1,26,2
+EXP006,NN40,NN40组件,nn40_comp_0180,train,1,15,1
+EXP006,NN40,NN40组件,nn40_comp_0181,train,1,28,2
+EXP006,NN40,NN40组件,nn40_comp_0182,train,1,19,1
+EXP006,NN40,NN40组件,nn40_comp_0183,train,1,29,3
+EXP006,NN40,NN40组件,nn40_comp_0184,train,1,31,2
+EXP006,NN40,NN40组件,nn40_comp_0185,train,1,15,1
+EXP006,NN40,NN40组件,nn40_comp_0186,train,1,23,1
+EXP006,NN40,NN40组件,nn40_comp_0187,train,1,93,14
+EXP006,NN40,NN40组件,nn40_comp_0188,train,1,28,1
+EXP006,NN40,NN40组件,nn40_comp_0189,train,1,24,1
+EXP006,NN40,NN40组件,nn40_comp_0190,train,1,26,1
+EXP006,NN40,NN40组件,nn40_comp_0191,train,1,35,4
+EXP006,NN40,NN40组件,nn40_comp_0192,train,1,23,1
+EXP006,NN40,NN40组件,nn40_comp_0193,train,1,55,7
+EXP006,NN40,NN40组件,nn40_comp_0194,train,1,30,3
+EXP006,NN40,NN40组件,nn40_comp_0195,train,1,18,1
+EXP006,NN40,NN40组件,nn40_comp_0196,train,1,15,1
+EXP006,NN40,NN40组件,nn40_comp_0197,train,1,27,2
+EXP006,NN40,NN40组件,nn40_comp_0198,train,1,40,4
+EXP006,NN40,NN40组件,nn40_comp_0199,train,1,30,3
+EXP006,NN40,NN40组件,nn40_comp_0200,train,1,20,1
+EXP006,NN40,NN40组件,nn40_comp_0201,train,1,43,5
+EXP006,NN40,NN40组件,nn40_comp_0202,train,1,20,1
+EXP006,NN40,NN40组件,nn40_comp_0203,train,1,15,1
+EXP006,NN40,NN40组件,nn40_comp_0204,train,1,17,1
+EXP006,NN40,NN40组件,nn40_comp_0205,train,1,23,1
+EXP006,NN40,NN40组件,nn40_comp_0206,train,1,20,1
+EXP006,NN40,NN40组件,nn40_comp_0207,train,1,16,1
+EXP006,NN40,NN40组件,nn40_comp_0208,train,1,14,1
+EXP006,NN40,NN40组件,nn40_comp_0209,test,1,23,2
+EXP006,NN40,NN40组件,nn40_comp_0210,train,1,15,1
+EXP006,NN40,NN40组件,nn40_comp_0211,train,1,26,2
+EXP006,NN40,NN40组件,nn40_comp_0212,test,1,23,2
+EXP006,NN40,NN40组件,nn40_comp_0213,train,1,23,1
+EXP006,NN40,NN40组件,nn40_comp_0214,train,1,26,1
+EXP006,NN40,NN40组件,nn40_comp_0215,test,1,23,2
+EXP006,NN40,NN40组件,nn40_comp_0216,train,1,80,10
+EXP006,NN40,NN40组件,nn40_comp_0217,train,1,17,1
+EXP006,NN40,NN40组件,nn40_comp_0218,train,1,63,9
+EXP006,NN40,NN40组件,nn40_comp_0219,test,1,24,2
+EXP006,NN40,NN40组件,nn40_comp_0220,train,1,60,8
+EXP006,NN40,NN40组件,nn40_comp_0221,test,1,18,2
+EXP006,NN40,NN40组件,nn40_comp_0222,train,1,21,1
+EXP006,NN40,NN40组件,nn40_comp_0223,train,1,19,1
+EXP006,NN40,NN40组件,nn40_comp_0224,test,1,23,2
+EXP006,NN40,NN40组件,nn40_comp_0225,train,1,17,1
+EXP006,NN40,NN40组件,nn40_comp_0226,train,1,91,14
+EXP006,NN40,NN40组件,nn40_comp_0227,train,1,27,2
+EXP006,NN40,NN40组件,nn40_comp_0228,train,1,31,2
+EXP006,NN40,NN40组件,nn40_comp_0229,train,1,23,1
+EXP006,NN40,NN40组件,nn40_comp_0230,train,1,17,1
+EXP006,NN40,NN40组件,nn40_comp_0231,train,1,25,1
+EXP006,NN40,NN40组件,nn40_comp_0232,test,1,20,2
+EXP006,NN40,NN40组件,nn40_comp_0233,test,1,28,3
+EXP006,NN40,NN40组件,nn40_comp_0234,train,1,33,3
+EXP006,NN40,NN40组件,nn40_comp_0235,train,1,30,3
+EXP006,NN40,NN40组件,nn40_comp_0236,train,1,30,1
+EXP006,NN40,NN40组件,nn40_comp_0237,train,1,27,1
+EXP006,NN40,NN40组件,nn40_comp_0238,train,1,17,1
+EXP006,NN40,NN40组件,nn40_comp_0239,train,1,21,1
+EXP006,NN40,NN40组件,nn40_comp_0240,train,1,22,1
+EXP006,NN40,NN40组件,nn40_comp_0241,train,1,21,1
+EXP006,NN40,NN40组件,nn40_comp_0242,train,1,26,1
+EXP006,NN40,NN40组件,nn40_comp_0243,train,1,19,1
+EXP006,NN40,NN40组件,nn40_comp_0244,train,1,13,0
+EXP005,NN60,NN60组件,nn60_comp_0001,val,39,1283,112
+EXP005,NN60,NN60组件,nn60_comp_0002,train,35,1244,134
+EXP005,NN60,NN60组件,nn60_comp_0003,test,2,932,148
+EXP005,NN60,NN60组件,nn60_comp_0004,train,12,841,114
+EXP005,NN60,NN60组件,nn60_comp_0005,val,26,636,47
+EXP005,NN60,NN60组件,nn60_comp_0006,test,20,602,53
+EXP005,NN60,NN60组件,nn60_comp_0007,test,17,548,49
+EXP005,NN60,NN60组件,nn60_comp_0008,train,25,498,29
+EXP005,NN60,NN60组件,nn60_comp_0009,train,12,462,51
+EXP005,NN60,NN60组件,nn60_comp_0010,test,16,423,24
+EXP005,NN60,NN60组件,nn60_comp_0011,val,13,409,42
+EXP005,NN60,NN60组件,nn60_comp_0012,val,8,402,45
+EXP005,NN60,NN60组件,nn60_comp_0013,test,14,395,32
+EXP005,NN60,NN60组件,nn60_comp_0014,train,10,374,40
+EXP005,NN60,NN60组件,nn60_comp_0015,val,5,370,50
+EXP005,NN60,NN60组件,nn60_comp_0016,train,2,365,58
+EXP005,NN60,NN60组件,nn60_comp_0017,test,11,354,33
+EXP005,NN60,NN60组件,nn60_comp_0018,train,6,347,44
+EXP005,NN60,NN60组件,nn60_comp_0019,test,14,323,19
+EXP005,NN60,NN60组件,nn60_comp_0020,test,15,311,18
+EXP005,NN60,NN60组件,nn60_comp_0021,test,13,305,20
+EXP005,NN60,NN60组件,nn60_comp_0022,val,10,299,28
+EXP005,NN60,NN60组件,nn60_comp_0023,val,11,295,25
+EXP005,NN60,NN60组件,nn60_comp_0024,train,8,289,30
+EXP005,NN60,NN60组件,nn60_comp_0025,train,10,284,24
+EXP005,NN60,NN60组件,nn60_comp_0026,train,13,277,19
+EXP005,NN60,NN60组件,nn60_comp_0027,val,11,274,22
+EXP005,NN60,NN60组件,nn60_comp_0028,test,10,268,20
+EXP005,NN60,NN60组件,nn60_comp_0029,train,6,259,31
+EXP005,NN60,NN60组件,nn60_comp_0030,val,4,257,34
+EXP005,NN60,NN60组件,nn60_comp_0031,train,5,245,29
+EXP005,NN60,NN60组件,nn60_comp_0032,val,4,240,29
+EXP005,NN60,NN60组件,nn60_comp_0033,test,11,233,14
+EXP005,NN60,NN60组件,nn60_comp_0034,val,8,232,18
+EXP005,NN60,NN60组件,nn60_comp_0035,val,7,232,22
+EXP005,NN60,NN60组件,nn60_comp_0036,test,6,230,21
+EXP005,NN60,NN60组件,nn60_comp_0037,train,4,230,29
+EXP005,NN60,NN60组件,nn60_comp_0038,train,1,227,36
+EXP005,NN60,NN60组件,nn60_comp_0039,test,8,222,17
+EXP005,NN60,NN60组件,nn60_comp_0040,test,10,206,12
+EXP005,NN60,NN60组件,nn60_comp_0041,test,8,201,14
+EXP005,NN60,NN60组件,nn60_comp_0042,test,4,200,23
+EXP005,NN60,NN60组件,nn60_comp_0043,val,8,198,15
+EXP005,NN60,NN60组件,nn60_comp_0044,train,3,193,26
+EXP005,NN60,NN60组件,nn60_comp_0045,test,5,192,20
+EXP005,NN60,NN60组件,nn60_comp_0046,val,7,190,14
+EXP005,NN60,NN60组件,nn60_comp_0047,train,6,184,19
+EXP005,NN60,NN60组件,nn60_comp_0048,train,6,184,17
+EXP005,NN60,NN60组件,nn60_comp_0049,val,2,177,25
+EXP005,NN60,NN60组件,nn60_comp_0050,val,5,174,17
+EXP005,NN60,NN60组件,nn60_comp_0051,val,4,162,19
+EXP005,NN60,NN60组件,nn60_comp_0052,val,3,161,19
+EXP005,NN60,NN60组件,nn60_comp_0053,test,7,160,12
+EXP005,NN60,NN60组件,nn60_comp_0054,val,6,158,13
+EXP005,NN60,NN60组件,nn60_comp_0055,test,3,158,17
+EXP005,NN60,NN60组件,nn60_comp_0056,train,6,156,12
+EXP005,NN60,NN60组件,nn60_comp_0057,train,3,155,20
+EXP005,NN60,NN60组件,nn60_comp_0058,val,4,153,17
+EXP005,NN60,NN60组件,nn60_comp_0059,test,3,152,19
+EXP005,NN60,NN60组件,nn60_comp_0060,val,4,151,16
+EXP005,NN60,NN60组件,nn60_comp_0061,test,3,150,19
+EXP005,NN60,NN60组件,nn60_comp_0062,train,6,149,9
+EXP005,NN60,NN60组件,nn60_comp_0063,val,4,148,15
+EXP005,NN60,NN60组件,nn60_comp_0064,train,5,145,16
+EXP005,NN60,NN60组件,nn60_comp_0065,test,2,145,21
+EXP005,NN60,NN60组件,nn60_comp_0066,test,6,143,10
+EXP005,NN60,NN60组件,nn60_comp_0067,train,8,143,3
+EXP005,NN60,NN60组件,nn60_comp_0068,test,1,143,23
+EXP005,NN60,NN60组件,nn60_comp_0069,val,3,142,17
+EXP005,NN60,NN60组件,nn60_comp_0070,train,6,141,9
+EXP005,NN60,NN60组件,nn60_comp_0071,test,4,139,14
+EXP005,NN60,NN60组件,nn60_comp_0072,train,4,138,12
+EXP005,NN60,NN60组件,nn60_comp_0073,train,3,136,16
+EXP005,NN60,NN60组件,nn60_comp_0074,test,4,135,13
+EXP005,NN60,NN60组件,nn60_comp_0075,train,6,133,10
+EXP005,NN60,NN60组件,nn60_comp_0076,val,1,133,21
+EXP005,NN60,NN60组件,nn60_comp_0077,train,6,132,6
+EXP005,NN60,NN60组件,nn60_comp_0078,val,3,132,13
+EXP005,NN60,NN60组件,nn60_comp_0079,train,6,131,10
+EXP005,NN60,NN60组件,nn60_comp_0080,train,6,130,10
+EXP005,NN60,NN60组件,nn60_comp_0081,train,7,130,9
+EXP005,NN60,NN60组件,nn60_comp_0082,test,3,129,16
+EXP005,NN60,NN60组件,nn60_comp_0083,val,4,127,12
+EXP005,NN60,NN60组件,nn60_comp_0084,train,5,126,10
+EXP005,NN60,NN60组件,nn60_comp_0085,train,4,125,13
+EXP005,NN60,NN60组件,nn60_comp_0086,train,5,122,10
+EXP005,NN60,NN60组件,nn60_comp_0087,train,4,121,9
+EXP005,NN60,NN60组件,nn60_comp_0088,val,2,121,15
+EXP005,NN60,NN60组件,nn60_comp_0089,train,4,120,11
+EXP005,NN60,NN60组件,nn60_comp_0090,val,3,120,13
+EXP005,NN60,NN60组件,nn60_comp_0091,train,3,118,12
+EXP005,NN60,NN60组件,nn60_comp_0092,train,3,117,12
+EXP005,NN60,NN60组件,nn60_comp_0093,val,2,115,14
+EXP005,NN60,NN60组件,nn60_comp_0094,val,3,115,11
+EXP005,NN60,NN60组件,nn60_comp_0095,train,4,114,10
+EXP005,NN60,NN60组件,nn60_comp_0096,train,5,112,9
+EXP005,NN60,NN60组件,nn60_comp_0097,train,4,112,11
+EXP005,NN60,NN60组件,nn60_comp_0098,train,5,112,4
+EXP005,NN60,NN60组件,nn60_comp_0099,train,4,110,9
+EXP005,NN60,NN60组件,nn60_comp_0100,train,6,110,6
+EXP005,NN60,NN60组件,nn60_comp_0101,val,1,109,16
+EXP005,NN60,NN60组件,nn60_comp_0102,train,5,107,7
+EXP005,NN60,NN60组件,nn60_comp_0103,train,4,106,9
+EXP005,NN60,NN60组件,nn60_comp_0104,test,1,104,16
+EXP005,NN60,NN60组件,nn60_comp_0105,train,4,103,8
+EXP005,NN60,NN60组件,nn60_comp_0106,train,3,100,9
+EXP005,NN60,NN60组件,nn60_comp_0107,train,2,97,13
+EXP005,NN60,NN60组件,nn60_comp_0108,train,3,97,7
+EXP005,NN60,NN60组件,nn60_comp_0109,train,5,96,6
+EXP005,NN60,NN60组件,nn60_comp_0110,train,2,96,12
+EXP005,NN60,NN60组件,nn60_comp_0111,train,4,96,5
+EXP005,NN60,NN60组件,nn60_comp_0112,train,2,94,11
+EXP005,NN60,NN60组件,nn60_comp_0113,train,1,93,14
+EXP005,NN60,NN60组件,nn60_comp_0114,train,3,93,7
+EXP005,NN60,NN60组件,nn60_comp_0115,train,4,92,8
+EXP005,NN60,NN60组件,nn60_comp_0116,train,3,92,10
+EXP005,NN60,NN60组件,nn60_comp_0117,train,3,91,9
+EXP005,NN60,NN60组件,nn60_comp_0118,train,3,91,8
+EXP005,NN60,NN60组件,nn60_comp_0119,train,1,91,14
+EXP005,NN60,NN60组件,nn60_comp_0120,train,4,90,5
+EXP005,NN60,NN60组件,nn60_comp_0121,train,2,90,10
+EXP005,NN60,NN60组件,nn60_comp_0122,train,4,89,5
+EXP005,NN60,NN60组件,nn60_comp_0123,train,2,89,10
+EXP005,NN60,NN60组件,nn60_comp_0124,train,4,88,6
+EXP005,NN60,NN60组件,nn60_comp_0125,train,4,86,5
+EXP005,NN60,NN60组件,nn60_comp_0126,train,3,86,6
+EXP005,NN60,NN60组件,nn60_comp_0127,train,4,86,4
+EXP005,NN60,NN60组件,nn60_comp_0128,train,4,82,4
+EXP005,NN60,NN60组件,nn60_comp_0129,train,2,81,9
+EXP005,NN60,NN60组件,nn60_comp_0130,train,4,81,0
+EXP005,NN60,NN60组件,nn60_comp_0131,train,1,80,10
+EXP005,NN60,NN60组件,nn60_comp_0132,val,1,79,11
+EXP005,NN60,NN60组件,nn60_comp_0133,train,2,79,8
+EXP005,NN60,NN60组件,nn60_comp_0134,train,4,78,4
+EXP005,NN60,NN60组件,nn60_comp_0135,train,3,77,4
+EXP005,NN60,NN60组件,nn60_comp_0136,train,3,76,7
+EXP005,NN60,NN60组件,nn60_comp_0137,train,3,74,5
+EXP005,NN60,NN60组件,nn60_comp_0138,train,3,74,6
+EXP005,NN60,NN60组件,nn60_comp_0139,train,1,73,11
+EXP005,NN60,NN60组件,nn60_comp_0140,train,3,73,7
+EXP005,NN60,NN60组件,nn60_comp_0141,train,3,73,4
+EXP005,NN60,NN60组件,nn60_comp_0142,train,2,73,8
+EXP005,NN60,NN60组件,nn60_comp_0143,train,1,72,10
+EXP005,NN60,NN60组件,nn60_comp_0144,train,2,71,7
+EXP005,NN60,NN60组件,nn60_comp_0145,train,2,70,6
+EXP005,NN60,NN60组件,nn60_comp_0146,train,1,70,10
+EXP005,NN60,NN60组件,nn60_comp_0147,train,2,69,7
+EXP005,NN60,NN60组件,nn60_comp_0148,train,3,69,5
+EXP005,NN60,NN60组件,nn60_comp_0149,train,2,69,7
+EXP005,NN60,NN60组件,nn60_comp_0150,train,1,69,10
+EXP005,NN60,NN60组件,nn60_comp_0151,train,2,67,6
+EXP005,NN60,NN60组件,nn60_comp_0152,train,1,65,8
+EXP005,NN60,NN60组件,nn60_comp_0153,train,2,64,5
+EXP005,NN60,NN60组件,nn60_comp_0154,train,2,63,5
+EXP005,NN60,NN60组件,nn60_comp_0155,train,3,63,4
+EXP005,NN60,NN60组件,nn60_comp_0156,test,1,63,9
+EXP005,NN60,NN60组件,nn60_comp_0157,train,4,62,3
+EXP005,NN60,NN60组件,nn60_comp_0158,train,3,62,3
+EXP005,NN60,NN60组件,nn60_comp_0159,train,3,61,3
+EXP005,NN60,NN60组件,nn60_comp_0160,train,2,61,6
+EXP005,NN60,NN60组件,nn60_comp_0161,train,2,60,6
+EXP005,NN60,NN60组件,nn60_comp_0162,train,2,60,5
+EXP005,NN60,NN60组件,nn60_comp_0163,train,2,60,5
+EXP005,NN60,NN60组件,nn60_comp_0164,train,1,60,8
+EXP005,NN60,NN60组件,nn60_comp_0165,train,1,60,6
+EXP005,NN60,NN60组件,nn60_comp_0166,train,3,59,3
+EXP005,NN60,NN60组件,nn60_comp_0167,train,3,59,4
+EXP005,NN60,NN60组件,nn60_comp_0168,train,2,59,5
+EXP005,NN60,NN60组件,nn60_comp_0169,train,2,59,3
+EXP005,NN60,NN60组件,nn60_comp_0170,train,2,59,6
+EXP005,NN60,NN60组件,nn60_comp_0171,train,2,58,4
+EXP005,NN60,NN60组件,nn60_comp_0172,train,2,57,4
+EXP005,NN60,NN60组件,nn60_comp_0173,train,1,57,8
+EXP005,NN60,NN60组件,nn60_comp_0174,train,2,57,4
+EXP005,NN60,NN60组件,nn60_comp_0175,train,2,57,4
+EXP005,NN60,NN60组件,nn60_comp_0176,train,2,56,3
+EXP005,NN60,NN60组件,nn60_comp_0177,train,2,56,5
+EXP005,NN60,NN60组件,nn60_comp_0178,train,1,55,7
+EXP005,NN60,NN60组件,nn60_comp_0179,train,2,54,3
+EXP005,NN60,NN60组件,nn60_comp_0180,train,1,54,7
+EXP005,NN60,NN60组件,nn60_comp_0181,train,3,54,3
+EXP005,NN60,NN60组件,nn60_comp_0182,train,2,53,2
+EXP005,NN60,NN60组件,nn60_comp_0183,train,2,53,4
+EXP005,NN60,NN60组件,nn60_comp_0184,train,1,53,6
+EXP005,NN60,NN60组件,nn60_comp_0185,train,2,53,3
+EXP005,NN60,NN60组件,nn60_comp_0186,train,2,53,5
+EXP005,NN60,NN60组件,nn60_comp_0187,train,1,52,6
+EXP005,NN60,NN60组件,nn60_comp_0188,train,2,52,4
+EXP005,NN60,NN60组件,nn60_comp_0189,train,2,51,2
+EXP005,NN60,NN60组件,nn60_comp_0190,test,1,51,6
+EXP005,NN60,NN60组件,nn60_comp_0191,train,1,51,7
+EXP005,NN60,NN60组件,nn60_comp_0192,train,2,51,4
+EXP005,NN60,NN60组件,nn60_comp_0193,train,2,51,3
+EXP005,NN60,NN60组件,nn60_comp_0194,train,2,51,3
+EXP005,NN60,NN60组件,nn60_comp_0195,train,2,51,3
+EXP005,NN60,NN60组件,nn60_comp_0196,train,3,50,3
+EXP005,NN60,NN60组件,nn60_comp_0197,train,2,50,5
+EXP005,NN60,NN60组件,nn60_comp_0198,train,2,50,4
+EXP005,NN60,NN60组件,nn60_comp_0199,train,2,50,4
+EXP005,NN60,NN60组件,nn60_comp_0200,train,2,50,3
+EXP005,NN60,NN60组件,nn60_comp_0201,train,2,49,5
+EXP005,NN60,NN60组件,nn60_comp_0202,train,2,49,2
+EXP005,NN60,NN60组件,nn60_comp_0203,train,2,49,2
+EXP005,NN60,NN60组件,nn60_comp_0204,train,2,49,2
+EXP005,NN60,NN60组件,nn60_comp_0205,train,2,49,3
+EXP005,NN60,NN60组件,nn60_comp_0206,train,2,48,3
+EXP005,NN60,NN60组件,nn60_comp_0207,test,1,48,6
+EXP005,NN60,NN60组件,nn60_comp_0208,train,2,48,4
+EXP005,NN60,NN60组件,nn60_comp_0209,train,2,48,3
+EXP005,NN60,NN60组件,nn60_comp_0210,train,1,48,5
+EXP005,NN60,NN60组件,nn60_comp_0211,train,2,47,4
+EXP005,NN60,NN60组件,nn60_comp_0212,train,2,47,4
+EXP005,NN60,NN60组件,nn60_comp_0213,train,1,47,5
+EXP005,NN60,NN60组件,nn60_comp_0214,train,2,47,3
+EXP005,NN60,NN60组件,nn60_comp_0215,train,2,47,2
+EXP005,NN60,NN60组件,nn60_comp_0216,train,2,47,4
+EXP005,NN60,NN60组件,nn60_comp_0217,val,1,46,4
+EXP005,NN60,NN60组件,nn60_comp_0218,val,1,46,6
+EXP005,NN60,NN60组件,nn60_comp_0219,test,1,46,5
+EXP005,NN60,NN60组件,nn60_comp_0220,train,2,45,3
+EXP005,NN60,NN60组件,nn60_comp_0221,train,2,45,5
+EXP005,NN60,NN60组件,nn60_comp_0222,train,2,45,2
+EXP005,NN60,NN60组件,nn60_comp_0223,test,1,44,5
+EXP005,NN60,NN60组件,nn60_comp_0224,train,2,44,4
+EXP005,NN60,NN60组件,nn60_comp_0225,train,2,44,2
+EXP005,NN60,NN60组件,nn60_comp_0226,test,1,44,3
+EXP005,NN60,NN60组件,nn60_comp_0227,train,2,44,2
+EXP005,NN60,NN60组件,nn60_comp_0228,val,1,44,5
+EXP005,NN60,NN60组件,nn60_comp_0229,val,1,43,5
+EXP005,NN60,NN60组件,nn60_comp_0230,train,2,43,3
+EXP005,NN60,NN60组件,nn60_comp_0231,train,2,43,3
+EXP005,NN60,NN60组件,nn60_comp_0232,test,1,43,6
+EXP005,NN60,NN60组件,nn60_comp_0233,val,1,43,4
+EXP005,NN60,NN60组件,nn60_comp_0234,train,2,43,2
+EXP005,NN60,NN60组件,nn60_comp_0235,val,1,43,5
+EXP005,NN60,NN60组件,nn60_comp_0236,val,1,43,4
+EXP005,NN60,NN60组件,nn60_comp_0237,train,2,42,2
+EXP005,NN60,NN60组件,nn60_comp_0238,train,2,42,2
+EXP005,NN60,NN60组件,nn60_comp_0239,train,2,42,2
+EXP005,NN60,NN60组件,nn60_comp_0240,train,2,42,2
+EXP005,NN60,NN60组件,nn60_comp_0241,train,2,41,2
+EXP005,NN60,NN60组件,nn60_comp_0242,train,2,41,2
+EXP005,NN60,NN60组件,nn60_comp_0243,train,2,41,1
+EXP005,NN60,NN60组件,nn60_comp_0244,train,2,41,2
+EXP005,NN60,NN60组件,nn60_comp_0245,val,1,41,5
+EXP005,NN60,NN60组件,nn60_comp_0246,train,2,41,2
+EXP005,NN60,NN60组件,nn60_comp_0247,train,2,40,1
+EXP005,NN60,NN60组件,nn60_comp_0248,train,2,40,2
+EXP005,NN60,NN60组件,nn60_comp_0249,train,2,40,3
+EXP005,NN60,NN60组件,nn60_comp_0250,test,1,40,5
+EXP005,NN60,NN60组件,nn60_comp_0251,val,1,40,4
+EXP005,NN60,NN60组件,nn60_comp_0252,test,1,40,4
+EXP005,NN60,NN60组件,nn60_comp_0253,train,2,39,2
+EXP005,NN60,NN60组件,nn60_comp_0254,train,2,39,2
+EXP005,NN60,NN60组件,nn60_comp_0255,val,1,39,4
+EXP005,NN60,NN60组件,nn60_comp_0256,train,2,39,3
+EXP005,NN60,NN60组件,nn60_comp_0257,train,2,39,3
+EXP005,NN60,NN60组件,nn60_comp_0258,test,1,38,5
+EXP005,NN60,NN60组件,nn60_comp_0259,test,1,37,4
+EXP005,NN60,NN60组件,nn60_comp_0260,train,2,37,2
+EXP005,NN60,NN60组件,nn60_comp_0261,val,1,37,3
+EXP005,NN60,NN60组件,nn60_comp_0262,test,1,37,4
+EXP005,NN60,NN60组件,nn60_comp_0263,val,1,37,4
+EXP005,NN60,NN60组件,nn60_comp_0264,test,1,37,4
+EXP005,NN60,NN60组件,nn60_comp_0265,train,2,37,2
+EXP005,NN60,NN60组件,nn60_comp_0266,train,2,37,2
+EXP005,NN60,NN60组件,nn60_comp_0267,train,2,37,2
+EXP005,NN60,NN60组件,nn60_comp_0268,test,1,36,4
+EXP005,NN60,NN60组件,nn60_comp_0269,test,1,36,4
+EXP005,NN60,NN60组件,nn60_comp_0270,test,1,36,4
+EXP005,NN60,NN60组件,nn60_comp_0271,test,1,36,4
+EXP005,NN60,NN60组件,nn60_comp_0272,test,1,36,3
+EXP005,NN60,NN60组件,nn60_comp_0273,val,1,36,4
+EXP005,NN60,NN60组件,nn60_comp_0274,train,2,36,2
+EXP005,NN60,NN60组件,nn60_comp_0275,train,2,36,2
+EXP005,NN60,NN60组件,nn60_comp_0276,test,1,36,3
+EXP005,NN60,NN60组件,nn60_comp_0277,val,1,36,3
+EXP005,NN60,NN60组件,nn60_comp_0278,test,1,35,3
+EXP005,NN60,NN60组件,nn60_comp_0279,val,1,35,1
+EXP005,NN60,NN60组件,nn60_comp_0280,val,1,35,4
+EXP005,NN60,NN60组件,nn60_comp_0281,val,1,35,3
+EXP005,NN60,NN60组件,nn60_comp_0282,train,2,35,2
+EXP005,NN60,NN60组件,nn60_comp_0283,test,1,35,4
+EXP005,NN60,NN60组件,nn60_comp_0284,val,1,35,4
+EXP005,NN60,NN60组件,nn60_comp_0285,train,2,35,0
+EXP005,NN60,NN60组件,nn60_comp_0286,test,1,35,3
+EXP005,NN60,NN60组件,nn60_comp_0287,val,1,35,3
+EXP005,NN60,NN60组件,nn60_comp_0288,train,2,35,2
+EXP005,NN60,NN60组件,nn60_comp_0289,test,1,34,4
+EXP005,NN60,NN60组件,nn60_comp_0290,train,2,34,2
+EXP005,NN60,NN60组件,nn60_comp_0291,test,1,34,3
+EXP005,NN60,NN60组件,nn60_comp_0292,test,1,34,3
+EXP005,NN60,NN60组件,nn60_comp_0293,val,1,34,3
+EXP005,NN60,NN60组件,nn60_comp_0294,val,1,34,3
+EXP005,NN60,NN60组件,nn60_comp_0295,val,1,33,3
+EXP005,NN60,NN60组件,nn60_comp_0296,val,1,33,4
+EXP005,NN60,NN60组件,nn60_comp_0297,train,2,33,2
+EXP005,NN60,NN60组件,nn60_comp_0298,test,1,33,3
+EXP005,NN60,NN60组件,nn60_comp_0299,val,1,33,3
+EXP005,NN60,NN60组件,nn60_comp_0300,val,1,33,3
+EXP005,NN60,NN60组件,nn60_comp_0301,test,1,33,4
+EXP005,NN60,NN60组件,nn60_comp_0302,val,1,32,3
+EXP005,NN60,NN60组件,nn60_comp_0303,test,1,32,3
+EXP005,NN60,NN60组件,nn60_comp_0304,val,1,32,3
+EXP005,NN60,NN60组件,nn60_comp_0305,val,1,32,3
+EXP005,NN60,NN60组件,nn60_comp_0306,test,1,32,3
+EXP005,NN60,NN60组件,nn60_comp_0307,train,1,32,1
+EXP005,NN60,NN60组件,nn60_comp_0308,test,1,32,2
+EXP005,NN60,NN60组件,nn60_comp_0309,val,1,31,2
+EXP005,NN60,NN60组件,nn60_comp_0310,test,1,31,2
+EXP005,NN60,NN60组件,nn60_comp_0311,val,1,31,3
+EXP005,NN60,NN60组件,nn60_comp_0312,val,1,31,2
+EXP005,NN60,NN60组件,nn60_comp_0313,val,1,31,2
+EXP005,NN60,NN60组件,nn60_comp_0314,val,1,31,1
+EXP005,NN60,NN60组件,nn60_comp_0315,val,1,31,3
+EXP005,NN60,NN60组件,nn60_comp_0316,test,1,31,2
+EXP005,NN60,NN60组件,nn60_comp_0317,test,1,31,4
+EXP005,NN60,NN60组件,nn60_comp_0318,val,1,31,3
+EXP005,NN60,NN60组件,nn60_comp_0319,val,1,31,3
+EXP005,NN60,NN60组件,nn60_comp_0320,val,1,31,2
+EXP005,NN60,NN60组件,nn60_comp_0321,val,1,30,2
+EXP005,NN60,NN60组件,nn60_comp_0322,val,1,30,3
+EXP005,NN60,NN60组件,nn60_comp_0323,test,1,30,3
+EXP005,NN60,NN60组件,nn60_comp_0324,test,1,30,2
+EXP005,NN60,NN60组件,nn60_comp_0325,test,1,30,3
+EXP005,NN60,NN60组件,nn60_comp_0326,test,1,30,3
+EXP005,NN60,NN60组件,nn60_comp_0327,val,1,30,3
+EXP005,NN60,NN60组件,nn60_comp_0328,test,1,30,3
+EXP005,NN60,NN60组件,nn60_comp_0329,val,1,30,1
+EXP005,NN60,NN60组件,nn60_comp_0330,val,1,29,3
+EXP005,NN60,NN60组件,nn60_comp_0331,test,1,29,3
+EXP005,NN60,NN60组件,nn60_comp_0332,val,1,29,3
+EXP005,NN60,NN60组件,nn60_comp_0333,test,1,29,3
+EXP005,NN60,NN60组件,nn60_comp_0334,val,1,29,4
+EXP005,NN60,NN60组件,nn60_comp_0335,test,1,29,2
+EXP005,NN60,NN60组件,nn60_comp_0336,test,1,29,3
+EXP005,NN60,NN60组件,nn60_comp_0337,val,1,29,3
+EXP005,NN60,NN60组件,nn60_comp_0338,test,1,29,3
+EXP005,NN60,NN60组件,nn60_comp_0339,train,2,29,1
+EXP005,NN60,NN60组件,nn60_comp_0340,train,1,29,0
+EXP005,NN60,NN60组件,nn60_comp_0341,test,1,29,2
+EXP005,NN60,NN60组件,nn60_comp_0342,train,1,29,1
+EXP005,NN60,NN60组件,nn60_comp_0343,test,1,28,2
+EXP005,NN60,NN60组件,nn60_comp_0344,test,1,28,1
+EXP005,NN60,NN60组件,nn60_comp_0345,train,1,28,1
+EXP005,NN60,NN60组件,nn60_comp_0346,train,1,28,1
+EXP005,NN60,NN60组件,nn60_comp_0347,test,1,28,2
+EXP005,NN60,NN60组件,nn60_comp_0348,test,1,28,3
+EXP005,NN60,NN60组件,nn60_comp_0349,train,1,28,1
+EXP005,NN60,NN60组件,nn60_comp_0350,val,1,28,3
+EXP005,NN60,NN60组件,nn60_comp_0351,val,1,28,2
+EXP005,NN60,NN60组件,nn60_comp_0352,test,1,28,3
+EXP005,NN60,NN60组件,nn60_comp_0353,train,1,28,1
+EXP005,NN60,NN60组件,nn60_comp_0354,val,1,28,3
+EXP005,NN60,NN60组件,nn60_comp_0355,train,1,27,1
+EXP005,NN60,NN60组件,nn60_comp_0356,test,1,27,2
+EXP005,NN60,NN60组件,nn60_comp_0357,val,1,27,2
+EXP005,NN60,NN60组件,nn60_comp_0358,train,1,27,1
+EXP005,NN60,NN60组件,nn60_comp_0359,val,1,27,2
+EXP005,NN60,NN60组件,nn60_comp_0360,test,1,27,2
+EXP005,NN60,NN60组件,nn60_comp_0361,val,1,27,2
+EXP005,NN60,NN60组件,nn60_comp_0362,train,1,27,1
+EXP005,NN60,NN60组件,nn60_comp_0363,test,1,27,2
+EXP005,NN60,NN60组件,nn60_comp_0364,val,1,27,3
+EXP005,NN60,NN60组件,nn60_comp_0365,test,1,27,2
+EXP005,NN60,NN60组件,nn60_comp_0366,train,1,27,1
+EXP005,NN60,NN60组件,nn60_comp_0367,train,1,27,1
+EXP005,NN60,NN60组件,nn60_comp_0368,test,1,26,2
+EXP005,NN60,NN60组件,nn60_comp_0369,val,1,26,2
+EXP005,NN60,NN60组件,nn60_comp_0370,val,1,26,2
+EXP005,NN60,NN60组件,nn60_comp_0371,test,1,26,2
+EXP005,NN60,NN60组件,nn60_comp_0372,val,1,26,2
+EXP005,NN60,NN60组件,nn60_comp_0373,train,1,26,1
+EXP005,NN60,NN60组件,nn60_comp_0374,train,1,26,1
+EXP005,NN60,NN60组件,nn60_comp_0375,test,1,26,2
+EXP005,NN60,NN60组件,nn60_comp_0376,train,1,26,1
+EXP005,NN60,NN60组件,nn60_comp_0377,test,1,26,2
+EXP005,NN60,NN60组件,nn60_comp_0378,val,1,26,2
+EXP005,NN60,NN60组件,nn60_comp_0379,train,1,26,1
+EXP005,NN60,NN60组件,nn60_comp_0380,train,1,26,0
+EXP005,NN60,NN60组件,nn60_comp_0381,train,1,26,1
+EXP005,NN60,NN60组件,nn60_comp_0382,val,1,26,2
+EXP005,NN60,NN60组件,nn60_comp_0383,val,1,26,2
+EXP005,NN60,NN60组件,nn60_comp_0384,val,1,26,2
+EXP005,NN60,NN60组件,nn60_comp_0385,val,1,26,2
+EXP005,NN60,NN60组件,nn60_comp_0386,train,1,26,1
+EXP005,NN60,NN60组件,nn60_comp_0387,val,1,26,2
+EXP005,NN60,NN60组件,nn60_comp_0388,val,1,26,2
+EXP005,NN60,NN60组件,nn60_comp_0389,val,1,26,1
+EXP005,NN60,NN60组件,nn60_comp_0390,train,1,26,1
+EXP005,NN60,NN60组件,nn60_comp_0391,train,1,26,1
+EXP005,NN60,NN60组件,nn60_comp_0392,train,1,26,1
+EXP005,NN60,NN60组件,nn60_comp_0393,test,1,25,1
+EXP005,NN60,NN60组件,nn60_comp_0394,test,1,25,2
+EXP005,NN60,NN60组件,nn60_comp_0395,val,1,25,1
+EXP005,NN60,NN60组件,nn60_comp_0396,test,1,25,1
+EXP005,NN60,NN60组件,nn60_comp_0397,test,1,25,2
+EXP005,NN60,NN60组件,nn60_comp_0398,val,1,25,2
+EXP005,NN60,NN60组件,nn60_comp_0399,val,1,25,1
+EXP005,NN60,NN60组件,nn60_comp_0400,val,1,25,2
+EXP005,NN60,NN60组件,nn60_comp_0401,test,1,25,2
+EXP005,NN60,NN60组件,nn60_comp_0402,val,1,25,1
+EXP005,NN60,NN60组件,nn60_comp_0403,train,2,25,2
+EXP005,NN60,NN60组件,nn60_comp_0404,test,1,25,2
+EXP005,NN60,NN60组件,nn60_comp_0405,test,1,25,2
+EXP005,NN60,NN60组件,nn60_comp_0406,val,1,25,1
+EXP005,NN60,NN60组件,nn60_comp_0407,train,1,25,1
+EXP005,NN60,NN60组件,nn60_comp_0408,train,1,25,1
+EXP005,NN60,NN60组件,nn60_comp_0409,test,1,25,2
+EXP005,NN60,NN60组件,nn60_comp_0410,test,1,25,2
+EXP005,NN60,NN60组件,nn60_comp_0411,train,1,25,1
+EXP005,NN60,NN60组件,nn60_comp_0412,train,1,25,1
+EXP005,NN60,NN60组件,nn60_comp_0413,val,1,25,1
+EXP005,NN60,NN60组件,nn60_comp_0414,train,1,25,1
+EXP005,NN60,NN60组件,nn60_comp_0415,train,1,25,1
+EXP005,NN60,NN60组件,nn60_comp_0416,val,1,24,2
+EXP005,NN60,NN60组件,nn60_comp_0417,val,1,24,2
+EXP005,NN60,NN60组件,nn60_comp_0418,test,1,24,2
+EXP005,NN60,NN60组件,nn60_comp_0419,test,1,24,1
+EXP005,NN60,NN60组件,nn60_comp_0420,val,1,24,2
+EXP005,NN60,NN60组件,nn60_comp_0421,test,1,24,1
+EXP005,NN60,NN60组件,nn60_comp_0422,test,1,24,1
+EXP005,NN60,NN60组件,nn60_comp_0423,val,1,24,2
+EXP005,NN60,NN60组件,nn60_comp_0424,test,1,24,1
+EXP005,NN60,NN60组件,nn60_comp_0425,train,1,24,1
+EXP005,NN60,NN60组件,nn60_comp_0426,train,1,24,1
+EXP005,NN60,NN60组件,nn60_comp_0427,test,1,24,1
+EXP005,NN60,NN60组件,nn60_comp_0428,test,1,24,1
+EXP005,NN60,NN60组件,nn60_comp_0429,train,1,24,1
+EXP005,NN60,NN60组件,nn60_comp_0430,val,1,24,1
+EXP005,NN60,NN60组件,nn60_comp_0431,train,1,24,1
+EXP005,NN60,NN60组件,nn60_comp_0432,val,1,24,2
+EXP005,NN60,NN60组件,nn60_comp_0433,test,1,24,2
+EXP005,NN60,NN60组件,nn60_comp_0434,train,1,24,1
+EXP005,NN60,NN60组件,nn60_comp_0435,val,1,24,2
+EXP005,NN60,NN60组件,nn60_comp_0436,val,1,24,1
+EXP005,NN60,NN60组件,nn60_comp_0437,test,1,24,2
+EXP005,NN60,NN60组件,nn60_comp_0438,val,1,24,2
+EXP005,NN60,NN60组件,nn60_comp_0439,val,1,23,1
+EXP005,NN60,NN60组件,nn60_comp_0440,val,1,23,1
+EXP005,NN60,NN60组件,nn60_comp_0441,val,1,23,1
+EXP005,NN60,NN60组件,nn60_comp_0442,val,1,23,2
+EXP005,NN60,NN60组件,nn60_comp_0443,val,1,23,1
+EXP005,NN60,NN60组件,nn60_comp_0444,val,1,23,2
+EXP005,NN60,NN60组件,nn60_comp_0445,test,1,23,2
+EXP005,NN60,NN60组件,nn60_comp_0446,test,1,23,1
+EXP005,NN60,NN60组件,nn60_comp_0447,test,1,23,1
+EXP005,NN60,NN60组件,nn60_comp_0448,test,1,23,1
+EXP005,NN60,NN60组件,nn60_comp_0449,train,1,23,1
+EXP005,NN60,NN60组件,nn60_comp_0450,test,1,23,2
+EXP005,NN60,NN60组件,nn60_comp_0451,val,1,23,1
+EXP005,NN60,NN60组件,nn60_comp_0452,val,1,23,2
+EXP005,NN60,NN60组件,nn60_comp_0453,test,1,23,2
+EXP005,NN60,NN60组件,nn60_comp_0454,val,1,23,2
+EXP005,NN60,NN60组件,nn60_comp_0455,train,1,23,1
+EXP005,NN60,NN60组件,nn60_comp_0456,test,1,23,1
+EXP005,NN60,NN60组件,nn60_comp_0457,test,1,23,1
+EXP005,NN60,NN60组件,nn60_comp_0458,train,1,23,1
+EXP005,NN60,NN60组件,nn60_comp_0459,train,1,23,1
+EXP005,NN60,NN60组件,nn60_comp_0460,train,1,23,1
+EXP005,NN60,NN60组件,nn60_comp_0461,test,1,23,1
+EXP005,NN60,NN60组件,nn60_comp_0462,val,1,23,1
+EXP005,NN60,NN60组件,nn60_comp_0463,val,1,23,1
+EXP005,NN60,NN60组件,nn60_comp_0464,val,1,23,2
+EXP005,NN60,NN60组件,nn60_comp_0465,test,1,23,2
+EXP005,NN60,NN60组件,nn60_comp_0466,val,1,23,1
+EXP005,NN60,NN60组件,nn60_comp_0467,val,1,23,2
+EXP005,NN60,NN60组件,nn60_comp_0468,test,1,23,1
+EXP005,NN60,NN60组件,nn60_comp_0469,test,1,23,2
+EXP005,NN60,NN60组件,nn60_comp_0470,val,1,23,1
+EXP005,NN60,NN60组件,nn60_comp_0471,test,1,23,2
+EXP005,NN60,NN60组件,nn60_comp_0472,test,1,23,1
+EXP005,NN60,NN60组件,nn60_comp_0473,test,1,23,1
+EXP005,NN60,NN60组件,nn60_comp_0474,val,1,23,1
+EXP005,NN60,NN60组件,nn60_comp_0475,train,1,23,1
+EXP005,NN60,NN60组件,nn60_comp_0476,val,1,23,2
+EXP005,NN60,NN60组件,nn60_comp_0477,val,1,22,1
+EXP005,NN60,NN60组件,nn60_comp_0478,train,1,22,1
+EXP005,NN60,NN60组件,nn60_comp_0479,train,1,22,1
+EXP005,NN60,NN60组件,nn60_comp_0480,train,1,22,1
+EXP005,NN60,NN60组件,nn60_comp_0481,train,1,22,1
+EXP005,NN60,NN60组件,nn60_comp_0482,test,1,22,1
+EXP005,NN60,NN60组件,nn60_comp_0483,train,1,22,1
+EXP005,NN60,NN60组件,nn60_comp_0484,train,1,22,1
+EXP005,NN60,NN60组件,nn60_comp_0485,test,1,22,1
+EXP005,NN60,NN60组件,nn60_comp_0486,val,1,22,1
+EXP005,NN60,NN60组件,nn60_comp_0487,test,1,22,2
+EXP005,NN60,NN60组件,nn60_comp_0488,val,1,22,2
+EXP005,NN60,NN60组件,nn60_comp_0489,test,1,22,2
+EXP005,NN60,NN60组件,nn60_comp_0490,val,1,22,1
+EXP005,NN60,NN60组件,nn60_comp_0491,test,1,22,2
+EXP005,NN60,NN60组件,nn60_comp_0492,test,1,22,2
+EXP005,NN60,NN60组件,nn60_comp_0493,test,1,22,1
+EXP005,NN60,NN60组件,nn60_comp_0494,train,1,22,1
+EXP005,NN60,NN60组件,nn60_comp_0495,test,1,22,1
+EXP005,NN60,NN60组件,nn60_comp_0496,train,1,22,1
+EXP005,NN60,NN60组件,nn60_comp_0497,val,1,22,1
+EXP005,NN60,NN60组件,nn60_comp_0498,test,1,21,1
+EXP005,NN60,NN60组件,nn60_comp_0499,train,1,21,1
+EXP005,NN60,NN60组件,nn60_comp_0500,train,1,21,1
+EXP005,NN60,NN60组件,nn60_comp_0501,test,1,21,2
+EXP005,NN60,NN60组件,nn60_comp_0502,test,1,21,1
+EXP005,NN60,NN60组件,nn60_comp_0503,train,1,21,1
+EXP005,NN60,NN60组件,nn60_comp_0504,test,1,21,1
+EXP005,NN60,NN60组件,nn60_comp_0505,train,1,21,1
+EXP005,NN60,NN60组件,nn60_comp_0506,test,1,21,1
+EXP005,NN60,NN60组件,nn60_comp_0507,train,1,21,1
+EXP005,NN60,NN60组件,nn60_comp_0508,test,1,21,1
+EXP005,NN60,NN60组件,nn60_comp_0509,val,1,21,2
+EXP005,NN60,NN60组件,nn60_comp_0510,train,1,21,1
+EXP005,NN60,NN60组件,nn60_comp_0511,train,1,21,0
+EXP005,NN60,NN60组件,nn60_comp_0512,train,1,21,1
+EXP005,NN60,NN60组件,nn60_comp_0513,train,1,21,1
+EXP005,NN60,NN60组件,nn60_comp_0514,test,1,21,2
+EXP005,NN60,NN60组件,nn60_comp_0515,train,1,21,1
+EXP005,NN60,NN60组件,nn60_comp_0516,val,1,21,1
+EXP005,NN60,NN60组件,nn60_comp_0517,train,1,21,1
+EXP005,NN60,NN60组件,nn60_comp_0518,val,1,21,1
+EXP005,NN60,NN60组件,nn60_comp_0519,val,1,21,2
+EXP005,NN60,NN60组件,nn60_comp_0520,test,1,21,1
+EXP005,NN60,NN60组件,nn60_comp_0521,val,1,21,1
+EXP005,NN60,NN60组件,nn60_comp_0522,train,1,21,1
+EXP005,NN60,NN60组件,nn60_comp_0523,train,1,21,1
+EXP005,NN60,NN60组件,nn60_comp_0524,train,1,21,1
+EXP005,NN60,NN60组件,nn60_comp_0525,test,1,20,1
+EXP005,NN60,NN60组件,nn60_comp_0526,test,1,20,1
+EXP005,NN60,NN60组件,nn60_comp_0527,train,1,20,1
+EXP005,NN60,NN60组件,nn60_comp_0528,val,1,20,1
+EXP005,NN60,NN60组件,nn60_comp_0529,val,1,20,1
+EXP005,NN60,NN60组件,nn60_comp_0530,train,1,20,1
+EXP005,NN60,NN60组件,nn60_comp_0531,val,1,20,1
+EXP005,NN60,NN60组件,nn60_comp_0532,val,1,20,1
+EXP005,NN60,NN60组件,nn60_comp_0533,test,1,20,1
+EXP005,NN60,NN60组件,nn60_comp_0534,val,1,20,1
+EXP005,NN60,NN60组件,nn60_comp_0535,train,1,20,1
+EXP005,NN60,NN60组件,nn60_comp_0536,train,1,20,1
+EXP005,NN60,NN60组件,nn60_comp_0537,val,1,20,1
+EXP005,NN60,NN60组件,nn60_comp_0538,train,1,20,1
+EXP005,NN60,NN60组件,nn60_comp_0539,train,1,20,1
+EXP005,NN60,NN60组件,nn60_comp_0540,train,1,20,0
+EXP005,NN60,NN60组件,nn60_comp_0541,train,1,20,1
+EXP005,NN60,NN60组件,nn60_comp_0542,test,1,20,1
+EXP005,NN60,NN60组件,nn60_comp_0543,test,1,20,1
+EXP005,NN60,NN60组件,nn60_comp_0544,train,1,20,1
+EXP005,NN60,NN60组件,nn60_comp_0545,train,1,20,1
+EXP005,NN60,NN60组件,nn60_comp_0546,train,1,20,1
+EXP005,NN60,NN60组件,nn60_comp_0547,val,1,20,2
+EXP005,NN60,NN60组件,nn60_comp_0548,test,1,20,1
+EXP005,NN60,NN60组件,nn60_comp_0549,test,1,20,1
+EXP005,NN60,NN60组件,nn60_comp_0550,val,1,20,2
+EXP005,NN60,NN60组件,nn60_comp_0551,test,1,20,1
+EXP005,NN60,NN60组件,nn60_comp_0552,test,1,20,1
+EXP005,NN60,NN60组件,nn60_comp_0553,test,1,20,1
+EXP005,NN60,NN60组件,nn60_comp_0554,test,1,19,1
+EXP005,NN60,NN60组件,nn60_comp_0555,test,1,19,1
+EXP005,NN60,NN60组件,nn60_comp_0556,train,1,19,1
+EXP005,NN60,NN60组件,nn60_comp_0557,test,1,19,1
+EXP005,NN60,NN60组件,nn60_comp_0558,test,1,19,1
+EXP005,NN60,NN60组件,nn60_comp_0559,test,1,19,2
+EXP005,NN60,NN60组件,nn60_comp_0560,train,1,19,1
+EXP005,NN60,NN60组件,nn60_comp_0561,train,1,19,1
+EXP005,NN60,NN60组件,nn60_comp_0562,train,1,19,1
+EXP005,NN60,NN60组件,nn60_comp_0563,train,1,19,1
+EXP005,NN60,NN60组件,nn60_comp_0564,train,1,19,1
+EXP005,NN60,NN60组件,nn60_comp_0565,train,1,19,1
+EXP005,NN60,NN60组件,nn60_comp_0566,train,1,19,1
+EXP005,NN60,NN60组件,nn60_comp_0567,test,1,19,1
+EXP005,NN60,NN60组件,nn60_comp_0568,train,1,19,1
+EXP005,NN60,NN60组件,nn60_comp_0569,train,1,19,1
+EXP005,NN60,NN60组件,nn60_comp_0570,test,1,19,1
+EXP005,NN60,NN60组件,nn60_comp_0571,test,1,19,1
+EXP005,NN60,NN60组件,nn60_comp_0572,test,1,19,1
+EXP005,NN60,NN60组件,nn60_comp_0573,train,1,19,1
+EXP005,NN60,NN60组件,nn60_comp_0574,test,1,19,1
+EXP005,NN60,NN60组件,nn60_comp_0575,train,1,19,1
+EXP005,NN60,NN60组件,nn60_comp_0576,train,1,19,1
+EXP005,NN60,NN60组件,nn60_comp_0577,train,1,19,1
+EXP005,NN60,NN60组件,nn60_comp_0578,train,1,19,1
+EXP005,NN60,NN60组件,nn60_comp_0579,test,1,19,1
+EXP005,NN60,NN60组件,nn60_comp_0580,test,1,19,1
+EXP005,NN60,NN60组件,nn60_comp_0581,train,1,19,1
+EXP005,NN60,NN60组件,nn60_comp_0582,train,1,19,1
+EXP005,NN60,NN60组件,nn60_comp_0583,train,1,18,1
+EXP005,NN60,NN60组件,nn60_comp_0584,train,1,18,1
+EXP005,NN60,NN60组件,nn60_comp_0585,train,1,18,1
+EXP005,NN60,NN60组件,nn60_comp_0586,train,1,18,1
+EXP005,NN60,NN60组件,nn60_comp_0587,train,1,18,0
+EXP005,NN60,NN60组件,nn60_comp_0588,train,1,18,1
+EXP005,NN60,NN60组件,nn60_comp_0589,train,1,18,1
+EXP005,NN60,NN60组件,nn60_comp_0590,train,1,18,1
+EXP005,NN60,NN60组件,nn60_comp_0591,train,1,18,1
+EXP005,NN60,NN60组件,nn60_comp_0592,train,1,18,1
+EXP005,NN60,NN60组件,nn60_comp_0593,test,1,18,1
+EXP005,NN60,NN60组件,nn60_comp_0594,test,1,18,1
+EXP005,NN60,NN60组件,nn60_comp_0595,train,1,18,1
+EXP005,NN60,NN60组件,nn60_comp_0596,train,1,18,0
+EXP005,NN60,NN60组件,nn60_comp_0597,test,1,18,1
+EXP005,NN60,NN60组件,nn60_comp_0598,test,1,18,1
+EXP005,NN60,NN60组件,nn60_comp_0599,train,1,18,1
+EXP005,NN60,NN60组件,nn60_comp_0600,train,1,18,1
+EXP005,NN60,NN60组件,nn60_comp_0601,test,1,18,1
+EXP005,NN60,NN60组件,nn60_comp_0602,test,1,18,2
+EXP005,NN60,NN60组件,nn60_comp_0603,train,1,18,1
+EXP005,NN60,NN60组件,nn60_comp_0604,train,1,18,1
+EXP005,NN60,NN60组件,nn60_comp_0605,train,1,17,1
+EXP005,NN60,NN60组件,nn60_comp_0606,train,1,17,1
+EXP005,NN60,NN60组件,nn60_comp_0607,train,1,17,1
+EXP005,NN60,NN60组件,nn60_comp_0608,train,1,17,1
+EXP005,NN60,NN60组件,nn60_comp_0609,train,1,17,1
+EXP005,NN60,NN60组件,nn60_comp_0610,train,1,17,1
+EXP005,NN60,NN60组件,nn60_comp_0611,train,1,17,1
+EXP005,NN60,NN60组件,nn60_comp_0612,train,1,17,1
+EXP005,NN60,NN60组件,nn60_comp_0613,train,1,17,1
+EXP005,NN60,NN60组件,nn60_comp_0614,train,1,17,1
+EXP005,NN60,NN60组件,nn60_comp_0615,train,1,17,1
+EXP005,NN60,NN60组件,nn60_comp_0616,train,1,17,1
+EXP005,NN60,NN60组件,nn60_comp_0617,train,1,17,1
+EXP005,NN60,NN60组件,nn60_comp_0618,train,1,17,1
+EXP005,NN60,NN60组件,nn60_comp_0619,train,1,17,1
+EXP005,NN60,NN60组件,nn60_comp_0620,train,1,17,1
+EXP005,NN60,NN60组件,nn60_comp_0621,train,1,17,1
+EXP005,NN60,NN60组件,nn60_comp_0622,train,1,17,1
+EXP005,NN60,NN60组件,nn60_comp_0623,train,1,17,1
+EXP005,NN60,NN60组件,nn60_comp_0624,train,1,17,1
+EXP005,NN60,NN60组件,nn60_comp_0625,train,1,16,1
+EXP005,NN60,NN60组件,nn60_comp_0626,train,1,16,1
+EXP005,NN60,NN60组件,nn60_comp_0627,train,1,16,1
+EXP005,NN60,NN60组件,nn60_comp_0628,train,1,16,1
+EXP005,NN60,NN60组件,nn60_comp_0629,train,1,16,1
+EXP005,NN60,NN60组件,nn60_comp_0630,train,1,16,1
+EXP005,NN60,NN60组件,nn60_comp_0631,train,1,16,1
+EXP005,NN60,NN60组件,nn60_comp_0632,train,1,16,1
+EXP005,NN60,NN60组件,nn60_comp_0633,train,1,16,1
+EXP005,NN60,NN60组件,nn60_comp_0634,train,1,16,0
+EXP005,NN60,NN60组件,nn60_comp_0635,train,1,16,1
+EXP005,NN60,NN60组件,nn60_comp_0636,train,1,16,1
+EXP005,NN60,NN60组件,nn60_comp_0637,train,1,16,1
+EXP005,NN60,NN60组件,nn60_comp_0638,train,1,16,1
+EXP005,NN60,NN60组件,nn60_comp_0639,train,1,15,1
+EXP005,NN60,NN60组件,nn60_comp_0640,train,1,15,1
+EXP005,NN60,NN60组件,nn60_comp_0641,train,1,15,0
+EXP005,NN60,NN60组件,nn60_comp_0642,train,1,15,1
+EXP005,NN60,NN60组件,nn60_comp_0643,train,1,15,1
+EXP005,NN60,NN60组件,nn60_comp_0644,train,1,15,1
+EXP005,NN60,NN60组件,nn60_comp_0645,train,1,15,1
+EXP005,NN60,NN60组件,nn60_comp_0646,train,1,15,1
+EXP005,NN60,NN60组件,nn60_comp_0647,train,1,15,1
+EXP005,NN60,NN60组件,nn60_comp_0648,train,1,15,1
+EXP005,NN60,NN60组件,nn60_comp_0649,train,1,15,1
+EXP005,NN60,NN60组件,nn60_comp_0650,train,1,15,1
+EXP005,NN60,NN60组件,nn60_comp_0651,train,1,15,1
+EXP005,NN60,NN60组件,nn60_comp_0652,train,1,14,1
+EXP005,NN60,NN60组件,nn60_comp_0653,train,1,14,1
+EXP005,NN60,NN60组件,nn60_comp_0654,train,1,14,1
+EXP005,NN60,NN60组件,nn60_comp_0655,train,1,14,1
+EXP005,NN60,NN60组件,nn60_comp_0656,train,1,13,1
+EXP005,NN60,NN60组件,nn60_comp_0657,train,1,13,1
+EXP005,NN60,NN60组件,nn60_comp_0658,train,1,13,1
+EXP005,NN60,NN60组件,nn60_comp_0659,train,1,13,1
+EXP005,NN60,NN60组件,nn60_comp_0660,train,1,13,1
+EXP005,NN60,NN60组件,nn60_comp_0661,train,1,13,1
+EXP005,NN60,NN60组件,nn60_comp_0662,train,1,13,1
+EXP005,NN60,NN60组件,nn60_comp_0663,train,1,13,0
+EXP005,NN60,NN60组件,nn60_comp_0664,train,1,12,0
+EXP005,NN60,NN60组件,nn60_comp_0665,train,1,12,1
+EXP005,NN60,NN60组件,nn60_comp_0666,train,1,12,1
+EXP005,NN60,NN60组件,nn60_comp_0667,train,1,11,1
+EXP005,NN60,NN60组件,nn60_comp_0668,train,1,7,0
+EXP005,NN60,NN60组件,nn60_comp_0669,train,1,3,1
+EXP005,NN60,NN60组件,nn60_comp_0670,train,1,2,0
+EXP007,NN80,NN80组件,nn80_comp_0001,val,18,343,20
+EXP007,NN80,NN80组件,nn80_comp_0002,test,15,538,61
+EXP007,NN80,NN80组件,nn80_comp_0003,test,12,350,30
+EXP007,NN80,NN80组件,nn80_comp_0004,val,11,233,14
+EXP007,NN80,NN80组件,nn80_comp_0005,test,10,268,20
+EXP007,NN80,NN80组件,nn80_comp_0006,test,10,260,21
+EXP007,NN80,NN80组件,nn80_comp_0007,test,10,299,28
+EXP007,NN80,NN80组件,nn80_comp_0008,val,9,187,11
+EXP007,NN80,NN80组件,nn80_comp_0009,test,9,297,28
+EXP007,NN80,NN80组件,nn80_comp_0010,val,8,166,10
+EXP007,NN80,NN80组件,nn80_comp_0011,val,7,130,9
+EXP007,NN80,NN80组件,nn80_comp_0012,test,7,180,13
+EXP007,NN80,NN80组件,nn80_comp_0013,test,7,190,14
+EXP007,NN80,NN80组件,nn80_comp_0014,test,7,682,98
+EXP007,NN80,NN80组件,nn80_comp_0015,val,7,140,10
+EXP007,NN80,NN80组件,nn80_comp_0016,test,6,147,11
+EXP007,NN80,NN80组件,nn80_comp_0017,val,6,140,7
+EXP007,NN80,NN80组件,nn80_comp_0018,test,6,184,19
+EXP007,NN80,NN80组件,nn80_comp_0019,val,5,102,8
+EXP007,NN80,NN80组件,nn80_comp_0020,test,5,155,15
+EXP007,NN80,NN80组件,nn80_comp_0021,test,5,193,18
+EXP007,NN80,NN80组件,nn80_comp_0022,val,5,106,5
+EXP007,NN80,NN80组件,nn80_comp_0023,val,5,103,5
+EXP007,NN80,NN80组件,nn80_comp_0024,val,4,101,8
+EXP007,NN80,NN80组件,nn80_comp_0025,val,4,88,6
+EXP007,NN80,NN80组件,nn80_comp_0026,test,4,160,19
+EXP007,NN80,NN80组件,nn80_comp_0027,test,4,144,16
+EXP007,NN80,NN80组件,nn80_comp_0028,val,4,86,4
+EXP007,NN80,NN80组件,nn80_comp_0029,val,4,118,11
+EXP007,NN80,NN80组件,nn80_comp_0030,test,4,160,17
+EXP007,NN80,NN80组件,nn80_comp_0031,val,4,109,5
+EXP007,NN80,NN80组件,nn80_comp_0032,test,4,153,17
+EXP007,NN80,NN80组件,nn80_comp_0033,val,4,93,7
+EXP007,NN80,NN80组件,nn80_comp_0034,val,4,81,0
+EXP007,NN80,NN80组件,nn80_comp_0035,test,4,257,34
+EXP007,NN80,NN80组件,nn80_comp_0036,val,4,82,4
+EXP007,NN80,NN80组件,nn80_comp_0037,val,4,92,6
+EXP007,NN80,NN80组件,nn80_comp_0038,val,3,68,5
+EXP007,NN80,NN80组件,nn80_comp_0039,val,3,74,5
+EXP007,NN80,NN80组件,nn80_comp_0040,val,3,110,12
+EXP007,NN80,NN80组件,nn80_comp_0041,test,3,193,26
+EXP007,NN80,NN80组件,nn80_comp_0042,val,3,74,6
+EXP007,NN80,NN80组件,nn80_comp_0043,train,3,59,4
+EXP007,NN80,NN80组件,nn80_comp_0044,val,3,70,4
+EXP007,NN80,NN80组件,nn80_comp_0045,val,3,129,16
+EXP007,NN80,NN80组件,nn80_comp_0046,val,3,100,9
+EXP007,NN80,NN80组件,nn80_comp_0047,test,3,154,19
+EXP007,NN80,NN80组件,nn80_comp_0048,test,3,149,18
+EXP007,NN80,NN80组件,nn80_comp_0049,val,3,86,6
+EXP007,NN80,NN80组件,nn80_comp_0050,val,3,75,5
+EXP007,NN80,NN80组件,nn80_comp_0051,val,3,91,9
+EXP007,NN80,NN80组件,nn80_comp_0052,val,3,79,7
+EXP007,NN80,NN80组件,nn80_comp_0053,val,3,142,17
+EXP007,NN80,NN80组件,nn80_comp_0054,val,3,79,9
+EXP007,NN80,NN80组件,nn80_comp_0055,val,3,121,14
+EXP007,NN80,NN80组件,nn80_comp_0056,train,3,63,3
+EXP007,NN80,NN80组件,nn80_comp_0057,val,3,72,6
+EXP007,NN80,NN80组件,nn80_comp_0058,train,3,53,3
+EXP007,NN80,NN80组件,nn80_comp_0059,train,3,57,3
+EXP007,NN80,NN80组件,nn80_comp_0060,val,3,94,9
+EXP007,NN80,NN80组件,nn80_comp_0061,val,3,112,11
+EXP007,NN80,NN80组件,nn80_comp_0062,val,3,111,11
+EXP007,NN80,NN80组件,nn80_comp_0063,train,3,62,3
+EXP007,NN80,NN80组件,nn80_comp_0064,train,3,65,3
+EXP007,NN80,NN80组件,nn80_comp_0065,val,3,82,7
+EXP007,NN80,NN80组件,nn80_comp_0066,test,3,103,6
+EXP007,NN80,NN80组件,nn80_comp_0067,val,3,56,0
+EXP007,NN80,NN80组件,nn80_comp_0068,val,3,73,7
+EXP007,NN80,NN80组件,nn80_comp_0069,val,3,118,12
+EXP007,NN80,NN80组件,nn80_comp_0070,val,3,70,4
+EXP007,NN80,NN80组件,nn80_comp_0071,val,3,94,9
+EXP007,NN80,NN80组件,nn80_comp_0072,val,3,77,4
+EXP007,NN80,NN80组件,nn80_comp_0073,test,3,66,3
+EXP007,NN80,NN80组件,nn80_comp_0074,train,3,61,3
+EXP007,NN80,NN80组件,nn80_comp_0075,train,3,64,5
+EXP007,NN80,NN80组件,nn80_comp_0076,test,3,171,22
+EXP007,NN80,NN80组件,nn80_comp_0077,test,3,161,20
+EXP007,NN80,NN80组件,nn80_comp_0078,test,3,320,45
+EXP007,NN80,NN80组件,nn80_comp_0079,val,3,115,12
+EXP007,NN80,NN80组件,nn80_comp_0080,val,3,133,14
+EXP007,NN80,NN80组件,nn80_comp_0081,val,3,126,13
+EXP007,NN80,NN80组件,nn80_comp_0082,val,3,60,1
+EXP007,NN80,NN80组件,nn80_comp_0083,val,3,76,4
+EXP007,NN80,NN80组件,nn80_comp_0084,val,3,92,8
+EXP007,NN80,NN80组件,nn80_comp_0085,val,3,105,10
+EXP007,NN80,NN80组件,nn80_comp_0086,train,3,65,3
+EXP007,NN80,NN80组件,nn80_comp_0087,val,3,115,11
+EXP007,NN80,NN80组件,nn80_comp_0088,test,3,158,17
+EXP007,NN80,NN80组件,nn80_comp_0089,val,3,142,16
+EXP007,NN80,NN80组件,nn80_comp_0090,val,3,70,4
+EXP007,NN80,NN80组件,nn80_comp_0091,val,3,120,13
+EXP007,NN80,NN80组件,nn80_comp_0092,test,3,151,19
+EXP007,NN80,NN80组件,nn80_comp_0093,val,3,92,10
+EXP007,NN80,NN80组件,nn80_comp_0094,val,2,81,9
+EXP007,NN80,NN80组件,nn80_comp_0095,train,2,42,2
+EXP007,NN80,NN80组件,nn80_comp_0096,train,2,33,2
+EXP007,NN80,NN80组件,nn80_comp_0097,train,2,41,2
+EXP007,NN80,NN80组件,nn80_comp_0098,val,2,94,11
+EXP007,NN80,NN80组件,nn80_comp_0099,val,2,116,13
+EXP007,NN80,NN80组件,nn80_comp_0100,train,2,48,3
+EXP007,NN80,NN80组件,nn80_comp_0101,train,2,51,2
+EXP007,NN80,NN80组件,nn80_comp_0102,train,2,63,5
+EXP007,NN80,NN80组件,nn80_comp_0103,val,2,40,1
+EXP007,NN80,NN80组件,nn80_comp_0104,train,2,47,4
+EXP007,NN80,NN80组件,nn80_comp_0105,train,2,52,3
+EXP007,NN80,NN80组件,nn80_comp_0106,val,2,115,14
+EXP007,NN80,NN80组件,nn80_comp_0107,train,2,36,2
+EXP007,NN80,NN80组件,nn80_comp_0108,train,2,49,5
+EXP007,NN80,NN80组件,nn80_comp_0109,train,2,57,4
+EXP007,NN80,NN80组件,nn80_comp_0110,train,2,49,4
+EXP007,NN80,NN80组件,nn80_comp_0111,train,2,66,7
+EXP007,NN80,NN80组件,nn80_comp_0112,val,2,76,8
+EXP007,NN80,NN80组件,nn80_comp_0113,train,2,65,4
+EXP007,NN80,NN80组件,nn80_comp_0114,train,2,53,4
+EXP007,NN80,NN80组件,nn80_comp_0115,train,2,41,2
+EXP007,NN80,NN80组件,nn80_comp_0116,train,2,42,2
+EXP007,NN80,NN80组件,nn80_comp_0117,train,2,46,2
+EXP007,NN80,NN80组件,nn80_comp_0118,train,2,47,3
+EXP007,NN80,NN80组件,nn80_comp_0119,train,2,54,3
+EXP007,NN80,NN80组件,nn80_comp_0120,test,2,932,148
+EXP007,NN80,NN80组件,nn80_comp_0121,train,2,44,4
+EXP007,NN80,NN80组件,nn80_comp_0122,train,2,30,2
+EXP007,NN80,NN80组件,nn80_comp_0123,train,2,59,3
+EXP007,NN80,NN80组件,nn80_comp_0124,train,2,32,2
+EXP007,NN80,NN80组件,nn80_comp_0125,train,2,37,2
+EXP007,NN80,NN80组件,nn80_comp_0126,train,2,41,2
+EXP007,NN80,NN80组件,nn80_comp_0127,train,2,50,4
+EXP007,NN80,NN80组件,nn80_comp_0128,train,2,42,2
+EXP007,NN80,NN80组件,nn80_comp_0129,train,2,44,3
+EXP007,NN80,NN80组件,nn80_comp_0130,train,2,49,4
+EXP007,NN80,NN80组件,nn80_comp_0131,train,2,33,2
+EXP007,NN80,NN80组件,nn80_comp_0132,val,2,68,7
+EXP007,NN80,NN80组件,nn80_comp_0133,train,2,27,2
+EXP007,NN80,NN80组件,nn80_comp_0134,val,2,92,11
+EXP007,NN80,NN80组件,nn80_comp_0135,val,2,97,13
+EXP007,NN80,NN80组件,nn80_comp_0136,train,2,34,2
+EXP007,NN80,NN80组件,nn80_comp_0137,train,2,46,2
+EXP007,NN80,NN80组件,nn80_comp_0138,val,2,89,10
+EXP007,NN80,NN80组件,nn80_comp_0139,train,2,38,3
+EXP007,NN80,NN80组件,nn80_comp_0140,train,2,45,5
+EXP007,NN80,NN80组件,nn80_comp_0141,train,2,52,2
+EXP007,NN80,NN80组件,nn80_comp_0142,train,2,35,2
+EXP007,NN80,NN80组件,nn80_comp_0143,train,2,43,3
+EXP007,NN80,NN80组件,nn80_comp_0144,train,2,44,2
+EXP007,NN80,NN80组件,nn80_comp_0145,train,2,52,4
+EXP007,NN80,NN80组件,nn80_comp_0146,val,2,72,7
+EXP007,NN80,NN80组件,nn80_comp_0147,train,2,40,2
+EXP007,NN80,NN80组件,nn80_comp_0148,train,2,40,3
+EXP007,NN80,NN80组件,nn80_comp_0149,train,2,48,4
+EXP007,NN80,NN80组件,nn80_comp_0150,val,2,41,1
+EXP007,NN80,NN80组件,nn80_comp_0151,train,2,42,2
+EXP007,NN80,NN80组件,nn80_comp_0152,train,2,39,2
+EXP007,NN80,NN80组件,nn80_comp_0153,train,2,48,4
+EXP007,NN80,NN80组件,nn80_comp_0154,val,2,82,10
+EXP007,NN80,NN80组件,nn80_comp_0155,train,2,67,8
+EXP007,NN80,NN80组件,nn80_comp_0156,train,2,36,2
+EXP007,NN80,NN80组件,nn80_comp_0157,train,2,49,2
+EXP007,NN80,NN80组件,nn80_comp_0158,train,2,50,5
+EXP007,NN80,NN80组件,nn80_comp_0159,train,2,50,3
+EXP007,NN80,NN80组件,nn80_comp_0160,val,2,84,8
+EXP007,NN80,NN80组件,nn80_comp_0161,train,2,51,4
+EXP007,NN80,NN80组件,nn80_comp_0162,val,2,74,7
+EXP007,NN80,NN80组件,nn80_comp_0163,val,2,45,1
+EXP007,NN80,NN80组件,nn80_comp_0164,train,2,67,9
+EXP007,NN80,NN80组件,nn80_comp_0165,val,2,90,10
+EXP007,NN80,NN80组件,nn80_comp_0166,train,2,43,3
+EXP007,NN80,NN80组件,nn80_comp_0167,test,2,177,25
+EXP007,NN80,NN80组件,nn80_comp_0168,val,2,87,10
+EXP007,NN80,NN80组件,nn80_comp_0169,val,2,136,16
+EXP007,NN80,NN80组件,nn80_comp_0170,val,2,75,7
+EXP007,NN80,NN80组件,nn80_comp_0171,train,2,56,5
+EXP007,NN80,NN80组件,nn80_comp_0172,train,2,36,2
+EXP007,NN80,NN80组件,nn80_comp_0173,val,2,74,8
+EXP007,NN80,NN80组件,nn80_comp_0174,val,2,86,11
+EXP007,NN80,NN80组件,nn80_comp_0175,val,2,125,17
+EXP007,NN80,NN80组件,nn80_comp_0176,val,2,97,11
+EXP007,NN80,NN80组件,nn80_comp_0177,val,2,29,1
+EXP007,NN80,NN80组件,nn80_comp_0178,train,2,43,2
+EXP007,NN80,NN80组件,nn80_comp_0179,val,2,98,12
+EXP007,NN80,NN80组件,nn80_comp_0180,train,2,58,6
+EXP007,NN80,NN80组件,nn80_comp_0181,train,2,53,3
+EXP007,NN80,NN80组件,nn80_comp_0182,val,2,35,0
+EXP007,NN80,NN80组件,nn80_comp_0183,train,2,49,2
+EXP007,NN80,NN80组件,nn80_comp_0184,train,2,51,3
+EXP007,NN80,NN80组件,nn80_comp_0185,train,2,54,4
+EXP007,NN80,NN80组件,nn80_comp_0186,train,2,45,2
+EXP007,NN80,NN80组件,nn80_comp_0187,val,2,69,7
+EXP007,NN80,NN80组件,nn80_comp_0188,train,2,47,2
+EXP007,NN80,NN80组件,nn80_comp_0189,train,2,48,4
+EXP007,NN80,NN80组件,nn80_comp_0190,train,2,45,2
+EXP007,NN80,NN80组件,nn80_comp_0191,test,2,365,58
+EXP007,NN80,NN80组件,nn80_comp_0192,train,2,48,3
+EXP007,NN80,NN80组件,nn80_comp_0193,test,2,151,20
+EXP007,NN80,NN80组件,nn80_comp_0194,train,2,50,4
+EXP007,NN80,NN80组件,nn80_comp_0195,val,2,85,10
+EXP007,NN80,NN80组件,nn80_comp_0196,val,2,80,8
+EXP007,NN80,NN80组件,nn80_comp_0197,train,2,49,2
+EXP007,NN80,NN80组件,nn80_comp_0198,val,2,69,7
+EXP007,NN80,NN80组件,nn80_comp_0199,train,2,57,6
+EXP007,NN80,NN80组件,nn80_comp_0200,train,2,45,4
+EXP007,NN80,NN80组件,nn80_comp_0201,train,2,54,4
+EXP007,NN80,NN80组件,nn80_comp_0202,train,2,37,2
+EXP007,NN80,NN80组件,nn80_comp_0203,train,2,42,2
+EXP007,NN80,NN80组件,nn80_comp_0204,train,2,38,3
+EXP007,NN80,NN80组件,nn80_comp_0205,train,2,55,5
+EXP007,NN80,NN80组件,nn80_comp_0206,train,2,61,6
+EXP007,NN80,NN80组件,nn80_comp_0207,test,2,181,24
+EXP007,NN80,NN80组件,nn80_comp_0208,train,2,37,2
+EXP007,NN80,NN80组件,nn80_comp_0209,val,2,90,10
+EXP007,NN80,NN80组件,nn80_comp_0210,train,2,43,2
+EXP007,NN80,NN80组件,nn80_comp_0211,val,2,77,8
+EXP007,NN80,NN80组件,nn80_comp_0212,train,2,37,2
+EXP007,NN80,NN80组件,nn80_comp_0213,train,2,56,5
+EXP007,NN80,NN80组件,nn80_comp_0214,train,1,26,2
+EXP007,NN80,NN80组件,nn80_comp_0215,train,1,22,1
+EXP007,NN80,NN80组件,nn80_comp_0216,test,1,16,1
+EXP007,NN80,NN80组件,nn80_comp_0217,test,1,19,1
+EXP007,NN80,NN80组件,nn80_comp_0218,train,1,23,1
+EXP007,NN80,NN80组件,nn80_comp_0219,train,1,22,1
+EXP007,NN80,NN80组件,nn80_comp_0220,train,1,23,1
+EXP007,NN80,NN80组件,nn80_comp_0221,val,1,104,16
+EXP007,NN80,NN80组件,nn80_comp_0222,train,1,21,1
+EXP007,NN80,NN80组件,nn80_comp_0223,train,1,26,2
+EXP007,NN80,NN80组件,nn80_comp_0224,train,1,43,5
+EXP007,NN80,NN80组件,nn80_comp_0225,train,1,26,3
+EXP007,NN80,NN80组件,nn80_comp_0226,train,1,24,2
+EXP007,NN80,NN80组件,nn80_comp_0227,train,1,26,1
+EXP007,NN80,NN80组件,nn80_comp_0228,train,1,42,4
+EXP007,NN80,NN80组件,nn80_comp_0229,train,1,19,1
+EXP007,NN80,NN80组件,nn80_comp_0230,train,1,22,1
+EXP007,NN80,NN80组件,nn80_comp_0231,train,1,37,4
+EXP007,NN80,NN80组件,nn80_comp_0232,test,1,19,1
+EXP007,NN80,NN80组件,nn80_comp_0233,train,1,34,4
+EXP007,NN80,NN80组件,nn80_comp_0234,train,1,41,4
+EXP007,NN80,NN80组件,nn80_comp_0235,train,1,40,4
+EXP007,NN80,NN80组件,nn80_comp_0236,train,1,35,3
+EXP007,NN80,NN80组件,nn80_comp_0237,train,1,21,1
+EXP007,NN80,NN80组件,nn80_comp_0238,train,1,25,1
+EXP007,NN80,NN80组件,nn80_comp_0239,train,1,29,2
+EXP007,NN80,NN80组件,nn80_comp_0240,train,1,31,3
+EXP007,NN80,NN80组件,nn80_comp_0241,train,1,24,2
+EXP007,NN80,NN80组件,nn80_comp_0242,train,1,22,1
+EXP007,NN80,NN80组件,nn80_comp_0243,train,1,26,2
+EXP007,NN80,NN80组件,nn80_comp_0244,train,1,20,1
+EXP007,NN80,NN80组件,nn80_comp_0245,train,1,36,4
+EXP007,NN80,NN80组件,nn80_comp_0246,train,1,41,4
+EXP007,NN80,NN80组件,nn80_comp_0247,train,1,17,2
+EXP007,NN80,NN80组件,nn80_comp_0248,test,1,18,1
+EXP007,NN80,NN80组件,nn80_comp_0249,train,1,25,2
+EXP007,NN80,NN80组件,nn80_comp_0250,test,1,13,1
+EXP007,NN80,NN80组件,nn80_comp_0251,train,1,25,1
+EXP007,NN80,NN80组件,nn80_comp_0252,test,1,18,0
+EXP007,NN80,NN80组件,nn80_comp_0253,test,1,16,1
+EXP007,NN80,NN80组件,nn80_comp_0254,train,1,19,1
+EXP007,NN80,NN80组件,nn80_comp_0255,train,1,20,1
+EXP007,NN80,NN80组件,nn80_comp_0256,train,1,28,2
+EXP007,NN80,NN80组件,nn80_comp_0257,train,1,32,3
+EXP007,NN80,NN80组件,nn80_comp_0258,test,1,12,0
+EXP007,NN80,NN80组件,nn80_comp_0259,train,1,20,1
+EXP007,NN80,NN80组件,nn80_comp_0260,train,1,19,1
+EXP007,NN80,NN80组件,nn80_comp_0261,test,1,17,1
+EXP007,NN80,NN80组件,nn80_comp_0262,train,1,29,3
+EXP007,NN80,NN80组件,nn80_comp_0263,train,1,24,2
+EXP007,NN80,NN80组件,nn80_comp_0264,train,1,28,1
+EXP007,NN80,NN80组件,nn80_comp_0265,train,1,39,4
+EXP007,NN80,NN80组件,nn80_comp_0266,train,1,23,2
+EXP007,NN80,NN80组件,nn80_comp_0267,test,1,19,1
+EXP007,NN80,NN80组件,nn80_comp_0268,train,1,20,1
+EXP007,NN80,NN80组件,nn80_comp_0269,train,1,19,2
+EXP007,NN80,NN80组件,nn80_comp_0270,train,1,37,4
+EXP007,NN80,NN80组件,nn80_comp_0271,test,1,17,1
+EXP007,NN80,NN80组件,nn80_comp_0272,train,1,22,1
+EXP007,NN80,NN80组件,nn80_comp_0273,train,1,21,1
+EXP007,NN80,NN80组件,nn80_comp_0274,train,1,22,1
+EXP007,NN80,NN80组件,nn80_comp_0275,train,1,23,1
+EXP007,NN80,NN80组件,nn80_comp_0276,train,1,48,6
+EXP007,NN80,NN80组件,nn80_comp_0277,test,1,15,1
+EXP007,NN80,NN80组件,nn80_comp_0278,train,1,19,1
+EXP007,NN80,NN80组件,nn80_comp_0279,train,1,26,2
+EXP007,NN80,NN80组件,nn80_comp_0280,train,1,37,4
+EXP007,NN80,NN80组件,nn80_comp_0281,train,1,30,3
+EXP007,NN80,NN80组件,nn80_comp_0282,test,1,16,1
+EXP007,NN80,NN80组件,nn80_comp_0283,train,1,46,4
+EXP007,NN80,NN80组件,nn80_comp_0284,train,1,25,1
+EXP007,NN80,NN80组件,nn80_comp_0285,test,1,16,1
+EXP007,NN80,NN80组件,nn80_comp_0286,train,1,26,2
+EXP007,NN80,NN80组件,nn80_comp_0287,train,1,32,2
+EXP007,NN80,NN80组件,nn80_comp_0288,train,1,20,1
+EXP007,NN80,NN80组件,nn80_comp_0289,train,1,24,1
+EXP007,NN80,NN80组件,nn80_comp_0290,train,1,35,3
+EXP007,NN80,NN80组件,nn80_comp_0291,train,1,24,2
+EXP007,NN80,NN80组件,nn80_comp_0292,train,1,26,2
+EXP007,NN80,NN80组件,nn80_comp_0293,train,1,19,2
+EXP007,NN80,NN80组件,nn80_comp_0294,train,1,32,3
+EXP007,NN80,NN80组件,nn80_comp_0295,train,1,36,4
+EXP007,NN80,NN80组件,nn80_comp_0296,train,1,33,3
+EXP007,NN80,NN80组件,nn80_comp_0297,train,1,44,5
+EXP007,NN80,NN80组件,nn80_comp_0298,train,1,30,2
+EXP007,NN80,NN80组件,nn80_comp_0299,train,1,21,2
+EXP007,NN80,NN80组件,nn80_comp_0300,train,1,26,1
+EXP007,NN80,NN80组件,nn80_comp_0301,train,1,32,3
+EXP007,NN80,NN80组件,nn80_comp_0302,train,1,20,1
+EXP007,NN80,NN80组件,nn80_comp_0303,train,1,21,2
+EXP007,NN80,NN80组件,nn80_comp_0304,train,1,12,1
+EXP007,NN80,NN80组件,nn80_comp_0305,train,1,22,1
+EXP007,NN80,NN80组件,nn80_comp_0306,train,1,23,1
+EXP007,NN80,NN80组件,nn80_comp_0307,train,1,19,2
+EXP007,NN80,NN80组件,nn80_comp_0308,test,1,18,1
+EXP007,NN80,NN80组件,nn80_comp_0309,test,1,17,1
+EXP007,NN80,NN80组件,nn80_comp_0310,test,1,14,1
+EXP007,NN80,NN80组件,nn80_comp_0311,train,1,11,1
+EXP007,NN80,NN80组件,nn80_comp_0312,train,1,24,2
+EXP007,NN80,NN80组件,nn80_comp_0313,train,1,24,1
+EXP007,NN80,NN80组件,nn80_comp_0314,train,1,32,3
+EXP007,NN80,NN80组件,nn80_comp_0315,train,1,20,1
+EXP007,NN80,NN80组件,nn80_comp_0316,train,1,19,1
+EXP007,NN80,NN80组件,nn80_comp_0317,train,1,22,1
+EXP007,NN80,NN80组件,nn80_comp_0318,train,1,25,2
+EXP007,NN80,NN80组件,nn80_comp_0319,train,1,23,1
+EXP007,NN80,NN80组件,nn80_comp_0320,train,1,25,2
+EXP007,NN80,NN80组件,nn80_comp_0321,train,1,20,2
+EXP007,NN80,NN80组件,nn80_comp_0322,train,1,27,1
+EXP007,NN80,NN80组件,nn80_comp_0323,train,1,19,1
+EXP007,NN80,NN80组件,nn80_comp_0324,train,1,25,1
+EXP007,NN80,NN80组件,nn80_comp_0325,test,1,18,1
+EXP007,NN80,NN80组件,nn80_comp_0326,train,1,23,2
+EXP007,NN80,NN80组件,nn80_comp_0327,train,1,21,1
+EXP007,NN80,NN80组件,nn80_comp_0328,train,1,3,1
+EXP007,NN80,NN80组件,nn80_comp_0329,train,1,29,3
+EXP007,NN80,NN80组件,nn80_comp_0330,train,1,23,1
+EXP007,NN80,NN80组件,nn80_comp_0331,train,1,20,1
+EXP007,NN80,NN80组件,nn80_comp_0332,test,1,18,1
+EXP007,NN80,NN80组件,nn80_comp_0333,train,1,19,1
+EXP007,NN80,NN80组件,nn80_comp_0334,train,1,19,1
+EXP007,NN80,NN80组件,nn80_comp_0335,train,1,22,1
+EXP007,NN80,NN80组件,nn80_comp_0336,train,1,30,3
+EXP007,NN80,NN80组件,nn80_comp_0337,train,1,21,1
+EXP007,NN80,NN80组件,nn80_comp_0338,train,1,24,1
+EXP007,NN80,NN80组件,nn80_comp_0339,train,1,25,2
+EXP007,NN80,NN80组件,nn80_comp_0340,train,1,25,2
+EXP007,NN80,NN80组件,nn80_comp_0341,train,1,25,1
+EXP007,NN80,NN80组件,nn80_comp_0342,test,1,13,1
+EXP007,NN80,NN80组件,nn80_comp_0343,test,1,18,1
+EXP007,NN80,NN80组件,nn80_comp_0344,train,1,11,1
+EXP007,NN80,NN80组件,nn80_comp_0345,test,1,14,1
+EXP007,NN80,NN80组件,nn80_comp_0346,train,1,24,2
+EXP007,NN80,NN80组件,nn80_comp_0347,train,1,23,2
+EXP007,NN80,NN80组件,nn80_comp_0348,train,1,23,2
+EXP007,NN80,NN80组件,nn80_comp_0349,test,1,18,0
+EXP007,NN80,NN80组件,nn80_comp_0350,train,1,20,1
+EXP007,NN80,NN80组件,nn80_comp_0351,train,1,22,1
+EXP007,NN80,NN80组件,nn80_comp_0352,train,1,29,3
+EXP007,NN80,NN80组件,nn80_comp_0353,test,1,17,0
+EXP007,NN80,NN80组件,nn80_comp_0354,train,1,19,1
+EXP007,NN80,NN80组件,nn80_comp_0355,train,1,20,1
+EXP007,NN80,NN80组件,nn80_comp_0356,train,1,33,4
+EXP007,NN80,NN80组件,nn80_comp_0357,test,1,18,1
+EXP007,NN80,NN80组件,nn80_comp_0358,test,1,16,1
+EXP007,NN80,NN80组件,nn80_comp_0359,train,1,31,2
+EXP007,NN80,NN80组件,nn80_comp_0360,train,1,24,1
+EXP007,NN80,NN80组件,nn80_comp_0361,train,1,23,1
+EXP007,NN80,NN80组件,nn80_comp_0362,train,1,35,1
+EXP007,NN80,NN80组件,nn80_comp_0363,train,1,23,1
+EXP007,NN80,NN80组件,nn80_comp_0364,train,1,33,2
+EXP007,NN80,NN80组件,nn80_comp_0365,train,1,36,4
+EXP007,NN80,NN80组件,nn80_comp_0366,test,1,17,1
+EXP007,NN80,NN80组件,nn80_comp_0367,train,1,21,1
+EXP007,NN80,NN80组件,nn80_comp_0368,train,1,22,1
+EXP007,NN80,NN80组件,nn80_comp_0369,test,1,14,1
+EXP007,NN80,NN80组件,nn80_comp_0370,train,1,36,4
+EXP007,NN80,NN80组件,nn80_comp_0371,train,1,36,4
+EXP007,NN80,NN80组件,nn80_comp_0372,train,1,23,1
+EXP007,NN80,NN80组件,nn80_comp_0373,train,1,28,1
+EXP007,NN80,NN80组件,nn80_comp_0374,test,1,18,1
+EXP007,NN80,NN80组件,nn80_comp_0375,train,1,20,1
+EXP007,NN80,NN80组件,nn80_comp_0376,test,1,18,1
+EXP007,NN80,NN80组件,nn80_comp_0377,train,1,36,3
+EXP007,NN80,NN80组件,nn80_comp_0378,test,1,16,1
+EXP007,NN80,NN80组件,nn80_comp_0379,train,1,20,1
+EXP007,NN80,NN80组件,nn80_comp_0380,train,1,36,4
+EXP007,NN80,NN80组件,nn80_comp_0381,train,1,24,2
+EXP007,NN80,NN80组件,nn80_comp_0382,train,1,24,2
+EXP007,NN80,NN80组件,nn80_comp_0383,train,1,20,1
+EXP007,NN80,NN80组件,nn80_comp_0384,train,1,41,4
+EXP007,NN80,NN80组件,nn80_comp_0385,train,1,29,3
+EXP007,NN80,NN80组件,nn80_comp_0386,train,1,27,2
+EXP007,NN80,NN80组件,nn80_comp_0387,test,1,16,1
+EXP007,NN80,NN80组件,nn80_comp_0388,train,1,21,1
+EXP007,NN80,NN80组件,nn80_comp_0389,train,1,23,1
+EXP007,NN80,NN80组件,nn80_comp_0390,train,1,26,2
+EXP007,NN80,NN80组件,nn80_comp_0391,train,1,21,1
+EXP007,NN80,NN80组件,nn80_comp_0392,train,1,36,3
+EXP007,NN80,NN80组件,nn80_comp_0393,test,1,17,1
+EXP007,NN80,NN80组件,nn80_comp_0394,train,1,46,4
+EXP007,NN80,NN80组件,nn80_comp_0395,train,1,47,5
+EXP007,NN80,NN80组件,nn80_comp_0396,train,1,21,1
+EXP007,NN80,NN80组件,nn80_comp_0397,train,1,26,2
+EXP007,NN80,NN80组件,nn80_comp_0398,test,1,18,1
+EXP007,NN80,NN80组件,nn80_comp_0399,train,1,33,2
+EXP007,NN80,NN80组件,nn80_comp_0400,train,1,23,2
+EXP007,NN80,NN80组件,nn80_comp_0401,test,1,16,1
+EXP007,NN80,NN80组件,nn80_comp_0402,train,1,30,2
+EXP007,NN80,NN80组件,nn80_comp_0403,train,1,32,3
+EXP007,NN80,NN80组件,nn80_comp_0404,train,1,30,3
+EXP007,NN80,NN80组件,nn80_comp_0405,test,1,19,1
+EXP007,NN80,NN80组件,nn80_comp_0406,test,1,18,1
+EXP007,NN80,NN80组件,nn80_comp_0407,test,1,18,1
+EXP007,NN80,NN80组件,nn80_comp_0408,train,1,20,1
+EXP007,NN80,NN80组件,nn80_comp_0409,test,1,17,1
+EXP007,NN80,NN80组件,nn80_comp_0410,test,1,17,1
+EXP007,NN80,NN80组件,nn80_comp_0411,test,1,18,1
+EXP007,NN80,NN80组件,nn80_comp_0412,train,1,24,1
+EXP007,NN80,NN80组件,nn80_comp_0413,train,1,19,1
+EXP007,NN80,NN80组件,nn80_comp_0414,train,1,29,3
+EXP007,NN80,NN80组件,nn80_comp_0415,test,1,16,1
+EXP007,NN80,NN80组件,nn80_comp_0416,train,1,19,1
+EXP007,NN80,NN80组件,nn80_comp_0417,test,1,15,1
+EXP007,NN80,NN80组件,nn80_comp_0418,train,1,24,2
+EXP007,NN80,NN80组件,nn80_comp_0419,test,1,19,1
+EXP007,NN80,NN80组件,nn80_comp_0420,test,1,7,0
+EXP007,NN80,NN80组件,nn80_comp_0421,val,1,20,0
+EXP007,NN80,NN80组件,nn80_comp_0422,train,1,23,1
+EXP007,NN80,NN80组件,nn80_comp_0423,train,1,37,3
+EXP007,NN80,NN80组件,nn80_comp_0424,test,1,16,1
+EXP007,NN80,NN80组件,nn80_comp_0425,test,1,15,1
+EXP007,NN80,NN80组件,nn80_comp_0426,train,1,22,1
+EXP007,NN80,NN80组件,nn80_comp_0427,train,1,26,2
+EXP007,NN80,NN80组件,nn80_comp_0428,train,1,27,2
+EXP007,NN80,NN80组件,nn80_comp_0429,train,1,30,2
+EXP007,NN80,NN80组件,nn80_comp_0430,train,1,44,5
+EXP007,NN80,NN80组件,nn80_comp_0431,test,1,17,1
+EXP007,NN80,NN80组件,nn80_comp_0432,test,1,15,1
+EXP007,NN80,NN80组件,nn80_comp_0433,train,1,26,1
+EXP007,NN80,NN80组件,nn80_comp_0434,train,1,35,4
+EXP007,NN80,NN80组件,nn80_comp_0435,train,1,24,1
+EXP007,NN80,NN80组件,nn80_comp_0436,train,1,12,1
+EXP007,NN80,NN80组件,nn80_comp_0437,test,1,14,1
+EXP007,NN80,NN80组件,nn80_comp_0438,train,1,22,2
+EXP007,NN80,NN80组件,nn80_comp_0439,train,1,29,4
+EXP007,NN80,NN80组件,nn80_comp_0440,train,1,47,5
+EXP007,NN80,NN80组件,nn80_comp_0441,train,1,25,1
+EXP007,NN80,NN80组件,nn80_comp_0442,test,1,18,1
+EXP007,NN80,NN80组件,nn80_comp_0443,train,1,19,1
+EXP007,NN80,NN80组件,nn80_comp_0444,test,1,18,1
+EXP007,NN80,NN80组件,nn80_comp_0445,train,1,20,1
+EXP007,NN80,NN80组件,nn80_comp_0446,train,1,22,2
+EXP007,NN80,NN80组件,nn80_comp_0447,test,1,16,1
+EXP007,NN80,NN80组件,nn80_comp_0448,train,1,24,1
+EXP007,NN80,NN80组件,nn80_comp_0449,train,1,33,3
+EXP007,NN80,NN80组件,nn80_comp_0450,train,1,44,4
+EXP007,NN80,NN80组件,nn80_comp_0451,train,1,31,2
+EXP007,NN80,NN80组件,nn80_comp_0452,train,1,29,2
+EXP007,NN80,NN80组件,nn80_comp_0453,test,1,15,0
+EXP007,NN80,NN80组件,nn80_comp_0454,train,1,22,1
+EXP007,NN80,NN80组件,nn80_comp_0455,train,1,19,1
+EXP007,NN80,NN80组件,nn80_comp_0456,train,1,24,2
+EXP007,NN80,NN80组件,nn80_comp_0457,test,1,16,1
+EXP007,NN80,NN80组件,nn80_comp_0458,val,1,73,11
+EXP007,NN80,NN80组件,nn80_comp_0459,test,1,19,1
+EXP007,NN80,NN80组件,nn80_comp_0460,train,1,21,1
+EXP007,NN80,NN80组件,nn80_comp_0461,train,1,19,1
+EXP007,NN80,NN80组件,nn80_comp_0462,train,1,52,6
+EXP007,NN80,NN80组件,nn80_comp_0463,train,1,21,1
+EXP007,NN80,NN80组件,nn80_comp_0464,train,1,28,1
+EXP007,NN80,NN80组件,nn80_comp_0465,test,1,13,1
+EXP007,NN80,NN80组件,nn80_comp_0466,train,1,24,1
+EXP007,NN80,NN80组件,nn80_comp_0467,train,1,25,2
+EXP007,NN80,NN80组件,nn80_comp_0468,train,1,29,3
+EXP007,NN80,NN80组件,nn80_comp_0469,train,1,32,3
+EXP007,NN80,NN80组件,nn80_comp_0470,train,1,20,1
+EXP007,NN80,NN80组件,nn80_comp_0471,test,1,18,1
+EXP007,NN80,NN80组件,nn80_comp_0472,test,1,18,1
+EXP007,NN80,NN80组件,nn80_comp_0473,train,1,34,3
+EXP007,NN80,NN80组件,nn80_comp_0474,train,1,41,5
+EXP007,NN80,NN80组件,nn80_comp_0475,train,1,22,2
+EXP007,NN80,NN80组件,nn80_comp_0476,train,1,24,1
+EXP007,NN80,NN80组件,nn80_comp_0477,train,1,56,6
+EXP007,NN80,NN80组件,nn80_comp_0478,train,1,36,4
+EXP007,NN80,NN80组件,nn80_comp_0479,train,1,23,2
+EXP007,NN80,NN80组件,nn80_comp_0480,train,1,26,1
+EXP007,NN80,NN80组件,nn80_comp_0481,train,1,31,3
+EXP007,NN80,NN80组件,nn80_comp_0482,train,1,35,3
+EXP007,NN80,NN80组件,nn80_comp_0483,train,1,31,2
+EXP007,NN80,NN80组件,nn80_comp_0484,test,1,17,1
+EXP007,NN80,NN80组件,nn80_comp_0485,train,1,20,1
+EXP007,NN80,NN80组件,nn80_comp_0486,train,1,22,2
+EXP007,NN80,NN80组件,nn80_comp_0487,train,1,32,3
+EXP007,NN80,NN80组件,nn80_comp_0488,train,1,21,1
+EXP007,NN80,NN80组件,nn80_comp_0489,train,1,24,1
+EXP007,NN80,NN80组件,nn80_comp_0490,test,1,16,1
+EXP007,NN80,NN80组件,nn80_comp_0491,test,1,18,1
+EXP007,NN80,NN80组件,nn80_comp_0492,test,1,13,1
+EXP007,NN80,NN80组件,nn80_comp_0493,test,1,17,1
+EXP007,NN80,NN80组件,nn80_comp_0494,test,1,19,1
+EXP007,NN80,NN80组件,nn80_comp_0495,train,1,27,1
+EXP007,NN80,NN80组件,nn80_comp_0496,train,1,19,1
+EXP007,NN80,NN80组件,nn80_comp_0497,test,1,14,1
+EXP007,NN80,NN80组件,nn80_comp_0498,test,1,15,1
+EXP007,NN80,NN80组件,nn80_comp_0499,train,1,32,1
+EXP007,NN80,NN80组件,nn80_comp_0500,train,1,20,1
+EXP007,NN80,NN80组件,nn80_comp_0501,train,1,51,6
+EXP007,NN80,NN80组件,nn80_comp_0502,val,1,79,11
+EXP007,NN80,NN80组件,nn80_comp_0503,test,1,18,1
+EXP007,NN80,NN80组件,nn80_comp_0504,train,1,41,4
+EXP007,NN80,NN80组件,nn80_comp_0505,train,1,20,1
+EXP007,NN80,NN80组件,nn80_comp_0506,train,1,20,1
+EXP007,NN80,NN80组件,nn80_comp_0507,train,1,21,1
+EXP007,NN80,NN80组件,nn80_comp_0508,train,1,28,1
+EXP007,NN80,NN80组件,nn80_comp_0509,train,1,24,2
+EXP007,NN80,NN80组件,nn80_comp_0510,train,1,27,2
+EXP007,NN80,NN80组件,nn80_comp_0511,train,1,51,7
+EXP007,NN80,NN80组件,nn80_comp_0512,train,1,54,7
+EXP007,NN80,NN80组件,nn80_comp_0513,train,1,27,2
+EXP007,NN80,NN80组件,nn80_comp_0514,test,1,13,1
+EXP007,NN80,NN80组件,nn80_comp_0515,train,1,26,2
+EXP007,NN80,NN80组件,nn80_comp_0516,train,1,60,7
+EXP007,NN80,NN80组件,nn80_comp_0517,test,1,17,1
+EXP007,NN80,NN80组件,nn80_comp_0518,train,1,24,1
+EXP007,NN80,NN80组件,nn80_comp_0519,train,1,19,1
+EXP007,NN80,NN80组件,nn80_comp_0520,train,1,33,3
+EXP007,NN80,NN80组件,nn80_comp_0521,train,1,37,3
+EXP007,NN80,NN80组件,nn80_comp_0522,train,1,23,1
+EXP007,NN80,NN80组件,nn80_comp_0523,train,1,19,1
+EXP007,NN80,NN80组件,nn80_comp_0524,train,1,25,2
+EXP007,NN80,NN80组件,nn80_comp_0525,train,1,20,1
+EXP007,NN80,NN80组件,nn80_comp_0526,train,1,22,1
+EXP007,NN80,NN80组件,nn80_comp_0527,test,1,16,1
+EXP007,NN80,NN80组件,nn80_comp_0528,train,1,24,1
+EXP007,NN80,NN80组件,nn80_comp_0529,train,1,31,2
+EXP007,NN80,NN80组件,nn80_comp_0530,train,1,21,1
+EXP007,NN80,NN80组件,nn80_comp_0531,test,1,18,1
+EXP007,NN80,NN80组件,nn80_comp_0532,train,1,26,1
+EXP007,NN80,NN80组件,nn80_comp_0533,test,1,2,0
+EXP007,NN80,NN80组件,nn80_comp_0534,train,1,27,2
+EXP007,NN80,NN80组件,nn80_comp_0535,train,1,53,6
+EXP007,NN80,NN80组件,nn80_comp_0536,train,1,35,4
+EXP007,NN80,NN80组件,nn80_comp_0537,train,1,19,1
+EXP007,NN80,NN80组件,nn80_comp_0538,train,1,43,6
+EXP007,NN80,NN80组件,nn80_comp_0539,test,1,18,1
+EXP007,NN80,NN80组件,nn80_comp_0540,train,1,20,1
+EXP007,NN80,NN80组件,nn80_comp_0541,test,1,13,1
+EXP007,NN80,NN80组件,nn80_comp_0542,train,1,28,1
+EXP007,NN80,NN80组件,nn80_comp_0543,test,1,15,1
+EXP007,NN80,NN80组件,nn80_comp_0544,train,1,27,1
+EXP007,NN80,NN80组件,nn80_comp_0545,val,1,119,18
+EXP007,NN80,NN80组件,nn80_comp_0546,val,1,68,9
+EXP007,NN80,NN80组件,nn80_comp_0547,train,1,21,2
+EXP007,NN80,NN80组件,nn80_comp_0548,test,1,15,1
+EXP007,NN80,NN80组件,nn80_comp_0549,test,1,17,1
+EXP007,NN80,NN80组件,nn80_comp_0550,train,1,21,1
+EXP007,NN80,NN80组件,nn80_comp_0551,test,1,12,1
+EXP007,NN80,NN80组件,nn80_comp_0552,train,1,20,1
+EXP007,NN80,NN80组件,nn80_comp_0553,test,1,16,1
+EXP007,NN80,NN80组件,nn80_comp_0554,test,1,17,1
+EXP007,NN80,NN80组件,nn80_comp_0555,train,1,25,1
+EXP007,NN80,NN80组件,nn80_comp_0556,train,1,19,1
+EXP007,NN80,NN80组件,nn80_comp_0557,train,1,20,1
+EXP007,NN80,NN80组件,nn80_comp_0558,train,1,21,1
+EXP007,NN80,NN80组件,nn80_comp_0559,val,1,21,0
+EXP007,NN80,NN80组件,nn80_comp_0560,train,1,39,4
+EXP007,NN80,NN80组件,nn80_comp_0561,train,1,21,1
+EXP007,NN80,NN80组件,nn80_comp_0562,train,1,21,1
+EXP007,NN80,NN80组件,nn80_comp_0563,train,1,23,2
+EXP007,NN80,NN80组件,nn80_comp_0564,test,1,18,1
+EXP007,NN80,NN80组件,nn80_comp_0565,train,1,25,1
+EXP007,NN80,NN80组件,nn80_comp_0566,train,1,37,4
+EXP007,NN80,NN80组件,nn80_comp_0567,train,1,46,6
+EXP007,NN80,NN80组件,nn80_comp_0568,train,1,32,4
+EXP007,NN80,NN80组件,nn80_comp_0569,test,1,14,1
+EXP007,NN80,NN80组件,nn80_comp_0570,train,1,34,3
+EXP007,NN80,NN80组件,nn80_comp_0571,train,1,27,2
+EXP007,NN80,NN80组件,nn80_comp_0572,train,1,27,2
+EXP007,NN80,NN80组件,nn80_comp_0573,train,1,23,2
+EXP007,NN80,NN80组件,nn80_comp_0574,train,1,24,1
+EXP007,NN80,NN80组件,nn80_comp_0575,train,1,26,2
+EXP007,NN80,NN80组件,nn80_comp_0576,test,1,14,1
+EXP007,NN80,NN80组件,nn80_comp_0577,train,1,24,1
+EXP007,NN80,NN80组件,nn80_comp_0578,test,1,20,0
+EXP007,NN80,NN80组件,nn80_comp_0579,test,1,15,1
+EXP007,NN80,NN80组件,nn80_comp_0580,train,1,28,2
+EXP007,NN80,NN80组件,nn80_comp_0581,train,1,25,1
+EXP007,NN80,NN80组件,nn80_comp_0582,test,1,17,1
+EXP007,NN80,NN80组件,nn80_comp_0583,train,1,28,2
+EXP007,NN80,NN80组件,nn80_comp_0584,train,1,21,1
+EXP007,NN80,NN80组件,nn80_comp_0585,train,1,24,2
+EXP007,NN80,NN80组件,nn80_comp_0586,train,1,19,1
+EXP007,NN80,NN80组件,nn80_comp_0587,train,1,36,4
+EXP007,NN80,NN80组件,nn80_comp_0588,train,1,29,3
+EXP007,NN80,NN80组件,nn80_comp_0589,train,1,31,2
+EXP007,NN80,NN80组件,nn80_comp_0590,train,1,37,3
+EXP007,NN80,NN80组件,nn80_comp_0591,train,1,23,2
+EXP007,NN80,NN80组件,nn80_comp_0592,train,1,28,2
+EXP007,NN80,NN80组件,nn80_comp_0593,val,1,69,9
+EXP007,NN80,NN80组件,nn80_comp_0594,train,1,31,1
+EXP007,NN80,NN80组件,nn80_comp_0595,train,1,63,9
+EXP007,NN80,NN80组件,nn80_comp_0596,train,1,33,3
+EXP007,NN80,NN80组件,nn80_comp_0597,train,1,40,5
+EXP007,NN80,NN80组件,nn80_comp_0598,train,1,27,2
+EXP007,NN80,NN80组件,nn80_comp_0599,test,1,13,1
+EXP007,NN80,NN80组件,nn80_comp_0600,train,1,24,1
+EXP007,NN80,NN80组件,nn80_comp_0601,train,1,23,2
+EXP007,NN80,NN80组件,nn80_comp_0602,test,1,18,1
+EXP007,NN80,NN80组件,nn80_comp_0603,test,1,18,1
+EXP007,NN80,NN80组件,nn80_comp_0604,train,1,25,2
+EXP007,NN80,NN80组件,nn80_comp_0605,test,1,15,1
+EXP007,NN80,NN80组件,nn80_comp_0606,test,1,13,1
+EXP007,NN80,NN80组件,nn80_comp_0607,train,1,20,1
+EXP007,NN80,NN80组件,nn80_comp_0608,train,1,23,1
+EXP007,NN80,NN80组件,nn80_comp_0609,train,1,30,3
+EXP007,NN80,NN80组件,nn80_comp_0610,train,1,22,2
+EXP007,NN80,NN80组件,nn80_comp_0611,train,1,23,1
+EXP007,NN80,NN80组件,nn80_comp_0612,train,1,21,1
+EXP007,NN80,NN80组件,nn80_comp_0613,test,1,18,0
+EXP007,NN80,NN80组件,nn80_comp_0614,train,1,23,1
+EXP007,NN80,NN80组件,nn80_comp_0615,train,1,43,4
+EXP007,NN80,NN80组件,nn80_comp_0616,train,1,19,1
+EXP007,NN80,NN80组件,nn80_comp_0617,train,1,30,2
+EXP007,NN80,NN80组件,nn80_comp_0618,train,1,34,3
+EXP007,NN80,NN80组件,nn80_comp_0619,train,1,38,4
+EXP007,NN80,NN80组件,nn80_comp_0620,train,1,23,1
+EXP007,NN80,NN80组件,nn80_comp_0621,train,1,23,1
+EXP007,NN80,NN80组件,nn80_comp_0622,train,1,33,4
+EXP007,NN80,NN80组件,nn80_comp_0623,test,1,17,1
+EXP007,NN80,NN80组件,nn80_comp_0624,val,1,93,14
+EXP007,NN80,NN80组件,nn80_comp_0625,val,1,26,0
+EXP007,NN80,NN80组件,nn80_comp_0626,train,1,20,1
+EXP007,NN80,NN80组件,nn80_comp_0627,train,1,48,5
+EXP007,NN80,NN80组件,nn80_comp_0628,train,1,26,2
+EXP007,NN80,NN80组件,nn80_comp_0629,train,1,65,8
+EXP007,NN80,NN80组件,nn80_comp_0630,test,1,13,1
+EXP007,NN80,NN80组件,nn80_comp_0631,train,1,57,8
+EXP007,NN80,NN80组件,nn80_comp_0632,test,1,227,36
+EXP007,NN80,NN80组件,nn80_comp_0633,train,1,29,3
+EXP007,NN80,NN80组件,nn80_comp_0634,train,1,45,6
+EXP007,NN80,NN80组件,nn80_comp_0635,train,1,32,2
+EXP007,NN80,NN80组件,nn80_comp_0636,train,1,38,5
+EXP007,NN80,NN80组件,nn80_comp_0637,train,1,36,3
+EXP007,NN80,NN80组件,nn80_comp_0638,train,1,25,2
+EXP007,NN80,NN80组件,nn80_comp_0639,train,1,32,2
+EXP007,NN80,NN80组件,nn80_comp_0640,train,1,31,3
+EXP007,NN80,NN80组件,nn80_comp_0641,val,1,73,10
+EXP007,NN80,NN80组件,nn80_comp_0642,train,1,66,9
+EXP007,NN80,NN80组件,nn80_comp_0643,val,1,79,10
+EXP007,NN80,NN80组件,nn80_comp_0644,test,1,17,1
+EXP007,NN80,NN80组件,nn80_comp_0645,train,1,33,3
+EXP007,NN80,NN80组件,nn80_comp_0646,train,1,21,1
+EXP007,NN80,NN80组件,nn80_comp_0647,train,1,61,8
+EXP007,NN80,NN80组件,nn80_comp_0648,train,1,28,3
+EXP007,NN80,NN80组件,nn80_comp_0649,test,1,143,23
+EXP007,NN80,NN80组件,nn80_comp_0650,train,1,32,3
+EXP007,NN80,NN80组件,nn80_comp_0651,train,1,28,1
+EXP007,NN80,NN80组件,nn80_comp_0652,train,1,49,6
+EXP007,NN80,NN80组件,nn80_comp_0653,val,1,68,7
+EXP007,NN80,NN80组件,nn80_comp_0654,train,1,41,5
+EXP007,NN80,NN80组件,nn80_comp_0655,train,1,25,1
+EXP007,NN80,NN80组件,nn80_comp_0656,train,1,38,4
+EXP007,NN80,NN80组件,nn80_comp_0657,train,1,59,7
+EXP007,NN80,NN80组件,nn80_comp_0658,train,1,20,1
+EXP007,NN80,NN80组件,nn80_comp_0659,val,1,73,9
+EXP007,NN80,NN80组件,nn80_comp_0660,train,1,22,2
+EXP007,NN80,NN80组件,nn80_comp_0661,train,1,24,1
+EXP007,NN80,NN80组件,nn80_comp_0662,train,1,20,1
+EXP007,NN80,NN80组件,nn80_comp_0663,train,1,45,4
+EXP007,NN80,NN80组件,nn80_comp_0664,test,1,17,1
+EXP007,NN80,NN80组件,nn80_comp_0665,train,1,28,1
+EXP007,NN80,NN80组件,nn80_comp_0666,test,1,18,1
+EXP007,NN80,NN80组件,nn80_comp_0667,train,1,32,2
+EXP007,NN80,NN80组件,nn80_comp_0668,train,1,27,1
+EXP007,NN80,NN80组件,nn80_comp_0669,train,1,26,1
+EXP007,NN80,NN80组件,nn80_comp_0670,train,1,24,2
+EXP007,NN80,NN80组件,nn80_comp_0671,train,1,22,2
+EXP007,NN80,NN80组件,nn80_comp_0672,train,1,35,4
+EXP007,NN80,NN80组件,nn80_comp_0673,train,1,28,3
+EXP007,NN80,NN80组件,nn80_comp_0674,test,1,17,1
+EXP007,NN80,NN80组件,nn80_comp_0675,train,1,53,7
+EXP007,NN80,NN80组件,nn80_comp_0676,val,1,86,12
+EXP007,NN80,NN80组件,nn80_comp_0677,train,1,22,1
+EXP007,NN80,NN80组件,nn80_comp_0678,test,1,18,1
+EXP007,NN80,NN80组件,nn80_comp_0679,train,1,20,1
+EXP007,NN80,NN80组件,nn80_comp_0680,val,1,26,0
+EXP007,NN80,NN80组件,nn80_comp_0681,train,1,25,2
+EXP007,NN80,NN80组件,nn80_comp_0682,train,1,27,2
+EXP007,NN80,NN80组件,nn80_comp_0683,train,1,20,1
+EXP007,NN80,NN80组件,nn80_comp_0684,val,1,84,12
+EXP007,NN80,NN80组件,nn80_comp_0685,train,1,39,4
+EXP007,NN80,NN80组件,nn80_comp_0686,train,1,25,2
+EXP007,NN80,NN80组件,nn80_comp_0687,train,1,38,3
+EXP007,NN80,NN80组件,nn80_comp_0688,train,1,37,4
+EXP007,NN80,NN80组件,nn80_comp_0689,train,1,33,3
+EXP007,NN80,NN80组件,nn80_comp_0690,train,1,37,3
+EXP007,NN80,NN80组件,nn80_comp_0691,train,1,23,1
+EXP007,NN80,NN80组件,nn80_comp_0692,train,1,55,6
+EXP007,NN80,NN80组件,nn80_comp_0693,train,1,60,6
+EXP007,NN80,NN80组件,nn80_comp_0694,train,1,21,2
+EXP007,NN80,NN80组件,nn80_comp_0695,val,1,113,18
+EXP007,NN80,NN80组件,nn80_comp_0696,train,1,28,3
+EXP007,NN80,NN80组件,nn80_comp_0697,test,1,18,1
+EXP007,NN80,NN80组件,nn80_comp_0698,train,1,21,1
+EXP007,NN80,NN80组件,nn80_comp_0699,test,1,15,1
+EXP007,NN80,NN80组件,nn80_comp_0700,test,1,13,1
+EXP007,NN80,NN80组件,nn80_comp_0701,train,1,44,3
+EXP007,NN80,NN80组件,nn80_comp_0702,train,1,33,2
+EXP007,NN80,NN80组件,nn80_comp_0703,train,1,31,3
+EXP007,NN80,NN80组件,nn80_comp_0704,train,1,55,7
+EXP007,NN80,NN80组件,nn80_comp_0705,train,1,30,3
+EXP007,NN80,NN80组件,nn80_comp_0706,train,1,23,1
+EXP007,NN80,NN80组件,nn80_comp_0707,train,1,23,1
+EXP007,NN80,NN80组件,nn80_comp_0708,val,1,29,0
+EXP007,NN80,NN80组件,nn80_comp_0709,test,1,18,1
+EXP007,NN80,NN80组件,nn80_comp_0710,train,1,28,2
+EXP007,NN80,NN80组件,nn80_comp_0711,test,1,15,1
+EXP007,NN80,NN80组件,nn80_comp_0712,train,1,27,2
+EXP007,NN80,NN80组件,nn80_comp_0713,train,1,40,4
+EXP007,NN80,NN80组件,nn80_comp_0714,train,1,24,2
+EXP007,NN80,NN80组件,nn80_comp_0715,train,1,30,3
+EXP007,NN80,NN80组件,nn80_comp_0716,train,1,23,1
+EXP007,NN80,NN80组件,nn80_comp_0717,val,1,80,12
+EXP007,NN80,NN80组件,nn80_comp_0718,train,1,20,1
+EXP007,NN80,NN80组件,nn80_comp_0719,train,1,35,3
+EXP007,NN80,NN80组件,nn80_comp_0720,train,1,23,1
+EXP007,NN80,NN80组件,nn80_comp_0721,val,1,12,0
+EXP007,NN80,NN80组件,nn80_comp_0722,train,1,34,4
+EXP007,NN80,NN80组件,nn80_comp_0723,train,1,21,1
+EXP007,NN80,NN80组件,nn80_comp_0724,train,1,28,2
+EXP007,NN80,NN80组件,nn80_comp_0725,train,1,43,5
+EXP007,NN80,NN80组件,nn80_comp_0726,test,1,19,1
+EXP007,NN80,NN80组件,nn80_comp_0727,train,1,19,1
+EXP007,NN80,NN80组件,nn80_comp_0728,train,1,36,3
+EXP007,NN80,NN80组件,nn80_comp_0729,train,1,35,3
+EXP007,NN80,NN80组件,nn80_comp_0730,train,1,22,1
+EXP007,NN80,NN80组件,nn80_comp_0731,train,1,38,4
+EXP007,NN80,NN80组件,nn80_comp_0732,train,1,19,1
+EXP007,NN80,NN80组件,nn80_comp_0733,train,1,22,2
+EXP007,NN80,NN80组件,nn80_comp_0734,train,1,22,1
+EXP007,NN80,NN80组件,nn80_comp_0735,train,1,21,1
+EXP007,NN80,NN80组件,nn80_comp_0736,train,1,37,4
+EXP007,NN80,NN80组件,nn80_comp_0737,train,1,21,1
+EXP007,NN80,NN80组件,nn80_comp_0738,test,1,16,1
+EXP007,NN80,NN80组件,nn80_comp_0739,train,1,20,1
+EXP007,NN80,NN80组件,nn80_comp_0740,train,1,31,2
+EXP007,NN80,NN80组件,nn80_comp_0741,train,1,58,7
+EXP007,NN80,NN80组件,nn80_comp_0742,train,1,30,3
+EXP007,NN80,NN80组件,nn80_comp_0743,test,1,15,1
+EXP007,NN80,NN80组件,nn80_comp_0744,test,1,17,1
+EXP007,NN80,NN80组件,nn80_comp_0745,val,1,133,21
+EXP007,NN80,NN80组件,nn80_comp_0746,train,1,46,6
+EXP007,NN80,NN80组件,nn80_comp_0747,train,1,23,1
+EXP007,NN80,NN80组件,nn80_comp_0748,train,1,26,1
+EXP007,NN80,NN80组件,nn80_comp_0749,test,1,13,1
+EXP007,NN80,NN80组件,nn80_comp_0750,train,1,21,2
+EXP007,NN80,NN80组件,nn80_comp_0751,val,1,76,11
+EXP007,NN80,NN80组件,nn80_comp_0752,train,1,49,6
+EXP007,NN80,NN80组件,nn80_comp_0753,train,1,26,2
+EXP007,NN80,NN80组件,nn80_comp_0754,train,1,24,2
+EXP007,NN80,NN80组件,nn80_comp_0755,train,1,22,1
+EXP007,NN80,NN80组件,nn80_comp_0756,train,1,20,1
+EXP007,NN80,NN80组件,nn80_comp_0757,train,1,20,1
+EXP007,NN80,NN80组件,nn80_comp_0758,val,1,70,10
+EXP007,NN80,NN80组件,nn80_comp_0759,train,1,31,2
+EXP007,NN80,NN80组件,nn80_comp_0760,train,1,26,2
+EXP007,NN80,NN80组件,nn80_comp_0761,train,1,28,2
+EXP007,NN80,NN80组件,nn80_comp_0762,train,1,32,3
+EXP007,NN80,NN80组件,nn80_comp_0763,train,1,36,4
+EXP007,NN80,NN80组件,nn80_comp_0764,train,1,35,4
+EXP007,NN80,NN80组件,nn80_comp_0765,test,1,16,0
+EXP007,NN80,NN80组件,nn80_comp_0766,train,1,43,5
+EXP007,NN80,NN80组件,nn80_comp_0767,train,1,39,5
+EXP007,NN80,NN80组件,nn80_comp_0768,train,1,24,2
+EXP007,NN80,NN80组件,nn80_comp_0769,train,1,28,3
+EXP007,NN80,NN80组件,nn80_comp_0770,train,1,29,1
+EXP007,NN80,NN80组件,nn80_comp_0771,test,1,17,1
+EXP007,NN80,NN80组件,nn80_comp_0772,test,1,18,1
+EXP007,NN80,NN80组件,nn80_comp_0773,test,1,16,1
+EXP007,NN80,NN80组件,nn80_comp_0774,train,1,26,2
+EXP007,NN80,NN80组件,nn80_comp_0775,train,1,23,2
+EXP007,NN80,NN80组件,nn80_comp_0776,test,1,18,1
+EXP007,NN80,NN80组件,nn80_comp_0777,train,1,45,5
+EXP007,NN80,NN80组件,nn80_comp_0778,train,1,20,1
+EXP007,NN80,NN80组件,nn80_comp_0779,test,1,14,1
+EXP007,NN80,NN80组件,nn80_comp_0780,train,1,23,2
+EXP007,NN80,NN80组件,nn80_comp_0781,test,1,15,1
+EXP007,NN80,NN80组件,nn80_comp_0782,train,1,22,1
+EXP007,NN80,NN80组件,nn80_comp_0783,train,1,26,2
+EXP007,NN80,NN80组件,nn80_comp_0784,train,1,25,3
+EXP007,NN80,NN80组件,nn80_comp_0785,train,1,35,2
+EXP007,NN80,NN80组件,nn80_comp_0786,train,1,26,2
+EXP007,NN80,NN80组件,nn80_comp_0787,train,1,25,1
+EXP007,NN80,NN80组件,nn80_comp_0788,train,1,23,2
+EXP007,NN80,NN80组件,nn80_comp_0789,train,1,26,2
+EXP007,NN80,NN80组件,nn80_comp_0790,train,1,21,1
+EXP007,NN80,NN80组件,nn80_comp_0791,train,1,20,2
+EXP007,NN80,NN80组件,nn80_comp_0792,train,1,23,1
+EXP007,NN80,NN80组件,nn80_comp_0793,train,1,27,1
+EXP007,NN80,NN80组件,nn80_comp_0794,train,1,42,3
+EXP007,NN80,NN80组件,nn80_comp_0795,train,1,26,1
+EXP007,NN80,NN80组件,nn80_comp_0796,train,1,52,7
+EXP007,NN80,NN80组件,nn80_comp_0797,train,1,31,4
+EXP007,NN80,NN80组件,nn80_comp_0798,train,1,20,1
+EXP007,NN80,NN80组件,nn80_comp_0799,train,1,25,2
+EXP007,NN80,NN80组件,nn80_comp_0800,train,1,23,2
+EXP007,NN80,NN80组件,nn80_comp_0801,train,1,20,2
+EXP007,NN80,NN80组件,nn80_comp_0802,train,1,42,4
+EXP007,NN80,NN80组件,nn80_comp_0803,test,1,16,1
+EXP007,NN80,NN80组件,nn80_comp_0804,train,1,20,1
+EXP007,NN80,NN80组件,nn80_comp_0805,test,1,17,1
+EXP007,NN80,NN80组件,nn80_comp_0806,train,1,34,3
+EXP007,NN80,NN80组件,nn80_comp_0807,train,1,34,3
+EXP007,NN80,NN80组件,nn80_comp_0808,train,1,20,2
+EXP007,NN80,NN80组件,nn80_comp_0809,train,1,19,2
+EXP007,NN80,NN80组件,nn80_comp_0810,train,1,23,2
+EXP007,NN80,NN80组件,nn80_comp_0811,train,1,23,1
+EXP007,NN80,NN80组件,nn80_comp_0812,train,1,24,1
+EXP007,NN80,NN80组件,nn80_comp_0813,test,1,19,1
+EXP007,NN80,NN80组件,nn80_comp_0814,test,1,19,1
+EXP007,NN80,NN80组件,nn80_comp_0815,train,1,48,5
+EXP007,NN80,NN80组件,nn80_comp_0816,test,1,18,1
+EXP007,NN80,NN80组件,nn80_comp_0817,train,1,31,2
+EXP007,NN80,NN80组件,nn80_comp_0818,val,1,69,10
+EXP007,NN80,NN80组件,nn80_comp_0819,train,1,23,1
+EXP007,NN80,NN80组件,nn80_comp_0820,train,1,27,2
+EXP007,NN80,NN80组件,nn80_comp_0821,train,1,36,3
+EXP007,NN80,NN80组件,nn80_comp_0822,train,1,22,1
+EXP007,NN80,NN80组件,nn80_comp_0823,val,1,80,10
+EXP007,NN80,NN80组件,nn80_comp_0824,train,1,27,2
+EXP007,NN80,NN80组件,nn80_comp_0825,train,1,22,1
+EXP007,NN80,NN80组件,nn80_comp_0826,train,1,34,3
+EXP007,NN80,NN80组件,nn80_comp_0827,test,1,13,0
+EXP007,NN80,NN80组件,nn80_comp_0828,test,1,16,1
+EXP007,NN80,NN80组件,nn80_comp_0829,train,1,26,2
+EXP007,NN80,NN80组件,nn80_comp_0830,train,1,23,1
+EXP007,NN80,NN80组件,nn80_comp_0831,train,1,31,3
+EXP007,NN80,NN80组件,nn80_comp_0832,train,1,33,4
+EXP007,NN80,NN80组件,nn80_comp_0833,test,1,17,1
+EXP007,NN80,NN80组件,nn80_comp_0834,train,1,35,2
+EXP007,NN80,NN80组件,nn80_comp_0835,train,1,24,1
+EXP007,NN80,NN80组件,nn80_comp_0836,train,1,21,1
+EXP007,NN80,NN80组件,nn80_comp_0837,test,1,17,1
+EXP007,NN80,NN80组件,nn80_comp_0838,train,1,42,5
+EXP007,NN80,NN80组件,nn80_comp_0839,train,1,34,3
+EXP007,NN80,NN80组件,nn80_comp_0840,train,1,24,2
+EXP007,NN80,NN80组件,nn80_comp_0841,train,1,27,1
+EXP007,NN80,NN80组件,nn80_comp_0842,test,1,19,1
+EXP007,NN80,NN80组件,nn80_comp_0843,train,1,64,7
+EXP007,NN80,NN80组件,nn80_comp_0844,test,1,18,1
+EXP007,NN80,NN80组件,nn80_comp_0845,train,1,28,2
+EXP007,NN80,NN80组件,nn80_comp_0846,train,1,63,9
+EXP007,NN80,NN80组件,nn80_comp_0847,train,1,24,2
+EXP007,NN80,NN80组件,nn80_comp_0848,train,1,26,2
+EXP007,NN80,NN80组件,nn80_comp_0849,train,1,60,8
+EXP007,NN80,NN80组件,nn80_comp_0850,train,1,23,1
+EXP007,NN80,NN80组件,nn80_comp_0851,train,1,26,2
+EXP007,NN80,NN80组件,nn80_comp_0852,train,1,25,1
+EXP007,NN80,NN80组件,nn80_comp_0853,train,1,35,3
+EXP007,NN80,NN80组件,nn80_comp_0854,train,1,34,3
+EXP007,NN80,NN80组件,nn80_comp_0855,train,1,18,2
+EXP007,NN80,NN80组件,nn80_comp_0856,train,1,21,1
+EXP007,NN80,NN80组件,nn80_comp_0857,train,1,26,3
+EXP007,NN80,NN80组件,nn80_comp_0858,train,1,23,2
+EXP007,NN80,NN80组件,nn80_comp_0859,train,1,33,3
+EXP007,NN80,NN80组件,nn80_comp_0860,test,1,15,1
+EXP007,NN80,NN80组件,nn80_comp_0861,train,1,23,1
+EXP007,NN80,NN80组件,nn80_comp_0862,train,1,33,4
+EXP007,NN80,NN80组件,nn80_comp_0863,train,1,19,1
+EXP007,NN80,NN80组件,nn80_comp_0864,train,1,48,5
+EXP007,NN80,NN80组件,nn80_comp_0865,train,1,29,2
+EXP007,NN80,NN80组件,nn80_comp_0866,train,1,25,2
+EXP007,NN80,NN80组件,nn80_comp_0867,train,1,55,7
+EXP007,NN80,NN80组件,nn80_comp_0868,train,1,44,6
+EXP007,NN80,NN80组件,nn80_comp_0869,train,1,34,3
+EXP007,NN80,NN80组件,nn80_comp_0870,train,1,40,4
+EXP007,NN80,NN80组件,nn80_comp_0871,train,1,47,6
+EXP007,NN80,NN80组件,nn80_comp_0872,train,1,19,1
+EXP007,NN80,NN80组件,nn80_comp_0873,train,1,23,1
+EXP007,NN80,NN80组件,nn80_comp_0874,train,1,22,2
+EXP007,NN80,NN80组件,nn80_comp_0875,train,1,43,4
+EXP007,NN80,NN80组件,nn80_comp_0876,train,1,21,2
+EXP007,NN80,NN80组件,nn80_comp_0877,test,1,17,1
+EXP007,NN80,NN80组件,nn80_comp_0878,train,1,29,2
+EXP007,NN80,NN80组件,nn80_comp_0879,train,1,24,1
+EXP007,NN80,NN80组件,nn80_comp_0880,train,1,24,2
+EXP007,NN80,NN80组件,nn80_comp_0881,train,1,33,2
+EXP007,NN80,NN80组件,nn80_comp_0882,train,1,22,2
+EXP007,NN80,NN80组件,nn80_comp_0883,test,1,17,0
+EXP007,NN80,NN80组件,nn80_comp_0884,train,1,24,1
+EXP007,NN80,NN80组件,nn80_comp_0885,test,1,18,1
+EXP007,NN80,NN80组件,nn80_comp_0886,test,1,15,1
+EXP007,NN80,NN80组件,nn80_comp_0887,train,1,30,2
+EXP007,NN80,NN80组件,nn80_comp_0888,val,1,128,19
+EXP007,NN80,NN80组件,nn80_comp_0889,train,1,29,2
+EXP007,NN80,NN80组件,nn80_comp_0890,train,1,20,1
+EXP007,NN80,NN80组件,nn80_comp_0891,train,1,44,5
+EXP007,NN80,NN80组件,nn80_comp_0892,train,1,35,2
+EXP007,NN80,NN80组件,nn80_comp_0893,test,1,16,1
+EXP007,NN80,NN80组件,nn80_comp_0894,train,1,20,1
+EXP007,NN80,NN80组件,nn80_comp_0895,train,1,41,4
+EXP007,NN80,NN80组件,nn80_comp_0896,test,1,14,1
+EXP007,NN80,NN80组件,nn80_comp_0897,test,1,16,1
+EXP007,NN80,NN80组件,nn80_comp_0898,train,1,28,2
+EXP007,NN80,NN80组件,nn80_comp_0899,train,1,40,4
+EXP007,NN80,NN80组件,nn80_comp_0900,train,1,23,2
+EXP007,NN80,NN80组件,nn80_comp_0901,train,1,24,2
+EXP007,NN80,NN80组件,nn80_comp_0902,train,1,20,1
+EXP007,NN80,NN80组件,nn80_comp_0903,train,1,29,2
+EXP007,NN80,NN80组件,nn80_comp_0904,train,1,48,5
+EXP007,NN80,NN80组件,nn80_comp_0905,train,1,46,5
+EXP007,NN80,NN80组件,nn80_comp_0906,train,1,34,3
+EXP007,NN80,NN80组件,nn80_comp_0907,train,1,29,2
+EXP007,NN80,NN80组件,nn80_comp_0908,train,1,31,3
+EXP007,NN80,NN80组件,nn80_comp_0909,train,1,24,1
+EXP007,NN80,NN80组件,nn80_comp_0910,train,1,41,4
+EXP007,NN80,NN80组件,nn80_comp_0911,train,1,60,6
+EXP007,NN80,NN80组件,nn80_comp_0912,train,1,28,2
+EXP007,NN80,NN80组件,nn80_comp_0913,train,1,22,1
+EXP007,NN80,NN80组件,nn80_comp_0914,test,1,17,1
+EXP007,NN80,NN80组件,nn80_comp_0915,train,1,20,1
+EXP007,NN80,NN80组件,nn80_comp_0916,train,1,32,3
+EXP007,NN80,NN80组件,nn80_comp_0917,val,1,91,14
+EXP007,NN80,NN80组件,nn80_comp_0918,train,1,19,1
+EXP007,NN80,NN80组件,nn80_comp_0919,train,1,32,3
+EXP007,NN80,NN80组件,nn80_comp_0920,train,1,23,2
+EXP007,NN80,NN80组件,nn80_comp_0921,train,1,33,3
+EXP007,NN80,NN80组件,nn80_comp_0922,train,1,33,3
+EXP007,NN80,NN80组件,nn80_comp_0923,train,1,29,3
+EXP007,NN80,NN80组件,nn80_comp_0924,train,1,21,1
+EXP007,NN80,NN80组件,nn80_comp_0925,train,1,12,1
+EXP007,NN80,NN80组件,nn80_comp_0926,train,1,27,2
+EXP007,NN80,NN80组件,nn80_comp_0927,test,1,18,0
+EXP007,NN80,NN80组件,nn80_comp_0928,train,1,26,3
+EXP007,NN80,NN80组件,nn80_comp_0929,test,1,18,1
+EXP007,NN80,NN80组件,nn80_comp_0930,train,1,23,1
+EXP007,NN80,NN80组件,nn80_comp_0931,train,1,20,1
+EXP007,NN80,NN80组件,nn80_comp_0932,train,1,31,2
+EXP007,NN80,NN80组件,nn80_comp_0933,train,1,27,3
+EXP007,NN80,NN80组件,nn80_comp_0934,train,1,23,1
+EXP007,NN80,NN80组件,nn80_comp_0935,train,1,36,3
+EXP007,NN80,NN80组件,nn80_comp_0936,train,1,25,1
+EXP007,NN80,NN80组件,nn80_comp_0937,train,1,19,1
+EXP007,NN80,NN80组件,nn80_comp_0938,train,1,19,1
+EXP007,NN80,NN80组件,nn80_comp_0939,train,1,23,1
+EXP007,NN80,NN80组件,nn80_comp_0940,train,1,23,2
+EXP007,NN80,NN80组件,nn80_comp_0941,train,1,44,5
+EXP007,NN80,NN80组件,nn80_comp_0942,test,1,16,1
+EXP007,NN80,NN80组件,nn80_comp_0943,train,1,24,2
+EXP007,NN80,NN80组件,nn80_comp_0944,train,1,19,1
+EXP007,NN80,NN80组件,nn80_comp_0945,test,1,19,1
+EXP007,NN80,NN80组件,nn80_comp_0946,test,1,17,1
+EXP007,NN80,NN80组件,nn80_comp_0947,train,1,25,1
+EXP007,NN80,NN80组件,nn80_comp_0948,train,1,20,1
+EXP007,NN80,NN80组件,nn80_comp_0949,train,1,20,2
+EXP007,NN80,NN80组件,nn80_comp_0950,train,1,28,3
+EXP007,NN80,NN80组件,nn80_comp_0951,train,1,30,3
+EXP007,NN80,NN80组件,nn80_comp_0952,train,1,29,2
+EXP007,NN80,NN80组件,nn80_comp_0953,train,1,33,3
+EXP007,NN80,NN80组件,nn80_comp_0954,train,1,30,3
+EXP007,NN80,NN80组件,nn80_comp_0955,train,1,30,1
+EXP007,NN80,NN80组件,nn80_comp_0956,train,1,27,2
+EXP007,NN80,NN80组件,nn80_comp_0957,val,1,109,16
+EXP007,NN80,NN80组件,nn80_comp_0958,train,1,36,3
+EXP007,NN80,NN80组件,nn80_comp_0959,train,1,20,1
+EXP007,NN80,NN80组件,nn80_comp_0960,train,1,54,7
+EXP007,NN80,NN80组件,nn80_comp_0961,train,1,32,3
+EXP007,NN80,NN80组件,nn80_comp_0962,test,1,16,1
+EXP007,NN80,NN80组件,nn80_comp_0963,train,1,28,1
+EXP007,NN80,NN80组件,nn80_comp_0964,train,1,27,1
+EXP007,NN80,NN80组件,nn80_comp_0965,train,1,25,1
+EXP007,NN80,NN80组件,nn80_comp_0966,train,1,24,2
+EXP007,NN80,NN80组件,nn80_comp_0967,train,1,28,1
+EXP007,NN80,NN80组件,nn80_comp_0968,train,1,21,2
+EXP007,NN80,NN80组件,nn80_comp_0969,test,1,17,1
+EXP007,NN80,NN80组件,nn80_comp_0970,train,1,21,1
+EXP007,NN80,NN80组件,nn80_comp_0971,train,1,21,1
+EXP007,NN80,NN80组件,nn80_comp_0972,train,1,23,1
+EXP007,NN80,NN80组件,nn80_comp_0973,test,1,15,1
+EXP007,NN80,NN80组件,nn80_comp_0974,test,1,16,1
+EXP007,NN80,NN80组件,nn80_comp_0975,val,1,72,10
+EXP007,NN80,NN80组件,nn80_comp_0976,train,1,21,1
+EXP007,NN80,NN80组件,nn80_comp_0977,train,1,34,3
+EXP007,NN80,NN80组件,nn80_comp_0978,train,1,28,3
+EXP007,NN80,NN80组件,nn80_comp_0979,test,1,19,1
+EXP007,NN80,NN80组件,nn80_comp_0980,train,1,27,1
+EXP007,NN80,NN80组件,nn80_comp_0981,test,1,14,1
+EXP007,NN80,NN80组件,nn80_comp_0982,train,1,20,1
+EXP007,NN80,NN80组件,nn80_comp_0983,train,1,22,1
+EXP007,NN80,NN80组件,nn80_comp_0984,train,1,20,1
+EXP007,NN80,NN80组件,nn80_comp_0985,test,1,18,1
+EXP007,NN80,NN80组件,nn80_comp_0986,train,1,21,1
+EXP007,NN80,NN80组件,nn80_comp_0987,train,1,22,1
+EXP007,NN80,NN80组件,nn80_comp_0988,test,1,18,1
+EXP007,NN80,NN80组件,nn80_comp_0989,test,1,17,1
+EXP007,NN80,NN80组件,nn80_comp_0990,train,1,22,1
+EXP007,NN80,NN80组件,nn80_comp_0991,test,1,15,1
+EXP007,NN80,NN80组件,nn80_comp_0992,train,1,23,1
+EXP007,NN80,NN80组件,nn80_comp_0993,train,1,25,1
+EXP007,NN80,NN80组件,nn80_comp_0994,test,1,17,1
+EXP007,NN80,NN80组件,nn80_comp_0995,train,1,26,1
+EXP007,NN80,NN80组件,nn80_comp_0996,test,1,17,1
+EXP007,NN80,NN80组件,nn80_comp_0997,train,1,21,1
+EXP007,NN80,NN80组件,nn80_comp_0998,train,1,23,1
+EXP007,NN80,NN80组件,nn80_comp_0999,train,1,24,1
+EXP007,NN80,NN80组件,nn80_comp_1000,train,1,19,1
+EXP007,NN80,NN80组件,nn80_comp_1001,test,1,14,1
+EXP007,NN80,NN80组件,nn80_comp_1002,test,1,13,1
+EXP007,NN80,NN80组件,nn80_comp_1003,train,1,21,1
+EXP007,NN80,NN80组件,nn80_comp_1004,train,1,22,1
+EXP007,NN80,NN80组件,nn80_comp_1005,train,1,19,1
+EXP007,NN80,NN80组件,nn80_comp_1006,train,1,20,1
+EXP007,NN80,NN80组件,nn80_comp_1007,train,1,25,1
+EXP007,NN80,NN80组件,nn80_comp_1008,test,1,15,1
+EXP007,NN80,NN80组件,nn80_comp_1009,train,1,27,1
+EXP007,NN80,NN80组件,nn80_comp_1010,train,1,26,1
+EXP007,NN80,NN80组件,nn80_comp_1011,test,1,16,1
+EXP007,NN80,NN80组件,nn80_comp_1012,train,1,21,1
+EXP007,NN80,NN80组件,nn80_comp_1013,train,1,33,4
+EXP007,NN80,NN80组件,nn80_comp_1014,train,1,34,2
+EXP007,NN80,NN80组件,nn80_comp_1015,train,1,26,1
+EXP007,NN80,NN80组件,nn80_comp_1016,train,1,29,1
+EXP007,NN80,NN80组件,nn80_comp_1017,train,1,26,1
+EXP007,NN80,NN80组件,nn80_comp_1018,train,1,21,1
+EXP007,NN80,NN80组件,nn80_comp_1019,train,1,19,1
+EXP007,NN80,NN80组件,nn80_comp_1020,test,1,18,1
+EXP007,NN80,NN80组件,nn80_comp_1021,train,1,22,1
+EXP007,NN80,NN80组件,nn80_comp_1022,train,1,12,1
+EXP007,NN80,NN80组件,nn80_comp_1023,train,1,23,2
+EXP007,NN80,NN80组件,nn80_comp_1024,test,1,16,1
+EXP007,NN80,NN80组件,nn80_comp_1025,test,1,18,1
+EXP007,NN80,NN80组件,nn80_comp_1026,train,1,19,1
+EXP007,NN80,NN80组件,nn80_comp_1027,test,1,13,0
+EXP007,NN80,NN80组件,nn80_comp_1028,train,1,22,1
+EXP007,NN80,NN80组件,nn80_comp_1029,test,1,18,1
+EXP007,NN80,NN80组件,nn80_comp_1030,train,1,20,1
+EXP007,NN80,NN80组件,nn80_comp_1031,test,1,16,1
+EXP007,NN80,NN80组件,nn80_comp_1032,test,1,18,1
+EXP007,NN80,NN80组件,nn80_comp_1033,train,1,22,1
+EXP007,NN80,NN80组件,nn80_comp_1034,train,1,20,1
+EXP007,NN80,NN80组件,nn80_comp_1035,train,1,25,1
+EXP007,NN80,NN80组件,nn80_comp_1036,test,1,17,1
+EXP007,NN80,NN80组件,nn80_comp_1037,train,1,19,1
+EXP007,NN80,NN80组件,nn80_comp_1038,train,1,20,1

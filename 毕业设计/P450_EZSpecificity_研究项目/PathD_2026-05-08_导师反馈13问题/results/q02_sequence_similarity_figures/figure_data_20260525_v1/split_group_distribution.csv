@@ -1,0 +1,19 @@
+exp,label,method_cn,unit_cn,split,groups,enzymes,samples,positives
+EXP004,id60 cluster split,id60 聚类簇划分训练,id60 聚类簇,train,504,804,21975,1861
+EXP004,id60 cluster split,id60 聚类簇划分训练,id60 聚类簇,val,106,323,11008,1046
+EXP004,id60 cluster split,id60 聚类簇划分训练,id60 聚类簇,test,81,352,11107,1006
+EXP006,strict NN40,strict NN40，最严格远缘对照,NN40 组件,train,223,693,21412,1964
+EXP006,strict NN40,strict NN40，最严格远缘对照,NN40 组件,val,8,341,10923,1050
+EXP006,strict NN40,strict NN40，最严格远缘对照,NN40 组件,test,13,445,11755,899
+EXP005,strict NN60 2:1:1,strict NN60 主实验，约 2:1:1,NN60 组件,train,362,794,22010,1864
+EXP005,strict NN60 2:1:1,strict NN60 主实验，约 2:1:1,NN60 组件,val,146,330,10989,1043
+EXP005,strict NN60 2:1:1,strict NN60 主实验，约 2:1:1,NN60 组件,test,162,355,11091,1006
+EXP010,strict NN60 7:1.5:1.5,strict NN60，7:1.5:1.5 补充,NN60 组件,train,625,1080,30837,2661
+EXP010,strict NN60 7:1.5:1.5,strict NN60，7:1.5:1.5 补充,NN60 组件,val,26,203,6632,620
+EXP010,strict NN60 7:1.5:1.5,strict NN60，7:1.5:1.5 补充,NN60 组件,test,19,196,6621,632
+EXP011,strict NN60 8:1:1,strict NN60，8:1:1 补充,NN60 组件,train,652,1211,35185,3058
+EXP011,strict NN60 8:1:1,strict NN60，8:1:1 补充,NN60 组件,val,9,139,4439,420
+EXP011,strict NN60 8:1:1,strict NN60，8:1:1 补充,NN60 组件,test,9,129,4466,435
+EXP007,strict NN80,strict NN80，较宽松阈值对照,NN80 组件,train,718,818,22073,1700
+EXP007,strict NN80,strict NN80，较宽松阈值对照,NN80 组件,val,119,324,10894,1053
+EXP007,strict NN80,strict NN80，较宽松阈值对照,NN80 组件,test,201,337,11123,1160

@@ -1,0 +1,7 @@
+exp,label,method_cn,unit_cn,total_groups,total_enzymes,singleton_groups,largest_group_enzymes,largest_group_samples,largest_group_positive,mean_enzymes_per_group,median_enzymes_per_group,groups_cross_split,total_samples,total_positive
+EXP004,id60 cluster split,id60 聚类簇划分训练,id60 聚类簇,691,1479,457,37,1173,148,2.14,1.0,0,44090,3913
+EXP006,strict NN40,strict NN40，最严格远缘对照,NN40 组件,244,1479,132,433,11481,874,6.06,1.0,0,44090,3913
+EXP005,strict NN60 2:1:1,strict NN60 主实验，约 2:1:1,NN60 组件,670,1479,443,39,1283,148,2.21,1.0,0,44090,3913
+EXP010,strict NN60 7:1.5:1.5,strict NN60，7:1.5:1.5 补充,NN60 组件,670,1479,443,39,1283,148,2.21,1.0,0,44090,3913
+EXP011,strict NN60 8:1:1,strict NN60，8:1:1 补充,NN60 组件,670,1479,443,39,1283,148,2.21,1.0,0,44090,3913
+EXP007,strict NN80,strict NN80，较宽松阈值对照,NN80 组件,1038,1479,825,18,932,148,1.42,1.0,0,44090,3913

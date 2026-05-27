@@ -1,0 +1,8 @@
+exp,label,method_cn,test_auc,test_aupr,test_samples,test_positive
+EXP008,random split,PathD 随机划分对照,0.934206,0.686618,10999,984
+EXP004,id60 cluster split,id60 聚类簇划分训练,0.807786,0.321236,11107,1006
+EXP007,strict NN80,strict NN80，较宽松阈值对照,0.819789,0.383128,11123,1160
+EXP010,strict NN60 7:1.5:1.5,strict NN60，7:1.5:1.5 补充,0.733258,0.225581,6621,632
+EXP005,strict NN60 2:1:1,strict NN60 主实验，约 2:1:1,0.670801,0.218569,11091,1006
+EXP011,strict NN60 8:1:1,strict NN60，8:1:1 补充,0.602512,0.169727,4466,435
+EXP006,strict NN40,strict NN40，最严格远缘对照,0.638403,0.102411,11755,899

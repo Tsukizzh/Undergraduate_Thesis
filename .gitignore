@@ -58,8 +58,15 @@
 /e2_exp_tmp.py
 {fname}
 /.codex/
+/.codex_tmp/
 /.exp004_gdtable/
+/.q1_exp001_results/
+/.q1_exp002_manifests/
+/.q1_remote_patch/
+/.q1_speed_patch/
 /.q2_gpu_profile/
+/.tmp/
+/.tmp_q1_*.py
 /.tmp_pathd_*/
 
 # 其他不需要上传的文件

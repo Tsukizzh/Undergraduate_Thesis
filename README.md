@@ -6,14 +6,14 @@
 
 ## 当前状态
 
-截至 2026-05-26，重点进展如下：
+截至 2026-05-27，重点进展如下：
 
 | 模块 | 状态 | 说明 |
 |---|---|---|
 | PathC 历史基线 | 已完成 | 修复 ESM / GROVER 对齐问题后，随机划分基线达到约 0.93 Test AUC，作为后续对照来源 |
 | PathD 目录整理 | 已完成 | 已建立独立 PathD 规划目录和服务器执行区，PathC 数据只作为只读来源 |
 | Q2 序列相似度划分 | 已完成一轮可汇报实验 | 已完成 PathD random 对照、id60 聚类簇划分、strict NN40/60/80 和 strict NN60 分布敏感性实验 |
-| Q1 Fe 嵌入补丁 | 前置基线与性能诊断中 | ESIBank A 版原模型训练数据已下载并开始测试；单卡提速空间有限，下一步建议做多卡 DDP 冒烟测试，优先 4 卡 |
+| Q1 Fe 嵌入补丁 | EXP001 已完成测试，EXP002 已准备训练数据 | EXP001 已得到 ESIBank A-only 原模型基线测试结果；EXP002 已生成 Fe/HEM overlay 训练缓存，等待开 GPU 后训练 |
 | Q3 PubChem 3D 重对接 | 待启动 | 属于结构数据更新任务，后续需要单独规划 |
 
 Q2 当前最重要的结果如下。这里优先看 Test AUC；Test AUPR 受测试集正样本数影响，汇报时要一起说明测试集规模。
@@ -34,10 +34,12 @@ Q1 当前进度：
 
 | 内容 | 当前结论 |
 |---|---|
-| ESIBank A 版数据 | 已用于 Q1-EXP001 原模型前置基线测试 |
-| 单卡训练速度 | `batch_size=40` 时约 `5747` 个 batch/epoch；手写循环测得约 `206 ms/batch`，估算训练段一个 epoch 约 20 分钟 |
-| 单卡瓶颈 | DataLoader 等待和 edge 特征构建占用明显；简单 batch、worker、缓存和 compile 尝试没有带来大幅提速 |
-| 下一步 | 开多卡资源后先做 DDP 冒烟测试，优先 4 卡；确认吞吐和结果文件正常后，再决定是否启动正式 Q1 对照 |
+| EXP001 原模型基线 | 已用最佳 checkpoint 在 ESIBank A-only test 集评估，Test AUC = `0.894871`，Test AUPR = `0.569394` |
+| EXP001 test 集 | `53588` 条样本，其中正样本 `5941`、负样本 `47647` |
+| EXP001 最终目录 | `/root/autodl-tmp/EZSpecificity/PathD/P450/experiments/q01_fe_embedding_patch/EXP001_esibank_aonly_original_baseline/results/00_EXP001_FINAL/` |
+| EXP002 Fe/HEM overlay | 已生成训练缓存，共 `3185` 条样本加入 HEM/Fe 信息；train/val/test 增强样本分别为 `2362/257/566` |
+| EXP002 对齐审计 | 样本顺序、标签、enzyme_id、substrate_id 与 EXP001 base cache 保持一致；增强样本未改变标签或实体 ID |
+| EXP002 下一步 | 开 GPU 后从 `EXP002_fe_heme_overlay` 目录启动训练，优先用 3 卡或 4 卡；无卡模式下已经完成 CPU 前向验证 |
 
 ## 推荐阅读顺序
 
@@ -92,7 +94,7 @@ PathD 的服务器执行区为：
 
 | 问题 | 主题 | 当前建议 |
 |---|---|---|
-| Q1 | Fe 嵌入补丁对照 | 已进入 ESIBank A 版原模型基线和训练性能诊断；下一步做多卡 DDP 冒烟测试，优先 4 卡 |
+| Q1 | Fe 嵌入补丁对照 | EXP001 原模型基线已完成 test 评估；EXP002 Fe/HEM overlay 数据已准备好，下一步开 GPU 训练 |
 | Q2 | 序列相似度划分 | 已有可汇报结果；EXP005 是 strict NN60 主实验，EXP010/EXP011 是分布敏感性补充 |
 | Q3 | PubChem 3D 重对接 | 后续单独规划，需要处理结构与对接数据 |
 | Q4 | EGNN 换 GVP | 暂不优先，历史 GVP 旁路结果没有稳定增益 |
@@ -106,7 +108,7 @@ PathD 的服务器执行区为：
 
 ## 当前汇报重点
 
-当前最适合向老师汇报的是 Q2，Q1 作为正在推进的下一条实验线：
+当前最适合向老师汇报的是 Q2，Q1 可以作为下一条已经进入实验阶段的主线：
 
 1. 原随机划分基线表现高，但可能受到近缘酶影响。
 2. Q2 先还原 baseline 真正使用的 1479 个 enzyme 和 44090 条样本。
@@ -114,7 +116,8 @@ PathD 的服务器执行区为：
 4. EXP005 做 strict NN60 划分，Test AUC 为 0.670801。
 5. EXP006/EXP007 给出 strict NN40/80 阈值梯度，EXP010/EXP011 给出 strict NN60 分布敏感性。
 6. 性能下降说明严格新酶泛化比随机划分更难，也更接近老师提出的问题。
-7. Q1 已开始 ESIBank A 版原模型基线，单卡诊断显示需要先验证多卡 DDP 吞吐。
+7. Q1-EXP001 已有 ESIBank A-only 原模型基线测试结果，Test AUC 为 0.894871。
+8. Q1-EXP002 已准备好 Fe/HEM overlay 训练缓存，可用于比较加入 Fe/HEM 信息后的模型表现。
 
 详细数字、划分机制和图表建议见 Q2 汇总文档。
 
