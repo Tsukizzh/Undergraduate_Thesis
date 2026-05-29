@@ -1,0 +1,52 @@
+{
+  "created_at": "2026-05-27 21:43:35",
+  "tag": "20260527_214331",
+  "inputs": {
+    "p450_csv": "/root/autodl-tmp/EZSpecificity/PathD/P450/data/q01_fe_embedding_patch/exp003_full_p450_fe_heme_overlay/manifests/p450_389_uniprot_source_20260102.csv",
+    "structure_records_csv": "/root/autodl-tmp/EZSpecificity/PathD/P450/data/q01_fe_embedding_patch/exp002_fe_heme_structures/manifests/exp002_structure_index_to_uniprot_substrate_20260527_014800.csv",
+    "best1_audit_csv": "/root/autodl-tmp/EZSpecificity/PathD/P450/data/q01_fe_embedding_patch/exp002_fe_heme_structures/manifests/exp002_best1_with_mmcif_atom_audit_atom_audit_v1_20260527.csv",
+    "google_manifest_csv": "/root/autodl-tmp/EZSpecificity/PathD/P450/data/q01_fe_embedding_patch/exp002_fe_heme_structures/manifests/exp002_google_drive_pdb_manifest_for_rcsb_best1_20260527.csv",
+    "normalized_splits": "/root/autodl-tmp/EZSpecificity/PathD/P450/data/q01_fe_embedding_patch/exp001_esibank_aonly_baseline/normalized_splits",
+    "base_cache": "/root/autodl-tmp/EZSpecificity/PathD/P450/data/q01_fe_embedding_patch/exp001_esibank_aonly_baseline/pt_cache/full_legacy_cuda_20260526_161909_per_sample_graph_v1"
+  },
+  "outputs": {
+    "p450_source_copy": "/root/autodl-tmp/EZSpecificity/PathD/P450/data/q01_fe_embedding_patch/exp003_full_p450_fe_heme_overlay/manifests/p450_389_uniprot_source_20260102_copy_20260527_214331.csv",
+    "p450389_overlap_structure_records": "/root/autodl-tmp/EZSpecificity/PathD/P450/data/q01_fe_embedding_patch/exp003_full_p450_fe_heme_overlay/manifests/exp003_p450389_overlap_structure_records_20260527_214331.csv",
+    "p450389_overlap_best1_audited": "/root/autodl-tmp/EZSpecificity/PathD/P450/data/q01_fe_embedding_patch/exp003_full_p450_fe_heme_overlay/manifests/exp003_p450389_overlap_best1_audited_20260527_214331.csv",
+    "fe_overlay_target_candidates": "/root/autodl-tmp/EZSpecificity/PathD/P450/data/q01_fe_embedding_patch/exp003_full_p450_fe_heme_overlay/manifests/exp003_fe_overlay_target_candidates_20260527_214331.csv",
+    "p450389_uniprot_summary": "/root/autodl-tmp/EZSpecificity/PathD/P450/data/q01_fe_embedding_patch/exp003_full_p450_fe_heme_overlay/manifests/exp003_p450389_uniprot_summary_20260527_214331.csv",
+    "missing_from_esibank_structure_records": "/root/autodl-tmp/EZSpecificity/PathD/P450/data/q01_fe_embedding_patch/exp003_full_p450_fe_heme_overlay/manifests/exp003_missing_from_esibank_structure_records_20260527_214331.csv",
+    "missing_from_fe_overlay_targets": "/root/autodl-tmp/EZSpecificity/PathD/P450/data/q01_fe_embedding_patch/exp003_full_p450_fe_heme_overlay/manifests/exp003_missing_from_fe_overlay_targets_20260527_214331.csv",
+    "p450389_split_sample_manifest": "/root/autodl-tmp/EZSpecificity/PathD/P450/data/q01_fe_embedding_patch/exp003_full_p450_fe_heme_overlay/manifests/exp003_p450389_split_sample_manifest_20260527_214331.csv",
+    "p450389_trainable_split_sample_manifest": "/root/autodl-tmp/EZSpecificity/PathD/P450/data/q01_fe_embedding_patch/exp003_full_p450_fe_heme_overlay/manifests/exp003_p450389_trainable_split_sample_manifest_20260527_214331.csv",
+    "p450389_split_summary": "/root/autodl-tmp/EZSpecificity/PathD/P450/data/q01_fe_embedding_patch/exp003_full_p450_fe_heme_overlay/manifests/exp003_p450389_split_summary_20260527_214331.csv"
+  },
+  "counts": {
+    "p450_source_rows": 389,
+    "p450_unique_uniprot": 389,
+    "p450_duplicate_uniprot_count": 0,
+    "esibank_structure_records_total": 317577,
+    "p450_overlap_structure_records": 8448,
+    "p450_with_esibank_structure_records": 216,
+    "p450_esibank_samples": 8448,
+    "p450_esibank_positive_samples": 586,
+    "p450_overlap_best1_audited_rows": 1233,
+    "fe_overlay_target_candidate_rows": 1152,
+    "p450_with_fe_overlay_targets": 22,
+    "fe_overlay_target_samples": 1152,
+    "fe_overlay_target_positive_samples": 41,
+    "p450_missing_from_esibank_structure_records": 173,
+    "p450_missing_from_fe_overlay_targets": 367,
+    "split_manifest_rows": 8448,
+    "split_manifest_train": 6428,
+    "split_manifest_val": 621,
+    "split_manifest_test": 1399,
+    "split_manifest_cache_missing": 219,
+    "trainable_split_manifest_rows": 8229,
+    "trainable_split_manifest_train": 6263,
+    "trainable_split_manifest_val": 607,
+    "trainable_split_manifest_test": 1359
+  },
+  "duplicate_p450_ids": [],
+  "interpretation": "target candidates are P450 rows that have ESIBank structure records, a usable audited RCSB HEM/Fe target, and an official ESIBank PDB file."
+}

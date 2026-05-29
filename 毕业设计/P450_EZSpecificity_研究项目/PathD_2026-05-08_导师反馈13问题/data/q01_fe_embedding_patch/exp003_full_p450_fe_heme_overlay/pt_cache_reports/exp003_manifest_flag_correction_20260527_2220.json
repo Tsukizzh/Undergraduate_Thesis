@@ -1,0 +1,14 @@
+{
+  "updated_at": "2026-05-27 22:20:32",
+  "manifest": "/root/autodl-tmp/EZSpecificity/PathD/P450/data/q01_fe_embedding_patch/exp003_full_p450_fe_heme_overlay/pt_cache/p450389_trainable_from_exp001_v1/manifest.pt",
+  "old_flags": {
+    "exp002_fe_overlay": true,
+    "exp003_full_p450_subset": true
+  },
+  "new_flags": {
+    "exp003_full_p450_subset": true,
+    "exp003_fe_overlay_from_exp002_rules": true,
+    "exp003_fe_overlay_sample_count": 1140,
+    "exp003_manifest_corrected_at": "2026-05-27 22:20:32"
+  }
+}

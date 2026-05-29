@@ -1,0 +1,4 @@
+split,samples,positive,negative,positive_rate,unique_uniprot,unique_substrate_index,cache_missing
+train,6428,433,5995,0.067362,216,3732,165
+val,621,47,574,0.075684,171,546,14
+test,1399,106,1293,0.075768,203,1133,40

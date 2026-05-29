@@ -62,6 +62,7 @@
 /.exp004_gdtable/
 /.q1_exp001_results/
 /.q1_exp002_manifests/
+/.q1_speed_diag_patch/
 /.q1_remote_patch/
 /.q1_speed_patch/
 /.q2_gpu_profile/

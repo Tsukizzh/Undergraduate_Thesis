@@ -1,0 +1,165 @@
+num_cpus: 0
+num_gpus: 1
+root_dir: /root/autodl-tmp/EZSpecificity/PathD/data_sources/ESIBank_official_A_only_20260526
+log: true
+seed: 3407
+n_runs: 1
+
+data:
+  tag: Q1-EXP003-full-data-p4507770-alphafill-heme-fe
+  representer: structure_sequence
+
+  train_data_path:
+    - /root/autodl-tmp/EZSpecificity/PathD/P450/data/q01_fe_embedding_patch/exp001_esibank_aonly_baseline/normalized_splits/brenda/train.csv
+    - /root/autodl-tmp/EZSpecificity/PathD/P450/data/q01_fe_embedding_patch/exp001_esibank_aonly_baseline/normalized_splits/Duf/train.csv
+    - /root/autodl-tmp/EZSpecificity/PathD/P450/data/q01_fe_embedding_patch/exp001_esibank_aonly_baseline/normalized_splits/Esterase/train.csv
+    - /root/autodl-tmp/EZSpecificity/PathD/P450/data/q01_fe_embedding_patch/exp001_esibank_aonly_baseline/normalized_splits/Gt_acceptor/train.csv
+    - /root/autodl-tmp/EZSpecificity/PathD/P450/data/q01_fe_embedding_patch/exp001_esibank_aonly_baseline/normalized_splits/Nitrilase/train.csv
+    - /root/autodl-tmp/EZSpecificity/PathD/P450/data/q01_fe_embedding_patch/exp001_esibank_aonly_baseline/normalized_splits/Phosphatase/train.csv
+    - /root/autodl-tmp/EZSpecificity/PathD/P450/data/q01_fe_embedding_patch/exp001_esibank_aonly_baseline/normalized_splits/Thiolase/train.csv
+  val_data_path:
+    - /root/autodl-tmp/EZSpecificity/PathD/P450/data/q01_fe_embedding_patch/exp001_esibank_aonly_baseline/normalized_splits/brenda/val.csv
+    - /root/autodl-tmp/EZSpecificity/PathD/P450/data/q01_fe_embedding_patch/exp001_esibank_aonly_baseline/normalized_splits/Duf/val.csv
+    - /root/autodl-tmp/EZSpecificity/PathD/P450/data/q01_fe_embedding_patch/exp001_esibank_aonly_baseline/normalized_splits/Esterase/val.csv
+    - /root/autodl-tmp/EZSpecificity/PathD/P450/data/q01_fe_embedding_patch/exp001_esibank_aonly_baseline/normalized_splits/Gt_acceptor/val.csv
+    - /root/autodl-tmp/EZSpecificity/PathD/P450/data/q01_fe_embedding_patch/exp001_esibank_aonly_baseline/normalized_splits/Nitrilase/val.csv
+    - /root/autodl-tmp/EZSpecificity/PathD/P450/data/q01_fe_embedding_patch/exp001_esibank_aonly_baseline/normalized_splits/Phosphatase/val.csv
+    - /root/autodl-tmp/EZSpecificity/PathD/P450/data/q01_fe_embedding_patch/exp001_esibank_aonly_baseline/normalized_splits/Thiolase/val.csv
+  test_data_path:
+    - /root/autodl-tmp/EZSpecificity/PathD/P450/data/q01_fe_embedding_patch/exp001_esibank_aonly_baseline/normalized_splits/brenda/test.csv
+    - /root/autodl-tmp/EZSpecificity/PathD/P450/data/q01_fe_embedding_patch/exp001_esibank_aonly_baseline/normalized_splits/Duf/test.csv
+    - /root/autodl-tmp/EZSpecificity/PathD/P450/data/q01_fe_embedding_patch/exp001_esibank_aonly_baseline/normalized_splits/Esterase/test.csv
+    - /root/autodl-tmp/EZSpecificity/PathD/P450/data/q01_fe_embedding_patch/exp001_esibank_aonly_baseline/normalized_splits/Gt_acceptor/test.csv
+    - /root/autodl-tmp/EZSpecificity/PathD/P450/data/q01_fe_embedding_patch/exp001_esibank_aonly_baseline/normalized_splits/Nitrilase/test.csv
+    - /root/autodl-tmp/EZSpecificity/PathD/P450/data/q01_fe_embedding_patch/exp001_esibank_aonly_baseline/normalized_splits/Phosphatase/test.csv
+    - /root/autodl-tmp/EZSpecificity/PathD/P450/data/q01_fe_embedding_patch/exp001_esibank_aonly_baseline/normalized_splits/Thiolase/test.csv
+
+  enzyme_lmdb_path:
+    - /root/autodl-tmp/EZSpecificity/PathD/data_sources/ESIBank_official_A_only_20260526/brenda/enzyme_features.lmdb
+    - /root/autodl-tmp/EZSpecificity/PathD/data_sources/ESIBank_official_A_only_20260526/small_family/Duf/enzyme_features.lmdb
+    - /root/autodl-tmp/EZSpecificity/PathD/data_sources/ESIBank_official_A_only_20260526/small_family/Esterase/enzyme_features.lmdb
+    - /root/autodl-tmp/EZSpecificity/PathD/data_sources/ESIBank_official_A_only_20260526/small_family/Gt_acceptor/enzyme_features.lmdb
+    - /root/autodl-tmp/EZSpecificity/PathD/data_sources/ESIBank_official_A_only_20260526/small_family/Nitrilase/enzyme_features.lmdb
+    - /root/autodl-tmp/EZSpecificity/PathD/data_sources/ESIBank_official_A_only_20260526/small_family/Phosphatase/enzyme_features.lmdb
+    - /root/autodl-tmp/EZSpecificity/PathD/data_sources/ESIBank_official_A_only_20260526/small_family/Thiolase/enzyme_features.lmdb
+
+  reaction_lmdb_path:
+    - /root/autodl-tmp/EZSpecificity/PathD/data_sources/ESIBank_official_A_only_20260526/brenda/reaction_features.lmdb
+    - /root/autodl-tmp/EZSpecificity/PathD/data_sources/ESIBank_official_A_only_20260526/small_family/Duf/reaction_features.lmdb
+    - /root/autodl-tmp/EZSpecificity/PathD/data_sources/ESIBank_official_A_only_20260526/small_family/Esterase/reaction_features.lmdb
+    - /root/autodl-tmp/EZSpecificity/PathD/data_sources/ESIBank_official_A_only_20260526/small_family/Gt_acceptor/reaction_features.lmdb
+    - /root/autodl-tmp/EZSpecificity/PathD/data_sources/ESIBank_official_A_only_20260526/small_family/Nitrilase/reaction_features.lmdb
+    - /root/autodl-tmp/EZSpecificity/PathD/data_sources/ESIBank_official_A_only_20260526/small_family/Phosphatase/reaction_features.lmdb
+    - /root/autodl-tmp/EZSpecificity/PathD/data_sources/ESIBank_official_A_only_20260526/small_family/Thiolase/reaction_features.lmdb
+
+  grover_path:
+    - /root/autodl-tmp/EZSpecificity/PathD/data_sources/ESIBank_official_A_only_20260526/brenda/grover_fingerprint.lmdb
+    - /root/autodl-tmp/EZSpecificity/PathD/data_sources/ESIBank_official_A_only_20260526/small_family/Duf/grover_fingerprint.lmdb
+    - /root/autodl-tmp/EZSpecificity/PathD/data_sources/ESIBank_official_A_only_20260526/small_family/Esterase/grover_fingerprint.lmdb
+    - /root/autodl-tmp/EZSpecificity/PathD/data_sources/ESIBank_official_A_only_20260526/small_family/Gt_acceptor/grover_fingerprint.lmdb
+    - /root/autodl-tmp/EZSpecificity/PathD/data_sources/ESIBank_official_A_only_20260526/small_family/Nitrilase/grover_fingerprint.lmdb
+    - /root/autodl-tmp/EZSpecificity/PathD/data_sources/ESIBank_official_A_only_20260526/small_family/Phosphatase/grover_fingerprint.lmdb
+    - /root/autodl-tmp/EZSpecificity/PathD/data_sources/ESIBank_official_A_only_20260526/small_family/Thiolase/grover_fingerprint.lmdb
+
+  morgan_path:
+    - /root/autodl-tmp/EZSpecificity/PathD/data_sources/ESIBank_official_A_only_20260526/brenda/morgan_fingerprint.npy
+    - /root/autodl-tmp/EZSpecificity/PathD/data_sources/ESIBank_official_A_only_20260526/small_family/Duf/morgan_fingerprint.npy
+    - /root/autodl-tmp/EZSpecificity/PathD/data_sources/ESIBank_official_A_only_20260526/small_family/Esterase/morgan_fingerprint.npy
+    - /root/autodl-tmp/EZSpecificity/PathD/data_sources/ESIBank_official_A_only_20260526/small_family/Gt_acceptor/morgan_fingerprint.npy
+    - /root/autodl-tmp/EZSpecificity/PathD/data_sources/ESIBank_official_A_only_20260526/small_family/Nitrilase/morgan_fingerprint.npy
+    - /root/autodl-tmp/EZSpecificity/PathD/data_sources/ESIBank_official_A_only_20260526/small_family/Phosphatase/morgan_fingerprint.npy
+    - /root/autodl-tmp/EZSpecificity/PathD/data_sources/ESIBank_official_A_only_20260526/small_family/Thiolase/morgan_fingerprint.npy
+
+  structure_processed_path:
+    - /root/autodl-tmp/EZSpecificity/PathD/data_sources/ESIBank_official_A_only_20260526/brenda/structure/structure_features.lmdb
+    - /root/autodl-tmp/EZSpecificity/PathD/data_sources/ESIBank_official_A_only_20260526/small_family/Duf/structure/af2/structure_features.lmdb
+    - /root/autodl-tmp/EZSpecificity/PathD/data_sources/ESIBank_official_A_only_20260526/small_family/Esterase/structure/af2/structure_features.lmdb
+    - /root/autodl-tmp/EZSpecificity/PathD/data_sources/ESIBank_official_A_only_20260526/small_family/Gt_acceptor/structure/af2/structure_features.lmdb
+    - /root/autodl-tmp/EZSpecificity/PathD/data_sources/ESIBank_official_A_only_20260526/small_family/Nitrilase/structure/af2/structure_features.lmdb
+    - /root/autodl-tmp/EZSpecificity/PathD/data_sources/ESIBank_official_A_only_20260526/small_family/Phosphatase/structure/af2/structure_features.lmdb
+    - /root/autodl-tmp/EZSpecificity/PathD/data_sources/ESIBank_official_A_only_20260526/small_family/Thiolase/structure/af2/structure_features.lmdb
+
+  sequence_processed_path:
+    - /root/autodl-tmp/EZSpecificity/PathD/data_sources/ESIBank_official_A_only_20260526/brenda/structure/sequence_features.lmdb
+    - /root/autodl-tmp/EZSpecificity/PathD/data_sources/ESIBank_official_A_only_20260526/small_family/Duf/structure/af2/sequence_features.lmdb
+    - /root/autodl-tmp/EZSpecificity/PathD/data_sources/ESIBank_official_A_only_20260526/small_family/Esterase/structure/af2/sequence_features.lmdb
+    - /root/autodl-tmp/EZSpecificity/PathD/data_sources/ESIBank_official_A_only_20260526/small_family/Gt_acceptor/structure/af2/sequence_features.lmdb
+    - /root/autodl-tmp/EZSpecificity/PathD/data_sources/ESIBank_official_A_only_20260526/small_family/Nitrilase/structure/af2/sequence_features.lmdb
+    - /root/autodl-tmp/EZSpecificity/PathD/data_sources/ESIBank_official_A_only_20260526/small_family/Phosphatase/structure/af2/sequence_features.lmdb
+    - /root/autodl-tmp/EZSpecificity/PathD/data_sources/ESIBank_official_A_only_20260526/small_family/Thiolase/structure/af2/sequence_features.lmdb
+
+  high_quality_id_path:
+    - null
+    - null
+    - null
+    - null
+    - null
+    - null
+    - null
+
+  pdb_dir: /root/autodl-tmp/EZSpecificity/PathD/data_sources/ESIBank_official_A_only_20260526/unused_pdb_dir
+  ligand_dir: /root/autodl-tmp/EZSpecificity/PathD/data_sources/ESIBank_official_A_only_20260526/unused_ligand_dir
+  full_data: false
+  fake_sequence_ratio: 0
+
+  sample_weight:
+    - 1.0
+    - 1.0
+
+  batch_size: 16
+  max_substrate_length: 280
+  max_enzyme_length: 1450
+
+  features:
+    - morgan
+    - 1024
+    - grover_mean
+    - 4885
+
+  atom_features:
+    - grover
+    - 2400
+
+transform:
+  dist_noise: true
+  cutoff: 10
+  num_r_gaussian: 32
+  k: 48
+
+model:
+  name: structure_sequence
+  use_gnn: true
+  hidden_dim: 128
+  feature_norm: false
+
+  header:
+    act_fn: relu
+    norm: true
+    num_layers: 3
+
+  graph:
+    name: egnn
+    hidden_dim: 128
+    act_fn: relu
+    num_layers: 3
+    attention: true
+    residual: true
+    norm: layer
+    mode: complex
+
+  cross_attention:
+    n_head: 8
+    dropout: 0.9
+
+training:
+  gradient_clip_val: 8
+  optimizer: adamW
+  warmup_epochs: 8
+  lr: 3.0e-04
+  weight_decay: 0
+  min_lr: 5.0e-06
+  sched_factor: 0.5
+  sched_patience: 10
+  val_frequency: 1
+  accumulate_grad_batches: 1
+

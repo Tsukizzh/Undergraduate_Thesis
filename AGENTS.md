@@ -34,12 +34,23 @@
 3. Fe、HEM、P450、底物分类、对接结构、口袋原子、催化距离筛选。
 4. 是否重跑训练、是否中断服务器任务、是否保留或删除检查点。
 5. 修改数据处理脚本、训练脚本、评估脚本或实验配置。
+6. ColabFold / AlphaFold 结构预测、AlphaFill 补辅因子、Uni-Dock / Vina 对接、MMseqs2 聚类、GPU 加速、批处理和任何高成本服务器流程。
 
 涉及上述内容时，最终回复要区分：
 
 - 已由文件、日志或命令验证的事实。
 - 由代码或实验设计推断出的判断。
 - 仍未确认的不确定性。
+
+涉及外部工具和高成本计算时，还必须先查官方文档、本机 `--help`、已有最佳实践和当前日志，确认最高效且适合本任务的入口，再启动正式全量任务。严禁闭门造车、只按经验写脚本或在没有小批性能基准的情况下长时间占用昂贵服务器资源。
+
+P450 结构和对接任务的硬规则：
+
+1. ColabFold / AlphaFold 预测结构默认没有 HEM/Fe，任何用于 P450 对接、Fe-催化原子距离、口袋定位或湿实验打分的流程，都必须在设计阶段写明 HEM/Fe 来源、补充方法、失败处理和质量标签。
+2. AlphaFill 不能只用少数模板粗略覆盖所有候选。必须优先查 AlphaFill 数据库、API、下载数据或完整候选模板库，并记录每条候选的模板来源、identity、local RMSD、clash、Fe-Cys 距离和置信度。少数模板 overlay 只能作为临时应急结果，不能包装成正式结论。
+3. Uni-Dock 正式运行前必须查官方 README、服务器 `unidock --help` / `unidocktools unidock_pipeline --help` 和当前任务日志，先按任务形态选择官方入口，不能只盯一个参数。单 receptor / 单 pocket 对大量 ligand 时，优先评估 `unidock --receptor ... --gpu_batch ...`；ligand 很多或命令行过长时，用路径列表形式的常规 `--ligand_index` 替代 `--gpu_batch`。多 receptor / 多 pocket 对单 ligand 或少量 ligand，且每条配对有独立 box 时，再评估 `--paired_batch_size` 和 JSON `--ligand_index`，并确认本机版本、Vina scoring 限制和 JSON schema。从 PDB/SDF 等常见格式出发、需要蛋白/配体准备、补氢或统一工作目录时，评估 `unidocktools proteinprep`、`ligandprep`、`unidock_pipeline`。只打分或局部优化时评估 `--score_only` / `--local_only`。每次全量前同步核对 `--search_mode` 或显式 `--exhaustiveness/max_step`、`--num_modes`、`--refine_step`、`--max_gpu_memory`、`--scoring`、box 参数、输入格式、输出目录、GPU 利用率和每样本耗时。不能默认每个 receptor 单独启动一个低吞吐命令。
+4. ColabFold 大批量预测要先判断是否依赖公共 MSA server、是否会限流、是否需要本地 `colabfold_search` / MMseqs2 数据库、序列去重、分片并行或复用已有 AlphaFold / AlphaFill 结构。
+5. 正式全量前必须做小批真实性能基准，报告 GPU 利用率、显存、每样本耗时、主要瓶颈和预计总耗时；出现限流、低利用率、残留孤儿进程、异常慢日志或异常分数时，先暂停排查。
 
 ## 四、实验目录边界
 

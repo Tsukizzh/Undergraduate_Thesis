@@ -1,0 +1,60 @@
+{
+  "created_at": "2026-05-27 21:53:38",
+  "tag": "20260527_2150",
+  "base_cache": "/root/autodl-tmp/EZSpecificity/PathD/P450/data/q01_fe_embedding_patch/exp001_esibank_aonly_baseline/pt_cache/full_legacy_cuda_20260526_161909_per_sample_graph_v1",
+  "trainable_manifest": "/root/autodl-tmp/EZSpecificity/PathD/P450/data/q01_fe_embedding_patch/exp003_full_p450_fe_heme_overlay/manifests/exp003_p450389_trainable_split_sample_manifest_20260527_214331.csv",
+  "out_cache": "/root/autodl-tmp/EZSpecificity/PathD/P450/data/q01_fe_embedding_patch/exp003_full_p450_fe_heme_overlay/pt_cache/p450389_trainable_from_exp001_v1",
+  "total_rows": 8229,
+  "split_summaries": {
+    "train": {
+      "manifest_rows": 6263,
+      "index_rows": 6263,
+      "first_sample_id": 40,
+      "last_sample_id": 439793,
+      "label_counts": {
+        "0": 5832,
+        "1": 431
+      },
+      "sample_file_link_counts": {
+        "hardlink": 6263
+      }
+    },
+    "val": {
+      "manifest_rows": 607,
+      "index_rows": 607,
+      "first_sample_id": 46,
+      "last_sample_id": 43980,
+      "label_counts": {
+        "0": 560,
+        "1": 47
+      },
+      "sample_file_link_counts": {
+        "hardlink": 607
+      }
+    },
+    "test": {
+      "manifest_rows": 1359,
+      "index_rows": 1359,
+      "first_sample_id": 215,
+      "last_sample_id": 102638,
+      "label_counts": {
+        "0": 1253,
+        "1": 106
+      },
+      "sample_file_link_counts": {
+        "hardlink": 1359
+      }
+    }
+  },
+  "sample_file_link_counts_total": {
+    "hardlink": 8229
+  },
+  "shared_file_link_counts": {
+    "enzymes": {
+      "hardlink": 3
+    },
+    "substrates": {
+      "hardlink": 4
+    }
+  }
+}

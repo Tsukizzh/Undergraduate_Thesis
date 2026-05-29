@@ -1,0 +1,59 @@
+{
+  "created_at": "2026-05-27 22:19:48",
+  "cache": "/root/autodl-tmp/EZSpecificity/PathD/P450/data/q01_fe_embedding_patch/exp003_full_p450_fe_heme_overlay/pt_cache/p450389_trainable_from_exp001_v1",
+  "manifest_csv": "/root/autodl-tmp/EZSpecificity/PathD/P450/data/q01_fe_embedding_patch/exp003_full_p450_fe_heme_overlay/manifests/exp003_p450389_trainable_split_sample_manifest_20260527_214331.csv",
+  "manifest_sha256": "023db6c08d5f60b114e41591765ecf1bd81a0a873522857f24f76ad8573d6fd0",
+  "splits": {
+    "train": {
+      "manifest_rows": 6263,
+      "index_rows": 6263,
+      "sample_id_order_match_manifest": true,
+      "sample_id_set_match_manifest": true,
+      "enzyme_id_mismatch_count": 0,
+      "substrate_id_mismatch_count": 0,
+      "missing_sample_file_count": 0,
+      "sample_internal_mismatch_count": 0,
+      "enzyme_id_mismatch_examples": [],
+      "substrate_id_mismatch_examples": [],
+      "missing_sample_file_examples": [],
+      "sample_internal_mismatch_examples": []
+    },
+    "val": {
+      "manifest_rows": 607,
+      "index_rows": 607,
+      "sample_id_order_match_manifest": true,
+      "sample_id_set_match_manifest": true,
+      "enzyme_id_mismatch_count": 0,
+      "substrate_id_mismatch_count": 0,
+      "missing_sample_file_count": 0,
+      "sample_internal_mismatch_count": 0,
+      "enzyme_id_mismatch_examples": [],
+      "substrate_id_mismatch_examples": [],
+      "missing_sample_file_examples": [],
+      "sample_internal_mismatch_examples": []
+    },
+    "test": {
+      "manifest_rows": 1359,
+      "index_rows": 1359,
+      "sample_id_order_match_manifest": true,
+      "sample_id_set_match_manifest": true,
+      "enzyme_id_mismatch_count": 0,
+      "substrate_id_mismatch_count": 0,
+      "missing_sample_file_count": 0,
+      "sample_internal_mismatch_count": 0,
+      "enzyme_id_mismatch_examples": [],
+      "substrate_id_mismatch_examples": [],
+      "missing_sample_file_examples": [],
+      "sample_internal_mismatch_examples": []
+    }
+  },
+  "errors": [],
+  "manifest_pt_flags": {
+    "exp003_full_p450_subset": true,
+    "exp003_source_cache": "/root/autodl-tmp/EZSpecificity/PathD/P450/data/q01_fe_embedding_patch/exp001_esibank_aonly_baseline/pt_cache/full_legacy_cuda_20260526_161909_per_sample_graph_v1",
+    "exp003_trainable_manifest": "/root/autodl-tmp/EZSpecificity/PathD/P450/data/q01_fe_embedding_patch/exp003_full_p450_fe_heme_overlay/manifests/exp003_p450389_trainable_split_sample_manifest_20260527_214331.csv",
+    "exp003_tag": "20260527_2150",
+    "exp003_created_at": "2026-05-27 21:53:37",
+    "exp002_fe_overlay": true
+  }
+}

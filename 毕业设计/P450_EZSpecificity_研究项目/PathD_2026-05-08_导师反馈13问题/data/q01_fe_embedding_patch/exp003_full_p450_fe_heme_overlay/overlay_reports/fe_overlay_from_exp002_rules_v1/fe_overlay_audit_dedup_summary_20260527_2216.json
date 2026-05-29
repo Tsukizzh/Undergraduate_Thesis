@@ -1,0 +1,8 @@
+{
+  "created_at": "2026-05-27 22:17:01",
+  "source_audit": "/root/autodl-tmp/EZSpecificity/PathD/P450/data/q01_fe_embedding_patch/exp003_full_p450_fe_heme_overlay/overlay_reports/fe_overlay_from_exp002_rules_v1/fe_overlay_sample_audit.csv",
+  "dedup_audit": "/root/autodl-tmp/EZSpecificity/PathD/P450/data/q01_fe_embedding_patch/exp003_full_p450_fe_heme_overlay/overlay_reports/fe_overlay_from_exp002_rules_v1/fe_overlay_sample_audit_dedup_20260527_2216.csv",
+  "source_rows": 1240,
+  "dedup_rows": 1140,
+  "duplicate_rows_removed": 100
+}

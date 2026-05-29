@@ -1,0 +1,225 @@
+{
+  "timestamp": "20260527_224315",
+  "exp_dir": "/root/autodl-tmp/EZSpecificity/PathD/P450/experiments/q01_fe_embedding_patch/EXP003_full_p450_fe_heme_overlay",
+  "cache_dir": "/root/autodl-tmp/EZSpecificity/PathD/P450/data/q01_fe_embedding_patch/exp003_full_p450_fe_heme_overlay/pt_cache/p450389_trainable_from_exp001_v1",
+  "config": "/root/autodl-tmp/EZSpecificity/PathD/P450/experiments/q01_fe_embedding_patch/EXP003_full_p450_fe_heme_overlay/configs/config_exp003_p450_subset_fe_overlay.yml",
+  "run_script": "/root/autodl-tmp/EZSpecificity/PathD/P450/experiments/q01_fe_embedding_patch/EXP003_full_p450_fe_heme_overlay/scripts/run_exp003_p450_subset_fe_overlay_train.sh",
+  "config_tag": "Q1-EXP003-p450389-subset-fe-heme-overlay",
+  "run_script_forbidden_tokens": {
+    "EXP002": false,
+    "exp002_fe_heme_structures": false,
+    "00_EXP002": false,
+    "Q1_EXP002": false
+  },
+  "py_compile": {
+    "ok": true,
+    "returncode": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  "bash_n": {
+    "ok": true,
+    "returncode": 0,
+    "stdout": "",
+    "stderr": ""
+  },
+  "manifest_keys_subset": {
+    "protein_elements": [
+      1,
+      6,
+      7,
+      8,
+      16,
+      34,
+      26
+    ],
+    "protein_has_is_hetero": true,
+    "exp003_fe_overlay_from_exp002_rules": true,
+    "exp003_fe_overlay_sample_count": 1140,
+    "has_exp002_fe_overlay_key": false
+  },
+  "split_summary": {
+    "train": {
+      "n": 6263
+    },
+    "val": {
+      "n": 607
+    },
+    "test": {
+      "n": 1359
+    }
+  },
+  "nvidia_smi": {
+    "ok": true,
+    "returncode": 0,
+    "stdout": "0, 98, 14366, 32607\n1, 7, 18940, 32607",
+    "stderr": ""
+  },
+  "training_processes": {
+    "ok": true,
+    "returncode": 0,
+    "stdout": "20203  20200 /root/miniconda3/bin/python scripts/main_training_pt_fe_overlay.py --config configs/config_fe_overlay.yml --cache-dir /root/autodl-tmp/EZSpecificity/PathD/P450/data/q01_fe_embedding_patch/exp002_fe_heme_structures/pt_cache/exp002_fe_overlay_v1 --edge-mode legacy_bug --num-workers 8 --prefetch-factor 1 --train-in-order false --batch-size 40 --max-epochs 200 --devices 2 --run-name Q1_EXP002_fe_overlay_ddp2_b40_w8_full_20260527_184505 --results-dir results/00_EXP002_FE_OVERLAY_20260527_184505 --resume last\n 20210  20203 /root/miniconda3/bin/python /root/autodl-tmp/EZSpecificity/PathD/P450/experiments/q01_fe_embedding_patch/EXP002_fe_heme_overlay/scripts/main_training_pt_fe_overlay.py --config configs/config_fe_overlay.yml --cache-dir /root/autodl-tmp/EZSpecificity/PathD/P450/data/q01_fe_embedding_patch/exp002_fe_heme_structures/pt_cache/exp002_fe_overlay_v1 --edge-mode legacy_bug --num-workers 8 --prefetch-factor 1 --train-in-order false --batch-size 40 --max-epochs 200 --devices 2 --run-name Q1_EXP002_fe_overlay_ddp2_b40_w8_full_20260527_184505 --results-dir results/00_EXP002_FE_OVERLAY_20260527_184505 --resume last\n 20243  20210 /root/miniconda3/bin/python /root/autodl-tmp/EZSpecificity/PathD/P450/experiments/q01_fe_embedding_patch/EXP002_fe_heme_overlay/scripts/main_training_pt_fe_overlay.py --config configs/config_fe_overlay.yml --cache-dir /root/autodl-tmp/EZSpecificity/PathD/P450/data/q01_fe_embedding_patch/exp002_fe_heme_structures/pt_cache/exp002_fe_overlay_v1 --edge-mode legacy_bug --num-workers 8 --prefetch-factor 1 --train-in-order false --batch-size 40 --max-epochs 200 --devices 2 --run-name Q1_EXP002_fe_overlay_ddp2_b40_w8_full_20260527_184505 --results-dir results/00_EXP002_FE_OVERLAY_20260527_184505 --resume last\n 20244  20203 /root/miniconda3/bin/python scripts/main_training_pt_fe_overlay.py --config configs/config_fe_overlay.yml --cache-dir /root/autodl-tmp/EZSpecificity/PathD/P450/data/q01_fe_embedding_patch/exp002_fe_heme_structures/pt_cache/exp002_fe_overlay_v1 --edge-mode legacy_bug --num-workers 8 --prefetch-factor 1 --train-in-order false --batch-size 40 --max-epochs 200 --devices 2 --run-name Q1_EXP002_fe_overlay_ddp2_b40_w8_full_20260527_184505 --results-dir results/00_EXP002_FE_OVERLAY_20260527_184505 --resume last\n 20245  20203 /root/miniconda3/bin/python scripts/main_training_pt_fe_overlay.py --config configs/config_fe_overlay.yml --cache-dir /root/autodl-tmp/EZSpecificity/PathD/P450/data/q01_fe_embedding_patch/exp002_fe_heme_structures/pt_cache/exp002_fe_overlay_v1 --edge-mode legacy_bug --num-workers 8 --prefetch-factor 1 --train-in-order false --batch-size 40 --max-epochs 200 --devices 2 --run-name Q1_EXP002_fe_overlay_ddp2_b40_w8_full_20260527_184505 --results-dir results/00_EXP002_FE_OVERLAY_20260527_184505 --resume last\n 20246  20210 /root/miniconda3/bin/python /root/autodl-tmp/EZSpecificity/PathD/P450/experiments/q01_fe_embedding_patch/EXP002_fe_heme_overlay/scripts/main_training_pt_fe_overlay.py --config configs/config_fe_overlay.yml --cache-dir /root/autodl-tmp/EZSpecificity/PathD/P450/data/q01_fe_embedding_patch/exp002_fe_heme_structures/pt_cache/exp002_fe_overlay_v1 --edge-mode legacy_bug --num-workers 8 --prefetch-factor 1 --train-in-order false --batch-size 40 --max-epochs 200 --devices 2 --run-name Q1_EXP002_fe_overlay_ddp2_b40_w8_full_20260527_184505 --results-dir results/00_EXP002_FE_OVERLAY_20260527_184505 --resume last\n 20247  20210 /root/miniconda3/bin/python /root/autodl-tmp/EZSpecificity/PathD/P450/experiments/q01_fe_embedding_patch/EXP002_fe_heme_overlay/scripts/main_training_pt_fe_overlay.py --config configs/config_fe_overlay.yml --cache-dir /root/autodl-tmp/EZSpecificity/PathD/P450/data/q01_fe_embedding_patch/exp002_fe_heme_structures/pt_cache/exp002_fe_overlay_v1 --edge-mode legacy_bug --num-workers 8 --prefetch-factor 1 --train-in-order false --batch-size 40 --max-epochs 200 --devices 2 --run-name Q1_EXP002_fe_overlay_ddp2_b40_w8_full_20260527_184505 --results-dir results/00_EXP002_FE_OVERLAY_20260527_184505 --resume last\n 20248  20203 /root/miniconda3/bin/python scripts/main_training_pt_fe_overlay.py --config configs/config_fe_overlay.yml --cache-dir /root/autodl-tmp/EZSpecificity/PathD/P450/data/q01_fe_embedding_patch/exp002_fe_heme_structures/pt_cache/exp002_fe_overlay_v1 --edge-mode legacy_bug --num-workers 8 --prefetch-factor 1 --train-in-order false --batch-size 40 --max-epochs 200 --devices 2 --run-name Q1_EXP002_fe_overlay_ddp2_b40_w8_full_20260527_184505 --results-dir results/00_EXP002_FE_OVERLAY_20260527_184505 --resume last\n 20249  20203 /root/miniconda3/bin/python scripts/main_training_pt_fe_overlay.py --config configs/config_fe_overlay.yml --cache-dir /root/autodl-tmp/EZSpecificity/PathD/P450/data/q01_fe_embedding_patch/exp002_fe_heme_structures/pt_cache/exp002_fe_overlay_v1 --edge-mode legacy_bug --num-workers 8 --prefetch-factor 1 --train-in-order false --batch-size 40 --max-epochs 200 --devices 2 --run-name Q1_EXP002_fe_overlay_ddp2_b40_w8_full_20260527_184505 --results-dir results/00_EXP002_FE_OVERLAY_20260527_184505 --resume last\n 20250  20210 /root/miniconda3/bin/python /root/autodl-tmp/EZSpecificity/PathD/P450/experiments/q01_fe_embedding_patch/EXP002_fe_heme_overlay/scripts/main_training_pt_fe_overlay.py --config configs/config_fe_overlay.yml --cache-dir /root/autodl-tmp/EZSpecificity/PathD/P450/data/q01_fe_embedding_patch/exp002_fe_heme_structures/pt_cache/exp002_fe_overlay_v1 --edge-mode legacy_bug --num-workers 8 --prefetch-factor 1 --train-in-order false --batch-size 40 --max-epochs 200 --devices 2 --run-name Q1_EXP002_fe_overlay_ddp2_b40_w8_full_20260527_184505 --results-dir results/00_EXP002_FE_OVERLAY_20260527_184505 --resume last\n 20251  20203 /root/miniconda3/bin/python scripts/main_training_pt_fe_overlay.py --config configs/config_fe_overlay.yml --cache-dir /root/autodl-tmp/EZSpecificity/PathD/P450/data/q01_fe_embedding_patch/exp002_fe_heme_structures/pt_cache/exp002_fe_overlay_v1 --edge-mode legacy_bug --num-workers 8 --prefetch-factor 1 --train-in-order false --batch-size 40 --max-epochs 200 --devices 2 --run-name Q1_EXP002_fe_overlay_ddp2_b40_w8_full_20260527_184505 --results-dir results/00_EXP002_FE_OVERLAY_20260527_184505 --resume last\n 20252  20210 /root/miniconda3/bin/python /root/autodl-tmp/EZSpecificity/PathD/P450/experiments/q01_fe_embedding_patch/EXP002_fe_heme_overlay/scripts/main_training_pt_fe_overlay.py --config configs/config_fe_overlay.yml --cache-dir /root/autodl-tmp/EZSpecificity/PathD/P450/data/q01_fe_embedding_patch/exp002_fe_heme_structures/pt_cache/exp002_fe_overlay_v1 --edge-mode legacy_bug --num-workers 8 --prefetch-factor 1 --train-in-order false --batch-size 40 --max-epochs 200 --devices 2 --run-name Q1_EXP002_fe_overlay_ddp2_b40_w8_full_20260527_184505 --results-dir results/00_EXP002_FE_OVERLAY_20260527_184505 --resume last\n 20253  20203 /root/miniconda3/bin/python scripts/main_training_pt_fe_overlay.py --config configs/config_fe_overlay.yml --cache-dir /root/autodl-tmp/EZSpecificity/PathD/P450/data/q01_fe_embedding_patch/exp002_fe_heme_structures/pt_cache/exp002_fe_overlay_v1 --edge-mode legacy_bug --num-workers 8 --prefetch-factor 1 --train-in-order false --batch-size 40 --max-epochs 200 --devices 2 --run-name Q1_EXP002_fe_overlay_ddp2_b40_w8_full_20260527_184505 --results-dir results/00_EXP002_FE_OVERLAY_20260527_184505 --resume last\n 20254  20210 /root/miniconda3/bin/python /root/autodl-tmp/EZSpecificity/PathD/P450/experiments/q01_fe_embedding_patch/EXP002_fe_heme_overlay/scripts/main_training_pt_fe_overlay.py --config configs/config_fe_overlay.yml --cache-dir /root/autodl-tmp/EZSpecificity/PathD/P450/data/q01_fe_embedding_patch/exp002_fe_heme_structures/pt_cache/exp002_fe_overlay_v1 --edge-mode legacy_bug --num-workers 8 --prefetch-factor 1 --train-in-order false --batch-size 40 --max-epochs 200 --devices 2 --run-name Q1_EXP002_fe_overlay_ddp2_b40_w8_full_20260527_184505 --results-dir results/00_EXP002_FE_OVERLAY_20260527_184505 --resume last\n 20255  20203 /root/miniconda3/bin/python scripts/main_training_pt_fe_overlay.py --config configs/config_fe_overlay.yml --cache-dir /root/autodl-tmp/EZSpecificity/PathD/P450/data/q01_fe_embedding_patch/exp002_fe_heme_structures/pt_cache/exp002_fe_overlay_v1 --edge-mode legacy_bug --num-workers 8 --prefetch-factor 1 --train-in-order false --batch-size 40 --max-epochs 200 --devices 2 --run-name Q1_EXP002_fe_overlay_ddp2_b40_w8_full_20260527_184505 --results-dir results/00_EXP002_FE_OVERLAY_20260527_184505 --resume last\n 20256  20210 /root/miniconda3/bin/python /root/autodl-tmp/EZSpecificity/PathD/P450/experiments/q01_fe_embedding_patch/EXP002_fe_heme_overlay/scripts/main_training_pt_fe_overlay.py --config configs/config_fe_overlay.yml --cache-dir /root/autodl-tmp/EZSpecificity/PathD/P450/data/q01_fe_embedding_patch/exp002_fe_heme_structures/pt_cache/exp002_fe_overlay_v1 --edge-mode legacy_bug --num-workers 8 --prefetch-factor 1 --train-in-order false --batch-size 40 --max-epochs 200 --devices 2 --run-name Q1_EXP002_fe_overlay_ddp2_b40_w8_full_20260527_184505 --results-dir results/00_EXP002_FE_OVERLAY_20260527_184505 --resume last\n 20257  20203 /root/miniconda3/bin/python scripts/main_training_pt_fe_overlay.py --config configs/config_fe_overlay.yml --cache-dir /root/autodl-tmp/EZSpecificity/PathD/P450/data/q01_fe_embedding_patch/exp002_fe_heme_structures/pt_cache/exp002_fe_overlay_v1 --edge-mode legacy_bug --num-workers 8 --prefetch-factor 1 --train-in-order false --batch-size 40 --max-epochs 200 --devices 2 --run-name Q1_EXP002_fe_overlay_ddp2_b40_w8_full_20260527_184505 --results-dir results/00_EXP002_FE_OVERLAY_20260527_184505 --resume last\n 20258  20210 /root/miniconda3/bin/python /root/autodl-tmp/EZSpecificity/PathD/P450/experiments/q01_fe_embedding_patch/EXP002_fe_heme_overlay/scripts/main_training_pt_fe_overlay.py --config configs/config_fe_overlay.yml --cache-dir /root/autodl-tmp/EZSpecificity/PathD/P450/data/q01_fe_embedding_patch/exp002_fe_heme_structures/pt_cache/exp002_fe_overlay_v1 --edge-mode legacy_bug --num-workers 8 --prefetch-factor 1 --train-in-order false --batch-size 40 --max-epochs 200 --devices 2 --run-name Q1_EXP002_fe_overlay_ddp2_b40_w8_full_20260527_184505 --results-dir results/00_EXP002_FE_OVERLAY_20260527_184505 --resume last\n 20748  20203 /root/miniconda3/bin/python scripts/main_training_pt_fe_overlay.py --config configs/config_fe_overlay.yml --cache-dir /root/autodl-tmp/EZSpecificity/PathD/P450/data/q01_fe_embedding_patch/exp002_fe_heme_structures/pt_cache/exp002_fe_overlay_v1 --edge-mode legacy_bug --num-workers 8 --prefetch-factor 1 --train-in-order false --batch-size 40 --max-epochs 200 --devices 2 --run-name Q1_EXP002_fe_overlay_ddp2_b40_w8_full_20260527_184505 --results-dir results/00_EXP002_FE_OVERLAY_20260527_184505 --resume last\n 20749  20210 /root/miniconda3/bin/python /root/autodl-tmp/EZSpecificity/PathD/P450/experiments/q01_fe_embedding_patch/EXP002_fe_heme_overlay/scripts/main_training_pt_fe_overlay.py --config configs/config_fe_overlay.yml --cache-dir /root/autodl-tmp/EZSpecificity/PathD/P450/data/q01_fe_embedding_patch/exp002_fe_heme_structures/pt_cache/exp002_fe_overlay_v1 --edge-mode legacy_bug --num-workers 8 --prefetch-factor 1 --train-in-order false --batch-size 40 --max-epochs 200 --devices 2 --run-name Q1_EXP002_fe_overlay_ddp2_b40_w8_full_20260527_184505 --results-dir results/00_EXP002_FE_OVERLAY_20260527_184505 --resume last\n 20750  20210 /root/miniconda3/bin/python /root/autodl-tmp/EZSpecificity/PathD/P450/experiments/q01_fe_embedding_patch/EXP002_fe_heme_overlay/scripts/main_training_pt_fe_overlay.py --config configs/config_fe_overlay.yml --cache-dir /root/autodl-tmp/EZSpecificity/PathD/P450/data/q01_fe_embedding_patch/exp002_fe_heme_structures/pt_cache/exp002_fe_overlay_v1 --edge-mode legacy_bug --num-workers 8 --prefetch-factor 1 --train-in-order false --batch-size 40 --max-epochs 200 --devices 2 --run-name Q1_EXP002_fe_overlay_ddp2_b40_w8_full_20260527_184505 --results-dir results/00_EXP002_FE_OVERLAY_20260527_184505 --resume last\n 20751  20203 /root/miniconda3/bin/python scripts/main_training_pt_fe_overlay.py --config configs/config_fe_overlay.yml --cache-dir /root/autodl-tmp/EZSpecificity/PathD/P450/data/q01_fe_embedding_patch/exp002_fe_heme_structures/pt_cache/exp002_fe_overlay_v1 --edge-mode legacy_bug --num-workers 8 --prefetch-factor 1 --train-in-order false --batch-size 40 --max-epochs 200 --devices 2 --run-name Q1_EXP002_fe_overlay_ddp2_b40_w8_full_20260527_184505 --results-dir results/00_EXP002_FE_OVERLAY_20260527_184505 --resume last\n 20752  20203 /root/miniconda3/bin/python scripts/main_training_pt_fe_overlay.py --config configs/config_fe_overlay.yml --cache-dir /root/autodl-tmp/EZSpecificity/PathD/P450/data/q01_fe_embedding_patch/exp002_fe_heme_structures/pt_cache/exp002_fe_overlay_v1 --edge-mode legacy_bug --num-workers 8 --prefetch-factor 1 --train-in-order false --batch-size 40 --max-epochs 200 --devices 2 --run-name Q1_EXP002_fe_overlay_ddp2_b40_w8_full_20260527_184505 --results-dir results/00_EXP002_FE_OVERLAY_20260527_184505 --resume last\n 20753  20210 /root/miniconda3/bin/python /root/autodl-tmp/EZSpecificity/PathD/P450/experiments/q01_fe_embedding_patch/EXP002_fe_heme_overlay/scripts/main_training_pt_fe_overlay.py --config configs/config_fe_overlay.yml --cache-dir /root/autodl-tmp/EZSpecificity/PathD/P450/data/q01_fe_embedding_patch/exp002_fe_heme_structures/pt_cache/exp002_fe_overlay_v1 --edge-mode legacy_bug --num-workers 8 --prefetch-factor 1 --train-in-order false --batch-size 40 --max-epochs 200 --devices 2 --run-name Q1_EXP002_fe_overlay_ddp2_b40_w8_full_20260527_184505 --results-dir results/00_EXP002_FE_OVERLAY_20260527_184505 --resume last\n 20754  20203 /root/miniconda3/bin/python scripts/main_training_pt_fe_overlay.py --config configs/config_fe_overlay.yml --cache-dir /root/autodl-tmp/EZSpecificity/PathD/P450/data/q01_fe_embedding_patch/exp002_fe_heme_structures/pt_cache/exp002_fe_overlay_v1 --edge-mode legacy_bug --num-workers 8 --prefetch-factor 1 --train-in-order false --batch-size 40 --max-epochs 200 --devices 2 --run-name Q1_EXP002_fe_overlay_ddp2_b40_w8_full_20260527_184505 --results-dir results/00_EXP002_FE_OVERLAY_20260527_184505 --resume last\n 20755  20210 /root/miniconda3/bin/python /root/autodl-tmp/EZSpecificity/PathD/P450/experiments/q01_fe_embedding_patch/EXP002_fe_heme_overlay/scripts/main_training_pt_fe_overlay.py --config configs/config_fe_overlay.yml --cache-dir /root/autodl-tmp/EZSpecificity/PathD/P450/data/q01_fe_embedding_patch/exp002_fe_heme_structures/pt_cache/exp002_fe_overlay_v1 --edge-mode legacy_bug --num-workers 8 --prefetch-factor 1 --train-in-order false --batch-size 40 --max-epochs 200 --devices 2 --run-name Q1_EXP002_fe_overlay_ddp2_b40_w8_full_20260527_184505 --results-dir results/00_EXP002_FE_OVERLAY_20260527_184505 --resume last\n 20756  20203 /root/miniconda3/bin/python scripts/main_training_pt_fe_overlay.py --config configs/config_fe_overlay.yml --cache-dir /root/autodl-tmp/EZSpecificity/PathD/P450/data/q01_fe_embedding_patch/exp002_fe_heme_structures/pt_cache/exp002_fe_overlay_v1 --edge-mode legacy_bug --num-workers 8 --prefetch-factor 1 --train-in-order false --batch-size 40 --max-epochs 200 --devices 2 --run-name Q1_EXP002_fe_overlay_ddp2_b40_w8_full_20260527_184505 --results-dir results/00_EXP002_FE_OVERLAY_20260527_184505 --resume last\n 20757  20210 /root/miniconda3/bin/python /root/autodl-tmp/EZSpecificity/PathD/P450/experiments/q01_fe_embedding_patch/EXP002_fe_heme_overlay/scripts/main_training_pt_fe_overlay.py --config configs/config_fe_overlay.yml --cache-dir /root/autodl-tmp/EZSpecificity/PathD/P450/data/q01_fe_embedding_patch/exp002_fe_heme_structures/pt_cache/exp002_fe_overlay_v1 --edge-mode legacy_bug --num-workers 8 --prefetch-factor 1 --train-in-order false --batch-size 40 --max-epochs 200 --devices 2 --run-name Q1_EXP002_fe_overlay_ddp2_b40_w8_full_20260527_184505 --results-dir results/00_EXP002_FE_OVERLAY_20260527_184505 --resume last\n 20758  20203 /root/miniconda3/bin/python scripts/main_training_pt_fe_overlay.py --config configs/config_fe_overlay.yml --cache-dir /root/autodl-tmp/EZSpecificity/PathD/P450/data/q01_fe_embedding_patch/exp002_fe_heme_structures/pt_cache/exp002_fe_overlay_v1 --edge-mode legacy_bug --num-workers 8 --prefetch-factor 1 --train-in-order false --batch-size 40 --max-epochs 200 --devices 2 --run-name Q1_EXP002_fe_overlay_ddp2_b40_w8_full_20260527_184505 --results-dir results/00_EXP002_FE_OVERLAY_20260527_184505 --resume last\n 20759  20210 /root/miniconda3/bin/python /root/autodl-tmp/EZSpecificity/PathD/P450/experiments/q01_fe_embedding_patch/EXP002_fe_heme_overlay/scripts/main_training_pt_fe_overlay.py --config configs/config_fe_overlay.yml --cache-dir /root/autodl-tmp/EZSpecificity/PathD/P450/data/q01_fe_embedding_patch/exp002_fe_heme_structures/pt_cache/exp002_fe_overlay_v1 --edge-mode legacy_bug --num-workers 8 --prefetch-factor 1 --train-in-order false --batch-size 40 --max-epochs 200 --devices 2 --run-name Q1_EXP002_fe_overlay_ddp2_b40_w8_full_20260527_184505 --results-dir results/00_EXP002_FE_OVERLAY_20260527_184505 --resume last\n 20760  20203 /root/miniconda3/bin/python scripts/main_training_pt_fe_overlay.py --config configs/config_fe_overlay.yml --cache-dir /root/autodl-tmp/EZSpecificity/PathD/P450/data/q01_fe_embedding_patch/exp002_fe_heme_structures/pt_cache/exp002_fe_overlay_v1 --edge-mode legacy_bug --num-workers 8 --prefetch-factor 1 --train-in-order false --batch-size 40 --max-epochs 200 --devices 2 --run-name Q1_EXP002_fe_overlay_ddp2_b40_w8_full_20260527_184505 --results-dir results/00_EXP002_FE_OVERLAY_20260527_184505 --resume last\n 20761  20210 /root/miniconda3/bin/python /root/autodl-tmp/EZSpecificity/PathD/P450/experiments/q01_fe_embedding_patch/EXP002_fe_heme_overlay/scripts/main_training_pt_fe_overlay.py --config configs/config_fe_overlay.yml --cache-dir /root/autodl-tmp/EZSpecificity/PathD/P450/data/q01_fe_embedding_patch/exp002_fe_heme_structures/pt_cache/exp002_fe_overlay_v1 --edge-mode legacy_bug --num-workers 8 --prefetch-factor 1 --train-in-order false --batch-size 40 --max-epochs 200 --devices 2 --run-name Q1_EXP002_fe_overlay_ddp2_b40_w8_full_20260527_184505 --results-dir results/00_EXP002_FE_OVERLAY_20260527_184505 --resume last\n 20762  20210 /root/miniconda3/bin/python /root/autodl-tmp/EZSpecificity/PathD/P450/experiments/q01_fe_embedding_patch/EXP002_fe_heme_overlay/scripts/main_training_pt_fe_overlay.py --config configs/config_fe_overlay.yml --cache-dir /root/autodl-tmp/EZSpecificity/PathD/P450/data/q01_fe_embedding_patch/exp002_fe_heme_structures/pt_cache/exp002_fe_overlay_v1 --edge-mode legacy_bug --num-workers 8 --prefetch-factor 1 --train-in-order false --batch-size 40 --max-epochs 200 --devices 2 --run-name Q1_EXP002_fe_overlay_ddp2_b40_w8_full_20260527_184505 --results-dir results/00_EXP002_FE_OVERLAY_20260527_184505 --resume last\n 20763  20203 /root/miniconda3/bin/python scripts/main_training_pt_fe_overlay.py --config configs/config_fe_overlay.yml --cache-dir /root/autodl-tmp/EZSpecificity/PathD/P450/data/q01_fe_embedding_patch/exp002_fe_heme_structures/pt_cache/exp002_fe_overlay_v1 --edge-mode legacy_bug --num-workers 8 --prefetch-factor 1 --train-in-order false --batch-size 40 --max-epochs 200 --devices 2 --run-name Q1_EXP002_fe_overlay_ddp2_b40_w8_full_20260527_184505 --results-dir results/00_EXP002_FE_OVERLAY_20260527_184505 --resume last",
+    "stderr": ""
+  },
+  "exp003_training_process_lines": [],
+  "checks": [
+    {
+      "name": "EXP003 experiment directory exists",
+      "ok": true,
+      "detail": "/root/autodl-tmp/EZSpecificity/PathD/P450/experiments/q01_fe_embedding_patch/EXP003_full_p450_fe_heme_overlay"
+    },
+    {
+      "name": "EXP003 cache directory exists",
+      "ok": true,
+      "detail": "/root/autodl-tmp/EZSpecificity/PathD/P450/data/q01_fe_embedding_patch/exp003_full_p450_fe_heme_overlay/pt_cache/p450389_trainable_from_exp001_v1"
+    },
+    {
+      "name": "EXP003 config exists",
+      "ok": true,
+      "detail": "/root/autodl-tmp/EZSpecificity/PathD/P450/experiments/q01_fe_embedding_patch/EXP003_full_p450_fe_heme_overlay/configs/config_exp003_p450_subset_fe_overlay.yml"
+    },
+    {
+      "name": "EXP003 run script exists",
+      "ok": true,
+      "detail": "/root/autodl-tmp/EZSpecificity/PathD/P450/experiments/q01_fe_embedding_patch/EXP003_full_p450_fe_heme_overlay/scripts/run_exp003_p450_subset_fe_overlay_train.sh"
+    },
+    {
+      "name": "EXP003 training script exists",
+      "ok": true,
+      "detail": "/root/autodl-tmp/EZSpecificity/PathD/P450/experiments/q01_fe_embedding_patch/EXP003_full_p450_fe_heme_overlay/scripts/main_training_pt_fe_overlay.py"
+    },
+    {
+      "name": "EXP003 dataset script exists",
+      "ok": true,
+      "detail": "/root/autodl-tmp/EZSpecificity/PathD/P450/experiments/q01_fe_embedding_patch/EXP003_full_p450_fe_heme_overlay/scripts/pt_dataset_fe_overlay.py"
+    },
+    {
+      "name": "config tag is EXP003",
+      "ok": true,
+      "detail": "Q1-EXP003-p450389-subset-fe-heme-overlay"
+    },
+    {
+      "name": "run script has no EXP002 residue",
+      "ok": true,
+      "detail": {
+        "EXP002": false,
+        "exp002_fe_heme_structures": false,
+        "00_EXP002": false,
+        "Q1_EXP002": false
+      }
+    },
+    {
+      "name": "run script points to EXP003 cache",
+      "ok": true,
+      "detail": "/root/autodl-tmp/EZSpecificity/PathD/P450/data/q01_fe_embedding_patch/exp003_full_p450_fe_heme_overlay/pt_cache/p450389_trainable_from_exp001_v1"
+    },
+    {
+      "name": "run script writes EXP003 results",
+      "ok": true,
+      "detail": "00_EXP003_P450_SUBSET_FE_OVERLAY"
+    },
+    {
+      "name": "training and dataset scripts compile",
+      "ok": true,
+      "detail": {
+        "ok": true,
+        "returncode": 0,
+        "stdout": "",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "run script bash syntax is valid",
+      "ok": true,
+      "detail": {
+        "ok": true,
+        "returncode": 0,
+        "stdout": "",
+        "stderr": ""
+      }
+    },
+    {
+      "name": "cache manifest exists",
+      "ok": true,
+      "detail": "/root/autodl-tmp/EZSpecificity/PathD/P450/data/q01_fe_embedding_patch/exp003_full_p450_fe_heme_overlay/pt_cache/p450389_trainable_from_exp001_v1/manifest.pt"
+    },
+    {
+      "name": "manifest includes Fe element 26",
+      "ok": true,
+      "detail": [
+        1,
+        6,
+        7,
+        8,
+        16,
+        34,
+        26
+      ]
+    },
+    {
+      "name": "manifest has hetero flag",
+      "ok": true,
+      "detail": true
+    },
+    {
+      "name": "manifest has EXP003 overlay flag",
+      "ok": true,
+      "detail": true
+    },
+    {
+      "name": "manifest overlay count is 1140",
+      "ok": true,
+      "detail": 1140
+    },
+    {
+      "name": "manifest has no misleading EXP002 overlay key",
+      "ok": true,
+      "detail": false
+    },
+    {
+      "name": "train index exists",
+      "ok": true,
+      "detail": "/root/autodl-tmp/EZSpecificity/PathD/P450/data/q01_fe_embedding_patch/exp003_full_p450_fe_heme_overlay/pt_cache/p450389_trainable_from_exp001_v1/train/index.pt"
+    },
+    {
+      "name": "train index count is expected",
+      "ok": true,
+      "detail": {
+        "actual": 6263,
+        "expected": 6263
+      }
+    },
+    {
+      "name": "val index exists",
+      "ok": true,
+      "detail": "/root/autodl-tmp/EZSpecificity/PathD/P450/data/q01_fe_embedding_patch/exp003_full_p450_fe_heme_overlay/pt_cache/p450389_trainable_from_exp001_v1/val/index.pt"
+    },
+    {
+      "name": "val index count is expected",
+      "ok": true,
+      "detail": {
+        "actual": 607,
+        "expected": 607
+      }
+    },
+    {
+      "name": "test index exists",
+      "ok": true,
+      "detail": "/root/autodl-tmp/EZSpecificity/PathD/P450/data/q01_fe_embedding_patch/exp003_full_p450_fe_heme_overlay/pt_cache/p450389_trainable_from_exp001_v1/test/index.pt"
+    },
+    {
+      "name": "test index count is expected",
+      "ok": true,
+      "detail": {
+        "actual": 1359,
+        "expected": 1359
+      }
+    },
+    {
+      "name": "EXP003 training process is not already running",
+      "ok": true,
+      "detail": []
+    }
+  ],
+  "ok": true
+}

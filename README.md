@@ -6,15 +6,18 @@
 
 ## 当前状态
 
-截至 2026-05-27，重点进展如下：
+截至 2026-05-29 本地日志，重点进展如下：
 
 | 模块 | 状态 | 说明 |
 |---|---|---|
 | PathC 历史基线 | 已完成 | 修复 ESM / GROVER 对齐问题后，随机划分基线达到约 0.93 Test AUC，作为后续对照来源 |
 | PathD 目录整理 | 已完成 | 已建立独立 PathD 规划目录和服务器执行区，PathC 数据只作为只读来源 |
+| Q7 原论文 Heme 处理排查 | 已完成 | 原模型蛋白侧看不见 HEM/Fe，可作为 Q1 和 Q13 的实验动机 |
 | Q2 序列相似度划分 | 已完成一轮可汇报实验 | 已完成 PathD random 对照、id60 聚类簇划分、strict NN40/60/80 和 strict NN60 分布敏感性实验 |
-| Q1 Fe 嵌入补丁 | EXP001 已完成测试，EXP002 已准备训练数据 | EXP001 已得到 ESIBank A-only 原模型基线测试结果；EXP002 已生成 Fe/HEM overlay 训练缓存，等待开 GPU 后训练 |
-| Q3 PubChem 3D 重对接 | 待启动 | 属于结构数据更新任务，后续需要单独规划 |
+| Q1 Fe/HEM 嵌入补丁 | 阶段性完成 | 主线保留 EXP001 / EXP003 对比；EXP003 是 full-data experiment，但未训满 35 epoch |
+| Q9 底物分类下游预测 | 部分完成 | 2125 个化合物已分为 8 类；下游酶到类别预测模型尚未启动 |
+| Q10 湿实验打分系统 | 第一版完整排序已完成 | Q10_EXP001 已对 diosgenin + 204 条候选 P450 完成结构、对接、PT cache、模型打分和排序；只能作为 preliminary ranking |
+| Q3/Q4/Q5/Q6/Q8/Q11/Q12/Q13 | 待启动或待澄清 | 主要还停留在计划或已有材料阶段，后续按依赖关系推进 |
 
 Q2 当前最重要的结果如下。这里优先看 Test AUC；Test AUPR 受测试集正样本数影响，汇报时要一起说明测试集规模。
 
@@ -32,14 +35,32 @@ Q2 当前最重要的结果如下。这里优先看 Test AUC；Test AUPR 受测�
 
 Q1 当前进度：
 
+| 实验 | Full test AUC | Full test AUPR | 389 P450 子 test AUC | 389 P450 子 test AUPR | 当前含义 |
+|---|---:|---:|---:|---:|---|
+| EXP001 原始 A-only baseline | 0.894870 | 0.569394 | 0.890075 | 0.457316 | 原模型对照 |
+| EXP003 P450 专项 HEM/Fe overlay | 0.863196 | 0.493476 | 0.908318 | 0.617855 | 更贴近老师问题的 P450 专项补丁 |
+
+当前解释：
+
+1. EXP003 是 full-data experiment，不能写成只训练 P450 子集；P450 子集只用于 subgroup analysis 和 Fe/HEM target accounting。
+2. EXP003 的 P450 子 test 表现高于 EXP001，说明补充 HEM/Fe 对 P450 子集有阶段性收益。
+3. EXP003 的 full test 表现低于 EXP001，说明当前补丁会牺牲全量 ESIBank 泛化表现。
+4. EXP003 未训满 35 epoch，当前结果适合组会阶段性汇报，不应写成完整训练闭环。
+5. EXP002 不放入主线。它是早期宽口径尝试，`3185` 条 overlay 中只有 `1140` 条属于 389 P450 清单，另外 `2045` 条来自非 P450 清单样本。
+
+Q10 当前进度：
+
 | 内容 | 当前结论 |
 |---|---|
-| EXP001 原模型基线 | 已用最佳 checkpoint 在 ESIBank A-only test 集评估，Test AUC = `0.894871`，Test AUPR = `0.569394` |
-| EXP001 test 集 | `53588` 条样本，其中正样本 `5941`、负样本 `47647` |
-| EXP001 最终目录 | `/root/autodl-tmp/EZSpecificity/PathD/P450/experiments/q01_fe_embedding_patch/EXP001_esibank_aonly_original_baseline/results/00_EXP001_FINAL/` |
-| EXP002 Fe/HEM overlay | 已生成训练缓存，共 `3185` 条样本加入 HEM/Fe 信息；train/val/test 增强样本分别为 `2362/257/566` |
-| EXP002 对齐审计 | 样本顺序、标签、enzyme_id、substrate_id 与 EXP001 base cache 保持一致；增强样本未改变标签或实体 ID |
-| EXP002 下一步 | 开 GPU 后从 `EXP002_fe_heme_overlay` 目录启动训练，优先用 3 卡或 4 卡；无卡模式下已经完成 CPU 前向验证 |
+| 实验 | Q10_EXP001_diosgenin_20260528 |
+| 输入 | diosgenin + 204 条候选 P450，其中 MDP450 43 条、ARATH 161 条 |
+| 完成环节 | ColabFold 结构、HEM/Fe receptor、Uni-Dock 对接、PT cache、模型打分和 candidate_id 一致性审计 |
+| 样本数 | PT cache `204` 条，模型打分 `204` 条，全流程审计 `ok=true` |
+| 模型 | Q2 EXP008 random best checkpoint，`ep79-auc0.9316.ckpt` |
+| 分数范围 | `score_min = 1.93e-16`，`score_max = 0.088214606`，`score_mean = 0.002178010` |
+| 本地表格 | `results/q10_wetlab_scoring/Q10_EXP001_diosgenin_20260528/model_scores/Q10_EXP001_两个酶列表完整打分表.md` |
+
+Q10_EXP001 可以作为第一版候选排序和后续严格版对照，不能解释成湿实验概率。已知风险包括：ColabFold 曾依赖在线 MSA，HEM/Fe 来自少数模板 overlay，Uni-Dock 未按官方高吞吐入口重做，且 docking score 存在异常正分。下一版建议新建 Q10_EXP002，按官方文档和本机 `--help` 重新设计结构、对接和小批性能基准。
 
 ## 推荐阅读顺序
 
@@ -61,7 +82,10 @@ Q1 当前进度：
    Q2 的详细过程记录，包含服务器路径、审计结果、训练参数、监控和复核说明。
 
 6. [Q1 session_log.md](毕业设计/P450_EZSpecificity_研究项目/PathD_2026-05-08_导师反馈13问题/sessions/01_Q1_FE嵌入补丁对照/session_log.md)
-   Q1 ESIBank A 版原模型基线、单卡训练瓶颈和后续 DDP 测试安排。
+   Q1 原模型基线、EXP002 宽口径尝试、EXP003 P450 专项 HEM/Fe overlay 和结果边界。
+
+7. [Q10 session_log.md](毕业设计/P450_EZSpecificity_研究项目/PathD_2026-05-08_导师反馈13问题/sessions/10_Q10_打分系统/session_log.md)
+   Q10 湿实验打分系统的第一版流程、事故复盘、完整排序表和下一版硬规则。
 
 ## 目录入口
 
@@ -94,7 +118,7 @@ PathD 的服务器执行区为：
 
 | 问题 | 主题 | 当前建议 |
 |---|---|---|
-| Q1 | Fe 嵌入补丁对照 | EXP001 原模型基线已完成 test 评估；EXP002 Fe/HEM overlay 数据已准备好，下一步开 GPU 训练 |
+| Q1 | Fe/HEM 嵌入补丁对照 | EXP001 / EXP003 已有阶段性对比；EXP003 的 P450 子 test 提升、full test 下降，且未训满 35 epoch |
 | Q2 | 序列相似度划分 | 已有可汇报结果；EXP005 是 strict NN60 主实验，EXP010/EXP011 是分布敏感性补充 |
 | Q3 | PubChem 3D 重对接 | 后续单独规划，需要处理结构与对接数据 |
 | Q4 | EGNN 换 GVP | 暂不优先，历史 GVP 旁路结果没有稳定增益 |
@@ -102,13 +126,14 @@ PathD 的服务器执行区为：
 | Q6 / Q12 | 正负样本真实性核验 | 建议合并规划为标签质量审计 |
 | Q7 | 原论文 Heme 处理排查 | 已作为 Q1 / Q13 的理论前置 |
 | Q8 | 糖基转移酶等家族扩展 | 工作量大，后置 |
-| Q9 / Q10 | 底物分类与打分系统 | 先模型证据，再考虑系统包装 |
+| Q9 | 底物分类与下游预测 | 8 类底物分类已完成；下游酶到类别预测模型尚未启动 |
+| Q10 | 湿实验完整打分系统 | Q10_EXP001 已完成 preliminary ranking；Q10_EXP002 应按严格结构和对接流程重做 |
 | Q11 | 6a15 模板重建结构 | 后置，需老师明确优先级 |
 | Q13 | Fe 与催化原子距离筛选 | 可与 Q3 的结构更新合并考虑 |
 
 ## 当前汇报重点
 
-当前最适合向老师汇报的是 Q2，Q1 可以作为下一条已经进入实验阶段的主线：
+当前最适合向老师汇报的是 Q2，Q1 可以作为第二条阶段性结果，Q10 作为应用落地的 preliminary ranking：
 
 1. 原随机划分基线表现高，但可能受到近缘酶影响。
 2. Q2 先还原 baseline 真正使用的 1479 个 enzyme 和 44090 条样本。
@@ -116,8 +141,8 @@ PathD 的服务器执行区为：
 4. EXP005 做 strict NN60 划分，Test AUC 为 0.670801。
 5. EXP006/EXP007 给出 strict NN40/80 阈值梯度，EXP010/EXP011 给出 strict NN60 分布敏感性。
 6. 性能下降说明严格新酶泛化比随机划分更难，也更接近老师提出的问题。
-7. Q1-EXP001 已有 ESIBank A-only 原模型基线测试结果，Test AUC 为 0.894871。
-8. Q1-EXP002 已准备好 Fe/HEM overlay 训练缓存，可用于比较加入 Fe/HEM 信息后的模型表现。
+7. Q1-EXP003 在 389 P450 子 test 上高于 EXP001，但 full test 下降，且 EXP003 未训满 35 epoch。
+8. Q10-EXP001 已跑通 diosgenin + 204 条候选 P450 的第一版完整排序，但必须带 preliminary 和质量风险标签使用。
 
 详细数字、划分机制和图表建议见 Q2 汇总文档。
 

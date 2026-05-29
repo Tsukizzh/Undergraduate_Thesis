@@ -1,0 +1,25 @@
+{
+  "created_at": "2026-05-27 22:16:24",
+  "cache": "/root/autodl-tmp/EZSpecificity/PathD/P450/data/q01_fe_embedding_patch/exp003_full_p450_fe_heme_overlay/pt_cache/p450389_trainable_from_exp001_v1",
+  "audit_csv": "/root/autodl-tmp/EZSpecificity/PathD/P450/data/q01_fe_embedding_patch/exp003_full_p450_fe_heme_overlay/overlay_reports/fe_overlay_from_exp002_rules_v1/fe_overlay_sample_audit.csv",
+  "target_candidates_rows": 1152,
+  "expected_trainable_overlay_samples": 1140,
+  "expected_unique_keys": 1140,
+  "audit_status_counts": {
+    "ok": 1240
+  },
+  "audit_ok_rows": 1240,
+  "audit_ok_unique_keys": 1140,
+  "audit_ok_duplicate_rows": 100,
+  "expected_minus_audit_ok": 0,
+  "audit_ok_minus_expected": 0,
+  "pt_checked_for_expected": 1140,
+  "missing_pt_count": 0,
+  "no_hetero_count": 0,
+  "no_fe_count": 0,
+  "bad_load_count": 0,
+  "missing_pt_examples": [],
+  "no_hetero_examples": [],
+  "no_fe_examples": [],
+  "bad_load_examples": []
+}

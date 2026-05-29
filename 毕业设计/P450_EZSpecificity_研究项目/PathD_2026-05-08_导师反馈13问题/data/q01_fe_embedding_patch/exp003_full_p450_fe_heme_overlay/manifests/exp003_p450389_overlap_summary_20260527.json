@@ -1,0 +1,18 @@
+{
+  "created_at": "2026-05-27",
+  "p450_source": "D:\\EZSpecificity_Project\\毕业设计\\提取P450过程日志\\2026-01-02_01-46_P450精确验证\\数据\\P450酶列表_最终版389个.csv",
+  "p450_list_count": 389,
+  "esibank_structure_records_source": "D:\\EZSpecificity_Project\\.q1_exp002_manifests\\exp002_structure_index_to_uniprot_substrate_20260527_014800.csv",
+  "esibank_structure_records_total": 317577,
+  "p450_overlap_structure_records": 8448,
+  "p450_overlap_unique_uniprot": 216,
+  "p450_overlap_positive_samples": 586,
+  "rcsb_best1_source": "D:\\EZSpecificity_Project\\.q1_exp002_manifests\\manifests_20260527\\exp002_structure_records_to_rcsb_heme_fe_best1_v3_20260527.csv",
+  "rcsb_best1_total": 7184,
+  "p450_overlap_rcsb_best1_rows": 1233,
+  "p450_overlap_rcsb_best1_unique_uniprot": 22,
+  "p450_overlap_rcsb_best1_positive_samples": 72,
+  "p450_missing_from_esibank_structure_records": 173,
+  "p450_missing_from_rcsb_best1": 367,
+  "note": "EXP003 full-P450 start manifests only; not yet a training cache."
+}

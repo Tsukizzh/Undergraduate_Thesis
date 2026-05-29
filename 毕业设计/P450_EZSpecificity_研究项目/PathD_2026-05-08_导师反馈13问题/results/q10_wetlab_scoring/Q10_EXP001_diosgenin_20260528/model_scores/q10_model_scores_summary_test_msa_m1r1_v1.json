@@ -1,0 +1,25 @@
+{
+  "cache_dir": "/root/autodl-tmp/EZSpecificity/PathD/P450/data/q10_wetlab_scoring/Q10_EXP001_diosgenin_20260528/model_cache/q10_unidock_pt_msa_m1r1_v1",
+  "checkpoint": "/root/autodl-tmp/EZSpecificity/PathD/P450/experiments/q02_sequence_similarity_split/EXP008_random_gdtable_b80_retry_20260525/results/checkpoints/pt-Q2_EXP008_random_gdtable_b80_retry_full_20260525_174150-ep79-auc0.9316.ckpt",
+  "config": "/root/autodl-tmp/EZSpecificity/PathD/P450/experiments/q02_sequence_similarity_split/EXP008_random_gdtable_b80_retry_20260525/configs/config.yml",
+  "device": "cuda:0",
+  "use_gdtable": false,
+  "n_samples": 204,
+  "by_input_list": {
+    "ARATH_uniprot_p450": 161,
+    "MDP450_no_TM_removed": 43
+  },
+  "score_min": 1.9302794283472855e-16,
+  "score_max": 0.08821460604667664,
+  "score_mean": 0.0021780098989980165,
+  "load_state_dict_missing_keys": [],
+  "load_state_dict_unexpected_keys": [],
+  "load_state_dict_missing_count": 0,
+  "load_state_dict_unexpected_count": 0,
+  "all_scores_csv": "/root/autodl-tmp/EZSpecificity/PathD/P450/data/q10_wetlab_scoring/Q10_EXP001_diosgenin_20260528/results/model_scores/q10_model_scores_all_test_msa_m1r1_v1.csv",
+  "split_score_csvs": {
+    "ARATH_uniprot_p450": "/root/autodl-tmp/EZSpecificity/PathD/P450/data/q10_wetlab_scoring/Q10_EXP001_diosgenin_20260528/results/model_scores/q10_model_scores_ARATH_uniprot_p450_test_msa_m1r1_v1.csv",
+    "MDP450_no_TM_removed": "/root/autodl-tmp/EZSpecificity/PathD/P450/data/q10_wetlab_scoring/Q10_EXP001_diosgenin_20260528/results/model_scores/q10_model_scores_MDP450_no_TM_removed_test_msa_m1r1_v1.csv"
+  },
+  "note": "Q10 has no labels here; model_score_sigmoid is a ranking score, not validated wet-lab probability."
+}

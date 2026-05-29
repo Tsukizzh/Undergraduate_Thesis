@@ -1,0 +1,60 @@
+{
+  "created_at": "2026-05-28 01:34:38",
+  "purpose": "EXP003 P450 official ESIBank brenda/structure/complex PDB manifest from DriveFS metadata",
+  "inputs": {
+    "p450_csv": "D:\\EZSpecificity_Project\\毕业设计\\提取P450过程日志\\2026-01-02_01-46_P450精确验证\\数据\\P450酶列表_最终版389个.csv",
+    "enzymes_csv": "D:\\ESIBank\\brenda\\enzymes.csv",
+    "data_csv": "D:\\ESIBank\\brenda\\data.csv",
+    "trainable_manifest": "D:\\EZSpecificity_Project\\毕业设计\\P450_EZSpecificity_研究项目\\PathD_2026-05-08_导师反馈13问题\\data\\q01_fe_embedding_patch\\exp003_full_p450_fe_heme_overlay\\manifests\\exp003_p450389_trainable_split_sample_manifest_20260527_214331.csv"
+  },
+  "outputs": {
+    "manifest_csv": "D:\\EZSpecificity_Project\\毕业设计\\P450_EZSpecificity_研究项目\\PathD_2026-05-08_导师反馈13问题\\data\\q01_fe_embedding_patch\\exp003_full_p450_fe_heme_overlay\\official_pdb_manifest_20260528\\exp003_p450_official_esibank_pdb_manifest_20260528.csv",
+    "summary_json": "D:\\EZSpecificity_Project\\毕业设计\\P450_EZSpecificity_研究项目\\PathD_2026-05-08_导师反馈13问题\\data\\q01_fe_embedding_patch\\exp003_full_p450_fe_heme_overlay\\official_pdb_manifest_20260528\\exp003_p450_official_esibank_pdb_manifest_summary_20260528.json"
+  },
+  "drivefs": {
+    "drivefs_metadata": "C:\\Users\\Administrator\\AppData\\Local\\Google\\DriveFS\\112184715553175865523\\metadata_sqlite_db",
+    "complex_folder_id": "133tzvNXYmGfelJve0VsUzfcsvQEw9YkC",
+    "complex_parent_stable_id": 496,
+    "total_children_in_complex_parent": 500001,
+    "pdb_children_with_parsed_name": 500001,
+    "unique_pdb_names": 499997,
+    "duplicate_pdb_name_count": 4,
+    "duplicate_pdb_name_examples": [
+      "407273.pdb",
+      "407222.pdb",
+      "368923.pdb",
+      "407148.pdb"
+    ]
+  },
+  "counts": {
+    "p450_unique_structure_index": 8448,
+    "p450_found_in_drivefs_metadata": 7822,
+    "p450_missing_in_drivefs_metadata": 626,
+    "p450_expected_download_gib": 4.708,
+    "trainable_unique_structure_index": 8229,
+    "trainable_found_in_drivefs_metadata": 7770,
+    "trainable_missing_in_drivefs_metadata": 459
+  },
+  "missing_examples": [
+    "8656.pdb",
+    "8940.pdb",
+    "69594.pdb",
+    "69645.pdb",
+    "69910.pdb",
+    "70080.pdb",
+    "70243.pdb",
+    "70253.pdb",
+    "70256.pdb",
+    "70364.pdb",
+    "70433.pdb",
+    "70588.pdb",
+    "70673.pdb",
+    "70765.pdb",
+    "70794.pdb",
+    "71155.pdb",
+    "71353.pdb",
+    "71730.pdb",
+    "71865.pdb",
+    "71915.pdb"
+  ]
+}
